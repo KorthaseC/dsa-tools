@@ -14,6 +14,16 @@ export const MONTHS: string[] = [
   'Namenlose Tage',
 ];
 
+export const WEEKDAYS: string[] = [
+  'Windstag',
+  'Erdtag',
+  'Markttag',
+  'Praiostag',
+  'Rohalstag',
+  'Feuertag',
+  'Wassertag',
+];
+
 export enum MoonPhase {
   Increasing = 'zunehmend',
   Decreasing = 'abnehmend',
@@ -31,3 +41,6 @@ export const MOON_ICON = {
   Chalice: '🌓',
   FullMoon: '🌕',
 };
+
+export const DAYS_IN_MONTH: number = 30;
+export const DAYS_IN_YEAR: number = 365;

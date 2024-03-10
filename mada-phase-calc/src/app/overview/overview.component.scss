@@ -1,13 +1,13 @@
-.mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-.moon-phase-container {
-  display: flex;
-  align-items: center;
+.card {
+  /* Füge hier zusätzliche Styles für deine Karten hinzu */
 }
 
-.rotated-text {
-  transform: rotate(90deg);
+.blend-img {
+  mix-blend-mode: multiply;
 }
