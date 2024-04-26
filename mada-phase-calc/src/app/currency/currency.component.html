@@ -1,0 +1,78 @@
+<form>
+  <div class="display-flex">
+    <div class="box mr-r-5">
+      <strong>Start-Währung</strong>
+      <mat-form-field>
+        <mat-label>Währung</mat-label>
+        <mat-select [formControl]="currencyOne" required>
+          @for (currency of currencyOptions; track currency) {
+          <mat-option [value]="currency">{{ currency }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      @for (currencyValue of sortCurrencyValue(currencyValues[0]); track $index)
+      {
+      <mat-form-field>
+        <mat-label>{{ currencyValue.name }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ currencyValue.name }}"
+          [formControl]="coinControls[0][$index]"
+          type="number"
+        />
+      </mat-form-field>
+      }
+    </div>
+
+    <div class="box mr-l-5">
+      <strong>Ziel-Währung</strong>
+      <mat-form-field>
+        <mat-label>Währung</mat-label>
+        <mat-select [formControl]="currencyTwo" required>
+          @for (currency of currencyOptions; track currency) {
+          <mat-option [value]="currency">{{ currency }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      @for (currencyValue of sortCurrencyValue(currencyValues[1]); track $index)
+      {
+      <mat-form-field>
+        <mat-label>{{ currencyValue.name }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ currencyValue.name }}"
+          [formControl]="coinControls[1][$index]"
+          type="number"
+          readonly
+        />
+      </mat-form-field>
+      }
+    </div>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Wechselkurs in %</mat-label>
+    <input
+      matInput
+      placeholder="Wechselkurs in %"
+      [formControl]="exchangeRate"
+      type="number"
+    />
+  </mat-form-field>
+</form>
+
+@if (remainderText) {
+<div class="mr-b-20">
+  <div>
+    <span>{{ remainderText }}</span>
+  </div>
+</div>
+}
+
+<div class="button">
+  <button mat-raised-button (click)="recalculate()" [disabled]="!isFormValid()">
+    Starte Umrechnung
+  </button>
+</div>

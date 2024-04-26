@@ -21,6 +21,8 @@ export class HeaderComponent {
           this.pageTitle = 'Mada Phasen Rechner';
         } else if (event.url === '/weekday') {
           this.pageTitle = 'Wochentag Rechner';
+        } else if (event.url === '/currency') {
+          this.pageTitle = 'Währungsrechner';
         } else {
           this.pageTitle = 'Übersicht';
         }

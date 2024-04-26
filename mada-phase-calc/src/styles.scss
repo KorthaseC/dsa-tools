@@ -10,6 +10,10 @@ body {
   background-color: lightgray;
 }
 
+.width-50 {
+  width: 50%;
+}
+
 .witdh-100 {
   width: 100%;
 }
@@ -22,8 +26,16 @@ body {
   margin-top: 20px;
 }
 
+.mr-l-5 {
+  margin-left: 5px;
+}
+
 .mr-l-20 {
   margin-left: 20px !important;
+}
+
+.mr-r-5 {
+  margin-right: 5px;
 }
 
 .mr-r-20 {
@@ -32,4 +44,8 @@ body {
 
 .bg-color-black {
   background-color: black;
+}
+
+.display-flex {
+  display: flex;
 }
