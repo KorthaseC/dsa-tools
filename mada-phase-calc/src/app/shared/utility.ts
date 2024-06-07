@@ -13,4 +13,15 @@ export class Utility {
       year * DAYS_IN_YEAR
     );
   }
+
+  public static isWithinRange(value: number, range: [number, number]): boolean {
+    return value >= range[0] && value <= range[1];
+  }
+
+  public static addNumbers(numbers: number[]): number {
+    return numbers.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+  }
 }

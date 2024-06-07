@@ -1,3 +1,48 @@
-.title {
+.c-toolbar {
+  height: auto;
+  padding: 0; /* Entfernen Sie zusätzlichen Innenabstand */
+}
+
+.c-title {
   justify-content: center;
+  margin: 0; /* Entfernen Sie zusätzlichen Außenabstand */
+  line-height: 32px; /* Setzen Sie die Zeilenhöhe, um die Höhe der Zeile anzupassen */
+}
+
+.c-button-container {
+  display: flex;
+  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
+  align-items: center;
+  justify-content: flex-end; /* Slider und Buttons rechts ausrichten */
+  width: 100%;
+  margin: 0; /* Entfernen Sie zusätzlichen Außenabstand */
+}
+
+.c-button-size {
+  width: 24px;
+  height: 24px;
+}
+
+mat-toolbar-row {
+  height: auto; /* Stellen Sie die gewünschte Höhe ein */
+  min-height: 32px; /* Stellen Sie die gewünschte Mindesthöhe ein */
+  padding: 0 8px; /* Passen Sie das Padding an */
+}
+
+.dice-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
+  justify-content: flex-end; /* Buttons rechts ausrichten */
+}
+
+@media (max-width: 600px) {
+  .c-button-container {
+    justify-content: flex-end; /* Elemente am rechten Rand ausrichten */
+  }
+
+  .dice-buttons {
+    margin-top: 8px; /* Abstandsregelung */
+    justify-content: flex-end; /* Buttons rechts ausrichten */
+    width: 100%;
+  }
 }

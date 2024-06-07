@@ -49,3 +49,17 @@ body {
 .display-flex {
   display: flex;
 }
+
+.blend-img {
+  mix-blend-mode: multiply;
+}
+
+.invert-img {
+  filter: invert(1);
+}
+
+canvas {
+  margin: 30px;
+  width: 90%;
+  height: 90%;
+}

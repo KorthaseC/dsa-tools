@@ -1,3 +1,64 @@
-<mat-toolbar class="bg-color-black title color-yellow">
-  <span>{{ pageTitle }}</span>
+<mat-toolbar class="bg-color-black c-toolbar color-yellow">
+  <mat-toolbar-row class="c-title">
+    <span>{{ pageTitle }}</span>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <div class="c-button-container">
+      <mat-slide-toggle class="mr-r-20" [formControl]="isRollMulti">
+        {{ "header.sliderMulti" | translate }}
+      </mat-slide-toggle>
+      <div class="dice-buttons">
+        <button mat-icon-button (click)="rollDice('1d4')">
+          <img
+            src="https://www.svgrepo.com/show/320087/d4.svg"
+            alt="D4"
+            class="invert-img c-button-size"
+          />
+        </button>
+        <button mat-icon-button (click)="rollDice('1d6')">
+          <img
+            src="https://www.svgrepo.com/show/322174/dice-six-faces-six.svg"
+            alt="D6"
+            class="invert-img c-button-size"
+          />
+        </button>
+        <button mat-icon-button (click)="rollDice('1d8')">
+          <img
+            src="https://www.svgrepo.com/show/322168/dice-eight-faces-eight.svg"
+            alt="D8"
+            class="invert-img c-button-size"
+          />
+        </button>
+        <button mat-icon-button (click)="rollDice('1d10')">
+          <img
+            src="https://www.svgrepo.com/show/320084/d10.svg"
+            alt="D10"
+            class="invert-img c-button-size"
+          />
+        </button>
+        <button mat-icon-button (click)="rollDice('1d12')">
+          <img
+            src="https://www.svgrepo.com/show/320085/d12.svg"
+            alt="D12"
+            class="invert-img c-button-size"
+          />
+        </button>
+        <button mat-icon-button (click)="rollDice('1d20')">
+          <img
+            src="https://www.svgrepo.com/show/322177/dice-twenty-faces-twenty.svg"
+            alt="D20"
+            class="invert-img c-button-size"
+          />
+        </button>
+        <button mat-icon-button (click)="deletDice()">
+          <img
+            src="https://www.svgrepo.com/show/533010/trash-alt.svg"
+            alt="Trash Dice"
+            class="invert-img c-button-size"
+          />
+        </button>
+      </div>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>

@@ -1,0 +1,54 @@
+{
+  "shared": {
+    "element": {
+      "label": "Element"
+    },
+    "button": {
+      "accept": "Bestätigen"
+    }
+  },
+  "header": {
+    "sliderMulti": "Mehr Würfelauswahl",
+    "madaTitle": "Mada Phasen Rechner",
+    "weekdayTitle": "Wochentag Rechner",
+    "currencyTitle": "Währungsrechner",
+    "alchemyTitle": "Alchemielabor",
+    "overviewTitle": "Übersicht"
+  },
+  "alchemy": {
+    "potionType": {
+      "label": "Trank Typ",
+      "ELIXIR": "Elixier",
+      "POISON": "Gift",
+      "STIMULANT": "Rauschmittel"
+    },
+    "genius": {
+      "label": "Genius der Alchemie",
+      "text": "Du hast noch {{ geniusPoints }} Punkte übrig um das Ergebnis zu ändern."
+    },
+    "purityIngedients": {
+      "label": "Reinheit der Zutaten"
+    },
+    "qsBrew": "QS Brauprobe",
+    "startPotionMaking": "Ermittle Potion",
+    "potionIntroText": "Bei dem hergestellten {{ potionType }} handelt es sich um ein: ",
+    "potionText": {
+      "elixir": "{{effect}} mit folgenden Eigenschaften: {{specificEffect}}, Anwendung: {{application}}, Dauer: {{duration}}",
+      "elixirUseless": "Wirkungsloses Elixier gebraut.",
+      "poison": "Gift mit folgenden Eigenschaften: Anwendung: {{application}}, Widerstand: {{resistance}}, Wirkung: {{effect}} {{triggerEffect}}",
+      "poisonUseless": "Wirkungsloses Gift gebraut.",
+      "stimulant": "{{effect}} Anwendung: {{application}}, Widerstand: {{resistance}}, Suchteintritt: {{addiction}}, Nebenwirkung: {{sideEffect}}, Überdosierung: {{overdose}}",
+      "stimulantUseless": "Wirkungsloses Rauschmittel gebraut."
+    },
+    "diceResult": {
+      "label": "Würfelergebnis",
+      "text": "Das Würfelergebnis für die <strong>{{ type }}</strong> ist:",
+      "result": "Dabei handelt es sich um: <strong>{{ alchemicResult }}</strong>"
+    },
+    "changeDice": {
+      "diceOne": "Ergebnis von Würfel 1 ändern",
+      "diceTwo": "Ergebnis von Würfel 2 ändern",
+      "text": "Das Ergebnis wird zu <strong>{{ changeDiceResult }}</strong> geändert."
+    }
+  }
+}

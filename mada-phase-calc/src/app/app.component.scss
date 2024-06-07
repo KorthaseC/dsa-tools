@@ -35,6 +35,18 @@ main {
   width: 100%;
 }
 
+.dice-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; /* Ensure it's above other elements */
+  pointer-events: none; /* Make sure it doesn't interfere with other interactions */
+}
+
+.dice-box canvas {
+  width: 100%;
+  height: 100%;
+}
 /* Mobile styles */
 
 @media (max-width: 768px) {

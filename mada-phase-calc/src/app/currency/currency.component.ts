@@ -37,7 +37,7 @@ export class CurrencyComponent implements OnInit {
   public currencyValues: CurrencyValue[][] = [[], []]; // 0 for currencyOne, 1 for currencyTwo
   public remainderText = '';
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.currencyOne.valueChanges.subscribe((value) =>
       this.updateCurrency(0, value)
     );
@@ -54,7 +54,7 @@ export class CurrencyComponent implements OnInit {
     return currencies.sort((a, b) => a.relativeValue - b.relativeValue);
   }
 
-  public recalculate() {
+  public recalculate(): void {
     if (!this.currencyOne.valid || !this.currencyTwo.valid) return;
 
     let amount = this.calculateAmount(
@@ -112,7 +112,7 @@ export class CurrencyComponent implements OnInit {
       .replace(/, (?=[^,]*$)/, ' und ')} übrig.`;
   }
 
-  private updateCurrency(index: number, currency: string) {
+  private updateCurrency(index: number, currency: string): void {
     this.currencyValues[index] = CURRENCYMAP.get(currency) || [];
     this.coinControls[index] = this.currencyValues[index].map(
       () => new FormControl(0)

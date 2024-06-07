@@ -1,3 +1,4 @@
+/********************** Calendar Constants **********************/
 export const MONTHS: string[] = [
   'Praios',
   'Rondra',
@@ -45,6 +46,7 @@ export const MOON_ICON = {
 export const DAYS_IN_MONTH: number = 30;
 export const DAYS_IN_YEAR: number = 365;
 
+/********************** Currency Constants **********************/
 export const CURRENCIES: string[] = [
   'Mittelreich',
   'Herzogtum Paavi',
