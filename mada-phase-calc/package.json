@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && node create-redirects.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:mada-phase-calc": "node dist/mada-phase-calc/server/server.mjs",
