@@ -9,12 +9,7 @@
     >}
   </div>
   <br />
-  <div
-    [innerHTML]="
-      'alchemy.diceResult.result'
-        | translate : { alchemicResult: data.alchemicResult }
-    "
-  ></div>
+  <div [innerHTML]="alchemyResult"></div>
   @if( data.geniusPoints > 0 ) {
   <form>
     <div

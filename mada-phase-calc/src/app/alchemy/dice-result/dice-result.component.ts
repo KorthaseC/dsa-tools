@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { Utility } from '../../shared/utility';
 import { AlchemyDiceResult } from '../alcheny.models';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dice-results',
@@ -34,6 +34,8 @@ export class DiceResultComponent implements OnInit {
   public changeDieTwo = new FormControl<number>(null, Validators.required);
   public changeDiceOptions: number[];
 
+  public alchemyResult: string;
+
   private changeDiceOptionsSixSided = Array.from(
     { length: 6 },
     (_, i) => i + 1
@@ -46,10 +48,11 @@ export class DiceResultComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DiceResultComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private translateService: TranslateService
   ) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.changeDiceOptions =
       this.data.diceType === 6 || this.data.diceType === 12
         ? this.changeDiceOptionsSixSided
@@ -61,6 +64,8 @@ export class DiceResultComponent implements OnInit {
     this.changeDieTwo.setValue(
       this.data.dice.length > 1 ? this.data.dice[1] : null
     );
+
+    this.translateResult();
   }
 
   public emitDiceResult(): void {
@@ -111,7 +116,18 @@ export class DiceResultComponent implements OnInit {
         alchemy.diceValueRange
       )
     );
-    return result ? result.alchemicResult : 'No result found';
+
+    let changeResult: string = this.translateService.instant(
+      result.alchemicResult
+    );
+    if (changeResult.includes('{{effect}}')) {
+      this.translateService
+        .get('shared.effect')
+        .subscribe((translatedEffect: string) => {
+          changeResult = changeResult.replace(/{{effect}}/g, translatedEffect);
+        });
+    }
+    return result ? changeResult : 'No result found';
   }
 
   public hasRemainingGeniusPoints(): boolean {
@@ -141,5 +157,33 @@ export class DiceResultComponent implements OnInit {
         ? control.value === this.data.dice[0]
         : control.value === this.data.dice[1])
     );
+  }
+
+  private translateResult(): void {
+    this.translateService
+      .get(this.data.alchemicResult)
+      .subscribe((translatedAlchemicResult: string) => {
+        if (translatedAlchemicResult.includes('{{effect}}')) {
+          this.translateService
+            .get('shared.effect')
+            .subscribe((translatedEffect: string) => {
+              const finalAlchemicResult = translatedAlchemicResult.replace(
+                /{{effect}}/g,
+                translatedEffect
+              );
+              this.setFinalResult(finalAlchemicResult);
+            });
+        } else {
+          this.setFinalResult(translatedAlchemicResult);
+        }
+      });
+  }
+
+  private setFinalResult(alchemicResult: string): void {
+    this.translateService
+      .get('alchemy.diceResult.result', { alchemicResult })
+      .subscribe((result: string) => {
+        this.alchemyResult = result;
+      });
   }
 }

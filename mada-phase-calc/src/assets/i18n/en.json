@@ -1,0 +1,192 @@
+{
+  "shared": {
+    "title": "TDE Tools",
+    "and": "and",
+    "element": {
+      "label": "Element"
+    },
+    "button": {
+      "accept": "Accept"
+    }
+  },
+  "header": {
+    "sliderMulti": "Multi Roll",
+    "madaTitle": "Mada Phase Calculator",
+    "weekdayTitle": "Weekday Calculator",
+    "currencyTitle": "Currency Converter",
+    "alchemyTitle": "Alchemy Lab",
+    "overviewTitle": "Overview"
+  },
+  "overview": {
+    "madaPhase": {
+      "title": "Mada Phases",
+      "description": "Tool for calculating the moon phase"
+    },
+    "weekdays": {
+      "title": "Weekdays",
+      "description": "Tool for calculating the weekdays"
+    },
+    "currencyCalc": {
+      "title": "Currency Converter",
+      "description": "Tool for calculating currencies"
+    },
+    "alchemy": {
+      "title": "Alchemy Lab",
+      "description": "Tool for creating alchemical substances"
+    }
+  },
+  "madaPhase": {
+    "phase": {
+      "increasing": "increasing",
+      "decreasing": "decreasing",
+      "helmet": "Helmet",
+      "newMoon": "Dead Mada/New moon",
+      "chalice": "Kelch",
+      "fullMoon": "Wheel/Full moon"
+    },
+    "nextFullMoon": {
+      "nextFullMoonIn": "The next full moon is in {{days}} days.",
+      "nextFullMoonInSingular": "The next full moon is in {{days}} day.",
+      "lastFullMoonWas": "The last full moon was {{days}} days ago.",
+      "lastFullMoonWasSingular": "The last full moon was {{days}} day ago."
+    },
+    "message": "The current mada phase is: {{ madaPhaseInfo }}",
+    "calculateMadaPhase": "Calculate mada phase"
+  },
+  "weekday": {
+    "day": {
+      "label": "Day",
+      "windday": "Windday",
+      "earthday": "Earthday",
+      "marketday": "Marketday",
+      "praiosday": "Praiosday",
+      "rohalsday": "Rohalsday",
+      "fireday": "Fireday",
+      "waterday": "Waterday"
+    },
+    "month": {
+      "label": "Month",
+      "praios": "Praios",
+      "rondra": "Rondra",
+      "efferd": "Efferd",
+      "travia": "Travia",
+      "boron": "Boron",
+      "hesinde": "Hesinde",
+      "firun": "Firun",
+      "tsa": "Tsa",
+      "phex": "Phex",
+      "peraine": "Peraine",
+      "ingerimm": "Ingerimm",
+      "rahja": "Rahja",
+      "namelessDays": "Nameless Days"
+    },
+    "year": "Year",
+    "message": "The weekday is: {{ weekdayInfo }}",
+    "calculateWeekday": "Calculate Weekday"
+  },
+  "currency": {
+    "currencyLabel": "Currency",
+    "startCurrency": "Start Currency",
+    "finalCurrency": "Final Currency",
+    "exchangeRate": "Exchange Rate in %",
+    "startCurrencyChange": "Start Conversion",
+    "noRemainingCoins": "No remaining coins.",
+    "remainingCoins": "There are still {{remainders}} left.",
+    "region": {
+      "middenrealm": "Middenrealm",
+      "duchyOfPaavi": "Duchy of Paavi",
+      "bornland": "Bornland",
+      "vallusa": "Vallusa",
+      "kingdomsOfAndergast": "Kingdoms of Andergast",
+      "kingdomsOfNostria": "Kingdoms of Nostria",
+      "horasianEmpire": "Horasian Empire",
+      "amazonQueendom": "Amazon Queendom",
+      "mountainKingdom": "Mountain Kingdom",
+      "mhararanyatOfArania": "Mhararanyat of Arania",
+      "caliphate": "Caliphate",
+      "grandEmirateOfMengbilla": "Grand Emirate of Mengbilla",
+      "alAnfanEmpire": "Al'Anfan Empire",
+      "kingdomOfBrabakIn": "Kingdom of Brabak (In)",
+      "kingdomOfBrabakOut": "Kingdom of Brabak (Out)",
+      "kahetNiKemi": "Káhet Ni Kemi"
+    },
+    "currencyName": {
+      "kreutzer": "Kreutzer",
+      "haler": "Haler",
+      "silverThaler": "Silver Thaler",
+      "ducat": "Ducat",
+      "guilder": "Guilder",
+      "penny": "Penny",
+      "silverGroschen": "Silver Groschen",
+      "batze": "Batze",
+      "flindrich": "Flindrich",
+      "stuiver": "Stuiver",
+      "witten": "Witten",
+      "andrathaler": "Andrathaler",
+      "nostrianCrown": "Nostrian Crown",
+      "kuslikWheel": "Kuslik Wheel",
+      "amazonCrown": "Amazon Crown",
+      "atebrox": "Atebrox",
+      "arganbrox": "Arganbrox",
+      "auromox": "Auromox",
+      "kurush": "Kurush",
+      "hallah": "Hallah",
+      "shekel": "Shekel",
+      "dinar": "Dinar",
+      "muwlat": "Muwlat",
+      "zechine": "Zechine",
+      "maravedi": "Maravedi",
+      "ikossar": "Ikossar",
+      "tessar": "Tessar",
+      "telar": "Telar",
+      "dekat": "Dekat",
+      "dirham": "Dirham",
+      "smallOreal": "Small Oreal",
+      "oreal": "Oreal",
+      "doubloon": "Doubloon",
+      "brabacPenny": "Brabac Penny",
+      "brabacCrown": "Brabac Crown",
+      "brabacCrownOutsideBrabak": "Brabac Crown Outside Brabak",
+      "shard": "Shard",
+      "chryskl": "Ch'ryskl",
+      "hedsch": "Hedsch",
+      "suvar": "Suvar"
+    }
+  },
+  "alchemy": {
+    "potionType": {
+      "label": "Potion Type",
+      "ELIXIR": "Elixir",
+      "POISON": "Poison",
+      "STIMULANT": "Stimulant"
+    },
+    "genius": {
+      "label": "Genius of Alchemy",
+      "text": "You have {{ geniusPoints }} points left to change the result."
+    },
+    "purityIngedients": {
+      "label": "Purity of Ingredients"
+    },
+    "qsBrew": "QS Brewing Test",
+    "startPotionMaking": "Determine Potion",
+    "potionIntroText": "The manufactured {{ potionType }} is: ",
+    "potionText": {
+      "elixir": "{{effect}} with the following properties: {{specificEffect}}, Application: {{application}}, Duration: {{duration}}",
+      "elixirUseless": "Brewed a useless elixir.",
+      "poison": "Poison with the following properties: Application: {{application}}, Resistance: {{resistance}}, Effect: {{effect}} {{triggerEffect}}",
+      "poisonUseless": "Brewed a useless poison.",
+      "stimulant": "{{effect}} Application: {{application}}, Resistance: {{resistance}}, Addiction Onset: {{addiction}}, Side Effect: {{sideEffect}}, Overdose: {{overdose}}",
+      "stimulantUseless": "Brewed a useless stimulant."
+    },
+    "diceResult": {
+      "label": "Dice Result",
+      "text": "The dice result for the <strong>{{ type }}</strong> is:",
+      "result": "It is: <strong>{{ alchemicResult }}</strong>"
+    },
+    "changeDice": {
+      "diceOne": "Change result of dice 1",
+      "diceTwo": "Change result of dice 2",
+      "text": "The result will be changed to <strong>{{ changeDiceResult }}</strong>."
+    }
+  }
+}

@@ -4,6 +4,11 @@ export interface AlchemyDiceResult {
   category?: string;
 }
 
+export interface AlchemyQSResult {
+  qs: number;
+  alchemicResult: string;
+}
+
 export interface PurityOption {
   text: string;
   mod: number;

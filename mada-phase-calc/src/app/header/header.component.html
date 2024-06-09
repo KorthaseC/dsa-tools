@@ -4,6 +4,8 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row>
+    <mat-slide-toggle #languageSwitch [formControl]="isGerman">
+    </mat-slide-toggle>
     <div class="c-button-container">
       <mat-slide-toggle class="mr-r-20" [formControl]="isRollMulti">
         {{ "header.sliderMulti" | translate }}

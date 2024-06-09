@@ -1,6 +1,6 @@
 <form>
   <mat-form-field>
-    <mat-label>Tag</mat-label>
+    <mat-label>{{ "weekday.day.label" | translate }}</mat-label>
     <mat-select [formControl]="dayControl" required>
       @for (day of dayOptions; track day) {
       <mat-option [value]="day">{{ day }}</mat-option>
@@ -9,36 +9,32 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Monat</mat-label>
+    <mat-label>{{ "weekday.month.label" | translate }}</mat-label>
     <mat-select [formControl]="monthControl" required>
       @for (month of monthOptions; track month) {
-      <mat-option [value]="month">{{ month }}</mat-option>
+      <mat-option [value]="month">{{
+        "weekday.month." + month | translate
+      }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Jahr</mat-label>
-    <input
-      matInput
-      placeholder="Jahr"
-      [formControl]="yearControl"
-      type="number"
-      required
-    />
+    <mat-label>{{ "weekday.year" | translate }}</mat-label>
+    <input matInput [formControl]="yearControl" type="number" required />
   </mat-form-field>
 </form>
 
 @if (weekdayInfo) {
 <div class="mr-b-20">
   <div>
-    <span>Der Wochentag ist: {{ weekdayInfo }}</span>
+    <span>{{ "weekday.message" | translate : { weekdayInfo } }}</span>
   </div>
 </div>
 }
 
 <div class="button">
   <button mat-raised-button (click)="calcWeekday()" [disabled]="!isFormValid()">
-    Berechne Wochentag
+    {{ "weekday.calculateWeekday" | translate }}
   </button>
 </div>

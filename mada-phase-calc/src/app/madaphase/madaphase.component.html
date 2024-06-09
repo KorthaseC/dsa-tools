@@ -1,6 +1,6 @@
 <form>
   <mat-form-field>
-    <mat-label>Tag</mat-label>
+    <mat-label>{{ "weekday.day.label" | translate }}</mat-label>
     <mat-select [formControl]="dayControl" required>
       @for (day of dayOptions; track day) {
       <mat-option [value]="day">{{ day }}</mat-option>
@@ -9,30 +9,26 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Monat</mat-label>
+    <mat-label>{{ "weekday.month.label" | translate }}</mat-label>
     <mat-select [formControl]="monthControl" required>
       @for (month of monthOptions; track month) {
-      <mat-option [value]="month">{{ month }}</mat-option>
+      <mat-option [value]="month">{{
+        "weekday.month." + month | translate
+      }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Jahr</mat-label>
-    <input
-      matInput
-      placeholder="Jahr"
-      [formControl]="yearControl"
-      type="number"
-      required
-    />
+    <mat-label>{{ "weekday.year" | translate }}</mat-label>
+    <input matInput [formControl]="yearControl" type="number" required />
   </mat-form-field>
 </form>
 
 @if (madaPhaseInfo) {
 <div class="mr-b-20">
   <div class="moon-phase-container">
-    <span>Die aktuelle Madaphase ist: {{ madaPhaseInfo }}</span>
+    <span>{{ "madaPhase.message" | translate : { madaPhaseInfo } }}</span>
     <div class="rotated-text">{{ moonIcon }}</div>
   </div>
   <div>
@@ -40,13 +36,12 @@
   </div>
 </div>
 }
-
 <div class="button">
   <button
     mat-raised-button
     (click)="calcMadaPhase()"
     [disabled]="!isFormValid()"
   >
-    Berechne Mondphase
+    {{ "madaPhase.calculateMadaPhase" | translate }}
   </button>
 </div>

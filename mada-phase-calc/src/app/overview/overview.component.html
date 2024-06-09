@@ -1,7 +1,9 @@
 <div class="card-container">
   <mat-card [routerLink]="['/madaphase']">
     <mat-card-header>
-      <mat-card-title>Mada Phasen</mat-card-title>
+      <mat-card-title>{{
+        "overview.madaPhase.title" | translate
+      }}</mat-card-title>
     </mat-card-header>
     <img
       mat-card-image
@@ -10,23 +12,27 @@
       class="blend-img"
     />
     <mat-card-content>
-      <p>Tool zur Berechnung der Mondphase</p>
+      <p>{{ "overview.madaPhase.description" | translate }}</p>
     </mat-card-content>
   </mat-card>
 
   <mat-card [routerLink]="['/weekday']">
     <mat-card-header>
-      <mat-card-title>Wochentage</mat-card-title>
+      <mat-card-title>{{
+        "overview.weekdays.title" | translate
+      }}</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="assets/calendar-logo.png" alt="Kalender Symbol" />
     <mat-card-content>
-      <p>Tool zur Berechnung der Wochentage</p>
+      <p>{{ "overview.weekdays.description" | translate }}</p>
     </mat-card-content>
   </mat-card>
 
   <mat-card [routerLink]="['/currency']">
     <mat-card-header>
-      <mat-card-title>Währungsrechner</mat-card-title>
+      <mat-card-title>{{
+        "overview.currencyCalc.title" | translate
+      }}</mat-card-title>
     </mat-card-header>
     <img
       mat-card-image
@@ -35,13 +41,15 @@
       class="blend-img"
     />
     <mat-card-content>
-      <p>Tool zur Berechnung der Währungenen</p>
+      <p>{{ "overview.currencyCalc.description" | translate }}</p>
     </mat-card-content>
   </mat-card>
 
   <mat-card [routerLink]="['/alchemy']">
     <mat-card-header>
-      <mat-card-title>Alchemielabor</mat-card-title>
+      <mat-card-title>{{
+        "overview.alchemy.title" | translate
+      }}</mat-card-title>
     </mat-card-header>
     <img
       mat-card-image
@@ -50,7 +58,7 @@
       class="blend-img"
     />
     <mat-card-content>
-      <p>Tool zur Erstellung von alchemistischen Mitteln</p>
+      <p>{{ "overview.alchemy.description" | translate }}</p>
     </mat-card-content>
   </mat-card>
 </div>

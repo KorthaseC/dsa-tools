@@ -9,8 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { CURRENCIES, CURRENCYMAP, CurrencyValue } from '../shared/constant';
+import { CURRENCYMAP, CurrencyRegion, CurrencyValue } from '../shared/constant';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-currency',
@@ -23,25 +24,34 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatSelectModule,
     CommonModule,
+    TranslateModule,
   ],
   templateUrl: './currency.component.html',
   styleUrl: './currency.component.scss',
 })
 export class CurrencyComponent implements OnInit {
-  public currencyOne = new FormControl('', Validators.required);
-  public currencyTwo = new FormControl('', Validators.required);
+  public currencyOne = new FormControl<CurrencyRegion>(
+    null,
+    Validators.required
+  );
+  public currencyTwo = new FormControl<CurrencyRegion>(
+    null,
+    Validators.required
+  );
   public exchangeRate = new FormControl(0, Validators.min(0));
   public coinControls: FormControl[][] = [[], []]; // 0 for currencyOne, 1 for currencyTwo
 
-  public currencyOptions = CURRENCIES;
+  public currencyOptions: string[] = Object.values(CurrencyRegion);
   public currencyValues: CurrencyValue[][] = [[], []]; // 0 for currencyOne, 1 for currencyTwo
-  public remainderText = '';
+  public remainderText: string = '';
+
+  constructor(private translateService: TranslateService) {}
 
   public ngOnInit(): void {
-    this.currencyOne.valueChanges.subscribe((value) =>
+    this.currencyOne.valueChanges.subscribe((value: CurrencyRegion) =>
       this.updateCurrency(0, value)
     );
-    this.currencyTwo.valueChanges.subscribe((value) =>
+    this.currencyTwo.valueChanges.subscribe((value: CurrencyRegion) =>
       this.updateCurrency(1, value)
     );
   }
@@ -99,20 +109,27 @@ export class CurrencyComponent implements OnInit {
       .map((value) => {
         const count = Math.floor(amount / value.relativeValue);
         amount %= value.relativeValue;
-        return count > 0 ? `${count} ${value.name}` : '';
+        const currencyName = this.translateService.instant(
+          `currency.region.${value.name}`
+        );
+        return count > 0 ? `${count} ${currencyName}` : '';
       })
       .filter((text) => text !== '');
 
     if (remainders.length === 0) {
-      return 'Es ist kein Restgeld übrig.';
+      return this.translateService.instant('currency.noRemainingCoins');
     }
 
-    return `Es sind noch ${remainders
+    const andText = this.translateService.instant('shared.and');
+    const remaindersText = remainders
       .join(', ')
-      .replace(/, (?=[^,]*$)/, ' und ')} übrig.`;
+      .replace(/, (?=[^,]*$)/, ` ${andText} `);
+    return this.translateService.instant('currency.remainingCoins', {
+      remainders: remaindersText,
+    });
   }
 
-  private updateCurrency(index: number, currency: string): void {
+  private updateCurrency(index: number, currency: CurrencyRegion): void {
     this.currencyValues[index] = CURRENCYMAP.get(currency) || [];
     this.coinControls[index] = this.currencyValues[index].map(
       () => new FormControl(0)

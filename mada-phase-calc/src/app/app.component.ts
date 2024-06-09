@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,35 @@ import { isPlatformBrowser } from '@angular/common';
 export class AppComponent implements OnInit {
   languages: string[] = ['en', 'de'];
 
-  private translateService = inject(TranslateService);
+  public title = 'DSA Tools';
 
-  title = 'mada-phase-calc';
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private translateService: TranslateService,
+    private titleService: Title
+  ) {}
 
   public ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const defaultLang: string = localStorage.getItem('language') || 'de';
       this.translateService.setDefaultLang(defaultLang);
       this.translateService.use(defaultLang);
+
+      this.setTitle();
+
+      this.translateService.onLangChange.subscribe(() => {
+        this.setTitle(); // Update title when the language changes
+      });
     }
   }
 
   public changeLanguage(lang: string): void {
     this.translateService.use(lang);
     localStorage.setItem('language', lang);
+  }
+
+  private setTitle(): void {
+    const translatedTitle = this.translateService.instant('shared.title');
+    this.titleService.setTitle(translatedTitle);
   }
 }

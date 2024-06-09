@@ -4,8 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MONTHS, WEEKDAYS } from '../shared/constant';
+import { Months, Weekdays } from '../shared/constant';
 import { Utility } from '../shared/utility';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 const dayOptions: number[] = Array.from({ length: 30 }, (_, i) => i + 1);
 const namelessDayOptions: number[] = [1, 2, 3, 4, 5];
@@ -23,33 +24,34 @@ const WINDSTAG_REFERENCE_DAY: number = 183 + 1047 * DAYS_IN_YEAR;
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    TranslateModule,
   ],
   templateUrl: './weekday.component.html',
   styleUrl: './weekday.component.scss',
 })
 export class WeekdayComponent {
-  public dayControl = new FormControl('');
-  public monthControl = new FormControl('');
-  public yearControl = new FormControl('');
+  public dayControl = new FormControl<number>(null);
+  public monthControl = new FormControl<Months>(null);
+  public yearControl = new FormControl<number>(null);
 
   public monthSignal = signal(this.monthControl.value);
 
   public dayOptions: number[] = dayOptions;
-  public monthOptions: string[] = MONTHS;
+  public monthOptions: string[] = Object.values(Months);
 
   public weekdayInfo: string;
 
-  constructor() {
+  constructor(private translateService: TranslateService) {
     this.monthControl.valueChanges.subscribe((newMonth) => {
       this.monthSignal.set(newMonth);
     });
 
     effect(() => {
       const selectedMonth = this.monthSignal();
-      if (selectedMonth === 'Namenlose Tage') {
+      if (selectedMonth === Months.namelessDays) {
         this.dayOptions = namelessDayOptions;
         this.dayControl.setValue(
-          parseInt(this.dayControl.value) > 5 ? null : this.dayControl.value
+          this.dayControl.value > 5 ? null : this.dayControl.value
         );
       } else {
         this.dayOptions = dayOptions;
@@ -65,18 +67,23 @@ export class WeekdayComponent {
 
   public calcWeekday(): void {
     const testDay: number = Utility.calculateTestDay(
-      parseInt(this.dayControl.value),
+      this.dayControl.value,
       this.monthControl.value,
-      parseInt(this.yearControl.value)
+      this.yearControl.value
     );
     let daysSinceWindstag: number = testDay - WINDSTAG_REFERENCE_DAY;
 
     if (daysSinceWindstag < 0) {
       daysSinceWindstag =
-        (daysSinceWindstag % WEEKDAYS.length) + WEEKDAYS.length;
+        (daysSinceWindstag % Object.values(Weekdays).length) +
+        Object.values(Weekdays).length;
     }
 
-    const weekdayIndex: number = daysSinceWindstag % WEEKDAYS.length;
-    this.weekdayInfo = WEEKDAYS[weekdayIndex];
+    const weekdayIndex: number =
+      daysSinceWindstag % Object.values(Weekdays).length;
+    console.log(Utility.getWeekdayByIndex(weekdayIndex));
+    this.weekdayInfo = this.translateService.instant(
+      `weekday.day.${Utility.getWeekdayByIndex(weekdayIndex)}`
+    );
   }
 }

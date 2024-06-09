@@ -23,7 +23,9 @@
     <mat-label>{{ "shared.element.label" | translate }}</mat-label>
     <mat-select [formControl]="elementType" required>
       @for (element of elementTypeOptions; track element) {
-      <mat-option [value]="element">{{ element }}</mat-option>
+      <mat-option [value]="element">{{
+        "shared.element." + element | translate
+      }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -32,7 +34,9 @@
     <mat-label>{{ "alchemy.purityIngedients.label" | translate }}</mat-label>
     <mat-select [formControl]="purityIngredient" required>
       @for (purity of purityOptions; track purity) {
-      <mat-option [value]="purity.mod">{{ purity.text }}</mat-option>
+      <mat-option [value]="purity.mod">{{
+        purity.text | translate
+      }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -49,8 +53,15 @@
 
 @if (potionText) {
 <div class="mr-b-20">
-  <div class="moon-phase-container">
+  <div>
     <span> {{ potionText }}</span>
+    @if (qsEffectText) {
+    <div>
+      <span
+        >{{ "alchemy.potionText.qsBonus" | translate }} {{ qsEffectText }}</span
+      >
+    </div>
+    }
   </div>
 </div>
 }

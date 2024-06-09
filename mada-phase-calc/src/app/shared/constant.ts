@@ -1,183 +1,189 @@
 /********************** Calendar Constants **********************/
-export const MONTHS: string[] = [
-  'Praios',
-  'Rondra',
-  'Efferd',
-  'Travia',
-  'Boron',
-  'Hesinde',
-  'Firun',
-  'Tsa',
-  'Phex',
-  'Peraine',
-  'Ingerimm',
-  'Rahja',
-  'Namenlose Tage',
-];
+export enum Months {
+  Praios = 'praios',
+  Rondra = 'rondra',
+  Efferd = 'efferd',
+  Travia = 'travia',
+  Boron = 'boron',
+  Hesinde = 'hesinde',
+  Firun = 'firun',
+  Tsa = 'tsa',
+  Phex = 'phex',
+  Peraine = 'peraine',
+  Ingerimm = 'ingerimm',
+  Rahja = 'rahja',
+  namelessDays = 'namelessDays',
+}
 
-export const WEEKDAYS: string[] = [
-  'Windstag',
-  'Erdtag',
-  'Markttag',
-  'Praiostag',
-  'Rohalstag',
-  'Feuertag',
-  'Wassertag',
-];
+export enum Weekdays {
+  Windday = 'windday',
+  Earthday = 'earthday',
+  Marketday = 'marketday',
+  Praiosday = 'praiosday',
+  Rohalsday = 'rohalsday',
+  Fireday = 'fireday',
+  Waterday = 'waterday',
+}
 
 export enum MoonPhase {
-  Increasing = 'zunehmend',
-  Decreasing = 'abnehmend',
-  Helm = 'Helm',
-  NewMoon = 'Tote Mada/Neumond',
-  Chalice = 'Kelch',
-  FullMoon = 'Rad/Vollmond',
+  Increasing = 'increasing',
+  Decreasing = 'decreasing',
+  Helmet = 'helmet',
+  NewMoon = 'newMoon',
+  Chalice = 'chalice',
+  FullMoon = 'fullMoon',
 }
 
 export const MOON_ICON = {
-  Increasing: '🌒',
-  Decreasing: '🌖',
-  Helm: '🌗',
-  NewMoon: '🌑',
-  Chalice: '🌓',
-  FullMoon: '🌕',
+  increasing: '🌒',
+  decreasing: '🌖',
+  helmet: '🌗',
+  newMoon: '🌑',
+  chalice: '🌓',
+  fullMoon: '🌕',
 };
 
 export const DAYS_IN_MONTH: number = 30;
 export const DAYS_IN_YEAR: number = 365;
 
 /********************** Currency Constants **********************/
-export const CURRENCIES: string[] = [
-  'Mittelreich',
-  'Herzogtum Paavi',
-  'Bornland',
-  'Vallusa',
-  'Königreiche Andergast',
-  'Königreiche Nostria',
-  'Horasreich',
-  'Königinnenreich der Amazonen',
-  'Bergkönigreich',
-  'Mhaharanyat Aranien',
-  'Kalifat',
-  'Großemirat Mengbilla',
-  'Alanfanisches Imperium',
-  'Königreich Brabak (in Brabak)',
-  'Königreich Brabak (außerhalb Brabak)',
-  'Káhet Ni Kemi',
-];
+export enum CurrencyRegion {
+  Middenrealm = 'middenrealm', // Mittelreich
+  DuchyOfPaavi = 'duchyOfPaavi', // Herzogtum Paavi
+  Bornland = 'bornland', // Bornland
+  Vallusa = 'vallusa', // Vallusa
+  KingdomsOfAndergast = 'kingdomsOfAndergast', // Königreiche Andergast
+  KingdomsOfNostria = 'kingdomsOfNostria', // Königreiche Nostria
+  HorasianEmpire = 'horasianEmpire', // Horasreich
+  AmazonQueendom = 'amazonQueendom', // Königinnenreich der Amazonen
+  MountainKingdom = 'mountainKingdom', // Bergkönigreich
+  MhararanyatOfArania = 'mhararanyatOfArania', // Mhaharanyat Aranien
+  Caliphate = 'caliphate', // Kalifat
+  GrandEmirateOfMengbilla = 'grandEmirateOfMengbilla', // Großemirat Mengbilla
+  AlAnfanEmpire = 'alAnfanEmpire', // Alanfanisches Imperium
+  KingdomOfBrabakIn = 'kingdomOfBrabakIn', // Königreich Brabak (in Brabak)
+  KingdomOfBrabakOut = 'kingdomOfBrabakOut', // Königreich Brabak (außerhalb Brabak)
+  KahetNiKemi = 'kahetNiKemi', // Káhet Ni Kemi
+}
 
 export interface CurrencyValue {
   name: string;
   relativeValue: number;
 }
 
-export const CURRENCYMAP = new Map<string, CurrencyValue[]>([
+export const CURRENCYMAP = new Map<CurrencyRegion, CurrencyValue[]>([
   [
-    'Mittelreich',
+    CurrencyRegion.Middenrealm,
     [
-      { name: 'Kreuzer', relativeValue: 1 },
-      { name: 'Heller', relativeValue: 10 },
-      { name: 'Silbertaler', relativeValue: 100 },
-      { name: 'Dukaten', relativeValue: 1000 },
+      { name: 'kreutzer', relativeValue: 1 },
+      { name: 'haler', relativeValue: 10 },
+      { name: 'silverThaler', relativeValue: 100 },
+      { name: 'ducat', relativeValue: 1000 },
     ],
   ],
-  ['Herzogtum Paavi', [{ name: 'Gulden', relativeValue: 500 }]],
+  [CurrencyRegion.DuchyOfPaavi, [{ name: 'guilder', relativeValue: 500 }]],
   [
-    'Bornland',
+    CurrencyRegion.Bornland,
     [
-      { name: 'Deut', relativeValue: 10 },
-      { name: 'Silbergroschen', relativeValue: 100 },
-      { name: 'Batzen', relativeValue: 1000 },
-    ],
-  ],
-  [
-    'Vallusa',
-    [
-      { name: 'Flindrich', relativeValue: 10 },
-      { name: 'Stüber', relativeValue: 100 },
-      { name: 'Witten', relativeValue: 1000 },
-    ],
-  ],
-  ['Königreiche Andergast', [{ name: 'Andrataler', relativeValue: 500 }]],
-  ['Königreiche Nostria', [{ name: 'Nostrische Krone', relativeValue: 500 }]],
-  [
-    'Horasreich',
-    [
-      { name: 'Kreuzer', relativeValue: 1 },
-      { name: 'Heller', relativeValue: 10 },
-      { name: 'Silbertaler', relativeValue: 100 },
-      { name: 'Dukaten', relativeValue: 1000 },
-      { name: 'Kusliker Rad', relativeValue: 20000 },
+      { name: 'penny', relativeValue: 10 },
+      { name: 'silverGroschen', relativeValue: 100 },
+      { name: 'batze', relativeValue: 1000 },
     ],
   ],
   [
-    'Königinnenreich der Amazonen',
-    [{ name: 'Amazonenkrone', relativeValue: 1200 }],
-  ],
-  [
-    'Bergkönigreich',
+    CurrencyRegion.Vallusa,
     [
-      { name: 'Atebrox', relativeValue: 20 },
-      { name: 'Arganbrox', relativeValue: 200 },
-      { name: 'Auromox', relativeValue: 1200 },
+      { name: 'flindrich', relativeValue: 10 },
+      { name: 'stuiver', relativeValue: 100 },
+      { name: 'witten', relativeValue: 1000 },
     ],
   ],
   [
-    'Mhaharanyat Aranien',
+    CurrencyRegion.KingdomsOfAndergast,
+    [{ name: 'andrathaler', relativeValue: 500 }],
+  ],
+  [
+    CurrencyRegion.KingdomsOfNostria,
+    [{ name: 'nostrianCrown', relativeValue: 500 }],
+  ],
+  [
+    CurrencyRegion.HorasianEmpire,
     [
-      { name: 'Kurush', relativeValue: 1 },
-      { name: 'Hallah', relativeValue: 10 },
-      { name: 'Schekel', relativeValue: 100 },
-      { name: 'Dinar', relativeValue: 1000 },
+      { name: 'kreutzer', relativeValue: 1 },
+      { name: 'haler', relativeValue: 10 },
+      { name: 'silverThaler', relativeValue: 100 },
+      { name: 'ducat', relativeValue: 1000 },
+      { name: 'kuslikWheel', relativeValue: 20000 },
     ],
   ],
   [
-    'Kalifat',
+    CurrencyRegion.AmazonQueendom,
+    [{ name: 'amazonCrown', relativeValue: 1200 }],
+  ],
+  [
+    CurrencyRegion.MountainKingdom,
     [
-      { name: 'Muwlat', relativeValue: 5 },
-      { name: 'Zechine', relativeValue: 200 },
-      { name: 'Marawedi', relativeValue: 2000 },
+      { name: 'atebrox', relativeValue: 20 },
+      { name: 'arganbrox', relativeValue: 200 },
+      { name: 'auromox', relativeValue: 1200 },
     ],
   ],
   [
-    'Großemirat Mengbilla',
+    CurrencyRegion.MhararanyatOfArania,
     [
-      { name: 'Ikossar', relativeValue: 5 },
-      { name: 'Tessar', relativeValue: 25 },
-      { name: 'Telár', relativeValue: 100 },
-      { name: 'Dekat', relativeValue: 1000 },
+      { name: 'kurush', relativeValue: 1 },
+      { name: 'hallah', relativeValue: 10 },
+      { name: 'shekel', relativeValue: 100 },
+      { name: 'dinar', relativeValue: 1000 },
     ],
   ],
   [
-    'Alanfanisches Imperium',
+    CurrencyRegion.Caliphate,
     [
-      { name: 'Dirham', relativeValue: 1 },
-      { name: 'Kleiner Oreal', relativeValue: 5 },
-      { name: 'Oreal', relativeValue: 100 },
-      { name: 'Dublone', relativeValue: 2000 },
+      { name: 'muwlat', relativeValue: 5 },
+      { name: 'zechine', relativeValue: 200 },
+      { name: 'maravedi', relativeValue: 2000 },
     ],
   ],
   [
-    'Königreich Brabak (in Brabak)',
+    CurrencyRegion.GrandEmirateOfMengbilla,
     [
-      { name: 'Brabaker Kreuzer', relativeValue: 1 },
-      { name: 'Brabaker Krone', relativeValue: 1000 }, // Lokaler Wert
+      { name: 'ikossar', relativeValue: 5 },
+      { name: 'tessar', relativeValue: 25 },
+      { name: 'telar', relativeValue: 100 },
+      { name: 'dekat', relativeValue: 1000 },
     ],
   ],
   [
-    'Königreich Brabak (außerhalb Brabak)',
+    CurrencyRegion.AlAnfanEmpire,
     [
-      { name: 'Brabaker Kreuzer', relativeValue: 1 },
-      { name: 'Brabaker Krone außerhalb Brabaks', relativeValue: 500 },
+      { name: 'dirham', relativeValue: 1 },
+      { name: 'smallOreal', relativeValue: 5 },
+      { name: 'oreal', relativeValue: 100 },
+      { name: 'doubloon', relativeValue: 2000 },
     ],
   ],
   [
-    'Káhet Ni Kemi',
+    CurrencyRegion.KingdomOfBrabakIn,
     [
-      { name: 'Trümmer', relativeValue: 1 },
-      { name: "Ch'ryskl", relativeValue: 10 },
-      { name: 'Hedsch', relativeValue: 100 },
-      { name: 'Suvar', relativeValue: 1000 },
+      { name: 'brabacPenny', relativeValue: 1 },
+      { name: 'brabacCrown', relativeValue: 1000 }, // Local value
+    ],
+  ],
+  [
+    CurrencyRegion.KingdomOfBrabakOut,
+    [
+      { name: 'brabacPenny', relativeValue: 1 },
+      { name: 'brabacCrownOutsideBrabak', relativeValue: 500 },
+    ],
+  ],
+  [
+    CurrencyRegion.KahetNiKemi,
+    [
+      { name: 'shard', relativeValue: 1 },
+      { name: 'chryskl', relativeValue: 10 },
+      { name: 'hedsch', relativeValue: 100 },
+      { name: 'suvar', relativeValue: 1000 },
     ],
   ],
 ]);

@@ -1,19 +1,168 @@
 {
   "shared": {
+    "title": "DSA Tools",
+    "and": "und",
     "element": {
-      "label": "Element"
+      "label": "Element",
+      "fire": "Feuer",
+      "water": "Wasser",
+      "humus": "Humus",
+      "ice": "Eis",
+      "air": "Luft",
+      "ore": "Erz",
+      "magic": "Magisch",
+      "divine": "Göttlich",
+      "perverted": "Pervertiert",
+      "nameless": "Namenlos"
     },
+    "effect": "Effekt",
     "button": {
       "accept": "Bestätigen"
     }
   },
   "header": {
-    "sliderMulti": "Mehr Würfelauswahl",
+    "sliderMulti": "Mehrfach Würfeln",
     "madaTitle": "Mada Phasen Rechner",
     "weekdayTitle": "Wochentag Rechner",
     "currencyTitle": "Währungsrechner",
     "alchemyTitle": "Alchemielabor",
     "overviewTitle": "Übersicht"
+  },
+  "overview": {
+    "madaPhase": {
+      "title": "Mada Phasen",
+      "description": "Tool zur Berechnung der Mondphase"
+    },
+    "weekdays": {
+      "title": "Wochentage",
+      "description": "Tool zur Berechnung der Wochentage"
+    },
+    "currencyCalc": {
+      "title": "Währungsrechner",
+      "description": "Tool zur Berechnung der Währungen"
+    },
+    "alchemy": {
+      "title": "Alchemielabor",
+      "description": "Tool zur Erstellung von alchemistischen Mitteln"
+    }
+  },
+  "madaPhase": {
+    "phase": {
+      "increasing": "zunehmend",
+      "decreasing": "abnehmend",
+      "helmet": "Helm",
+      "newMoon": "Tote Mada/Neumond",
+      "chalice": "Kelch",
+      "fullMoon": "Rad/Vollmond"
+    },
+    "nextFullMoon": {
+      "nextFullMoonIn": "Der nächste Vollmond ist in {{days}} Tagen.",
+      "nextFullMoonInSingular": "Der nächste Vollmond ist in {{days}} Tag.",
+      "lastFullMoonWas": "Der letzte Vollmond war vor {{days}} Tagen.",
+      "lastFullMoonWasSingular": "Der letzte Vollmond war vor {{days}} Tag."
+    },
+    "message": "Die aktuelle Madaphase ist: {{ madaPhaseInfo }}",
+    "calculateMadaPhase": "Berechne Madaphase"
+  },
+  "weekday": {
+    "day": {
+      "label": "Tag",
+      "windday": "Windstag",
+      "earthday": "Erdtag",
+      "marketday": "Markttag",
+      "praiosday": "Praiostag",
+      "rohalsday": "Rohalstag",
+      "fireday": "Feuertag",
+      "waterday": "Wassertag"
+    },
+    "month": {
+      "label": "Monat",
+      "praios": "Praios",
+      "rondra": "Rondra",
+      "efferd": "Efferd",
+      "travia": "Travia",
+      "boron": "Boron",
+      "hesinde": "Hesinde",
+      "firun": "Firun",
+      "tsa": "Tsa",
+      "phex": "Phex",
+      "peraine": "Peraine",
+      "ingerimm": "Ingerimm",
+      "rahja": "Rahja",
+      "namelessDays": "Namenlose Tage"
+    },
+    "year": "Jahr",
+    "message": "Der Wochentag ist: {{ weekdayInfo }}",
+    "calculateWeekday": "Berechne Wochentag"
+  },
+  "currency": {
+    "currencyLabel": "Währung",
+    "startCurrency": "Start-Währung",
+    "finalCurrency": "Ziel-Währung",
+    "exchangeRate": "Wechselkurs in %",
+    "startCurrencyChange": "Starte Umrechnung",
+    "noRemainingCoins": "Es ist kein Restgeld übrig.",
+    "remainingCoins": "Es sind noch {{remainders}} übrig.",
+    "region": {
+      "middenrealm": "Mittelreich",
+      "duchyOfPaavi": "Herzogtum Paavi",
+      "bornland": "Bornland",
+      "vallusa": "Vallusa",
+      "kingdomsOfAndergast": "Königreiche Andergast",
+      "kingdomsOfNostria": "Königreiche Nostria",
+      "horasianEmpire": "Horasreich",
+      "amazonQueendom": "Königinnenreich der Amazonen",
+      "mountainKingdom": "Bergkönigreich",
+      "mhararanyatOfArania": "Mhaharanyat Aranien",
+      "caliphate": "Kalifat",
+      "grandEmirateOfMengbilla": "Großemirat Mengbilla",
+      "alAnfanEmpire": "Alanfanisches Imperium",
+      "kingdomOfBrabakIn": "Königreich Brabak (in Brabak)",
+      "kingdomOfBrabakOut": "Königreich Brabak (außerhalb Brabak)",
+      "kahetNiKemi": "Káhet Ni Kemi"
+    },
+    "currencyName": {
+      "kreutzer": "Kreuzer",
+      "haler": "Heller",
+      "silverThaler": "Silbertaler",
+      "ducat": "Dukaten",
+      "guilder": "Gulden",
+      "penny": "Deut",
+      "silverGroschen": "Silbergroschen",
+      "batze": "Batzen",
+      "flindrich": "Flindrich",
+      "stuiver": "Stüber",
+      "witten": "Witten",
+      "andrathaler": "Andrataler",
+      "nostrianCrown": "Nostrische Krone",
+      "kuslikWheel": "Kusliker Rad",
+      "amazonCrown": "Amazonenkrone",
+      "atebrox": "Atebrox",
+      "arganbrox": "Arganbrox",
+      "auromox": "Auromox",
+      "kurush": "Kurush",
+      "hallah": "Hallah",
+      "shekel": "Schekel",
+      "dinar": "Dinar",
+      "muwlat": "Muwlat",
+      "zechine": "Zechine",
+      "maravedi": "Marawedi",
+      "ikossar": "Ikossar",
+      "tessar": "Tessar",
+      "telar": "Telár",
+      "dekat": "Dekat",
+      "dirham": "Dirham",
+      "smallOreal": "Kleiner Oreal",
+      "oreal": "Oreal",
+      "doubloon": "Dublone",
+      "brabacPenny": "Brabaker Kreuzer",
+      "brabacCrown": "Brabaker Krone",
+      "brabacCrownOutsideBrabak": "Brabaker Krone außerhalb Brabaks",
+      "shard": "Trümmer",
+      "chryskl": "Ch'ryskl",
+      "hedsch": "Hedsch",
+      "suvar": "Suvar"
+    }
   },
   "alchemy": {
     "potionType": {
@@ -27,18 +176,293 @@
       "text": "Du hast noch {{ geniusPoints }} Punkte übrig um das Ergebnis zu ändern."
     },
     "purityIngedients": {
-      "label": "Reinheit der Zutaten"
+      "label": "Reinheit der Zutaten",
+      "minHalfImpure": "min. Hälfte unrein",
+      "minOneImpure": "min. 1 unrein",
+      "allMinSufficient": "alle min. ausreichend",
+      "allMinPure": "alle min. rein",
+      "minOneHighPure": "min. 1 hochrein, kein unrein",
+      "allMinHighPure": "alle min. hochrein"
     },
     "qsBrew": "QS Brauprobe",
     "startPotionMaking": "Ermittle Potion",
     "potionIntroText": "Bei dem hergestellten {{ potionType }} handelt es sich um ein: ",
+    "application": {
+      "ingestion": "Einnahme",
+      "contact": "Kontakt",
+      "inhalation": "Einatmen",
+      "weaponPoison": "Waffengift",
+      "chooseTwo": "Wähle 2 von: Einnahme, Kontakt, Waffengift, Einatmen"
+    },
+    "elixir": {
+      "strengthening": {
+        "mu": "MU-Elixier",
+        "at": "AT-Elixier",
+        "weaponSharpness": "Waffenschärfe",
+        "in": "IN-Elixier",
+        "ff": "FF-Elixier",
+        "transformation": "Verwandlungs-Elixier",
+        "ko": "KO-Elixier",
+        "ge": "GE-Elixier",
+        "ini": "INI-Elixier",
+        "kl": "KL-Elixier",
+        "fk": "FK-Elixier",
+        "aw": "AW-Elixier",
+        "ch": "CH-Elixier",
+        "gs": "GS-Elixier",
+        "be": "BE-Elixier",
+        "kk": "KK-Elixier",
+        "rs": "RS-Elixier",
+        "pa": "PA-Elixier",
+        "sk": "SK-Elixier",
+        "magicPaste": "Magie-Paste",
+        "invisibility": "Unsichtbarkeit-Elixier",
+        "divinePaste": "Göttliche Paste",
+        "zk": "ZK-Elixier"
+      },
+      "healing": {
+        "schip": "+1 SchiP",
+        "lep": "LeP-Heilung",
+        "asp": "AsP-Heilung",
+        "kap": "KaP-Heilung",
+        "antidote": "Antidot"
+      },
+      "talent": {
+        "combat": "Kampftechniken",
+        "physical": "Körperliche Talente",
+        "nature": "Naturtalente",
+        "knowledge": "Wissentalente",
+        "social": "Gesellschaftstalente",
+        "craft": "Handwerkstalente",
+        "spell": "Zauber",
+        "liturgy": "Liturgien"
+      },
+      "elemental": {
+        "fireImmunity": "Feuerimmunität",
+        "underwaterBreathing": "Unterwasseratmung",
+        "poisonImmunity4": "immun bis Giftstufe 4",
+        "coldImmunity": "Kälteimmunität",
+        "flying": "lässt Fliegen, FW Fliegen + QS",
+        "darkVision": "Dunkelsicht",
+        "magicVision": "Magiesicht (Magische Analyse mit QS)",
+        "mission": "Missions-Elixier + QS"
+      },
+      "duration": {
+        "inOneHour": "in 1 Stunde",
+        "inFiveMinutes": "in 5 Min.",
+        "inOneMinute": "in 1 Min.",
+        "inThirtyKR": "in 30 KR",
+        "inFifteenKR": "in 15 KR",
+        "inFiveKR": "in 5 KR",
+        "immediately": "sofort",
+        "fiveKR": "5 KR",
+        "tenKR": "10 KR",
+        "thirtyKR": "30 KR",
+        "oneMinute": "1 Min.",
+        "fiveMinutes": "5 Min.",
+        "tenMinutes": "10 Min.",
+        "qsHours": "QS Stunden",
+        "oneDay": "1 Tag",
+        "nextRegen": "nächste Regeneration",
+        "inOneDSixHours": "in 1W6 Stunden",
+        "inTenKR": "in 10 KR",
+        "oneKR": "1 KR",
+        "twentyKR": "20 KR",
+        "fortyKR": "40 KR",
+        "oneWeek": "1 Woche",
+        "oneYear": "1 Jahr",
+        "tenYears": "10 Jahre",
+        "permanent": "permanent"
+      },
+      "qsEffect": {
+        "neutralizedPoisons1": "Neutralisierte Gifte bis Stufe 1",
+        "neutralizedPoisons2": "Neutralisierte Gifte bis Stufe 2",
+        "neutralizedPoisons3": "Neutralisierte Gifte bis Stufe 3",
+        "neutralizedPoisons4": "Neutralisierte Gifte bis Stufe 4",
+        "neutralizedPoisons5": "Neutralisierte Gifte bis Stufe 5",
+        "neutralizedPoisons6": "Neutralisierte Gifte bis Stufe 6",
+        "neutralizedPoisons7": "Neutralisierte Gifte bis Stufe 7",
+        "burdenMinus1": "Belastung -1",
+        "burdenMinus1Star": "Belastung -1, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer",
+        "burdenMinus2": "Belastung -2",
+        "burdenMinus2Star": "Belastung -2, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer",
+        "burdenMinus3": "Belastung -3",
+        "burdenMinus3Star": "Belastung -3, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer",
+        "burdenMinus4": "Belastung -4",
+        "plus1": "+1",
+        "plus1Star": "+1, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer",
+        "plus2": "+2",
+        "plus2Star": "+2, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer",
+        "plus3": "+3",
+        "plus3Star": "+3, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer",
+        "plus4": "+4",
+        "healing1": "+1W3",
+        "healing2": "+1W6",
+        "healing3": "+1W6+4",
+        "healing4": "+1W6+8",
+        "healing5": "+2W6+4",
+        "healing6": "+2W6+8",
+        "healing7": "+3W6+8",
+        "magic1": "gegen niedere Dämonen und mag. Wesen",
+        "magic2": "gegen bis 5-gehörnte Dämonen und mag. Wesen",
+        "magic3": "gegen alle Dämonen und mag. Wesen",
+        "magic4": "verletzend gegen Dämonen und mag. Wesen",
+        "tp1": "+1",
+        "tp2": "+2",
+        "tp3": "+3",
+        "tp4": "+1W6",
+        "tp5": "+1W6+3",
+        "tp6": "+1W6+5",
+        "tp7": "+1W6+8",
+        "invisible1": "Körper durchsichtig",
+        "invisible2": "Körper unsichtbar",
+        "invisible3": "Körper unsichtbar + Trad.artefakte unsichtbar",
+        "invisible4": "Körper unsichtbar + Trad.artefakte unsichtbar + Kleidung unsichtbar",
+        "transform1": "Gleiche Größe",
+        "transform2": "max. 1 Kat. kleiner",
+        "transform3": "max. 1 Kat. größer oder kleiner",
+        "transform4": "max. 1 Kat. größer oder 2 Kat. kleiner",
+        "transform5": "max. 1 Kat. größer oder 3 Kat. kleiner",
+        "transform6": "max. 2 Kat. größer oder 3 Kat. kleiner"
+      }
+    },
+    "potion": {
+      "ineffective": "wirkungslos",
+      "chaoticEffect": "chaotische Wirkung"
+    },
+    "resistance": {
+      "doubleSK": "Doppelte Seelenkraft (SK x 2)",
+      "sk": "Seelenkraft (SK)",
+      "zk": "Zähigkeit (ZK)",
+      "none": "Kein Widerstand",
+      "doubleZK": "Doppelte Zähigkeit (ZK x 2)"
+    },
+    "poison": {
+      "effect": {
+        "minDamageOnce": "1W3 SP / 1 SP, Beginn: 7 - QS Min., Dauer: einmalig",
+        "lowDamageOnce": "1W6 SP / 1W3 SP, Beginn: 7 - QS Min., Dauer: einmalig",
+        "lowDamageImmediate": "1W6 SP / 1W3 SP, Beginn: sofort, Dauer: einmalig",
+        "mediumDamageShort": "1W6 SP/Min., Beginn: 1 Min., Dauer: QS Min. / 2W3 Min.",
+        "mediumDamageMedium": "1W6 SP/Min., Beginn: 1 Min., Dauer: QS Min. / QS2 Min.",
+        "highDamageMedium": "1W3 SP/KR, Beginn: 5 KR, Dauer: QS x2 KR / QS KR",
+        "highDamageImmediate": "1W3 SP/KR, Beginn: sofort, Dauer: QS x2 KR / QS KR",
+        "shortEffect": "{{effect}}, Beginn: 1 KR, Dauer: 2W3 Min.",
+        "longDamageShort": "1W6 SP/Min., Beginn: 5 Min., Dauer: QS x2 Min. / QS Min.",
+        "lowDamageEffect": "1W3 SP/KR + {{effect}} / 1 SP/KR + {{effect}}, Beginn: 5 KR, Dauer: 2W3 KR",
+        "lowDamageEffectImmediate": "1W3 SP/KR + {{effect}} / 2 SP/KR + {{effect}}, Beginn: sofort, Dauer: 2W3 KR",
+        "mediumDamageEffect": "1W6 SP/Min. + {{effect}} / 1W3 SP/Min. + {{effect}}, Beginn: 1 Min., Dauer: 2W3 Min.",
+        "highDamageEffect": "1W6 SP/KR + {{effect}} / 1W3 SP/KR + {{effect}}, Beginn: 1 KR, Dauer: 2W3 KR",
+        "veryHighDamageEffect": "1W6 + QS SP/KR + {{effect}} / 1W3 + QS SP/KR + {{effect}}, Beginn: 1 KR, Dauer: 2W3 KR"
+      },
+      "triggerEffect": {
+        "acidSmallArea": "Säure kl. Fläche",
+        "burningSmallArea": "Brennend kl. Fläche",
+        "burningLargeArea": "Brennend gr. Fläche",
+        "fear": "Furcht",
+        "bloodrage": "Blutrausch",
+        "helpless": "Handlungsunfähig",
+        "pain": "Schmerz",
+        "sick": "Krank",
+        "blind": "Blind",
+        "confusion": "Verwirrung",
+        "deaf": "Taub",
+        "fixed": "Fixiert",
+        "stun": "Betäubung",
+        "mute": "Stumm",
+        "unconscious": "Bewusstlos",
+        "paralysis": "Paralyse",
+        "burden": "Belastung",
+        "immobile": "Bewegungsunfähig",
+        "badLuck": "Pechmagnet",
+        "minorSpirits": "Lästige Mindergeister",
+        "lightSensitive": "Lichtempfindlich",
+        "uglyI": "Hässlich I",
+        "uglyII": "Hässlich II",
+        "possessionObedience": "Entrückung (Namenloser) + Hörigkeit"
+      },
+      "status": {
+        "condition1": "Zustand: 1 Stufe / keiner, Status: keiner",
+        "condition2": "Zustand: 2 Stufen / 1 Stufe, Status: keiner",
+        "condition3": "Zustand: 3 Stufen / 1 Stufe, Status: ausgelöst / keiner",
+        "condition4": "Zustand: 4 Stufen / 2 Stufen, Status: ausgelöst / keiner",
+        "condition5": "Zustand: 4 Stufen / 3 Stufen, Status: ausgelöst / ausgelöst",
+        "condition6": "Zustand: 4 Stufen / 4 Stufen, Status: ausgelöst / ausgelöst",
+        "condition7": "Zustand: 4 Stufen / 4 Stufen, Status: ausgelöst / ausgelöst"
+      }
+    },
+    "stimulant": {
+      "addiction": {
+        "none": "keine",
+        "afterManyUses": "nach 1W20 Anwendungen",
+        "afterFewUses": "nach 1W6 Anwendungen",
+        "afterOneUse": "nach 1 Anwendung"
+      },
+      "effect": {
+        "fire": {
+          "effect": "Aufputschmittel: ignoriert bis zu 3 Stufen Furcht für die Wirkungsdauer",
+          "sideEffect": "2/1 Stufen Furcht",
+          "overdose": "3 Stufen Überhitzung"
+        },
+        "water": {
+          "effect": "+2/+1 auf Körpertalente",
+          "sideEffect": "2/1 Stufen Berauscht",
+          "overdose": "2W6 SP (Ersticken)"
+        },
+        "humus": {
+          "effect": "+2/+1 auf Naturtalente",
+          "sideEffect": "2/1 Stufe Betäubung",
+          "overdose": "2W6 SP (Gift)"
+        },
+        "ice": {
+          "effect": "Geisterweiterung: +2/+1 auf Wissenstalente",
+          "sideEffect": "2/1 Stufen Schmerz",
+          "overdose": "3 Stufen Unterkühlung"
+        },
+        "air": {
+          "effect": "Subtiles Schimmern: +2/+1 auf Gesellschaftstalente",
+          "sideEffect": "Stumm / 1 Stufe Paralyse",
+          "overdose": "Halluzinationen, Handlungsunfähig"
+        },
+        "ore": {
+          "effect": "Für ruhige Hände: +2/+1 auf Handwerkstalente",
+          "sideEffect": "2/1 Stufen Paralyse",
+          "overdose": "Lähmung, Bewegungsunfähig"
+        },
+        "magic": {
+          "effect": "Affinität zu Elementaren",
+          "sideEffect": "2/1 Stufen Verwirrung",
+          "overdose": "verliert 2W6 AsP (oder LeP falls nicht genug)"
+        },
+        "perverted": {
+          "effect": "Affinität zu Dämonen",
+          "sideEffect": "Lichtempfindlich",
+          "overdose": "2W6+3 SP (Gift)"
+        },
+        "divine": {
+          "effect": "Höhere Prophezeihung / Prophezeiung",
+          "sideEffect": "3/2 Stufen Entrückung durch Visionen",
+          "overdose": "Verliert 2W6 KaP (oder LeP falls nicht genug)"
+        }
+      },
+      "status": {
+        "condition0": "misslungenes Alchimikum",
+        "condition1": "Dauer: 5 Minuten / Dauer Nebenwirkung (bei Überdosierung): 10 Minuten, Beginn: 6 SR",
+        "condition2": "Dauer: 10 Minuten / Dauer Nebenwirkung (bei Überdosierung): 10 Minuten, Beginn: 3 SR",
+        "condition3": "Dauer: 30 Minuten / Dauer Nebenwirkung (bei Überdosierung): 30 Minuten, Beginn: 1 SR",
+        "condition4": "Dauer: 1 Stunde / Dauer Nebenwirkung (bei Überdosierung): 30 Minuten, Beginn: 5 KR",
+        "condition5": "Dauer: 3 Stunden / Dauer Nebenwirkung (bei Überdosierung): 1 Stunden, Beginn: 1 KR",
+        "condition6": "Dauer: 6 Stunden / Dauer Nebenwirkung (bei Überdosierung): 1 Stunden, Beginn: sofort",
+        "condition7": "Dauer: 12 Stunden / Dauer Nebenwirkung (bei Überdosierung): 6 Stunden, Beginn: sofort"
+      }
+    },
     "potionText": {
       "elixir": "{{effect}} mit folgenden Eigenschaften: {{specificEffect}}, Anwendung: {{application}}, Dauer: {{duration}}",
       "elixirUseless": "Wirkungsloses Elixier gebraut.",
-      "poison": "Gift mit folgenden Eigenschaften: Anwendung: {{application}}, Widerstand: {{resistance}}, Wirkung: {{effect}} {{triggerEffect}}",
+      "poison": "Gift mit folgenden Eigenschaften: Anwendung: {{application}}, Widerstand: {{resistance}}, Wirkung: {{effect}}",
       "poisonUseless": "Wirkungsloses Gift gebraut.",
       "stimulant": "{{effect}} Anwendung: {{application}}, Widerstand: {{resistance}}, Suchteintritt: {{addiction}}, Nebenwirkung: {{sideEffect}}, Überdosierung: {{overdose}}",
-      "stimulantUseless": "Wirkungsloses Rauschmittel gebraut."
+      "stimulantUseless": "Wirkungsloses Rauschmittel gebraut.",
+      "qsBonus": "Wirkbonus durch QS: "
     },
     "diceResult": {
       "label": "Würfelergebnis",

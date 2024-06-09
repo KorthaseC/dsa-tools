@@ -4,14 +4,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import {
-  DAYS_IN_MONTH,
-  DAYS_IN_YEAR,
-  MONTHS,
-  MOON_ICON,
-  MoonPhase,
-} from '../shared/constant';
+import { DAYS_IN_YEAR, MOON_ICON, Months, MoonPhase } from '../shared/constant';
 import { Utility } from '../shared/utility';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 const dayOptions: number[] = Array.from({ length: 30 }, (_, i) => i + 1);
 const namelessDayOptions: number[] = [1, 2, 3, 4, 5];
@@ -29,19 +24,20 @@ const FULL_MOON_REFERENCE_DAY: number = 184 + 1047 * DAYS_IN_YEAR;
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    TranslateModule,
   ],
   templateUrl: './madaphase.component.html',
   styleUrl: './madaphase.component.scss',
 })
 export class MadaphaseComponent {
-  public dayControl = new FormControl('');
-  public monthControl = new FormControl('');
-  public yearControl = new FormControl('');
+  public dayControl = new FormControl<number>(null);
+  public monthControl = new FormControl<Months>(null);
+  public yearControl = new FormControl<number>(null);
 
   public monthSignal = signal(this.monthControl.value);
 
   public dayOptions: number[] = dayOptions;
-  public monthOptions: string[] = MONTHS;
+  public monthOptions: string[] = Object.values(Months);
 
   //Info data, shown in html
   public madaPhaseInfo: string;
@@ -49,17 +45,17 @@ export class MadaphaseComponent {
   public moonIcon: string;
   public cycleDays: number;
 
-  constructor() {
+  constructor(private translateService: TranslateService) {
     this.monthControl.valueChanges.subscribe((newMonth) => {
       this.monthSignal.set(newMonth);
     });
 
     effect(() => {
       const selectedMonth = this.monthSignal();
-      if (selectedMonth === 'Namenlose Tage') {
+      if (selectedMonth === Months.namelessDays) {
         this.dayOptions = namelessDayOptions;
         this.dayControl.setValue(
-          parseInt(this.dayControl.value) > 5 ? null : this.dayControl.value
+          this.dayControl.value > 5 ? null : this.dayControl.value
         );
       } else {
         this.dayOptions = dayOptions;
@@ -75,9 +71,9 @@ export class MadaphaseComponent {
 
   public calcMadaPhase(): void {
     const testDay: number = Utility.calculateTestDay(
-      parseInt(this.dayControl.value),
+      this.dayControl.value,
       this.monthControl.value,
-      parseInt(this.yearControl.value)
+      this.yearControl.value
     );
     let daysSinceFullMoon: number = testDay - FULL_MOON_REFERENCE_DAY;
     let cycleDaysPos: number = Math.abs(daysSinceFullMoon);
@@ -95,8 +91,13 @@ export class MadaphaseComponent {
     madaPhaseFraction: number,
     daysSinceFullMoon: number
   ): void {
-    const phase = this.getMoonPhase(madaPhaseFraction, daysSinceFullMoon);
-    this.madaPhaseInfo = MoonPhase[phase];
+    const phase: MoonPhase = this.getMoonPhase(
+      madaPhaseFraction,
+      daysSinceFullMoon
+    );
+    this.madaPhaseInfo = this.translateService.instant(
+      `madaPhase.phase.${phase}`
+    );
     this.moonIcon = MOON_ICON[phase];
 
     if ([25, 50, 75, 0].includes(madaPhaseFraction)) {
@@ -109,38 +110,42 @@ export class MadaphaseComponent {
   private getMoonPhase(
     madaPhaseCalc: number,
     daysSinceFullMoon: number
-  ): keyof typeof MoonPhase {
+  ): MoonPhase {
     // Check for special moon phases based on the calculated value
     switch (madaPhaseCalc) {
       case 25:
-        return 'Helm';
+        return MoonPhase.Helmet;
       case 50:
-        return 'NewMoon';
+        return MoonPhase.NewMoon;
       case 75:
-        return 'Chalice';
+        return MoonPhase.Chalice;
       case 0:
-        return 'FullMoon';
+        return MoonPhase.FullMoon;
       default:
         // For values not matching special cases, determine if the moon is increasing or decreasing
         return this.calcNextFullMoon(daysSinceFullMoon)
-          ? 'Increasing'
-          : 'Decreasing';
+          ? MoonPhase.Increasing
+          : MoonPhase.Decreasing;
     }
   }
 
   private setNextFullMoonInfo(daysSinceFullMoon: number): void {
     const isAscending = this.calcNextFullMoon(daysSinceFullMoon);
-    const dayString =
-      this.cycleDays === 1 || this.cycleDays === 27 ? ' Tag' : ' Tagen';
+
     if (isAscending) {
-      this.nextFullMoonInfo =
-        'Der nächste Vollmond ist in ' + this.cycleDays + dayString + '.';
+      this.nextFullMoonInfo = this.translateService.instant(
+        this.cycleDays === 1
+          ? 'madaPhase.nextFullMoon.nextFullMoonInSingular'
+          : 'madaPhase.nextFullMoon.nextFullMoonIn',
+        { days: this.cycleDays }
+      );
     } else {
-      this.nextFullMoonInfo =
-        'Der letzte Vollmond war vor ' +
-        (MOON_CYCLE_DAYS - this.cycleDays) +
-        dayString +
-        '.';
+      this.nextFullMoonInfo = this.translateService.instant(
+        this.cycleDays === 1
+          ? 'madaPhase.nextFullMoon.lastFullMoonWasSingular'
+          : 'madaPhase.nextFullMoon.lastFullMoonWas',
+        { days: MOON_CYCLE_DAYS - this.cycleDays }
+      );
     }
   }
 

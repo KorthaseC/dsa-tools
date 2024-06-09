@@ -1,17 +1,21 @@
-import { DAYS_IN_MONTH, DAYS_IN_YEAR, MONTHS } from './constant';
+import { DAYS_IN_MONTH, DAYS_IN_YEAR, Months, Weekdays } from './constant';
 
 export class Utility {
   public static calculateTestDay(
     day: number,
-    month: string,
+    month: Months,
     year: number
   ): number {
     return (
       day +
-      MONTHS.findIndex((monthOptions) => monthOptions === month) *
-        DAYS_IN_MONTH +
+      Object.values(Months).indexOf(month) * DAYS_IN_MONTH +
       year * DAYS_IN_YEAR
     );
+  }
+
+  public static getWeekdayByIndex(index: number): Weekdays {
+    const values = Object.values(Weekdays);
+    return values[index];
   }
 
   public static isWithinRange(value: number, range: [number, number]): boolean {
