@@ -3,19 +3,41 @@
     "title": "TDE Tools",
     "and": "and",
     "element": {
-      "label": "Element"
+      "label": "Element",
+      "fire": "Fire",
+      "water": "Water",
+      "humus": "Humus",
+      "ice": "Ice",
+      "air": "Air",
+      "ore": "Ore",
+      "magic": "Magic",
+      "divine": "Divine",
+      "perverted": "Perverted",
+      "nameless": "Nameless"
     },
+    "effect": "Effect",
     "button": {
       "accept": "Accept"
     }
   },
   "header": {
-    "sliderMulti": "Multi Roll",
+    "rollMulti": "Multi Roll",
+    "selectMulti": "Select multiple dice",
     "madaTitle": "Mada Phase Calculator",
     "weekdayTitle": "Weekday Calculator",
     "currencyTitle": "Currency Converter",
     "alchemyTitle": "Alchemy Lab",
-    "overviewTitle": "Overview"
+    "overviewTitle": "Overview",
+    "button": {
+      "d4": "4-sided die",
+      "d6": "6-sided die",
+      "d8": "8-sided die",
+      "d10": "10-sided die",
+      "d12": "12-sided die",
+      "d20": "20-sided die",
+      "rollAll": "Roll all selected dice",
+      "delete": "Delete all dice"
+    }
   },
   "overview": {
     "madaPhase": {
@@ -41,7 +63,7 @@
       "decreasing": "decreasing",
       "helmet": "Helmet",
       "newMoon": "Dead Mada/New moon",
-      "chalice": "Kelch",
+      "chalice": "Chalice",
       "fullMoon": "Wheel/Full moon"
     },
     "nextFullMoon": {
@@ -165,18 +187,293 @@
       "text": "You have {{ geniusPoints }} points left to change the result."
     },
     "purityIngedients": {
-      "label": "Purity of Ingredients"
+      "label": "Purity of Ingredients",
+      "minHalfImpure": "min. half impure",
+      "minOneImpure": "min. 1 impure",
+      "allMinSufficient": "all min. sufficient",
+      "allMinPure": "all min. pure",
+      "minOneHighPure": "min. 1 high pure, none impure",
+      "allMinHighPure": "all min. high pure"
     },
     "qsBrew": "QS Brewing Test",
     "startPotionMaking": "Determine Potion",
     "potionIntroText": "The manufactured {{ potionType }} is: ",
+    "application": {
+      "ingestion": "Ingestion",
+      "contact": "Contact",
+      "inhalation": "Inhalation",
+      "weaponPoison": "Weapon Poison",
+      "chooseTwo": "Choose 2 from: Ingestion, Contact, Weapon Poison, Inhalation"
+    },
+    "elixir": {
+      "strengthening": {
+        "mu": "COU-Elixir",
+        "at": "AT-Elixir",
+        "weaponSharpness": "Weapon Sharpness",
+        "in": "INT-Elixir",
+        "ff": "AGI-Elixir",
+        "transformation": "Transformation Elixir",
+        "ko": "CON-Elixir",
+        "ge": "DEX-Elixir",
+        "ini": "INI-Elixir",
+        "kl": "SGC-Elixir",
+        "fk": "RC-Elixir",
+        "aw": "AW-Elixir",
+        "ch": "CHA-Elixir",
+        "gs": "MOV-Elixir",
+        "be": "ENC-Elixir",
+        "kk": "STR-Elixir",
+        "rs": "PROT-Elixir",
+        "pa": "PA-Elixir",
+        "sk": "Spirt-Elixir",
+        "magicPaste": "Magic Paste",
+        "invisibility": "Invisibility Elixir",
+        "divinePaste": "Divine Paste",
+        "zk": "Toughness-Elixir"
+      },
+      "healing": {
+        "schip": "+1 ChiP",
+        "lep": "LP Healing",
+        "asp": "AE Healing",
+        "kap": "KE Healing",
+        "antidote": "Antidote"
+      },
+      "talent": {
+        "combat": "Combat Techniques",
+        "physical": "Physical Skills",
+        "nature": "Nature Skills",
+        "knowledge": "Knowledge Skills",
+        "social": "Social Skills",
+        "craft": "Craft Skills",
+        "spell": "Spells",
+        "liturgy": "Liturgies"
+      },
+      "elemental": {
+        "fireImmunity": "Fire Immunity",
+        "underwaterBreathing": "Underwater Breathing",
+        "poisonImmunity4": "Immune up to Poison Level 4",
+        "coldImmunity": "Cold Immunity",
+        "flying": "Enables Flying, Flying skill + QS",
+        "darkVision": "Dark Vision",
+        "magicVision": "Magic Vision (Magical Analysis with QS)",
+        "mission": "Mission Elixir + QS"
+      },
+      "duration": {
+        "inOneHour": "in 1 hour",
+        "inFiveMinutes": "in 5 minutes",
+        "inOneMinute": "in 1 minute",
+        "inThirtyKR": "in 30 CR",
+        "inFifteenKR": "in 15 CR",
+        "inFiveKR": "in 5 CR",
+        "immediately": "immediately",
+        "fiveKR": "5 CR",
+        "tenKR": "10 CR",
+        "thirtyKR": "30 CR",
+        "oneMinute": "1 minute",
+        "fiveMinutes": "5 minutes",
+        "tenMinutes": "10 minutes",
+        "qsHours": "QS hours",
+        "oneDay": "1 day",
+        "nextRegen": "next regeneration",
+        "inOneDSixHours": "in 1D6 hours",
+        "inTenKR": "in 10 CR",
+        "oneKR": "1 CR",
+        "twentyKR": "20 CR",
+        "fortyKR": "40 CR",
+        "oneWeek": "1 week",
+        "oneYear": "1 year",
+        "tenYears": "10 years",
+        "permanent": "permanent"
+      },
+      "qsEffect": {
+        "neutralizedPoisons1": "Neutralized poisons up to level 1",
+        "neutralizedPoisons2": "Neutralized poisons up to level 2",
+        "neutralizedPoisons3": "Neutralized poisons up to level 3",
+        "neutralizedPoisons4": "Neutralized poisons up to level 4",
+        "neutralizedPoisons5": "Neutralized poisons up to level 5",
+        "neutralizedPoisons6": "Neutralized poisons up to level 6",
+        "neutralizedPoisons7": "Neutralized poisons up to level 7",
+        "burdenMinus1": "Burden -1",
+        "burdenMinus1Star": "Burden -1, duration extends by 1 time unit of effect duration",
+        "burdenMinus2": "Burden -2",
+        "burdenMinus2Star": "Burden -2, duration extends by 1 time unit of effect duration",
+        "burdenMinus3": "Burden -3",
+        "burdenMinus3Star": "Burden -3, duration extends by 1 time unit of effect duration",
+        "burdenMinus4": "Burden -4",
+        "plus1": "+1",
+        "plus1Star": "+1, duration extends by 1 time unit of effect duration",
+        "plus2": "+2",
+        "plus2Star": "+2, duration extends by 1 time unit of effect duration",
+        "plus3": "+3",
+        "plus3Star": "+3, duration extends by 1 time unit of effect duration",
+        "plus4": "+4",
+        "healing1": "+1D3",
+        "healing2": "+1D6",
+        "healing3": "+1D6+4",
+        "healing4": "+1D6+8",
+        "healing5": "+2D6+4",
+        "healing6": "+2D6+8",
+        "healing7": "+3D6+8",
+        "magic1": "against minor demons and magical beings",
+        "magic2": "against demons with up to 5 horns and magical beings",
+        "magic3": "against all demons and magical beings",
+        "magic4": "harmful to demons and magical beings",
+        "tp1": "+1",
+        "tp2": "+2",
+        "tp3": "+3",
+        "tp4": "+1D6",
+        "tp5": "+1D6+3",
+        "tp6": "+1D6+5",
+        "tp7": "+1D6+8",
+        "invisible1": "Body translucent",
+        "invisible2": "Body invisible",
+        "invisible3": "Body invisible + traditional artifacts invisible",
+        "invisible4": "Body invisible + traditional artifacts invisible + clothing invisible",
+        "transform1": "Same size",
+        "transform2": "max. 1 category smaller",
+        "transform3": "max. 1 category larger or smaller",
+        "transform4": "max. 1 category larger or 2 categories smaller",
+        "transform5": "max. 1 category larger or 3 categories smaller",
+        "transform6": "max. 2 categories larger or 3 categories smaller"
+      }
+    },
+    "potion": {
+      "ineffective": "ineffective",
+      "chaoticEffect": "chaotic effect"
+    },
+    "resistance": {
+      "doubleSK": "Double Willpower (WP x 2)",
+      "sk": "Willpower (WP)",
+      "zk": "Toughness (T)",
+      "none": "No resistance",
+      "doubleZK": "Double Toughness (T x 2)"
+    },
+    "poison": {
+      "effect": {
+        "minDamageOnce": "1D3 DP / 1 DP, Start: 7 - QS minutes, Duration: once",
+        "lowDamageOnce": "1D6 DP / 1D3 DP, Start: 7 - QS minutes, Duration: once",
+        "lowDamageImmediate": "1D6 DP / 1D3 DP, Start: immediately, Duration: once",
+        "mediumDamageShort": "1D6 DP/minute, Start: 1 minute, Duration: QS minutes / 2D3 minutes",
+        "mediumDamageMedium": "1D6 DP/minute, Start: 1 minute, Duration: QS minutes / QS2 minutes",
+        "highDamageMedium": "1D3 DP/CR, Start: 5 CR, Duration: QS x2 CR / QS CR",
+        "highDamageImmediate": "1D3 DP/CR, Start: immediately, Duration: QS x2 CR / QS CR",
+        "shortEffect": "{{effect}}, Start: 1 CR, Duration: 2D3 minutes",
+        "longDamageShort": "1D6 DP/minute, Start: 5 minutes, Duration: QS x2 minutes / QS minutes",
+        "lowDamageEffect": "1D3 DP/CR + {{effect}} / 1 DP/CR + {{effect}}, Start: 5 CR, Duration: 2D3 CR",
+        "lowDamageEffectImmediate": "1D3 DP/CR + {{effect}} / 2 DP/CR + {{effect}}, Start: immediately, Duration: 2D3 CR",
+        "mediumDamageEffect": "1D6 DP/minute + {{effect}} / 1D3 DP/minute + {{effect}}, Start: 1 minute, Duration: 2D3 minutes",
+        "highDamageEffect": "1D6 DP/CR + {{effect}} / 1D3 DP/CR + {{effect}}, Start: 1 CR, Duration: 2D3 CR",
+        "veryHighDamageEffect": "1D6 + QS DP/CR + {{effect}} / 1D3 + QS DP/CR + {{effect}}, Start: 1 CR, Duration: 2D3 CR"
+      },
+      "triggerEffect": {
+        "acidSmallArea": "Acid small area",
+        "burningSmallArea": "Burning small area",
+        "burningLargeArea": "Burning large area",
+        "fear": "Fear",
+        "bloodrage": "Bloodrage",
+        "helpless": "Helpless",
+        "pain": "Pain",
+        "sick": "Sick",
+        "blind": "Blind",
+        "confusion": "Confusion",
+        "deaf": "Deaf",
+        "fixed": "Fixed",
+        "stun": "Stun",
+        "mute": "Mute",
+        "unconscious": "Unconscious",
+        "paralysis": "Paralysis",
+        "burden": "Burden",
+        "immobile": "Immobile",
+        "badLuck": "Bad Luck Magnet",
+        "minorSpirits": "Annoying Minor Spirits",
+        "lightSensitive": "Light Sensitive",
+        "uglyI": "Ugly I",
+        "uglyII": "Ugly II",
+        "possessionObedience": "Possession (Nameless) + Obedience"
+      },
+      "status": {
+        "condition1": "Condition: 1 level / none, Status: none",
+        "condition2": "Condition: 2 levels / 1 level, Status: none",
+        "condition3": "Condition: 3 levels / 1 level, Status: triggered / none",
+        "condition4": "Condition: 4 levels / 2 levels, Status: triggered / none",
+        "condition5": "Condition: 4 levels / 3 levels, Status: triggered / triggered",
+        "condition6": "Condition: 4 levels / 4 levels, Status: triggered / triggered",
+        "condition7": "Condition: 4 levels / 4 levels, Status: triggered / triggered"
+      }
+    },
+    "stimulant": {
+      "addiction": {
+        "none": "none",
+        "afterManyUses": "after 1D20 applications",
+        "afterFewUses": "after 1D6 applications",
+        "afterOneUse": "after 1 application"
+      },
+      "effect": {
+        "fire": {
+          "effect": "Stimulant: ignores up to 3 levels of fear for the duration",
+          "sideEffect": "2/1 levels of fear",
+          "overdose": "3 levels of overheating"
+        },
+        "water": {
+          "effect": "+2/+1 on physical talents",
+          "sideEffect": "2/1 levels of intoxicated",
+          "overdose": "2D6 DP (suffocation)"
+        },
+        "humus": {
+          "effect": "+2/+1 on nature talents",
+          "sideEffect": "2/1 level of stun",
+          "overdose": "2D6 DP (poison)"
+        },
+        "ice": {
+          "effect": "Mind expansion: +2/+1 on knowledge talents",
+          "sideEffect": "2/1 levels of pain",
+          "overdose": "3 levels of hypothermia"
+        },
+        "air": {
+          "effect": "Subtle shimmering: +2/+1 on social talents",
+          "sideEffect": "Mute / 1 level of paralysis",
+          "overdose": "Hallucinations, helpless"
+        },
+        "ore": {
+          "effect": "For steady hands: +2/+1 on craft talents",
+          "sideEffect": "2/1 levels of paralysis",
+          "overdose": "Paralysis, immobile"
+        },
+        "magic": {
+          "effect": "Affinity to elementals",
+          "sideEffect": "2/1 levels of confusion",
+          "overdose": "loses 2D6 AE (or LP if not enough)"
+        },
+        "perverted": {
+          "effect": "Affinity to demons",
+          "sideEffect": "Light sensitive",
+          "overdose": "2D6+3 DP (poison)"
+        },
+        "divine": {
+          "effect": "Higher prophecy / prophecy",
+          "sideEffect": "3/2 levels of rapture through visions",
+          "overdose": "Loses 2D6 KP (or LP if not enough)"
+        }
+      },
+      "status": {
+        "condition0": "failed alchemical substance",
+        "condition1": "Duration: 5 minutes / Duration side effect (in case of overdose): 10 minutes, Start: 6 seconds",
+        "condition2": "Duration: 10 minutes / Duration side effect (in case of overdose): 10 minutes, Start: 3 seconds",
+        "condition3": "Duration: 30 minutes / Duration side effect (in case of overdose): 30 minutes, Start: 1 second",
+        "condition4": "Duration: 1 hour / Duration side effect (in case of overdose): 30 minutes, Start: 5 CR",
+        "condition5": "Duration: 3 hours / Duration side effect (in case of overdose): 1 hour, Start: 1 CR",
+        "condition6": "Duration: 6 hours / Duration side effect (in case of overdose): 1 hour, Start: immediately",
+        "condition7": "Duration: 12 hours / Duration side effect (in case of overdose): 6 hours, Start: immediately"
+      }
+    },
     "potionText": {
       "elixir": "{{effect}} with the following properties: {{specificEffect}}, Application: {{application}}, Duration: {{duration}}",
       "elixirUseless": "Brewed a useless elixir.",
-      "poison": "Poison with the following properties: Application: {{application}}, Resistance: {{resistance}}, Effect: {{effect}} {{triggerEffect}}",
+      "poison": "Poison with the following properties: Application: {{application}}, Resistance: {{resistance}}, Effect: {{effect}}",
       "poisonUseless": "Brewed a useless poison.",
       "stimulant": "{{effect}} Application: {{application}}, Resistance: {{resistance}}, Addiction Onset: {{addiction}}, Side Effect: {{sideEffect}}, Overdose: {{overdose}}",
-      "stimulantUseless": "Brewed a useless stimulant."
+      "stimulantUseless": "Brewed a useless stimulant.",
+      "qsBonus": "Effect bonus through QS: "
     },
     "diceResult": {
       "label": "Dice Result",

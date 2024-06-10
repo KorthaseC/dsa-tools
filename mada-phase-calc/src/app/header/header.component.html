@@ -7,53 +7,134 @@
     <mat-slide-toggle #languageSwitch [formControl]="isGerman">
     </mat-slide-toggle>
     <div class="c-button-container">
-      <mat-slide-toggle class="mr-r-20" [formControl]="isRollMulti">
-        {{ "header.sliderMulti" | translate }}
-      </mat-slide-toggle>
+      <mat-checkbox
+        [formControl]="isRollMulti"
+        (change)="deactivateOtherCheckbox($event.checked, true)"
+      >
+        {{ "header.rollMulti" | translate }}
+      </mat-checkbox>
+      <mat-checkbox
+        [formControl]="isSelectMulti"
+        (change)="deactivateOtherCheckbox($event.checked, false)"
+      >
+        {{ "header.selectMulti" | translate }}
+      </mat-checkbox>
+
       <div class="dice-buttons">
-        <button mat-icon-button (click)="rollDice('1d4')">
+        @if (isSelectMulti.value) {
+        <button
+          mat-icon-button
+          (click)="rollAllDice()"
+          matTooltip=" {{ 'header.button.rollAll' | translate }}"
+        >
+          <img
+            src="https://www.svgrepo.com/show/351946/dice.svg"
+            alt="D4"
+            class="invert-img c-button-size"
+          />
+        </button>
+        }
+        <button
+          mat-icon-button
+          (click)="rollDice('1d4')"
+          matTooltip=" {{ 'header.button.d4' | translate }}"
+        >
           <img
             src="https://www.svgrepo.com/show/320087/d4.svg"
             alt="D4"
             class="invert-img c-button-size"
           />
+          @if (isSelectMulti.value) {
+          <span class="c-dice-select"
+            ><strong>{{ findSelectedDieNumber("d4") }}</strong></span
+          >
+          }
         </button>
-        <button mat-icon-button (click)="rollDice('1d6')">
+        <button
+          mat-icon-button
+          (click)="rollDice('1d6')"
+          matTooltip=" {{ 'header.button.d6' | translate }}"
+        >
           <img
             src="https://www.svgrepo.com/show/322174/dice-six-faces-six.svg"
             alt="D6"
             class="invert-img c-button-size"
           />
+          @if (isSelectMulti.value) {
+          <span class="c-dice-select"
+            ><strong>{{ findSelectedDieNumber("d6") }}</strong></span
+          >
+          }
         </button>
-        <button mat-icon-button (click)="rollDice('1d8')">
+        <button
+          mat-icon-button
+          (click)="rollDice('1d8')"
+          matTooltip=" {{ 'header.button.d8' | translate }}"
+        >
           <img
             src="https://www.svgrepo.com/show/322168/dice-eight-faces-eight.svg"
             alt="D8"
             class="invert-img c-button-size"
           />
+          @if (isSelectMulti.value) {
+          <span class="c-dice-select"
+            ><strong>{{ findSelectedDieNumber("d8") }}</strong></span
+          >
+          }
         </button>
-        <button mat-icon-button (click)="rollDice('1d10')">
+        <button
+          mat-icon-button
+          (click)="rollDice('1d10')"
+          matTooltip=" {{ 'header.button.d10' | translate }}"
+        >
           <img
             src="https://www.svgrepo.com/show/320084/d10.svg"
             alt="D10"
             class="invert-img c-button-size"
           />
+          @if (isSelectMulti.value) {
+          <span class="c-dice-select"
+            ><strong>{{ findSelectedDieNumber("d10") }}</strong></span
+          >
+          }
         </button>
-        <button mat-icon-button (click)="rollDice('1d12')">
+        <button
+          mat-icon-button
+          (click)="rollDice('1d12')"
+          matTooltip=" {{ 'header.button.d12' | translate }}"
+        >
           <img
             src="https://www.svgrepo.com/show/320085/d12.svg"
             alt="D12"
             class="invert-img c-button-size"
           />
+          @if (isSelectMulti.value) {
+          <span class="c-dice-select"
+            ><strong>{{ findSelectedDieNumber("d12") }}</strong></span
+          >
+          }
         </button>
-        <button mat-icon-button (click)="rollDice('1d20')">
+        <button
+          mat-icon-button
+          (click)="rollDice('1d20')"
+          matTooltip=" {{ 'header.button.d20' | translate }}"
+        >
           <img
             src="https://www.svgrepo.com/show/322177/dice-twenty-faces-twenty.svg"
             alt="D20"
             class="invert-img c-button-size"
           />
+          @if (isSelectMulti.value) {
+          <span class="c-dice-select"
+            ><strong>{{ findSelectedDieNumber("d20") }}</strong></span
+          >
+          }
         </button>
-        <button mat-icon-button (click)="deletDice()">
+        <button
+          mat-icon-button
+          (click)="deletDice()"
+          matTooltip=" {{ 'header.button.delete' | translate }}"
+        >
           <img
             src="https://www.svgrepo.com/show/533010/trash-alt.svg"
             alt="Trash Dice"

@@ -21,12 +21,23 @@
     }
   },
   "header": {
-    "sliderMulti": "Mehrfach Würfeln",
+    "rollMulti": "Mehrfach Würfeln",
+    "selectMulti": "Wähle mehrere Würfel",
     "madaTitle": "Mada Phasen Rechner",
     "weekdayTitle": "Wochentag Rechner",
     "currencyTitle": "Währungsrechner",
     "alchemyTitle": "Alchemielabor",
-    "overviewTitle": "Übersicht"
+    "overviewTitle": "Übersicht",
+    "button": {
+      "d4": "4-seitger Würfel",
+      "d6": "6-seitger Würfel",
+      "d8": "8-seitger Würfel",
+      "d10": "10-seitger Würfel",
+      "d12": "12-seitger Würfel",
+      "d20": "20-seitger Würfel",
+      "rollAll": "Würfel alle ausgewählten Würfel",
+      "delete": "Lösche alle Würfel"
+    }
   },
   "overview": {
     "madaPhase": {

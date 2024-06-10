@@ -14,6 +14,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from '../app.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const diceBox = new DiceBox('#dice-box', {
   assetPath: '/assets/dice-box/', // include the trailing backslash
@@ -30,6 +32,8 @@ diceBox.init().then(() => {});
     MatSlideToggleModule,
     TranslateModule,
     ReactiveFormsModule,
+    MatTooltipModule,
+    MatCheckboxModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -37,12 +41,15 @@ diceBox.init().then(() => {});
 export class HeaderComponent implements OnInit, AfterViewInit {
   public pageTitle: string = 'Übersicht';
   public isRollMulti: FormControl = new FormControl(false);
+  public isSelectMulti: FormControl = new FormControl(false);
 
   public isGerman: FormControl = new FormControl(true);
 
   @ViewChild('languageSwitch', { read: ElementRef }) element:
     | ElementRef
     | undefined;
+
+  private selcetDice: string[] = [];
 
   constructor(
     private router: Router,
@@ -95,6 +102,49 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public deactivateOtherCheckbox(event: boolean, isMultiRoll: boolean): void {
+    if (event && isMultiRoll) {
+      this.isSelectMulti.setValue(false);
+    }
+
+    if (event && !isMultiRoll) {
+      this.isRollMulti.setValue(false);
+    }
+  }
+
+  public rollDice(dice: string): void {
+    if (this.isSelectMulti.value) {
+      this.addDice(dice);
+    }
+    if (this.isRollMulti.value) {
+      diceBox.add(dice);
+    }
+    if (!this.isSelectMulti.value && !this.isRollMulti.value) {
+      diceBox.roll(dice);
+    }
+  }
+
+  public deletDice(): void {
+    diceBox.clear();
+    this.selcetDice = [];
+  }
+
+  public rollAllDice(): void {
+    diceBox.roll(this.selcetDice);
+  }
+
+  public findSelectedDieNumber(die: string): number {
+    const diceIndex = this.selcetDice.findIndex((item) =>
+      item.endsWith(die.slice(1))
+    );
+
+    if (diceIndex > -1) {
+      const [count] = this.selcetDice[diceIndex].split('d');
+      return parseInt(count);
+    }
+    return 0; // Return 0 if the die is not found in the array
+  }
+
   private updatePageTitle(url: string): void {
     let translationKey: string;
     switch (url) {
@@ -122,15 +172,27 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       });
   }
 
-  public rollDice(dice: string): void {
-    if (this.isRollMulti.value) {
-      diceBox.add(dice);
-    } else {
-      diceBox.roll(dice);
-    }
-  }
+  private addDice(dice: string): void {
+    // Check if the dice already exists in the array
+    const diceIndex = this.selcetDice.findIndex((item) =>
+      item.endsWith(dice.slice(1))
+    );
 
-  public deletDice(): void {
-    diceBox.clear();
+    if (diceIndex > -1) {
+      // Increment the count of the existing dice
+      const [count, die] = this.selcetDice[diceIndex].split('d');
+      const newCount = parseInt(count) + 1;
+      this.selcetDice[diceIndex] = `${newCount}d${die}`;
+    } else {
+      // Add the new dice to the array
+      this.selcetDice.push(dice);
+    }
+
+    // Sort the array
+    this.selcetDice.sort((a, b) => {
+      const dieA = parseInt(a.split('d')[1]);
+      const dieB = parseInt(b.split('d')[1]);
+      return dieA - dieB;
+    });
   }
 }
