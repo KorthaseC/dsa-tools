@@ -6,6 +6,7 @@ const redirectsPath = path.join(
   __dirname,
   "dist",
   "mada-phase-calc",
+  "browser",
   "_redirects"
 );
 
