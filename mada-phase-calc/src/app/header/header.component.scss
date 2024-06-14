@@ -23,6 +23,20 @@
   height: 24px;
 }
 
+.c-logo-container {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c-logo {
+  height: 35px; /* Set logo height */
+  margin-left: 8px;
+  margin-top: 5px;
+}
+
 mat-toolbar-row {
   height: auto; /* Stellen Sie die gewünschte Höhe ein */
   min-height: 32px; /* Stellen Sie die gewünschte Mindesthöhe ein */

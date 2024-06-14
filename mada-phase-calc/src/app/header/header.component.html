@@ -1,5 +1,12 @@
 <mat-toolbar class="bg-color-black c-toolbar color-yellow">
   <mat-toolbar-row class="c-title">
+    <div
+      class="c-logo-container"
+      [routerLink]="['/overview']"
+      matTooltip=" {{ 'header.return' | translate }}"
+    >
+      <img src="assets/dsa-tools-icon.ico" alt="Logo" class="c-logo" />
+    </div>
     <span>{{ pageTitle }}</span>
   </mat-toolbar-row>
 

@@ -40,7 +40,8 @@
       "d20": "20-sided die",
       "rollAll": "Roll all selected dice",
       "delete": "Delete all dice"
-    }
+    },
+    "return": "Return to Overview"
   },
   "overview": {
     "madaPhase": {

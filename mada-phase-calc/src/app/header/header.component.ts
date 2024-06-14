@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
 import DiceBox from '@3d-dice/dice-box';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -34,6 +34,7 @@ diceBox.init().then(() => {});
     ReactiveFormsModule,
     MatTooltipModule,
     MatCheckboxModule,
+    RouterModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

@@ -40,7 +40,8 @@
       "d20": "20-seitger Würfel",
       "rollAll": "Würfel alle ausgewählten Würfel",
       "delete": "Lösche alle Würfel"
-    }
+    },
+    "return": "Zurück zur Übersicht"
   },
   "overview": {
     "madaPhase": {
