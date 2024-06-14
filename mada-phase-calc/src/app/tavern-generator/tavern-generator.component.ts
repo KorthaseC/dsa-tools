@@ -13,11 +13,13 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   Attendant,
+  BED_PRICE_MODIFIER,
+  BED_SPREAD,
   GUEST_DAY_TIME_MODIFIERS,
   GUEST_PRESENT,
-  GuestDayTimeModifier,
   Keeper,
   PRICE_GUEST_LVL,
+  RoomDistribution,
   SpecialGuest,
   TAVERN_BUILDING,
   TAVERN_LOCATIONS,
@@ -57,10 +59,11 @@ export class TavernGeneratorComponent implements AfterViewInit {
   public locationOptions: TavernLocation[] = [...TAVERN_LOCATIONS];
   public tavernName: string = '';
   public tavernType: string = '';
-  public tavernQs: string = '';
+  public tavernQs: TavernDiceResult;
   public priceGuestLvl: number = 0;
   public seats: number = 0;
   public beds: number = 0;
+  public distributedBeds: RoomDistribution;
   public guestLevels: { dayTime: string; guestLevel: string }[] = [];
   public keeper: string = '';
 
@@ -89,11 +92,15 @@ export class TavernGeneratorComponent implements AfterViewInit {
     this.tavernType = this.generateTavernType();
     this.tavernQs = this.generateTavernQs();
     this.priceGuestLvl = this.generatePriceGuestLvl();
+
     this.seats = this.calculateSeats(Utility.rollDice(6));
     this.beds = this.calculateBeds(Utility.rollDice(6));
+    this.distributedBeds = this.distributeBeds(this.beds);
+
     this.keeper = this.generateKeeper();
     this.attendant = this.generateAttendant();
 
+    this.getGuestLevel();
     this.activeDays = this.getActiveDayTimes();
     if (this.activeDays.length > 0) {
       this.specialEvent = this.generateSpecialEvent();
@@ -117,6 +124,53 @@ export class TavernGeneratorComponent implements AfterViewInit {
     });
   }
 
+  public calculateBedPrice(): string {
+    const priceModifier: number = BED_PRICE_MODIFIER[this.priceGuestLvl - 1];
+
+    return this.translateService.instant('tavern.beds.price', {
+      priceGroupRooom: 6 * priceModifier,
+      priceTwinRoom: 5 * priceModifier,
+      singleRoom: 3 * priceModifier,
+    });
+  }
+
+  public distributeBedsText(): string {
+    let descriptionParts: string[] = [];
+
+    if (this.distributedBeds.group > 0) {
+      descriptionParts.push(
+        this.translateService.instant('tavern.rooms.group', {
+          count: this.distributedBeds.group,
+        })
+      );
+    }
+
+    if (this.distributedBeds.twin > 0) {
+      descriptionParts.push(
+        this.translateService.instant('tavern.rooms.twin', {
+          count: this.distributedBeds.twin,
+        })
+      );
+    }
+
+    if (this.distributedBeds.single > 0) {
+      descriptionParts.push(
+        this.translateService.instant('tavern.rooms.single', {
+          count: this.distributedBeds.single,
+        })
+      );
+    }
+
+    const andText = this.translateService.instant('shared.and', {});
+    const roomsText = descriptionParts
+      .join(', ')
+      .replace(/, (?=[^,]*$)/, ` ${andText} `);
+
+    return this.translateService.instant('tavern.rooms.available', {
+      rooms: roomsText,
+    });
+  }
+
   private generateTavernType(): string {
     const buildingDie: number = Utility.rollDice(20);
     return TAVERN_BUILDING.find((building: TavernDiceResult) =>
@@ -124,11 +178,11 @@ export class TavernGeneratorComponent implements AfterViewInit {
     ).tavernResult;
   }
 
-  private generateTavernQs(): string {
+  private generateTavernQs(): TavernDiceResult {
     const qsDie: number = Utility.rollDice(20);
     return TAVERN_QS.find((qs: TavernDiceResult) =>
       Utility.isWithinRange(qsDie, qs.diceValueRange)
-    ).tavernResult;
+    );
   }
 
   private generatePriceGuestLvl(): number {
@@ -136,7 +190,11 @@ export class TavernGeneratorComponent implements AfterViewInit {
     const priceGuest = PRICE_GUEST_LVL.find((priceGuest: TavernDiceResult) =>
       Utility.isWithinRange(priceGuestDie, priceGuest.diceValueRange)
     );
-    return priceGuest?.modValue || 0;
+
+    return (
+      Math.max(1, Math.min(this.tavernQs.modValue + priceGuest?.modValue, 6)) ||
+      0
+    );
   }
 
   private generateKeeper(): string {
@@ -218,7 +276,9 @@ export class TavernGeneratorComponent implements AfterViewInit {
     const baseValues: number[] = [0, 0, 3, 6, 9, 15];
     const dice: number[] = [0, 3, 3, 3, 6, 6];
 
-    return baseValues[diceRoll - 1] + Utility.rollDice(dice[diceRoll - 1]);
+    return this.tavernType !== 'tent'
+      ? baseValues[diceRoll - 1] + Utility.rollDice(dice[diceRoll - 1])
+      : 0;
   }
 
   private getGuestLevel(): void {
@@ -242,5 +302,38 @@ export class TavernGeneratorComponent implements AfterViewInit {
           level.guestLevel !== 'empty' && level.guestLevel !== 'low'
       )
       .map((level: { dayTime: string; guestLevel: string }) => level.dayTime);
+  }
+
+  private distributeBeds(totalBeds: number): RoomDistribution {
+    let bedSpread = BED_SPREAD[this.tavernQs.modValue - 1];
+
+    if (!bedSpread) {
+      throw new Error('Invalid qs value provided');
+    }
+
+    let remainingBeds: number = totalBeds;
+    let rooms: RoomDistribution = { group: 0, twin: 0, single: 0 };
+
+    // Calculate number of group rooms
+    if (bedSpread.group > 0 && remainingBeds > 0) {
+      let groupRooms = Math.floor((bedSpread.group * totalBeds) / 4);
+      rooms.group = groupRooms;
+      remainingBeds -= groupRooms * 4;
+    }
+
+    // Calculate number of twin rooms
+    if (bedSpread.twin > 0 && remainingBeds > 0) {
+      let twinRooms = Math.floor((bedSpread.twin * totalBeds) / 2);
+      rooms.twin = twinRooms;
+      remainingBeds -= twinRooms * 2;
+    }
+
+    // Calculate number of single rooms
+    if (bedSpread.single > 0 && remainingBeds > 0) {
+      rooms.single = remainingBeds; // Remaining beds go to single rooms
+      remainingBeds = 0;
+    }
+
+    return rooms;
   }
 }

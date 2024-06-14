@@ -605,7 +605,6 @@
     },
     "guestLvl": {
       "text": "The guest level is: {{guestLvl}}",
-      "guestPerTime": "At {{dayTime}}, the tavern is {{crowd}}",
       "dayTime": "Time of Day",
       "guests": "Guests",
       "morning": "Morning",
@@ -625,7 +624,14 @@
     "beds": {
       "none": "There are no beds.",
       "single": "There is 1 bed.",
-      "general": "There are {{beds}} beds."
+      "general": "There are {{beds}} beds.",
+      "price": "The cost for a bed in the shared room is {{priceGroupRoom}} haler, for a twin room it is {{priceTwinRoom}} silver thalers, and for a single room it is {{priceSingleRoom}} silver thalers."
+    },
+    "rooms": {
+      "group": "{{count}} group room",
+      "twin": "{{count}} twin bed room",
+      "single": "{{count}} single room",
+      "available": "There are {{rooms}} available."
     },
     "keeper": {
       "chubby": "a chubby, cozy innkeeper constantly polishing the same glass",

@@ -239,3 +239,27 @@ export enum SpecialGuest {
   AueleTraveler = 'aueleTraveler',
   HalfOrcBirdTrader = 'halfOrcBirdTrader',
 }
+
+export const BED_PRICE_MODIFIER: number[] = [0.5, 0.75, 1, 1.5, 2, 4];
+
+export interface BedSpread {
+  qs: number;
+  group: number;
+  twin: number;
+  single: number;
+}
+
+export const BED_SPREAD: BedSpread[] = [
+  { qs: 1, group: 1, twin: 0, single: 0 },
+  { qs: 2, group: 0.6, twin: 0.2, single: 0.2 },
+  { qs: 3, group: 0.4, twin: 0.3, single: 0.3 },
+  { qs: 4, group: 0.4, twin: 0.3, single: 0.3 },
+  { qs: 5, group: 0, twin: 0.6, single: 0.4 },
+  { qs: 6, group: 0, twin: 0.4, single: 0.6 },
+];
+
+export interface RoomDistribution {
+  group: number;
+  twin: number;
+  single: number;
+}

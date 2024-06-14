@@ -110,7 +110,7 @@ export class CurrencyComponent implements OnInit {
         const count = Math.floor(amount / value.relativeValue);
         amount %= value.relativeValue;
         const currencyName = this.translateService.instant(
-          `currency.region.${value.name}`
+          `currency.currencyName.${value.name}`
         );
         return count > 0 ? `${count} ${currencyName}` : '';
       })

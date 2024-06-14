@@ -17,31 +17,39 @@
     <div>
       <strong>{{ tavernName }}</strong>
     </div>
-    <div>
-      {{ "tavern.type.text" | translate
-      }}{{ "tavern.type." + tavernType | translate }}
-    </div>
-    <div>
-      {{ "tavern.furnishing.text" | translate
-      }}{{ "tavern.furnishing." + tavernQs | translate }}
-    </div>
-    <div>
-      {{ "tavern.keeper.text" | translate
-      }}{{ "tavern.keeper." + keeper | translate }}
-    </div>
     <div class="mr-b-20">
-      {{ "tavern.priceLvl.text" | translate : { priceLvl: priceGuestLvl } }}
+      <div>
+        {{ "tavern.type.text" | translate
+        }}{{ "tavern.type." + tavernType | translate }}
+      </div>
+      <div>
+        {{ "tavern.furnishing.text" | translate
+        }}{{ "tavern.furnishing." + tavernQs.tavernResult | translate }}
+      </div>
+      <div>
+        {{ "tavern.keeper.text" | translate
+        }}{{ "tavern.keeper." + keeper | translate }}
+      </div>
+      <div>
+        {{ "tavern.priceLvl.text" | translate : { priceLvl: priceGuestLvl } }}
+      </div>
     </div>
 
-    <div>{{ "tavern.seats" | translate : { seats } }}</div>
     <div class="mr-b-20">
-      @switch (beds) { @case (0) {
-      <div>{{ "tavern.beds.none" | translate : { beds } }}</div>
-      } @case (1) {
-      <div>{{ "tavern.beds.single" | translate : { beds } }}</div>
-      } @default {
-      <div>{{ "tavern.beds.general" | translate : { beds } }}</div>
-      } }
+      <div>{{ "tavern.seats" | translate : { seats } }}</div>
+      <div>
+        @switch (beds) { @case (0) {
+        <div>{{ "tavern.beds.none" | translate : { beds } }}</div>
+        } @case (1) {
+        <div>{{ "tavern.beds.single" | translate : { beds } }}</div>
+        <div>{{ calculateBedPrice() }}</div>
+        <div>{{ distributeBedsText() }}</div>
+        } @default {
+        <div>{{ "tavern.beds.general" | translate : { beds } }}</div>
+        <div>{{ calculateBedPrice() }}</div>
+        <div>{{ distributeBedsText() }}</div>
+        } }
+      </div>
     </div>
 
     <mat-table [dataSource]="guestLevels" class="mr-b-20">
@@ -73,25 +81,28 @@
     </div>
 
     <div>
-      <strong>{{ "shared.optional" | translate }}</strong>
+      <div>
+        <strong>{{ "shared.optional" | translate }}</strong>
+      </div>
+      @if (activeDays.length > 0) {
+      <div>
+        {{ getEventDaysText() }}
+        {{ "tavern.events." + specialEvent | translate }}
+      </div>
+      }
     </div>
-    @if (activeDays.length > 0) {
     <div>
-      {{ getEventDaysText() }} {{ "tavern.events." + specialEvent | translate }}
+      {{ "tavern.attendants.text" | translate }}
+      {{ "tavern.attendants." + attendant | translate }}
     </div>
-    }
-  </div>
-  <div>
-    {{ "tavern.attendants.text" | translate }}
-    {{ "tavern.attendants." + attendant | translate }}
-  </div>
-  <div>
-    {{ "tavern.specialFeatures.text" | translate }}
-    {{ "tavern.specialFeatures." + specialFeature | translate }}
-  </div>
-  <div>
-    {{ "tavern.specialGuests.text" | translate }}
-    {{ "tavern.specialGuests." + specialGuest | translate }}
+    <div>
+      {{ "tavern.specialFeatures.text" | translate }}
+      {{ "tavern.specialFeatures." + specialFeature | translate }}
+    </div>
+    <div>
+      {{ "tavern.specialGuests.text" | translate }}
+      {{ "tavern.specialGuests." + specialGuest | translate }}
+    </div>
   </div>
 </div>
 }

@@ -605,7 +605,6 @@
     },
     "guestLvl": {
       "text": "Die Gaststufe ist: {{guestLvl}}",
-      "guestPerTime": "Am {{dayTime}} ist die Taverne {{crowd}}",
       "dayTime": "Tageszeit",
       "guests": "Gäste",
       "morning": "Morgens",
@@ -625,7 +624,14 @@
     "beds": {
       "none": "Es gibt keine Betten.",
       "single": "Es gibt 1 Bett.",
-      "general": "Es gibt {{beds}} Betten."
+      "general": "Es gibt {{beds}} Betten.",
+      "price": "Die Kosten für ein Bett im Gemeinschaftszimmer sind {{priceGroupRooom}} Heller, für ein Doppelzimmer sind es {{priceTwinRoom}} Silbertaler und für ein Einzelzimmer sind es {{singleRoom}} Silbertaler."
+    },
+    "rooms": {
+      "group": "{{count}} Gruppenzimmer",
+      "twin": "{{count}} Zweibettzimmer",
+      "single": "{{count}} Einzelzimmer",
+      "available": "Es sind {{rooms}} vorhanden."
     },
     "keeper": {
       "chubby": "ein dicker, gemütlicher Wirt, der ständig das immer gleiche Glas putzt",
