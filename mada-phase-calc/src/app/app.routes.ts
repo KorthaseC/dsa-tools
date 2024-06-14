@@ -32,6 +32,11 @@ export const routes: Routes = [
     component: TavernGeneratorComponent,
   },
   {
+    path: '',
+    redirectTo: 'overview',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: 'overview',
   },
