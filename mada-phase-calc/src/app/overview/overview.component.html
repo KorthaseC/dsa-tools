@@ -61,4 +61,19 @@
       <p>{{ "overview.alchemy.description" | translate }}</p>
     </mat-card-content>
   </mat-card>
+
+  <mat-card [routerLink]="['/tavern']">
+    <mat-card-header>
+      <mat-card-title>{{ "overview.tavern.title" | translate }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://de.wiki-aventurica.de/de/images/thumb/f/f4/Travia.svg/250px-Travia.svg.png"
+      alt="Travia Symbol"
+      class="blend-img"
+    />
+    <mat-card-content>
+      <p>{{ "overview.tavern.description" | translate }}</p>
+    </mat-card-content>
+  </mat-card>
 </div>

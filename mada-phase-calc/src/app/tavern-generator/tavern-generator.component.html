@@ -1,0 +1,103 @@
+<form>
+  <mat-form-field>
+    <mat-label>{{ "tavern.location.label" | translate }}</mat-label>
+    <mat-select [formControl]="location" required>
+      @for (location of locationOptions; track location) {
+      <mat-option [value]="location">{{
+        location.location | translate
+      }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>
+
+@if (tavernName) {
+<div class="mr-b-20">
+  <div>
+    <div>
+      <strong>{{ tavernName }}</strong>
+    </div>
+    <div>
+      {{ "tavern.type.text" | translate
+      }}{{ "tavern.type." + tavernType | translate }}
+    </div>
+    <div>
+      {{ "tavern.furnishing.text" | translate
+      }}{{ "tavern.furnishing." + tavernQs | translate }}
+    </div>
+    <div>
+      {{ "tavern.keeper.text" | translate
+      }}{{ "tavern.keeper." + keeper | translate }}
+    </div>
+    <div class="mr-b-20">
+      {{ "tavern.priceLvl.text" | translate : { priceLvl: priceGuestLvl } }}
+    </div>
+
+    <div>{{ "tavern.seats" | translate : { seats } }}</div>
+    <div class="mr-b-20">
+      @switch (beds) { @case (0) {
+      <div>{{ "tavern.beds.none" | translate : { beds } }}</div>
+      } @case (1) {
+      <div>{{ "tavern.beds.single" | translate : { beds } }}</div>
+      } @default {
+      <div>{{ "tavern.beds.general" | translate : { beds } }}</div>
+      } }
+    </div>
+
+    <mat-table [dataSource]="guestLevels" class="mr-b-20">
+      <!-- Day Time Column -->
+      <ng-container matColumnDef="dayTime">
+        <mat-header-cell *matHeaderCellDef>
+          {{ "tavern.guestLvl.dayTime" | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ "tavern.guestLvl." + element.dayTime | translate }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Guest Level Column -->
+      <ng-container matColumnDef="guestLevel">
+        <mat-header-cell *matHeaderCellDef>
+          {{ "tavern.guestLvl.guests" | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ "tavern.guestLvl." + element.guestLevel | translate }}
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <div class="mr-b-20">
+      {{ "tavern.guestLvl.text" | translate : { guestLvl: priceGuestLvl } }}
+    </div>
+
+    <div>
+      <strong>{{ "shared.optional" | translate }}</strong>
+    </div>
+    @if (activeDays.length > 0) {
+    <div>
+      {{ getEventDaysText() }} {{ "tavern.events." + specialEvent | translate }}
+    </div>
+    }
+  </div>
+  <div>
+    {{ "tavern.attendants.text" | translate }}
+    {{ "tavern.attendants." + attendant | translate }}
+  </div>
+  <div>
+    {{ "tavern.specialFeatures.text" | translate }}
+    {{ "tavern.specialFeatures." + specialFeature | translate }}
+  </div>
+  <div>
+    {{ "tavern.specialGuests.text" | translate }}
+    {{ "tavern.specialGuests." + specialGuest | translate }}
+  </div>
+</div>
+}
+
+<div class="button">
+  <button mat-raised-button (click)="getTavern()" [disabled]="!isFormValid()">
+    {{ "tavern.generateTavern" | translate }}
+  </button>
+</div>

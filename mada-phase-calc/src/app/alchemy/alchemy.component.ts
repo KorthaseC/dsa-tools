@@ -170,10 +170,6 @@ export class AlchemyComponent {
     }
   }
 
-  private rollDice(sides: number): number {
-    return Math.floor(Math.random() * sides) + 1;
-  }
-
   private async openDiceResultDialog(
     geniusPoints: number,
     value: number,
@@ -316,7 +312,13 @@ export class AlchemyComponent {
   ): Promise<number> {
     const dice: number[] = Array.from(
       { length: diceSides === 12 ? 2 : 1 },
-      () => this.rollDice(6)
+      () => {
+        if (diceSides === 20) {
+          return Utility.rollDice(20);
+        } else {
+          return Utility.rollDice(6);
+        }
+      }
     );
     const die: number = diceSides === 12 ? Utility.addNumbers(dice) : dice[0];
     const result: AlchemyDiceResult = alchemicTable.find((elixir) =>
@@ -359,7 +361,7 @@ export class AlchemyComponent {
     diceSides: number,
     type: string
   ): Promise<number> {
-    const dice: number[] = [this.rollDice(6), this.rollDice(6)];
+    const dice: number[] = [Utility.rollDice(6), Utility.rollDice(6)];
     const durationDie: number = Utility.addNumbers(dice);
     const result: AlchemyDiceResult | undefined = EFFECT_DURATIONS.get(
       this.specificEffect?.category || ''

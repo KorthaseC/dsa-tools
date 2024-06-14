@@ -160,6 +160,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       case '/alchemy':
         translationKey = 'header.alchemyTitle';
         break;
+      case '/tavern':
+        translationKey = 'header.taverTitle';
+        break;
       default:
         translationKey = 'header.overviewTitle';
         break;

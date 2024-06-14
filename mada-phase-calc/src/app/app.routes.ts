@@ -4,6 +4,7 @@ import { WeekdayComponent } from './weekday/weekday.component';
 import { MadaphaseComponent } from './madaphase/madaphase.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { AlchemyComponent } from './alchemy/alchemy.component';
+import { TavernGeneratorComponent } from './tavern-generator/tavern-generator.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,10 @@ export const routes: Routes = [
   {
     path: 'alchemy',
     component: AlchemyComponent,
+  },
+  {
+    path: 'tavern',
+    component: TavernGeneratorComponent,
   },
   {
     path: '**',

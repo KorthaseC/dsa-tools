@@ -28,4 +28,24 @@ export class Utility {
       0
     );
   }
+
+  public static rollDice(sides: number): number {
+    return Math.floor(Math.random() * sides) + 1;
+  }
+
+  public static getEnumValueByNumber<T>(
+    enumObj: T,
+    number: number
+  ): T[keyof T] | undefined {
+    const enumValues = Object.values(enumObj);
+    const index = number - 1;
+
+    if (index >= 0 && index < enumValues.length) {
+      return enumValues[index];
+    }
+
+    throw new Error(
+      `Invalid number ${number}. Must be between 1 and ${enumValues.length}.`
+    );
+  }
 }
