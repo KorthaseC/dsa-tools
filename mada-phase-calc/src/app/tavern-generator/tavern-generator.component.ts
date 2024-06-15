@@ -304,6 +304,10 @@ export class TavernGeneratorComponent implements AfterViewInit {
       .map((level: { dayTime: string; guestLevel: string }) => level.dayTime);
   }
 
+  private getRandomInt(max: number): number {
+    return Math.floor(Math.random() * max);
+  }
+
   private distributeBeds(totalBeds: number): RoomDistribution {
     let bedSpread = BED_SPREAD[this.tavernQs.modValue - 1];
 
@@ -314,24 +318,48 @@ export class TavernGeneratorComponent implements AfterViewInit {
     let remainingBeds: number = totalBeds;
     let rooms: RoomDistribution = { group: 0, twin: 0, single: 0 };
 
-    // Calculate number of group rooms
-    if (bedSpread.group > 0 && remainingBeds > 0) {
-      let groupRooms = Math.floor((bedSpread.group * totalBeds) / 4);
-      rooms.group = groupRooms;
-      remainingBeds -= groupRooms * 4;
+    //if only 1 bedm always single room
+    if (remainingBeds === 1) {
+      return { group: 0, twin: 0, single: 1 };
     }
 
-    // Calculate number of twin rooms
-    if (bedSpread.twin > 0 && remainingBeds > 0) {
-      let twinRooms = Math.floor((bedSpread.twin * totalBeds) / 2);
-      rooms.twin = twinRooms;
-      remainingBeds -= twinRooms * 2;
-    }
-
-    // Calculate number of single rooms
-    if (bedSpread.single > 0 && remainingBeds > 0) {
-      rooms.single = remainingBeds; // Remaining beds go to single rooms
+    //if qs 1 and atleast 5 beds always group room
+    if (this.tavernQs.modValue === 1 && remainingBeds >= 5) {
+      rooms.group = 1;
       remainingBeds = 0;
+      return rooms;
+    }
+
+    //if beds less than 5, spread between twin and single rooms
+    if (remainingBeds < 5) {
+      bedSpread = {
+        qs: this.tavernQs.modValue,
+        group: 0,
+        twin: 0.5,
+        single: 0.5,
+      };
+    }
+
+    // Calculate number of group rooms
+    if (bedSpread.group > 0 && remainingBeds >= 5) {
+      const maxGroupBeds = Math.floor(bedSpread.group * totalBeds);
+      const groupBeds = Math.min(
+        remainingBeds,
+        Math.max(5, this.getRandomInt(maxGroupBeds - 4) + 5)
+      );
+      rooms.group = 1;
+      remainingBeds -= groupBeds;
+    }
+
+    // Calculate random number of twin rooms and single rooms
+    while (remainingBeds > 0) {
+      if (remainingBeds >= 2 && Math.random() < bedSpread.twin) {
+        rooms.twin++;
+        remainingBeds -= 2;
+      } else {
+        rooms.single++;
+        remainingBeds--;
+      }
     }
 
     return rooms;

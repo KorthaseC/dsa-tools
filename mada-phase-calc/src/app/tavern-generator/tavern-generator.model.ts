@@ -236,7 +236,7 @@ export enum SpecialGuest {
   IncognitoOperaTenor = 'incognitoOperaTenor',
   HighRankingPriest = 'highRankingPriest',
   DwarvenGemDealer = 'dwarvenGemDealer',
-  AueleTraveler = 'aueleTraveler',
+  AuelfTraveler = 'auelfTraveler',
   HalfOrcBirdTrader = 'halfOrcBirdTrader',
 }
 
