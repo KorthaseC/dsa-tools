@@ -63,3 +63,7 @@ canvas {
   width: 90%;
   height: 90%;
 }
+
+.button button:disabled {
+  background-color: gray;
+}

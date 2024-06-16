@@ -629,10 +629,13 @@
       "price": "Die Kosten für ein Bett im Gemeinschaftszimmer sind {{priceGroupRooom}} Heller, für ein Doppelzimmer sind es {{priceTwinRoom}} Silbertaler und für ein Einzelzimmer sind es {{singleRoom}} Silbertaler."
     },
     "rooms": {
-      "group": "{{count}} Gruppenzimmer",
-      "twin": "{{count}} Zweibettzimmer",
+      "group": "{{count}} Gruppenzimmer ({{beds}} Betten)",
+      "twin": "{{count}} Doppelzimmer",
       "single": "{{count}} Einzelzimmer",
-      "available": "Es sind {{rooms}} vorhanden."
+      "available": {
+        "single": "Es ist {{rooms}} vorhanden.",
+        "multi": "Es sind {{rooms}} vorhanden."
+      }
     },
     "keeper": {
       "chubby": "ein dicker, gemütlicher Wirt, der ständig das immer gleiche Glas putzt",
@@ -646,7 +649,7 @@
       "baldGambler": "ein glatzköpfiger Wirt, der mit den Gästen gerne um die Getränke würfelt",
       "burlyHighPitched": "ein bulliger Wirt mit heller Fistelstimme",
       "popEyedWeakness": "ein glupschäugiger Wirt mit Rechenschwäche",
-      "devoutMissionary": "eine streng traviaGläubige Wirtin mit Missionierungsdrang",
+      "devoutMissionary": "eine streng traviagläubige Wirtin mit Missionierungsdrang",
       "plumpHeroes": "ein(e) dralle(r) Wirt(in) mit einer Vorliebe für freshe Helden",
       "strongBearded": "ein streng riechender Wirt mit dichtem Vollbart",
       "cheerfulLaugh": "eine alte Wirtin mit fröhlichem Lachen",
@@ -688,7 +691,7 @@
       "entertainers": "Gaukler oder Barden treten auf",
       "salesEvent": "Verkaufsveranstaltung eines reisenden Händlers",
       "loudMaritalArgument": "lautstarker Ehestreit",
-      "boltonTournament": "Boltontunier",
+      "boltanTournament": "Boltantunier",
       "largeBrawl": "große Schlägerei",
       "beerWineFestival": "Brau- oder Weinfest",
       "slaughterFestival": "Schlachtfest",
@@ -717,7 +720,7 @@
       "dwarfFurniture": "auch Mobiliar für Zwerge vorhanden",
       "noAlcohol": "kein Alkoholausschank",
       "unusualSmell": "ungewöhnlicher Geruch (Lavendel, Rosenwasser)",
-      "relayStation": "Wechselstation für Boteneiter",
+      "relayStation": "Wechselstation für Botenreiter",
       "unusuallyDirty": "ungewöhnlich schmutzig",
       "largeSpinetHarp": "großes Spinett oder eine Standharfe",
       "stage": "Bühne",
@@ -739,7 +742,7 @@
       "cityGuard": "Trupp der Stadtwache",
       "exoticDancer": "exotische Tänzerin",
       "craftsmenStammtisch": "Handwerkerstammtisch",
-      "messengerRider": "Boteneiter",
+      "messengerRider": "Botenreiter",
       "nineFingeredGuest": "neunfingriger Gast",
       "fugitiveRobberChief": "flüchtiger Räuberhauptmann",
       "incognitoOperaTenor": "inkognito reisender Operntenor aus Vinsalt",

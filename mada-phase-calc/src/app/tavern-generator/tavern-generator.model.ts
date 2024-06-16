@@ -179,7 +179,7 @@ export enum TavernEvent {
   Entertainers = 'entertainers',
   SalesEvent = 'salesEvent',
   LoudMaritalArgument = 'loudMaritalArgument',
-  BoltonTournament = 'boltonTournament',
+  BoltanTournament = 'boltanTournament',
   LargeBrawl = 'largeBrawl',
   BeerWineFestival = 'beerWineFestival',
   SlaughterFestival = 'slaughterFestival',

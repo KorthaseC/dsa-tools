@@ -74,6 +74,8 @@ export class TavernGeneratorComponent implements AfterViewInit {
   public specialEvent: string = '';
   public specialGuest: string = '';
 
+  private groupBeds: number;
+
   constructor(private translateService: TranslateService) {}
 
   ngAfterViewInit(): void {
@@ -141,6 +143,7 @@ export class TavernGeneratorComponent implements AfterViewInit {
       descriptionParts.push(
         this.translateService.instant('tavern.rooms.group', {
           count: this.distributedBeds.group,
+          beds: this.groupBeds,
         })
       );
     }
@@ -166,7 +169,14 @@ export class TavernGeneratorComponent implements AfterViewInit {
       .join(', ')
       .replace(/, (?=[^,]*$)/, ` ${andText} `);
 
-    return this.translateService.instant('tavern.rooms.available', {
+    const values = Object.values(this.distributedBeds);
+    const isOnlyOneRoom: boolean =
+      values.reduce((acc: number, value: number) => acc + value, 0) === 1;
+
+    const translateKey: string = isOnlyOneRoom
+      ? 'tavern.rooms.available.single'
+      : 'tavern.rooms.available.multi';
+    return this.translateService.instant(translateKey, {
       rooms: roomsText,
     });
   }
@@ -325,6 +335,7 @@ export class TavernGeneratorComponent implements AfterViewInit {
 
     //if qs 1 and atleast 5 beds always group room
     if (this.tavernQs.modValue === 1 && remainingBeds >= 5) {
+      this.groupBeds = remainingBeds;
       rooms.group = 1;
       remainingBeds = 0;
       return rooms;
@@ -343,12 +354,12 @@ export class TavernGeneratorComponent implements AfterViewInit {
     // Calculate number of group rooms
     if (bedSpread.group > 0 && remainingBeds >= 5) {
       const maxGroupBeds = Math.floor(bedSpread.group * totalBeds);
-      const groupBeds = Math.min(
+      this.groupBeds = Math.min(
         remainingBeds,
         Math.max(5, this.getRandomInt(maxGroupBeds - 4) + 5)
       );
       rooms.group = 1;
-      remainingBeds -= groupBeds;
+      remainingBeds -= this.groupBeds;
     }
 
     // Calculate random number of twin rooms and single rooms

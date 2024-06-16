@@ -632,7 +632,10 @@
       "group": "{{count}} group room",
       "twin": "{{count}} twin bed room",
       "single": "{{count}} single room",
-      "available": "There are {{rooms}} available."
+      "available": {
+        "single": "There is {{rooms}} available.",
+        "multi": "There are {{rooms}} available."
+      }
     },
     "keeper": {
       "chubby": "a chubby, cozy innkeeper constantly polishing the same glass",
@@ -688,7 +691,7 @@
       "entertainers": "entertainers or bards performing",
       "salesEvent": "sales event of a traveling merchant",
       "loudMaritalArgument": "loud marital argument",
-      "boltonTournament": "Bolton tournament",
+      "boltanTournament": "Boltan tournament",
       "largeBrawl": "large brawl",
       "beerWineFestival": "beer or wine festival",
       "slaughterFestival": "slaughter festival",
