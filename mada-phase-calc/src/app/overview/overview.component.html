@@ -22,7 +22,12 @@
         "overview.weekdays.title" | translate
       }}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="assets/calendar-logo.png" alt="Kalender Symbol" />
+    <img
+      mat-card-image
+      src="https://de.wiki-aventurica.de/de/images/thumb/f/f1/Satinavs_Siegel.svg/250px-Satinavs_Siegel.svg.png"
+      alt="Satinav Symbol"
+      class="blend-img"
+    />
     <mat-card-content>
       <p>{{ "overview.weekdays.description" | translate }}</p>
     </mat-card-content>
@@ -74,6 +79,40 @@
     />
     <mat-card-content>
       <p>{{ "overview.tavern.description" | translate }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card [routerLink]="['/names']">
+    <mat-card-header>
+      <mat-card-title>{{
+        "overview.nameGenerator.title" | translate
+      }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://de.wiki-aventurica.de/de/images/thumb/1/1e/Namenloser.svg/250px-Namenloser.svg.png"
+      alt="Nameless Symbol"
+      class="blend-img"
+    />
+    <mat-card-content>
+      <p>{{ "overview.nameGenerator.description" | translate }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card [routerLink]="['/smith']">
+    <mat-card-header>
+      <mat-card-title>{{
+        "overview.smithGenerator.title" | translate
+      }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://de.wiki-aventurica.de/de/images/thumb/5/51/Ingerimm.svg/250px-Ingerimm.svg.png"
+      alt="Ingerimm Symbol"
+      class="blend-img"
+    />
+    <mat-card-content>
+      <p>{{ "overview.smithGenerator.description" | translate }}</p>
     </mat-card-content>
   </mat-card>
 </div>

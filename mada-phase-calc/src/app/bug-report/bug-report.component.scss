@@ -1,0 +1,43 @@
+.c-bug-report-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.c-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.c-error {
+  color: red;
+  margin-top: 10px;
+}
+
+.c-form-field-100p {
+  font-size: 14px;
+  width: 100%;
+}
+
+.c-radio-button-box {
+  background-color: #4a4a4a;
+  padding-right: 10px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.c-upload-container {
+  padding-top: 5px;
+  background-color: #4a4a4a;
+  border-radius: 5px 5px 0px 0px;
+  padding-bottom: 5px;
+  color: white;
+}
+
+.c-label-color {
+  color: rgba(255, 255, 255, 0.6);
+}

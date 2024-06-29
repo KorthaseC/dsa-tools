@@ -164,6 +164,18 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       case '/tavern':
         translationKey = 'header.taverTitle';
         break;
+      case '/names':
+        translationKey = 'header.nameGeneratorTitle';
+        break;
+      case '/smith':
+        translationKey = 'header.smithGeneratorTitle';
+        break;
+      case '/report':
+        translationKey = 'header.reportTitle';
+        break;
+      case '/legal':
+        translationKey = 'header.legalTitle';
+        break;
       default:
         translationKey = 'header.overviewTitle';
         break;

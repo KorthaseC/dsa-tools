@@ -1,0 +1,111 @@
+<div class="c-container">
+  <h1>Bug Report</h1>
+  @if(!isFormSend) {
+  <form [formGroup]="bugReportForm">
+    <mat-form-field class="c-form-field-100p">
+      <mat-label>{{ "bugReport.username" | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ 'bugReport.username' | translate }}"
+        formControlName="username"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field class="c-form-field-100p">
+      <mat-label>{{ "bugReport.email" | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ 'bugReport.email' | translate }}"
+        formControlName="email"
+      />
+    </mat-form-field>
+
+    <div class="display-flex mr-b-20 c-radio-button-box">
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="reportType"
+        required
+      >
+        <mat-radio-button value="bug-report">{{
+          "bugReport.reportType.bug" | translate
+        }}</mat-radio-button>
+        <mat-radio-button value="feedback">{{
+          "bugReport.reportType.feedback" | translate
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field class="c-form-field-100p">
+      <mat-label>{{ "bugReport.date" | translate }}</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="date"
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="c-form-field-100p">
+      <mat-label>{{ "bugReport.description" | translate }}</mat-label>
+      <textarea
+        matInput
+        placeholder="{{ 'bugReport.description' | translate }}"
+        formControlName="description"
+        required
+      ></textarea>
+    </mat-form-field>
+
+    @if(bugReportForm.get('reportType').value === 'bug-report') {
+    <mat-form-field class="c-form-field-100p">
+      <mat-label>{{ "bugReport.expected" | translate }}</mat-label>
+      <textarea
+        matInput
+        placeholder="{{ 'bugReport.expected' | translate }}"
+        formControlName="expected"
+      ></textarea>
+    </mat-form-field>
+    }
+
+    <div class="c-upload-container">
+      <div class="p-l-16 mr-b-5 c-label-color">
+        {{ "bugReport.screenshot" | translate }}
+      </div>
+      <div class="p-l-16 mr-b-5">
+        <input
+          type="file"
+          (change)="onFileChange($event)"
+          accept="image/*"
+          formControlName="file"
+          class="cursor"
+        />
+        @if(fileTooLarge) {
+        <div class="c-error">{{ "bugReport.error.filesize" | translate }}</div>
+        }
+      </div>
+    </div>
+
+    <div class="button mr-t-20">
+      <button
+        mat-raised-button
+        (click)="onSubmit()"
+        [disabled]="
+          !bugReportForm.valid ||
+          fileTooLarge ||
+          submissionCount >= maxSubmissions
+        "
+      >
+        {{ "bugReport.submit" | translate }}
+      </button>
+    </div>
+
+    @if(submissionCount >= maxSubmissions) {
+    <div class="error">{{ "bugReport.error.maxTickets" | translate }}</div>
+    }
+  </form>
+  } @if(isFormSend) {
+  <div class="error">{{ "bugReport.send" | translate }}</div>
+  }
+</div>

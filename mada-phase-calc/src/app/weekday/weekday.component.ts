@@ -81,7 +81,6 @@ export class WeekdayComponent {
 
     const weekdayIndex: number =
       daysSinceWindstag % Object.values(Weekdays).length;
-    console.log(Utility.getWeekdayByIndex(weekdayIndex));
     this.weekdayInfo = this.translateService.instant(
       `weekday.day.${Utility.getWeekdayByIndex(weekdayIndex)}`
     );

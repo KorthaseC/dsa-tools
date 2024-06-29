@@ -1,0 +1,116 @@
+<form>
+  <div class="display-flex c-optional-checks-container mr-b-20">
+    <mat-checkbox [formControl]="isNoble">
+      {{ "namegenerator.noble" | translate }}
+    </mat-checkbox>
+    <mat-radio-group
+      [formControl]="genderControl"
+      aria-label="Select an option"
+    >
+      <mat-radio-button value="male">{{
+        "namegenerator.gender.male" | translate
+      }}</mat-radio-button>
+      <mat-radio-button value="female">{{
+        "namegenerator.gender.female" | translate
+      }}</mat-radio-button>
+      <mat-radio-button value="all">{{
+        "namegenerator.gender.all" | translate
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="mr-b-20">
+    <div class="c-button-container">
+      @for(race of racePanels; track race) {
+      <div class="c-button-expand">
+        <button
+          mat-raised-button
+          (click)="setRace($index)"
+          [class.active]="openPanelIndex === $index"
+        >
+          {{ "namegenerator.panel." + racePanels[$index].title | translate }}
+        </button>
+      </div>
+      }
+    </div>
+    @if(openPanelIndex>-1) {
+    <div class="c-content-field">
+      <div class="c-content display-inline-flex width-60">
+        @if(racePanels[openPanelIndex].content.length>0) {
+        <mat-radio-group class="c-content-radio">
+          @for (region of racePanels[openPanelIndex].content; track region) {
+          <mat-radio-button
+            [value]="region.value"
+            (change)="setRegion(region, false)"
+            >{{
+              "namegenerator.panel." + region.label | translate
+            }}</mat-radio-button
+          >
+          }
+        </mat-radio-group>
+        }@else {
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+          <!-- This is the tree node template for leaf nodes -->
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+            <button mat-icon-button disabled></button>
+            <mat-radio-button
+              [value]="node.value"
+              (change)="setRegion(node, true)"
+              >{{
+                "namegenerator.panel." + node.name | translate
+              }}</mat-radio-button
+            >
+          </mat-tree-node>
+          <!-- This is the tree node template for expandable nodes -->
+          <mat-tree-node
+            *matTreeNodeDef="let node; when: hasChild"
+            matTreeNodePadding
+          >
+            <button
+              mat-icon-button
+              matTreeNodeToggle
+              [attr.aria-label]="'Toggle ' + node.name"
+            >
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{
+                  treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
+                }}
+              </mat-icon>
+            </button>
+            {{ "namegenerator.panel." + node.name | translate }}
+          </mat-tree-node>
+        </mat-tree>
+        }
+      </div>
+      <div
+        class="c-content display-inline-flex width-30 c-names-list-scroll"
+        [ngClass]="names.length > 0 ? 'c-border-left' : ''"
+      >
+        <ul>
+          @if(names.length > 0) { @if(isNoble.value && hasNotNoble ) {
+          <div class="c-no-noble mr-b-5">
+            {{ "namegenerator.noNoble" | translate }}
+          </div>
+          } @for(name of names; track name) {
+          <li>{{ name }}</li>
+          } }
+        </ul>
+      </div>
+    </div>
+
+    }
+  </div>
+</form>
+
+<div class="button">
+  <button
+    mat-raised-button
+    (click)="getNames()"
+    [disabled]="!isFormValid() || isLoading"
+  >
+    {{ "namegenerator.getNames" | translate }}
+  </button>
+  @if(isLoading) {
+  <mat-spinner class="c-spinner"></mat-spinner>
+  }
+</div>

@@ -1,0 +1,61 @@
+.c-optional-checks-container {
+  background-color: #424242;
+}
+
+.c-button-container {
+  display: flex;
+  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
+  align-items: center;
+  margin: 0; /* Entfernen Sie zusätzlichen Außenabstand */
+}
+
+.c-button-expand button {
+  border-bottom: none;
+  border-radius: 0;
+  display: flex;
+  background-color: #636262;
+  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
+}
+
+.c-content-field {
+  width: 100%;
+  padding: 20px 0px 20px 0;
+  background-color: #424242;
+  color: white;
+}
+
+.c-button-expand button.active {
+  background-color: #424242; /* Beispiel für eine aktive Hintergrundfarbe */
+  color: white; /* Beispiel für eine aktive Textfarbe */
+  box-shadow: 0px 3px #424242;
+}
+
+.c-content {
+  padding-left: 20px;
+}
+
+.c-border-left {
+  border-left: 1px solid #636262;
+}
+
+.c-spinner {
+  vertical-align: middle;
+  height: 25px !important;
+  width: 35px !important;
+  padding-left: 5px;
+  display: inline-flex;
+}
+
+.c-content-radio {
+  display: flex;
+  flex-direction: column; /* Arrange radio buttons vertically */
+}
+
+.c-names-list-scroll {
+  position: sticky;
+  top: 80px;
+}
+
+.c-no-noble {
+  color: orange;
+}

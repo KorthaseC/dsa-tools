@@ -31,6 +31,10 @@
     "alchemyTitle": "Alchemy Lab",
     "overviewTitle": "Overview",
     "taverTitle": "Tavern generator",
+    "nameGeneratorTitle": "Name Generator",
+    "smithGeneratorTitle": "Smithy",
+    "reportTitle": "Reports",
+    "legalTitle": "Legal Notices",
     "button": {
       "d4": "4-sided die",
       "d6": "6-sided die",
@@ -42,6 +46,16 @@
       "delete": "Delete all dice"
     },
     "return": "Return to Overview"
+  },
+  "footer": {
+    "report": "Bug Report/Feedback",
+    "ruleWiki": "Rule Wiki",
+    "legal": "Legal",
+    "version": "Version: ",
+    "button": {
+      "github": "Link to Github Project",
+      "ulissesDiscord": "Official Ulisses Discord"
+    }
   },
   "overview": {
     "madaPhase": {
@@ -62,7 +76,15 @@
     },
     "tavern": {
       "title": "Tavern generator",
-      "description": "Tool zur Erstellung von zufälligen Tavernen"
+      "description": "Tool for creating random Taverns"
+    },
+    "nameGenerator": {
+      "title": "Name generator",
+      "description": "Tool for creating random names"
+    },
+    "smithGenerator": {
+      "title": "Smithy",
+      "description": "Tool for calculating prices at the blacksmith"
     }
   },
   "madaPhase": {
@@ -233,7 +255,7 @@
         "kk": "STR-Elixir",
         "rs": "PROT-Elixir",
         "pa": "PA-Elixir",
-        "sk": "Spirt-Elixir",
+        "sk": "Spirit-Elixir",
         "magicPaste": "Magic Paste",
         "invisibility": "Invisibility Elixir",
         "divinePaste": "Divine Paste",
@@ -629,7 +651,7 @@
       "price": "The cost for a bed in the shared room is {{priceGroupRoom}} haler, for a twin room it is {{priceTwinRoom}} silver thalers, and for a single room it is {{priceSingleRoom}} silver thalers."
     },
     "rooms": {
-      "group": "{{count}} group room",
+      "group": "{{count}} group room ({{beds}} beds)",
       "twin": "{{count}} twin bed room",
       "single": "{{count}} single room",
       "available": {
@@ -752,5 +774,290 @@
       "halfOrcBirdTrader": "half-orc bird trader",
       "text": "The following guest might be present: "
     }
+  },
+  "namegenerator": {
+    "noble": "Noble?",
+    "gender": {
+      "male": "male",
+      "female": "female",
+      "all": "all"
+    },
+    "getNames": "Generate random names",
+    "noNoble": "With this selection, there are no noble names, so only regular names will be displayed.",
+    "panel": {
+      "human": {
+        "title": "Humans",
+        "regionTitle": {
+          "mittelreich": "Middenrealm",
+          "southern": "Southern Aventuria",
+          "tulamidien": "Tulamidic Territories",
+          "islands": "Island Territories",
+          "northWest": "Northwestern Aventuria",
+          "bornland": "Bornland and Free Cities",
+          "norhtern": "Northern Aventuria"
+        },
+        "garetien": "Garetia",
+        "albernia": "Albernia",
+        "almada": "Almada",
+        "greifenfurt": "Greifenfurt",
+        "kosch": "Kosch",
+        "nordmarken": "Nordmarken",
+        "perricum": "Perricum",
+        "rabenmark": "Rabenmark",
+        "rommilyser": "Rommilyser",
+        "sonnenmark": "Sonnenmark",
+        "tobrien": "Tobrien",
+        "trollzacker": "Trollzacker",
+        "warunk": "Warunk",
+        "weiden": "Weiden",
+        "windhag": "Windhag",
+        "alAnfa": "Al'Anfa",
+        "chirakah": "Chirakah",
+        "kemi": "Kemi",
+        "waldmenschen": "Forest People",
+        "tocamuya": "Tocamuya",
+        "uthuria": "Uthuria",
+        "utulu": "Utulu",
+        "aranien": "Arania",
+        "ferkina": "Ferkina",
+        "novadi": "Novadi",
+        "thalusien": "Thalusien",
+        "tulamidien": "Tulamidia",
+        "urtulamid": "Urtulamid",
+        "zahori": "Zahori",
+        "bosparn": "Bosparan",
+        "bukanier": "Buccaneer",
+        "cyclopeisch": "Cyclopean",
+        "elemitisch": "Elemite",
+        "horasreich": "Horasreich",
+        "maraskan": "Maraskan",
+        "northProvince": "Northern Province",
+        "selem": "Selem",
+        "zyklopeninsel": "Cyclopean Isles",
+        "gjalsker": "Gjalsker",
+        "svellttal": "Svellt Valley",
+        "thorwal": "Thorwal",
+        "alhanisch": "Alhanian",
+        "andergast": "Andergast",
+        "bornland": "Bornland",
+        "freeCityNorth": "Free City in the North",
+        "norbarden": "Norbards",
+        "nostria": "Nostria",
+        "freieSchattenlande": "Free Shadowlands",
+        "schattenlande": "Shadowlands",
+        "fjarninger": "Fjarningers",
+        "highNorth": "High North",
+        "nivesen": "Nivesians"
+      },
+      "elven": {
+        "title": "Elves",
+        "auelfen": "Glade Elves",
+        "firnelfen": "Firn Elves",
+        "hochelfen": "High Elves",
+        "steppenelfen": "Steppe Elves",
+        "shakagra": "Shakagra",
+        "waldelfen": "Wood Elves"
+      },
+      "dwarf": {
+        "title": "Dwarves",
+        "amboss": "Anvil Dwarves",
+        "brilliant": "Brillant Dwarves",
+        "brobim": "Brobim",
+        "erz": "Ore Dwarves",
+        "hügelzwerge": "Hill Dwarves",
+        "rotezwerge": "Red Dwarves",
+        "tiefzwerge": "Deep Dwarves"
+      },
+      "god": {
+        "title": "Gods",
+        "praois": "Praios",
+        "rondra": "Rondra",
+        "efferad": "Efferd",
+        "travia": "Travia",
+        "boron": "Boron",
+        "hesinde": "Hesinde",
+        "firun": "Firun",
+        "tsa": "Tsa",
+        "phex": "Phex",
+        "peraine": "Peraine",
+        "ingerimm": "Ingerimm",
+        "halbgott": "Demigods"
+      },
+      "other": {
+        "title": "Others",
+        "achaz": "Achaz",
+        "oger": "Ogres",
+        "orks": "Orcs",
+        "stadtGoblin": "City Goblin",
+        "suulak": "Suulak",
+        "trolle": "Trolls",
+        "buehnenZauberer": "Stage Magician",
+        "gaukler": "Jester",
+        "gladiator": "Gladiator",
+        "magier": "Mage",
+        "quacksalber": "Quack"
+      }
+    }
+  },
+  "smith": {
+    "qualification": {
+      "label": "Smith Qualification",
+      "beginner": "Beginner",
+      "apprentice": "Apprentice",
+      "master": "Master",
+      "specialist": "Specialist"
+    },
+    "price": "Price per working hour in silver thaler",
+    "crafting": {
+      "label": "Item to be crafted",
+      "category": {
+        "weapon": "Weapon",
+        "armor": "Armor"
+      },
+      "item": {
+        "crossbows": "Crossbows",
+        "bows": "Bows",
+        "daggers": "Daggers",
+        "fencingWeapons": "Fencing Weapons",
+        "bludgeoningWeapons": "Bludgeoning Weapons",
+        "chainWeapons": "Chain Weapons",
+        "lances": "Lances",
+        "whips": "Whips",
+        "grappling": "Grappling",
+        "shields": "Shields",
+        "slings": "Slings",
+        "swords": "Swords",
+        "polearms": "Polearms",
+        "throwingWeapons": "Throwing Weapons",
+        "twoHandedBludgeoningWeapons": "Two-Handed Bludgeoning Weapons",
+        "twoHandedSwords": "Two-Handed Swords",
+        "normalCloth": "Normal Clothing",
+        "heavyCloth": "Heavy Clothing",
+        "clothArmor": "Cloth Armor",
+        "leatherArmor": "Leather Armor",
+        "woodenArmor": "Wooden Armor",
+        "chainArmor": "Chain Armor",
+        "scaleArmor": "Scale Armor",
+        "plateArmor": "Plate Armor",
+        "tournamentArmor": "Tournament Armor"
+      }
+    },
+    "attributeValue": "Attribute Value",
+    "talentValue": "Talent Value",
+    "material": {
+      "label": "Material",
+      "tooltip1": "Only certain weapons/armor, such as spears, axes, and knives are suitable as stone weapons.",
+      "tooltip2": "Only maces, crowbills, morning stars, and similar blunt weapons without a blade can be made from these materials.",
+      "tooltip3": "Only plate armor can be made from these materials.",
+      "steel": "Steel",
+      "bronze": "Bronze",
+      "iron": "Iron",
+      "grassoden": "Turf Iron",
+      "fluSteel": "Great River Steel",
+      "kunchomer": "Khunchomer Steel",
+      "maraskan": "Maraskan Steel",
+      "mirhamer": "Mirhamer Steel",
+      "premer": "Premer Steel",
+      "toschkril": "Toschkril",
+      "uhdenber": "Uhdenberg Steel",
+      "dwarf": "Dwarven Steel",
+      "ebenwood": "Ebony",
+      "ironwood": "Ironwood",
+      "stonewood": "Stone Oak",
+      "zykolp": "Cyclopean Cedar",
+      "horn": "Horn",
+      "bone": "Bone",
+      "vulcan": "Volcanic Glass",
+      "fire": "Flintstone",
+      "mindorium10": "Mindorium 10%",
+      "mindorium25": "Mindorium 25%",
+      "mindorium50": "Mindorium 50%",
+      "mindorium75": "Mindorium 75%",
+      "mindorium100": "Mindorium 100%",
+      "arkanium10": "Arkanium 10%",
+      "arkanium25": "Arkanium 25%",
+      "arkanium50": "Arkanium 50%",
+      "arkanium75": "Arkanium 75%",
+      "arkanium100": "Arkanium 100%",
+      "endurium10": "Endurium 10%",
+      "endurium25": "Endurium 25%",
+      "endurium50": "Endurium 50%",
+      "endurium100": "Endurium 100%",
+      "titanium10": "Titanium 10%",
+      "titanium25": "Titanium 25%",
+      "titanium50": "Titanium 50%",
+      "titanium100": "Titanium 100%",
+      "meteor1": "Common Meteoric Iron",
+      "meteor2": "Heavy Meteoric Iron",
+      "droler": "Drôler Fabric",
+      "phrai": "Phrai Sheep Wool",
+      "iryan": "Iryan Leather",
+      "woolnose": "Wool Rhino Leather"
+    },
+    "standardPrice": "Standard price in silver thalers",
+    "standardWeight": "Standard weight in stones",
+    "boni": {
+      "label": "Improvements",
+      "none": "None",
+      "attack": "+1 AT Modifier",
+      "parade": "+1 PA Modifier",
+      "damage": "+1 DP",
+      "range": "+10 % Range of Ranged Weapons",
+      "breakfactor": "+1 Break Factor",
+      "armor": "+1 PROT",
+      "speed": "Ignore -1 MOV due to ENC or additional penalties",
+      "initiative": "Ignore -1 INI due to ENC or additional penalties",
+      "stability": "+1 Stability Value"
+    },
+    "craftTechnic": {
+      "label": "Crafting Technique",
+      "none": "None",
+      "falt": "Folding Technique",
+      "lehm": "Clay Baking Technique",
+      "chainBuild": "Intricate Chain Weaving"
+    },
+    "calculatePrice": "Determine manufacturing price",
+    "itemText": {
+      "failure": "Critical failure in manufacturing",
+      "result": "The manufacturing costs for the selected settings are {{price}} silver thalers. The smith took {{time}} days for the manufacturing.",
+      "meteor": {
+        "text": "The equipment has the following effect due to meteoric iron: ",
+        "magic": "The object is permanently magical.",
+        "vibrating": "The object vibrates at full moon.",
+        "damage": "The object causes +2 DP against beings not from the 3rd sphere.",
+        "voices": "The wearer of the object hears whispering voices in an unknown language every 1D6 days.",
+        "invisible": "At full moon, the object is fully visible, but it becomes more transparent with the waning moon. During the new moon, the object is practically invisible.",
+        "wolves": "Wolves within a 9-mile radius protect the wearer of the object and howl every night.",
+        "life": "The wearer loses 1 LP every day, which is absorbed by the object.",
+        "magentic": "The object is magnetic.",
+        "focus": "For the wearer, summoning extra-spherical beings is made 1 point easier on a roll of 1-3 on a D6, and 1 point harder on a roll of 4-6 when the object is used as a focus.",
+        "gravity": "Once every 1D6 days, gravity in a 9-step radius is nullified for 1D20 seconds.",
+        "fluid": "The object liquefies after 1D20 days."
+      },
+      "failed": "The equipment could not be manufactured."
+    }
+  },
+  "bugReport": {
+    "username": "Username",
+    "email": "Email (optional)",
+    "reportType": {
+      "bug": "Bug Report",
+      "feedback": "Feedback"
+    },
+    "date": "Date (when the bug was detected)",
+    "description": "Description",
+    "expected": "Expected Behavior",
+    "screenshot": "Image Attachment (optional)",
+    "submit": "Submit Form",
+    "error": {
+      "filesize": "File is too large. Maximum 2 MB allowed.",
+      "maxTickets": "Maximum number of tickets reached."
+    },
+    "send": "Thank you. Your report has been received."
+  },
+  "legalNotice": {
+    "legal1": "This website and the tools offered on it are fan projects and are not officially affiliated with Ulisses Spiele GmbH, the rights holder of 'Das Schwarze Auge'. 'Das Schwarze Auge' and all associated terms and rules are copyrighted and belong to Ulisses Spiele GmbH.",
+    "legal2": "All content that is not explicitly the property of Ulisses Spiele GmbH is the property of the authors of this website.",
+    "legal3": "This website offers unofficial tools and information about 'Das Schwarze Auge'. The content provided on this website is created by fans for fans and is not to be considered official information. For official information, please visit the Ulisses Spiele GmbH website."
   }
 }

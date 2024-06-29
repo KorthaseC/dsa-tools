@@ -31,6 +31,10 @@
     "alchemyTitle": "Alchemielabor",
     "overviewTitle": "Übersicht",
     "taverTitle": "Tavernen Generator",
+    "nameGeneratorTitle": "Namen Generator",
+    "smithGeneratorTitle": "Schmiede",
+    "reportTitle": "Reports",
+    "legalTitle": "Rechtliche Hinweise",
     "button": {
       "d4": "4-seitger Würfel",
       "d6": "6-seitger Würfel",
@@ -42,6 +46,16 @@
       "delete": "Lösche alle Würfel"
     },
     "return": "Zurück zur Übersicht"
+  },
+  "footer": {
+    "report": "Bugreport/Feedback",
+    "ruleWiki": "Regel-Wiki",
+    "legal": "Rechtliches",
+    "version": "Version: ",
+    "button": {
+      "github": "Link zum Github-Projekt",
+      "ulissesDiscord": "Offizieller Ulisses Discord"
+    }
   },
   "overview": {
     "madaPhase": {
@@ -63,6 +77,14 @@
     "tavern": {
       "title": "Tavernengenerator",
       "description": "Tool zur Erstellung von zufälligen Tavernen"
+    },
+    "nameGenerator": {
+      "title": "Namensgenerator",
+      "description": "Tool zur Erstellung von zufälligen Namen"
+    },
+    "smithGenerator": {
+      "title": "Schmiede",
+      "description": "Tool zur Berechnung von Preisen beim Schmied"
     }
   },
   "madaPhase": {
@@ -748,9 +770,294 @@
       "incognitoOperaTenor": "inkognito reisender Operntenor aus Vinsalt",
       "highRankingPriest": "hochrangige Praiosgeweihte mit Gefolge",
       "dwarvenGemDealer": "zwergischer Edelsteinhändler",
-      "auelfTraveler": "Auelf auf Reisen",
+      "auelfTraveler": "Auelf(e) auf Reisen",
       "halfOrcBirdTrader": "halborkischer Vogelhändler",
       "text": "Folgender Gast könnte in der Taverne sein: "
     }
+  },
+  "namegenerator": {
+    "noble": "Adelig?",
+    "gender": {
+      "male": "männlich",
+      "female": "weiblich",
+      "all": "alle"
+    },
+    "getNames": "Erzeuge zufällige Namen",
+    "noNoble": "Bei dieser Auswahl, gibt es keine adelige Namen, daher werden nur normale Namen angezeigt.",
+    "panel": {
+      "human": {
+        "title": "Menschen",
+        "regionTitle": {
+          "mittelreich": "Mittelreich",
+          "southern": "Südliches Aventurien",
+          "tulamidien": "Tulamiditsche Gebiete",
+          "islands": "Inselgebiete",
+          "northWest": "Nordwestliches Aventurien",
+          "bornland": "Bornland und freie Städte",
+          "norhtern": "Nördliches Aventurien"
+        },
+        "garetien": "Garetien",
+        "albernia": "Albernia",
+        "almada": "Almada",
+        "greifenfurt": "Greifenfurt",
+        "kosch": "Kosch",
+        "nordmarken": "Nordmarken",
+        "perricum": "Perricum",
+        "rabenmark": "Rabenmark",
+        "rommilyser": "Rommilyser",
+        "sonnenmark": "Sonnenmark",
+        "tobrien": "Tobrien",
+        "trollzacker": "Trollzacker",
+        "warunk": "Warunk",
+        "weiden": "Weiden",
+        "windhag": "Windhag",
+        "alAnfa": "Al'Anfa",
+        "chirakah": "Chirakah",
+        "kemi": "Kemi",
+        "waldmenschen": "Waldmenschen",
+        "tocamuya": "Tocamuya",
+        "uthuria": "Uthuria",
+        "utulu": "Utulu",
+        "aranien": "Aranien",
+        "ferkina": "Ferkina",
+        "novadi": "Novadi",
+        "thalusien": "Thalusien",
+        "tulamidien": "Tulamidien",
+        "urtulamid": "Urtulamid",
+        "zahori": "Zahori",
+        "bosparn": "Bosparan",
+        "bukanier": "Bukanier",
+        "cyclopeisch": "Cyclopeisch",
+        "elemitisch": "Elemitisch",
+        "horasreich": "Horasreich",
+        "maraskan": "Maraskan",
+        "northProvince": "Nordprovinz",
+        "selem": "Selem",
+        "zyklopeninsel": "Zyklopeninsel",
+        "gjalsker": "Gjalsker",
+        "svellttal": "Svellttal",
+        "thorwal": "Thorwal",
+        "alhanisch": "Alhanisch",
+        "andergast": "Andergast",
+        "bornland": "Bornland",
+        "freeCityNorth": "Freie Stadt im Norden",
+        "norbarden": "Norbarden",
+        "nostria": "Nostria",
+        "freieSchattenlande": "Freie Schattenlande",
+        "schattenlande": "Schattenlande",
+        "fjarninger": "Fjarninger",
+        "highNorth": "Hoch Norden",
+        "nivesen": "Nivesen"
+      },
+      "elven": {
+        "title": "Elfen",
+        "auelfen": "Auelfen",
+        "firnelfen": "Firnelfen",
+        "hochelfen": "Hochelfen",
+        "steppenelfen": "Steppenelfen",
+        "shakagra": "Shakagra",
+        "waldelfen": "Waldelfen"
+      },
+      "dwarf": {
+        "title": "Zwerge",
+        "amboss": "Ambosszwerge",
+        "brilliant": "Brillantzwerge",
+        "brobim": "Brobim",
+        "erz": "Erzzwerge",
+        "hügelzwerge": "Hügelzwerge",
+        "rotezwerge": "Rote Zwerge",
+        "tiefzwerge": "Tiefzwerge"
+      },
+      "god": {
+        "title": "Götter",
+        "praois": "Praios",
+        "rondra": "Rondra",
+        "efferad": "Efferd",
+        "travia": "Travia",
+        "boron": "Boron",
+        "hesinde": "Hesinde",
+        "firun": "Firun",
+        "tsa": "Tsa",
+        "phex": "Phex",
+        "peraine": "Peraine",
+        "ingerimm": "Ingerimm",
+        "halbgott": "Halbgötter"
+      },
+      "other": {
+        "title": "Andere",
+        "achaz": "Achaz",
+        "oger": "Oger",
+        "orks": "Orks",
+        "stadtGoblin": "Stadt-Goblin",
+        "suulak": "Suulak",
+        "trolle": "Trolle",
+        "buehnenZauberer": "Bühnenzauberer",
+        "gaukler": "Gaukler",
+        "gladiator": "Gladiator",
+        "magier": "Magier",
+        "quacksalber": "Quacksalber"
+      }
+    }
+  },
+  "smith": {
+    "qualification": {
+      "label": "Schmied Qualifikation",
+      "beginner": "Anfänger",
+      "apprentice": "Geselle",
+      "master": "Meister",
+      "specialist": "Spezialist"
+    },
+    "price": "Arbeitsstunden-Preis in Silbertaler",
+    "crafting": {
+      "label": "Herzustellendes Item",
+      "category": {
+        "weapon": "Waffe",
+        "armor": "Rüstung"
+      },
+      "item": {
+        "crossbows": "Armbrüste",
+        "bows": "Bögen",
+        "daggers": "Dolche",
+        "fencingWeapons": "Fechtwaffen",
+        "bludgeoningWeapons": "Hiebwaffen",
+        "chainWeapons": "Kettenwaffen",
+        "lances": "Lanzen",
+        "whips": "Peitschen",
+        "grappling": "Raufen",
+        "shields": "Schilde",
+        "slings": "Schleudern",
+        "swords": "Schwerter",
+        "polearms": "Stangenwaffen",
+        "throwingWeapons": "Wurfwaffen",
+        "twoHandedBludgeoningWeapons": "Zweihandhiebwaffen",
+        "twoHandedSwords": "Zweihandschwerter",
+        "normalCloth": "Normale Kleidung",
+        "heavyCloth": "Schwere Kleidung",
+        "clothArmor": "Stoffrüstung",
+        "leatherArmor": "Lederrüstung",
+        "woodenArmor": "Holzrüstung",
+        "chainArmor": "Kettenrüstung",
+        "scaleArmor": "Schuppenrüstung",
+        "plateArmor": "Plattenrüstung",
+        "tournamentArmor": "Turnierrüstung"
+      }
+    },
+    "attributeValue": "Attributwert",
+    "talentValue": "Talentwert",
+    "material": {
+      "label": "Material",
+      "tooltip1": "Nur bestimmte Waffen/Rüstungen, etwa Speere, Beile und Messer eignen sich als Steinwaffen.",
+      "tooltip2": "Aus diesen Materialien lassen sich nur Streitkolben, Rabenschnäbel, Morgensterne und ähnliche Wuchtwaffen ohne Klinge herstellen.",
+      "tooltip3": "Aus diesen Materialien lassen sich nur Plattenrüstungen herstellen.",
+      "steel": "Stahl",
+      "bronze": "Bronze",
+      "iron": "Eisen",
+      "grassoden": "Grassodenerz",
+      "fluSteel": "Großer Fluss-Stahl",
+      "kunchomer": "Khunchomer Stahl",
+      "maraskan": "Maraskanstahl",
+      "mirhamer": "Mirhamer Stahl",
+      "premer": "Premer Stahl",
+      "toschkril": "Toschkril",
+      "uhdenber": "Uhdenberger Stahl",
+      "dwarf": "Zwergenstahl",
+      "ebenwood": "Ebenholz",
+      "ironwood": "Eisenbaum",
+      "stonewood": "Steineiche",
+      "zykolp": "Zyklopenzeder",
+      "horn": "Horn",
+      "bone": "Knochen",
+      "vulcan": "Vulkanglas",
+      "fire": "Feuerstein",
+      "mindorium10": "Mindorium 10%",
+      "mindorium25": "Mindorium 25%",
+      "mindorium50": "Mindorium 50%",
+      "mindorium75": "Mindorium 75%",
+      "mindorium100": "Mindorium 100%",
+      "arkanium10": "Arkanium 10%",
+      "arkanium25": "Arkanium 25%",
+      "arkanium50": "Arkanium 50%",
+      "arkanium75": "Arkanium 75%",
+      "arkanium100": "Arkanium 100%",
+      "endurium10": "Endurium 10%",
+      "endurium25": "Endurium 25%",
+      "endurium50": "Endurium 50%",
+      "endurium100": "Endurium 100%",
+      "titanium10": "Titanium 10%",
+      "titanium25": "Titanium 25%",
+      "titanium50": "Titanium 50%",
+      "titanium100": "Titanium 100%",
+      "meteor1": "gewöhnliches Meteoreisen",
+      "meteor2": "schweres Meteoreisen",
+      "droler": "Drôler Stoff",
+      "phrai": "Phraischafwolle",
+      "iryan": "Iryanleder",
+      "woolnose": "Wollnashornleder"
+    },
+    "standardPrice": "Standardpreis in Silbertaler",
+    "standardWeight": "Standardgewicht in Stein",
+    "boni": {
+      "label": "Verbesserungen",
+      "none": "Keine",
+      "attack": "+1 AT-Modifikator",
+      "parade": "+1 PA-Modifikator",
+      "damage": "+1 TP",
+      "range": "+10 % Reichweite von Fernkampfwaffen",
+      "breakfactor": "+1 Bruchfaktorwert",
+      "armor": "+1 RS",
+      "speed": "Ignorieren von -1 GS durch BE oder zusätzliche Abzüge",
+      "initiative": "Ignorieren von -1 INI durch BE oder zusätzliche Abzüge",
+      "stability": "+1 Stabilitätswert"
+    },
+    "craftTechnic": {
+      "label": "Herstellungstechnik",
+      "none": "Keine",
+      "falt": "Fältungstechnik",
+      "lehm": "Lehmbacktechnik",
+      "chainBuild": "Filigranes Kettenknüpfen"
+    },
+    "calculatePrice": "Ermittle Herstellungspreis",
+    "itemText": {
+      "failure": "Kritischer Fehlschlag bei der Herstellung",
+      "result": "Die Herstellungskosten für die gewählten Einstellungen betragen {{price}} Silbertaler. Der Schmied brauchte {{time}} Tage für die Herstellung.",
+      "meteor": {
+        "text": "Die Ausrüstung hat durch Meteoriteisen folgenden Effekt: ",
+        "magic": "Das Objekt ist permanent magisch.",
+        "vibrating": "Das Objekt vibriert bei Vollmond.",
+        "damage": "Das Objekt verursacht +2 TP gegen Wesen, die nicht aus der 3. Sphäre stammen.",
+        "voices": "Der Träger des Objekts hört alle 1W6 Tage wispernde Stimmen in einer ihm unbekannten Sprache.",
+        "invisible": "Bei Vollmond ist das Objekt voll zu sehen, aber es wird mit abnehmendem Mond immer durchscheinender. Während des Neumonds ist das Objekt praktisch unsichtbar.",
+        "wolves": "Wölfe in bis zu 9 Meilen Entfernung beschützen den Träger des Objekts und heulen jede Nacht.",
+        "life": "Der Träger verliert jeden Tag 1 LeP, der von dem Objekt aufgenommen wird.",
+        "magentic": "Das Objekt ist magnetisch.",
+        "focus": "Für den Träger sind Beschwörungen von außersphärischen Wesen bei 1-3 auf W6 um 1 erleichtert, bei 4-6 um 1 erschwert, wenn das Objekt als Fokus benutzt wird.",
+        "gravity": "Einmal alle 1W6 Tage wird die Schwerkraft in einem Radius von 9 Schritt für 1W20 Sekunden außer Kraft gesetzt.",
+        "fluid": "Der Gegenstand verflüssigt sich nach 1W20 Tagen."
+      },
+      "failed": "Die Ausrüstung konnte nicht hergestellt werden."
+    }
+  },
+  "bugReport": {
+    "username": "Username",
+    "email": "Email (optional)",
+    "reportType": {
+      "bug": "Bugreport",
+      "feedback": "Feedback"
+    },
+    "date": "Datum (wann der Bug festgestellt wurde)",
+    "description": "Beschreibung",
+    "expected": "Erwartetes Verhalten",
+    "screenshot": "Image Anhang (optional)",
+    "submit": "Formular senden",
+    "error": {
+      "filesize": "Datei ist zu groß. Maximal 2 MB erlaubt.",
+      "maxTickets": "Maximale Anzahl an Tickets erreicht."
+    },
+    "send": "Vielen Dank. Ihre Report ist eingegangen."
+  },
+  "legalNotice": {
+    "legal1": "Diese Website und die darauf angebotenen Tools sind Fanprojekte und stehen in keiner offiziellen Verbindung zu Ulisses Spiele GmbH, dem Rechteinhaber von \"Das Schwarze Auge\". \"Das Schwarze Auge\" und alle damit verbundenen Begriffe und Regeln sind urheberrechtlich geschützt und gehören der Ulisses Spiele GmbH.",
+    "legal2": "Alle Inhalte, die nicht ausdrücklich Eigentum der Ulisses Spiele GmbH sind, sind Eigentum der Autoren dieser Website.",
+    "legal3": "Diese Website bietet inoffizielle Tools und Informationen zu \"Das Schwarze Auge\". Die auf dieser Website bereitgestellten Inhalte sind von Fans für Fans erstellt und sind nicht als offizielle Informationen zu betrachten. Für offizielle Informationen besuchen Sie bitte die Website von Ulisses Spiele GmbH."
   }
 }

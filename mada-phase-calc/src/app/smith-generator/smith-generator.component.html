@@ -1,0 +1,233 @@
+<form [formGroup]="smithForm">
+  <mat-form-field class="c-form-field-100p">
+    <mat-label>{{ "smith.qualification.label" | translate }}</mat-label>
+    <mat-select
+      formControlName="qualification"
+      required
+      (selectionChange)="changeQualification($event.value)"
+    >
+      @for (qualification of smithQualificationOptions; track qualification) {
+      <mat-option [value]="qualification">{{
+        "smith.qualification." + qualification | translate
+      }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div class="witdh-100 display-flex">
+    <mat-slider
+      [max]="sliderOption.max"
+      [min]="sliderOption.min"
+      [step]="sliderOption.step"
+      [discrete]="true"
+      class="width-50"
+    >
+      <input
+        matSliderThumb
+        [value]="smithForm.get('price')?.value"
+        (valueChange)="smithForm.get('price')?.setValue($event)"
+        #slider
+      />
+    </mat-slider>
+    <mat-form-field class="width-50">
+      <mat-label>{{ "smith.price" | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ 'smith.price' | translate }}"
+        formControlName="price"
+        type="number"
+        [max]="sliderOption.max"
+        [min]="sliderOption.min"
+        [step]="sliderOption.step"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="display-flex witdh-100">
+    <mat-form-field class="mr-r-20 width-20">
+      <mat-label>{{ "smith.attributeValue" | translate }}</mat-label>
+      <input matInput type="number" formControlName="attr1" min="8" max="25" />
+    </mat-form-field>
+    <mat-form-field class="mr-r-20 width-20">
+      <mat-label>{{ "smith.attributeValue" | translate }}</mat-label>
+      <input matInput type="number" formControlName="attr2" min="8" max="25"
+    /></mat-form-field>
+    <mat-form-field class="mr-r-20 width-20">
+      <mat-label>{{ "smith.attributeValue" | translate }}</mat-label>
+      <input matInput type="number" formControlName="attr3" min="8" max="25" />
+    </mat-form-field>
+
+    <mat-form-field class="width-20 ml-auto">
+      <mat-label>{{ "smith.talentValue" | translate }}</mat-label>
+      <input matInput type="number" formControlName="fw" min="0" max="25"
+    /></mat-form-field>
+  </div>
+
+  <div class="display-flex mr-b-5">
+    <mat-radio-group
+      (change)="changeItemType($event.value)"
+      aria-label="Select an option"
+      class="c-radio-button-box"
+    >
+      <mat-radio-button [value]="true">{{
+        "smith.crafting.category.weapon" | translate
+      }}</mat-radio-button>
+      <mat-radio-button [value]="false">{{
+        "smith.crafting.category.armor" | translate
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  @if(craftingOptions.length>0) {
+  <mat-form-field class="c-form-field-100p">
+    <mat-label>{{ "smith.crafting.label" | translate }}</mat-label>
+    <mat-select formControlName="item" required>
+      @for (item of craftingOptions; track item) {
+      <mat-option [value]="item">
+        {{ "smith.crafting.item." + item | translate }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="c-form-field-100p">
+    <mat-label>{{ "smith.material.label" | translate }}</mat-label>
+    <mat-select
+      formControlName="material"
+      required
+      (selectionChange)="changeMaterial($event.value)"
+    >
+      @for (material of materialOptions; track material) {
+      <mat-option [value]="material">
+        {{ "smith.material." + material | translate }}
+      </mat-option>
+      }
+    </mat-select>
+    @if(materialProperties.get(smithForm.get('material')?.value)?.tooltip) {
+    <mat-icon
+      matTooltip=" {{
+        'smith.material.' +
+          materialProperties.get(smithForm.get('material').value).tooltip
+          | translate
+      }}"
+      matSuffix
+      >info
+    </mat-icon>
+    }
+  </mat-form-field>
+
+  <div class="display-flex">
+    <div class="c-box mr-r-5">
+      <mat-form-field class="c-form-field-100p">
+        <mat-label>{{ "smith.standardPrice" | translate }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ 'smith.standardPrice' | translate }}"
+          formControlName="standardPrice"
+          type="number"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="c-box mr-l-5">
+      <mat-form-field class="c-form-field-100p">
+        <mat-label>{{ "smith.standardWeight" | translate }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ 'smith.standardWeight' | translate }}"
+          formControlName="standardWeight"
+          type="number"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="display-flex">
+    <div class="c-box mr-r-5">
+      <mat-form-field class="c-form-field-100p">
+        <mat-label>{{ "smith.boni.label" | translate }}</mat-label>
+        <mat-select formControlName="boni1">
+          @for (boni of boniOptions; track boni) {
+          <mat-option
+            [value]="boni"
+            [disabled]="isOptionDisabled(boni, 'boni1')"
+          >
+            {{ "smith.boni." + boni | translate }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="c-box mr-l-5">
+      <mat-form-field class="c-form-field-100p">
+        <mat-label>{{ "smith.boni.label" | translate }}</mat-label>
+        <mat-select formControlName="boni2">
+          @for (boni of boniOptions; track boni) {
+          <mat-option
+            [value]="boni"
+            [value]="boni"
+            [disabled]="isOptionDisabled(boni, 'boni2')"
+          >
+            {{ "smith.boni." + boni | translate }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  @if( isWeaponMaterialMetal || !isWeapon && smithForm.get('item').value ===
+  'chainArmor') {
+  <mat-form-field class="c-form-field-100p">
+    <mat-label>{{ "smith.craftTechnic.label" | translate }}</mat-label>
+    <mat-select formControlName="craftTechnic">
+      @for (craftTechnic of craftTechnicOptions; track craftTechnic) {
+      <mat-option [value]="craftTechnic">
+        {{ "smith.craftTechnic." + craftTechnic | translate }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  } } @if(craftedItemText) {
+  <div class="mr-b-20">
+    <div>
+      <span>{{
+        craftedItemText
+          | translate
+            : {
+                price: craftedItemProperties.price,
+                time: craftedItemProperties.time
+              }
+      }}</span>
+    </div>
+    @if(craftedItemProperties.meteorEffect) {
+    <div>
+      <span
+        >{{ "smith.itemText.meteor.text" | translate
+        }}{{
+          "smith.itemText.meteor." + craftedItemProperties.meteorEffect
+            | translate
+        }}</span
+      >
+    </div>
+    }
+  </div>
+  }@else {
+  <div class="mr-b-20">
+    <div>
+      <span>{{ craftedFailureText | translate }}</span>
+    </div>
+  </div>
+  }
+
+  <div class="button">
+    <button
+      mat-raised-button
+      (click)="calculateCraftedPrice()"
+      [disabled]="!smithForm.valid"
+    >
+      {{ "smith.calculatePrice" | translate }}
+    </button>
+  </div>
+</form>

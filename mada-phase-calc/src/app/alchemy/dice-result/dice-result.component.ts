@@ -101,7 +101,7 @@ export class DiceResultComponent implements OnInit {
 
   public changeDiceResult(): string {
     if (!this.data.alchemicTable) {
-      console.log('Error no alchemy table found');
+      console.error('Error no alchemy table found');
       return '';
     }
     let dieOneValue: number = this.changeDieOne.value ?? this.data.dice[0];

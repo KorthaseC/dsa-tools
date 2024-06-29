@@ -1,0 +1,34 @@
+<footer class="footer">
+  <div class="c-social-icons">
+    <button
+      mat-icon-button
+      matTooltip=" {{ 'footer.button.github' | translate }}"
+      (click)="goToLink('https://github.com/KorthaseC/dsa-tools-electron')"
+    >
+      <img
+        src="https://www.svgrepo.com/show/512317/github-142.svg"
+        alt="github"
+        class="invert-img c-button-size"
+      />
+    </button>
+    <button
+      mat-icon-button
+      matTooltip=" {{ 'footer.button.ulissesDiscord' | translate }}"
+      (click)="goToLink('https://discord.com/invite/xftRCTHj7Y')"
+    >
+      <img
+        src="https://scontent-ber1-1.xx.fbcdn.net/v/t39.30808-6/367716204_768573081818181_9214793973019777455_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=2rvKNrpRbVgQ7kNvgFODcHN&_nc_ht=scontent-ber1-1.xx&oh=00_AYCPvUHI3bUECbjuHwF8XCBksay-P3m7SpSZuF3RaOKDWA&oe=66859A27"
+        alt="ulisses discord"
+        class="c-button-size round-icon"
+      />
+    </button>
+  </div>
+  <div class="c-footer-links">
+    <a [routerLink]="['/report']">{{ "footer.report" | translate }}</a>
+    <a (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">
+      {{ "footer.ruleWiki" | translate }}</a
+    >
+    <a [routerLink]="['/legal']">{{ "footer.legal" | translate }}</a>
+    <span href="#">{{ "footer.version" | translate }}{{ version }} </span>
+  </div>
+</footer>
