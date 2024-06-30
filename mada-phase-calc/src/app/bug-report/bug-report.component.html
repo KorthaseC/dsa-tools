@@ -94,11 +94,15 @@
         [disabled]="
           !bugReportForm.valid ||
           fileTooLarge ||
-          submissionCount >= maxSubmissions
+          submissionCount >= maxSubmissions ||
+          isLoading
         "
       >
         {{ "bugReport.submit" | translate }}
       </button>
+      @if(isLoading) {
+      <mat-spinner class="c-spinner"></mat-spinner>
+      }
     </div>
 
     @if(submissionCount >= maxSubmissions) {

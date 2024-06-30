@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-bug-report',
@@ -32,6 +33,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './bug-report.component.html',
   styleUrl: './bug-report.component.scss',
@@ -43,6 +45,7 @@ export class BugReportComponent {
   public submissionCount: number = 0;
   public maxSubmissions: number = 3; // Set max tickets submissions
   public isFormSend: boolean = false;
+  public isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -73,6 +76,7 @@ export class BugReportComponent {
     ) {
       return;
     }
+    this.isLoading = true;
 
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -86,7 +90,7 @@ export class BugReportComponent {
     }
   }
 
-  sendToGoogleSheets(base64String: string) {
+  private sendToGoogleSheets(base64String: string): void {
     this.bugReportService
       .sendBugReport(this.bugReportForm.value, base64String)
       .subscribe({
@@ -95,8 +99,12 @@ export class BugReportComponent {
           this.submissionCount++;
           this.bugReportForm.reset();
           this.selectedFile = null;
+          this.isLoading = false;
         },
-        error: (error) => console.error('Fehler:', error),
+        error: (error) => {
+          console.error('Fehler:', error);
+          this.isLoading = false;
+        },
       });
   }
 }

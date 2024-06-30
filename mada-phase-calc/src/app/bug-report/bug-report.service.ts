@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Report {
@@ -16,8 +16,9 @@ interface Report {
   providedIn: 'root',
 })
 export class BugReportService {
-  private googleScriptURL =
-    'https://script.google.com/macros/s/AKfycbwc-_ZFO34epFCC-TlMPaBA7X9uMHM-WVWSiehgsFSEbdGGdlSiaxvpPmVDg1cRyJ07/exec';
+  private scriptID: string =
+    'AKfycbxIUYqKgVM-Q9cNCZ22dLOO6eXopTjPcvsP1y1ih4rCL_8T8cTBgxGd9MzRr16tLU_m';
+  private googleScriptURL: string = `https://script.google.com/macros/s/${this.scriptID}/exec`;
 
   constructor(private http: HttpClient) {}
 
@@ -32,6 +33,10 @@ export class BugReportService {
       base64String: base64String ? base64String : '',
     };
 
-    return this.http.post(this.googleScriptURL, body);
+    const headers = new HttpHeaders({
+      'Content-Type': 'text/plain;charset=utf-8',
+    });
+
+    return this.http.post(this.googleScriptURL, body, { headers });
   }
 }
