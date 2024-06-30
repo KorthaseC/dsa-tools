@@ -17,7 +17,7 @@ interface Report {
 })
 export class BugReportService {
   private googleScriptURL =
-    'https://script.google.com/macros/s/AKfycbyqT3W2S_vRnPo_XU0YLHzrxDToommTWwxgpmdgsEpeZ4iRt7EJRSlC2uAnAFAzmb55/exec';
+    'https://script.google.com/macros/s/AKfycbwc-_ZFO34epFCC-TlMPaBA7X9uMHM-WVWSiehgsFSEbdGGdlSiaxvpPmVDg1cRyJ07/exec';
 
   constructor(private http: HttpClient) {}
 
