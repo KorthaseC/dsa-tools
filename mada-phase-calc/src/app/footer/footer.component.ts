@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { version } from '../../../package.json';
+import { ulissesIcon } from './footer.constants';
 
 @Component({
   selector: 'app-footer',
@@ -21,6 +22,7 @@ import { version } from '../../../package.json';
 })
 export class FooterComponent {
   public version: string = version;
+  public ulissesIcon: string = ulissesIcon;
 
   constructor() {}
 
