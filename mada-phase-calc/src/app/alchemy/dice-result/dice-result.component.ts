@@ -1,5 +1,5 @@
+import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {
   FormControl,
   FormsModule,
@@ -7,12 +7,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Utility } from '../../shared/utility';
 import { AlchemyDiceResult } from '../alcheny.models';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dice-results',
@@ -34,7 +34,7 @@ export class DiceResultComponent implements OnInit {
   public changeDieTwo = new FormControl<number>(null, Validators.required);
   public changeDiceOptions: number[];
 
-  public alchemyResult: string;
+  public alchemyResult: string = '';
 
   private changeDiceOptionsSixSided = Array.from(
     { length: 6 },
@@ -79,7 +79,7 @@ export class DiceResultComponent implements OnInit {
       geniusPoints -= 1;
       diceResult += dieOneValue;
     } else {
-      diceResult += this.data.dice[0]; // Ursprünglicher Wert von dice 1
+      diceResult += this.data.dice[0]; // Origin value of dice 1
     }
 
     if (
@@ -90,7 +90,7 @@ export class DiceResultComponent implements OnInit {
       geniusPoints -= 1;
       diceResult += dieTwoValue;
     } else if (this.data.dice.length > 1) {
-      diceResult += this.data.dice[1]; // Ursprünglicher Wert von dice 2
+      diceResult += this.data.dice[1]; // Origin value of dice 2
     }
 
     // Add modValue only once
@@ -102,7 +102,7 @@ export class DiceResultComponent implements OnInit {
   public changeDiceResult(): string {
     if (!this.data.alchemicTable) {
       console.error('Error no alchemy table found');
-      return '';
+      return 'No table found';
     }
     let dieOneValue: number = this.changeDieOne.value ?? this.data.dice[0];
     let dieTwoValue: number =
@@ -117,6 +117,10 @@ export class DiceResultComponent implements OnInit {
       )
     );
 
+    if (!result) {
+      return 'No result found';
+    }
+
     let changeResult: string = this.translateService.instant(
       result.alchemicResult
     );
@@ -127,7 +131,7 @@ export class DiceResultComponent implements OnInit {
           changeResult = changeResult.replace(/{{effect}}/g, translatedEffect);
         });
     }
-    return result ? changeResult : 'No result found';
+    return changeResult;
   }
 
   public hasRemainingGeniusPoints(): boolean {

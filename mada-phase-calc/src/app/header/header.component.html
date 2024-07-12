@@ -1,5 +1,5 @@
 <mat-toolbar class="c-toolbar">
-  <mat-toolbar-row class="c-title">
+  <mat-toolbar-row class="c-title mr-t-5">
     <div
       class="c-logo-container"
       [routerLink]="['/overview']"
@@ -7,7 +7,7 @@
     >
       <img src="assets/dsa-tools-icon.ico" alt="Logo" class="c-logo" />
     </div>
-    <span>{{ pageTitle }}</span>
+    <span>{{ "header." + pageTitle | translate }}</span>
   </mat-toolbar-row>
 
   <mat-toolbar-row>

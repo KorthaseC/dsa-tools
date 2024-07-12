@@ -1,12 +1,12 @@
 import { Component, effect, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DAYS_IN_YEAR, MOON_ICON, Months, MoonPhase } from '../shared/constant';
 import { Utility } from '../shared/utility';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 const dayOptions: number[] = Array.from({ length: 30 }, (_, i) => i + 1);
 const namelessDayOptions: number[] = [1, 2, 3, 4, 5];

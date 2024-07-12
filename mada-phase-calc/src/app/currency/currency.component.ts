@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -9,9 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { CURRENCYMAP, CurrencyRegion, CurrencyValue } from '../shared/constant';
-import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { CURRENCYMAP, CurrencyRegion, CurrencyValue } from '../shared/constant';
 
 @Component({
   selector: 'app-currency',

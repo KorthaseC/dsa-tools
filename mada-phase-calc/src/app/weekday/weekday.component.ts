@@ -4,9 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Months, Weekdays } from '../shared/constant';
 import { Utility } from '../shared/utility';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 const dayOptions: number[] = Array.from({ length: 30 }, (_, i) => i + 1);
 const namelessDayOptions: number[] = [1, 2, 3, 4, 5];

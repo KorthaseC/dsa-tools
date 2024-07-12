@@ -1,10 +1,10 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { routes } from './app.routes';
 import { HttpLoaderFactory } from './app.translate-loader';
 
 export const appConfig: ApplicationConfig = {

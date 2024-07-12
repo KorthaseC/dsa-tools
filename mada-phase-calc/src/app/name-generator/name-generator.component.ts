@@ -1,3 +1,5 @@
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -5,29 +7,27 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { AsyncPipe, CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+  MatTreeModule,
+} from '@angular/material/tree';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   NameRegion,
   RACE_PANEL,
   RacePanel,
   TreeNode,
 } from './name-generator.model';
-import {
-  MatTreeFlatDataSource,
-  MatTreeFlattener,
-  MatTreeModule,
-} from '@angular/material/tree';
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NameGeneratorService } from './name-generator.service';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 interface FlatNode {
   expandable: boolean;

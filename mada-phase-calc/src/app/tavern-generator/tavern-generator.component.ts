@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
 import {
   FormControl,
@@ -9,8 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Utility } from '../shared/utility';
 import {
   Attendant,
   BED_PRICE_MODIFIER,
@@ -33,8 +35,6 @@ import {
   TavernNamePartTwo,
   TavernSpecialFeature,
 } from './tavern-generator.model';
-import { Utility } from '../shared/utility';
-import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-currency',

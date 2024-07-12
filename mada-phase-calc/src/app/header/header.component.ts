@@ -1,27 +1,29 @@
+import DiceBox from '@3d-dice/dice-box';
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
   ElementRef,
+  Inject,
   OnInit,
+  PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
-import DiceBox from '@3d-dice/dice-box';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { AppComponent } from '../app.component';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
-const diceBox = new DiceBox('#dice-box', {
-  assetPath: '/assets/dice-box/', // include the trailing backslash
-});
-
-diceBox.init().then(() => {});
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterModule,
+} from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { filter } from 'rxjs';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-header',
@@ -50,56 +52,59 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     | ElementRef
     | undefined;
 
-  private selcetDice: string[] = [];
+  private diceBox: DiceBox | undefined;
+  private selectDice: string[] = [];
 
   constructor(
     private router: Router,
-    private translateService: TranslateService,
-    private appComponent: AppComponent
-  ) {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.updatePageTitle(event.url);
-      });
-  }
+    private route: ActivatedRoute,
+    private appComponent: AppComponent,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   public ngOnInit(): void {
     this.isGerman.valueChanges.subscribe((isGerman) => {
       const lang = isGerman ? 'de' : 'en';
       this.appComponent.changeLanguage(lang);
-      this.updatePageTitle(this.router.url);
     });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.updatePageTitle();
+      });
   }
 
   //change slide toggle icon
   public ngAfterViewInit(): void {
-    if (this.element) {
-      const usaFlagLink: string =
-        'https://upload.wikimedia.org/wikipedia/commons/8/88/United-states_flag_icon_round.svg';
-      this.element.nativeElement.querySelector(
-        '.mdc-switch__icon--off'
-      ).innerHTML = `<img src=${usaFlagLink} />`;
-      this.element.nativeElement.querySelector(
-        '.mdc-switch__icon--off'
-      ).style.backgroundImage = `url(${usaFlagLink})`;
-      this.element.nativeElement.querySelector(
-        '.mdc-switch__icon--off'
-      ).style.backgroundSize = 'contain'; // change size of the image
+    if (isPlatformBrowser(this.platformId)) {
+      this.initDiceBox();
 
-      const germanFlagLink: string =
-        'https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_orb_Germany.svg';
-      this.element.nativeElement.querySelector(
-        '.mdc-switch__icon--on'
-      ).innerHTML = `
-        <img src=${germanFlagLink} />
-      `;
-      this.element.nativeElement.querySelector(
-        '.mdc-switch__icon--on'
-      ).style.backgroundImage = `url(${germanFlagLink})`;
-      this.element.nativeElement.querySelector(
-        '.mdc-switch__icon--on'
-      ).style.backgroundSize = 'contain'; // change size of the image
+      if (this.element) {
+        const usaFlagLink: string =
+          'https://upload.wikimedia.org/wikipedia/commons/8/88/United-states_flag_icon_round.svg';
+        this.element.nativeElement.querySelector(
+          '.mdc-switch__icon--off'
+        ).innerHTML = `<img src=${usaFlagLink} />`;
+        this.element.nativeElement.querySelector(
+          '.mdc-switch__icon--off'
+        ).style.backgroundImage = `url(${usaFlagLink})`;
+        this.element.nativeElement.querySelector(
+          '.mdc-switch__icon--off'
+        ).style.backgroundSize = 'contain'; // change size of the image
+
+        const germanFlagLink: string =
+          'https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_orb_Germany.svg';
+        this.element.nativeElement.querySelector(
+          '.mdc-switch__icon--on'
+        ).innerHTML = `<img src=${germanFlagLink} />`;
+        this.element.nativeElement.querySelector(
+          '.mdc-switch__icon--on'
+        ).style.backgroundImage = `url(${germanFlagLink})`;
+        this.element.nativeElement.querySelector(
+          '.mdc-switch__icon--on'
+        ).style.backgroundSize = 'contain'; // change size of the image
+      }
     }
   }
 
@@ -118,94 +123,81 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.addDice(dice);
     }
     if (this.isRollMulti.value) {
-      diceBox.add(dice);
+      this.diceBox.add(dice);
     }
     if (!this.isSelectMulti.value && !this.isRollMulti.value) {
-      diceBox.roll(dice);
+      this.diceBox.roll(dice);
     }
   }
 
   public deletDice(): void {
-    diceBox.clear();
-    this.selcetDice = [];
+    this.diceBox.clear();
+    this.selectDice = [];
   }
 
   public rollAllDice(): void {
-    diceBox.roll(this.selcetDice);
+    this.diceBox.roll(this.selectDice);
   }
 
   public findSelectedDieNumber(die: string): number {
-    const diceIndex = this.selcetDice.findIndex((item) =>
+    const diceIndex = this.selectDice.findIndex((item) =>
       item.endsWith(die.slice(1))
     );
 
     if (diceIndex > -1) {
-      const [count] = this.selcetDice[diceIndex].split('d');
+      const [count] = this.selectDice[diceIndex].split('d');
       return parseInt(count);
     }
     return 0; // Return 0 if the die is not found in the array
   }
 
-  private updatePageTitle(url: string): void {
-    let translationKey: string;
-    switch (url) {
-      case '/madaphase':
-        translationKey = 'header.madaTitle';
-        break;
-      case '/weekday':
-        translationKey = 'header.weekdayTitle';
-        break;
-      case '/currency':
-        translationKey = 'header.currencyTitle';
-        break;
-      case '/alchemy':
-        translationKey = 'header.alchemyTitle';
-        break;
-      case '/tavern':
-        translationKey = 'header.taverTitle';
-        break;
-      case '/names':
-        translationKey = 'header.nameGeneratorTitle';
-        break;
-      case '/smith':
-        translationKey = 'header.smithGeneratorTitle';
-        break;
-      case '/report':
-        translationKey = 'header.reportTitle';
-        break;
-      case '/legal':
-        translationKey = 'header.legalTitle';
-        break;
-      default:
-        translationKey = 'header.overviewTitle';
-        break;
+  private updatePageTitle(): void {
+    const activeRoute: ActivatedRoute = this.getActiveRoute(this.route);
+    if (activeRoute && activeRoute.snapshot.data['title']) {
+      this.pageTitle = activeRoute.snapshot.data['title'];
+    } else {
+      this.pageTitle = 'overviewTitle';
     }
+  }
 
-    this.translateService
-      .get(translationKey)
-      .subscribe((translation: string) => {
-        this.pageTitle = translation;
+  private getActiveRoute(route: ActivatedRoute): ActivatedRoute {
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+    return route;
+  }
+
+  private initDiceBox(): void {
+    const diceBoxElement = document.querySelector('#dice-box');
+    if (diceBoxElement) {
+      this.diceBox = new DiceBox('#dice-box', {
+        assetPath: '/assets/dice-box/',
       });
+
+      this.diceBox.init().then(() => {
+        // DiceBox is ready
+      });
+    }
   }
 
   private addDice(dice: string): void {
     // Check if the dice already exists in the array
-    const diceIndex = this.selcetDice.findIndex((item) =>
+    const diceIndex = this.selectDice.findIndex((item) =>
       item.endsWith(dice.slice(1))
     );
 
     if (diceIndex > -1) {
       // Increment the count of the existing dice
-      const [count, die] = this.selcetDice[diceIndex].split('d');
+      const [count, die] = this.selectDice[diceIndex].split('d');
       const newCount = parseInt(count) + 1;
-      this.selcetDice[diceIndex] = `${newCount}d${die}`;
+      this.selectDice[diceIndex] = `${newCount}d${die}`;
     } else {
       // Add the new dice to the array
-      this.selcetDice.push(dice);
+      this.selectDice.push(dice);
     }
 
     // Sort the array
-    this.selcetDice.sort((a, b) => {
+    this.selectDice.sort((a, b) => {
       const dieA = parseInt(a.split('d')[1]);
       const dieB = parseInt(b.split('d')[1]);
       return dieA - dieB;
