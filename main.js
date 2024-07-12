@@ -12,10 +12,7 @@ function createWindow() {
   });
   mainWindow.loadURL(
     url.format({
-      pathname: path.join(
-        __dirname,
-        `/dist/mada-phase-calc/browser/index.html`
-      ),
+      pathname: path.join(__dirname, `/dist/dsa-tools/browser/index.html`),
       protocol: "file:",
       slashes: true,
     })

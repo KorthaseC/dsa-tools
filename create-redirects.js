@@ -5,7 +5,7 @@ const redirectsContent = "/*    /index.html   200\n";
 const redirectsPath = path.join(
   __dirname,
   "dist",
-  "mada-phase-calc",
+  "dsa-tools",
   "browser",
   "_redirects"
 );

@@ -1,16 +1,16 @@
 {
-  "name": "mada-phase-calc",
+  "name": "dsa-tools",
   "main": "main.js",
   "version": "1.0.1",
   "authors": "sc",
-  "description": "madaphase",
+  "description": "dsa-tools",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build && node create-redirects.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:mada-phase-calc": "node dist/mada-phase-calc/server/server.mjs",
+    "serve:ssr:dsa-tools": "node dist/dsa-toolsserver/server.mjs",
     "electron": "ng build --base-href ./ && electron .",
     "dist": "ng build --base-href ./ && electron-builder"
   },
@@ -56,14 +56,14 @@
     "typescript": "~5.3.2"
   },
   "build": {
-    "appId": "madaphase.calc",
-    "productName": "MadaphaseCalc",
+    "appId": "dsa-tools",
+    "productName": "dsa-tools",
     "mac": {
       "category": "public.app-category.developer-tools"
     },
     "files": [
       "**/*",
-      "dist/mada-phase-calc/browser/**"
+      "dist/dsa-tools/browser/**"
     ]
   }
 }
