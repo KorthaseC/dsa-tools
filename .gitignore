@@ -45,4 +45,4 @@ Thumbs.db
 .env
 
 # Angular environment files
-/src/environments/environment.ts
+/src/environments/environment.local.ts
