@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 interface Report {
   reportType: string;
@@ -16,9 +17,7 @@ interface Report {
   providedIn: 'root',
 })
 export class BugReportService {
-  private scriptID: string =
-    'AKfycbxIUYqKgVM-Q9cNCZ22dLOO6eXopTjPcvsP1y1ih4rCL_8T8cTBgxGd9MzRr16tLU_m';
-  private googleScriptURL: string = `https://script.google.com/macros/s/${this.scriptID}/exec`;
+  private googleScriptURL: string = `https://script.google.com/macros/s/${environment.googleScriptId}/exec`;
 
   constructor(private http: HttpClient) {}
 
