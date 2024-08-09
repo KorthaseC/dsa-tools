@@ -115,4 +115,21 @@
       <p>{{ "overview.smithGenerator.description" | translate }}</p>
     </mat-card-content>
   </mat-card>
+
+  <mat-card [routerLink]="['/books']">
+    <mat-card-header>
+      <mat-card-title>{{
+        "overview.bookGenerator.title" | translate
+      }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://de.wiki-aventurica.de/de/images/thumb/1/1e/Nandus.svg/250px-Nandus.svg.png"
+      alt="Nandus Symbol"
+      class="blend-img"
+    />
+    <mat-card-content>
+      <p>{{ "overview.bookGenerator.description" | translate }}</p>
+    </mat-card-content>
+  </mat-card>
 </div>

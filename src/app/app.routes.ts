@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AlchemyComponent } from './alchemy/alchemy.component';
+import { BookGeneratorComponent } from './book-generator/book-generator.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
@@ -50,6 +51,11 @@ export const routes: Routes = [
     path: 'smith',
     component: SmithGeneratorComponent,
     data: { title: 'smithGeneratorTitle' },
+  },
+  {
+    path: 'books',
+    component: BookGeneratorComponent,
+    data: { title: 'bookGeneratorTitle' },
   },
   {
     path: 'report',

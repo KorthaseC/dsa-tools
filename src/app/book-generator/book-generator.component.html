@@ -1,0 +1,93 @@
+<form>
+  <mat-form-field>
+    <mat-label>{{ "books.bookType.label" | translate }}</mat-label>
+    <mat-select [formControl]="bookTypeControl" required>
+      @for (bookType of bookTypeOptions; track bookType) {
+      <mat-option [value]="bookType">{{
+        "books.bookType." + bookType | translate
+      }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ "books.feature.label" | translate }}</mat-label>
+    <mat-select [formControl]="featureControl" required>
+      @for (feature of featureOptions; track feature) {
+      <mat-option [value]="feature">{{
+        "books.feature." + feature | translate
+      }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ "books.bookCount.label" | translate }}</mat-label>
+    <input
+      matInput
+      [formControl]="bookCountControl"
+      type="number"
+      required
+      min="0"
+      max="50"
+    />
+    <mat-icon matTooltip="{{ 'books.bookCount.tooltip' | translate }}" matSuffix
+      >info
+    </mat-icon>
+  </mat-form-field>
+</form>
+
+@if(books?.length>10){
+<div>
+  <mat-paginator
+    [length]="books?.length"
+    [pageSize]="10"
+    [pageIndex]="currentPage"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+  <ng-container [ngTemplateOutlet]="bookList"></ng-container>
+</div>
+
+} @if(books?.length>0 && books?.length<11){
+<ng-container [ngTemplateOutlet]="bookList"></ng-container>
+}
+
+<ng-template #bookList>
+  <div class="c-book-container mr-b-20">
+    <ul>
+      @for(book of displayedBooks; track book) {
+      <li>
+        {{ "books.bookText.1" | translate }}
+        {{ "books.bookType." + book.bookType | translate }},
+        {{ "books.bookText.2" | translate }}
+        <strong
+          >{{ "books.bookNamesPartOne." + book.namePartOne | translate }}
+          {{ "books.bookNamesPartTwo." + book.namePartTwo | translate }}
+          {{
+            "books.bookNamesPartThree." + book.namePartThree | translate
+          }}</strong
+        >
+        @if(book.feature){
+        <br />{{ "books.bookText.bookFeatureText" | translate }}
+        {{ "books.bookFeatures." + book.feature | translate }}
+        }
+      </li>
+      }
+    </ul>
+  </div>
+</ng-template>
+
+<div class="button">
+  <button
+    mat-raised-button
+    (click)="getBooks()"
+    [disabled]="!isFormValid() || isLoading"
+  >
+    {{ "books.getBooks" | translate }}
+  </button>
+  @if(isLoading) {
+  <mat-spinner class="c-spinner"></mat-spinner>
+  }
+</div>
