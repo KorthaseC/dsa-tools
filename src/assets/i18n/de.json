@@ -1075,11 +1075,11 @@
     "getBooks": "Generiere Bücher",
     "bookNamesPartOne": {
       "primer": "Fibel ",
-      "bsics": "Das Einmaleins ",
+      "basics": "Das Einmaleins ",
       "handbook": "Handbuch ",
       "vademecum": "Vademecum ",
       "compendium": "Kompendium ",
-      "basics": "Grundbegriffe ",
+      "basicConcepts": "Grundbegriffe ",
       "art": "Die Kunst ",
       "dangers": "Von den Gefahren ",
       "essence": "Vom Wesen ",
