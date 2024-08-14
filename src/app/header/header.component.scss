@@ -1,21 +1,10 @@
-.c-toolbar {
-  height: auto;
-  padding: 0; /* Entfernen Sie zusätzlichen Innenabstand */
-}
-
-.c-title {
-  justify-content: center;
-  margin: 0; /* Entfernen Sie zusätzlichen Außenabstand */
-  line-height: 32px; /* Setzen Sie die Zeilenhöhe, um die Höhe der Zeile anzupassen */
-}
-
 .c-button-container {
   display: flex;
-  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end; /* Slider und Buttons rechts ausrichten */
+  justify-content: flex-end;
   width: 100%;
-  margin: 0; /* Entfernen Sie zusätzlichen Außenabstand */
+  margin: 0;
 }
 
 .c-button-size {
@@ -23,41 +12,51 @@
   height: 24px;
 }
 
-.c-logo-container {
-  position: absolute;
-  left: 0;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+:host .c-jusitfy-flex-start {
+  ::ng-deep {
+    .mat-grid-tile-content {
+      justify-content: flex-start;
+    }
+  }
 }
 
 .c-logo {
   height: 35px; /* Set logo height */
   margin-left: 8px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 mat-toolbar-row {
-  height: auto; /* Stellen Sie die gewünschte Höhe ein */
-  min-height: 32px; /* Stellen Sie die gewünschte Mindesthöhe ein */
-  padding: 0 8px; /* Passen Sie das Padding an */
+  height: auto;
+  min-height: 32px;
+  padding: 0 8px;
 }
 
 .dice-buttons {
   display: flex;
-  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
-  justify-content: flex-end; /* Buttons rechts ausrichten */
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.c-line-height {
+  height: 40px;
+}
+
+@media (max-width: 1200px) {
+  .c-line-height {
+    height: 80px;
+  }
 }
 
 @media (max-width: 600px) {
-  .c-button-container {
-    justify-content: flex-end; /* Elemente am rechten Rand ausrichten */
+  .c-line-height {
+    height: 120px;
   }
+}
 
-  .dice-buttons {
-    margin-top: 8px; /* Abstandsregelung */
-    justify-content: flex-end; /* Buttons rechts ausrichten */
-    width: 100%;
+@media (max-width: 540px) {
+  .c-line-height {
+    height: 160px;
   }
 }
 
@@ -67,5 +66,5 @@ mat-toolbar-row {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 0.7em;
-  color: blue; /* or any color that contrasts with your button */
+  color: blue;
 }

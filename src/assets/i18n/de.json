@@ -42,6 +42,7 @@
     "nameGeneratorTitle": "Namen Generator",
     "smithGeneratorTitle": "Schmiede",
     "bookGeneratorTitle": "Bücher Generator",
+    "aboutTitle": "Über diese Seite",
     "reportTitle": "Reports",
     "legalTitle": "Rechtliche Hinweise",
     "button": {
@@ -57,6 +58,7 @@
     "return": "Zurück zur Übersicht"
   },
   "footer": {
+    "about": "Über",
     "report": "Bugreport/Feedback",
     "ruleWiki": "Regel-Wiki",
     "legal": "Rechtliches",
@@ -1214,6 +1216,58 @@
       "oneTime": "Sobald ein Text gelesen wurde, verschwindet er für immer.",
       "memory": "Auf dem Buch liegt ein ERINNERUNG VERLASSE DICH."
     }
+  },
+  "about": {
+    "title": "Willkommen auf unserer inoffiziellen \"Das Schwarze Auge\" Hilfeseite",
+    "intro": "Diese Webseite wurde entwickelt, um dich und deine Spielgruppe bei euren Abenteuern in der Welt von Das Schwarze Auge zu unterstützen. Hier findest du eine Vielzahl an Tools und Generatoren, die euch das Spielleben erleichtern und für noch mehr Immersion sorgen.",
+    "features": {
+      "title": "Funktionen im Überblick",
+      "overview": {
+        "title": "Übersicht",
+        "description": "Eine zentrale Anlaufstelle, die alle verfügbaren Funktionen dieser Webseite auf einen Blick zeigt."
+      },
+      "madaphase": {
+        "title": "Mada-Phase",
+        "description": "Berechne die aktuelle Phase der Monde, um die magischen Einflüsse in eurem Abenteuer besser einschätzen zu können."
+      },
+      "weekday": {
+        "title": "Wochentag",
+        "description": "Bestimme den aktuellen Wochentag im aventurischen Kalender, um eure Geschichte nahtlos in die Spielwelt einzufügen."
+      },
+      "currency": {
+        "title": "Währungsrechner",
+        "description": "Konvertiere mühelos zwischen den verschiedenen Währungen Aventuriens, um Handel und Kaufgeschäfte realistisch darzustellen."
+      },
+      "alchemy": {
+        "title": "Alchemie",
+        "description": "Nutze unser Alchemie-Tool, um Tränke und Mixturen zu erstellen, die deine Helden im Spiel nutzen können."
+      },
+      "tavern": {
+        "title": "Tavernengenerator",
+        "description": "Erstelle zufällige Tavernen und Gasthäuser, in denen eure Helden einkehren können - inklusive Namen und Besonderheiten."
+      },
+      "names": {
+        "title": "Namensgenerator",
+        "description": "Finde passende Namen für Charaktere, die in eurer Geschichte vorkommen."
+      },
+      "smith": {
+        "title": "Schmiedegenerator",
+        "description": "Generiere zufällige Waffen und Rüstungen mit einzigartigen Eigenschaften."
+      },
+      "books": {
+        "title": "Büchergenerator",
+        "description": "Erstelle einzigartige Bücher und Schriftrollen, die eure Helden in der Welt von Aventurien entdecken können."
+      },
+      "report": {
+        "title": "Bugreport und Feedback",
+        "description": "Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst."
+      },
+      "legal": {
+        "title": "Rechtliches",
+        "description": "Hier findest du rechtliche Hinweise."
+      }
+    },
+    "conclusion": "Wir hoffen, dass diese Tools euch dabei helfen, eure Abenteuer noch spannender und immersiver zu gestalten. Wenn ihr Fragen oder Anregungen habt, zögert nicht, uns zu kontaktieren!"
   },
   "bugReport": {
     "username": "Username",

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 import { AlchemyComponent } from './alchemy/alchemy.component';
 import { BookGeneratorComponent } from './book-generator/book-generator.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
@@ -68,8 +69,13 @@ export const routes: Routes = [
     data: { title: 'legalTitle' },
   },
   {
+    path: 'about',
+    component: AboutComponent,
+    data: { title: 'aboutTitle' },
+  },
+  {
     path: '',
-    redirectTo: 'overview',
+    redirectTo: 'about',
     pathMatch: 'full',
   },
   {

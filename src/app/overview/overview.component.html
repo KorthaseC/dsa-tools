@@ -1,135 +1,25 @@
-<div class="card-container mr-b-40">
-  <mat-card [routerLink]="['/madaphase']">
-    <mat-card-header>
-      <mat-card-title>{{
-        "overview.madaPhase.title" | translate
-      }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/4/40/Mada.svg/600px-Mada.svg.png"
-      alt="Madaphase Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.madaPhase.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card [routerLink]="['/weekday']">
-    <mat-card-header>
-      <mat-card-title>{{
-        "overview.weekdays.title" | translate
-      }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/f/f1/Satinavs_Siegel.svg/250px-Satinavs_Siegel.svg.png"
-      alt="Satinav Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.weekdays.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card [routerLink]="['/currency']">
-    <mat-card-header>
-      <mat-card-title>{{
-        "overview.currencyCalc.title" | translate
-      }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/5/5e/Phex.svg/600px-Phex.svg.png"
-      alt="Phex Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.currencyCalc.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card [routerLink]="['/alchemy']">
-    <mat-card-header>
-      <mat-card-title>{{
-        "overview.alchemy.title" | translate
-      }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/8/8e/Ausf%C3%A4llen.svg/600px-Ausf%C3%A4llen.svg.png"
-      alt="Alchemy Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.alchemy.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card [routerLink]="['/tavern']">
-    <mat-card-header>
-      <mat-card-title>{{ "overview.tavern.title" | translate }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/f/f4/Travia.svg/250px-Travia.svg.png"
-      alt="Travia Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.tavern.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card [routerLink]="['/names']">
-    <mat-card-header>
-      <mat-card-title>{{
-        "overview.nameGenerator.title" | translate
-      }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/1/1e/Namenloser.svg/250px-Namenloser.svg.png"
-      alt="Nameless Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.nameGenerator.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card [routerLink]="['/smith']">
-    <mat-card-header>
-      <mat-card-title>{{
-        "overview.smithGenerator.title" | translate
-      }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/5/51/Ingerimm.svg/250px-Ingerimm.svg.png"
-      alt="Ingerimm Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.smithGenerator.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card [routerLink]="['/books']">
-    <mat-card-header>
-      <mat-card-title>{{
-        "overview.bookGenerator.title" | translate
-      }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://de.wiki-aventurica.de/de/images/thumb/1/1e/Nandus.svg/250px-Nandus.svg.png"
-      alt="Nandus Symbol"
-      class="blend-img"
-    />
-    <mat-card-content>
-      <p>{{ "overview.bookGenerator.description" | translate }}</p>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-grid-list
+  [gridCols]="{ xs: 1, sm: 1, md: 2, lg: 4, xl: 6 }"
+  rowHeight="600:800"
+  gutterSize="20px"
+  class="mr-b-40"
+>
+  @for (featureCard of featureCards; track featureCard) {
+  <mat-grid-tile [colspan]="featureCard.cols" [rowspan]="featureCard.rows">
+    <mat-card [routerLink]="[featureCard.routerLink]">
+      <mat-card-header>
+        <mat-card-title>{{ featureCard.title | translate }}</mat-card-title>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="featureCard.imgSrc"
+        [alt]="featureCard.imgAlt"
+        class="blend-img witdh-100"
+      />
+      <mat-card-content>
+        <p>{{ featureCard.discritpion | translate }}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  }
+</mat-grid-list>

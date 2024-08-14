@@ -42,6 +42,7 @@
     "nameGeneratorTitle": "Name Generator",
     "bookGeneratorTitle": "Book Generator",
     "smithGeneratorTitle": "Smithy",
+    "aboutTitle": "About this Page",
     "reportTitle": "Reports",
     "legalTitle": "Legal Notices",
     "button": {
@@ -57,6 +58,7 @@
     "return": "Return to Overview"
   },
   "footer": {
+    "about": "About",
     "report": "Bug Report/Feedback",
     "ruleWiki": "Rule Wiki",
     "legal": "Legal",
@@ -1214,6 +1216,58 @@
       "oneTime": "Once a text is read, it disappears forever.",
       "memory": "The book is under an MEMORY LEAVE YOU spell."
     }
+  },
+  "about": {
+    "title": "Welcome to our unofficial \"The Dark Eye\" help site",
+    "intro": "This website was developed to support you and your gaming group in your adventures in the world of The Dark Eye. Here you will find a variety of tools and generators to make your gameplay easier and to enhance immersion.",
+    "features": {
+      "title": "Overview of Features",
+      "overview": {
+        "title": "Overview",
+        "description": "A central hub that displays all the available functions of this website at a glance."
+      },
+      "madaphase": {
+        "title": "Mada Phase",
+        "description": "Calculate the current phase of the moons to better understand the magical influences in your adventure."
+      },
+      "weekday": {
+        "title": "Weekday",
+        "description": "Determine the current weekday in the Aventurian calendar to seamlessly integrate your story into the game world."
+      },
+      "currency": {
+        "title": "Currency Converter",
+        "description": "Effortlessly convert between the various currencies of Aventuria to realistically handle trade and transactions."
+      },
+      "alchemy": {
+        "title": "Alchemy",
+        "description": "Use our alchemy tool to create potions and mixtures that your heroes can use in the game."
+      },
+      "tavern": {
+        "title": "Tavern Generator",
+        "description": "Create random taverns and inns where your heroes can rest - including names and unique features."
+      },
+      "names": {
+        "title": "Name Generator",
+        "description": "Find fitting names for characters that appear in your story."
+      },
+      "smith": {
+        "title": "Smith Generator",
+        "description": "Generate random weapons and armor with unique properties."
+      },
+      "books": {
+        "title": "Book Generator",
+        "description": "Create unique books and scrolls that your heroes can discover in the world of Aventuria."
+      },
+      "report": {
+        "title": "Bug Report and Feedback",
+        "description": "Help us improve the website by reporting bugs or making suggestions for improvement."
+      },
+      "legal": {
+        "title": "Legal",
+        "description": "Here you will find legal information."
+      }
+    },
+    "conclusion": "We hope these tools help you make your adventures even more exciting and immersive. If you have any questions or suggestions, feel free to contact us!"
   },
   "bugReport": {
     "username": "Username",

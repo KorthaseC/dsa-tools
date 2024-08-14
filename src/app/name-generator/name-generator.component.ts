@@ -101,10 +101,24 @@ export class NameGeneratorComponent {
     private nameService: NameGeneratorService
   ) {
     this.dataSource.data = this.racePanels[0].treeData;
+
+    //check local storage for tab and open it
+    const savedTabIndex = localStorage.getItem('openPanelIndex');
+    if (savedTabIndex !== null) {
+      this.openPanelIndex = parseInt(savedTabIndex, 10);
+    }
   }
 
   public setRace(index: number) {
     this.openPanelIndex = this.openPanelIndex === index ? -1 : index;
+
+    //save tab in local storage
+    if (this.openPanelIndex > -1) {
+      localStorage.setItem('openPanelIndex', this.openPanelIndex.toString());
+    } else {
+      localStorage.removeItem('openPanelIndex');
+    }
+
     if (
       this.openPanelIndex > -1 &&
       this.racePanels[this.openPanelIndex].treeData

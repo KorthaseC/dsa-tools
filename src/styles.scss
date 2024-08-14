@@ -2,9 +2,6 @@
 
 html,
 body {
-  height: 100%;
-}
-body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: lightgray;
@@ -43,7 +40,7 @@ body {
 }
 
 .mr-b-40 {
-  margin-bottom: 40px;
+  margin-bottom: 40px !important;
 }
 
 .mr-t-5 {
@@ -56,6 +53,10 @@ body {
 
 .mr-l-5 {
   margin-left: 5px;
+}
+
+.mr-l-10 {
+  margin-left: 10px;
 }
 
 .mr-l-20 {
@@ -86,6 +87,10 @@ body {
   display: inline-flex;
 }
 
+.justify-flex-start {
+  justify-content: flex-start;
+}
+
 .blend-img {
   mix-blend-mode: multiply;
 }
@@ -112,6 +117,6 @@ canvas {
   }
 }
 
-.curosor {
+.cursor {
   cursor: pointer;
 }

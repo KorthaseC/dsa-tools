@@ -3,10 +3,10 @@
     <button
       mat-icon-button
       matTooltip=" {{ 'footer.button.github' | translate }}"
-      (click)="goToLink('https://github.com/KorthaseC/dsa-tools-electron')"
+      (click)="goToLink('https://github.com/KorthaseC/dsa-tools')"
     >
       <img
-        src="https://www.svgrepo.com/show/512317/github-142.svg"
+        src="assets/icons/github.svg"
         alt="github"
         class="invert-img c-button-size"
       />
@@ -17,15 +17,16 @@
       (click)="goToLink('https://discord.com/invite/xftRCTHj7Y')"
     >
       <img
-        [src]="ulissesIcon"
+        src="assets/icons/ulisses.svg"
         alt="ulisses discord"
-        class="c-button-size round-icon"
+        class="c-button-size"
       />
     </button>
   </div>
   <div class="c-footer-links">
+    <a [routerLink]="['/about']">{{ "footer.about" | translate }}</a>
     <a [routerLink]="['/report']">{{ "footer.report" | translate }}</a>
-    <a (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">
+    <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">
       {{ "footer.ruleWiki" | translate }}</a
     >
     <a [routerLink]="['/legal']">{{ "footer.legal" | translate }}</a>

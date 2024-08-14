@@ -108,7 +108,7 @@ describe('HeaderComponent', () => {
 
   it('should clear dice', () => {
     component['diceBox'] = jasmine.createSpyObj('DiceBox', ['clear']);
-    component.deletDice();
+    component.deleteDice();
     expect(component['diceBox'].clear).toHaveBeenCalled();
     expect(component['selectDice']).toEqual([]);
   });

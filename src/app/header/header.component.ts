@@ -12,6 +12,7 @@ import {
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -24,6 +25,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 import { AppComponent } from '../app.component';
+import { GridColsDirective } from '../shared/grid-cols.directive';
 
 @Component({
   selector: 'app-header',
@@ -37,6 +39,8 @@ import { AppComponent } from '../app.component';
     MatTooltipModule,
     MatCheckboxModule,
     RouterModule,
+    MatGridListModule,
+    GridColsDirective,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -47,6 +51,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   public isSelectMulti: FormControl = new FormControl(false);
 
   public isGerman: FormControl = new FormControl(true);
+
+  public diceList: string[] = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
 
   @ViewChild('languageSwitch', { read: ElementRef }) element:
     | ElementRef
@@ -81,8 +87,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.initDiceBox();
 
       if (this.element) {
-        const usaFlagLink: string =
-          'https://upload.wikimedia.org/wikipedia/commons/8/88/United-states_flag_icon_round.svg';
+        const usaFlagLink: string = 'assets/icons/united_states_flag.svg';
         this.element.nativeElement.querySelector(
           '.mdc-switch__icon--off'
         ).innerHTML = `<img src=${usaFlagLink} />`;
@@ -93,8 +98,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           '.mdc-switch__icon--off'
         ).style.backgroundSize = 'contain'; // change size of the image
 
-        const germanFlagLink: string =
-          'https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_orb_Germany.svg';
+        const germanFlagLink: string = 'assets/icons/flag_germany.svg';
         this.element.nativeElement.querySelector(
           '.mdc-switch__icon--on'
         ).innerHTML = `<img src=${germanFlagLink} />`;
@@ -130,7 +134,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public deletDice(): void {
+  public deleteDice(): void {
     this.diceBox.clear();
     this.selectDice = [];
   }

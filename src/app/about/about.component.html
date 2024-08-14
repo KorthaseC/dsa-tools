@@ -1,0 +1,25 @@
+<div class="c-about-container mr-b-40">
+  <h1>{{ "about.title" | translate }}</h1>
+  <p>{{ "about.intro" | translate }}</p>
+
+  <h2>{{ "about.features.title" | translate }}</h2>
+
+  <ul>
+    @for (feature of features; track feature) {
+    <li>
+      <h3
+        [routerLink]="[feature.routerLink]"
+        class="cursor c-feature-underline"
+      >
+        {{ "about.features." + feature.featureName + ".title" | translate }}
+      </h3>
+      <p>
+        {{
+          "about.features." + feature.featureName + ".description" | translate
+        }}
+      </p>
+    </li>
+    }
+  </ul>
+  <p>{{ "about.conclusion" | translate }}</p>
+</div>
