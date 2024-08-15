@@ -1288,8 +1288,58 @@
     "send": "Thank you. Your report has been received."
   },
   "legalNotice": {
-    "legal1": "This website and the tools offered on it are fan projects and are not officially affiliated with Ulisses Spiele GmbH, the rights holder of 'Das Schwarze Auge'. 'Das Schwarze Auge' and all associated terms and rules are copyrighted and belong to Ulisses Spiele GmbH.",
+    "legal1": "This website and the tools offered on it are fan projects and are not officially affiliated with Ulisses Spiele GmbH, the rights holder of 'The dark eye'. 'The dark eye' and all associated terms and rules are copyrighted and belong to Ulisses Spiele GmbH.",
     "legal2": "All content that is not explicitly the property of Ulisses Spiele GmbH is the property of the authors of this website.",
-    "legal3": "This website offers unofficial tools and information about 'Das Schwarze Auge'. The content provided on this website is created by fans for fans and is not to be considered official information. For official information, please visit the Ulisses Spiele GmbH website."
+    "legal3": "This website offers unofficial tools and information about 'The dark eye'. The content provided on this website is created by fans for fans and is not to be considered official information. For official information, please visit the Ulisses Spiele GmbH website."
+  },
+  "meta": {
+    "about": {
+      "description": "Discover tools and generators that help you in your adventures in the world of The dark eye.",
+      "keywords": "The dark eye, DSA, RPG tools, DSA generators, Aventuria, game aids"
+    },
+    "overview": {
+      "description": "A central hub for all the features available on this site to support your DSA adventures.",
+      "keywords": "DSA overview, RPG tools, The dark eye features, Aventuria tools"
+    },
+    "madaphase": {
+      "description": "Calculate the current Mada phase and discover the magical influences in Aventuria.",
+      "keywords": "Mada phase, Aventuria moon phases, magic in DSA, The dark eye magic"
+    },
+    "weekday": {
+      "description": "Determine the current weekday in the Aventurian calendar and add depth to your adventure.",
+      "keywords": "Aventurian calendar, DSA weekday, The dark eye timekeeping"
+    },
+    "currency": {
+      "description": "Convert currencies in Aventuria and create realistic trade transactions in your DSA adventure.",
+      "keywords": "DSA currency converter, Aventuria currency, trade in The dark eye"
+    },
+    "alchemy": {
+      "description": "Create potions and mixtures for your heroes in Aventuria using our alchemy tool.",
+      "keywords": "DSA alchemy, create potions, The dark eye mixtures, magic in Aventuria"
+    },
+    "tavern": {
+      "description": "Generate random taverns and inns for your DSA adventure with unique names and features.",
+      "keywords": "DSA tavern generator, The dark eye taverns, Aventurian inns"
+    },
+    "names": {
+      "description": "Find the perfect name for characters in your DSA adventure with our name generator.",
+      "keywords": "DSA name generator, The dark eye names, naming characters"
+    },
+    "smith": {
+      "description": "Generate unique weapons and armor for your heroes in Aventuria with our smith generator.",
+      "keywords": "DSA smith generator, weapons and armor, The dark eye crafting"
+    },
+    "books": {
+      "description": "Create unique books and scrolls that your heroes can discover in Aventuria.",
+      "keywords": "DSA book generator, The dark eye books, Aventurian scrolls"
+    },
+    "report": {
+      "description": "Help us improve the site by reporting bugs or providing feedback.",
+      "keywords": "DSA feedback, bug report, The dark eye support"
+    },
+    "legal": {
+      "description": "Find legal notices regarding our unofficial DSA support site here.",
+      "keywords": "DSA legal, The dark eye legal, legal notices"
+    }
   }
 }

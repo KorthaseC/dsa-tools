@@ -6,7 +6,7 @@ import { TestBed } from '@angular/core/testing';
 import { Book, BookType } from './book-generator.component';
 import { BookGeneratorService } from './book-generator.service';
 
-describe('NameGeneratorService', () => {
+describe('BookGeneratorService', () => {
   let service: BookGeneratorService;
   let httpMock: HttpTestingController;
 
@@ -51,7 +51,9 @@ describe('NameGeneratorService', () => {
 
     const promise = service.getBooksList(bookCount, bookType, feature);
 
-    const req = httpMock.expectOne('http://localhost:3000/generate-books');
+    const req = httpMock.expectOne(
+      'https://dsa-name-generator.onrender.com/generate-books'
+    );
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       bookCounter: bookCount,
@@ -88,7 +90,9 @@ describe('NameGeneratorService', () => {
 
     const promise = service.getBooksList(bookCount, bookType, feature);
 
-    const req = httpMock.expectOne('http://localhost:3000/generate-books');
+    const req = httpMock.expectOne(
+      'https://dsa-name-generator.onrender.com/generate-books'
+    );
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       bookCounter: bookCount,
@@ -108,7 +112,9 @@ describe('NameGeneratorService', () => {
 
     const promise = service.getBooksList(bookCount, bookType, feature);
 
-    const req = httpMock.expectOne('http://localhost:3000/generate-books');
+    const req = httpMock.expectOne(
+      'https://dsa-name-generator.onrender.com/generate-books'
+    );
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       bookCounter: bookCount,

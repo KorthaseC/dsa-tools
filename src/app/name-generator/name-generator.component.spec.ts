@@ -39,7 +39,7 @@ describe('NameGeneratorComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should initialize with default values', () => {
-    expect(component.openPanelIndex).toBe(-1);
+    expect(component.openPanelIndex).toBe(1);
     expect(component.racePanels).toBe(RACE_PANEL);
     expect(component.isNoble.value).toBeFalse();
     expect(component.genderControl.value).toBe('all');

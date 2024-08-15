@@ -16,62 +16,94 @@ export const routes: Routes = [
   {
     path: 'overview',
     component: OverviewComponent,
-    data: { title: 'overviewTitle' },
+    data: {
+      title: 'overviewTitle',
+      description: 'overview',
+      keywords: 'overview',
+    },
   },
   {
     path: 'madaphase',
     component: MadaphaseComponent,
-    data: { title: 'madaTitle' },
+    data: {
+      title: 'madaTitle',
+      description: 'madaphase',
+      keywords: 'madaphase',
+    },
   },
   {
     path: 'weekday',
     component: WeekdayComponent,
-    data: { title: 'weekdayTitle' },
+    data: {
+      title: 'weekdayTitle',
+      description: 'weekday',
+      keywords: 'weekday',
+    },
   },
   {
     path: 'currency',
     component: CurrencyComponent,
-    data: { title: 'currencyTitle' },
+    data: {
+      title: 'currencyTitle',
+      description: 'currency',
+      keywords: 'currency',
+    },
   },
   {
     path: 'alchemy',
     component: AlchemyComponent,
-    data: { title: 'alchemyTitle' },
+    data: {
+      title: 'alchemyTitle',
+      description: 'alchemy',
+      keywords: 'alchemy',
+    },
   },
   {
     path: 'tavern',
     component: TavernGeneratorComponent,
-    data: { title: 'tavernTitle' },
+    data: { title: 'tavernTitle', description: 'tavern', keywords: 'tavern' },
   },
   {
     path: 'names',
     component: NameGeneratorComponent,
-    data: { title: 'nameGeneratorTitle' },
+    data: {
+      title: 'nameGeneratorTitle',
+      description: 'names',
+      keywords: 'names',
+    },
   },
   {
     path: 'smith',
     component: SmithGeneratorComponent,
-    data: { title: 'smithGeneratorTitle' },
+    data: {
+      title: 'smithGeneratorTitle',
+      description: 'smith',
+      keywords: 'smith',
+    },
   },
   {
     path: 'books',
     component: BookGeneratorComponent,
-    data: { title: 'bookGeneratorTitle' },
+    data: {
+      title: 'bookGeneratorTitle',
+      description: 'books',
+      keywords: 'books',
+    },
   },
   {
     path: 'report',
     component: BugReportComponent,
-    data: { title: 'reportTitle' },
+    data: { title: 'reportTitle', description: 'report', keywords: 'report' },
   },
   {
     path: 'legal',
     component: LegalNoticeComponent,
-    data: { title: 'legalTitle' },
+    data: { title: 'legalTitle', description: 'legal', keywords: 'legal' },
   },
   {
     path: 'about',
     component: AboutComponent,
-    data: { title: 'aboutTitle' },
+    data: { title: 'aboutTitle', description: 'about', keywords: 'about' },
   },
   {
     path: '',

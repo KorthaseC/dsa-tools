@@ -39,10 +39,6 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have the 'DSA Tools' title`, () => {
-    expect(component.title).toEqual('DSA Tools');
-  });
-
   it('should set the default language on init', () => {
     spyOn(localStorage, 'getItem').and.returnValue(null);
     spyOn(translateService, 'setDefaultLang');

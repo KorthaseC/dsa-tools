@@ -1291,5 +1291,55 @@
     "legal1": "Diese Website und die darauf angebotenen Tools sind Fanprojekte und stehen in keiner offiziellen Verbindung zu Ulisses Spiele GmbH, dem Rechteinhaber von \"Das Schwarze Auge\". \"Das Schwarze Auge\" und alle damit verbundenen Begriffe und Regeln sind urheberrechtlich geschützt und gehören der Ulisses Spiele GmbH.",
     "legal2": "Alle Inhalte, die nicht ausdrücklich Eigentum der Ulisses Spiele GmbH sind, sind Eigentum der Autoren dieser Website.",
     "legal3": "Diese Website bietet inoffizielle Tools und Informationen zu \"Das Schwarze Auge\". Die auf dieser Website bereitgestellten Inhalte sind von Fans für Fans erstellt und sind nicht als offizielle Informationen zu betrachten. Für offizielle Informationen besuchen Sie bitte die Website von Ulisses Spiele GmbH."
+  },
+  "meta": {
+    "about": {
+      "description": "Entdecke Tools und Generatoren, die dir bei deinen Abenteuern in der Welt von Das Schwarze Auge helfen.",
+      "keywords": "Das Schwarze Auge, DSA, Rollenspiel-Tools, DSA Generatoren, Aventurien, Spielhilfe"
+    },
+    "overview": {
+      "description": "Eine zentrale Anlaufstelle für alle verfügbaren Funktionen dieser Webseite, um deine DSA-Abenteuer zu unterstützen.",
+      "keywords": "DSA Übersicht, Rollenspiel-Tools, Das Schwarze Auge Funktionen, Aventurien Tools"
+    },
+    "madaphase": {
+      "description": "Berechne die aktuelle Mada-Phase und entdecke die magischen Einflüsse in Aventurien.",
+      "keywords": "Mada-Phase, Mondphasen Aventurien, Magie in DSA, Das Schwarze Auge Magie"
+    },
+    "weekday": {
+      "description": "Bestimme den aktuellen Wochentag im aventurischen Kalender und verleihe deinem Abenteuer mehr Tiefe.",
+      "keywords": "Aventurischer Kalender, DSA Wochentag, Das Schwarze Auge Zeitrechnung"
+    },
+    "currency": {
+      "description": "Konvertiere Währungen in Aventurien und gestalte realistische Handelsgeschäfte in deinem DSA-Abenteuer.",
+      "keywords": "DSA Währungsrechner, Aventurien Währung, Handel in Das Schwarze Auge"
+    },
+    "alchemy": {
+      "description": "Erstelle Tränke und Mixturen für deine Helden in Aventurien mit unserem Alchemie-Tool.",
+      "keywords": "DSA Alchemie, Tränke erstellen, Das Schwarze Auge Mixturen, Magie in Aventurien"
+    },
+    "tavern": {
+      "description": "Erstelle zufällige Tavernen und Gasthäuser für dein DSA-Abenteuer mit einzigartigen Namen und Besonderheiten.",
+      "keywords": "DSA Tavernengenerator, Das Schwarze Auge Tavernen, Aventurische Gasthäuser"
+    },
+    "names": {
+      "description": "Finde den perfekten Namen für Charaktere in deinem DSA-Abenteuer mit unserem Namensgenerator.",
+      "keywords": "DSA Namensgenerator, Das Schwarze Auge Namen, Charaktere benennen"
+    },
+    "smith": {
+      "description": "Generiere einzigartige Waffen und Rüstungen für deine Helden in Aventurien mit unserem Schmiedegenerator.",
+      "keywords": "DSA Schmiedegenerator, Waffen und Rüstungen, Das Schwarze Auge Handwerk"
+    },
+    "books": {
+      "description": "Erstelle einzigartige Bücher und Schriftrollen, die deine Helden in Aventurien entdecken können.",
+      "keywords": "DSA Büchergenerator, Das Schwarze Auge Bücher, Aventurische Schriftrollen"
+    },
+    "report": {
+      "description": "Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.",
+      "keywords": "DSA Feedback, Bugreport, Das Schwarze Auge Support"
+    },
+    "legal": {
+      "description": "Hier findest du rechtliche Hinweise zu unserer inoffiziellen DSA-Hilfeseite.",
+      "keywords": "DSA Rechtliches, Das Schwarze Auge Rechtlich, rechtliche Hinweise"
+    }
   }
 }
