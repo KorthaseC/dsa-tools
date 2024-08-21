@@ -1,7 +1,7 @@
 {
   "name": "dsa-tools",
   "main": "main.js",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "authors": "sc",
   "description": "dsa-tools",
   "scripts": {
@@ -29,6 +29,8 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "dotenv": "^16.4.5",
+    "material-icons": "^1.13.12",
+    "roboto-fontface": "^0.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "vite": "^5.2.12",
