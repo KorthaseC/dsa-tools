@@ -22,7 +22,7 @@ import {
   Router,
   RouterModule,
 } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 import { AppComponent } from '../app.component';
 import { GridColsDirective } from '../shared/grid-cols.directive';
@@ -65,10 +65,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private appComponent: AppComponent,
+    private translateService: TranslateService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   public ngOnInit(): void {
+    //set initial value of isGerman based on the current language
+    const currentLang = this.translateService.currentLang || this.translateService.defaultLang;
+    this.isGerman.setValue(currentLang === 'de');
+
     this.isGerman.valueChanges.subscribe((isGerman) => {
       const lang = isGerman ? 'de' : 'en';
       this.appComponent.changeLanguage(lang);

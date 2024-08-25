@@ -48,6 +48,7 @@ export class AppComponent implements OnInit {
   public changeLanguage(lang: string): void {
     this.translateService.use(lang);
     localStorage.setItem('language', lang);
+    this.updateHtmlLangAttribute(lang);
     this.updateTitleAndMetaForCurrentRoute(); // Ensure title and meta tags are updated on language change
   }
 
@@ -56,9 +57,15 @@ export class AppComponent implements OnInit {
     this.translateService.setDefaultLang(savedLang);
     this.translateService.use(savedLang);
 
+    this.updateHtmlLangAttribute(savedLang);
+
     this.translateService.onLangChange.subscribe(() => {
       this.updateTitleAndMetaForCurrentRoute();
     });
+  }
+
+  private updateHtmlLangAttribute(lang: string): void {
+    document.documentElement.lang = lang;
   }
 
   private handleRouteChanges(): void {
