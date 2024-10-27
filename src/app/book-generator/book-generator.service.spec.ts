@@ -1,10 +1,8 @@
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Book, BookType } from './book-generator.component';
 import { BookGeneratorService } from './book-generator.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('BookGeneratorService', () => {
   let service: BookGeneratorService;
@@ -12,9 +10,9 @@ describe('BookGeneratorService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [BookGeneratorService],
-    });
+    imports: [],
+    providers: [BookGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
     service = TestBed.inject(BookGeneratorService);
     httpMock = TestBed.inject(HttpTestingController);

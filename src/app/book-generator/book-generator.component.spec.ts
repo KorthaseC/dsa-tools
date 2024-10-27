@@ -1,10 +1,11 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PageEvent } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { BookGeneratorComponent, BookType } from './book-generator.component';
 import { BookGeneratorService } from './book-generator.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('BookGeneratorComponent', () => {
   let component: BookGeneratorComponent;
@@ -17,14 +18,11 @@ describe('BookGeneratorComponent', () => {
     ]);
 
     await TestBed.configureTestingModule({
-      imports: [
-        BookGeneratorComponent,
+    imports: [BookGeneratorComponent,
         TranslateModule.forRoot(),
-        BrowserAnimationsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [{ provide: BookGeneratorService, useValue: mockBookService }],
-    }).compileComponents();
+        BrowserAnimationsModule],
+    providers: [{ provide: BookGeneratorService, useValue: mockBookService }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+}).compileComponents();
 
     fixture = TestBed.createComponent(BookGeneratorComponent);
     component = fixture.componentInstance;

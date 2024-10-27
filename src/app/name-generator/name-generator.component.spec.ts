@@ -1,10 +1,11 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { NameGeneratorComponent } from './name-generator.component';
 import { NameRegion, RACE_PANEL } from './name-generator.model';
 import { NameGeneratorService } from './name-generator.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('NameGeneratorComponent', () => {
   let component: NameGeneratorComponent;
@@ -17,14 +18,11 @@ describe('NameGeneratorComponent', () => {
     ]);
 
     await TestBed.configureTestingModule({
-      imports: [
-        NameGeneratorComponent,
+    imports: [NameGeneratorComponent,
         TranslateModule.forRoot(),
-        BrowserAnimationsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [{ provide: NameGeneratorService, useValue: nameServiceSpy }],
-    }).compileComponents();
+        BrowserAnimationsModule],
+    providers: [{ provide: NameGeneratorService, useValue: nameServiceSpy }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+}).compileComponents();
 
     fixture = TestBed.createComponent(NameGeneratorComponent);
     component = fixture.componentInstance;
