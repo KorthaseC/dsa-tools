@@ -1,0 +1,99 @@
+.p-card {
+  background-color: #fffef0 !important; // Pergament
+  border: 2px solid #3e2c1b;
+  border-radius: 8px !important;;
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.6), 0 0 20px #8a4d0f inset !important;;
+  padding: 1.5rem;
+  color: #2e1d12 !important;;
+  position: relative;
+  overflow: hidden;
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #3e2c1b;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 8px;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 8px;
+  }
+
+  .corner-top-right,
+  .corner-bottom-left {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #3e2c1b;
+    z-index: 2;
+  }
+
+  .corner-top-right {
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 8px;
+  }
+
+  .corner-bottom-left {
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 8px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+p-inputnumber {
+  input{
+    background-color: transparent !important;
+    color: black !important;
+  } 
+}
+
+p-tabs {
+  --p-tabs-tab-color: black;
+  --p-tabs-tablist-background: transparent;
+  --p-tabs-tabpanel-background: transparent;
+  --p-tabs-tabpanel-color: black;
+}
+
+p-tab {
+  justify-content: center;
+  flex: 1 1 0;
+}
+
+p-checkbox{
+  --p-checkbox-background: transparent
+}
+
+p-divider {
+  --p-divider-horizontal-margin: 0px 0px 20px
+}
+
+p-tabpanel {
+  h3 {
+    margin: 0px 0 0px !important;
+    font-weight: 600 !important;
+  }
+}
+
+:root{
+  --p-primary-color: #4caf50 !important;
+
+  --p-radiobutton-background: transparent !important;
+  --p-radiobutton-icon-checked-color: green !important;
+  --p-radiobutton-icon-checked-hover-color: green !important;
+  
+  --p-tabs-tab-hover-color: dimgray !important;
+}

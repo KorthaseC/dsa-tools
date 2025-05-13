@@ -3,12 +3,35 @@ $roboto-font-path: "../node_modules/roboto-fontface/fonts" !default;
 
 $material-icons-font-path: '../node_modules/material-icons/iconfont/';
 @use '../node_modules/material-icons/iconfont/material-icons.scss';
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+@import 'styles/primeng-overrides';
+
 
 html,
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: lightgray;
+}
+
+h1, .dsa-title {
+  font-family: 'Uncial Antiqua', serif !important;
+  text-transform: uppercase !important;
+  color: #e4d3a2 !important;
+  letter-spacing: 2px !important;
+  text-shadow: 1px 1px 2px #000 !important;
+  margin: 0 !important;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 900 !important;
+  font-size: xx-large !important;
+}
+
+.width-15 {
+  width: 15%;
 }
 
 .width-20 {
@@ -29,6 +52,14 @@ body {
 
 .width-60 {
   width: 60%;
+}
+
+.width-80 {
+  width: 80%;
+}
+
+.width-85 {
+  width: 85%;
 }
 
 .witdh-100 {
@@ -93,6 +124,10 @@ body {
 
 .justify-flex-start {
   justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .blend-img {

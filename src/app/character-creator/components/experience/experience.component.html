@@ -1,0 +1,12 @@
+<h2>Select your experience level</h2>
+
+<mat-form-field appearance="fill" style="min-width: 300px;">
+  <mat-label>Experience Level</mat-label>
+  <mat-select [value]="selected()" (selectionChange)="setSelected($event.value)">
+    @for(level of experienceLevels; track level) {
+      <mat-option  [value]="level">
+        {{ level.label }} – {{ level.ap }} AP
+      </mat-option>
+    }
+  </mat-select>
+</mat-form-field>

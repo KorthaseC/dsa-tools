@@ -1,4 +1,16 @@
-<mat-toolbar>
+<div class="witdh-100 c-header" >
+    <div
+      [routerLink]="['/overview']"
+      matTooltip=" {{ 'header.return' | translate }}"
+      class="cursor c-icon"
+    >
+      <img src="assets/dsa-tools-icon.ico" alt="Logo" class="c-logo" />
+    </div>
+    
+    <h1 class="c-title">{{ "header." + pageTitle | translate }}</h1>
+</div>
+<!-- <app-dice-rolls></app-dice-rolls>
+ --> <!--<mat-toolbar>
   <mat-toolbar-row>
     <mat-grid-list
       [gridCols]="{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3 }"
@@ -16,7 +28,7 @@
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span>{{ "header." + pageTitle | translate }}</span>
+        <h1>{{ "header." + pageTitle | translate }}</h1>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-toolbar-row>
@@ -98,3 +110,4 @@
     </mat-grid-list>
   </mat-toolbar-row>
 </mat-toolbar>
+ -->

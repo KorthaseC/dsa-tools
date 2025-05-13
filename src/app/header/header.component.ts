@@ -25,6 +25,7 @@ import {
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 import { AppComponent } from '../app.component';
+import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
 import { GridColsDirective } from '../shared/grid-cols.directive';
 
 @Component({
@@ -41,6 +42,7 @@ import { GridColsDirective } from '../shared/grid-cols.directive';
     RouterModule,
     MatGridListModule,
     GridColsDirective,
+    DiceRollsComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

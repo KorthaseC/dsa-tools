@@ -1,8 +1,8 @@
-body {
-  margin: 0;
-  height: 100vh;
+:host {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 app-header {
@@ -10,24 +10,65 @@ app-header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  height: 5vh;
 }
 
 app-footer {
-  width: 100%;
   position: fixed;
   bottom: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 5vh;
+  width: 100%;
 }
 
-main {
+.main-container {
+  position: absolute;
+  top: 5vh;
+  bottom: 5vh;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  height: 90vh;
+  width: 100%;
+  color: black;
+}
+
+.main-content {
+  height: 100%;
+  width: 100%;
+  background: #fffef0;
+  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
   display: flex;
   justify-content: center;
-  padding-bottom: 80px;
+  overflow: auto;
+
+  // SVG Filter (falls nötig)
+  filter: url(#wavy2);
+}
+
+.content-wrapper {
+  height: 97%;
+  width: 80%;
+  padding-top: 2em;
 }
 
 .layout-container {
-  max-width: 80%;
   width: 100%;
+  padding: 4em 0;
+  background: #fffef0;
+  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+  filter: url(#wavy2);
+  display: flex;
+  justify-content: center;
+  min-height: 78.5vh;
+}
+
+.content-inner {
+  width: 80%;
+  display: flex;
+  gap: 2rem;
 }
 
 .dice-box {

@@ -1,0 +1,67 @@
+.c-species-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+  justify-content: flex-start;
+
+  p-card {
+    cursor: pointer;
+  }
+}
+
+.c-species-image {
+  height: 15vh;
+  width: auto;
+  display: block;
+  justify-self: center;
+}
+
+.c-species-figure {
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+}
+
+.c-species-caption {
+  font-size: 0.6em;
+  color: #666;
+  max-width: 150px;
+}
+
+.c-selected {
+  border-radius: 12px;
+  box-shadow: 0px 0px 12px 4px #4caf50;
+}
+
+.c-checkbox-radio-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 400px) {
+  .c-checkbox-radio-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-checkbox-radio-wrapper {
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 8px;
+}
+
+.c-disable-check {
+  padding-left: 16px;
+  align-self: center;
+}
+
+.c-species-attributes{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0px 4px;
+}
