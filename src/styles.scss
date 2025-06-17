@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-$roboto-font-path: "../node_modules/roboto-fontface/fonts" !default;
+$roboto-font-path: '../node_modules/roboto-fontface/fonts' !default;
 
 $material-icons-font-path: '../node_modules/material-icons/iconfont/';
 @use '../node_modules/material-icons/iconfont/material-icons.scss';
@@ -7,15 +7,15 @@ $material-icons-font-path: '../node_modules/material-icons/iconfont/';
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 @import 'styles/primeng-overrides';
 
-
 html,
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: lightgray;
 }
 
-h1, .dsa-title {
+h1,
+.dsa-title {
   font-family: 'Uncial Antiqua', serif !important;
   text-transform: uppercase !important;
   color: #e4d3a2 !important;
@@ -62,7 +62,7 @@ h2 {
   width: 85%;
 }
 
-.witdh-100 {
+.width-100 {
   width: 100%;
 }
 

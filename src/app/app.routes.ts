@@ -3,6 +3,8 @@ import { AboutComponent } from './about/about.component';
 import { AlchemyComponent } from './alchemy/alchemy.component';
 import { BookGeneratorComponent } from './book-generator/book-generator.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
+import { CharacterImporterComponent } from './character-creator/components/character-importer/character-importer.component';
+import { CharacterLoaderComponent } from './character-creator/components/character-loader/character-loader.component';
 import { CharacterWizardComponent } from './character-creator/components/character-wizard/character-wizard.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
@@ -92,8 +94,26 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'character',
+    component: CharacterLoaderComponent,
+    data: {
+      title: 'characterCreatorTitle',
+      description: 'character-creator',
+      keywords: 'character-creator',
+    },
+  },
+  {
     path: 'character-creator',
     component: CharacterWizardComponent,
+    data: {
+      title: 'characterCreatorTitle',
+      description: 'character-creator',
+      keywords: 'character-creator',
+    },
+  },
+  {
+    path: 'character-importer',
+    component: CharacterImporterComponent,
     data: {
       title: 'characterCreatorTitle',
       description: 'character-creator',

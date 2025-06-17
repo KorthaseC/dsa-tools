@@ -1,21 +1,11 @@
-<mat-grid-list
-  [gridCols]="{ xs: 1, sm: 1, md: 2, lg: 4, xl: 6 }"
-  rowHeight="600:800"
-  gutterSize="20px"
-  class="mr-b-40"
->
+<mat-grid-list [gridCols]="{ xs: 1, sm: 1, md: 2, lg: 4, xl: 6 }" rowHeight="600:800" gutterSize="20px" class="mr-b-40">
   @for (featureCard of featureCards; track featureCard) {
   <mat-grid-tile [colspan]="featureCard.cols" [rowspan]="featureCard.rows">
     <mat-card [routerLink]="[featureCard.routerLink]">
       <mat-card-header>
         <mat-card-title>{{ featureCard.title | translate }}</mat-card-title>
       </mat-card-header>
-      <img
-        mat-card-image
-        [src]="featureCard.imgSrc"
-        [alt]="featureCard.imgAlt"
-        class="blend-img witdh-100"
-      />
+      <img mat-card-image [src]="featureCard.imgSrc" [alt]="featureCard.imgAlt" class="blend-img width-100" />
       <mat-card-content>
         <p>{{ featureCard.discritpion | translate }}</p>
       </mat-card-content>

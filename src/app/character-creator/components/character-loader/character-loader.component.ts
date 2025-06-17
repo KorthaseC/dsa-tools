@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-character-loader',
+  standalone: true,
+  imports: [],
+  templateUrl: './character-loader.component.html',
+  styleUrl: './character-loader.component.scss',
+})
+export class CharacterLoaderComponent {
+  constructor(private router: Router) {}
+
+  goToWizard(): void {
+    this.router.navigate(['/character-creator']);
+  }
+
+  goToImporter(): void {
+    this.router.navigate(['/character-importer']);
+  }
+}

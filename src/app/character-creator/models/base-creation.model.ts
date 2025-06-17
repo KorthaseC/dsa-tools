@@ -1,4 +1,4 @@
-import { Advantage } from "./advantage.model";
+import { Advantage } from './advantage.model';
 
 export interface WithSource {
   sourceShort: string;
@@ -26,7 +26,7 @@ export type Attribute = 'MU' | 'KL' | 'IN' | 'CH' | 'FF' | 'GE' | 'KO' | 'KK';
 export interface MaxAttributeChange {
   attribute: Attribute;
   modifier: number;
-  type: 'choice' | 'fixed'
+  type: 'choice' | 'fixed';
 }
 
 export enum IncreaseFactor {
@@ -34,18 +34,18 @@ export enum IncreaseFactor {
   B = 2,
   C = 3,
   D = 4,
-  E = 15
+  E = 15,
 }
 
 export interface Character {
   name: string;
+  experienceLevel: string;
   maxAp: number;
   species: string;
   speciesCost: number;
+  maxAttributeChanges: MaxAttributeChange[];
   culture: string;
   profession: string;
-  experienceLevel: string;
-  maxAttributeChanges: MaxAttributeChange[];
   attributes: Attributes;
   advantages: Advantage[];
   disadvantages: string[];

@@ -18,13 +18,7 @@ interface FeatureCard {
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [
-    MatCardModule,
-    RouterModule,
-    TranslateModule,
-    MatGridListModule,
-    GridColsDirective,
-  ],
+  imports: [MatCardModule, RouterModule, TranslateModule, MatGridListModule, GridColsDirective],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
 })
@@ -104,7 +98,7 @@ export class OverviewComponent {
     },
     {
       title: 'overview.characterCreator.title',
-      routerLink: '/character-creator',
+      routerLink: '/character',
       imgSrc: 'assets/icons/nandus.svg',
       imgAlt: 'Nandus Symbol',
       discritpion: 'overview.characterCreator.description',

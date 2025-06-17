@@ -1,0 +1,14 @@
+@if(!character()){
+<p-fileupload
+  mode="basic"
+  chooseLabel="Upload Character json"
+  chooseIcon="pi pi-upload"
+  name="char import"
+  accept=".json"
+  maxFileSize="1000000"
+  (onSelect)="onUpload($event)"
+  [auto]="true"
+/>
+} @if(character()){
+<app-attributes-header></app-attributes-header>
+}

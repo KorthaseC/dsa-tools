@@ -1,15 +1,16 @@
 .p-card {
   background-color: #fffef0 !important; // Pergament
   border: 2px solid #3e2c1b;
-  border-radius: 8px !important;;
-  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.6), 0 0 20px #8a4d0f inset !important;;
+  border-radius: 8px !important;
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.6), 0 0 20px #8a4d0f inset !important;
   padding: 1.5rem;
-  color: #2e1d12 !important;;
+  color: #2e1d12 !important;
   position: relative;
   overflow: hidden;
 
-  &::before, &::after {
-    content: "";
+  &::before,
+  &::after {
+    content: '';
     position: absolute;
     width: 12px;
     height: 12px;
@@ -55,10 +56,10 @@
 }
 
 p-inputnumber {
-  input{
+  input {
     background-color: transparent !important;
     color: black !important;
-  } 
+  }
 }
 
 p-tabs {
@@ -73,12 +74,12 @@ p-tab {
   flex: 1 1 0;
 }
 
-p-checkbox{
-  --p-checkbox-background: transparent
+p-checkbox {
+  --p-checkbox-background: transparent;
 }
 
 p-divider {
-  --p-divider-horizontal-margin: 0px 0px 20px
+  --p-divider-horizontal-margin: 0px 0px 20px;
 }
 
 p-tabpanel {
@@ -88,12 +89,16 @@ p-tabpanel {
   }
 }
 
-:root{
+:root {
   --p-primary-color: #4caf50 !important;
 
   --p-radiobutton-background: transparent !important;
   --p-radiobutton-icon-checked-color: green !important;
   --p-radiobutton-icon-checked-hover-color: green !important;
-  
+
   --p-tabs-tab-hover-color: dimgray !important;
+
+  --p-inputtext-background: transparent !important;
+  --p-floatlabel-on-active-background: dimgray !important;
+  --p-inputtext-color: black !important;
 }
