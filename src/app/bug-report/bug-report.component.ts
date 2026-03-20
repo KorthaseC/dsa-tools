@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -21,19 +21,18 @@ import { BugReportService } from './bug-report.service';
 @Component({
     selector: 'app-bug-report',
     imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        CommonModule,
-        TranslateModule,
-        MatRadioModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatProgressSpinnerModule,
-    ],
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    TranslateModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressSpinnerModule
+],
     templateUrl: './bug-report.component.html',
     styleUrl: './bug-report.component.scss'
 })

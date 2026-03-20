@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+
 import { MatDialog } from '@angular/material/dialog';
 import { DiceResultComponent } from './dice-result/dice-result.component';
 import {
@@ -56,15 +56,14 @@ enum PotionType {
 @Component({
     selector: 'app-alchemy',
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        CommonModule,
-        TranslateModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    TranslateModule
+],
     templateUrl: './alchemy.component.html',
     styleUrl: './alchemy.component.scss'
 })

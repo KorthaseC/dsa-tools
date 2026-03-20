@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -17,14 +17,13 @@ import { AlchemyDiceResult } from '../alcheny.models';
 @Component({
     selector: 'app-dice-results',
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatSelectModule,
-        CommonModule,
-        TranslateModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    TranslateModule
+],
     templateUrl: './dice-result.component.html',
     styleUrl: './dice-result.component.scss'
 })

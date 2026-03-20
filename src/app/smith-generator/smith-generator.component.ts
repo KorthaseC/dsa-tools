@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -44,18 +44,17 @@ import {
 @Component({
     selector: 'app-smith-generator',
     imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        CommonModule,
-        TranslateModule,
-        MatSliderModule,
-        MatRadioModule,
-        MatTooltipModule,
-        MatIconModule,
-    ],
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    TranslateModule,
+    MatSliderModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatIconModule
+],
     templateUrl: './smith-generator.component.html',
     styleUrl: './smith-generator.component.scss'
 })

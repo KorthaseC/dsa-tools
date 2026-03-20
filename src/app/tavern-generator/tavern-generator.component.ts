@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { AfterViewInit, Component } from '@angular/core';
 import {
   FormControl,
@@ -39,16 +39,15 @@ import {
 @Component({
     selector: 'app-currency',
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        CommonModule,
-        TranslateModule,
-        MatTableModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    TranslateModule,
+    MatTableModule
+],
     templateUrl: './tavern-generator.component.html',
     styleUrl: './tavern-generator.component.scss'
 })

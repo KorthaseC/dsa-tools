@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -16,15 +16,14 @@ import { CURRENCYMAP, CurrencyRegion, CurrencyValue } from '../shared/constant';
 @Component({
     selector: 'app-currency',
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        CommonModule,
-        TranslateModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    TranslateModule
+],
     templateUrl: './currency.component.html',
     styleUrl: './currency.component.scss'
 })
