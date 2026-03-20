@@ -19,24 +19,23 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BugReportService } from './bug-report.service';
 
 @Component({
-  selector: 'app-bug-report',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    CommonModule,
-    TranslateModule,
-    MatRadioModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatProgressSpinnerModule,
-  ],
-  templateUrl: './bug-report.component.html',
-  styleUrl: './bug-report.component.scss',
+    selector: 'app-bug-report',
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        CommonModule,
+        TranslateModule,
+        MatRadioModule,
+        MatTooltipModule,
+        MatIconModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatProgressSpinnerModule,
+    ],
+    templateUrl: './bug-report.component.html',
+    styleUrl: './bug-report.component.scss'
 })
 export class BugReportComponent {
   public bugReportForm: FormGroup;

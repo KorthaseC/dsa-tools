@@ -17,28 +17,27 @@ import { SpeciesComponent } from '../species/species.component';
 
 
 @Component({
-  selector: 'app-character-wizard',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-    StepperModule,
-    ButtonModule,
-    InputNumberModule,
-    ExperienceComponent,
-    MatIconModule,
-    MatTooltipModule,
-    SpeciesComponent,
-    CommonModule
-  ],
-  templateUrl: './character-wizard.component.html',
-  styleUrl: './character-wizard.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-character-wizard',
+    imports: [
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        TranslateModule,
+        StepperModule,
+        ButtonModule,
+        InputNumberModule,
+        ExperienceComponent,
+        MatIconModule,
+        MatTooltipModule,
+        SpeciesComponent,
+        CommonModule
+    ],
+    templateUrl: './character-wizard.component.html',
+    styleUrl: './character-wizard.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterWizardComponent  {
   private state = inject(CharacterStateService);

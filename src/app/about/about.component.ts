@@ -8,11 +8,10 @@ interface Feature {
 }
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [TranslateModule, RouterModule],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss',
+    selector: 'app-about',
+    imports: [TranslateModule, RouterModule],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.scss'
 })
 export class AboutComponent {
   public features: Feature[] = [

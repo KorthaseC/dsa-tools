@@ -7,11 +7,10 @@ import { CharacterStateService } from '../../services/character-state.service';
 import { AttributesHeaderComponent } from '../summary/attributes-header/attributes-header.component';
 
 @Component({
-  selector: 'app-character-importer',
-  standalone: true,
-  imports: [FormsModule, InputTextModule, FloatLabel, FileUploadModule, AttributesHeaderComponent],
-  templateUrl: './character-importer.component.html',
-  styleUrl: './character-importer.component.scss',
+    selector: 'app-character-importer',
+    imports: [FormsModule, InputTextModule, FloatLabel, FileUploadModule, AttributesHeaderComponent],
+    templateUrl: './character-importer.component.html',
+    styleUrl: './character-importer.component.scss'
 })
 export class CharacterImporterComponent {
   private state = inject(CharacterStateService);

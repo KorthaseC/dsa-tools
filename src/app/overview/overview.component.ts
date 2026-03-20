@@ -16,11 +16,10 @@ interface FeatureCard {
 }
 
 @Component({
-  selector: 'app-overview',
-  standalone: true,
-  imports: [MatCardModule, RouterModule, TranslateModule, MatGridListModule, GridColsDirective],
-  templateUrl: './overview.component.html',
-  styleUrl: './overview.component.scss',
+    selector: 'app-overview',
+    imports: [MatCardModule, RouterModule, TranslateModule, MatGridListModule, GridColsDirective],
+    templateUrl: './overview.component.html',
+    styleUrl: './overview.component.scss'
 })
 export class OverviewComponent {
   public featureCards: FeatureCard[] = [

@@ -37,26 +37,25 @@ interface FlatNode {
 }
 
 @Component({
-  selector: 'app-name-generator',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    CommonModule,
-    TranslateModule,
-    MatRadioModule,
-    MatTreeModule,
-    MatIconModule,
-    MatCheckboxModule,
-    MatProgressSpinnerModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    AsyncPipe,
-  ],
-  templateUrl: './name-generator.component.html',
-  styleUrl: './name-generator.component.scss',
+    selector: 'app-name-generator',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        CommonModule,
+        TranslateModule,
+        MatRadioModule,
+        MatTreeModule,
+        MatIconModule,
+        MatCheckboxModule,
+        MatProgressSpinnerModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        AsyncPipe,
+    ],
+    templateUrl: './name-generator.component.html',
+    styleUrl: './name-generator.component.scss'
 })
 export class NameGeneratorComponent {
   public openPanelIndex: number = -1;

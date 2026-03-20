@@ -15,19 +15,18 @@ const MOON_CYCLE_DAYS: number = 28;
 const FULL_MOON_REFERENCE_DAY: number = 184 + 1047 * DAYS_IN_YEAR;
 
 @Component({
-  selector: 'app-madaphase',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-  ],
-  templateUrl: './madaphase.component.html',
-  styleUrl: './madaphase.component.scss',
+    selector: 'app-madaphase',
+    imports: [
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        TranslateModule,
+    ],
+    templateUrl: './madaphase.component.html',
+    styleUrl: './madaphase.component.scss'
 })
 export class MadaphaseComponent {
   public dayControl = new FormControl<number>(null);

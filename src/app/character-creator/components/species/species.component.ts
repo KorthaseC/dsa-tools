@@ -21,26 +21,25 @@ import { Species, SpeciesType } from '../../models/species.model';
 import { CharacterStateService } from '../../services/character-state.service';
 
 @Component({
-  selector: 'app-species',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatExpansionModule,
-    MatTabsModule,
-    CardModule,
-    DividerModule,
-    TabsModule,
-    CheckboxModule,
-    RadioButtonModule,
-    CommonModule
-  ],
-  templateUrl: './species.component.html',
-  styleUrl: './species.component.scss',
+    selector: 'app-species',
+    imports: [
+        FormsModule,
+        MatButtonModule,
+        MatSelectModule,
+        TranslateModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatExpansionModule,
+        MatTabsModule,
+        CardModule,
+        DividerModule,
+        TabsModule,
+        CheckboxModule,
+        RadioButtonModule,
+        CommonModule
+    ],
+    templateUrl: './species.component.html',
+    styleUrl: './species.component.scss'
 })
 export class SpeciesComponent {
   private state = inject(CharacterStateService);

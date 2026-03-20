@@ -54,20 +54,19 @@ enum PotionType {
 }
 
 @Component({
-  selector: 'app-alchemy',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    CommonModule,
-    TranslateModule,
-  ],
-  templateUrl: './alchemy.component.html',
-  styleUrl: './alchemy.component.scss',
+    selector: 'app-alchemy',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        CommonModule,
+        TranslateModule,
+    ],
+    templateUrl: './alchemy.component.html',
+    styleUrl: './alchemy.component.scss'
 })
 export class AlchemyComponent {
   public potionType = new FormControl('', Validators.required);

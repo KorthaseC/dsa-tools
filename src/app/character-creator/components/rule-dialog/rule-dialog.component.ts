@@ -4,11 +4,10 @@ import { SafeUrlPipe } from './safe-url.pipe';
 
 
 @Component({
-  selector: 'app-rule-dialog',
-  standalone: true,
-  imports: [DialogModule, SafeUrlPipe],
-  templateUrl: './rule-dialog.component.html',
-  styleUrl: './rule-dialog.component.scss'
+    selector: 'app-rule-dialog',
+    imports: [DialogModule, SafeUrlPipe],
+    templateUrl: './rule-dialog.component.html',
+    styleUrl: './rule-dialog.component.scss'
 })
 export class RuleDialogComponent {
   visible = model(false);

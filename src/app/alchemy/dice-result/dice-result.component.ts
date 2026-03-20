@@ -15,19 +15,18 @@ import { Utility } from '../../shared/utility';
 import { AlchemyDiceResult } from '../alcheny.models';
 
 @Component({
-  selector: 'app-dice-results',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatSelectModule,
-    CommonModule,
-    TranslateModule,
-  ],
-  templateUrl: './dice-result.component.html',
-  styleUrl: './dice-result.component.scss',
+    selector: 'app-dice-results',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatSelectModule,
+        CommonModule,
+        TranslateModule,
+    ],
+    templateUrl: './dice-result.component.html',
+    styleUrl: './dice-result.component.scss'
 })
 export class DiceResultComponent implements OnInit {
   public changeDieOne = new FormControl<number>(null, Validators.required);

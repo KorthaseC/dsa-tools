@@ -32,24 +32,23 @@ export interface Book {
 }
 
 @Component({
-  selector: 'app-book-generator',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    CommonModule,
-    MatTooltip,
-    MatIcon,
-  ],
-  templateUrl: './book-generator.component.html',
-  styleUrl: './book-generator.component.scss',
+    selector: 'app-book-generator',
+    imports: [
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        TranslateModule,
+        MatProgressSpinnerModule,
+        MatPaginatorModule,
+        CommonModule,
+        MatTooltip,
+        MatIcon,
+    ],
+    templateUrl: './book-generator.component.html',
+    styleUrl: './book-generator.component.scss'
 })
 export class BookGeneratorComponent {
   public bookTypeControl = new FormControl<BookType>(null);

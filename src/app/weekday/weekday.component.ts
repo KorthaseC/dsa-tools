@@ -15,19 +15,18 @@ const DAYS_IN_YEAR: number = 365;
 const WINDSTAG_REFERENCE_DAY: number = 183 + 1047 * DAYS_IN_YEAR;
 
 @Component({
-  selector: 'app-weekday',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-  ],
-  templateUrl: './weekday.component.html',
-  styleUrl: './weekday.component.scss',
+    selector: 'app-weekday',
+    imports: [
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        TranslateModule,
+    ],
+    templateUrl: './weekday.component.html',
+    styleUrl: './weekday.component.scss'
 })
 export class WeekdayComponent {
   public dayControl = new FormControl<number>(null);

@@ -7,17 +7,16 @@ import { TranslateModule } from '@ngx-translate/core';
 import packageInfo from '../../../package.json';
 
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    TranslateModule,
-    RouterModule,
-    MatTooltipModule,
-  ],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
+    selector: 'app-footer',
+    imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        TranslateModule,
+        RouterModule,
+        MatTooltipModule,
+    ],
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
   public version: string = packageInfo.version;

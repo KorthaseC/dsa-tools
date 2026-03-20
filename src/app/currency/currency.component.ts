@@ -14,20 +14,19 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CURRENCYMAP, CurrencyRegion, CurrencyValue } from '../shared/constant';
 
 @Component({
-  selector: 'app-currency',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    CommonModule,
-    TranslateModule,
-  ],
-  templateUrl: './currency.component.html',
-  styleUrl: './currency.component.scss',
+    selector: 'app-currency',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        CommonModule,
+        TranslateModule,
+    ],
+    templateUrl: './currency.component.html',
+    styleUrl: './currency.component.scss'
 })
 export class CurrencyComponent implements OnInit {
   public currencyOne = new FormControl<CurrencyRegion>(

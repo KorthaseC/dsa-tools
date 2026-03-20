@@ -29,23 +29,22 @@ import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
 import { GridColsDirective } from '../shared/grid-cols.directive';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    TranslateModule,
-    ReactiveFormsModule,
-    MatTooltipModule,
-    MatCheckboxModule,
-    RouterModule,
-    MatGridListModule,
-    GridColsDirective,
-    DiceRollsComponent
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+    selector: 'app-header',
+    imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        TranslateModule,
+        ReactiveFormsModule,
+        MatTooltipModule,
+        MatCheckboxModule,
+        RouterModule,
+        MatGridListModule,
+        GridColsDirective,
+        DiceRollsComponent
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
   public pageTitle: string = 'Übersicht';

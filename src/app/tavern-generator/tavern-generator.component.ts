@@ -37,21 +37,20 @@ import {
 } from './tavern-generator.model';
 
 @Component({
-  selector: 'app-currency',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    CommonModule,
-    TranslateModule,
-    MatTableModule,
-  ],
-  templateUrl: './tavern-generator.component.html',
-  styleUrl: './tavern-generator.component.scss',
+    selector: 'app-currency',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        CommonModule,
+        TranslateModule,
+        MatTableModule,
+    ],
+    templateUrl: './tavern-generator.component.html',
+    styleUrl: './tavern-generator.component.scss'
 })
 export class TavernGeneratorComponent implements AfterViewInit {
   public location = new FormControl<TavernLocation>(null, Validators.required);

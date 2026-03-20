@@ -5,11 +5,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CharacterStateService } from '../../../services/character-state.service';
 
 @Component({
-  selector: 'app-attributes-header',
-  standalone: true,
-  imports: [FormsModule, InputTextModule, FloatLabel],
-  templateUrl: './attributes-header.component.html',
-  styleUrl: './attributes-header.component.scss',
+    selector: 'app-attributes-header',
+    imports: [FormsModule, InputTextModule, FloatLabel],
+    templateUrl: './attributes-header.component.html',
+    styleUrl: './attributes-header.component.scss'
 })
 export class AttributesHeaderComponent {
   private state = inject(CharacterStateService);

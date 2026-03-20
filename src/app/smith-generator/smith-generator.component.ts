@@ -42,23 +42,22 @@ import {
 } from './smith-generator.model';
 
 @Component({
-  selector: 'app-smith-generator',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    CommonModule,
-    TranslateModule,
-    MatSliderModule,
-    MatRadioModule,
-    MatTooltipModule,
-    MatIconModule,
-  ],
-  templateUrl: './smith-generator.component.html',
-  styleUrl: './smith-generator.component.scss',
+    selector: 'app-smith-generator',
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        CommonModule,
+        TranslateModule,
+        MatSliderModule,
+        MatRadioModule,
+        MatTooltipModule,
+        MatIconModule,
+    ],
+    templateUrl: './smith-generator.component.html',
+    styleUrl: './smith-generator.component.scss'
 })
 export class SmithGeneratorComponent {
   public smithForm: FormGroup;

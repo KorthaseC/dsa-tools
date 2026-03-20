@@ -7,15 +7,14 @@ import { CharacterStateService } from '../../services/character-state.service';
 import { ExperienceLevelService } from '../../services/experience.service';
 
 @Component({
-  selector: 'app-experience',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-  ],
-  templateUrl: './experience.component.html',
-  styleUrl: './experience.component.scss',
+    selector: 'app-experience',
+    imports: [
+        MatButtonModule,
+        MatSelectModule,
+        TranslateModule,
+    ],
+    templateUrl: './experience.component.html',
+    styleUrl: './experience.component.scss'
 })
 export class ExperienceComponent {
   private experienceService = inject(ExperienceLevelService);

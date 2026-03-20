@@ -10,11 +10,10 @@ import { MenuModule } from 'primeng/menu';
 
 
 @Component({
-  selector: 'app-dice-rolls',
-  standalone: true,
-  imports: [TranslateModule, NgTemplateOutlet, MatButtonModule, MatCheckboxModule, MatTooltipModule, MenuModule],
-  templateUrl: './dice-rolls.component.html',
-  styleUrl: './dice-rolls.component.scss'
+    selector: 'app-dice-rolls',
+    imports: [TranslateModule, NgTemplateOutlet, MatButtonModule, MatCheckboxModule, MatTooltipModule, MenuModule],
+    templateUrl: './dice-rolls.component.html',
+    styleUrl: './dice-rolls.component.scss'
 })
 export class DiceRollsComponent implements AfterViewInit {
   public isRollMulti = signal(false);

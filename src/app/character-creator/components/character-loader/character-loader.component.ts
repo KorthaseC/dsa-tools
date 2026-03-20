@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-character-loader',
-  standalone: true,
-  imports: [],
-  templateUrl: './character-loader.component.html',
-  styleUrl: './character-loader.component.scss',
+    selector: 'app-character-loader',
+    imports: [],
+    templateUrl: './character-loader.component.html',
+    styleUrl: './character-loader.component.scss'
 })
 export class CharacterLoaderComponent {
   constructor(private router: Router) {}
