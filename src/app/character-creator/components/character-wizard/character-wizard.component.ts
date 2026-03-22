@@ -1,16 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslateModule } from '@ngx-translate/core';
+
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { StepperModule } from 'primeng/stepper';
+import { TooltipModule } from 'primeng/tooltip';
 import { CharacterStateService } from '../../services/character-state.service';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SpeciesComponent } from '../species/species.component';
@@ -20,18 +15,13 @@ import { SpeciesComponent } from '../species/species.component';
     selector: 'app-character-wizard',
     imports: [
         FormsModule,
-        MatFormFieldModule,
         ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        TranslateModule,
+        
         StepperModule,
         ButtonModule,
         InputNumberModule,
         ExperienceComponent,
-        MatIconModule,
-        MatTooltipModule,
+        TooltipModule,
         SpeciesComponent,
         CommonModule
     ],

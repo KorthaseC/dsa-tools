@@ -1,25 +1,21 @@
-<div class="c-about-container mr-b-40">
-  <h1>{{ "about.title" | translate }}</h1>
-  <p>{{ "about.intro" | translate }}</p>
+<div class="about-container pb-5">
+  <div class="mb-5">
+    <h1 class="page-title">Willkommen auf unserer inoffiziellen "Das Schwarze Auge" Hilfeseite</h1>
+    <p class="page-intro">Diese Webseite wurde entwickelt, um dich und deine Spielgruppe bei euren Abenteuern in der Welt von Das Schwarze Auge zu unterstützen. Hier findest du eine Vielzahl an Tools und Generatoren, die euch das Spielleben erleichtern und für noch mehr Immersion sorgen.</p>
+  </div>
 
-  <h2>{{ "about.features.title" | translate }}</h2>
+  <div class="section-label mb-4">Funktionen im Überblick</div>
 
-  <ul>
+  <div class="grid row-gap-3 mb-5">
     @for (feature of features; track feature) {
-    <li>
-      <h3
-        [routerLink]="[feature.routerLink]"
-        class="cursor c-feature-underline"
-      >
-        {{ "about.features." + feature.featureName + ".title" | translate }}
-      </h3>
-      <p>
-        {{
-          "about.features." + feature.featureName + ".description" | translate
-        }}
-      </p>
-    </li>
+    <div class="col-12 md:col-6">
+      <div class="feature-card" [routerLink]="[feature.routerLink]">
+        <span class="feature-title">{{ feature.title }}</span>
+        <p class="feature-desc">{{ feature.description }}</p>
+      </div>
+    </div>
     }
-  </ul>
-  <p>{{ "about.conclusion" | translate }}</p>
+  </div>
+
+  <p class="page-outro">Wir hoffen, dass diese Tools euch dabei helfen, eure Abenteuer noch spannender und immersiver zu gestalten. Wenn ihr Fragen oder Anregungen habt, zögert nicht, uns zu kontaktieren!</p>
 </div>

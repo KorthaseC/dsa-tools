@@ -1,0 +1,39 @@
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #c8a96e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.4);
+  display: block;
+}
+
+.legal-card {
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid #5a4a30;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  p {
+    color: #5a4a30;
+    line-height: 1.7;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  &--disclaimer p {
+    font-size: 0.8rem;
+    color: #7a6a50;
+    font-style: italic;
+  }
+}

@@ -1,17 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
-$roboto-font-path: '../node_modules/roboto-fontface/fonts' !default;
+@use 'styles/primeng-overrides';
+@import 'primeicons/primeicons.css';
 
-$material-icons-font-path: '../node_modules/material-icons/iconfont/';
-@use '../node_modules/material-icons/iconfont/material-icons.scss';
+/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
-@import 'styles/primeng-overrides';
 
 html,
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background-color: lightgray;
+  background-color: #1a1a1a;
+  color: #e4d3a2;
 }
 
 h1,
@@ -144,9 +143,8 @@ h2 {
 }
 
 canvas {
-  margin: 30px;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
 }
 
 .button {
@@ -158,4 +156,13 @@ canvas {
 
 .cursor {
   cursor: pointer;
+}
+
+// Responsive sticky — applies position:sticky only on md breakpoint and above
+// Mirrors the PrimeFlex md: convention (≥768px)
+@media (min-width: 768px) {
+  .sticky-md {
+    position: sticky;
+    top: 1rem;
+  }
 }

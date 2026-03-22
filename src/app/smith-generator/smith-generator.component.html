@@ -1,168 +1,271 @@
-<form [formGroup]="smithForm">
-  <mat-form-field class="c-form-field-100p">
-    <mat-label>{{ 'smith.qualification.label' | translate }}</mat-label>
-    <mat-select formControlName="qualification" required (selectionChange)="changeQualification($event.value)">
-      @for (qualification of smithQualificationOptions; track qualification) {
-      <mat-option [value]="qualification">{{ 'smith.qualification.' + qualification | translate }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+<div class="smith-container pb-5">
+  <form [formGroup]="smithForm" class="formgrid grid mb-4 row-gap-3">
 
-  <div class="width-100 display-flex">
-    <mat-slider [max]="sliderOption.max" [min]="sliderOption.min" [step]="sliderOption.step" [discrete]="true" class="width-50">
-      <input matSliderThumb [value]="smithForm.get('price')?.value" (valueChange)="smithForm.get('price')?.setValue($event)" #slider />
-    </mat-slider>
-    <mat-form-field class="width-50">
-      <mat-label>{{ 'smith.price' | translate }}</mat-label>
-      <input
-        matInput
-        placeholder="{{ 'smith.price' | translate }}"
-        formControlName="price"
-        type="number"
+    <!-- Qualification -->
+    <div class="col-12 md:col-6">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="qualification"
+          [options]="smithQualificationOptions"
+          optionLabel="label"
+          optionValue="value"
+          formControlName="qualification"
+          [required]="true"
+          class="w-full"
+          (onChange)="changeQualification($event.value)"
+        />
+        <label for="qualification">Schmied Qualifikation</label>
+      </p-floatlabel>
+    </div>
+
+    <!-- Working-hour price -->
+    <div class="col-12 md:col-6 flex align-items-center gap-3">
+      <p-slider
+        [(ngModel)]="sliderPrice"
+        [ngModelOptions]="{standalone: true}"
         [max]="sliderOption.max"
         [min]="sliderOption.min"
         [step]="sliderOption.step"
+        (ngModelChange)="smithForm.get('price').setValue($event)"
+        class="flex-1"
       />
-    </mat-form-field>
-  </div>
-
-  <div class="display-flex width-100">
-    <mat-form-field class="mr-r-20 width-20">
-      <mat-label>{{ 'smith.attributeValue' | translate }}</mat-label>
-      <input matInput type="number" formControlName="attr1" min="8" max="25" />
-    </mat-form-field>
-    <mat-form-field class="mr-r-20 width-20">
-      <mat-label>{{ 'smith.attributeValue' | translate }}</mat-label>
-      <input matInput type="number" formControlName="attr2" min="8" max="25"
-    /></mat-form-field>
-    <mat-form-field class="mr-r-20 width-20">
-      <mat-label>{{ 'smith.attributeValue' | translate }}</mat-label>
-      <input matInput type="number" formControlName="attr3" min="8" max="25" />
-    </mat-form-field>
-
-    <mat-form-field class="width-20 ml-auto">
-      <mat-label>{{ 'smith.talentValue' | translate }}</mat-label>
-      <input matInput type="number" formControlName="fw" min="0" max="25"
-    /></mat-form-field>
-  </div>
-
-  <div class="display-flex mr-b-5">
-    <mat-radio-group (change)="changeItemType($event.value)" aria-label="Select an option" class="c-radio-button-box">
-      <mat-radio-button [value]="true">{{ 'smith.crafting.category.weapon' | translate }}</mat-radio-button>
-      <mat-radio-button [value]="false">{{ 'smith.crafting.category.armor' | translate }}</mat-radio-button>
-    </mat-radio-group>
-  </div>
-
-  @if(craftingOptions.length>0) {
-  <mat-form-field class="c-form-field-100p">
-    <mat-label>{{ 'smith.crafting.label' | translate }}</mat-label>
-    <mat-select formControlName="item" required>
-      @for (item of craftingOptions; track item) {
-      <mat-option [value]="item">
-        {{ 'smith.crafting.item.' + item | translate }}
-      </mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="c-form-field-100p">
-    <mat-label>{{ 'smith.material.label' | translate }}</mat-label>
-    <mat-select formControlName="material" required (selectionChange)="changeMaterial($event.value)">
-      @for (material of materialOptions; track material) {
-      <mat-option [value]="material">
-        {{ 'smith.material.' + material | translate }}
-      </mat-option>
-      }
-    </mat-select>
-    @if(materialProperties.get(smithForm.get('material')?.value)?.tooltip) {
-    <mat-icon matTooltip=" {{ 'smith.material.' + materialProperties.get(smithForm.get('material').value).tooltip | translate }}" matSuffix>info </mat-icon>
-    }
-  </mat-form-field>
-
-  <div class="display-flex">
-    <div class="c-box mr-r-5">
-      <mat-form-field class="c-form-field-100p">
-        <mat-label>{{ 'smith.standardPrice' | translate }}</mat-label>
-        <input matInput placeholder="{{ 'smith.standardPrice' | translate }}" formControlName="standardPrice" type="number" />
-      </mat-form-field>
+      <p-floatlabel variant="on" class="flex-1">
+        <input
+          pInputText
+          id="price"
+          formControlName="price"
+          type="number"
+          [max]="sliderOption.max"
+          [min]="sliderOption.min"
+          [step]="sliderOption.step"
+          class="w-full"
+          (input)="sliderPrice = +smithForm.get('price').value"
+        />
+        <label for="price">Arbeitsstunden-Preis (S)</label>
+      </p-floatlabel>
     </div>
 
-    <div class="c-box mr-l-5">
-      <mat-form-field class="c-form-field-100p">
-        <mat-label>{{ 'smith.standardWeight' | translate }}</mat-label>
-        <input matInput placeholder="{{ 'smith.standardWeight' | translate }}" formControlName="standardWeight" type="number" />
-      </mat-form-field>
+    <!-- Attribute values -->
+    <div class="col-6 md:col-3">
+      <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="attr1" type="number" formControlName="attr1" min="8" max="25" class="w-full" />
+        <label for="attr1">Attributwert 1</label>
+      </p-floatlabel>
     </div>
-  </div>
-
-  <div class="display-flex">
-    <div class="c-box mr-r-5">
-      <mat-form-field class="c-form-field-100p">
-        <mat-label>{{ 'smith.boni.label' | translate }}</mat-label>
-        <mat-select formControlName="boni1">
-          @for (boni of boniOptions; track boni) {
-          <mat-option [value]="boni" [disabled]="isOptionDisabled(boni, 'boni1')">
-            {{ 'smith.boni.' + boni | translate }}
-          </mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+    <div class="col-6 md:col-3">
+      <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="attr2" type="number" formControlName="attr2" min="8" max="25" class="w-full" />
+        <label for="attr2">Attributwert 2</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-6 md:col-3">
+      <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="attr3" type="number" formControlName="attr3" min="8" max="25" class="w-full" />
+        <label for="attr3">Attributwert 3</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-6 md:col-3">
+      <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="fw" type="number" formControlName="fw" min="0" max="25" class="w-full" />
+        <label for="fw">Talentwert</label>
+      </p-floatlabel>
     </div>
 
-    <div class="c-box mr-l-5">
-      <mat-form-field class="c-form-field-100p">
-        <mat-label>{{ 'smith.boni.label' | translate }}</mat-label>
-        <mat-select formControlName="boni2">
-          @for (boni of boniOptions; track boni) {
-          <mat-option [value]="boni" [value]="boni" [disabled]="isOptionDisabled(boni, 'boni2')">
-            {{ 'smith.boni.' + boni | translate }}
-          </mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
+    <!-- Weapon / Armor tabs -->
+    <div class="col-12">
+      <p-tabs [value]="activeTab" (valueChange)="onTabChange($event)">
+        <p-tablist>
+          <p-tab value="weapon">Waffe</p-tab>
+          <p-tab value="armor">Rüstung</p-tab>
+        </p-tablist>
+        <p-tabpanels>
 
-  @if( isWeaponMaterialMetal || !isWeapon && smithForm.get('item').value === 'chainArmor') {
-  <mat-form-field class="c-form-field-100p">
-    <mat-label>{{ 'smith.craftTechnic.label' | translate }}</mat-label>
-    <mat-select formControlName="craftTechnic">
-      @for (craftTechnic of craftTechnicOptions; track craftTechnic) {
-      <mat-option [value]="craftTechnic">
-        {{ 'smith.craftTechnic.' + craftTechnic | translate }}
-      </mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-  } } @if(craftedItemText) {
-  <div class="mr-b-20">
-    <div>
-      <span>{{
-        craftedItemText
-          | translate
-            : {
-                price: craftedItemProperties.price,
-                time: craftedItemProperties.time
+          <!-- Waffe -->
+          <p-tabpanel value="weapon">
+            <div class="formgrid grid row-gap-3 pt-3">
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <p-select inputId="item" [options]="craftingOptions" optionLabel="label" optionValue="value" formControlName="item" [required]="true" class="w-full" />
+                  <label for="item">Herzustellendes Item</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <div class="material-cell">
+                  <p-floatlabel variant="on" class="w-full">
+                    <p-select inputId="material-w" [options]="materialOptions" optionLabel="label" optionValue="value" formControlName="material" [required]="true" class="w-full" (onChange)="changeMaterial($event.value)" />
+                    <label for="material-w">Material</label>
+                  </p-floatlabel>
+                  @if (materialProperties.get(smithForm.get('material')?.value)?.tooltip) {
+                    <button type="button" class="hint-btn" (click)="wpop.toggle($event)" (mouseenter)="wpop.show($event)" (mouseleave)="wpop.hide()" aria-label="Hinweis">i</button>
+                    <p-popover #wpop>
+                      <p class="hint-popover-text">{{ materialNames[materialProperties.get(smithForm.get('material').value).tooltip] }}</p>
+                    </p-popover>
+                  }
+                </div>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <input pInputText id="standardPrice" formControlName="standardPrice" type="number" class="w-full" />
+                  <label for="standardPrice">Standardpreis (Silbertaler)</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <input pInputText id="standardWeight" formControlName="standardWeight" type="number" class="w-full" />
+                  <label for="standardWeight">Standardgewicht (Stein)</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <p-select inputId="boni1" [options]="boniOptions" optionLabel="label" optionValue="value" formControlName="boni1" class="w-full">
+                    <ng-template pOption let-item><span [class.c-disabled-option]="isOptionDisabled(item.value, 'boni1')">{{ item.label }}</span></ng-template>
+                  </p-select>
+                  <label for="boni1">Verbesserungen 1</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <p-select inputId="boni2" [options]="boniOptions" optionLabel="label" optionValue="value" formControlName="boni2" class="w-full">
+                    <ng-template pOption let-item><span [class.c-disabled-option]="isOptionDisabled(item.value, 'boni2')">{{ item.label }}</span></ng-template>
+                  </p-select>
+                  <label for="boni2">Verbesserungen 2</label>
+                </p-floatlabel>
+              </div>
+              @if (isWeaponMaterialMetal) {
+                <div class="col-12">
+                  <p-floatlabel variant="on" class="w-full">
+                    <p-select inputId="craftTechnic" [options]="craftTechnicOptions" optionLabel="label" optionValue="value" formControlName="craftTechnic" class="w-full" />
+                    <label for="craftTechnic">Herstellungstechnik</label>
+                  </p-floatlabel>
+                </div>
               }
-      }}</span>
+            </div>
+          </p-tabpanel>
+
+          <!-- Rüstung -->
+          <p-tabpanel value="armor">
+            <div class="formgrid grid row-gap-3 pt-3">
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <p-select inputId="item" [options]="craftingOptions" optionLabel="label" optionValue="value" formControlName="item" [required]="true" class="w-full" />
+                  <label for="item">Herzustellendes Item</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <div class="material-cell">
+                  <p-floatlabel variant="on" class="w-full">
+                    <p-select inputId="material-a" [options]="materialOptions" optionLabel="label" optionValue="value" formControlName="material" [required]="true" class="w-full" (onChange)="changeMaterial($event.value)" />
+                    <label for="material-a">Material</label>
+                  </p-floatlabel>
+                  @if (materialProperties.get(smithForm.get('material')?.value)?.tooltip) {
+                    <button type="button" class="hint-btn" (click)="apop.toggle($event)" (mouseenter)="apop.show($event)" (mouseleave)="apop.hide()" aria-label="Hinweis"><i class="info-size pi pi-info" s></i></button>
+                    <p-popover #apop>
+                      <p class="hint-popover-text">{{ materialNames[materialProperties.get(smithForm.get('material').value).tooltip] }}</p>
+                    </p-popover>
+                  }
+                </div>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <input pInputText id="standardPrice" formControlName="standardPrice" type="number" class="w-full" />
+                  <label for="standardPrice">Standardpreis (Silbertaler)</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <input pInputText id="standardWeight" formControlName="standardWeight" type="number" class="w-full" />
+                  <label for="standardWeight">Standardgewicht (Stein)</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <p-select inputId="boni1" [options]="boniOptions" optionLabel="label" optionValue="value" formControlName="boni1" class="w-full">
+                    <ng-template pOption let-item><span [class.c-disabled-option]="isOptionDisabled(item.value, 'boni1')">{{ item.label }}</span></ng-template>
+                  </p-select>
+                  <label for="boni1">Verbesserungen 1</label>
+                </p-floatlabel>
+              </div>
+              <div class="col-12 md:col-6">
+                <p-floatlabel variant="on" class="w-full">
+                  <p-select inputId="boni2" [options]="boniOptions" optionLabel="label" optionValue="value" formControlName="boni2" class="w-full">
+                    <ng-template pOption let-item><span [class.c-disabled-option]="isOptionDisabled(item.value, 'boni2')">{{ item.label }}</span></ng-template>
+                  </p-select>
+                  <label for="boni2">Verbesserungen 2</label>
+                </p-floatlabel>
+              </div>
+              @if (smithForm.get('item').value === 'chainArmor') {
+                <div class="col-12">
+                  <p-floatlabel variant="on" class="w-full">
+                    <p-select inputId="craftTechnic" [options]="craftTechnicOptions" optionLabel="label" optionValue="value" formControlName="craftTechnic" class="w-full" />
+                    <label for="craftTechnic">Herstellungstechnik</label>
+                  </p-floatlabel>
+                </div>
+              }
+            </div>
+          </p-tabpanel>
+
+        </p-tabpanels>
+      </p-tabs>
     </div>
-    @if(craftedItemProperties.meteorEffect) {
-    <div>
-      <span>{{ 'smith.itemText.meteor.text' | translate }}{{ 'smith.itemText.meteor.' + craftedItemProperties.meteorEffect | translate }}</span>
+
+  </form>
+
+  <!-- Action button -->
+  <div class="flex justify-content-end mb-4">
+    <div class="w-full md:w-auto">
+      <p-button
+        label="Ermittle Herstellungspreis"
+        (onClick)="calculateCraftedPrice()"
+        [disabled]="!smithForm.valid"
+        styleClass="w-full"
+      />
     </div>
+  </div>
+
+  <!-- Result -->
+  @if ((craftedItemText || craftedFailureText) && !isCalculating) {
+    @if (craftedItemSummary) {
+      <div class="result-card result-card--summary">
+        <div class="result-summary-title">Hergestelltes Objekt</div>
+        <div class="result-summary-grid">
+          <span class="result-summary-label">Typ</span>
+          <span class="result-summary-value">{{ craftedItemSummary.item }}</span>
+          <span class="result-summary-label">Material</span>
+          <span class="result-summary-value">
+            {{ craftedItemSummary.material }}
+            @if (craftedItemSummary.materialEffect) {
+              <span class="result-summary-effect"> &mdash; {{ craftedItemSummary.materialEffect }}</span>
+            }
+          </span>
+          @if (craftedItemSummary.boni1) {
+            <span class="result-summary-label">Verbesserung 1</span>
+            <span class="result-summary-value">{{ craftedItemSummary.boni1 }}</span>
+          }
+          @if (craftedItemSummary.boni2) {
+            <span class="result-summary-label">Verbesserung 2</span>
+            <span class="result-summary-value">{{ craftedItemSummary.boni2 }}</span>
+          }
+          @if (craftedItemSummary.craftTechnic) {
+            <span class="result-summary-label">Technik</span>
+            <span class="result-summary-value">{{ craftedItemSummary.craftTechnic }}</span>
+          }
+        </div>
+      </div>
     }
-  </div>
-  }@else {
-  <div class="mr-b-20">
-    <div>
-      <span>{{ craftedFailureText | translate }}</span>
-    </div>
-  </div>
+    @if (craftedItemText) {
+      <div class="result-card">
+        <span class="result-value">Die Herstellungskosten für die gewählten Einstellungen betragen <strong>{{ craftedItemProperties.price }} Silbertaler</strong>. Der Schmied brauchte <strong>{{ craftedItemProperties.time }} Tage</strong> für die Herstellung.</span>
+        @if (craftedItemProperties.meteorEffect) {
+          <div class="result-row--sub">
+            <span>Die Ausrüstung hat durch Meteoriteisen folgenden Effekt: {{ meteorEffectNames[craftedItemProperties.meteorEffect] }}</span>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="result-card result-card--failure">
+        <span class="result-value result-value--failure">{{ craftedFailureText }}</span>
+      </div>
+    }
   }
 
-  <div class="button">
-    <button mat-raised-button (click)="calculateCraftedPrice()" [disabled]="!smithForm.valid">
-      {{ 'smith.calculatePrice' | translate }}
-    </button>
-  </div>
-</form>
+</div>

@@ -11,9 +11,7 @@ describe('BugReportService', () => {
     TestBed.configureTestingModule({
     imports: [],
     providers: [BugReportService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-});
-
-    service = TestBed.inject(BugReportService);
+});`n    service = TestBed.inject(BugReportService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 

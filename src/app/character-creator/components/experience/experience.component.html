@@ -1,12 +1,15 @@
 <h2>Select your experience level</h2>
 
-<mat-form-field appearance="fill" style="min-width: 300px;">
-  <mat-label>Experience Level</mat-label>
-  <mat-select [value]="selected()" (selectionChange)="setSelected($event.value)">
-    @for(level of experienceLevels; track level) {
-      <mat-option  [value]="level">
-        {{ level.label }} – {{ level.ap }} AP
-      </mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+<p-floatlabel variant="on" style="min-width: 300px; display: block;">
+  <p-select
+    inputId="experienceLevel"
+    [options]="experienceLevels"
+    [ngModel]="selected()"
+    (ngModelChange)="setSelected($event)"
+    class="width-100"
+  >
+    <ng-template pOption let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
+    <ng-template pSelectedItem let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
+  </p-select>
+  <label for="experienceLevel">Experience Level</label>
+</p-floatlabel>

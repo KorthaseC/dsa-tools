@@ -1,77 +1,96 @@
-<form>
-  <mat-form-field>
-    <mat-label>{{ "alchemy.potionType.label" | translate }}</mat-label>
-    <mat-select [formControl]="potionType" required>
-      @for (potion of potionOptions; track potion) {
-      <mat-option [value]="potion">{{
-        "alchemy.potionType." + potion | translate
-      }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+<div class="alchemy-container pb-5">
+  <form class="formgrid grid mb-4 row-gap-3">
+    <div class="col-12">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="potionType"
+          [options]="potionOptions"
+          optionLabel="label"
+          optionValue="value"
+          [formControl]="potionType"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="potionType">Trank Typ</label>
+      </p-floatlabel>
+    </div>
 
-  <mat-form-field>
-    <mat-label>{{ "alchemy.genius.label" | translate }}</mat-label>
-    <mat-select [formControl]="genieAlchemy" required>
-      @for (genieStep of genieAlchemyOptions; track genieStep) {
-      <mat-option [value]="genieStep">{{ genieStep }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+    <div class="col-12 md:col-6">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="genieAlchemy"
+          [options]="genieAlchemyOptions"
+          [formControl]="genieAlchemy"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="genieAlchemy">Genius der Alchemie</label>
+      </p-floatlabel>
+    </div>
 
-  <mat-form-field>
-    <mat-label>{{ "shared.element.label" | translate }}</mat-label>
-    <mat-select [formControl]="elementType" required>
-      @for (element of elementTypeOptions; track element) {
-      <mat-option [value]="element">{{
-        "shared.element." + element | translate
-      }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+    <div class="col-12 md:col-6">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="elementType"
+          [options]="elementTypeOptions"
+          optionLabel="label"
+          optionValue="value"
+          [formControl]="elementType"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="elementType">Element</label>
+      </p-floatlabel>
+    </div>
 
-  <mat-form-field>
-    <mat-label>{{ "alchemy.purityIngedients.label" | translate }}</mat-label>
-    <mat-select [formControl]="purityIngredient" required>
-      @for (purity of purityOptions; track purity) {
-      <mat-option [value]="purity.mod">{{
-        purity.text | translate
-      }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+    <div class="col-12 md:col-6">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="purityIngredient"
+          [options]="purityOptions"
+          optionLabel="text"
+          optionValue="mod"
+          [formControl]="purityIngredient"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="purityIngredient">Reinheit der Zutaten</label>
+      </p-floatlabel>
+    </div>
 
-  <mat-form-field>
-    <mat-label>{{ "alchemy.qsBrew" | translate }}</mat-label>
-    <mat-select [formControl]="qsBrewing" required>
-      @for (brewing of qsBrewingOptions; track brewing) {
-      <mat-option [value]="brewing">{{ brewing }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-</form>
+    <div class="col-12 md:col-6">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="qsBrewing"
+          [options]="qsBrewingOptions"
+          [formControl]="qsBrewing"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="qsBrewing">QS Brauprobe</label>
+      </p-floatlabel>
+    </div>
+  </form>
 
-@if (potionText) {
-<div class="mr-b-20">
-  <div>
-    <span> {{ potionText }}</span>
+  <div class="flex justify-content-end mb-4">
+    <div class="w-full md:w-auto">
+      <p-button
+        label="Ermittle Potion"
+        (onClick)="potionMaking()"
+        [disabled]="!isFormValid()"
+        styleClass="w-full"
+      />
+    </div>
+  </div>
+
+  @if (potionText) {
+  <div class="result-card">
+    <span class="result-value">{{ potionText }}</span>
     @if (qsEffectText) {
-    <div>
-      <span
-        >{{ "alchemy.potionText.qsBonus" | translate }} {{ qsEffectText }}</span
-      >
+    <div class="result-row--sub">
+      <span>Wirkbonus durch QS: {{ qsEffectText }}</span>
     </div>
     }
   </div>
-</div>
-}
-
-<div class="button">
-  <button
-    mat-raised-button
-    (click)="potionMaking()"
-    [disabled]="!isFormValid()"
-  >
-    {{ "alchemy.startPotionMaking" | translate }}
-  </button>
+  }
 </div>

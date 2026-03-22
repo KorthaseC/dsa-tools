@@ -1,164 +1,50 @@
-import DiceBox from '@3d-dice/dice-box';
-import { isPlatformBrowser } from '@angular/common';
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Inject,
-  OnInit,
-  PLATFORM_ID,
-  ViewChild,
-} from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { Component, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
   Router,
   RouterModule,
 } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TooltipModule } from 'primeng/tooltip';
 import { filter } from 'rxjs';
-import { AppComponent } from '../app.component';
 import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
-import { GridColsDirective } from '../shared/grid-cols.directive';
 
 @Component({
     selector: 'app-header',
-    imports: [
-        MatToolbarModule,
-        MatButtonModule,
-        MatSlideToggleModule,
-        TranslateModule,
-        ReactiveFormsModule,
-        MatTooltipModule,
-        MatCheckboxModule,
-        RouterModule,
-        MatGridListModule,
-        GridColsDirective,
-        DiceRollsComponent
-    ],
+    imports: [TooltipModule, RouterModule, DiceRollsComponent],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
-  public pageTitle: string = 'Übersicht';
-  public isRollMulti: FormControl = new FormControl(false);
-  public isSelectMulti: FormControl = new FormControl(false);
+export class HeaderComponent implements OnInit {
+  public pageTitle: string = 'overviewTitle';
 
-  public isGerman: FormControl = new FormControl(true);
-
-  public diceList: string[] = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
-
-  @ViewChild('languageSwitch', { read: ElementRef }) element:
-    | ElementRef
-    | undefined;
-
-  private diceBox: DiceBox | undefined;
-  private selectDice: string[] = [];
+  public readonly pageTitles: Record<string, string> = {
+    calendarTitle: 'Kalender Rechner',
+    currencyTitle: 'Währungsrechner',
+    alchemyTitle: 'Alchemielabor',
+    overviewTitle: 'Übersicht',
+    tavernTitle: 'Tavernen Generator',
+    nameGeneratorTitle: 'Namen Generator',
+    smithGeneratorTitle: 'Schmiede',
+    bookGeneratorTitle: 'Bücher Generator',
+    aboutTitle: 'Über diese Seite',
+    reportTitle: 'Reports',
+    legalTitle: 'Datenschutz',
+    imprintTitle: 'Impressum',
+    characterCreatorTitle: 'Charaktererschaffer',
+  };
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private appComponent: AppComponent,
-    private translateService: TranslateService,
-    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   public ngOnInit(): void {
-    //set initial value of isGerman based on the current language
-    const currentLang = this.translateService.currentLang || this.translateService.defaultLang;
-    this.isGerman.setValue(currentLang === 'de');
-
-    this.isGerman.valueChanges.subscribe((isGerman) => {
-      const lang = isGerman ? 'de' : 'en';
-      this.appComponent.changeLanguage(lang);
-    });
-
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.updatePageTitle();
       });
-  }
-
-  //change slide toggle icon
-  public ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.initDiceBox();
-
-      if (this.element) {
-        const usaFlagLink: string = 'assets/icons/united_states_flag.svg';
-        this.element.nativeElement.querySelector(
-          '.mdc-switch__icon--off'
-        ).innerHTML = `<img src=${usaFlagLink} />`;
-        this.element.nativeElement.querySelector(
-          '.mdc-switch__icon--off'
-        ).style.backgroundImage = `url(${usaFlagLink})`;
-        this.element.nativeElement.querySelector(
-          '.mdc-switch__icon--off'
-        ).style.backgroundSize = 'contain'; // change size of the image
-
-        const germanFlagLink: string = 'assets/icons/flag_germany.svg';
-        this.element.nativeElement.querySelector(
-          '.mdc-switch__icon--on'
-        ).innerHTML = `<img src=${germanFlagLink} />`;
-        this.element.nativeElement.querySelector(
-          '.mdc-switch__icon--on'
-        ).style.backgroundImage = `url(${germanFlagLink})`;
-        this.element.nativeElement.querySelector(
-          '.mdc-switch__icon--on'
-        ).style.backgroundSize = 'contain'; // change size of the image
-      }
-    }
-  }
-
-  public deactivateOtherCheckbox(event: boolean, isMultiRoll: boolean): void {
-    if (event && isMultiRoll) {
-      this.isSelectMulti.setValue(false);
-    }
-
-    if (event && !isMultiRoll) {
-      this.isRollMulti.setValue(false);
-    }
-  }
-
-  public rollDice(dice: string): void {
-    if (this.isSelectMulti.value) {
-      this.addDice(dice);
-    }
-    if (this.isRollMulti.value) {
-      this.diceBox.add(dice);
-    }
-    if (!this.isSelectMulti.value && !this.isRollMulti.value) {
-      this.diceBox.roll(dice);
-    }
-  }
-
-  public deleteDice(): void {
-    this.diceBox.clear();
-    this.selectDice = [];
-  }
-
-  public rollAllDice(): void {
-    this.diceBox.roll(this.selectDice);
-  }
-
-  public findSelectedDieNumber(die: string): number {
-    const diceIndex = this.selectDice.findIndex((item) =>
-      item.endsWith(die.slice(1))
-    );
-
-    if (diceIndex > -1) {
-      const [count] = this.selectDice[diceIndex].split('d');
-      return parseInt(count);
-    }
-    return 0; // Return 0 if the die is not found in the array
   }
 
   private updatePageTitle(): void {
@@ -175,42 +61,5 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       route = route.firstChild;
     }
     return route;
-  }
-
-  private initDiceBox(): void {
-    const diceBoxElement = document.querySelector('#dice-box');
-    if (diceBoxElement) {
-      this.diceBox = new DiceBox('#dice-box', {
-        assetPath: '/assets/dice-box/',
-      });
-
-      this.diceBox.init().then(() => {
-        // DiceBox is ready
-      });
-    }
-  }
-
-  private addDice(dice: string): void {
-    // Check if the dice already exists in the array
-    const diceIndex = this.selectDice.findIndex((item) =>
-      item.endsWith(dice.slice(1))
-    );
-
-    if (diceIndex > -1) {
-      // Increment the count of the existing dice
-      const [count, die] = this.selectDice[diceIndex].split('d');
-      const newCount = parseInt(count) + 1;
-      this.selectDice[diceIndex] = `${newCount}d${die}`;
-    } else {
-      // Add the new dice to the array
-      this.selectDice.push(dice);
-    }
-
-    // Sort the array
-    this.selectDice.sort((a, b) => {
-      const dieA = parseInt(a.split('d')[1]);
-      const dieB = parseInt(b.split('d')[1]);
-      return dieA - dieB;
-    });
   }
 }

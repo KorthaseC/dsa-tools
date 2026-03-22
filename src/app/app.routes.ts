@@ -7,13 +7,13 @@ import { CharacterImporterComponent } from './character-creator/components/chara
 import { CharacterLoaderComponent } from './character-creator/components/character-loader/character-loader.component';
 import { CharacterWizardComponent } from './character-creator/components/character-wizard/character-wizard.component';
 import { CurrencyComponent } from './currency/currency.component';
+import { ImpressumComponent } from './impressum/impressum.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
-import { MadaphaseComponent } from './madaphase/madaphase.component';
+import { CalendarComponent } from './calendar/calendar.component';
 import { NameGeneratorComponent } from './name-generator/name-generator.component';
 import { OverviewComponent } from './overview/overview.component';
 import { SmithGeneratorComponent } from './smith-generator/smith-generator.component';
 import { TavernGeneratorComponent } from './tavern-generator/tavern-generator.component';
-import { WeekdayComponent } from './weekday/weekday.component';
 
 export const routes: Routes = [
   {
@@ -26,21 +26,12 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'madaphase',
-    component: MadaphaseComponent,
+    path: 'calendar',
+    component: CalendarComponent,
     data: {
-      title: 'madaTitle',
-      description: 'madaphase',
-      keywords: 'madaphase',
-    },
-  },
-  {
-    path: 'weekday',
-    component: WeekdayComponent,
-    data: {
-      title: 'weekdayTitle',
-      description: 'weekday',
-      keywords: 'weekday',
+      title: 'calendarTitle',
+      description: 'calendar',
+      keywords: 'calendar',
     },
   },
   {
@@ -129,6 +120,11 @@ export const routes: Routes = [
     path: 'legal',
     component: LegalNoticeComponent,
     data: { title: 'legalTitle', description: 'legal', keywords: 'legal' },
+  },
+  {
+    path: 'imprint',
+    component: ImpressumComponent,
+    data: { title: 'imprintTitle', description: 'impressum', keywords: 'impressum' },
   },
   {
     path: 'about',

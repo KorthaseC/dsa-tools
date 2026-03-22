@@ -10,9 +10,7 @@ describe('CharacterLoaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CharacterLoaderComponent]
     })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(CharacterLoaderComponent);
+    .compileComponents();`n    fixture = TestBed.createComponent(CharacterLoaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

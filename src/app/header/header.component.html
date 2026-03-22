@@ -1,110 +1,11 @@
 <div class="width-100 c-header">
-  <div [routerLink]="['/overview']" matTooltip=" {{ 'header.return' | translate }}" class="cursor c-icon">
+  <div [routerLink]="['/overview']" pTooltip="Zurück zur Übersicht" tooltipPosition="bottom" class="cursor c-icon">
     <img src="assets/dsa-tools-icon.ico" alt="Logo" class="c-logo" />
   </div>
 
-  <h1 class="c-title">{{ 'header.' + pageTitle | translate }}</h1>
+  <h1 class="c-title">{{ pageTitles[pageTitle] }}</h1>
+
+  <div class="c-dice-wrapper">
+    <app-dice-rolls></app-dice-rolls>
+  </div>
 </div>
-<!-- <app-dice-rolls></app-dice-rolls>
- -->
-<!--<mat-toolbar>
-  <mat-toolbar-row>
-    <mat-grid-list
-      [gridCols]="{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3 }"
-      rowHeight="40px"
-      class="width-100"
-    >
-      <mat-grid-tile [colspan]="1" [rowspan]="1" class="c-jusitfy-flex-start">
-        <div
-          [routerLink]="['/overview']"
-          matTooltip=" {{ 'header.return' | translate }}"
-          class="cursor"
-        >
-          <img src="assets/dsa-tools-icon.ico" alt="Logo" class="c-logo" />
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <h1>{{ "header." + pageTitle | translate }}</h1>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row>
-    <mat-grid-list
-      [gridCols]="{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3 }"
-      rowHeight="fit"
-      class="width-100 c-line-height"
-    >
-      <mat-grid-tile [colspan]="1" [rowspan]="1" class="c-jusitfy-flex-start">
-        <mat-slide-toggle
-          #languageSwitch
-          [formControl]="isGerman"
-          class="mr-l-10"
-        ></mat-slide-toggle
-      ></mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="1"
-        ><div class="c-button-container">
-          <mat-checkbox
-            [formControl]="isRollMulti"
-            (change)="deactivateOtherCheckbox($event.checked, true)"
-          >
-            {{ "header.rollMulti" | translate }}
-          </mat-checkbox>
-          <mat-checkbox
-            [formControl]="isSelectMulti"
-            (change)="deactivateOtherCheckbox($event.checked, false)"
-          >
-            {{ "header.selectMulti" | translate }}
-          </mat-checkbox>
-
-          <div class="dice-buttons">
-            @if (isSelectMulti.value) {
-            <button
-              mat-icon-button
-              (click)="rollAllDice()"
-              matTooltip=" {{ 'header.button.rollAll' | translate }}"
-            >
-              <img
-                src="assets/icons/dice.svg"
-                alt="Dice"
-                class="invert-img c-button-size"
-              />
-            </button>
-            } @for(dice of diceList; track dice) {
-            <button
-              mat-icon-button
-              (click)="rollDice('1' + dice)"
-              matTooltip="{{ 'header.button.' + dice | translate }}"
-            >
-              <img
-                [src]="'assets/icons/' + dice + '.svg'"
-                [alt]="dice"
-                class="invert-img c-button-size"
-              />
-              @if (isSelectMulti.value) {
-              <span class="c-dice-select"
-                ><strong>{{ findSelectedDieNumber(dice) }}</strong></span
-              >
-              }
-            </button>
-            }
-
-            <button
-              mat-icon-button
-              (click)="deleteDice()"
-              matTooltip=" {{ 'header.button.delete' | translate }}"
-            >
-              <img
-                src="assets/icons/trash.svg"
-                alt="Trash Dice"
-                class="invert-img c-button-size"
-              />
-            </button>
-          </div>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-toolbar-row>
-</mat-toolbar>
- -->

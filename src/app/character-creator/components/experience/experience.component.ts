@@ -1,7 +1,8 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { SelectModule } from 'primeng/select';
+
 import { ExperienceLevel } from '../../models/experience-level.model';
 import { CharacterStateService } from '../../services/character-state.service';
 import { ExperienceLevelService } from '../../services/experience.service';
@@ -9,9 +10,10 @@ import { ExperienceLevelService } from '../../services/experience.service';
 @Component({
     selector: 'app-experience',
     imports: [
-        MatButtonModule,
-        MatSelectModule,
-        TranslateModule,
+        FormsModule,
+        FloatLabelModule,
+        SelectModule,
+        
     ],
     templateUrl: './experience.component.html',
     styleUrl: './experience.component.scss'

@@ -19,26 +19,26 @@ export enum ElementsAlchemy {
 }
 
 export const PURITY_OPTIONS_STANDARD: PurityOption[] = [
-  { text: 'alchemy.purityIngedients.minHalfImpure', mod: -2 },
-  { text: 'alchemy.purityIngedients.minOneImpure', mod: -1 },
-  { text: 'alchemy.purityIngedients.allMinSufficient', mod: 0 },
-  { text: 'alchemy.purityIngedients.allMinPure', mod: +1 },
-  { text: 'alchemy.purityIngedients.minOneHighPure', mod: +2 },
-  { text: 'alchemy.purityIngedients.allMinHighPure', mod: +3 },
+  { text: 'min. Hälfte unrein', mod: -2 },
+  { text: 'min. 1 unrein', mod: -1 },
+  { text: 'alle min. ausreichend', mod: 0 },
+  { text: 'alle min. rein', mod: +1 },
+  { text: 'min. 1 hochrein, kein unrein', mod: +2 },
+  { text: 'alle min. hochrein', mod: +3 },
 ];
 
 export const PURITY_OPTIONS_STIMULANT: PurityOption[] = [
-  { text: 'alchemy.purityIngedients.minHalfImpure', mod: 2, qs: -2 },
-  { text: 'alchemy.purityIngedients.minOneImpure', mod: 1, qs: -1 },
-  { text: 'alchemy.purityIngedients.allMinSufficient', mod: 1, qs: 0 },
-  { text: 'alchemy.purityIngedients.minOneHighPure', mod: -1, qs: 2 },
-  { text: 'alchemy.purityIngedients.allMinHighPure', mod: -1, qs: 3 },
+  { text: 'min. Hälfte unrein', mod: 2, qs: -2 },
+  { text: 'min. 1 unrein', mod: 1, qs: -1 },
+  { text: 'alle min. ausreichend', mod: 1, qs: 0 },
+  { text: 'min. 1 hochrein, kein unrein', mod: -1, qs: 2 },
+  { text: 'alle min. hochrein', mod: -1, qs: 3 },
 ];
 
 export const ELIXIR_APPLICATION: AlchemyDiceResult[] = [
-  { diceValueRange: [1, 3], alchemicResult: 'alchemy.application.ingestion' },
-  { diceValueRange: [4, 5], alchemicResult: 'alchemy.application.contact' },
-  { diceValueRange: [6, 6], alchemicResult: 'alchemy.application.inhalation' },
+  { diceValueRange: [1, 3], alchemicResult: 'Einnahme' },
+  { diceValueRange: [4, 5], alchemicResult: 'Kontakt' },
+  { diceValueRange: [6, 6], alchemicResult: 'Einatmen' },
 ];
 
 export const ELIXIR_EFFECT: AlchemyDiceResult[] = [
@@ -71,27 +71,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.mu',
+        alchemicResult: 'MU-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.at',
+        alchemicResult: 'AT-Elixier',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.weaponSharpness',
+        alchemicResult: 'Waffenschärfe',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -100,27 +100,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.in',
+        alchemicResult: 'IN-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.ff',
+        alchemicResult: 'FF-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.transformation',
+        alchemicResult: 'Verwandlungs-Elixier',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -129,27 +129,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.ko',
+        alchemicResult: 'KO-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.ge',
+        alchemicResult: 'GE-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.ini',
+        alchemicResult: 'INI-Elixier',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -158,27 +158,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.kl',
+        alchemicResult: 'KL-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.fk',
+        alchemicResult: 'FK-Elixier',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.aw',
+        alchemicResult: 'AW-Elixier',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -187,27 +187,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.ch',
+        alchemicResult: 'CH-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.gs',
+        alchemicResult: 'GS-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.be',
+        alchemicResult: 'BE-Elixier',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -216,27 +216,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.kk',
+        alchemicResult: 'KK-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.rs',
+        alchemicResult: 'RS-Elixier',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.pa',
+        alchemicResult: 'PA-Elixier',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -245,27 +245,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.sk',
+        alchemicResult: 'SK-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.magicPaste',
+        alchemicResult: 'Magie-Paste',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.invisibility',
+        alchemicResult: 'Unsichtbarkeit-Elixier',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -274,27 +274,27 @@ export const STRENGTHENING_ELIXIR = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.elixir.strengthening.sk',
+        alchemicResult: 'SK-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 12],
-        alchemicResult: 'alchemy.elixir.strengthening.divinePaste',
+        alchemicResult: 'Göttliche Paste',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [13, 18],
-        alchemicResult: 'alchemy.elixir.strengthening.zk',
+        alchemicResult: 'ZK-Elixier',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -306,26 +306,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.lep',
+        alchemicResult: 'LeP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.antidote',
+        alchemicResult: 'Antidot',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -334,26 +334,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.lep',
+        alchemicResult: 'LeP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.antidote',
+        alchemicResult: 'Antidot',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -362,26 +362,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.lep',
+        alchemicResult: 'LeP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.antidote',
+        alchemicResult: 'Antidot',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -390,26 +390,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.lep',
+        alchemicResult: 'LeP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.antidote',
+        alchemicResult: 'Antidot',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -418,26 +418,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.lep',
+        alchemicResult: 'LeP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.antidote',
+        alchemicResult: 'Antidot',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -446,26 +446,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.lep',
+        alchemicResult: 'LeP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.antidote',
+        alchemicResult: 'Antidot',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -474,26 +474,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.asp',
+        alchemicResult: 'AsP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.asp',
+        alchemicResult: 'AsP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -502,26 +502,26 @@ export const HEALING_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.healing.schip',
+        alchemicResult: '+1 SchiP',
       },
       {
         diceValueRange: [2, 13],
-        alchemicResult: 'alchemy.elixir.healing.kap',
+        alchemicResult: 'KaP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 18],
-        alchemicResult: 'alchemy.elixir.healing.kap',
+        alchemicResult: 'KaP-Heilung',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -533,17 +533,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.combat',
+        alchemicResult: 'Kampftechniken',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -552,17 +552,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.physical',
+        alchemicResult: 'Körperliche Talente',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -571,17 +571,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.nature',
+        alchemicResult: 'Naturtalente',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -590,17 +590,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.knowledge',
+        alchemicResult: 'Wissentalente',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -609,17 +609,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.social',
+        alchemicResult: 'Gesellschaftstalente',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -628,17 +628,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.craft',
+        alchemicResult: 'Handwerkstalente',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -647,17 +647,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.spell',
+        alchemicResult: 'Zauber',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -666,17 +666,17 @@ export const TALENT_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.talent.liturgy',
+        alchemicResult: 'Liturgien',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -688,17 +688,17 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.fireImmunity',
+        alchemicResult: 'Feuerimmunität',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -707,16 +707,16 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.underwaterBreathing',
+        alchemicResult: 'Unterwasseratmung',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.elixir.elemental.poisonImmunity4',
+        alchemicResult: 'immun bis Giftstufe 4',
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -725,17 +725,17 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.poisonImmunity4',
+        alchemicResult: 'immun bis Giftstufe 4',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -744,17 +744,17 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.coldImmunity',
+        alchemicResult: 'Kälteimmunität',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -763,17 +763,17 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.flying',
+        alchemicResult: 'lässt Fliegen, FW Fliegen + QS',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -782,17 +782,17 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.darkVision',
+        alchemicResult: 'Dunkelsicht',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -801,17 +801,17 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.magicVision',
+        alchemicResult: 'Magiesicht (Magische Analyse mit QS)',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -820,17 +820,17 @@ export const ELEMENTAR_ELIXIR_EFFECTS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [1, 18],
-        alchemicResult: 'alchemy.elixir.elemental.mission',
+        alchemicResult: 'Missions-Elixier + QS',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [19, 19],
-        alchemicResult: 'alchemy.potion.ineffective',
+        alchemicResult: 'wirkungslos',
         category: EffectCategory.Ineffectiv,
       },
       {
         diceValueRange: [20, 20],
-        alchemicResult: 'alchemy.potion.chaoticEffect',
+        alchemicResult: 'chaotische Wirkung',
       },
     ],
   ],
@@ -842,82 +842,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.inOneHour',
+        alchemicResult: 'in 1 Stunde',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.inFiveMinutes',
+        alchemicResult: 'in 5 Min.',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.inOneMinute',
+        alchemicResult: 'in 1 Min.',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.inOneMinute',
+        alchemicResult: 'in 1 Min.',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.inThirtyKR',
+        alchemicResult: 'in 30 KR',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.inThirtyKR',
+        alchemicResult: 'in 30 KR',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.inFifteenKR',
+        alchemicResult: 'in 15 KR',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.inFifteenKR',
+        alchemicResult: 'in 15 KR',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.inFiveKR',
+        alchemicResult: 'in 5 KR',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.inFiveKR',
+        alchemicResult: 'in 5 KR',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.A,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.A,
       },
     ],
@@ -927,82 +927,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.oneDay',
+        alchemicResult: '1 Tag',
         category: AlchemicCategory.B,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.oneDay',
+        alchemicResult: '1 Tag',
         category: AlchemicCategory.B,
       },
     ],
@@ -1012,82 +1012,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.oneDay',
+        alchemicResult: '1 Tag',
         category: AlchemicCategory.E,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.oneDay',
+        alchemicResult: '1 Tag',
         category: AlchemicCategory.E,
       },
     ],
@@ -1097,82 +1097,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.oneDay',
+        alchemicResult: '1 Tag',
         category: AlchemicCategory.U,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.oneDay',
+        alchemicResult: '1 Tag',
         category: AlchemicCategory.U,
       },
     ],
@@ -1182,82 +1182,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.nextRegen',
+        alchemicResult: 'nächste Regeneration',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.nextRegen',
+        alchemicResult: 'nächste Regeneration',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.nextRegen',
+        alchemicResult: 'nächste Regeneration',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.nextRegen',
+        alchemicResult: 'nächste Regeneration',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.inOneDSixHours',
+        alchemicResult: 'in 1W6 Stunden',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.inOneDSixHours',
+        alchemicResult: 'in 1W6 Stunden',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.inOneHour',
+        alchemicResult: 'in 1 Stunde',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.inOneHour',
+        alchemicResult: 'in 1 Stunde',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.inOneMinute',
+        alchemicResult: 'in 1 Min.',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.inOneMinute',
+        alchemicResult: 'in 1 Min.',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.inThirtyKR',
+        alchemicResult: 'in 30 KR',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.inTenKR',
+        alchemicResult: 'in 10 KR',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.inTenKR',
+        alchemicResult: 'in 10 KR',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.H,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.immediately',
+        alchemicResult: 'sofort',
         category: AlchemicCategory.H,
       },
     ],
@@ -1267,82 +1267,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.twentyKR',
+        alchemicResult: '20 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.twentyKR',
+        alchemicResult: '20 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.fortyKR',
+        alchemicResult: '40 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.fortyKR',
+        alchemicResult: '40 KR',
         category: AlchemicCategory.K,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.K,
       },
     ],
@@ -1352,82 +1352,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.twentyKR',
+        alchemicResult: '20 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.twentyKR',
+        alchemicResult: '20 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.fortyKR',
+        alchemicResult: '40 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.fortyKR',
+        alchemicResult: '40 KR',
         category: AlchemicCategory.M,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.M,
       },
     ],
@@ -1437,82 +1437,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.oneKR',
+        alchemicResult: '1 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.fiveKR',
+        alchemicResult: '5 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.tenKR',
+        alchemicResult: '10 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.twentyKR',
+        alchemicResult: '20 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.twentyKR',
+        alchemicResult: '20 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.fortyKR',
+        alchemicResult: '40 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.fortyKR',
+        alchemicResult: '40 KR',
         category: AlchemicCategory.T,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.T,
       },
     ],
@@ -1522,82 +1522,82 @@ export const EFFECT_DURATIONS = new Map<string, AlchemyDiceResult[]>([
     [
       {
         diceValueRange: [0, 0],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [1, 1],
-        alchemicResult: 'alchemy.elixir.duration.thirtyKR',
+        alchemicResult: '30 KR',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [2, 2],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [3, 3],
-        alchemicResult: 'alchemy.elixir.duration.oneMinute',
+        alchemicResult: '1 Min.',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [4, 4],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [5, 5],
-        alchemicResult: 'alchemy.elixir.duration.fiveMinutes',
+        alchemicResult: '5 Min.',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [7, 7],
-        alchemicResult: 'alchemy.elixir.duration.tenMinutes',
+        alchemicResult: '10 Min.',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [8, 8],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [9, 9],
-        alchemicResult: 'alchemy.elixir.duration.qsHours',
+        alchemicResult: 'QS Stunden',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [10, 10],
-        alchemicResult: 'alchemy.elixir.duration.oneDay',
+        alchemicResult: '1 Tag',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [11, 11],
-        alchemicResult: 'alchemy.elixir.duration.oneWeek',
+        alchemicResult: '1 Woche',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [12, 12],
-        alchemicResult: 'alchemy.elixir.duration.oneWeek',
+        alchemicResult: '1 Woche',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [13, 13],
-        alchemicResult: 'alchemy.elixir.duration.oneYear',
+        alchemicResult: '1 Jahr',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [14, 14],
-        alchemicResult: 'alchemy.elixir.duration.tenYears',
+        alchemicResult: '10 Jahre',
         category: AlchemicCategory.V,
       },
       {
         diceValueRange: [15, 15],
-        alchemicResult: 'alchemy.elixir.duration.permanent',
+        alchemicResult: 'permanent',
         category: AlchemicCategory.V,
       },
     ],
@@ -1610,31 +1610,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.neutralizedPoisons1',
+        alchemicResult: 'Neutralisierte Gifte bis Stufe 1',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.neutralizedPoisons2',
+        alchemicResult: 'Neutralisierte Gifte bis Stufe 2',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.neutralizedPoisons3',
+        alchemicResult: 'Neutralisierte Gifte bis Stufe 3',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.neutralizedPoisons4',
+        alchemicResult: 'Neutralisierte Gifte bis Stufe 4',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.neutralizedPoisons5',
+        alchemicResult: 'Neutralisierte Gifte bis Stufe 5',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.neutralizedPoisons6',
+        alchemicResult: 'Neutralisierte Gifte bis Stufe 6',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.neutralizedPoisons7',
+        alchemicResult: 'Neutralisierte Gifte bis Stufe 7',
       },
     ],
   ],
@@ -1643,31 +1643,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.burdenMinus1',
+        alchemicResult: 'Belastung -1',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.burdenMinus1Star',
+        alchemicResult: 'Belastung -1, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.burdenMinus2',
+        alchemicResult: 'Belastung -2',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.burdenMinus2Star',
+        alchemicResult: 'Belastung -2, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.burdenMinus3',
+        alchemicResult: 'Belastung -3',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.burdenMinus3Star',
+        alchemicResult: 'Belastung -3, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.burdenMinus4',
+        alchemicResult: 'Belastung -4',
       },
     ],
   ],
@@ -1676,31 +1676,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus1',
+        alchemicResult: '+1',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus1Star',
+        alchemicResult: '+1, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus2',
+        alchemicResult: '+2',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus2Star',
+        alchemicResult: '+2, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus3',
+        alchemicResult: '+3',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus3Star',
+        alchemicResult: '+3, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus4',
+        alchemicResult: '+4',
       },
     ],
   ],
@@ -1709,31 +1709,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus1',
+        alchemicResult: '+1',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus1Star',
+        alchemicResult: '+1, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus2',
+        alchemicResult: '+2',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus2Star',
+        alchemicResult: '+2, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus3',
+        alchemicResult: '+3',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus3Star',
+        alchemicResult: '+3, Dauer verlängert sich um 1 Zeiteinheit der Wirkungsdauer',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.plus4',
+        alchemicResult: '+4',
       },
     ],
   ],
@@ -1742,31 +1742,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.healing1',
+        alchemicResult: '+1W3',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.healing2',
+        alchemicResult: '+1W6',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.healing3',
+        alchemicResult: '+1W6+4',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.healing4',
+        alchemicResult: '+1W6+8',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.healing5',
+        alchemicResult: '+2W6+4',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.healing6',
+        alchemicResult: '+2W6+8',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.healing7',
+        alchemicResult: '+3W6+8',
       },
     ],
   ],
@@ -1775,31 +1775,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.magic1',
+        alchemicResult: 'gegen niedere Dämonen und mag. Wesen',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.magic1',
+        alchemicResult: 'gegen niedere Dämonen und mag. Wesen',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.magic2',
+        alchemicResult: 'gegen bis 5-gehörnte Dämonen und mag. Wesen',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.magic2',
+        alchemicResult: 'gegen bis 5-gehörnte Dämonen und mag. Wesen',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.magic3',
+        alchemicResult: 'gegen alle Dämonen und mag. Wesen',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.magic3',
+        alchemicResult: 'gegen alle Dämonen und mag. Wesen',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.magic4',
+        alchemicResult: 'verletzend gegen Dämonen und mag. Wesen',
       },
     ],
   ],
@@ -1808,31 +1808,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.tp1',
+        alchemicResult: '+1',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.tp2',
+        alchemicResult: '+2',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.tp3',
+        alchemicResult: '+3',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.tp4',
+        alchemicResult: '+1W6',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.tp5',
+        alchemicResult: '+1W6+3',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.tp6',
+        alchemicResult: '+1W6+5',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.tp7',
+        alchemicResult: '+1W6+8',
       },
     ],
   ],
@@ -1841,31 +1841,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.invisible1',
+        alchemicResult: 'Körper durchsichtig',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.invisible2',
+        alchemicResult: 'Körper unsichtbar',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.invisible2',
+        alchemicResult: 'Körper unsichtbar',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.invisible3',
+        alchemicResult: 'Körper unsichtbar + Trad.artefakte unsichtbar',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.invisible3',
+        alchemicResult: 'Körper unsichtbar + Trad.artefakte unsichtbar',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.invisible4',
+        alchemicResult: 'Körper unsichtbar + Trad.artefakte unsichtbar + Kleidung unsichtbar',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.invisible4',
+        alchemicResult: 'Körper unsichtbar + Trad.artefakte unsichtbar + Kleidung unsichtbar',
       },
     ],
   ],
@@ -1874,31 +1874,31 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
     [
       {
         qs: 1,
-        alchemicResult: 'alchemy.elixir.qsEffect.transform1',
+        alchemicResult: 'Gleiche Größe',
       },
       {
         qs: 2,
-        alchemicResult: 'alchemy.elixir.qsEffect.transform1',
+        alchemicResult: 'Gleiche Größe',
       },
       {
         qs: 3,
-        alchemicResult: 'alchemy.elixir.qsEffect.transform2',
+        alchemicResult: 'max. 1 Kat. kleiner',
       },
       {
         qs: 4,
-        alchemicResult: 'alchemy.elixir.qsEffect.transform3',
+        alchemicResult: 'max. 1 Kat. größer oder kleiner',
       },
       {
         qs: 5,
-        alchemicResult: 'alchemy.elixir.qsEffect.transform4',
+        alchemicResult: 'max. 1 Kat. größer oder 2 Kat. kleiner',
       },
       {
         qs: 6,
-        alchemicResult: 'alchemy.elixir.qsEffect.transform5',
+        alchemicResult: 'max. 1 Kat. größer oder 3 Kat. kleiner',
       },
       {
         qs: 7,
-        alchemicResult: 'alchemy.elixir.qsEffect.transform6',
+        alchemicResult: 'max. 2 Kat. größer oder 3 Kat. kleiner',
       },
     ],
   ],
@@ -1906,105 +1906,105 @@ export const ELIXIR_EFFECTS_QS_GROUPS = new Map<string, AlchemyQSResult[]>([
 
 //--------poision------------//
 export const POISON_APPLICATION: AlchemyDiceResult[] = [
-  { diceValueRange: [1, 8], alchemicResult: 'alchemy.application.ingestion' },
-  { diceValueRange: [9, 10], alchemicResult: 'alchemy.application.contact' },
+  { diceValueRange: [1, 8], alchemicResult: 'Einnahme' },
+  { diceValueRange: [9, 10], alchemicResult: 'Kontakt' },
   {
     diceValueRange: [11, 16],
-    alchemicResult: 'alchemy.application.weaponPoison',
+    alchemicResult: 'Waffengift',
   },
   {
     diceValueRange: [17, 18],
-    alchemicResult: 'alchemy.application.inhalation',
+    alchemicResult: 'Einatmen',
   },
   {
     diceValueRange: [19, 19],
-    alchemicResult: 'alchemy.application.chooseTwo',
+    alchemicResult: 'Wähle 2 von: Einnahme, Kontakt, Waffengift, Einatmen',
   },
   {
     diceValueRange: [20, 20],
-    alchemicResult: 'alchemy.potion.ineffective',
+    alchemicResult: 'wirkungslos',
     category: EffectCategory.Ineffectiv,
   },
 ];
 
 export const POISON_RESISTANCE: AlchemyDiceResult[] = [
-  { diceValueRange: [2, 2], alchemicResult: 'alchemy.resistance.doubleSK' },
-  { diceValueRange: [3, 6], alchemicResult: 'alchemy.resistance.sk' },
-  { diceValueRange: [7, 10], alchemicResult: 'alchemy.resistance.zk' },
-  { diceValueRange: [11, 11], alchemicResult: 'alchemy.resistance.none' },
-  { diceValueRange: [12, 12], alchemicResult: 'alchemy.resistance.doubleZK' },
+  { diceValueRange: [2, 2], alchemicResult: 'Doppelte Seelenkraft (SK x 2)' },
+  { diceValueRange: [3, 6], alchemicResult: 'Seelenkraft (SK)' },
+  { diceValueRange: [7, 10], alchemicResult: 'Zähigkeit (ZK)' },
+  { diceValueRange: [11, 11], alchemicResult: 'Kein Widerstand' },
+  { diceValueRange: [12, 12], alchemicResult: 'Doppelte Zähigkeit (ZK x 2)' },
 ];
 
 export const POISON_EFFECT: AlchemyDiceResult[] = [
   {
     diceValueRange: [-10, 0],
-    alchemicResult: 'alchemy.poison.effect.minDamageOnce',
+    alchemicResult: '1W3 SP / 1 SP, Beginn: 7 - QS Min., Dauer: einmalig',
   },
   {
     diceValueRange: [1, 1],
-    alchemicResult: 'alchemy.poison.effect.lowDamageOnce',
+    alchemicResult: '1W6 SP / 1W3 SP, Beginn: 7 - QS Min., Dauer: einmalig',
   },
   {
     diceValueRange: [2, 2],
-    alchemicResult: 'alchemy.poison.effect.lowDamageOnce',
+    alchemicResult: '1W6 SP / 1W3 SP, Beginn: 7 - QS Min., Dauer: einmalig',
   },
   {
     diceValueRange: [3, 3],
-    alchemicResult: 'alchemy.poison.effect.lowDamageImmediate',
+    alchemicResult: '1W6 SP / 1W3 SP, Beginn: sofort, Dauer: einmalig',
   },
   {
     diceValueRange: [4, 4],
-    alchemicResult: 'alchemy.poison.effect.mediumDamageShort',
+    alchemicResult: '1W6 SP/Min., Beginn: 1 Min., Dauer: QS Min. / 2W3 Min.',
   },
   {
     diceValueRange: [5, 5],
-    alchemicResult: 'alchemy.poison.effect.mediumDamageMedium',
+    alchemicResult: '1W6 SP/Min., Beginn: 1 Min., Dauer: QS Min. / QS2 Min.',
   },
   {
     diceValueRange: [6, 6],
-    alchemicResult: 'alchemy.poison.effect.highDamageMedium',
+    alchemicResult: '1W3 SP/KR, Beginn: 5 KR, Dauer: QS x2 KR / QS KR',
   },
   {
     diceValueRange: [7, 7],
-    alchemicResult: 'alchemy.poison.effect.highDamageImmediate',
+    alchemicResult: '1W3 SP/KR, Beginn: sofort, Dauer: QS x2 KR / QS KR',
   },
   {
     diceValueRange: [8, 8],
-    alchemicResult: 'alchemy.poison.effect.shortEffect',
+    alchemicResult: '{{effect}}, Beginn: 1 KR, Dauer: 2W3 Min.',
     category: EffectCategory.Effect,
   },
   {
     diceValueRange: [9, 9],
-    alchemicResult: 'alchemy.poison.effect.shortEffect',
+    alchemicResult: '{{effect}}, Beginn: 1 KR, Dauer: 2W3 Min.',
     category: EffectCategory.Effect,
   },
   {
     diceValueRange: [10, 10],
-    alchemicResult: 'alchemy.poison.effect.longDamageShort',
+    alchemicResult: '1W6 SP/Min., Beginn: 5 Min., Dauer: QS x2 Min. / QS Min.',
   },
   {
     diceValueRange: [11, 11],
-    alchemicResult: 'alchemy.poison.effect.lowDamageEffect',
+    alchemicResult: '1W3 SP/KR + {{effect}} / 1 SP/KR + {{effect}}, Beginn: 5 KR, Dauer: 2W3 KR',
     category: EffectCategory.Effect,
   },
   {
     diceValueRange: [12, 12],
-    alchemicResult: 'alchemy.poison.effect.lowDamageEffectImmediate',
+    alchemicResult: '1W3 SP/KR + {{effect}} / 2 SP/KR + {{effect}}, Beginn: sofort, Dauer: 2W3 KR',
     category: EffectCategory.Effect,
   },
   {
     diceValueRange: [13, 13],
-    alchemicResult: 'alchemy.poison.effect.mediumDamageEffect',
+    alchemicResult: '1W6 SP/Min. + {{effect}} / 1W3 SP/Min. + {{effect}}, Beginn: 1 Min., Dauer: 2W3 Min.',
     category: EffectCategory.Effect,
   },
   {
     diceValueRange: [14, 14],
-    alchemicResult: 'alchemy.poison.effect.highDamageEffect',
+    alchemicResult: '1W6 SP/KR + {{effect}} / 1W3 SP/KR + {{effect}}, Beginn: 1 KR, Dauer: 2W3 KR',
     category: EffectCategory.Effect,
   },
   {
     diceValueRange: [15, 20],
-    alchemicResult: 'alchemy.poison.effect.veryHighDamageEffect',
+    alchemicResult: '1W6 + QS SP/KR + {{effect}} / 1W3 + QS SP/KR + {{effect}}, Beginn: 1 KR, Dauer: 2W3 KR',
     category: EffectCategory.Effect,
   },
 ];
@@ -2018,15 +2018,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.acidSmallArea',
+        alchemicResult: 'Säure kl. Fläche',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.burningSmallArea',
+        alchemicResult: 'Brennend kl. Fläche',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.burningLargeArea',
+        alchemicResult: 'Brennend gr. Fläche',
       },
     ],
   ],
@@ -2035,15 +2035,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.fear',
+        alchemicResult: 'Furcht',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.bloodrage',
+        alchemicResult: 'Blutrausch',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.helpless',
+        alchemicResult: 'Handlungsunfähig',
       },
     ],
   ],
@@ -2052,15 +2052,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.pain',
+        alchemicResult: 'Schmerz',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.sick',
+        alchemicResult: 'Krank',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.blind',
+        alchemicResult: 'Blind',
       },
     ],
   ],
@@ -2069,15 +2069,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.confusion',
+        alchemicResult: 'Verwirrung',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.deaf',
+        alchemicResult: 'Taub',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.fixed',
+        alchemicResult: 'Fixiert',
       },
     ],
   ],
@@ -2086,15 +2086,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.stun',
+        alchemicResult: 'Betäubung',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.mute',
+        alchemicResult: 'Stumm',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.unconscious',
+        alchemicResult: 'Bewusstlos',
       },
     ],
   ],
@@ -2103,15 +2103,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.paralysis',
+        alchemicResult: 'Paralyse',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.burden',
+        alchemicResult: 'Belastung',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.immobile',
+        alchemicResult: 'Bewegungsunfähig',
       },
     ],
   ],
@@ -2120,15 +2120,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.badLuck',
+        alchemicResult: 'Pechmagnet',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.minorSpirits',
+        alchemicResult: 'Lästige Mindergeister',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.minorSpirits',
+        alchemicResult: 'Lästige Mindergeister',
       },
     ],
   ],
@@ -2137,15 +2137,15 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 3],
-        alchemicResult: 'alchemy.poison.triggerEffect.lightSensitive',
+        alchemicResult: 'Lichtempfindlich',
       },
       {
         diceValueRange: [4, 5],
-        alchemicResult: 'alchemy.poison.triggerEffect.uglyI',
+        alchemicResult: 'Hässlich I',
       },
       {
         diceValueRange: [6, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.uglyII',
+        alchemicResult: 'Hässlich II',
       },
     ],
   ],
@@ -2154,7 +2154,7 @@ export const POISON_TRIGGER_EFFECT = new Map<
     [
       {
         diceValueRange: [1, 6],
-        alchemicResult: 'alchemy.poison.triggerEffect.possessionObedience',
+        alchemicResult: 'Entrückung (Namenloser) + Hörigkeit',
       },
     ],
   ],
@@ -2163,73 +2163,73 @@ export const POISON_TRIGGER_EFFECT = new Map<
 export const POISON_EFFECTS_QS_GROUPS: AlchemyQSResult[] = [
   {
     qs: 1,
-    alchemicResult: 'alchemy.poison.status.condition1',
+    alchemicResult: 'Zustand: 1 Stufe / keiner, Status: keiner',
   },
   {
     qs: 2,
-    alchemicResult: 'alchemy.poison.status.condition2',
+    alchemicResult: 'Zustand: 2 Stufen / 1 Stufe, Status: keiner',
   },
   {
     qs: 3,
-    alchemicResult: 'alchemy.poison.status.condition3',
+    alchemicResult: 'Zustand: 3 Stufen / 1 Stufe, Status: ausgelöst / keiner',
   },
   {
     qs: 4,
-    alchemicResult: 'alchemy.poison.status.condition4',
+    alchemicResult: 'Zustand: 4 Stufen / 2 Stufen, Status: ausgelöst / keiner',
   },
   {
     qs: 5,
-    alchemicResult: 'alchemy.poison.status.condition5',
+    alchemicResult: 'Zustand: 4 Stufen / 3 Stufen, Status: ausgelöst / ausgelöst',
   },
   {
     qs: 6,
-    alchemicResult: 'alchemy.poison.status.condition6',
+    alchemicResult: 'Zustand: 4 Stufen / 4 Stufen, Status: ausgelöst / ausgelöst',
   },
   {
     qs: 7,
-    alchemicResult: 'alchemy.poison.status.condition7',
+    alchemicResult: 'Zustand: 4 Stufen / 4 Stufen, Status: ausgelöst / ausgelöst',
   },
 ];
 
 //--------stimulant------------//
 export const STIMULANT_APPLICATION: AlchemyDiceResult[] = [
-  { diceValueRange: [1, 10], alchemicResult: 'alchemy.application.ingestion' },
-  { diceValueRange: [11, 12], alchemicResult: 'alchemy.application.contact' },
+  { diceValueRange: [1, 10], alchemicResult: 'Einnahme' },
+  { diceValueRange: [11, 12], alchemicResult: 'Kontakt' },
   {
     diceValueRange: [13, 19],
-    alchemicResult: 'alchemy.application.inhalation',
+    alchemicResult: 'Einatmen',
   },
   {
     diceValueRange: [20, 20],
-    alchemicResult: 'alchemy.potion.ineffective',
+    alchemicResult: 'wirkungslos',
     category: EffectCategory.Ineffectiv,
   },
 ];
 
 export const STIMULANT_RESISTANCE: AlchemyDiceResult[] = [
-  { diceValueRange: [2, 2], alchemicResult: 'alchemy.resistance.doubleZK' },
-  { diceValueRange: [3, 6], alchemicResult: 'alchemy.resistance.zk' },
-  { diceValueRange: [7, 10], alchemicResult: 'alchemy.resistance.sk' },
-  { diceValueRange: [11, 11], alchemicResult: 'alchemy.resistance.none' },
-  { diceValueRange: [12, 12], alchemicResult: 'alchemy.resistance.doubleSK' },
+  { diceValueRange: [2, 2], alchemicResult: 'Doppelte Zähigkeit (ZK x 2)' },
+  { diceValueRange: [3, 6], alchemicResult: 'Zähigkeit (ZK)' },
+  { diceValueRange: [7, 10], alchemicResult: 'Seelenkraft (SK)' },
+  { diceValueRange: [11, 11], alchemicResult: 'Kein Widerstand' },
+  { diceValueRange: [12, 12], alchemicResult: 'Doppelte Seelenkraft (SK x 2)' },
 ];
 
 export const STIMULANT_ADDICTION: AlchemyDiceResult[] = [
   {
     diceValueRange: [1, 3],
-    alchemicResult: 'alchemy.stimulant.addiction.none',
+    alchemicResult: 'keine',
   },
   {
     diceValueRange: [4, 7],
-    alchemicResult: 'alchemy.stimulant.addiction.afterManyUses',
+    alchemicResult: 'nach 1W20 Anwendungen',
   },
   {
     diceValueRange: [8, 11],
-    alchemicResult: 'alchemy.stimulant.addiction.afterFewUses',
+    alchemicResult: 'nach 1W6 Anwendungen',
   },
   {
     diceValueRange: [12, 14],
-    alchemicResult: 'alchemy.stimulant.addiction.afterOneUse',
+    alchemicResult: 'nach 1 Anwendung',
   },
 ];
 
@@ -2243,73 +2243,73 @@ export const STIMULANT_EFFECT = new Map<ElementsAlchemy, StimulantEffect>([
   [
     ElementsAlchemy.Fire,
     {
-      effect: 'alchemy.stimulant.effect.fire.effect',
-      sideEffect: 'alchemy.stimulant.effect.fire.sideEffect',
-      overdose: 'alchemy.stimulant.effect.fire.overdose',
+      effect: 'Aufputschmittel: ignoriert bis zu 3 Stufen Furcht für die Wirkungsdauer',
+      sideEffect: '2/1 Stufen Furcht',
+      overdose: '3 Stufen Überhitzung',
     },
   ],
   [
     ElementsAlchemy.Water,
     {
-      effect: 'alchemy.stimulant.effect.water.effect',
-      sideEffect: 'alchemy.stimulant.effect.water.sideEffect',
-      overdose: 'alchemy.stimulant.effect.water.overdose',
+      effect: '+2/+1 auf Körpertalente',
+      sideEffect: '2/1 Stufen Berauscht',
+      overdose: '2W6 SP (Ersticken)',
     },
   ],
   [
     ElementsAlchemy.Humus,
     {
-      effect: 'alchemy.stimulant.effect.humus.effect',
-      sideEffect: 'alchemy.stimulant.effect.humus.sideEffect',
-      overdose: 'alchemy.stimulant.effect.humus.overdose',
+      effect: '+2/+1 auf Naturtalente',
+      sideEffect: '2/1 Stufe Betäubung',
+      overdose: '2W6 SP (Gift)',
     },
   ],
   [
     ElementsAlchemy.Ice,
     {
-      effect: 'alchemy.stimulant.effect.ice.effect',
-      sideEffect: 'alchemy.stimulant.effect.ice.sideEffect',
-      overdose: 'alchemy.stimulant.effect.ice.overdose',
+      effect: 'Geisterweiterung: +2/+1 auf Wissenstalente',
+      sideEffect: '2/1 Stufen Schmerz',
+      overdose: '3 Stufen Unterkühlung',
     },
   ],
   [
     ElementsAlchemy.Air,
     {
-      effect: 'alchemy.stimulant.effect.air.effect',
-      sideEffect: 'alchemy.stimulant.effect.air.sideEffect',
-      overdose: 'alchemy.stimulant.effect.air.overdose',
+      effect: 'Subtiles Schimmern: +2/+1 auf Gesellschaftstalente',
+      sideEffect: 'Stumm / 1 Stufe Paralyse',
+      overdose: 'Halluzinationen, Handlungsunfähig',
     },
   ],
   [
     ElementsAlchemy.Ore,
     {
-      effect: 'alchemy.stimulant.effect.ore.effect',
-      sideEffect: 'alchemy.stimulant.effect.ore.sideEffect',
-      overdose: 'alchemy.stimulant.effect.ore.overdose',
+      effect: 'Für ruhige Hände: +2/+1 auf Handwerkstalente',
+      sideEffect: '2/1 Stufen Paralyse',
+      overdose: 'Lähmung, Bewegungsunfähig',
     },
   ],
   [
     ElementsAlchemy.Magic,
     {
-      effect: 'alchemy.stimulant.effect.magic.effect',
-      sideEffect: 'alchemy.stimulant.effect.magic.sideEffect',
-      overdose: 'alchemy.stimulant.effect.magic.overdose',
+      effect: 'Affinität zu Elementaren',
+      sideEffect: '2/1 Stufen Verwirrung',
+      overdose: 'verliert 2W6 AsP (oder LeP falls nicht genug)',
     },
   ],
   [
     ElementsAlchemy.Perverted,
     {
-      effect: 'alchemy.stimulant.effect.perverted.effect',
-      sideEffect: 'alchemy.stimulant.effect.perverted.sideEffect',
-      overdose: 'alchemy.stimulant.effect.perverted.overdose',
+      effect: 'Affinität zu Dämonen',
+      sideEffect: 'Lichtempfindlich',
+      overdose: '2W6+3 SP (Gift)',
     },
   ],
   [
     ElementsAlchemy.Divine,
     {
-      effect: 'alchemy.stimulant.effect.divine.effect',
-      sideEffect: 'alchemy.stimulant.effect.divine.sideEffect',
-      overdose: 'alchemy.stimulant.effect.divine.overdose',
+      effect: 'Höhere Prophezeihung / Prophezeiung',
+      sideEffect: '3/2 Stufen Entrückung durch Visionen',
+      overdose: 'Verliert 2W6 KaP (oder LeP falls nicht genug)',
     },
   ],
 ]);
@@ -2317,50 +2317,50 @@ export const STIMULANT_EFFECT = new Map<ElementsAlchemy, StimulantEffect>([
 export const STIMULANT_EFFECTS_QS_GROUPS: AlchemyQSResult[] = [
   {
     qs: -1,
-    alchemicResult: 'alchemy.stimulant.status.condition0',
+    alchemicResult: 'misslungenes Alchimikum',
   },
   {
     qs: 0,
-    alchemicResult: 'alchemy.stimulant.status.condition0',
+    alchemicResult: 'misslungenes Alchimikum',
   },
   {
     qs: 1,
-    alchemicResult: 'alchemy.stimulant.status.condition1',
+    alchemicResult: 'Dauer: 5 Minuten / Dauer Nebenwirkung (bei Überdosierung): 10 Minuten, Beginn: 6 SR',
   },
   {
     qs: 2,
-    alchemicResult: 'alchemy.stimulant.status.condition2',
+    alchemicResult: 'Dauer: 10 Minuten / Dauer Nebenwirkung (bei Überdosierung): 10 Minuten, Beginn: 3 SR',
   },
   {
     qs: 3,
-    alchemicResult: 'alchemy.stimulant.status.condition3',
+    alchemicResult: 'Dauer: 30 Minuten / Dauer Nebenwirkung (bei Überdosierung): 30 Minuten, Beginn: 1 SR',
   },
   {
     qs: 4,
-    alchemicResult: 'alchemy.stimulant.status.condition4',
+    alchemicResult: 'Dauer: 1 Stunde / Dauer Nebenwirkung (bei Überdosierung): 30 Minuten, Beginn: 5 KR',
   },
   {
     qs: 5,
-    alchemicResult: 'alchemy.stimulant.status.condition5',
+    alchemicResult: 'Dauer: 3 Stunden / Dauer Nebenwirkung (bei Überdosierung): 1 Stunden, Beginn: 1 KR',
   },
   {
     qs: 6,
-    alchemicResult: 'alchemy.stimulant.status.condition6',
+    alchemicResult: 'Dauer: 6 Stunden / Dauer Nebenwirkung (bei Überdosierung): 1 Stunden, Beginn: sofort',
   },
   {
     qs: 7,
-    alchemicResult: 'alchemy.stimulant.status.condition7',
+    alchemicResult: 'Dauer: 12 Stunden / Dauer Nebenwirkung (bei Überdosierung): 6 Stunden, Beginn: sofort',
   },
   {
     qs: 8,
-    alchemicResult: 'alchemy.stimulant.status.condition7',
+    alchemicResult: 'Dauer: 12 Stunden / Dauer Nebenwirkung (bei Überdosierung): 6 Stunden, Beginn: sofort',
   },
   {
     qs: 9,
-    alchemicResult: 'alchemy.stimulant.status.condition7',
+    alchemicResult: 'Dauer: 12 Stunden / Dauer Nebenwirkung (bei Überdosierung): 6 Stunden, Beginn: sofort',
   },
   {
     qs: 10,
-    alchemicResult: 'alchemy.stimulant.status.condition7',
+    alchemicResult: 'Dauer: 12 Stunden / Dauer Nebenwirkung (bei Überdosierung): 6 Stunden, Beginn: sofort',
   },
 ];

@@ -1,6 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
 import { Utility } from '../shared/utility';
 import { SmithGeneratorComponent } from './smith-generator.component';
 import {
@@ -24,9 +22,7 @@ describe('SmithGeneratorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         SmithGeneratorComponent,
-        TranslateModule.forRoot(),
-        BrowserAnimationsModule,
-      ],
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SmithGeneratorComponent);

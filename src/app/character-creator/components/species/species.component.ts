@@ -1,16 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTabsModule } from '@angular/material/tabs';
-import { TranslateModule } from '@ngx-translate/core';
+
 import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DividerModule } from 'primeng/divider';
+import { PanelModule } from 'primeng/panel';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TabsModule } from 'primeng/tabs';
 import { ADVANTAGE } from '../../constants/advantage.const';
@@ -24,18 +19,13 @@ import { CharacterStateService } from '../../services/character-state.service';
     selector: 'app-species',
     imports: [
         FormsModule,
-        MatButtonModule,
-        MatSelectModule,
-        TranslateModule,
-        MatCardModule,
-        MatCheckboxModule,
-        MatExpansionModule,
-        MatTabsModule,
+        
         CardModule,
         DividerModule,
         TabsModule,
         CheckboxModule,
         RadioButtonModule,
+        PanelModule,
         CommonModule
     ],
     templateUrl: './species.component.html',

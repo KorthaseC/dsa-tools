@@ -46,6 +46,40 @@ export const MOON_ICON = {
 export const DAYS_IN_MONTH: number = 30;
 export const DAYS_IN_YEAR: number = 365;
 
+/** German display names for the aventurian months (used by weekday and madaphase calculators) */
+export const MONTH_NAMES: Record<string, string> = {
+  praios:      'Praios',
+  rondra:      'Rondra',
+  efferd:      'Efferd',
+  travia:      'Travia',
+  boron:       'Boron',
+  hesinde:     'Hesinde',
+  firun:       'Firun',
+  tsa:         'Tsa',
+  phex:        'Phex',
+  peraine:     'Peraine',
+  ingerimm:    'Ingerimm',
+  rahja:       'Rahja',
+  namelessDays:'Namenlose Tage',
+};
+
+/** German display names for the seven aventurian weekdays */
+export const WEEKDAY_NAMES: Record<string, string> = {
+  windday:    'Windstag',
+  earthday:   'Erdtag',
+  marketday:  'Markttag',
+  praiosday:  'Praiostag',
+  rohalsday:  'Rohalstag',
+  fireday:    'Feuertag',
+  waterday:   'Wassertag',
+};
+
+/** Day-of-month options for a normal 30-day aventurian month */
+export const DAY_OPTIONS: number[] = Array.from({ length: 30 }, (_, i) => i + 1);
+
+/** Day-of-month options for the 5 nameless days */
+export const NAMELESS_DAY_OPTIONS: number[] = [1, 2, 3, 4, 5];
+
 /********************** Currency Constants **********************/
 export enum CurrencyRegion {
   Middenrealm = 'middenrealm', // Mittelreich

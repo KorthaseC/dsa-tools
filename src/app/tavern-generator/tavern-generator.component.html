@@ -1,114 +1,100 @@
-<form>
-  <mat-form-field>
-    <mat-label>{{ "tavern.location.label" | translate }}</mat-label>
-    <mat-select [formControl]="location" required>
-      @for (location of locationOptions; track location) {
-      <mat-option [value]="location">{{
-        location.location | translate
-      }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-</form>
+<div class="tavern-container pb-5">
+  <form class="formgrid grid mb-4 row-gap-3">
+    <div class="col-12">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="location"
+          [options]="locationOptions"
+          optionLabel="location"
+          [formControl]="location"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="location">Ort des Gasthauses</label>
+      </p-floatlabel>
+    </div>
+  </form>
 
-@if (tavernName) {
-<div class="mr-b-20">
-  <div>
-    <div>
-      <strong>{{ tavernName }}</strong>
-    </div>
-    <div class="mr-b-20">
-      <div>
-        {{ "tavern.type.text" | translate
-        }}{{ "tavern.type." + tavernType | translate }}
-      </div>
-      <div>
-        {{ "tavern.furnishing.text" | translate
-        }}{{ "tavern.furnishing." + tavernQs.tavernResult | translate }}
-      </div>
-      <div>
-        {{ "tavern.keeper.text" | translate
-        }}{{ "tavern.keeper." + keeper | translate }}
-      </div>
-      <div>
-        {{ "tavern.priceLvl.text" | translate : { priceLvl: priceGuestLvl } }}
-      </div>
-    </div>
-
-    <div class="mr-b-20">
-      <div>{{ "tavern.seats" | translate : { seats } }}</div>
-      <div>
-        @switch (beds) { @case (0) {
-        <div>{{ "tavern.beds.none" | translate : { beds } }}</div>
-        } @case (1) {
-        <div>{{ "tavern.beds.single" | translate : { beds } }}</div>
-        <div>{{ calculateBedPrice() }}</div>
-        <div>{{ distributeBedsText() }}</div>
-        } @default {
-        <div>{{ "tavern.beds.general" | translate : { beds } }}</div>
-        <div>{{ calculateBedPrice() }}</div>
-        <div>{{ distributeBedsText() }}</div>
-        } }
-      </div>
-    </div>
-
-    <mat-table [dataSource]="guestLevels" class="mr-b-20">
-      <!-- Day Time Column -->
-      <ng-container matColumnDef="dayTime">
-        <mat-header-cell *matHeaderCellDef>
-          {{ "tavern.guestLvl.dayTime" | translate }}
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          {{ "tavern.guestLvl." + element.dayTime | translate }}
-        </mat-cell>
-      </ng-container>
-
-      <!-- Guest Level Column -->
-      <ng-container matColumnDef="guestLevel">
-        <mat-header-cell *matHeaderCellDef>
-          {{ "tavern.guestLvl.guests" | translate }}
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          {{ "tavern.guestLvl." + element.guestLevel | translate }}
-        </mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
-
-    <div class="mr-b-20">
-      {{ "tavern.guestLvl.text" | translate : { guestLvl: priceGuestLvl } }}
-    </div>
-
-    <div>
-      <div>
-        <strong>{{ "shared.optional" | translate }}</strong>
-      </div>
-      @if (activeDays.length > 0) {
-      <div>
-        {{ getEventDaysText() }}
-        {{ "tavern.events." + specialEvent | translate }}
-      </div>
-      }
-    </div>
-    <div>
-      {{ "tavern.attendants.text" | translate }}
-      {{ "tavern.attendants." + attendant | translate }}
-    </div>
-    <div>
-      {{ "tavern.specialFeatures.text" | translate }}
-      {{ "tavern.specialFeatures." + specialFeature | translate }}
-    </div>
-    <div>
-      {{ "tavern.specialGuests.text" | translate }}
-      {{ "tavern.specialGuests." + specialGuest | translate }}
+  <div class="flex justify-content-end mb-4">
+    <div class="w-full md:w-auto">
+      <p-button
+        label="Generiere Taverne"
+        (onClick)="getTavern()"
+        [disabled]="!isFormValid()"
+        styleClass="w-full"
+      />
     </div>
   </div>
-</div>
-}
 
-<div class="button">
-  <button mat-raised-button (click)="getTavern()" [disabled]="!isFormValid()">
-    {{ "tavern.generateTavern" | translate }}
-  </button>
+  @if (tavernName) {
+  <h2 class="tavern-name mb-3">{{ tavernName }}</h2>
+
+  <div class="result-card mb-3">
+    <div class="flex justify-content-between align-items-center">
+      <span class="result-label">Typ</span>
+      <span class="result-value">{{ tavernTypeNames[tavernType] }}</span>
+    </div>
+    <div class="flex justify-content-between align-items-center">
+      <span class="result-label">Qualitätsstufe</span>
+      <span class="result-value">{{ furnishingNames[tavernQs.tavernResult] }}</span>
+    </div>
+    <div class="flex justify-content-between align-items-center">
+      <span class="result-label">Wirt</span>
+      <span class="result-value">{{ keeperNames[keeper] }}</span>
+    </div>
+    <div class="flex justify-content-between align-items-center">
+      <span class="result-label">Preisstufe</span>
+      <span class="result-value">{{ priceGuestLvl }}</span>
+    </div>
+    <div class="flex justify-content-between align-items-center">
+      <span class="result-label">Sitzplätze</span>
+      <span class="result-value">{{ seats }}</span>
+    </div>
+    @if (beds > 0) {
+    <div class="result-row--sub">
+      <div class="flex justify-content-between align-items-center mb-1">
+        <span class="result-label">Betten</span>
+        <span class="result-value">{{ beds }}</span>
+      </div>
+      <div>{{ distributeBedsText() }}</div>
+      <div>{{ calculateBedPrice() }}</div>
+    </div>
+    }
+  </div>
+
+  <p-table [value]="guestLevels" styleClass="p-datatable-sm mb-3">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Tageszeit</th>
+        <th>Gäste</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-element>
+      <tr>
+        <td>{{ dayTimeNames[element.dayTime] }}</td>
+        <td>{{ guestLevelNames[element.guestLevel] }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div class="result-card">
+    <div class="flex justify-content-between align-items-start">
+      <span class="result-label">Angestellter</span>
+      <span class="result-value result-value--right">{{ attendantNames[attendant] }}</span>
+    </div>
+    <div class="flex justify-content-between align-items-start">
+      <span class="result-label">Besonderheit</span>
+      <span class="result-value result-value--right">{{ specialFeatureNames[specialFeature] }}</span>
+    </div>
+    <div class="flex justify-content-between align-items-start">
+      <span class="result-label">Besonderer Gast</span>
+      <span class="result-value result-value--right">{{ specialGuestNames[specialGuest] }}</span>
+    </div>
+    @if (activeDays.length > 0) {
+    <div class="result-row--sub">
+      {{ getEventDaysText() }}<strong>{{ eventNames[specialEvent] }}</strong>
+    </div>
+    }
+  </div>
+  }
 </div>

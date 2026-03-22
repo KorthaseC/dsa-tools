@@ -12,9 +12,7 @@ describe('NameGeneratorService', () => {
     TestBed.configureTestingModule({
     imports: [],
     providers: [NameGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-});
-
-    service = TestBed.inject(NameGeneratorService);
+});`n    service = TestBed.inject(NameGeneratorService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 

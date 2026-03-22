@@ -1,29 +1,43 @@
 import DiceBox from '@3d-dice/dice-box';
-import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
-import { AfterViewInit, Component, Inject, PLATFORM_ID, signal } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { MenuModule } from 'primeng/menu';
-
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { PopoverModule } from 'primeng/popover';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
     selector: 'app-dice-rolls',
-    imports: [TranslateModule, NgTemplateOutlet, MatButtonModule, MatCheckboxModule, MatTooltipModule, MenuModule],
+    imports: [ButtonModule, CheckboxModule, FormsModule, PopoverModule, TooltipModule],
     templateUrl: './dice-rolls.component.html',
     styleUrl: './dice-rolls.component.scss'
 })
 export class DiceRollsComponent implements AfterViewInit {
-  public isRollMulti = signal(false);
-  public isSelectMulti: FormControl = new FormControl(false);
+  public isRollMulti = false;
+  public isSelectMulti = false;
   public diceList: string[] = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
 
   private diceBox: DiceBox | undefined;
   private selectDice: string[] = [];
+  private colorIndex = 0;
 
-  constructor(private translateService: TranslateService, @Inject(PLATFORM_ID) private platformId: Object) {}
+  private readonly dieTypeColors: Record<string, string> = {
+    d4:  '#e74c3c',
+    d6:  '#e67e22',
+    d8:  '#f1c40f',
+    d10: '#2ecc71',
+    d12: '#3498db',
+    d20: '#9b59b6',
+  };
+
+  private readonly colorPalette = [
+    '#e74c3c', '#3498db', '#2ecc71', '#9b59b6',
+    '#e67e22', '#1abc9c', '#f1c40f', '#e91e63',
+    '#00bcd4', '#ff5722', '#8bc34a', '#673ab7',
+  ];
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   public ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -33,33 +47,54 @@ export class DiceRollsComponent implements AfterViewInit {
 
   public deactivateOtherCheckbox(event: boolean, isMultiRoll: boolean): void {
     if (event && isMultiRoll) {
-      this.isSelectMulti.setValue(false);
+      this.isSelectMulti = false;
     }
-
     if (event && !isMultiRoll) {
-      this.isRollMulti.set(false);
+      this.isRollMulti = false;
     }
   }
 
   public rollDice(dice: string): void {
-    if (this.isSelectMulti.value) {
+    if (this.isSelectMulti) {
       this.addDice(dice);
-    }
-    if (this.isRollMulti()) {
-      this.diceBox.add(dice);
-    }
-    if (!this.isSelectMulti.value && !this.isRollMulti()) {
-      this.diceBox.roll(dice);
+    } else if (this.isRollMulti) {
+      this.diceBox.add(dice, { themeColor: this.nextColor() });
+    } else {
+      const dieKey = 'd' + dice.split('d')[1];
+      this.diceBox.roll(dice, { themeColor: this.dieTypeColors[dieKey] ?? this.nextColor() });
     }
   }
 
   public deleteDice(): void {
     this.diceBox.clear();
     this.selectDice = [];
+    this.colorIndex = 0;
   }
 
   public rollAllDice(): void {
-    this.diceBox.roll(this.selectDice);
+    const notations = this.selectDice.flatMap(notation => {
+      const [qtyStr, sideStr] = notation.split('d');
+      const sides = parseInt(sideStr, 10);
+      return Array.from({ length: parseInt(qtyStr, 10) }, () => ({
+        qty: 1,
+        sides,
+        themeColor: this.nextColor(),
+      }));
+    });
+    this.diceBox.roll(notations as any);
+  }
+
+  public removeDice(die: string): void {
+    const key = die.slice(1); // e.g. 'd6' → '6'
+    const diceIndex = this.selectDice.findIndex(item => item.endsWith(key));
+    if (diceIndex === -1) return;
+    const [count, side] = this.selectDice[diceIndex].split('d');
+    const newCount = parseInt(count) - 1;
+    if (newCount <= 0) {
+      this.selectDice.splice(diceIndex, 1);
+    } else {
+      this.selectDice[diceIndex] = `${newCount}d${side}`;
+    }
   }
 
   public findSelectedDieNumber(die: string): number {
@@ -72,6 +107,10 @@ export class DiceRollsComponent implements AfterViewInit {
       return parseInt(count);
     }
     return 0; // Return 0 if the die is not found in the array
+  }
+
+  private nextColor(): string {
+    return this.colorPalette[this.colorIndex++ % this.colorPalette.length];
   }
 
   private initDiceBox(): void {

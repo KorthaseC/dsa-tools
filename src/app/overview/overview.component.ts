@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { GridColsDirective } from '../shared/grid-cols.directive';
+
+import { CardModule } from 'primeng/card';
 
 interface FeatureCard {
   title: string;
@@ -17,90 +15,81 @@ interface FeatureCard {
 
 @Component({
     selector: 'app-overview',
-    imports: [MatCardModule, RouterModule, TranslateModule, MatGridListModule, GridColsDirective],
+    imports: [CardModule, RouterModule, ],
     templateUrl: './overview.component.html',
     styleUrl: './overview.component.scss'
 })
 export class OverviewComponent {
   public featureCards: FeatureCard[] = [
     {
-      title: 'overview.madaPhase.title',
-      routerLink: '/madaphase',
-      imgSrc: 'assets/icons/mada.svg',
-      imgAlt: 'Mada Symbol',
-      discritpion: 'overview.madaPhase.description',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'overview.weekdays.title',
-      routerLink: '/weekday',
+      title: 'Kalender',
+      routerLink: '/calendar',
       imgSrc: 'assets/icons/satinavs.svg',
       imgAlt: 'Satinav Symbol',
-      discritpion: 'overview.weekdays.description',
+      discritpion: 'Tool zur Berechnung von Wochentag und Mondphase',
       cols: 1,
       rows: 1,
     },
     {
-      title: 'overview.currencyCalc.title',
+      title: 'Währungsrechner',
       routerLink: '/currency',
       imgSrc: 'assets/icons/phex.svg',
       imgAlt: 'Phex Symbol',
-      discritpion: 'overview.currencyCalc.description',
+      discritpion: 'Tool zur Berechnung der Währungen',
       cols: 1,
       rows: 1,
     },
     {
-      title: 'overview.alchemy.title',
+      title: 'Alchemielabor',
       routerLink: '/alchemy',
       imgSrc: 'assets/icons/ausfaellen.svg',
       imgAlt: 'Alchemy Symbol',
-      discritpion: 'overview.alchemy.description',
+      discritpion: 'Tool zur Erstellung von alchemistischen Mitteln',
       cols: 1,
       rows: 1,
     },
     {
-      title: 'overview.tavern.title',
+      title: 'Tavernengenerator',
       routerLink: '/tavern',
       imgSrc: 'assets/icons/travia.svg',
       imgAlt: 'Travia Symbol',
-      discritpion: 'overview.tavern.description',
+      discritpion: 'Tool zur Erstellung von zufälligen Tavernen',
       cols: 1,
       rows: 1,
     },
     {
-      title: 'overview.nameGenerator.title',
+      title: 'Namensgenerator',
       routerLink: '/names',
       imgSrc: 'assets/icons/namenloser.svg',
       imgAlt: 'Nameless Symbol',
-      discritpion: 'overview.nameGenerator.description',
+      discritpion: 'Tool zur Erstellung von zufälligen Namen',
       cols: 1,
       rows: 1,
     },
     {
-      title: 'overview.smithGenerator.title',
+      title: 'Schmiede',
       routerLink: '/smith',
       imgSrc: 'assets/icons/ingerimm.svg',
       imgAlt: 'Ingerimm Symbol',
-      discritpion: 'overview.smithGenerator.description',
+      discritpion: 'Tool zur Berechnung von Preisen beim Schmied',
       cols: 1,
       rows: 1,
     },
     {
-      title: 'overview.bookGenerator.title',
+      title: 'Büchergenerator',
       routerLink: '/books',
       imgSrc: 'assets/icons/nandus.svg',
       imgAlt: 'Nandus Symbol',
-      discritpion: 'overview.bookGenerator.description',
+      discritpion: 'Tool zur Erstellung von zufälligen Büchern',
       cols: 1,
       rows: 1,
     },
     {
-      title: 'overview.characterCreator.title',
+      title: 'Charaktererschaffer',
       routerLink: '/character',
       imgSrc: 'assets/icons/nandus.svg',
       imgAlt: 'Nandus Symbol',
-      discritpion: 'overview.characterCreator.description',
+      discritpion: 'Tool zur Erstellung von Charakteren',
       cols: 1,
       rows: 1,
     },

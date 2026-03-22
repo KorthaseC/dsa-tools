@@ -10,9 +10,7 @@ describe('CharacterImporterComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CharacterImporterComponent]
     })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(CharacterImporterComponent);
+    .compileComponents();`n    fixture = TestBed.createComponent(CharacterImporterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+
+import { ButtonModule } from 'primeng/button';
+import { PopoverModule } from 'primeng/popover';
+import { TooltipModule } from 'primeng/tooltip';
 import packageInfo from '../../../package.json';
 
 @Component({
     selector: 'app-footer',
     imports: [
-        MatToolbarModule,
-        MatButtonModule,
-        TranslateModule,
+        ButtonModule,
+        PopoverModule,
+        TooltipModule,
         RouterModule,
-        MatTooltipModule,
     ],
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss'

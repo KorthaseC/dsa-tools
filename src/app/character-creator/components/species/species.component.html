@@ -1,9 +1,6 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>Erklärung</mat-panel-title>
-  </mat-expansion-panel-header>
+<p-panel [toggleable]="true" [collapsed]="true" header="Erklärung">
   <p>Wähle eine Spezies. Diese beeinflusst Attribute, AP-Kosten und verfügbare Vorteile.</p>
-</mat-expansion-panel>
+</p-panel>
 
 <div class="c-species-cards">
   @for(species of speciesList; track species.type) {

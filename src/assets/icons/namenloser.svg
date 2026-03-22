@@ -77,7 +77,7 @@
        sodipodi:type="arc" />
     <path
        sodipodi:type="arc"
-       style="fill:#ffffff;stroke:#000000;stroke-width:2.69934988000000020;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:2.69934988000000020;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="path2952"
        sodipodi:cx="380"
        sodipodi:cy="433"

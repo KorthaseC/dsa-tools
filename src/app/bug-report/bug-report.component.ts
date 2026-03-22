@@ -6,32 +6,29 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
+
+import { ButtonModule } from 'primeng/button';
+import { DatePickerModule } from 'primeng/datepicker';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
+import { TextareaModule } from 'primeng/textarea';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { BugReportService } from './bug-report.service';
 
 @Component({
     selector: 'app-bug-report',
     imports: [
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    TranslateModule,
-    MatRadioModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatProgressSpinnerModule
+    RouterModule,
+    FloatLabelModule,
+    InputTextModule,
+    TextareaModule,
+    ButtonModule,
+    RadioButtonModule,
+    DatePickerModule,
+    ProgressSpinnerModule,
 ],
     templateUrl: './bug-report.component.html',
     styleUrl: './bug-report.component.scss'

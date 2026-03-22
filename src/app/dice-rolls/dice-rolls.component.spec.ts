@@ -10,9 +10,7 @@ describe('DiceRollsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DiceRollsComponent]
     })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(DiceRollsComponent);
+    .compileComponents();`n    fixture = TestBed.createComponent(DiceRollsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

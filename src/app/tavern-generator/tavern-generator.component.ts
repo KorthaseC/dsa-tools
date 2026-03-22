@@ -1,17 +1,16 @@
 
-import { AfterViewInit, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ButtonModule } from 'primeng/button';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { SelectModule } from 'primeng/select';
+import { TableModule } from 'primeng/table';
+
 import { Utility } from '../shared/utility';
 import {
   Attendant,
@@ -35,23 +34,37 @@ import {
   TavernNamePartTwo,
   TavernSpecialFeature,
 } from './tavern-generator.model';
+import {
+  ATTENDANT_NAMES,
+  DAY_TIME_NAMES,
+  EVENT_NAMES,
+  FURNISHING_NAMES,
+  GUEST_LEVEL_NAMES,
+  KEEPER_NAMES,
+  NAME_PART_ONE_NAMES,
+  NAME_PART_TWO_PLURAL_NAMES,
+  NAME_PART_TWO_SINGULAR_NAMES,
+  PROPER_NAME_NAMES,
+  SPECIAL_FEATURE_NAMES,
+  SPECIAL_GUEST_NAMES,
+  TAVERN_TYPE_NAMES,
+} from './tavern-generator.constants';
 
 @Component({
     selector: 'app-currency',
     imports: [
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-    MatTableModule
+    FloatLabelModule,
+    ButtonModule,
+    SelectModule,
+    
+    TableModule
 ],
     templateUrl: './tavern-generator.component.html',
     styleUrl: './tavern-generator.component.scss'
 })
-export class TavernGeneratorComponent implements AfterViewInit {
+export class TavernGeneratorComponent implements OnInit {
   public location = new FormControl<TavernLocation>(null, Validators.required);
   public displayedColumns: string[] = ['dayTime', 'guestLevel'];
   public locationOptions: TavernLocation[] = [...TAVERN_LOCATIONS];
@@ -72,11 +85,24 @@ export class TavernGeneratorComponent implements AfterViewInit {
   public specialEvent: string = '';
   public specialGuest: string = '';
 
+  // Lookup maps — delegates to tavern-generator.constants.ts
+  public readonly tavernTypeNames    = TAVERN_TYPE_NAMES;
+  public readonly furnishingNames    = FURNISHING_NAMES;
+  public readonly keeperNames        = KEEPER_NAMES;
+  public readonly dayTimeNames       = DAY_TIME_NAMES;
+  public readonly guestLevelNames    = GUEST_LEVEL_NAMES;
+  public readonly eventNames         = EVENT_NAMES;
+  public readonly attendantNames     = ATTENDANT_NAMES;
+  public readonly specialFeatureNames = SPECIAL_FEATURE_NAMES;
+  public readonly specialGuestNames  = SPECIAL_GUEST_NAMES;
+  public readonly namePartOneNames   = NAME_PART_ONE_NAMES;
+  public readonly namePartTwoSingularNames = NAME_PART_TWO_SINGULAR_NAMES;
+  public readonly namePartTwoPluralNames   = NAME_PART_TWO_PLURAL_NAMES;
+  public readonly properNameNames    = PROPER_NAME_NAMES;
+
   private groupBeds: number;
 
-  constructor(private translateService: TranslateService) {}
-
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.getGuestLevel();
     this.activeDays = this.getActiveDayTimes();
   }
@@ -111,72 +137,48 @@ export class TavernGeneratorComponent implements AfterViewInit {
   }
 
   public getEventDaysText(): string {
-    const orText: string = this.translateService.instant('shared.or');
     const translatedActiveDays: string[] = this.activeDays.map((dayTime) =>
-      this.translateService.instant('tavern.guestLvl.' + dayTime)
+      this.dayTimeNames[dayTime]
     );
     const activeDaysJoined: string = translatedActiveDays
       .join(', ')
-      .replace(/, (?=[^,]*$)/, ` ${orText} `);
+      .replace(/, (?=[^,]*$)/, ' oder ');
 
-    return this.translateService.instant('tavern.events.text', {
-      dayTimes: activeDaysJoined,
-    });
+    return `${activeDaysJoined} kann folgende Veranstaltung statt finden: `;
   }
 
   public calculateBedPrice(): string {
     const priceModifier: number = BED_PRICE_MODIFIER[this.priceGuestLvl - 1];
 
-    return this.translateService.instant('tavern.beds.price', {
-      priceGroupRooom: 6 * priceModifier,
-      priceTwinRoom: 5 * priceModifier,
-      singleRoom: 3 * priceModifier,
-    });
+    return `Die Kosten für ein Bett im Gemeinschaftszimmer sind ${6 * priceModifier} Heller, für ein Doppelzimmer sind es ${5 * priceModifier} Silbertaler und für ein Einzelzimmer sind es ${3 * priceModifier} Silbertaler.`;
   }
 
   public distributeBedsText(): string {
     let descriptionParts: string[] = [];
 
     if (this.distributedBeds.group > 0) {
-      descriptionParts.push(
-        this.translateService.instant('tavern.rooms.group', {
-          count: this.distributedBeds.group,
-          beds: this.groupBeds,
-        })
-      );
+      descriptionParts.push(`${this.distributedBeds.group} Gruppenzimmer (${this.groupBeds} Betten)`);
     }
 
     if (this.distributedBeds.twin > 0) {
-      descriptionParts.push(
-        this.translateService.instant('tavern.rooms.twin', {
-          count: this.distributedBeds.twin,
-        })
-      );
+      descriptionParts.push(`${this.distributedBeds.twin} Doppelzimmer`);
     }
 
     if (this.distributedBeds.single > 0) {
-      descriptionParts.push(
-        this.translateService.instant('tavern.rooms.single', {
-          count: this.distributedBeds.single,
-        })
-      );
+      descriptionParts.push(`${this.distributedBeds.single} Einzelzimmer`);
     }
 
-    const andText = this.translateService.instant('shared.and', {});
     const roomsText = descriptionParts
       .join(', ')
-      .replace(/, (?=[^,]*$)/, ` ${andText} `);
+      .replace(/, (?=[^,]*$)/, ' und ');
 
     const values = Object.values(this.distributedBeds);
     const isOnlyOneRoom: boolean =
       values.reduce((acc: number, value: number) => acc + value, 0) === 1;
 
-    const translateKey: string = isOnlyOneRoom
-      ? 'tavern.rooms.available.single'
-      : 'tavern.rooms.available.multi';
-    return this.translateService.instant(translateKey, {
-      rooms: roomsText,
-    });
+    return isOnlyOneRoom
+      ? `Es ist ${roomsText} vorhanden.`
+      : `Es sind ${roomsText} vorhanden.`;
   }
 
   private generateTavernType(): string {
@@ -245,23 +247,17 @@ export class TavernGeneratorComponent implements AfterViewInit {
         properNameEnum,
         properNameDice
       );
-      return this.translateService.instant(
-        'tavern.name.properName.' + properName
-      );
+      return this.properNameNames[properName];
     } else {
       namePart2Dice = Utility.rollDice(20);
-      const namePartOne = this.translateService.instant(
-        'tavern.name.partOne.' +
-          Utility.getEnumValueByNumber(TaverNamePartOne, namePart1Dice)
-      );
-      const transKeyPrefix =
-        namePart1Dice < 13
-          ? 'tavern.name.partTwo.singular.'
-          : 'tavern.name.partTwo.plural.';
-      const namePartTwo = this.translateService.instant(
-        transKeyPrefix +
-          Utility.getEnumValueByNumber(TavernNamePartTwo, namePart2Dice)
-      );
+      const namePartOne = this.namePartOneNames[
+        Utility.getEnumValueByNumber(TaverNamePartOne, namePart1Dice)
+      ];
+      const isPlural = namePart1Dice >= 13;
+      const namePartTwoMap = isPlural ? this.namePartTwoPluralNames : this.namePartTwoSingularNames;
+      const namePartTwo = namePartTwoMap[
+        Utility.getEnumValueByNumber(TavernNamePartTwo, namePart2Dice)
+      ];
       return namePartOne + namePartTwo;
     }
   }

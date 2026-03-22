@@ -1,16 +1,16 @@
 
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
+import { ButtonModule } from 'primeng/button';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { SelectModule } from 'primeng/select';
 import { Utility } from '../../shared/utility';
 import { AlchemyDiceResult } from '../alcheny.models';
 
@@ -19,10 +19,10 @@ import { AlchemyDiceResult } from '../alcheny.models';
     imports: [
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule
+    FloatLabelModule,
+    ButtonModule,
+    SelectModule,
+    
 ],
     templateUrl: './dice-result.component.html',
     styleUrl: './dice-result.component.scss'
@@ -30,38 +30,42 @@ import { AlchemyDiceResult } from '../alcheny.models';
 export class DiceResultComponent implements OnInit {
   public changeDieOne = new FormControl<number>(null, Validators.required);
   public changeDieTwo = new FormControl<number>(null, Validators.required);
-  public changeDiceOptions: number[];
+  public changeDiceOptions: { label: string; value: number }[] = [];
 
   public alchemyResult: string = '';
+  public changeDicePreview: string = '';
 
-  private changeDiceOptionsSixSided = Array.from(
-    { length: 6 },
-    (_, i) => i + 1
-  );
-  private changeDiceOptionstwentySided = Array.from(
-    { length: 20 },
-    (_, i) => i + 1
-  );
+  private changeDiceOptionsSixSided = Array.from({ length: 6 }, (_, i) => i + 1);
+  private changeDiceOptionstwentySided = Array.from({ length: 20 }, (_, i) => i + 1);
   private modValue: number;
 
+  public get data(): any {
+    return this.config.data;
+  }
+
   constructor(
-    public dialogRef: MatDialogRef<DiceResultComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private translateService: TranslateService
+    public dialogRef: DynamicDialogRef,
+    public config: DynamicDialogConfig
   ) {}
 
   public ngOnInit(): void {
-    this.changeDiceOptions =
+    const rawOptions =
       this.data.diceType === 6 || this.data.diceType === 12
         ? this.changeDiceOptionsSixSided
         : this.changeDiceOptionstwentySided;
 
     this.modValue = this.data.value - Utility.addNumbers(this.data.dice);
 
+    this.changeDiceOptions = rawOptions.map((n) => ({
+      label: this.buildOptionLabel(n),
+      value: n,
+    }));
+
     this.changeDieOne.setValue(this.data.dice[0]);
-    this.changeDieTwo.setValue(
-      this.data.dice.length > 1 ? this.data.dice[1] : null
-    );
+    this.changeDieTwo.setValue(this.data.dice.length > 1 ? this.data.dice[1] : null);
+
+    this.changeDieOne.valueChanges.subscribe(() => this.updatePreview());
+    this.changeDieTwo.valueChanges.subscribe(() => this.updatePreview());
 
     this.translateResult();
   }
@@ -97,39 +101,29 @@ export class DiceResultComponent implements OnInit {
     this.dialogRef.close({ geniusPoints, diceResult });
   }
 
-  public changeDiceResult(): string {
-    if (!this.data.alchemicTable) {
-      console.error('Error no alchemy table found');
-      return 'No table found';
-    }
-    let dieOneValue: number = this.changeDieOne.value ?? this.data.dice[0];
-    let dieTwoValue: number =
-      this.data.dice.length > 1
-        ? this.changeDieTwo.value ?? this.data.dice[1]
-        : 0;
-
-    const result = this.data.alchemicTable.find((alchemy: AlchemyDiceResult) =>
-      Utility.isWithinRange(
-        dieOneValue + dieTwoValue + this.modValue,
-        alchemy.diceValueRange
-      )
+  private buildOptionLabel(dieValue: number): string {
+    // For two-dice rolls, just show the number — the combined result is shown in the preview
+    if (this.data.dice.length > 1) return String(dieValue);
+    if (!this.data.alchemicTable) return String(dieValue);
+    const sum = dieValue + this.modValue;
+    const result = this.data.alchemicTable.find((a: AlchemyDiceResult) =>
+      Utility.isWithinRange(sum, a.diceValueRange)
     );
+    const text = result ? result.alchemicResult.replace(/\{\{effect\}\}/g, 'Effekt') : '';
+    return text ? `${dieValue} – ${text}` : String(dieValue);
+  }
 
-    if (!result) {
-      return 'No result found';
-    }
-
-    let changeResult: string = this.translateService.instant(
-      result.alchemicResult
+  private updatePreview(): void {
+    if (!this.data.alchemicTable) return;
+    const one = this.changeDieOne.value ?? this.data.dice[0];
+    const two = this.data.dice.length > 1 ? (this.changeDieTwo.value ?? this.data.dice[1]) : 0;
+    const sum = one + two + this.modValue;
+    const result = this.data.alchemicTable.find((a: AlchemyDiceResult) =>
+      Utility.isWithinRange(sum, a.diceValueRange)
     );
-    if (changeResult.includes('{{effect}}')) {
-      this.translateService
-        .get('shared.effect')
-        .subscribe((translatedEffect: string) => {
-          changeResult = changeResult.replace(/{{effect}}/g, translatedEffect);
-        });
-    }
-    return changeResult;
+    if (!result) { this.changeDicePreview = ''; return; }
+    let text = result.alchemicResult.replace(/\{\{effect\}\}/g, 'Effekt');
+    this.changeDicePreview = text;
   }
 
   public hasRemainingGeniusPoints(): boolean {
@@ -162,30 +156,14 @@ export class DiceResultComponent implements OnInit {
   }
 
   private translateResult(): void {
-    this.translateService
-      .get(this.data.alchemicResult)
-      .subscribe((translatedAlchemicResult: string) => {
-        if (translatedAlchemicResult.includes('{{effect}}')) {
-          this.translateService
-            .get('shared.effect')
-            .subscribe((translatedEffect: string) => {
-              const finalAlchemicResult = translatedAlchemicResult.replace(
-                /{{effect}}/g,
-                translatedEffect
-              );
-              this.setFinalResult(finalAlchemicResult);
-            });
-        } else {
-          this.setFinalResult(translatedAlchemicResult);
-        }
-      });
+    let result = this.data.alchemicResult as string;
+    if (result.includes('{{effect}}')) {
+      result = result.replace(/\{\{effect\}\}/g, 'Effekt');
+    }
+    this.setFinalResult(result);
   }
 
   private setFinalResult(alchemicResult: string): void {
-    this.translateService
-      .get('alchemy.diceResult.result', { alchemicResult })
-      .subscribe((result: string) => {
-        this.alchemyResult = result;
-      });
+    this.alchemyResult = `Dabei handelt es sich um: <strong>${alchemicResult}</strong>`;
   }
 }

@@ -12,9 +12,7 @@ describe('BookGeneratorService', () => {
     TestBed.configureTestingModule({
     imports: [],
     providers: [BookGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-});
-
-    service = TestBed.inject(BookGeneratorService);
+});`n    service = TestBed.inject(BookGeneratorService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 

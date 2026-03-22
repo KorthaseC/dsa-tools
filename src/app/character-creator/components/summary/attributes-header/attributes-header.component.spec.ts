@@ -10,9 +10,7 @@ describe('AttributesHeaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AttributesHeaderComponent]
     })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(AttributesHeaderComponent);
+    .compileComponents();`n    fixture = TestBed.createComponent(AttributesHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

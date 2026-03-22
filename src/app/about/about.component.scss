@@ -1,34 +1,67 @@
-.c-about-container {
+.about-container {
   max-width: 800px;
   margin: 0 auto;
-  color: #343a40;
-  line-height: 1.6;
 }
 
-.c-about-container h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #007bff;
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: #c8a96e;
+  margin-bottom: 0.75rem;
 }
 
-.c-about-container h3 {
-  font-size: 16px;
-  margin-bottom: 0;
+.page-intro,
+.page-outro {
+  color: #5a4a30;
+  line-height: 1.7;
+  margin: 0;
 }
 
-.c-about-container p {
-  margin-bottom: 10px;
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #c8a96e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.4);
+  display: block;
 }
 
-.c-about-container a {
-  color: #007bff;
-  text-decoration: none;
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid #5a4a30;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
+  height: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: #c8a96e;
+    background: rgba(200, 169, 110, 0.1);
+
+    .feature-title {
+      text-decoration: underline;
+    }
+  }
 }
 
-.c-about-container a:hover {
-  text-decoration: underline;
+.feature-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #c8a96e;
 }
 
-.c-feature-underline:hover {
-  text-decoration: underline;
+.feature-desc {
+  font-size: 0.875rem;
+  color: #5a4a30;
+  line-height: 1.5;
+  margin: 0;
 }

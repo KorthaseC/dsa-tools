@@ -1,63 +1,75 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+
 
 interface Feature {
-  featureName: string;
+  title: string;
+  description: string;
   routerLink: string;
 }
 
 @Component({
     selector: 'app-about',
-    imports: [TranslateModule, RouterModule],
+    imports: [ RouterModule],
     templateUrl: './about.component.html',
     styleUrl: './about.component.scss'
 })
 export class AboutComponent {
   public features: Feature[] = [
     {
-      featureName: 'overview',
+      title: 'Übersicht',
+      description: 'Eine zentrale Anlaufstelle, die alle verfügbaren Funktionen dieser Webseite auf einen Blick zeigt.',
       routerLink: '/overview',
     },
     {
-      featureName: 'madaphase',
-      routerLink: '/madaphase',
+      title: 'Kalender',
+      description: 'Berechne Wochentag und Madaphase für ein beliebiges aventurisches Datum im aventurischen Kalender.',
+      routerLink: '/calendar',
     },
     {
-      featureName: 'weekday',
-      routerLink: '/weekday',
-    },
-    {
-      featureName: 'currency',
+      title: 'Währungsrechner',
+      description: 'Konvertiere mühelos zwischen den verschiedenen Währungen Aventuriens, um Handel und Kaufgeschäfte realistisch darzustellen.',
       routerLink: '/currency',
     },
     {
-      featureName: 'alchemy',
+      title: 'Alchemie',
+      description: 'Nutze unser Alchemie-Tool, um Tränke und Mixturen zu erstellen, die deine Helden im Spiel nutzen können.',
       routerLink: '/alchemy',
     },
     {
-      featureName: 'tavern',
+      title: 'Tavernengenerator',
+      description: 'Erstelle zufällige Tavernen und Gasthäuser, in denen eure Helden einkehren können - inklusive Namen und Besonderheiten.',
       routerLink: '/tavern',
     },
     {
-      featureName: 'names',
+      title: 'Namensgenerator',
+      description: 'Finde passende Namen für Charaktere, die in eurer Geschichte vorkommen.',
       routerLink: '/names',
     },
     {
-      featureName: 'smith',
+      title: 'Schmiedegenerator',
+      description: 'Generiere zufällige Waffen und Rüstungen mit einzigartigen Eigenschaften.',
       routerLink: '/smith',
     },
     {
-      featureName: 'books',
+      title: 'Büchergenerator',
+      description: 'Erstelle einzigartige Bücher und Schriftrollen, die eure Helden in der Welt von Aventurien entdecken können.',
       routerLink: '/books',
     },
     {
-      featureName: 'report',
+      title: 'Bugreport und Feedback',
+      description: 'Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.',
       routerLink: '/report',
     },
     {
-      featureName: 'legal',
+      title: 'Datenschutz',
+      description: 'Hier findest du unsere Datenschutzerklärung.',
       routerLink: '/legal',
+    },
+    {
+      title: 'Impressum',
+      description: 'Rechtliche Hinweise und Disclaimer zu dieser Fanseite.',
+      routerLink: '/impressum',
     },
   ];
 }

@@ -1,7 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { Utility } from '../shared/utility';
 import { TavernGeneratorComponent } from './tavern-generator.component';
@@ -10,22 +8,17 @@ import { BED_PRICE_MODIFIER, TAVERN_LOCATIONS } from './tavern-generator.model';
 describe('TavernGeneratorComponent', () => {
   let component: TavernGeneratorComponent;
   let fixture: ComponentFixture<TavernGeneratorComponent>;
-  let translateService: TranslateService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         TavernGeneratorComponent,
-        TranslateModule.forRoot(),
-        BrowserAnimationsModule,
-      ],
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TavernGeneratorComponent);
     component = fixture.componentInstance;
-    translateService = TestBed.inject(TranslateService);
-    spyOn(translateService, 'instant').and.callFake((key: string) => key);
-    spyOn(translateService, 'get').and.callFake((key: string) => of(key));
+
     fixture.detectChanges();
   });
 
@@ -109,10 +102,6 @@ describe('TavernGeneratorComponent', () => {
     };
     const bedPriceText = component.calculateBedPrice();
     expect(bedPriceText).toBe('tavern.beds.price');
-    expect(translateService.instant).toHaveBeenCalledWith(
-      'tavern.beds.price',
-      expectedPrice
-    );
   });
 
   it('should distribute beds correctly', () => {
@@ -165,19 +154,7 @@ describe('TavernGeneratorComponent', () => {
     component.activeDays = ['morning', 'evening'];
     const eventDaysText = component.getEventDaysText();
     expect(eventDaysText).toBe('tavern.events.text');
-    expect(translateService.instant).toHaveBeenCalledWith('shared.or');
-    expect(translateService.instant).toHaveBeenCalledWith(
-      'tavern.guestLvl.morning'
-    );
-    expect(translateService.instant).toHaveBeenCalledWith(
-      'tavern.guestLvl.evening'
-    );
-    expect(translateService.instant).toHaveBeenCalledWith(
-      'tavern.events.text',
-      {
-        dayTimes: 'tavern.guestLvl.morning shared.or tavern.guestLvl.evening',
-      }
-    );
+
   });
 
   it('should generate distribute beds text correctly', () => {
@@ -186,24 +163,5 @@ describe('TavernGeneratorComponent', () => {
     const bedsText = component.distributeBedsText();
     expect(bedsText).toBe('tavern.rooms.available.multi');
 
-    expect(translateService.instant).toHaveBeenCalledWith(
-      'tavern.rooms.group',
-      { count: 1, beds: 5 }
-    );
-    expect(translateService.instant).toHaveBeenCalledWith('tavern.rooms.twin', {
-      count: 2,
-    });
-    expect(translateService.instant).toHaveBeenCalledWith(
-      'tavern.rooms.single',
-      { count: 3 }
-    );
-    expect(translateService.instant).toHaveBeenCalledWith('shared.and', {});
-    expect(translateService.instant).toHaveBeenCalledWith(
-      'tavern.rooms.available.multi',
-      {
-        rooms:
-          'tavern.rooms.group, tavern.rooms.twin shared.and tavern.rooms.single',
-      }
-    );
   });
 });

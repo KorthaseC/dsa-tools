@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { AppComponent } from '../app.component';
 import { HeaderComponent } from './header.component';
@@ -25,7 +24,6 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HeaderComponent,
-        TranslateModule.forRoot(),
         RouterTestingModule.withRoutes([]),
       ],
       providers: [

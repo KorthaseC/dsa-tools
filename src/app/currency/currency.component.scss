@@ -1,8 +1,46 @@
-.mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
+.currency-container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.box {
-  width: calc(50% - 5px);
+.currency-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid #5a4a30;
+  border-radius: 6px;
+  padding: 1rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #c8a96e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+}
+
+.result-card {
+  background: #f5e8c8;
+  border: 1px solid #8a6a3e;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-value {
+  color: #2a1a08;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+::ng-deep .p-button.w-full {
+  width: 100%;
 }

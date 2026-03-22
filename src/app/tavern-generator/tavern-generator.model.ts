@@ -10,10 +10,10 @@ export interface TavernDiceResult {
 }
 
 export const TAVERN_LOCATIONS: TavernLocation[] = [
-  { location: 'tavern.location.countryRoad', modValue: -7 },
-  { location: 'tavern.location.reichsstrasse', modValue: 0 },
-  { location: 'tavern.location.village', modValue: 2 },
-  { location: 'tavern.location.city', modValue: 4 },
+  { location: 'Landstraße', modValue: -7 },
+  { location: 'Reichsstraße', modValue: 0 },
+  { location: 'Dorf', modValue: 2 },
+  { location: 'Stadt', modValue: 4 },
 ];
 
 export enum TaverProperNameOne {

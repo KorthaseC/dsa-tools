@@ -1,15 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { of } from 'rxjs';
 import { DiceResultComponent } from './dice-result.component';
 
 describe('DiceResultComponent', () => {
   let component: DiceResultComponent;
   let fixture: ComponentFixture<DiceResultComponent>;
-  let translateService: TranslateService;
-  let dialogRef: MatDialogRef<DiceResultComponent>;
+  let dialogRef: DynamicDialogRef;
   const mockData = {
     diceType: 6,
     value: 10,
@@ -24,25 +21,24 @@ describe('DiceResultComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(), BrowserAnimationsModule],
+      imports: [
+        DiceResultComponent,
+      ],
       providers: [
-        { provide: MAT_DIALOG_DATA, useValue: mockData },
+        { provide: DynamicDialogConfig, useValue: { data: mockData } },
         {
-          provide: MatDialogRef,
+          provide: DynamicDialogRef,
           useValue: { close: jasmine.createSpy('close') },
         },
-        TranslateService,
+
       ],
     }).compileComponents();
   });
-
-  beforeEach(() => {
+`n  beforeEach(() => {
     fixture = TestBed.createComponent(DiceResultComponent);
     component = fixture.componentInstance;
-    translateService = TestBed.inject(TranslateService);
     dialogRef = TestBed.inject(MatDialogRef);
-    spyOn(translateService, 'instant').and.callFake((key: string) => key);
-    spyOn(translateService, 'get').and.callFake((key: string) => of(key));
+
     fixture.detectChanges();
   });
 
@@ -80,7 +76,6 @@ describe('DiceResultComponent', () => {
   it('should correctly translate and update alchemy result', () => {
     spyOn<any>(component, 'setFinalResult');
     component['translateResult']();
-    expect(translateService.get).toHaveBeenCalledWith('result_8_9');
     expect(component['setFinalResult']).toHaveBeenCalledWith('result_8_9');
   });
 

@@ -1,65 +1,79 @@
-<h2 class="mr-l-20">{{ "alchemy.diceResult.label" | translate }}</h2>
-<div class="mr-r-20 mr-l-20">
-  <div
-    [innerHTML]="'alchemy.diceResult.text' | translate : { type: data.type }"
-  ></div>
-  <div>
-    {{ data.value }} @if(data.dice.length>1) {<span>
-      ({{ data.dice[0] }}) ({{ data.dice[1] }})</span
-    >}
-  </div>
-  <br />
-  <div [innerHTML]="alchemyResult"></div>
-  @if( data.geniusPoints > 0 ) {
-  <form>
-    <div
-      [translate]="'alchemy.genius.text'"
-      [translateParams]="{ geniusPoints: data.geniusPoints }"
-    ></div>
-    <mat-form-field>
-      <mat-label>{{ "alchemy.changeDice.diceOne" | translate }}</mat-label>
-      <mat-select
-        [formControl]="changeDieOne"
-        required
-        [disabled]="
-          !hasRemainingGeniusPoints() && isControlUnset(changeDieOne, true)
-        "
-      >
-        @for (dieOneChange of changeDiceOptions; track dieOneChange) {
-        <mat-option [value]="dieOneChange">{{ dieOneChange }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+<div class="dice-dialog p-3">
 
-    @if(data.dice.length>1) {
-    <mat-form-field class="mr-l-20">
-      <mat-label>{{ "alchemy.changeDice.diceTwo" | translate }}</mat-label>
-      <mat-select
-        [formControl]="changeDieTwo"
-        required
-        [disabled]="
-          !hasRemainingGeniusPoints() && isControlUnset(changeDieTwo, false)
-        "
-      >
-        @for (dieTwoChange of changeDiceOptions; track dieTwoChange) {
-        <mat-option [value]="dieTwoChange">{{ dieTwoChange }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-    }
-  </form>
-  @if ((changeDieOne.value && changeDieOne.value !== data.dice[0]) ||
-  (changeDieTwo.value && changeDieTwo.value !== data.dice[0])) {
-  <div
-    [innerHTML]="
-      'alchemy.changeDice.text'
-        | translate : { changeDiceResult: changeDiceResult() }
-    "
-  ></div>
-  } }
-  <div class="button">
-    <button mat-raised-button (click)="emitDiceResult()">
-      {{ "shared.button.accept" | translate }}
-    </button>
+  <!-- Roll result -->
+  <div class="result-box mb-4">
+    <div class="result-label">Gewürfeltes Ergebnis</div>
+    <div class="result-value">
+      <strong>{{ data.value }}</strong>
+      @if (data.dice.length > 1) {
+        <span class="result-dice">({{ data.dice[0] }}) ({{ data.dice[1] }})</span>
+      }
+    </div>
+    <div [innerHTML]="alchemyResult" class="result-text mt-1"></div>
   </div>
+
+  <!-- Genius change section -->
+  @if (data.geniusPoints > 0) {
+    <div class="mb-3 genius-hint">
+      Du hast noch <strong>{{ data.geniusPoints }}</strong> Punkte übrig um das Ergebnis zu ändern.
+    </div>
+
+    <form>
+      <div class="formgrid grid row-gap-3 mb-3">
+        <div class="col-12" [class.md:col-6]="data.dice.length > 1">
+          <p-floatlabel variant="on">
+            <p-select
+              inputId="dieOne"
+              [options]="changeDiceOptions"
+              optionLabel="label"
+              optionValue="value"
+              [formControl]="changeDieOne"
+              [required]="true"
+              [disabled]="!hasRemainingGeniusPoints() && isControlUnset(changeDieOne, true)"
+              appendTo="body"
+              styleClass="w-full"
+            />
+            <label for="dieOne">Würfel 1</label>
+          </p-floatlabel>
+        </div>
+
+        @if (data.dice.length > 1) {
+          <div class="col-12 md:col-6">
+            <p-floatlabel variant="on">
+              <p-select
+                inputId="dieTwo"
+                [options]="changeDiceOptions"
+                optionLabel="label"
+                optionValue="value"
+                [formControl]="changeDieTwo"
+                [required]="true"
+                [disabled]="!hasRemainingGeniusPoints() && isControlUnset(changeDieTwo, false)"
+                appendTo="body"
+                styleClass="w-full"
+              />
+              <label for="dieTwo">Würfel 2</label>
+            </p-floatlabel>
+          </div>
+        }
+      </div>
+
+      @if (changeDicePreview) {
+        <div class="preview-text mb-3">
+          Das Ergebnis wird zu: <strong>{{ changeDicePreview }}</strong>
+        </div>
+      }
+    </form>
+  }
+
+  <!-- Confirm button -->
+  <div class="flex justify-content-end">
+    <div class="w-full md:w-auto">
+      <p-button
+        label="Bestätigen"
+        (onClick)="emitDiceResult()"
+        styleClass="w-full"
+      />
+    </div>
+  </div>
+
 </div>

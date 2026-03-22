@@ -1,11 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { of } from 'rxjs';
 import { AlchemyComponent } from './alchemy.component';
 import { ElementsAlchemy } from './alchemy.constants';
@@ -15,28 +9,25 @@ import { DiceResultComponent } from './dice-result/dice-result.component';
 describe('AlchemyComponent', () => {
   let component: AlchemyComponent;
   let fixture: ComponentFixture<AlchemyComponent>;
-  let dialog: jasmine.SpyObj<MatDialog>;
+  let dialog: jasmine.SpyObj<DialogService>;
 
   beforeEach(async () => {
-    const dialogSpy = jasmine.createSpyObj('MatDialog', ['open']);
-    const dialogRefSpy = jasmine.createSpyObj('MatDialogRef', ['afterClosed']);
+    const dialogSpy = jasmine.createSpyObj('DialogService', ['open']);
+    const dialogRefSpy = jasmine.createSpyObj('DynamicDialogRef', ['onClose']);
 
     await TestBed.configureTestingModule({
       imports: [
         AlchemyComponent,
-        TranslateModule.forRoot(),
-        BrowserAnimationsModule,
       ],
       providers: [
-        { provide: MatDialog, useValue: dialogSpy },
-        { provide: MatDialogRef, useValue: dialogRefSpy },
-        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: DialogService, useValue: dialogSpy },
+        { provide: DynamicDialogRef, useValue: dialogRefSpy },
       ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AlchemyComponent);
     component = fixture.componentInstance;
-    dialog = TestBed.inject(MatDialog) as jasmine.SpyObj<MatDialog>;
+    dialog = TestBed.inject(DialogService) as jasmine.SpyObj<DialogService>;
     fixture.detectChanges();
   });
 
