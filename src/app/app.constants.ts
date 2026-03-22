@@ -24,9 +24,9 @@ export const ROUTE_TITLES: Record<string, string> = {
 
 /** Maps route names to their German meta description content */
 export const META_DESCRIPTIONS: Record<string, string> = {
-  about:           'Entdecke Tools und Generatoren, die dir bei deinen Abenteuern in der Welt von Das Schwarze Auge helfen.',
-  overview:        'Eine zentrale Anlaufstelle für alle verfügbaren Funktionen dieser Webseite, um deine DSA-Abenteuer zu unterstützen.',
-  calendar:        'Berechne Wochentag und Mondphase im aventurischen Kalender für dein DSA-Abenteuer.',
+  about:      'Entdecke Tools und Generatoren, die dir bei deinen Abenteuern in der Welt von Das Schwarze Auge helfen.',
+  overview:   'Eine zentrale Anlaufstelle für alle verfügbaren Funktionen dieser Webseite, um deine DSA-Abenteuer zu unterstützen.',
+  calendar:   'Berechne Wochentag und Mondphase im aventurischen Kalender für dein DSA-Abenteuer.',
   madaphase:  'Berechne die aktuelle Mada-Phase und entdecke die magischen Einflüsse in Aventurien.',
   weekday:    'Bestimme den aktuellen Wochentag im aventurischen Kalender und verleihe deinem Abenteuer mehr Tiefe.',
   currency:   'Konvertiere Währungen in Aventurien und gestalte realistische Handelsgeschäfte in deinem DSA-Abenteuer.',
@@ -41,9 +41,9 @@ export const META_DESCRIPTIONS: Record<string, string> = {
 
 /** Maps route names to their German meta keywords content */
 export const META_KEYWORDS: Record<string, string> = {
-  about:           'Das Schwarze Auge, DSA, Rollenspiel-Tools, DSA Generatoren, Aventurien, Spielhilfe',
-  overview:        'DSA Übersicht, Rollenspiel-Tools, Das Schwarze Auge Funktionen, Aventurien Tools',
-  calendar:        'Aventurischer Kalender, DSA Wochentag, Mondphase, Das Schwarze Auge Zeitrechnung',
+  about:      'Das Schwarze Auge, DSA, Rollenspiel-Tools, DSA Generatoren, Aventurien, Spielhilfe',
+  overview:   'DSA Übersicht, Rollenspiel-Tools, Das Schwarze Auge Funktionen, Aventurien Tools',
+  calendar:   'Aventurischer Kalender, DSA Wochentag, Mondphase, Das Schwarze Auge Zeitrechnung',
   madaphase:  'Mada-Phase, Mondphasen Aventurien, Magie in DSA, Das Schwarze Auge Magie',
   weekday:    'Aventurischer Kalender, DSA Wochentag, Das Schwarze Auge Zeitrechnung',
   currency:   'DSA Währungsrechner, Aventurien Währung, Handel in Das Schwarze Auge',
