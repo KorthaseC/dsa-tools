@@ -28,7 +28,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/assets/sitemap.xml",
-              "src/assets/robots.txt"
+              "src/assets/robots.txt",
+              "src/_redirects"
             ],
             "styles": [
               "node_modules/primeflex/primeflex.css",
