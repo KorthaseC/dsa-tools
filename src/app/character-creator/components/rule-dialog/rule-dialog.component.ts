@@ -17,7 +17,6 @@ export class RuleDialogComponent {
   readonly baseUrl = 'https://dsa.ulisses-regelwiki.de/';
 
   get fullUrl(): string {
-    console.log(`${this.baseUrl}${this.path()}`)
     return `${this.baseUrl}${this.path()}`;
   }
 

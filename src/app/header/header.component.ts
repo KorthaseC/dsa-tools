@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { filter } from 'rxjs';
+import { ROUTE_TITLES } from '../app.constants';
 import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
 
 @Component({
@@ -18,21 +19,7 @@ import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
 export class HeaderComponent implements OnInit {
   public pageTitle: string = 'overviewTitle';
 
-  public readonly pageTitles: Record<string, string> = {
-    calendarTitle: 'Kalender Rechner',
-    currencyTitle: 'Währungsrechner',
-    alchemyTitle: 'Alchemielabor',
-    overviewTitle: 'Übersicht',
-    tavernTitle: 'Tavernen Generator',
-    nameGeneratorTitle: 'Namen Generator',
-    smithGeneratorTitle: 'Schmiede',
-    bookGeneratorTitle: 'Bücher Generator',
-    aboutTitle: 'Über diese Seite',
-    reportTitle: 'Reports',
-    legalTitle: 'Datenschutz',
-    imprintTitle: 'Impressum',
-    characterCreatorTitle: 'Charaktererschaffer',
-  };
+  public readonly pageTitles = ROUTE_TITLES;
 
   constructor(
     private router: Router,

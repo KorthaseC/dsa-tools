@@ -51,7 +51,7 @@ import {
 } from './tavern-generator.constants';
 
 @Component({
-    selector: 'app-currency',
+    selector: 'app-tavern-generator',
     imports: [
     FormsModule,
     ReactiveFormsModule,

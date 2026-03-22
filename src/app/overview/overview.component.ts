@@ -8,7 +8,7 @@ interface FeatureCard {
   routerLink: string;
   imgSrc: string;
   imgAlt: string;
-  discritpion: string;
+  description: string;
   cols: number;
   rows: number;
 }
@@ -26,7 +26,7 @@ export class OverviewComponent {
       routerLink: '/calendar',
       imgSrc: 'assets/icons/satinavs.svg',
       imgAlt: 'Satinav Symbol',
-      discritpion: 'Tool zur Berechnung von Wochentag und Mondphase',
+      description: 'Tool zur Berechnung von Wochentag und Mondphase',
       cols: 1,
       rows: 1,
     },
@@ -35,7 +35,7 @@ export class OverviewComponent {
       routerLink: '/currency',
       imgSrc: 'assets/icons/phex.svg',
       imgAlt: 'Phex Symbol',
-      discritpion: 'Tool zur Berechnung der Währungen',
+      description: 'Tool zur Berechnung der Währungen',
       cols: 1,
       rows: 1,
     },
@@ -44,7 +44,7 @@ export class OverviewComponent {
       routerLink: '/alchemy',
       imgSrc: 'assets/icons/ausfaellen.svg',
       imgAlt: 'Alchemy Symbol',
-      discritpion: 'Tool zur Erstellung von alchemistischen Mitteln',
+      description: 'Tool zur Erstellung von alchemistischen Mitteln',
       cols: 1,
       rows: 1,
     },
@@ -53,7 +53,7 @@ export class OverviewComponent {
       routerLink: '/tavern',
       imgSrc: 'assets/icons/travia.svg',
       imgAlt: 'Travia Symbol',
-      discritpion: 'Tool zur Erstellung von zufälligen Tavernen',
+      description: 'Tool zur Erstellung von zufälligen Tavernen',
       cols: 1,
       rows: 1,
     },
@@ -62,7 +62,7 @@ export class OverviewComponent {
       routerLink: '/names',
       imgSrc: 'assets/icons/namenloser.svg',
       imgAlt: 'Nameless Symbol',
-      discritpion: 'Tool zur Erstellung von zufälligen Namen',
+      description: 'Tool zur Erstellung von zufälligen Namen',
       cols: 1,
       rows: 1,
     },
@@ -71,7 +71,7 @@ export class OverviewComponent {
       routerLink: '/smith',
       imgSrc: 'assets/icons/ingerimm.svg',
       imgAlt: 'Ingerimm Symbol',
-      discritpion: 'Tool zur Berechnung von Preisen beim Schmied',
+      description: 'Tool zur Berechnung von Preisen beim Schmied',
       cols: 1,
       rows: 1,
     },
@@ -80,7 +80,7 @@ export class OverviewComponent {
       routerLink: '/books',
       imgSrc: 'assets/icons/nandus.svg',
       imgAlt: 'Nandus Symbol',
-      discritpion: 'Tool zur Erstellung von zufälligen Büchern',
+      description: 'Tool zur Erstellung von zufälligen Büchern',
       cols: 1,
       rows: 1,
     },
@@ -89,7 +89,7 @@ export class OverviewComponent {
       routerLink: '/character',
       imgSrc: 'assets/icons/nandus.svg',
       imgAlt: 'Nandus Symbol',
-      discritpion: 'Tool zur Erstellung von Charakteren',
+      description: 'Tool zur Erstellung von Charakteren',
       cols: 1,
       rows: 1,
     },

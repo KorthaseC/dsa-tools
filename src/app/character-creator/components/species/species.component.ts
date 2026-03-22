@@ -110,7 +110,6 @@ export class SpeciesComponent {
     if( this.state.character().maxAttributeChanges.some(attMod => attMod.type === 'fixed')) {
       attributeMods = this.state.character().maxAttributeChanges;
     }
-    console.log(this.selectedMaxAttributeChanges)
     attributeMods.push(this.selectedMaxAttributeChanges)
     this.state.character.update(c => ({...c, maxAttributeChanges: attributeMods}))
   }

@@ -19,8 +19,7 @@ export class CharacterStateService {
     if (!char) return 0;
   
     const totalAdvantageCost = char.advantages.reduce((sum, adv) => sum + (adv.mandatory ? 0 : adv.cost), 0);
-    const speziesCost = char.speciesCost; // Optional: andere Quellen einbeziehen
-    console.log(char)
+    const speziesCost = char.speciesCost;
     return totalAdvantageCost + speziesCost;
   });
 

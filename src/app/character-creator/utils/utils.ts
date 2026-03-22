@@ -1,6 +1,6 @@
 import { IncreaseFactor } from "../models/base-creation.model";
 
-function totalTalentCost(
+export function totalTalentCost(
   value: number,
   factor: keyof typeof IncreaseFactor,
   needActivation = false,
