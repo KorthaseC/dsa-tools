@@ -11,6 +11,7 @@ describe('NameGeneratorComponent', () => {
   let nameService: jasmine.SpyObj<NameGeneratorService>;
 
   beforeEach(async () => {
+    localStorage.clear();
     const nameServiceSpy = jasmine.createSpyObj('NameGeneratorService', [
       'getNameList',
     ]);
@@ -33,7 +34,7 @@ describe('NameGeneratorComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should initialize with default values', () => {
-    expect(component.openPanelIndex).toBe(1);
+    expect(component.activeTabValue).toBe(RACE_PANEL[0].title);
     expect(component.racePanels).toBe(RACE_PANEL);
     expect(component.isNoble.value).toBeFalse();
     expect(component.genderControl.value).toBe('all');
@@ -42,17 +43,10 @@ describe('NameGeneratorComponent', () => {
     expect(component.hasNotNoble).toBeFalse();
   });
 
-  it('should set race and update tree data', () => {
-    component.setRace(0);
-    expect(component.openPanelIndex).toBe(0);
-    expect(component.dataSource.data).toEqual(RACE_PANEL[0].treeData);
-
-    component.setRace(0);
-    expect(component.openPanelIndex).toBe(-1);
-
-    component.setRace(1);
-    expect(component.openPanelIndex).toBe(1);
-    expect(component.dataSource.data).toEqual(RACE_PANEL[1].treeData);
+  it('should update active tab and tree nodes on tab change', () => {
+    component.onTabChange(RACE_PANEL[1].title);
+    expect(component.activeTabValue).toBe(RACE_PANEL[1].title);
+    expect(component.treeNodes).toBeTruthy();
   });
 
   it('should validate form correctly', () => {

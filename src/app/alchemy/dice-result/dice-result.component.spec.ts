@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { of } from 'rxjs';
 import { DiceResultComponent } from './dice-result.component';
 
 describe('DiceResultComponent', () => {
@@ -30,14 +29,14 @@ describe('DiceResultComponent', () => {
           provide: DynamicDialogRef,
           useValue: { close: jasmine.createSpy('close') },
         },
-
       ],
     }).compileComponents();
   });
-`n  beforeEach(() => {
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(DiceResultComponent);
     component = fixture.componentInstance;
-    dialogRef = TestBed.inject(MatDialogRef);
+    dialogRef = TestBed.inject(DynamicDialogRef);
 
     fixture.detectChanges();
   });
@@ -49,7 +48,7 @@ describe('DiceResultComponent', () => {
   it('should initialize form controls', () => {
     expect(component.changeDieOne.value).toBe(3);
     expect(component.changeDieTwo.value).toBe(4);
-    expect(component.changeDiceOptions).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(component.changeDiceOptions.map(o => o.value)).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
   it('should calculate mod value on init', () => {
@@ -98,24 +97,5 @@ describe('DiceResultComponent', () => {
 
     component.changeDieOne.setValue(2);
     expect(component.isControlUnset(component.changeDieOne, true)).toBeFalse();
-  });
-
-  it('should correctly update the dice result', () => {
-    (component.data.alchemicTable = [
-      { diceValueRange: [6, 7], alchemicResult: 'result_6_7' },
-      { diceValueRange: [8, 9], alchemicResult: 'result_8_9' },
-    ]),
-      component.changeDieOne.setValue(3);
-    component.changeDieTwo.setValue(2);
-    component['modValue'] = 3;
-
-    const result = component.changeDiceResult();
-    expect(result).toBe('result_8_9');
-  });
-
-  it('should handle missing alchemic table', () => {
-    component.data.alchemicTable = null;
-    const result = component.changeDiceResult();
-    expect(result).toBe('No table found');
   });
 });

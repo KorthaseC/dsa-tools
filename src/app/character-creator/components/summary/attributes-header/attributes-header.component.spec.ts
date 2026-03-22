@@ -1,5 +1,6 @@
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CharacterStateService } from '../../../services/character-state.service';
 import { AttributesHeaderComponent } from './attributes-header.component';
 
 describe('AttributesHeaderComponent', () => {
@@ -8,9 +9,16 @@ describe('AttributesHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AttributesHeaderComponent]
-    })
-    .compileComponents();`n    fixture = TestBed.createComponent(AttributesHeaderComponent);
+      imports: [AttributesHeaderComponent],
+      providers: [
+        {
+          provide: CharacterStateService,
+          useValue: { character: signal({ name: '' }) },
+        },
+      ],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(AttributesHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -19,3 +27,4 @@ describe('AttributesHeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

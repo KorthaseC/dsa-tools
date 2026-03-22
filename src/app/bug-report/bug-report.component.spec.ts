@@ -1,5 +1,6 @@
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 import { BugReportComponent } from './bug-report.component';
 import { BugReportService } from './bug-report.service';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -12,10 +13,12 @@ describe('BugReportComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         BugReportComponent,
+        RouterModule.forRoot([]),
       ],
       providers: [BugReportService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
     }).compileComponents();
-`n    fixture = TestBed.createComponent(BugReportComponent);
+
+    fixture = TestBed.createComponent(BugReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { of } from 'rxjs';
 import { Utility } from '../shared/utility';
 import { TavernGeneratorComponent } from './tavern-generator.component';
-import { BED_PRICE_MODIFIER, TAVERN_LOCATIONS } from './tavern-generator.model';
+import { TAVERN_LOCATIONS } from './tavern-generator.model';
 
 describe('TavernGeneratorComponent', () => {
   let component: TavernGeneratorComponent;
@@ -95,13 +94,8 @@ describe('TavernGeneratorComponent', () => {
 
   it('should calculate bed price correctly', () => {
     component.priceGuestLvl = 3;
-    const expectedPrice = {
-      priceGroupRooom: 6 * BED_PRICE_MODIFIER[2],
-      priceTwinRoom: 5 * BED_PRICE_MODIFIER[2],
-      singleRoom: 3 * BED_PRICE_MODIFIER[2],
-    };
     const bedPriceText = component.calculateBedPrice();
-    expect(bedPriceText).toBe('tavern.beds.price');
+    expect(bedPriceText).toBe('Die Kosten für ein Bett im Gemeinschaftszimmer sind 6 Heller, für ein Doppelzimmer sind es 5 Silbertaler und für ein Einzelzimmer sind es 3 Silbertaler.');
   });
 
   it('should distribute beds correctly', () => {
@@ -153,15 +147,13 @@ describe('TavernGeneratorComponent', () => {
   it('should generate event days text correctly', () => {
     component.activeDays = ['morning', 'evening'];
     const eventDaysText = component.getEventDaysText();
-    expect(eventDaysText).toBe('tavern.events.text');
-
+    expect(eventDaysText).toBe('Morgens oder Abends kann folgende Veranstaltung statt finden: ');
   });
 
   it('should generate distribute beds text correctly', () => {
     component.distributedBeds = { group: 1, twin: 2, single: 3 };
     component['groupBeds'] = 5;
     const bedsText = component.distributeBedsText();
-    expect(bedsText).toBe('tavern.rooms.available.multi');
-
+    expect(bedsText).toBe('Es sind 1 Gruppenzimmer (5 Betten), 2 Doppelzimmer und 3 Einzelzimmer vorhanden.');
   });
 });

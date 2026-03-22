@@ -10,7 +10,9 @@ describe('RuleDialogComponent', () => {
     await TestBed.configureTestingModule({
       imports: [RuleDialogComponent]
     })
-    .compileComponents();`n    fixture = TestBed.createComponent(RuleDialogComponent);
+    .compileComponents();
+
+    fixture = TestBed.createComponent(RuleDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

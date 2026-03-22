@@ -60,10 +60,8 @@ describe('AlchemyComponent', () => {
       geniusPoints: 1,
       diceResult: 10,
     };
-    const dialogRefSpyObj = jasmine.createSpyObj({
-      afterClosed: of(mockDiceChangeResult),
-    });
-    dialog.open.and.returnValue(dialogRefSpyObj as MatDialogRef<any>);
+    const dialogRefSpyObj = { onClose: of(mockDiceChangeResult) };
+    dialog.open.and.returnValue(dialogRefSpyObj as any);
 
     const result = await component['openDiceResultDialog'](
       2,
@@ -75,8 +73,9 @@ describe('AlchemyComponent', () => {
     );
 
     expect(dialog.open).toHaveBeenCalledWith(DiceResultComponent, {
-      width: '600px',
-      height: '300px',
+      header: 'Würfelergebnis – Anwendung',
+      width: 'min(680px, 95vw)',
+      contentStyle: { 'max-height': '80vh', 'overflow-y': 'auto' },
       data: {
         potionType: '',
         geniusPoints: 2,

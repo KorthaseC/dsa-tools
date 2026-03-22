@@ -27,17 +27,6 @@
   padding: 1rem;
 }
 
-.section-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #c8a96e;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(200, 169, 110, 0.25);
-}
-
 // Button fills its flex container
 ::ng-deep .p-button.flex-1 {
   flex: 1;
@@ -83,13 +72,8 @@
   padding: 0.5rem 0.75rem;
 }
 
+// Overrides global .result-card: add typography for the nested list
 .result-card {
-  background: #f5e8c8;
-  border: 1px solid #8a6a3e;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
-
   ul {
     color: #2a1a08;
     font-family: 'Cormorant Garamond', serif;
@@ -123,10 +107,4 @@
     background: rgba(184, 122, 0, 0.12);
     border-color: rgba(184, 122, 0, 0.4);
   }
-}
-
-.c-spinner {
-  vertical-align: middle;
-  height: 25px !important;
-  width: 35px !important;
 }

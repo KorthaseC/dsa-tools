@@ -3,41 +3,12 @@
   margin: 0 auto;
 }
 
-// Make the inner <button> fill the wrapper when w-full is applied
-::ng-deep .p-button.w-full {
-  width: 100%;
-}
-
-.result-card {
-  background: #f5e8c8;
-  border: 1px solid #8a6a3e;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  margin-bottom: 1.5rem;
-}
-
-.result-row--sub {
-  font-size: 0.875rem;
-  color: #6a5030;
-  border-top: 1px solid rgba(200, 169, 110, 0.25);
-  padding-top: 0.5rem;
-}
-
 .result-label {
   font-weight: 600;
   color: #5a3a10;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.result-value {
-  color: #2a1a08;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
 }
 
 .moon-icon {

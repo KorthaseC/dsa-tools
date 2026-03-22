@@ -224,7 +224,7 @@
 
   <!-- Result -->
   @if ((craftedItemText || craftedFailureText) && !isCalculating) {
-    @if (craftedItemSummary) {
+    @if (craftedItemSummary && craftedItemText) {
       <div class="result-card result-card--summary">
         <div class="result-summary-title">Hergestelltes Objekt</div>
         <div class="result-summary-grid">

@@ -1,0 +1,92 @@
+// Shared component styles used across multiple feature components.
+// Import this file via styles.scss — do NOT import it inside individual components.
+
+// ── Result card ──────────────────────────────────────────────────────────────
+// Used by: alchemy, book-generator, calendar, name-generator (+ ul override),
+//          tavern-generator, smith-generator (+ animation override),
+//          currency, bug-report
+.result-card {
+  background: #f5e8c8;
+  border: 1px solid #8a6a3e;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 1.5rem;
+}
+
+// ── Result row (sub) ─────────────────────────────────────────────────────────
+// Used by: alchemy, calendar, smith-generator, tavern-generator
+// book-generator adds margin-top: 0.25rem locally on top of this.
+.result-row--sub {
+  font-size: 0.875rem;
+  color: #6a5030;
+  border-top: 1px solid rgba(200, 169, 110, 0.25);
+  padding-top: 0.5rem;
+}
+
+// ── Result value ─────────────────────────────────────────────────────────────
+// Used by: alchemy, book-generator, currency, smith-generator, bug-report
+// tavern-generator and calendar override font-size to 1.1rem locally.
+.result-value {
+  color: #2a1a08;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+// ── Section label ─────────────────────────────────────────────────────────────
+// Used by: about, impressum, legal-notice
+// currency and name-generator override border-bottom locally (0.25 opacity).
+// bug-report overrides font-size locally (0.875rem).
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #c8a96e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.4);
+  display: block;
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+// Used by: book-generator, name-generator, smith-generator
+// bug-report uses a variant with display: inline-flex, defined locally.
+.c-spinner {
+  vertical-align: middle;
+  height: 25px !important;
+  width: 35px !important;
+}
+
+// ── Legal pages ───────────────────────────────────────────────────────────────
+// Used by: impressum, legal-notice
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal-card {
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid #5a4a30;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  p {
+    color: #5a4a30;
+    line-height: 1.7;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  &--disclaimer p {
+    font-size: 0.8rem;
+    color: #7a6a50;
+    font-style: italic;
+  }
+}

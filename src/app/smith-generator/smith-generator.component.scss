@@ -3,21 +3,8 @@
   margin: 0 auto;
 }
 
-.c-spinner {
-  vertical-align: middle;
-  height: 25px !important;
-  width: 35px !important;
-}
-
+// Overrides global .result-card: adds entry animation
 .result-card {
-  background: #f5e8c8;
-  border: 1px solid #8a6a3e;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  margin-bottom: 1.5rem;
   animation: result-appear 0.35s ease;
 }
 
@@ -78,20 +65,6 @@
   color: #6a5030;
 }
 
-.result-row--sub {
-  font-size: 0.875rem;
-  color: #6a5030;
-  border-top: 1px solid rgba(200, 169, 110, 0.25);
-  padding-top: 0.5rem;
-}
-
-.result-value {
-  color: #2a1a08;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-
 .result-value--failure {
   color: #842029;
   font-family: inherit;
@@ -140,10 +113,6 @@
   max-width: 260px;
   font-size: 0.85rem;
   line-height: 1.5;
-}
-
-::ng-deep .p-button.w-full {
-  width: 100%;
 }
 
 .info-size {

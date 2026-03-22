@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CharacterWizardComponent } from './character-wizard.component';
 
-describe('WeekdayComponent', () => {
+describe('CharacterWizardComponent', () => {
   let component: CharacterWizardComponent ;
   let fixture: ComponentFixture<CharacterWizardComponent >;
 

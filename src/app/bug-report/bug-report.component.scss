@@ -13,13 +13,12 @@
   padding: 0.875rem 1rem;
 }
 
+// Overrides global .section-label: smaller font, no border/padding
 .section-label {
-  font-family: 'Cormorant Garamond', serif;
   font-size: 0.875rem;
-  font-weight: 700;
-  color: #c8a96e;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  border-bottom: none;
+  padding-bottom: 0;
+  display: inline;
 }
 
 .upload-section {
@@ -68,26 +67,12 @@
   }
 }
 
+// Overrides global .result-card: no bottom margin (standalone success message)
 .result-card {
-  background: #f5e8c8;
-  border: 1px solid #8a6a3e;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
+  margin-bottom: 0;
 }
 
-.result-value {
-  color: #2a1a08;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-}
-
+// Overrides global .c-spinner: inline-flex needed for inline button context
 .c-spinner {
-  height: 25px !important;
-  width: 35px !important;
   display: inline-flex;
-  vertical-align: middle;
-}
-
-::ng-deep .p-button.w-full {
-  width: 100%;
 }

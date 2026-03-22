@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { of } from 'rxjs';
+import { RouterModule } from '@angular/router';
 import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {
@@ -12,17 +11,6 @@ describe('AboutComponent', () => {
       imports: [
         AboutComponent,
         RouterModule.forRoot([]),
-      ],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            snapshot: {
-              data: {},
-            },
-            params: of({}),
-          },
-        },
       ],
     }).compileComponents();
 

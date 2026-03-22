@@ -16,32 +16,8 @@
   margin: 0.25rem 0 0.75rem;
 }
 
-::ng-deep .p-button.w-full {
-  width: 100%;
-}
-
-.c-spinner {
-  vertical-align: middle;
-  height: 25px !important;
-  width: 35px !important;
-}
-
-.result-card {
-  background: #f5e8c8;
-  border: 1px solid #8a6a3e;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  margin-bottom: 1.5rem;
-}
-
+// Adds top gap not present in the shared .result-row--sub base
 .result-row--sub {
-  font-size: 0.875rem;
-  color: #6a5030;
-  border-top: 1px solid rgba(200, 169, 110, 0.25);
-  padding-top: 0.5rem;
   margin-top: 0.25rem;
 }
 
@@ -49,11 +25,4 @@
   font-weight: 600;
   color: #5a3a10;
   font-size: 0.875rem;
-}
-
-.result-value {
-  color: #2a1a08;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
 }

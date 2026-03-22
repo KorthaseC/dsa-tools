@@ -1,3 +1,9 @@
+// ── Shared PrimeNG button width override ────────────────────────────────────
+// Replaces per-component ::ng-deep .p-button.w-full declarations.
+.p-button.w-full {
+  width: 100%;
+}
+
 // Allow long option labels to wrap in all select overlays
 .p-select-overlay {
   // PrimeNG sets min-width via JS to match the trigger; prevent content from
