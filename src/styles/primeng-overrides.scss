@@ -1,0 +1,443 @@
+// ── Shared PrimeNG button width override ────────────────────────────────────
+// Replaces per-component ::ng-deep .p-button.w-full declarations.
+.p-button.w-full {
+  width: 100%;
+}
+
+// Allow long option labels to wrap in all select overlays
+.p-select-overlay {
+  // PrimeNG sets min-width via JS to match the trigger; prevent content from
+  // expanding the box beyond that by collapsing the natural content width.
+  width: 0 !important;
+}
+
+.p-select-overlay .p-select-option {
+  white-space: normal;
+  height: auto;
+  min-height: 2.5rem;
+  align-items: flex-start;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.p-select-overlay .p-select-option-label {
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+// ── Light-mode token overrides ─────────────────────────────────────────────
+:root {
+  // Checkbox hover (checked state)
+  --p-checkbox-checked-hover-background: #a8893e;
+  --p-checkbox-checked-hover-border-color: #a8893e;
+
+  // Radiobutton hover (checked state)
+  --p-radiobutton-checked-hover-background: #a8893e;
+  --p-radiobutton-checked-hover-border-color: #a8893e;
+
+  // Tabs text colors
+  --p-tabs-tab-color: #5a3a10;
+  --p-tabs-tab-active-color: #2a1a08;
+  --p-tabs-tab-hover-color: #2a1a08;
+
+  // Tabs active bar
+  --p-tabs-active-bar-background: #8a6a3e;
+
+  // Tree toggle button hover — same feel as paginator buttons
+  --p-tree-node-toggle-button-hover-background: rgba(138, 106, 62, 0.12);
+  --p-tree-node-toggle-button-hover-color: #5a3a10;
+  --p-tree-node-toggle-button-selected-hover-background: rgba(138, 106, 62, 0.2);
+  --p-tree-node-toggle-button-selected-hover-color: #5a3a10;
+
+  // Textarea
+  --p-textarea-hover-border-color: #8a6a3e;
+  --p-textarea-focus-border-color: #c8a96e;
+}
+
+// ── Dark mode global tokens ─────────────────────────────────────────────────
+// Use body.app-dark (specificity 0,1,1) to beat PrimeNG's own .app-dark
+// token block (0,1,0) which loads after this file and would otherwise win.
+body.app-dark {
+  --p-primary-color: #c8a96e;
+  --p-primary-contrast-color: #1a1a1a;
+
+  --p-surface-ground: #1a1a1a;
+  --p-surface-section: #242424;
+  --p-surface-card: #2a2a2a;
+  --p-surface-overlay: #2a2a2a;
+  --p-surface-border: #3a3a3a;
+  --p-surface-hover: #333;
+  --p-text-color: #e4d3a2;
+  --p-text-color-secondary: #b0a080;
+  --p-text-muted-color: #7a6a50;
+
+  background-color: #1a1a1a;
+  color: #e4d3a2;
+
+  // Inputs
+  --p-inputtext-background: #2a2a2a;
+  --p-inputtext-color: #e4d3a2;
+  --p-inputtext-border-color: #5a4a30;
+  --p-inputtext-hover-border-color: #c8a96e;
+  --p-inputtext-focus-border-color: #c8a96e;
+  --p-inputtext-placeholder-color: #7a6a50;
+
+  // Select / Dropdown
+  --p-select-background: #2a2a2a;
+  --p-select-color: #e4d3a2;
+  --p-select-border-color: #5a4a30;
+  --p-select-hover-border-color: #c8a96e;
+  --p-select-overlay-background: #2a2a2a;
+  --p-select-overlay-color: #e4d3a2;
+  --p-select-option-focus-background: #3a3020;
+  --p-select-option-selected-background: #4a3820;
+  --p-select-option-selected-color: #c8a96e;
+  --p-select-option-selected-focus-background: #5a4010;
+  --p-select-option-selected-focus-color: #c8a96e;
+  --p-select-option-color: #e4d3a2;
+  --p-select-overlay-border-color: #5a4a30;
+
+  // Float label
+  --p-floatlabel-color: #b0a080;
+  --p-floatlabel-focus-color: #c8a96e;
+  --p-floatlabel-active-color: #c8a96e;
+  --p-floatlabel-on-active-background: #2a2a2a;
+
+  // Button
+  --p-button-primary-background: #c8a96e;
+  --p-button-primary-hover-background: #d4b97e;
+  --p-button-primary-color: #1a1a1a;
+  --p-button-primary-border-color: #c8a96e;
+  --p-button-primary-disabled-background: #3a3a3a;
+  --p-button-primary-disabled-border-color: #5a4a30;
+  --p-button-primary-disabled-color: #7a6a50;
+
+  // Focus ring
+  --p-focus-ring-color: rgba(200, 169, 110, 0.4);
+  --p-select-focus-border-color: #c8a96e;
+
+  // Radio / Checkbox
+  --p-radiobutton-border-color: #5a4a30;
+  --p-radiobutton-checked-background: #c8a96e;
+  --p-radiobutton-checked-border-color: #c8a96e;
+  --p-radiobutton-checked-hover-background: #d4b97e;
+  --p-radiobutton-checked-hover-border-color: #d4b97e;
+  --p-radiobutton-icon-checked-color: #1a1a1a;
+  --p-checkbox-border-color: #5a4a30;
+  --p-checkbox-checked-background: #c8a96e;
+  --p-checkbox-checked-border-color: #c8a96e;
+  --p-checkbox-checked-hover-background: #d4b97e;
+  --p-checkbox-checked-hover-border-color: #d4b97e;
+  --p-checkbox-icon-color: #1a1a1a;
+
+  // Slider
+  --p-slider-track-background: #5a4a30;
+  --p-slider-range-background: #c8a96e;
+  --p-slider-handle-background: #c8a96e;
+  --p-slider-handle-border-color: #c8a96e;
+
+  // Table
+  --p-datatable-header-background: #242424;
+  --p-datatable-header-color: #c8a96e;
+  --p-datatable-body-row-background: #2a2a2a;
+  --p-datatable-body-row-color: #e4d3a2;
+  --p-datatable-body-row-even-background: #242424;
+  --p-datatable-border-color: #3a3a3a;
+
+  // Paginator
+  --p-paginator-background: #242424;
+  --p-paginator-color: #e4d3a2;
+  --p-paginator-nav-button-color: #c8a96e;
+  --p-paginator-nav-button-selected-background: #c8a96e;
+  --p-paginator-nav-button-selected-color: #1a1a1a;
+  --p-paginator-nav-button-hover-background: rgba(200, 169, 110, 0.15);
+  --p-paginator-nav-button-hover-color: #e4d3a2;
+
+  // Tabs
+  --p-tabs-tab-color: #b0a080;
+  --p-tabs-tab-active-color: #c8a96e;
+  --p-tabs-tab-active-bar-color: #c8a96e;
+  --p-tabs-active-bar-background: #c8a96e;
+  --p-tabs-tablist-background: transparent;
+  --p-tabs-tabpanel-background: transparent;
+  --p-tabs-tabpanel-color: #e4d3a2;
+  --p-tabs-tab-hover-color: #c8a96e;
+
+  // Panel / Accordion
+  --p-panel-header-background: #242424;
+  --p-panel-header-color: #c8a96e;
+  --p-panel-content-background: #2a2a2a;
+  --p-panel-content-color: #e4d3a2;
+  --p-panel-border-color: #3a3a3a;
+
+  // Dialog
+  --p-dialog-background: #242424;
+  --p-dialog-color: #e4d3a2;
+  --p-dialog-border-color: #5a4a30;
+  --p-dialog-header-background: #1e1e1e;
+  --p-dialog-header-color: #c8a96e;
+
+  // Tree
+  --p-tree-background: transparent;
+  --p-tree-color: #2a1a08;
+  --p-tree-node-hover-background: #3a3020;
+  --p-tree-node-selected-background: #4a3820;
+  --p-tree-node-selected-color: #c8a96e;
+  --p-tree-node-color: #2a1a08;
+  --p-tree-node-toggle-button-hover-background: rgba(200, 169, 110, 0.15);
+  --p-tree-node-toggle-button-hover-color: #e4d3a2;
+  --p-tree-node-toggle-button-selected-hover-background: rgba(200, 169, 110, 0.15);
+  --p-tree-node-toggle-button-selected-hover-color: #c8a96e;
+  --p-tree-node-hover-color: #a8893e;
+
+  // Progress spinner — cycles through gold/parchment shades (dark mode)
+  --p-progressspinner-color-one:   #c8a96e;
+  --p-progressspinner-color-two:   #e4d3a2;
+  --p-progressspinner-color-three: #a8893e;
+  --p-progressspinner-color-four:  #d4b97e;
+
+  // Tooltip
+  --p-tooltip-background: #3a3020;
+  --p-tooltip-color: #e4d3a2;
+  --p-tooltip-border-color: #5a4a30;
+
+  // Popover
+  --p-popover-background: #242424;
+  --p-popover-color: #e4d3a2;
+  --p-popover-border-color: #5a4a30;
+  --p-popover-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+
+  // Textarea
+  --p-textarea-background: #2a2a2a;
+  --p-textarea-color: #e4d3a2;
+  --p-textarea-border-color: #5a4a30;
+  --p-textarea-hover-border-color: #c8a96e;
+  --p-textarea-focus-border-color: #c8a96e;
+  --p-textarea-placeholder-color: #7a6a50;
+
+  // Datepicker
+  --p-datepicker-background: #2a2a2a;
+  --p-datepicker-border-color: #5a4a30;
+  --p-datepicker-color: #e4d3a2;
+  --p-datepicker-panel-background: #2a2a2a;
+  --p-datepicker-header-background: #242424;
+  --p-datepicker-header-color: #c8a96e;
+  --p-datepicker-week-day-color: #c8a96e;
+  --p-datepicker-date-selected-background: #c8a96e;
+  --p-datepicker-date-selected-color: #1a1a1a;
+  --p-datepicker-date-selected-hover-background: #d4b97e;
+  --p-datepicker-date-hover-background: rgba(200, 169, 110, 0.15);
+  --p-datepicker-date-today-background: #3a3020;
+  --p-datepicker-date-today-color: #c8a96e;
+  --p-datepicker-date-today-border-color: #c8a96e;
+  --p-datepicker-navigation-button-hover-background: rgba(200, 169, 110, 0.15);
+  --p-datepicker-navigation-button-hover-color: #c8a96e;
+  --p-datepicker-select-month-color: #8a6a3e;
+  --p-datepicker-select-year-color: #8a6a3e;
+  --p-datepicker-date-color: #8a6a3e;
+}
+
+// ── Dice popover ──────────────────────────────────────────────────────────────
+// PrimeNG sets inset-inline-start via JS. When the 290px popover overflows the
+// viewport right edge, PrimeNG clamps the position but does NOT recalculate
+// --p-popover-arrow-left, so the arrow ends up misaligned.
+// Fix: force right-edge alignment and pin the arrow at a fixed offset matching
+// the button center (header right-padding 16px + half button 18px = 34px from
+// viewport right; popover offset 8px → arrow 26px from popover right edge).
+.dice-popover {
+  left: auto !important;
+  inset-inline-end: 0.5rem !important;
+  width: 290px !important;
+
+  &::before,
+  &::after {
+    left: auto !important;
+    right: 16px !important;
+    margin-left: 0 !important;
+  }
+}
+
+// ── Footer popover menu ───────────────────────────────────────────────────────
+.footer-menu {
+  .footer-menu-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 160px;
+  }
+
+  .footer-menu-social {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--p-popover-border-color, #5a4a30);
+  }
+
+  .footer-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    a {
+      color: var(--p-popover-color, #e4d3a2);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+      padding: 0.2rem 0;
+      transition: color 0.15s;
+
+      &:hover {
+        color: white;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// ── Component overrides ──────────────────────────────────────────────────────
+.app-dark .p-card {
+  background-color: #2a2218 !important;
+  border: 2px solid #5a4a30;
+  border-radius: 8px !important;
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.8), 0 0 20px #3a2808 inset !important;
+  padding: 1.5rem;
+  color: #e4d3a2 !important;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: #c8a96e;
+    box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.8), 0 0 30px #5a3a0a inset !important;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #5a4a30;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 8px;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 8px;
+  }
+
+  .corner-top-right,
+  .corner-bottom-left {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #5a4a30;
+    z-index: 2;
+  }
+
+  .corner-top-right {
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 8px;
+  }
+
+  .corner-bottom-left {
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 8px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #c8a96e !important;
+  }
+}
+
+.app-dark p-inputnumber {
+  input {
+    background-color: #2a2a2a !important;
+    color: #e4d3a2 !important;
+  }
+}
+
+// ── Button direct overrides (bypass CSS variable layer issues) ───────────────
+.app-dark .p-button {
+  background: #c8a96e !important;
+  border-color: #c8a96e !important;
+  color: #1a1a1a !important;
+
+  &:hover:not(:disabled) {
+    background: #d4b97e !important;
+    border-color: #d4b97e !important;
+  }
+
+  &:disabled,
+  &.p-disabled {
+    background: #3a3a3a !important;
+    border-color: #5a4a30 !important;
+    color: #7a6a50 !important;
+  }
+}
+
+// ── DataTable light-theme overrides ────────────────────────────────────────
+.p-datatable {
+  margin-bottom: 1.5rem;
+  border: 1px solid #8a6a3e;
+  border-radius: 6px;
+  overflow: hidden;
+
+  .p-datatable-thead > tr > th {
+    background: #e8d5a8;
+    color: #5a3a10;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #8a6a3e;
+    border-color: #8a6a3e;
+  }
+
+  .p-datatable-tbody > tr {
+    background: #f5e8c8;
+    color: #2a1a08;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+
+    > td {
+      border-color: rgba(200, 169, 110, 0.25);
+    }
+
+    &:nth-child(even) {
+      background: #eedfc0;
+    }
+
+    &:hover > td {
+      background: #e8d5a8 !important;
+    }
+  }
+}
+
+p-tab {
+  justify-content: center;
+  flex: 1 1 0;
+}
+
+p-divider {
+  --p-divider-horizontal-margin: 0px 0px 20px;
+}
+
+p-tabpanel {
+  h3 {
+    margin: 0px 0 0px !important;
+    font-weight: 600 !important;
+  }
+}

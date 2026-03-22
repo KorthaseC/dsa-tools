@@ -1,116 +1,116 @@
-<form>
-  <div class="display-flex c-optional-checks-container mr-b-20">
-    <mat-checkbox [formControl]="isNoble">
-      {{ "namegenerator.noble" | translate }}
-    </mat-checkbox>
-    <mat-radio-group
-      [formControl]="genderControl"
-      aria-label="Select an option"
-    >
-      <mat-radio-button value="male">{{
-        "namegenerator.gender.male" | translate
-      }}</mat-radio-button>
-      <mat-radio-button value="female">{{
-        "namegenerator.gender.female" | translate
-      }}</mat-radio-button>
-      <mat-radio-button value="all">{{
-        "namegenerator.gender.all" | translate
-      }}</mat-radio-button>
-    </mat-radio-group>
+<div class="name-generator-container pb-5">
+
+  <!-- Controls box: noble checkbox + gender radios -->
+  <div class="filter-section mb-4">
+    <span class="section-label">Optionen</span>
+    <div class="flex flex-wrap align-items-center gap-4">
+      <div class="flex align-items-center gap-2">
+        <p-checkbox [formControl]="isNoble" [binary]="true" inputId="isNoble" />
+        <label for="isNoble">Adelig?</label>
+      </div>
+      <div class="flex align-items-center gap-2">
+        <p-radiobutton inputId="gender_male" [formControl]="genderControl" value="male" />
+        <label for="gender_male">männlich</label>
+      </div>
+      <div class="flex align-items-center gap-2">
+        <p-radiobutton inputId="gender_female" [formControl]="genderControl" value="female" />
+        <label for="gender_female">weiblich</label>
+      </div>
+      <div class="flex align-items-center gap-2">
+        <p-radiobutton inputId="gender_all" [formControl]="genderControl" value="all" />
+        <label for="gender_all">alle</label>
+      </div>
+    </div>
   </div>
 
-  <div class="mr-b-20">
-    <div class="c-button-container">
-      @for(race of racePanels; track race) {
-      <div class="c-button-expand">
-        <button
-          mat-raised-button
-          (click)="setRace($index)"
-          [class.active]="openPanelIndex === $index"
-        >
-          {{ "namegenerator.panel." + racePanels[$index].title | translate }}
-        </button>
-      </div>
-      }
-    </div>
-    @if(openPanelIndex>-1) {
-    <div class="c-content-field">
-      <div class="c-content display-inline-flex width-60">
-        @if(racePanels[openPanelIndex].content.length>0) {
-        <mat-radio-group class="c-content-radio">
-          @for (region of racePanels[openPanelIndex].content; track region) {
-          <mat-radio-button
-            [value]="region.value"
-            (change)="setRegion(region, false)"
-            >{{
-              "namegenerator.panel." + region.label | translate
-            }}</mat-radio-button
-          >
+  <!-- Main layout: left = tabs/regions, right = sticky button + results -->
+  <div class="grid align-items-start">
+
+    <div class="col-12 md:col-7">
+      <p-tabs [value]="activeTabValue" (valueChange)="onTabChange($event)">
+        <p-tablist>
+          @for (panel of racePanels; track panel.title) {
+            <p-tab [value]="panel.title">{{ panel.title }}</p-tab>
           }
-        </mat-radio-group>
-        }@else {
-        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-          <!-- This is the tree node template for leaf nodes -->
-          <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-            <button mat-icon-button disabled></button>
-            <mat-radio-button
-              [value]="node.value"
-              (change)="setRegion(node, true)"
-              >{{
-                "namegenerator.panel." + node.name | translate
-              }}</mat-radio-button
-            >
-          </mat-tree-node>
-          <!-- This is the tree node template for expandable nodes -->
-          <mat-tree-node
-            *matTreeNodeDef="let node; when: hasChild"
-            matTreeNodePadding
-          >
-            <button
-              mat-icon-button
-              matTreeNodeToggle
-              [attr.aria-label]="'Toggle ' + node.name"
-            >
-              <mat-icon class="mat-icon-rtl-mirror">
-                {{
-                  treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
-                }}
-              </mat-icon>
-            </button>
-            {{ "namegenerator.panel." + node.name | translate }}
-          </mat-tree-node>
-        </mat-tree>
+        </p-tablist>
+        <p-tabpanels>
+          @for (panel of racePanels; track panel.title) {
+            <p-tabpanel [value]="panel.title">
+              @if (activeTabValue === panel.title) {
+                <div class="region-scroll">
+                  @if (panel.content.length > 0) {
+                    <div class="flex flex-column gap-2">
+                      @for (region of panel.content; track region.value) {
+                        <div class="flex align-items-center gap-2">
+                          <p-radiobutton
+                            [inputId]="'region_' + region.value"
+                            name="region"
+                            [value]="region.value"
+                            [(ngModel)]="selectedRegionValue"
+                            (onClick)="setRegion(region, false)"
+                          />
+                          <label [for]="'region_' + region.value">{{ region.label }}</label>
+                        </div>
+                      }
+                    </div>
+                  } @else {
+                    <p-tree
+                      [value]="treeNodes"
+                      selectionMode="single"
+                      [(selection)]="selectedTreeNode"
+                      (onNodeSelect)="onTreeNodeSelect($event)"
+                    />
+                  }
+                </div>
+              }
+            </p-tabpanel>
+          }
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+
+    <div class="col-12 md:col-5">
+      <div class="sticky-md">
+        <div class="mb-3 align-items-center gap-2">
+          <p-button
+            label="Erzeuge zufällige Namen"
+            (onClick)="getNames()"
+            [disabled]="!isFormValid() || isLoading"
+            class="flex-1"
+          />
+          @if (isLoading) {
+            <p-progressSpinner class="c-spinner" />
+          }
+        </div>
+
+        @if (names.length > 0) {
+          <div class="result-card">
+            @if (resultContext) {
+              <div class="result-context">
+                <span class="context-chip">{{ resultContext.tab }}</span>
+                @if (resultContext.region) {
+                  <span class="context-chip">{{ resultContext.region }}</span>
+                }
+                <span class="context-chip">{{ getGenderLabel(resultContext.gender) }}</span>
+                @if (resultContext.noble) {
+                  <span class="context-chip context-chip--noble">adelig</span>
+                }
+              </div>
+            }
+            @if (resultContext?.noble && resultContext?.hasNotNoble) {
+              <div class="noble-warning mb-3">
+                Bei dieser Auswahl gibt es keine adelige Namen, daher werden nur normale Namen angezeigt.
+              </div>
+            }
+            <ul class="m-0 pl-4">
+              @for (name of names; track name) {
+                <li class="mb-1">{{ name }}</li>
+              }
+            </ul>
+          </div>
         }
       </div>
-      <div
-        class="c-content display-inline-flex width-30 c-names-list-scroll"
-        [ngClass]="names.length > 0 ? 'c-border-left' : ''"
-      >
-        <ul>
-          @if(names.length > 0) { @if(isNoble.value && hasNotNoble ) {
-          <div class="c-no-noble mr-b-5">
-            {{ "namegenerator.noNoble" | translate }}
-          </div>
-          } @for(name of names; track name) {
-          <li>{{ name }}</li>
-          } }
-        </ul>
-      </div>
     </div>
 
-    }
   </div>
-</form>
-
-<div class="button">
-  <button
-    mat-raised-button
-    (click)="getNames()"
-    [disabled]="!isFormValid() || isLoading"
-  >
-    {{ "namegenerator.getNames" | translate }}
-  </button>
-  @if(isLoading) {
-  <mat-spinner class="c-spinner"></mat-spinner>
-  }
 </div>

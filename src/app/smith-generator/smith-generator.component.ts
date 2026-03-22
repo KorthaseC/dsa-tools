@@ -1,21 +1,30 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
+import { ButtonModule } from 'primeng/button';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { PopoverModule } from 'primeng/popover';
+import { SelectModule } from 'primeng/select';
+import { SliderModule } from 'primeng/slider';
+import { TabsModule } from 'primeng/tabs';
 import { Utility } from '../shared/utility';
+import {
+  BONI_NAMES,
+  CRAFT_TECHNIC_NAMES,
+  ITEM_NAMES,
+  MATERIAL_NAMES,
+  METEOR_EFFECT_NAMES,
+  QUALIFICATION_NAMES,
+} from './smith-generator.constants';
 import {
   ArmorBoni,
   ArmorType,
@@ -42,43 +51,59 @@ import {
 } from './smith-generator.model';
 
 @Component({
-  selector: 'app-smith-generator',
-  standalone: true,
-  imports: [
+    selector: 'app-smith-generator',
+    imports: [
+    FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    CommonModule,
-    TranslateModule,
-    MatSliderModule,
-    MatRadioModule,
-    MatTooltipModule,
-    MatIconModule,
-  ],
-  templateUrl: './smith-generator.component.html',
-  styleUrl: './smith-generator.component.scss',
+    FloatLabelModule,
+    InputTextModule,
+    ButtonModule,
+    SelectModule,
+    SliderModule,
+    TabsModule,
+    PopoverModule,
+],
+    templateUrl: './smith-generator.component.html',
+    styleUrl: './smith-generator.component.scss'
 })
 export class SmithGeneratorComponent {
   public smithForm: FormGroup;
-  public smithQualificationOptions: BlacksmithQualification[] = Object.values(
-    BlacksmithQualification
-  );
+  public smithQualificationOptions = Object.values(BlacksmithQualification).map((v) => ({
+    label: QUALIFICATION_NAMES[v] ?? v,
+    value: v,
+  }));
   public sliderOption: PriceRange = blacksmithPriceRange.get(
     BlacksmithQualification.Beginner
   ).priceRange;
 
-  public craftingOptions: string[] = [];
-  public materialOptions: Material[] = [];
-  public boniOptions: string[] = [];
-  public craftTechnicOptions: string[] = [];
+  public craftingOptions: { label: string; value: string }[] = [];
+  public materialOptions: { label: string; value: string }[] = [];
+  public boniOptions: { label: string; value: string }[] = [];
+  public craftTechnicOptions: { label: string; value: string }[] = [];
   public isWeapon: boolean;
   public isWeaponMaterialMetal: boolean;
   public materialProperties: Map<Material, MaterialProperties> =
     materialProperties;
+  // Lookup maps — delegates to smith-generator.constants.ts
+  public readonly qualificationNames = QUALIFICATION_NAMES;
+  public readonly itemNames          = ITEM_NAMES;
+  public readonly materialNames      = MATERIAL_NAMES;
+  public readonly boniNames          = BONI_NAMES;
+  public readonly craftTechnicNames  = CRAFT_TECHNIC_NAMES;
+  public readonly meteorEffectNames  = METEOR_EFFECT_NAMES;
   public craftedItemText: string;
   public craftedFailureText: string = '';
+  public isCalculating = false;
+  public craftedItemSummary: {
+    item: string;
+    material: string;
+    materialEffect: string;
+    boni1: string;
+    boni2: string;
+    craftTechnic: string;
+  } | null = null;
+  public activeTab: string = 'weapon';
+  public sliderPrice: number;
   public craftedItemProperties: {
     price: number;
     time: number;
@@ -86,8 +111,7 @@ export class SmithGeneratorComponent {
   };
 
   constructor(
-    private fb: FormBuilder,
-    private translateService: TranslateService
+    private fb: FormBuilder
   ) {
     this.smithForm = this.fb.group({
       qualification: [BlacksmithQualification.Beginner, Validators.required],
@@ -104,30 +128,34 @@ export class SmithGeneratorComponent {
       boni2: [WeaponBoni.None],
       craftTechnic: [CraftTechnic.None],
     });
+    this.changeItemType(true);
+    this.sliderPrice = this.sliderOption.startPrice;
+  }
+
+  public onTabChange(value: string | number): void {
+    this.activeTab = String(value);
+    this.changeItemType(value === 'weapon');
   }
 
   public changeQualification(qualification: BlacksmithQualification): void {
     this.sliderOption = blacksmithPriceRange.get(qualification).priceRange;
-    this.smithForm.controls['price'].setValue(this.sliderOption.startPrice);
+    this.sliderPrice = this.sliderOption.startPrice;
+    this.smithForm.controls['price'].setValue(this.sliderPrice);
   }
 
   public changeItemType(isWeapon: boolean): void {
     this.smithForm.get('craftTechnic').setValue(CraftTechnic.None);
     this.isWeapon = isWeapon;
     if (isWeapon) {
-      this.craftingOptions = Object.values(WeaponType);
-      this.materialOptions = weaponMaterial;
-      this.boniOptions = Object.values(WeaponBoni);
-      this.craftTechnicOptions = [
-        CraftTechnic.None,
-        CraftTechnic.Falt,
-        CraftTechnic.Lehm,
-      ];
+      this.craftingOptions = Object.values(WeaponType).map((v) => ({ label: ITEM_NAMES[v] ?? v, value: v }));
+      this.materialOptions = weaponMaterial.map((v) => ({ label: MATERIAL_NAMES[v] ?? v, value: v }));
+      this.boniOptions = Object.values(WeaponBoni).map((v) => ({ label: BONI_NAMES[v] ?? v, value: v }));
+      this.craftTechnicOptions = [CraftTechnic.None, CraftTechnic.Falt, CraftTechnic.Lehm].map((v) => ({ label: CRAFT_TECHNIC_NAMES[v] ?? v, value: v }));
     } else {
-      this.craftingOptions = Object.values(ArmorType);
-      this.materialOptions = armorMaterial;
-      this.boniOptions = Object.values(ArmorBoni);
-      this.craftTechnicOptions = [CraftTechnic.None, CraftTechnic.ChainBuild];
+      this.craftingOptions = Object.values(ArmorType).map((v) => ({ label: ITEM_NAMES[v] ?? v, value: v }));
+      this.materialOptions = armorMaterial.map((v) => ({ label: MATERIAL_NAMES[v] ?? v, value: v }));
+      this.boniOptions = Object.values(ArmorBoni).map((v) => ({ label: BONI_NAMES[v] ?? v, value: v }));
+      this.craftTechnicOptions = [CraftTechnic.None, CraftTechnic.ChainBuild].map((v) => ({ label: CRAFT_TECHNIC_NAMES[v] ?? v, value: v }));
     }
   }
 
@@ -150,7 +178,17 @@ export class SmithGeneratorComponent {
   public calculateCraftedPrice(): void {
     this.craftedItemText = '';
     this.craftedFailureText = '';
+    this.isCalculating = true;
     const formValues = this.smithForm.value;
+    const matProps = materialProperties.get(formValues.material);
+    this.craftedItemSummary = {
+      item: this.itemNames[formValues.item] ?? formValues.item,
+      material: this.materialNames[formValues.material] ?? formValues.material,
+      materialEffect: this.isWeapon ? (matProps?.effectWeapon ?? '') : (matProps?.effectArmor ?? ''),
+      boni1: formValues.boni1 !== WeaponBoni.None && formValues.boni1 !== ArmorBoni.None ? (this.boniNames[formValues.boni1] ?? formValues.boni1) : '',
+      boni2: formValues.boni2 !== WeaponBoni.None && formValues.boni2 !== ArmorBoni.None ? (this.boniNames[formValues.boni2] ?? formValues.boni2) : '',
+      craftTechnic: formValues.craftTechnic !== CraftTechnic.None ? (this.craftTechnicNames[formValues.craftTechnic] ?? formValues.craftTechnic) : '',
+    };
     const workingPrice: number = formValues.price;
     const attr1: number = formValues.attr1;
     const attr2: number = formValues.attr2;
@@ -198,10 +236,11 @@ export class SmithGeneratorComponent {
         material,
         materialPrice
       );
-      this.craftedItemText = 'smith.itemText.result';
-    } else if (this.craftedFailureText !== 'smith.itemText.failure') {
-      this.craftedFailureText = 'smith.itemText.failed';
+      this.craftedItemText = `Die Herstellungskosten für die gewählten Einstellungen betragen ${this.craftedItemProperties.price} Silbertaler. Der Schmied brauchte ${this.craftedItemProperties.time} Tage für die Herstellung.`;
+    } else if (this.craftedFailureText !== 'Kritischer Fehlschlag bei der Herstellung') {
+      this.craftedFailureText = 'Die Ausrüstung konnte nicht hergestellt werden.';
     }
+    setTimeout(() => { this.isCalculating = false; }, 150);
   }
 
   private calcMaterialPrice(
@@ -253,7 +292,7 @@ export class SmithGeneratorComponent {
       boniProperties.get(boni2).intervalModifier +
       craftProperties.get(craftTechnic).intervalModifier +
       meteorInterval;
-    intervalMultipler === 0 ? itemInterval : itemInterval * intervalMultipler;
+    intervalMultipler = intervalMultipler === 0 ? itemInterval : itemInterval * intervalMultipler;
     return { intervalMultipler, diceModifier };
   }
 
@@ -267,10 +306,10 @@ export class SmithGeneratorComponent {
       : materialProp.modArmor ?? 0;
 
     if (this.isWeapon && materialProp.modWeapon?.technicMod) {
-      const technicMod: number = materialProp.modWeapon.technicMod.find(
+      const technicMod = materialProp.modWeapon.technicMod.find(
         (t: WeaponTechnicModifier) => t.technic === item
-      ).mod;
-      if (technicMod) {
+      )?.mod;
+      if (technicMod !== undefined) {
         materialModifer = technicMod;
       }
     }
@@ -303,7 +342,7 @@ export class SmithGeneratorComponent {
         const count1s = dice.filter((dice: number) => dice === 1).length;
 
         if (count20s >= 2) {
-          this.craftedFailureText = 'smith.itemText.failure';
+          this.craftedFailureText = 'Kritischer Fehlschlag bei der Herstellung';
           return null;
         }
 

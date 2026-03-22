@@ -1,0 +1,122 @@
+.dice-toggle-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.25rem !important;
+  width: 36px !important;
+  height: 36px !important;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+.dice-icon {
+  width: 26px;
+  height: 26px;
+  filter: invert(1);
+}
+
+.dice-panel {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ── Mode selector ───────────────────────────────────────────────────────────
+.mode-row {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.mode-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.375rem 0.25rem;
+  border: 1px solid var(--p-surface-border, #3a3a3a);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--p-text-color-secondary, #b0a080);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+
+  &:hover {
+    border-color: var(--p-primary-color, #c8a96e);
+    color: var(--p-primary-color, #c8a96e);
+  }
+
+  &--active {
+    border-color: var(--p-primary-color, #c8a96e);
+    background: rgba(200, 169, 110, 0.12);
+    color: var(--p-primary-color, #c8a96e);
+  }
+}
+
+.mode-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.mode-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+// ── Die buttons ─────────────────────────────────────────────────────────────
+// Fixed-height row so adding/removing the roll-all button doesn't resize the panel.
+.die-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  min-height: 44px;
+}
+
+.die-btn {
+  position: relative;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+
+  &--roll {
+    background: var(--p-primary-color, #c8a96e) !important;
+    border-color: var(--p-primary-color, #c8a96e) !important;
+  }
+
+  &--clear {
+    opacity: 0.7;
+    &:hover { opacity: 1; }
+  }
+}
+
+.die-img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+.die-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #e4d3a2;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}

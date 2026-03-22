@@ -391,7 +391,7 @@ export const materialProperties = new Map<Material, MaterialProperties>([
     {
       price: 0,
       modWeapon: { generalMod: -1 },
-      modArmor: 1,
+      modArmor: -1,
       breakfactor: 0,
       stability: 0,
       craftingTries: 7,
@@ -440,7 +440,7 @@ export const materialProperties = new Map<Material, MaterialProperties>([
         generalMod: 0,
         technicMod: [{ technic: WeaponType.Bows, mod: 2 }],
       },
-      modArmor: -1,
+      modArmor: 0,
       breakfactor: 1,
       stability: 1,
       craftingTries: 7,

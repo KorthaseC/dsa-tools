@@ -107,128 +107,128 @@ export enum NameRegion {
 
 export const RACE_PANEL: RacePanel[] = [
   {
-    title: 'human.title',
+    title: 'Menschen',
     content: [],
     treeData: [
       {
-        name: 'human.regionTitle.mittelreich',
+        name: 'Mittelreich',
         children: [
           {
-            name: 'human.albernia',
+            name: 'Albernia',
             region: {
-              label: 'human.albernia',
+              label: 'Albernia',
               value: NameRegion.Albernia,
               hasNoble: true,
             },
           },
           {
-            name: 'human.almada',
+            name: 'Almada',
             region: {
-              label: 'human.almada',
+              label: 'Almada',
               value: NameRegion.Almada,
               hasNoble: true,
             },
           },
           {
-            name: 'human.garetien',
+            name: 'Garetien',
             region: {
-              label: 'human.garetien',
+              label: 'Garetien',
               value: NameRegion.Garetien,
               hasNoble: true,
             },
           },
           {
-            name: 'human.greifenfurt',
+            name: 'Greifenfurt',
             region: {
-              label: 'human.greifenfurt',
+              label: 'Greifenfurt',
               value: NameRegion.Greifenfurt,
               hasNoble: true,
             },
           },
           {
-            name: 'human.kosch',
+            name: 'Kosch',
             region: {
-              label: 'human.kosch',
+              label: 'Kosch',
               value: NameRegion.Kosch,
               hasNoble: true,
             },
           },
           {
-            name: 'human.nordmarken',
+            name: 'Nordmarken',
             region: {
-              label: 'human.nordmarken',
+              label: 'Nordmarken',
               value: NameRegion.Nordmarken,
               hasNoble: true,
             },
           },
           {
-            name: 'human.perricum',
+            name: 'Perricum',
             region: {
-              label: 'human.perricum',
+              label: 'Perricum',
               value: NameRegion.Perricum,
               hasNoble: true,
             },
           },
           {
-            name: 'human.rabenmark',
+            name: 'Rabenmark',
             region: {
-              label: 'human.rabenmark',
+              label: 'Rabenmark',
               value: NameRegion.Rabenmark,
               hasNoble: true,
             },
           },
           {
-            name: 'human.rommilyser',
+            name: 'Rommilyser',
             region: {
-              label: 'human.rommilyser',
+              label: 'Rommilyser',
               value: NameRegion.Rommilyser,
               hasNoble: true,
             },
           },
           {
-            name: 'human.sonnenmark',
+            name: 'Sonnenmark',
             region: {
-              label: 'human.sonnenmark',
+              label: 'Sonnenmark',
               value: NameRegion.Sonnenmark,
               hasNoble: true,
             },
           },
           {
-            name: 'human.tobrien',
+            name: 'Tobrien',
             region: {
-              label: 'human.tobrien',
+              label: 'Tobrien',
               value: NameRegion.Tobrien,
               hasNoble: false,
             },
           },
           {
-            name: 'human.trollzacker',
+            name: 'Trollzacker',
             region: {
-              label: 'human.trollzacker',
+              label: 'Trollzacker',
               value: NameRegion.Trollzacker,
               hasNoble: false,
             },
           },
           {
-            name: 'human.warunk',
+            name: 'Warunk',
             region: {
-              label: 'human.warunk',
+              label: 'Warunk',
               value: NameRegion.Warunk,
               hasNoble: true,
             },
           },
           {
-            name: 'human.weiden',
+            name: 'Weiden',
             region: {
-              label: 'human.weiden',
+              label: 'Weiden',
               value: NameRegion.Weiden,
               hasNoble: true,
             },
           },
           {
-            name: 'human.windhag',
+            name: 'Windhag',
             region: {
-              label: 'human.windhag',
+              label: 'Windhag',
               value: NameRegion.Windhag,
               hasNoble: true,
             },
@@ -236,60 +236,60 @@ export const RACE_PANEL: RacePanel[] = [
         ],
       },
       {
-        name: 'human.regionTitle.southern',
+        name: 'Südliches Aventurien',
         children: [
           {
-            name: 'human.alAnfa',
+            name: 'Al\'Anfa',
             region: {
-              label: 'human.alAnfa',
+              label: 'Al\'Anfa',
               value: NameRegion.AlAnfa,
               hasNoble: true,
             },
           },
           {
-            name: 'human.chirakah',
+            name: 'Chirakah',
             region: {
-              label: 'human.chirakah',
+              label: 'Chirakah',
               value: NameRegion.Chirakah,
               hasNoble: false,
             },
           },
           {
-            name: 'human.kemi',
+            name: 'Kemi',
             region: {
-              label: 'human.kemi',
+              label: 'Kemi',
               value: NameRegion.Kemi,
               hasNoble: false,
             },
           },
           {
-            name: 'human.waldmenschen',
+            name: 'Waldmenschen',
             region: {
-              label: 'human.waldmenschen',
+              label: 'Waldmenschen',
               value: NameRegion.Waldmenschen,
               hasNoble: false,
             },
           },
           {
-            name: 'human.tocamuya',
+            name: 'Tocamuya',
             region: {
-              label: 'human.tocamuya',
+              label: 'Tocamuya',
               value: NameRegion.Tocamuya,
               hasNoble: false,
             },
           },
           {
-            name: 'human.uthuria',
+            name: 'Uthuria',
             region: {
-              label: 'human.uthuria',
+              label: 'Uthuria',
               value: NameRegion.Uthuria,
               hasNoble: false,
             },
           },
           {
-            name: 'human.utulu',
+            name: 'Utulu',
             region: {
-              label: 'human.utulu',
+              label: 'Utulu',
               value: NameRegion.Utulu,
               hasNoble: false,
             },
@@ -297,60 +297,60 @@ export const RACE_PANEL: RacePanel[] = [
         ],
       },
       {
-        name: 'human.regionTitle.tulamidien',
+        name: 'Tulamiditsche Gebiete',
         children: [
           {
-            name: 'human.aranien',
+            name: 'Aranien',
             region: {
-              label: 'human.aranien',
+              label: 'Aranien',
               value: NameRegion.Aranien,
               hasNoble: true,
             },
           },
           {
-            name: 'human.ferkina',
+            name: 'Ferkina',
             region: {
-              label: 'human.ferkina',
+              label: 'Ferkina',
               value: NameRegion.Ferkina,
               hasNoble: false,
             },
           },
           {
-            name: 'human.novadi',
+            name: 'Novadi',
             region: {
-              label: 'human.novadi',
+              label: 'Novadi',
               value: NameRegion.Novadi,
               hasNoble: false,
             },
           },
           {
-            name: 'human.thalusien',
+            name: 'Thalusien',
             region: {
-              label: 'human.thalusien',
+              label: 'Thalusien',
               value: NameRegion.Thalusien,
               hasNoble: false,
             },
           },
           {
-            name: 'human.tulamidien',
+            name: 'Tulamidien',
             region: {
-              label: 'human.tulamidien',
+              label: 'Tulamidien',
               value: NameRegion.Tulamidenlande,
               hasNoble: false,
             },
           },
           {
-            name: 'human.urtulamid',
+            name: 'Urtulamid',
             region: {
-              label: 'human.urtulamid',
+              label: 'Urtulamid',
               value: NameRegion.Urtulamid,
               hasNoble: false,
             },
           },
           {
-            name: 'human.zahori',
+            name: 'Zahori',
             region: {
-              label: 'human.zahori',
+              label: 'Zahori',
               value: NameRegion.Zahori,
               hasNoble: false,
             },
@@ -358,76 +358,76 @@ export const RACE_PANEL: RacePanel[] = [
         ],
       },
       {
-        name: 'human.regionTitle.islands',
+        name: 'Inselgebiete',
         children: [
           {
-            name: 'human.bosparn',
+            name: 'Bosparan',
             region: {
-              label: 'human.bosparn',
+              label: 'Bosparan',
               value: NameRegion.Bosparn,
               hasNoble: true,
             },
           },
           {
-            name: 'human.bukanier',
+            name: 'Bukanier',
             region: {
-              label: 'human.bukanier',
+              label: 'Bukanier',
               value: NameRegion.Bukanier,
               hasNoble: false,
             },
           },
           {
-            name: 'human.cyclopeisch',
+            name: 'Cyclopeisch',
             region: {
-              label: 'human.cyclopeisch',
+              label: 'Cyclopeisch',
               value: NameRegion.Cyclopeisch,
               hasNoble: true,
             },
           },
           {
-            name: 'human.elemitisch',
+            name: 'Elemitisch',
             region: {
-              label: 'human.elemitisch',
+              label: 'Elemitisch',
               value: NameRegion.Elemitisch,
               hasNoble: false,
             },
           },
           {
-            name: 'human.horasreich',
+            name: 'Horasreich',
             region: {
-              label: 'human.horasreich',
+              label: 'Horasreich',
               value: NameRegion.Horasreich,
               hasNoble: true,
             },
           },
           {
-            name: 'human.maraskan',
+            name: 'Maraskan',
             region: {
-              label: 'human.maraskan',
+              label: 'Maraskan',
               value: NameRegion.Maraskan,
               hasNoble: false,
             },
           },
           {
-            name: 'human.northProvince',
+            name: 'Nordprovinz',
             region: {
-              label: 'human.northProvince',
+              label: 'Nordprovinz',
               value: NameRegion.NorthProvince,
               hasNoble: false,
             },
           },
           {
-            name: 'human.selem',
+            name: 'Selem',
             region: {
-              label: 'human.selem',
+              label: 'Selem',
               value: NameRegion.Selem,
               hasNoble: false,
             },
           },
           {
-            name: 'human.zyklopeninsel',
+            name: 'Zyklopeninsel',
             region: {
-              label: 'human.zyklopeninsel',
+              label: 'Zyklopeninsel',
               value: NameRegion.Zyklopeninsel,
               hasNoble: true,
             },
@@ -435,28 +435,28 @@ export const RACE_PANEL: RacePanel[] = [
         ],
       },
       {
-        name: 'human.regionTitle.northWest',
+        name: 'Nordwestliches Aventurien',
         children: [
           {
-            name: 'human.gjalsker',
+            name: 'Gjalsker',
             region: {
-              label: 'human.gjalsker',
+              label: 'Gjalsker',
               value: NameRegion.Gjalsker,
               hasNoble: false,
             },
           },
           {
-            name: 'human.svellttal',
+            name: 'Svellttal',
             region: {
-              label: 'human.svellttal',
+              label: 'Svellttal',
               value: NameRegion.Svellttal,
               hasNoble: false,
             },
           },
           {
-            name: 'human.thorwal',
+            name: 'Thorwal',
             region: {
-              label: 'human.thorwal',
+              label: 'Thorwal',
               value: NameRegion.Thorwal,
               hasNoble: false,
             },
@@ -464,68 +464,68 @@ export const RACE_PANEL: RacePanel[] = [
         ],
       },
       {
-        name: 'human.regionTitle.bornland',
+        name: 'Bornland und freie Städte',
         children: [
           {
-            name: 'human.alhanisch',
+            name: 'Alhanisch',
             region: {
-              label: 'human.alhanisch',
+              label: 'Alhanisch',
               value: NameRegion.Alhanisch,
               hasNoble: false,
             },
           },
           {
-            name: 'human.andergast',
+            name: 'Andergast',
             region: {
-              label: 'human.andergast',
+              label: 'Andergast',
               value: NameRegion.Andergast,
               hasNoble: true,
             },
           },
           {
-            name: 'human.bornland',
+            name: 'Bornland',
             region: {
-              label: 'human.bornland',
+              label: 'Bornland',
               value: NameRegion.Bornland,
               hasNoble: true,
             },
           },
           {
-            name: 'human.freeCityNorth',
+            name: 'Freie Stadt im Norden',
             region: {
-              label: 'freeCityNorth',
+              label: 'Freie Stadt im Norden',
               value: NameRegion.FreeCityNorth,
               hasNoble: true,
             },
           },
           {
-            name: 'human.norbarden',
+            name: 'Norbarden',
             region: {
-              label: 'human.norbarden',
+              label: 'Norbarden',
               value: NameRegion.Norbarden,
               hasNoble: false,
             },
           },
           {
-            name: 'human.nostria',
+            name: 'Nostria',
             region: {
-              label: 'human.nostria',
+              label: 'Nostria',
               value: NameRegion.Nostria,
               hasNoble: true,
             },
           },
           {
-            name: 'human.freieSchattenlande',
+            name: 'Freie Schattenlande',
             region: {
-              label: 'human.freieSchattenlande',
+              label: 'Freie Schattenlande',
               value: NameRegion.FreieSchattenlande,
               hasNoble: true,
             },
           },
           {
-            name: 'human.schattenlande',
+            name: 'Schattenlande',
             region: {
-              label: 'human.schattenlande',
+              label: 'Schattenlande',
               value: NameRegion.Schattenlande,
               hasNoble: true,
             },
@@ -533,28 +533,28 @@ export const RACE_PANEL: RacePanel[] = [
         ],
       },
       {
-        name: 'human.regionTitle.norhtern',
+        name: 'Nördliches Aventurien',
         children: [
           {
-            name: 'human.fjarninger',
+            name: 'Fjarninger',
             region: {
-              label: 'human.fjarninger',
+              label: 'Fjarninger',
               value: NameRegion.Fjarninger,
               hasNoble: false,
             },
           },
           {
-            name: 'human.highNorth',
+            name: 'Hoch Norden',
             region: {
-              label: 'human.highNorth',
+              label: 'Hoch Norden',
               value: NameRegion.HighNorth,
               hasNoble: false,
             },
           },
           {
-            name: 'human.nivesen',
+            name: 'Nivesen',
             region: {
-              label: 'human.nivesen',
+              label: 'Nivesen',
               value: NameRegion.Nivesen,
               hasNoble: false,
             },
@@ -564,31 +564,31 @@ export const RACE_PANEL: RacePanel[] = [
     ],
   },
   {
-    title: 'elven.title',
+    title: 'Elfen',
     content: [
-      { label: 'elven.auelfen', value: NameRegion.Auelfen, hasNoble: false },
+      { label: 'Auelfen', value: NameRegion.Auelfen, hasNoble: false },
       {
-        label: 'elven.firnelfen',
+        label: 'Firnelfen',
         value: NameRegion.Firnelfen,
         hasNoble: false,
       },
       {
-        label: 'elven.hochelfen',
+        label: 'Hochelfen',
         value: NameRegion.Hochelfen,
         hasNoble: false,
       },
       {
-        label: 'elven.steppenelfen',
+        label: 'Steppenelfen',
         value: NameRegion.Steppenelfen,
         hasNoble: false,
       },
       {
-        label: 'elven.shakagra',
+        label: 'Shakagra',
         value: NameRegion.Shakagra,
         hasNoble: false,
       },
       {
-        label: 'elven.waldelfen',
+        label: 'Waldelfen',
         value: NameRegion.Waldelfen,
         hasNoble: false,
       },
@@ -596,24 +596,24 @@ export const RACE_PANEL: RacePanel[] = [
     treeData: [],
   },
   {
-    title: 'dwarf.title',
+    title: 'Zwerge',
     content: [
-      { label: 'dwarf.amboss', value: NameRegion.Zwergen, hasNoble: false },
-      { label: 'dwarf.brilliant', value: NameRegion.Zwergen, hasNoble: false },
-      { label: 'dwarf.brobim', value: NameRegion.Brobim, hasNoble: false },
-      { label: 'dwarf.erz', value: NameRegion.Zwergen, hasNoble: false },
+      { label: 'Ambosszwerge', value: NameRegion.Zwergen, hasNoble: false },
+      { label: 'Brillantzwerge', value: NameRegion.Zwergen, hasNoble: false },
+      { label: 'Brobim', value: NameRegion.Brobim, hasNoble: false },
+      { label: 'Erzzwerge', value: NameRegion.Zwergen, hasNoble: false },
       {
-        label: 'dwarf.hügelzwerge',
+        label: 'Hügelzwerge',
         value: NameRegion.Hugelzwergen,
         hasNoble: false,
       },
       {
-        label: 'dwarf.rotezwerge',
+        label: 'Rote Zwerge',
         value: NameRegion.Rotezwerge,
         hasNoble: false,
       },
       {
-        label: 'dwarf.tiefzwerge',
+        label: 'Tiefzwerge',
         value: NameRegion.Tiefzwerge,
         hasNoble: false,
       },
@@ -621,50 +621,50 @@ export const RACE_PANEL: RacePanel[] = [
     treeData: [],
   },
   {
-    title: 'god.title',
+    title: 'Götter',
     content: [
-      { label: 'god.praois', value: NameRegion.Praios, hasNoble: false },
-      { label: 'god.rondra', value: NameRegion.Rondra, hasNoble: false },
-      { label: 'god.efferad', value: NameRegion.Effard, hasNoble: false },
-      { label: 'god.travia', value: NameRegion.Travia, hasNoble: false },
-      { label: 'god.boron', value: NameRegion.Boron, hasNoble: false },
-      { label: 'god.hesinde', value: NameRegion.Hesinde, hasNoble: false },
-      { label: 'god.firun', value: NameRegion.Firun, hasNoble: false },
-      { label: 'god.tsa', value: NameRegion.Tsa, hasNoble: false },
-      { label: 'god.phex', value: NameRegion.Phex, hasNoble: false },
-      { label: 'god.peraine', value: NameRegion.Peraine, hasNoble: false },
-      { label: 'god.ingerimm', value: NameRegion.Ingerimm, hasNoble: false },
-      { label: 'god.halbgott', value: NameRegion.Halbgott, hasNoble: false },
+      { label: 'Praios', value: NameRegion.Praios, hasNoble: false },
+      { label: 'Rondra', value: NameRegion.Rondra, hasNoble: false },
+      { label: 'Efferd', value: NameRegion.Effard, hasNoble: false },
+      { label: 'Travia', value: NameRegion.Travia, hasNoble: false },
+      { label: 'Boron', value: NameRegion.Boron, hasNoble: false },
+      { label: 'Hesinde', value: NameRegion.Hesinde, hasNoble: false },
+      { label: 'Firun', value: NameRegion.Firun, hasNoble: false },
+      { label: 'Tsa', value: NameRegion.Tsa, hasNoble: false },
+      { label: 'Phex', value: NameRegion.Phex, hasNoble: false },
+      { label: 'Peraine', value: NameRegion.Peraine, hasNoble: false },
+      { label: 'Ingerimm', value: NameRegion.Ingerimm, hasNoble: false },
+      { label: 'Halbgötter', value: NameRegion.Halbgott, hasNoble: false },
     ],
     treeData: [],
   },
   {
-    title: 'other.title',
+    title: 'Andere',
     content: [
-      { label: 'other.achaz', value: NameRegion.Achaz, hasNoble: false },
-      { label: 'other.oger', value: NameRegion.Oger, hasNoble: false },
-      { label: 'other.orks', value: NameRegion.Orks, hasNoble: false },
+      { label: 'Achaz', value: NameRegion.Achaz, hasNoble: false },
+      { label: 'Oger', value: NameRegion.Oger, hasNoble: false },
+      { label: 'Orks', value: NameRegion.Orks, hasNoble: false },
       {
-        label: 'other.stadtGoblin',
+        label: 'Stadt-Goblin',
         value: NameRegion.StadtGoblin,
         hasNoble: false,
       },
-      { label: 'other.suulak', value: NameRegion.Suulak, hasNoble: false },
-      { label: 'other.trolle', value: NameRegion.Trolle, hasNoble: false },
+      { label: 'Suulak', value: NameRegion.Suulak, hasNoble: false },
+      { label: 'Trolle', value: NameRegion.Trolle, hasNoble: false },
       {
-        label: 'other.buehnenZauberer',
+        label: 'Bühnenzauberer',
         value: NameRegion.BuehnenZauberer,
         hasNoble: false,
       },
-      { label: 'other.gaukler', value: NameRegion.Gaukler, hasNoble: false },
+      { label: 'Gaukler', value: NameRegion.Gaukler, hasNoble: false },
       {
-        label: 'other.gladiator',
+        label: 'Gladiator',
         value: NameRegion.Gladiator,
         hasNoble: false,
       },
-      { label: 'other.magier', value: NameRegion.Magier, hasNoble: false },
+      { label: 'Magier', value: NameRegion.Magier, hasNoble: false },
       {
-        label: 'other.quacksalber',
+        label: 'Quacksalber',
         value: NameRegion.Quacksalber,
         hasNoble: false,
       },

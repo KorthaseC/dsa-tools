@@ -1,6 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
 import { Utility } from '../shared/utility';
 import { SmithGeneratorComponent } from './smith-generator.component';
 import {
@@ -24,9 +22,7 @@ describe('SmithGeneratorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         SmithGeneratorComponent,
-        TranslateModule.forRoot(),
-        BrowserAnimationsModule,
-      ],
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SmithGeneratorComponent);
@@ -73,10 +69,10 @@ describe('SmithGeneratorComponent', () => {
   it('should change item type to weapon and update options', () => {
     component.changeItemType(true);
     expect(component.isWeapon).toBeTrue();
-    expect(component.craftingOptions).toEqual(Object.values(WeaponType));
-    expect(component.materialOptions).toEqual(weaponMaterial);
-    expect(component.boniOptions).toEqual(Object.values(WeaponBoni));
-    expect(component.craftTechnicOptions).toEqual([
+    expect(component.craftingOptions.map(o => o.value)).toEqual(Object.values(WeaponType));
+    expect(component.materialOptions.map(o => o.value)).toEqual(weaponMaterial);
+    expect(component.boniOptions.map(o => o.value)).toEqual(Object.values(WeaponBoni));
+    expect(component.craftTechnicOptions.map(o => o.value)).toEqual([
       CraftTechnic.None,
       CraftTechnic.Falt,
       CraftTechnic.Lehm,
@@ -86,10 +82,10 @@ describe('SmithGeneratorComponent', () => {
   it('should change item type to armor and update options', () => {
     component.changeItemType(false);
     expect(component.isWeapon).toBeFalse();
-    expect(component.craftingOptions).toEqual(Object.values(ArmorType));
-    expect(component.materialOptions).toEqual(armorMaterial);
-    expect(component.boniOptions).toEqual(Object.values(ArmorBoni));
-    expect(component.craftTechnicOptions).toEqual([
+    expect(component.craftingOptions.map(o => o.value)).toEqual(Object.values(ArmorType));
+    expect(component.materialOptions.map(o => o.value)).toEqual(armorMaterial);
+    expect(component.boniOptions.map(o => o.value)).toEqual(Object.values(ArmorBoni));
+    expect(component.craftTechnicOptions.map(o => o.value)).toEqual([
       CraftTechnic.None,
       CraftTechnic.ChainBuild,
     ]);
@@ -132,7 +128,7 @@ describe('SmithGeneratorComponent', () => {
     spyOn(Utility, 'rollDice').and.returnValues(20, 20, 20);
     component.calculateCraftedPrice();
 
-    expect(component.craftedFailureText).toBe('smith.itemText.failure');
+    expect(component.craftedFailureText).toBe('Kritischer Fehlschlag bei der Herstellung');
     expect(component.craftedItemText).toBe('');
   });
 });

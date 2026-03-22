@@ -1,46 +1,96 @@
-footer {
-  position: fixed;
-  bottom: 0;
+.c-footer {
+  height: 100%;
   width: 100%;
   background-color: #212121;
   color: white;
-  text-align: center;
-  padding: 10px 0;
-  z-index: 100;
-}
-
-.c-social-icons {
   display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-.c-social-icons a {
-  margin: 0 10px;
-}
-
-.c-footer-links {
+.c-left {
   display: flex;
+  align-items: center;
+}
+
+.c-menu-btn {
+  display: none !important;
+}
+
+.c-social {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.c-nav {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+
+  a {
+    color: #b0a080;
+    text-decoration: none;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: color 0.15s;
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+
+.c-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  a {
+    color: #b0a080;
+    text-decoration: none;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: color 0.15s;
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+
+.c-version {
+  font-size: 0.75rem;
+  color: #6b5c3e;
+  white-space: nowrap;
+}
+
+.c-icon-img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+// Make img-based p-button match the pi-icon p-button size
+::ng-deep .c-social .p-button,
+::ng-deep .footer-menu-social .p-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 !important;
   justify-content: center;
 }
 
-.c-footer-links a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-}
+@media (max-width: 768px) {
+  .c-social,
+  .c-nav {
+    display: none;
+  }
 
-.c-footer-links span {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-}
-
-.c-footer-links a:hover {
-  text-decoration: underline;
-}
-
-.c-button-size {
-  width: 24px;
-  height: 24px;
+  .c-menu-btn {
+    display: inline-flex !important;
+  }
 }

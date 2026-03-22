@@ -1,20 +1,28 @@
-.mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
+.book-generator-container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.c-spinner {
-  vertical-align: middle;
-  height: 25px !important;
-  width: 35px !important;
-  padding-left: 5px;
-  display: inline-flex;
+// Keep paginator on a single line — prevent nav & page buttons wrapping
+::ng-deep .book-generator-container .p-paginator {
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
-.c-book-container {
-  background-color: #424242;
-  width: 100%;
-  padding-bottom: 5px;
-  border-top: 1px solid black;
-  color: white;
+.paginator-label {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #5a3a10;
+  margin: 0.25rem 0 0.75rem;
+}
+
+// Adds top gap not present in the shared .result-row--sub base
+.result-row--sub {
+  margin-top: 0.25rem;
+}
+
+.result-label {
+  font-weight: 600;
+  color: #5a3a10;
+  font-size: 0.875rem;
 }

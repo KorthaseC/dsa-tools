@@ -1,0 +1,49 @@
+.dice-dialog {
+  min-width: 0;
+}
+
+.result-box {
+  border-left: 3px solid var(--p-primary-color, #c8a96e);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.result-label {
+  font-size: 0.8rem;
+  color: var(--p-text-muted-color, #7a6a50);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.result-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--p-text-color, #e4d3a2);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.result-dice {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--p-text-color-secondary, #b0a080);
+}
+
+.result-text {
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+
+  ::ng-deep strong {
+    color: var(--p-primary-color, #c8a96e);
+  }
+}
+
+.genius-hint {
+  font-size: 0.925rem;
+}
+
+.preview-text {
+  font-size: 0.925rem;
+}

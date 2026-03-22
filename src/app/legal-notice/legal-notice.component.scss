@@ -1,26 +1,17 @@
-.c-legal-notice {
-  max-width: 800px;
-  margin: 0 auto;
-  color: #343a40;
-  font-family: "Arial", sans-serif;
-  line-height: 1.6;
+// .legal-container, .legal-card, .section-label are shared — see src/styles/shared-components.scss
+
+.legal-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #c8a96e;
+  margin: 0.25rem 0 0;
 }
 
-.c-legal-notice h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #007bff;
-}
-
-.c-legal-notice p {
-  margin-bottom: 10px;
-}
-
-.c-legal-notice a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.c-legal-notice a:hover {
-  text-decoration: underline;
+.legal-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #5a4a30;
+  font-size: 0.9rem;
+  line-height: 1.7;
 }

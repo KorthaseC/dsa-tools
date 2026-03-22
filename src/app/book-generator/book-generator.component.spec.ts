@@ -1,8 +1,6 @@
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PageEvent } from '@angular/material/paginator';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
+import { PaginatorState } from 'primeng/paginator';
 import { BookGeneratorComponent, BookType } from './book-generator.component';
 import { BookGeneratorService } from './book-generator.service';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -18,9 +16,7 @@ describe('BookGeneratorComponent', () => {
     ]);
 
     await TestBed.configureTestingModule({
-    imports: [BookGeneratorComponent,
-        TranslateModule.forRoot(),
-        BrowserAnimationsModule],
+    imports: [BookGeneratorComponent],
     providers: [{ provide: BookGeneratorService, useValue: mockBookService }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
 
@@ -112,7 +108,7 @@ describe('BookGeneratorComponent', () => {
       feature: 'yes',
     }));
 
-    const pageEvent = { pageIndex: 1, pageSize: 5, length: 20 } as PageEvent;
+    const pageEvent = { page: 1, rows: 5 } as PaginatorState;
 
     component.onPageChange(pageEvent);
 

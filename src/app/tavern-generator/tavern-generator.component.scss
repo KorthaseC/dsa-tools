@@ -1,8 +1,27 @@
-.mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
+.tavern-container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.box {
-  width: calc(50% - 5px);
+.tavern-name {
+  text-align: center;
+}
+
+.result-label {
+  font-weight: 600;
+  color: #5a3a10;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+// Overrides global .result-value: tavern uses a slightly larger font
+.result-value {
+  font-size: 1.1rem;
+
+  &--right {
+    text-align: right;
+  }
 }

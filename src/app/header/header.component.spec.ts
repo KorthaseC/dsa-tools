@@ -1,15 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavigationEnd, Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Subject } from 'rxjs';
-import { AppComponent } from '../app.component';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let appComponent: AppComponent;
   let routerEventsSubject: Subject<any>;
 
   beforeEach(async () => {
@@ -21,15 +17,12 @@ describe('HeaderComponent', () => {
       },
     };
 
-    appComponent = jasmine.createSpyObj('AppComponent', ['changeLanguage']);
     await TestBed.configureTestingModule({
       imports: [
         HeaderComponent,
-        TranslateModule.forRoot(),
-        RouterTestingModule.withRoutes([]),
+        RouterModule.forRoot([]),
       ],
       providers: [
-        { provide: AppComponent, useValue: appComponent },
         { provide: Router, useValue: mockRouter },
       ],
     }).compileComponents();
@@ -48,85 +41,6 @@ describe('HeaderComponent', () => {
     component.ngOnInit();
     routerEventsSubject.next(new NavigationEnd(0, '/', '/'));
     expect((component as any).updatePageTitle).toHaveBeenCalled();
-  });
-
-  it('should change language when isGerman value changes', () => {
-    component.isGerman.setValue(false);
-    expect(appComponent.changeLanguage).toHaveBeenCalledWith('en');
-
-    component.isGerman.setValue(true);
-    expect(appComponent.changeLanguage).toHaveBeenCalledWith('de');
-  });
-
-  it('should deactivate other checkbox when one is activated', () => {
-    component.deactivateOtherCheckbox(true, true);
-    expect(component.isSelectMulti.value).toBe(false);
-
-    component.deactivateOtherCheckbox(true, false);
-    expect(component.isRollMulti.value).toBe(false);
-  });
-
-  it('should initialize DiceBox if platform is browser', () => {
-    spyOn(component as any, 'initDiceBox');
-    component.ngAfterViewInit();
-    expect((component as any).initDiceBox).toHaveBeenCalled();
-  });
-
-  it('should add dice correctly', () => {
-    component['selectDice'] = [];
-    component['addDice']('1d6');
-    expect(component['selectDice']).toEqual(['1d6']);
-
-    component['addDice']('1d6');
-    expect(component['selectDice']).toEqual(['2d6']);
-
-    component['addDice']('1d8');
-    expect(component['selectDice']).toEqual(['2d6', '1d8']);
-  });
-
-  it('should roll dice correctly', () => {
-    component.isSelectMulti.setValue(false);
-    component.isRollMulti.setValue(false);
-    component['diceBox'] = jasmine.createSpyObj('DiceBox', [
-      'roll',
-      'add',
-      'clear',
-    ]);
-
-    component.rollDice('1d6');
-    expect(component['diceBox'].roll).toHaveBeenCalledWith('1d6');
-
-    component.isSelectMulti.setValue(true);
-    component.rollDice('1d6');
-    expect(component['diceBox'].add).not.toHaveBeenCalled();
-    expect(component['selectDice']).toContain('1d6');
-
-    component.isRollMulti.setValue(true);
-    component.rollDice('1d6');
-    expect(component['diceBox'].add).toHaveBeenCalledWith('1d6');
-  });
-
-  it('should clear dice', () => {
-    component['diceBox'] = jasmine.createSpyObj('DiceBox', ['clear']);
-    component.deleteDice();
-    expect(component['diceBox'].clear).toHaveBeenCalled();
-    expect(component['selectDice']).toEqual([]);
-  });
-
-  it('should roll all selected dice', () => {
-    component['diceBox'] = jasmine.createSpyObj('DiceBox', ['roll']);
-    component['selectDice'] = ['1d6', '1d8'];
-    component.rollAllDice();
-    expect(component['diceBox'].roll).toHaveBeenCalledWith(['1d6', '1d8']);
-  });
-
-  it('should find selected die number', () => {
-    component['selectDice'] = ['2d6', '3d8'];
-    const dieNumber = component.findSelectedDieNumber('1d6');
-    expect(dieNumber).toBe(2);
-
-    const dieNumberNotFound = component.findSelectedDieNumber('1d10');
-    expect(dieNumberNotFound).toBe(0);
   });
 
   it('should update page title correctly', () => {

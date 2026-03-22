@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormControl } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
 import { CURRENCYMAP, CurrencyRegion, CurrencyValue } from '../shared/constant';
 import { CurrencyComponent } from './currency.component';
 
@@ -14,9 +12,7 @@ describe('CurrencyComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         CurrencyComponent,
-        TranslateModule.forRoot(),
-        BrowserAnimationsModule,
-      ],
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CurrencyComponent);

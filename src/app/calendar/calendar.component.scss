@@ -1,0 +1,18 @@
+.calendar-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.result-label {
+  font-weight: 600;
+  color: #5a3a10;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.moon-icon {
+  font-size: 1.25rem;
+  transform: rotate(90deg);
+  display: inline-block;
+}

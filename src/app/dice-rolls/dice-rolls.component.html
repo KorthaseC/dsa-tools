@@ -1,0 +1,97 @@
+﻿<button
+  pButton
+  type="button"
+  class="dice-toggle-btn"
+  pTooltip="Würfeln"
+  tooltipPosition="left"
+  (click)="op.toggle($event)"
+>
+  <img src="assets/icons/d20.svg" alt="Würfel" class="dice-icon" />
+</button>
+
+<p-popover #op styleClass="dice-popover">
+  <div class="dice-panel">
+
+    <!-- Mode selector -->
+    <div class="mode-row mb-3">
+      <button
+        type="button"
+        class="mode-btn"
+        [class.mode-btn--active]="!isRollMulti && !isSelectMulti"
+        (click)="isRollMulti = false; isSelectMulti = false"
+        pTooltip="Jeder Klick würfelt sofort, vorheriges Ergebnis wird ersetzt"
+        tooltipPosition="bottom"
+      >
+        <i class="pi pi-play mode-icon"></i>
+        <span class="mode-label">Einzeln</span>
+      </button>
+      <button
+        type="button"
+        class="mode-btn"
+        [class.mode-btn--active]="isRollMulti"
+        (click)="isRollMulti = true; isSelectMulti = false"
+        pTooltip="Jeder Klick addiert einen weiteren Würfel zum laufenden Wurf"
+        tooltipPosition="bottom"
+      >
+        <i class="pi pi-plus mode-icon"></i>
+        <span class="mode-label">Stapeln</span>
+      </button>
+      <button
+        type="button"
+        class="mode-btn"
+        [class.mode-btn--active]="isSelectMulti"
+        (click)="isSelectMulti = true; isRollMulti = false"
+        pTooltip="Würfel sammeln und dann alle auf einmal würfeln"
+        tooltipPosition="bottom"
+      >
+        <i class="pi pi-inbox mode-icon"></i>
+        <span class="mode-label">Sammeln</span>
+      </button>
+    </div>
+
+    <!-- Dice buttons -->
+    <div class="die-row">
+      @for (die of diceList; track die) {
+        <button
+          pButton
+          type="button"
+          class="p-button-rounded p-button-outlined die-btn"
+          [pTooltip]="isSelectMulti ? die.toUpperCase() + ' (Rechtsklick zum Entfernen)' : die.toUpperCase()"
+          tooltipPosition="bottom"
+          (click)="rollDice('1' + die)"
+          (contextmenu)="isSelectMulti && removeDice(die); $event.preventDefault()"
+        >
+          <img [src]="'assets/icons/' + die + '.svg'" [alt]="die" class="die-img" />
+          @if (isSelectMulti && findSelectedDieNumber(die) > 0) {
+            <span class="die-badge">{{ findSelectedDieNumber(die) }}</span>
+          }
+        </button>
+      }
+
+      @if (isSelectMulti) {
+        <button
+          pButton
+          type="button"
+          class="p-button-rounded die-btn die-btn--roll"
+          pTooltip="Alle würfeln"
+          tooltipPosition="bottom"
+          (click)="rollAllDice()"
+        >
+          <img src="assets/icons/dice.svg" alt="Alle würfeln" class="die-img" />
+        </button>
+      }
+
+      <button
+        pButton
+        type="button"
+        class="p-button-rounded p-button-outlined die-btn die-btn--clear"
+        pTooltip="Würfel löschen"
+        tooltipPosition="bottom"
+        (click)="deleteDice()"
+      >
+        <img src="assets/icons/trash.svg" alt="Löschen" class="die-img" />
+      </button>
+    </div>
+
+  </div>
+</p-popover>

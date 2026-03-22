@@ -1,51 +1,78 @@
-.c-bug-report-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.c-container {
+.bug-report-container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
 }
 
-.c-error {
-  color: red;
-  margin-top: 10px;
+.type-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid #5a4a30;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
 }
 
-.c-form-field-100p {
-  font-size: 14px;
-  width: 100%;
+// Overrides global .section-label: smaller font, no border/padding
+.section-label {
+  font-size: 0.875rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  display: inline;
 }
 
-.c-radio-button-box {
-  background-color: #4a4a4a;
-  padding-right: 10px;
-  border-radius: 5px 5px 0px 0px;
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid #5a4a30;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
 }
 
-.c-upload-container {
-  padding-top: 5px;
-  background-color: #4a4a4a;
-  border-radius: 5px 5px 0px 0px;
-  padding-bottom: 5px;
-  color: white;
+.upload-label {
+  font-size: 0.875rem;
+  color: #5a4a30;
+  font-weight: 600;
 }
 
-.c-label-color {
-  color: rgba(255, 255, 255, 0.6);
+.file-input {
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #5a4a30;
 }
 
+.field-error {
+  font-size: 0.8rem;
+  color: #c0392b;
+  margin-top: 0.25rem;
+}
+
+.privacy-notice {
+  font-size: 0.8rem;
+  color: #5a4a30;
+  line-height: 1.5;
+  border-top: 1px solid rgba(200, 169, 110, 0.25);
+  padding-top: 0.75rem;
+}
+
+.privacy-link {
+  color: #c8a96e;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #a07840;
+  }
+}
+
+// Overrides global .result-card: no bottom margin (standalone success message)
+.result-card {
+  margin-bottom: 0;
+}
+
+// Overrides global .c-spinner: inline-flex needed for inline button context
 .c-spinner {
-  vertical-align: middle;
-  height: 25px !important;
-  width: 35px !important;
-  padding-left: 5px;
   display: inline-flex;
 }

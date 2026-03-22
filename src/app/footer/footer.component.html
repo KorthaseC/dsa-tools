@@ -1,35 +1,85 @@
-<footer class="footer">
-  <div class="c-social-icons">
-    <button
-      mat-icon-button
-      matTooltip=" {{ 'footer.button.github' | translate }}"
-      (click)="goToLink('https://github.com/KorthaseC/dsa-tools')"
-    >
-      <img
-        src="assets/icons/github.svg"
-        alt="github"
-        class="invert-img c-button-size"
+<footer class="c-footer">
+
+  <!-- Left: menu button (mobile only) + social icons (desktop only) -->
+  <div class="c-left">
+    <p-button
+      class="c-menu-btn"
+      icon="pi pi-bars"
+      [rounded]="true"
+      [text]="true"
+      severity="secondary"
+      pTooltip="Menü öffnen"
+      tooltipPosition="top"
+      (onClick)="menu.toggle($event)"
+    />
+
+    <div class="c-social">
+      <p-button
+        icon="pi pi-github"
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        pTooltip="Link zum Github-Projekt"
+        tooltipPosition="top"
+        (onClick)="goToLink('https://github.com/KorthaseC/dsa-tools')"
       />
-    </button>
-    <button
-      mat-icon-button
-      matTooltip=" {{ 'footer.button.ulissesDiscord' | translate }}"
-      (click)="goToLink('https://discord.com/invite/xftRCTHj7Y')"
-    >
-      <img
-        src="assets/icons/ulisses.svg"
-        alt="ulisses discord"
-        class="c-button-size"
-      />
-    </button>
+      <p-button
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        pTooltip="Offizieller Ulisses Discord"
+        tooltipPosition="top"
+        (onClick)="goToLink('https://discord.com/invite/xftRCTHj7Y')"
+      >
+        <img src="assets/icons/ulisses.svg" alt="Ulisses Discord" class="c-icon-img" />
+      </p-button>
+    </div>
   </div>
-  <div class="c-footer-links">
-    <a [routerLink]="['/about']">{{ "footer.about" | translate }}</a>
-    <a [routerLink]="['/report']">{{ "footer.report" | translate }}</a>
-    <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">
-      {{ "footer.ruleWiki" | translate }}</a
-    >
-    <a [routerLink]="['/legal']">{{ "footer.legal" | translate }}</a>
-    <span href="#">{{ "footer.version" | translate }}{{ version }} </span>
+
+  <!-- Center: nav links (desktop only) -->
+  <nav class="c-nav">
+    <a [routerLink]="['/about']">Über</a>
+    <a [routerLink]="['/report']">Bugreport/Feedback</a>
+    <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">Regel-Wiki</a>
+  </nav>
+
+  <!-- Right: always visible -->
+  <div class="c-right">
+    <a [routerLink]="['/imprint']">Impressum</a>
+    <a [routerLink]="['/legal']">Datenschutz</a>
+    <span class="c-version">v{{ version }}</span>
   </div>
+
 </footer>
+
+<!-- Mobile popover menu -->
+<p-popover #menu styleClass="footer-menu">
+  <div class="footer-menu-panel">
+    <div class="footer-menu-social">
+      <p-button
+        icon="pi pi-github"
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        pTooltip="Link zum Github-Projekt"
+        tooltipPosition="top"
+        (onClick)="goToLink('https://github.com/KorthaseC/dsa-tools'); menu.hide()"
+      />
+      <p-button
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        pTooltip="Offizieller Ulisses Discord"
+        tooltipPosition="top"
+        (onClick)="goToLink('https://discord.com/invite/xftRCTHj7Y'); menu.hide()"
+      >
+        <img src="assets/icons/ulisses.svg" alt="Ulisses Discord" class="c-icon-img" />
+      </p-button>
+    </div>
+    <div class="footer-menu-links">
+      <a [routerLink]="['/about']" (click)="menu.hide()">Über</a>
+      <a [routerLink]="['/report']" (click)="menu.hide()">Bugreport/Feedback</a>
+      <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/'); menu.hide()">Regel-Wiki</a>
+    </div>
+  </div>
+</p-popover>

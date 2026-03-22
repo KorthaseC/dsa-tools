@@ -1,7 +1,6 @@
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 import { BugReportComponent } from './bug-report.component';
 import { BugReportService } from './bug-report.service';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -12,11 +11,12 @@ describe('BugReportComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [TranslateModule.forRoot(),
+      imports: [
         BugReportComponent,
-        BrowserAnimationsModule],
-    providers: [BugReportService, TranslateService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-}).compileComponents();
+        RouterModule.forRoot([]),
+      ],
+      providers: [BugReportService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BugReportComponent);
     component = fixture.componentInstance;

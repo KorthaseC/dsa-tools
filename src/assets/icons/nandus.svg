@@ -32,7 +32,7 @@
        d="m 760,433 a 380,430 0 1 1 -760,0 380,430 0 1 1 760,0 z"
        transform="matrix(1.1822368,0,0,1.0447674,-46.856484,151.90188)"
        id="path2952"
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.69934988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.69934988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
        d="m -1087.8634,679.59368 0,0 z"
        id="path7209"

@@ -1,14 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
-$roboto-font-path: "../node_modules/roboto-fontface/fonts" !default;
+@use 'styles/primeng-overrides';
+@use 'styles/shared-components';
+@import 'primeicons/primeicons.css';
 
-$material-icons-font-path: '../node_modules/material-icons/iconfont/';
-@use '../node_modules/material-icons/iconfont/material-icons.scss';
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
 html,
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: lightgray;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #1a1a1a;
+  color: #e4d3a2;
+}
+
+h1,
+.dsa-title {
+  font-family: 'Uncial Antiqua', serif !important;
+  text-transform: uppercase !important;
+  color: #e4d3a2 !important;
+  letter-spacing: 2px !important;
+  text-shadow: 1px 1px 2px #000 !important;
+  margin: 0 !important;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 900 !important;
+  font-size: xx-large !important;
+}
+
+.width-15 {
+  width: 15%;
 }
 
 .width-20 {
@@ -31,7 +54,15 @@ body {
   width: 60%;
 }
 
-.witdh-100 {
+.width-80 {
+  width: 80%;
+}
+
+.width-85 {
+  width: 85%;
+}
+
+.width-100 {
   width: 100%;
 }
 
@@ -95,6 +126,10 @@ body {
   justify-content: flex-start;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .blend-img {
   mix-blend-mode: multiply;
 }
@@ -109,9 +144,8 @@ body {
 }
 
 canvas {
-  margin: 30px;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
 }
 
 .button {
@@ -123,4 +157,13 @@ canvas {
 
 .cursor {
   cursor: pointer;
+}
+
+// Responsive sticky — applies position:sticky only on md breakpoint and above
+// Mirrors the PrimeFlex md: convention (≥768px)
+@media (min-width: 768px) {
+  .sticky-md {
+    position: sticky;
+    top: 1rem;
+  }
 }

@@ -1,61 +1,110 @@
-.c-optional-checks-container {
-  background-color: #424242;
+.name-generator-container {
+  max-width: 800px;
+  margin: 0 auto;
+
+  // Give the tab list a separator line and the panel content a visible card
+  ::ng-deep p-tabs .p-tablist {
+    border-bottom: 1px solid #5a4a30;
+  }
+
+  ::ng-deep p-tabs .p-tabpanels {
+    background: rgba(245, 232, 200, 0.35);
+    border: 1px solid #5a4a30;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 1rem;
+  }
 }
 
-.c-button-container {
+// Controls box — same pattern as currency-section
+.filter-section {
   display: flex;
-  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
-  align-items: center;
-  margin: 0; /* Entfernen Sie zusätzlichen Außenabstand */
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid #5a4a30;
+  border-radius: 6px;
+  padding: 1rem;
 }
 
-.c-button-expand button {
-  border-bottom: none;
-  border-radius: 0;
-  display: flex;
-  background-color: #636262;
-  flex-wrap: wrap; /* Elemente umbrechen, wenn der Platz nicht ausreicht */
-}
-
-.c-content-field {
+// Button fills its flex container
+::ng-deep .p-button.flex-1 {
+  flex: 1;
   width: 100%;
-  padding: 20px 0px 20px 0;
-  background-color: #424242;
-  color: white;
 }
 
-.c-button-expand button.active {
-  background-color: #424242; /* Beispiel für eine aktive Hintergrundfarbe */
-  color: white; /* Beispiel für eine aktive Textfarbe */
-  box-shadow: 0px 3px #424242;
+// Radio button labels inside tab panels
+::ng-deep p-tabs .p-tabpanels label {
+  color: #2a1a08;
 }
 
-.c-content {
-  padding-left: 20px;
+// Left panel: region list/tree scrolls independently on desktop
+.region-scroll {
+  max-height: 55vh;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+
+  // Transparent thin scrollbar, no arrows
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 106, 62, 0.35) transparent;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(138, 106, 62, 0.35);
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
 }
 
-.c-border-left {
-  border-left: 1px solid #636262;
+.noble-warning {
+  font-size: 0.875rem;
+  color: #b87a00;
+  background: rgba(184, 122, 0, 0.08);
+  border: 1px solid rgba(184, 122, 0, 0.3);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
 }
 
-.c-spinner {
-  vertical-align: middle;
-  height: 25px !important;
-  width: 35px !important;
-  padding-left: 5px;
-  display: inline-flex;
+// Overrides global .result-card: add typography for the nested list
+.result-card {
+  ul {
+    color: #2a1a08;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
 }
 
-.c-content-radio {
+.result-context {
   display: flex;
-  flex-direction: column; /* Arrange radio buttons vertically */
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid rgba(138, 106, 62, 0.3);
 }
 
-.c-names-list-scroll {
-  position: sticky;
-  top: 80px;
-}
+.context-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #5a4a30;
+  background: rgba(200, 169, 110, 0.2);
+  border: 1px solid rgba(138, 106, 62, 0.35);
+  border-radius: 3px;
+  padding: 0.1rem 0.45rem;
 
-.c-no-noble {
-  color: orange;
+  &--noble {
+    color: #7a5800;
+    background: rgba(184, 122, 0, 0.12);
+    border-color: rgba(184, 122, 0, 0.4);
+  }
 }

@@ -1,0 +1,82 @@
+<div class="calendar-container pb-5">
+  <form class="formgrid grid mb-4 row-gap-3">
+    <div class="col-12 md:col-4">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="day"
+          [options]="dayOptions"
+          [formControl]="dayControl"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="day">Tag</label>
+      </p-floatlabel>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <p-floatlabel variant="on" class="w-full">
+        <p-select
+          inputId="month"
+          [options]="monthOptions"
+          optionLabel="label"
+          optionValue="value"
+          [formControl]="monthControl"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="month">Monat</label>
+      </p-floatlabel>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <p-floatlabel variant="on" class="w-full">
+        <input
+          pInputText
+          id="year"
+          [formControl]="yearControl"
+          type="number"
+          [required]="true"
+          class="w-full"
+        />
+        <label for="year">Jahr</label>
+      </p-floatlabel>
+    </div>
+  </form>
+
+  <div class="flex justify-content-end mb-4">
+    <div class="w-full md:w-auto">
+      <p-button
+        label="Berechne"
+        (onClick)="calcCalendar()"
+        [disabled]="!isFormValid()"
+        styleClass="w-full"
+      />
+    </div>
+  </div>
+
+  @if (weekdayInfo || madaPhaseInfo) {
+  <div class="result-card">
+    @if (weekdayInfo) {
+    <div class="flex justify-content-between align-items-center">
+      <span class="result-label">Wochentag</span>
+      <span class="result-value">{{ weekdayInfo }}</span>
+    </div>
+    }
+
+    @if (madaPhaseInfo) {
+    <div class="flex justify-content-between align-items-center">
+      <span class="result-label">Madaphase</span>
+      <div class="flex align-items-center gap-2">
+        <span class="moon-icon">{{ moonIcon }}</span>
+        <span class="result-value">{{ madaPhaseInfo }}</span>
+      </div>
+    </div>
+    @if (nextFullMoonInfo) {
+    <div class="result-row--sub">
+      <span>{{ nextFullMoonInfo }}</span>
+    </div>
+    }
+    }
+  </div>
+  }
+</div>

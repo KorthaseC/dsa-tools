@@ -1,20 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIcon } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import {
-  MatPaginator,
-  MatPaginatorModule,
-  PageEvent,
-} from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTooltip } from '@angular/material/tooltip';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { ButtonModule } from 'primeng/button';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SelectModule } from 'primeng/select';
 import { BookGeneratorService } from './book-generator.service';
+import {
+  BOOK_FEATURE_NAMES,
+  BOOK_NAMES_PART_ONE,
+  BOOK_NAMES_PART_THREE,
+  BOOK_NAMES_PART_TWO,
+  BOOK_TYPE_NAMES,
+  FEATURE_NAMES,
+} from './book-generator.constants';
 
 export enum BookType {
   None = 'none',
@@ -32,42 +33,46 @@ export interface Book {
 }
 
 @Component({
-  selector: 'app-book-generator',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    TranslateModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    CommonModule,
-    MatTooltip,
-    MatIcon,
-  ],
-  templateUrl: './book-generator.component.html',
-  styleUrl: './book-generator.component.scss',
+    selector: 'app-book-generator',
+    imports: [
+        FormsModule,
+        FloatLabelModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        ButtonModule,
+        SelectModule,
+        
+        ProgressSpinnerModule,
+        PaginatorModule,
+    ],
+    templateUrl: './book-generator.component.html',
+    styleUrl: './book-generator.component.scss'
 })
 export class BookGeneratorComponent {
-  public bookTypeControl = new FormControl<BookType>(null);
-  public featureControl = new FormControl<string>(null);
-  public bookCountControl = new FormControl<number>(null);
+  public bookTypeControl = new FormControl<BookType>(null, Validators.required);
+  public featureControl = new FormControl<string>(null, Validators.required);
+  public bookCountControl = new FormControl<number>(null, [Validators.required, Validators.min(1), Validators.max(50)]);
 
   public isLoading: boolean = false;
 
-  public bookTypeOptions: BookType[] = Object.values(BookType);
-  public featureOptions: string[] = ['yes', 'random'];
+  public bookTypeOptions = Object.values(BookType).map(v => ({ label: BOOK_TYPE_NAMES[v], value: v }));
+  public featureOptions = (['yes', 'random'] as const).map(v => ({ label: FEATURE_NAMES[v], value: v }));
+
+  // Lookup maps — delegates to book-generator.constants.ts
+  public readonly bookTypeNames         = BOOK_TYPE_NAMES;
+  public readonly featureNames          = FEATURE_NAMES;
+  public readonly bookNamesPartOneNames = BOOK_NAMES_PART_ONE;
+  public readonly bookNamesPartTwoNames = BOOK_NAMES_PART_TWO;
+  public readonly bookNamesPartThreeNames = BOOK_NAMES_PART_THREE;
+  public readonly bookFeatureNames      = BOOK_FEATURE_NAMES;
+
+  public readonly Math = Math;
 
   public books: Book[];
 
   public displayedBooks: Book[] = []; // books, currently displayed
   pageSize = 10; // number of books per page
   currentPage = 0; // current page
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private bookService: BookGeneratorService) {}
 
@@ -95,9 +100,9 @@ export class BookGeneratorComponent {
     }
   }
 
-  public onPageChange(pageEvent: PageEvent): void {
-    this.currentPage = pageEvent.pageIndex;
-    this.pageSize = pageEvent.pageSize;
+  public onPageChange(event: PaginatorState): void {
+    this.currentPage = event.page ?? 0;
+    this.pageSize = event.rows ?? 10;
     this.updateDisplayedBooks();
   }
 

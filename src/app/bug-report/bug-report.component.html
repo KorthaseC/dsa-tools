@@ -1,115 +1,90 @@
-<div class="c-container">
-  <h1>Bug Report</h1>
+<div class="bug-report-container pb-5">
   @if(!isFormSend) {
-  <form [formGroup]="bugReportForm">
-    <mat-form-field class="c-form-field-100p">
-      <mat-label>{{ "bugReport.username" | translate }}</mat-label>
-      <input
-        matInput
-        placeholder="{{ 'bugReport.username' | translate }}"
-        formControlName="username"
-        required
-      />
-    </mat-form-field>
+  <form [formGroup]="bugReportForm" class="flex flex-column row-gap-4">
 
-    <mat-form-field class="c-form-field-100p">
-      <mat-label>{{ "bugReport.email" | translate }}</mat-label>
-      <input
-        matInput
-        placeholder="{{ 'bugReport.email' | translate }}"
-        formControlName="email"
-      />
-    </mat-form-field>
+    <p-floatlabel variant="on" class="w-full">
+      <input pInputText id="username" formControlName="username" required class="w-full" />
+      <label for="username">Username</label>
+    </p-floatlabel>
 
-    <div class="display-flex mr-b-20 c-radio-button-box">
-      <mat-radio-group
-        aria-label="Select an option"
-        formControlName="reportType"
-        required
-      >
-        <mat-radio-button value="bug-report">{{
-          "bugReport.reportType.bug" | translate
-        }}</mat-radio-button>
-        <mat-radio-button value="feedback">{{
-          "bugReport.reportType.feedback" | translate
-        }}</mat-radio-button>
-      </mat-radio-group>
+    <p-floatlabel variant="on" class="w-full">
+      <input pInputText id="email" formControlName="email" class="w-full" />
+      <label for="email">Email (optional)</label>
+    </p-floatlabel>
+
+    <div class="type-section">
+      <span class="section-label">Art des Anliegens</span>
+      <div class="flex gap-4">
+        <div class="flex align-items-center gap-2">
+          <p-radiobutton inputId="typeBug" value="bug-report" formControlName="reportType" />
+          <label for="typeBug">Bugreport</label>
+        </div>
+        <div class="flex align-items-center gap-2">
+          <p-radiobutton inputId="typeFeedback" value="feedback" formControlName="reportType" />
+          <label for="typeFeedback">Feedback</label>
+        </div>
+      </div>
     </div>
 
-    <mat-form-field class="c-form-field-100p">
-      <mat-label>{{ "bugReport.date" | translate }}</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
+    <p-floatlabel variant="on" class="w-full">
+      <p-datepicker
+        inputId="date"
         formControlName="date"
-        required
+        [required]="true"
+        class="w-full"
+        appendTo="body"
       />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      <label for="date">Datum (wann der Bug festgestellt wurde)</label>
+    </p-floatlabel>
 
-    <mat-form-field class="c-form-field-100p">
-      <mat-label>{{ "bugReport.description" | translate }}</mat-label>
-      <textarea
-        matInput
-        placeholder="{{ 'bugReport.description' | translate }}"
-        formControlName="description"
-        required
-      ></textarea>
-    </mat-form-field>
+    <p-floatlabel variant="on" class="w-full">
+      <textarea pTextarea id="description" formControlName="description" required class="w-full" rows="4"></textarea>
+      <label for="description">Beschreibung</label>
+    </p-floatlabel>
 
-    @if(bugReportForm.get('reportType').value === 'bug-report') {
-    <mat-form-field class="c-form-field-100p">
-      <mat-label>{{ "bugReport.expected" | translate }}</mat-label>
-      <textarea
-        matInput
-        placeholder="{{ 'bugReport.expected' | translate }}"
-        formControlName="expected"
-      ></textarea>
-    </mat-form-field>
+    @if(bugReportForm.get('reportType')?.value === 'bug-report') {
+    <p-floatlabel variant="on" class="w-full">
+      <textarea pTextarea id="expected" formControlName="expected" class="w-full" rows="4"></textarea>
+      <label for="expected">Erwartetes Verhalten</label>
+    </p-floatlabel>
     }
 
-    <div class="c-upload-container">
-      <div class="p-l-16 mr-b-5 c-label-color">
-        {{ "bugReport.screenshot" | translate }}
-      </div>
-      <div class="p-l-16 mr-b-5">
-        <input
-          type="file"
-          (change)="onFileChange($event)"
-          accept="image/*"
-          formControlName="file"
-          class="cursor"
-        />
-        @if(fileTooLarge) {
-        <div class="c-error">{{ "bugReport.error.filesize" | translate }}</div>
-        }
-      </div>
+    <div class="upload-section">
+      <span class="upload-label">Bild-Anhang (optional)</span>
+      <input type="file" (change)="onFileChange($event)" accept="image/*" formControlName="file" class="file-input" />
+      @if(fileTooLarge) {
+      <div class="field-error">Datei ist zu groß. Maximal 2 MB erlaubt.</div>
+      }
     </div>
 
-    <div class="button mr-t-20">
-      <button
-        mat-raised-button
-        (click)="onSubmit()"
-        [disabled]="
-          !bugReportForm.valid ||
-          fileTooLarge ||
-          submissionCount >= maxSubmissions ||
-          isLoading
-        "
-      >
-        {{ "bugReport.submit" | translate }}
-      </button>
+    <div class="privacy-notice">
+      Mit dem Absenden stimmst du der Verarbeitung deiner eingegebenen Daten zur Bearbeitung deines Anliegens gemäß unserer
+      <a [routerLink]="['/legal']" class="privacy-link">Datenschutzerklärung</a> zu.
+    </div>
+
+    <div class="flex align-items-center gap-3">
+      <div class="w-full md:w-auto">
+        <p-button
+          label="Formular senden"
+          (onClick)="onSubmit()"
+          [disabled]="!bugReportForm.valid || fileTooLarge || submissionCount >= maxSubmissions || isLoading"
+          styleClass="w-full"
+        />
+      </div>
       @if(isLoading) {
-      <mat-spinner class="c-spinner"></mat-spinner>
+      <p-progressSpinner class="c-spinner" />
       }
     </div>
 
     @if(submissionCount >= maxSubmissions) {
-    <div class="error">{{ "bugReport.error.maxTickets" | translate }}</div>
+    <div class="field-error">Maximale Anzahl an Tickets erreicht.</div>
     }
   </form>
-  } @if(isFormSend) {
-  <div class="error">{{ "bugReport.send" | translate }}</div>
+  }
+
+  @if(isFormSend) {
+  <div class="result-card">
+    <span class="result-value">Vielen Dank. Dein Anliegen ist eingegangen.</span>
+  </div>
   }
 </div>
