@@ -1,8 +1,4 @@
-import {
-  AlchemyDiceResult,
-  AlchemyQSResult,
-  PurityOption,
-} from './alcheny.models';
+import { AlchemyDiceResult, AlchemyQSResult, PurityOption } from './alchemy.models';
 
 /********************** Alchemy Constants **********************/
 export enum ElementsAlchemy {
@@ -2009,10 +2005,7 @@ export const POISON_EFFECT: AlchemyDiceResult[] = [
   },
 ];
 
-export const POISON_TRIGGER_EFFECT = new Map<
-  ElementsAlchemy,
-  AlchemyDiceResult[]
->([
+export const POISON_TRIGGER_EFFECT = new Map<ElementsAlchemy, AlchemyDiceResult[]>([
   [
     ElementsAlchemy.Fire,
     [

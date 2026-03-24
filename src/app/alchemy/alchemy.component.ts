@@ -1,10 +1,5 @@
 import { Component, effect, signal } from '@angular/core';
-import {
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -38,13 +33,7 @@ import {
 } from './alchemy.constants';
 import { lastValueFrom } from 'rxjs';
 import { Utility } from '../shared/utility';
-import {
-  AlchemyDiceResult,
-  AlchemyQSResult,
-  DiceChangeResult,
-  PurityOption,
-} from './alcheny.models';
-
+import { AlchemyDiceResult, AlchemyQSResult, DiceChangeResult, PurityOption } from './alchemy.models';
 
 enum PotionType {
   Elixir = 'ELIXIR',
@@ -53,17 +42,10 @@ enum PotionType {
 }
 
 @Component({
-    selector: 'app-alchemy',
-    imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    FloatLabelModule,
-    ButtonModule,
-    SelectModule,
-    
-],
-    templateUrl: './alchemy.component.html',
-    styleUrl: './alchemy.component.scss'
+  selector: 'app-alchemy',
+  imports: [FormsModule, ReactiveFormsModule, FloatLabelModule, ButtonModule, SelectModule],
+  templateUrl: './alchemy.component.html',
+  styleUrl: './alchemy.component.scss',
 })
 export class AlchemyComponent {
   public readonly potionTypeNames: Record<string, string> = {
@@ -72,17 +54,21 @@ export class AlchemyComponent {
     STIMULANT: 'Rauschmittel',
   };
   public readonly elementNames: Record<string, string> = {
-    fire: 'Feuer', water: 'Wasser', humus: 'Humus', ice: 'Eis',
-    air: 'Luft', ore: 'Erz', magic: 'Magisch', divine: 'Göttlich',
-    perverted: 'Pervertiert', nameless: 'Namenlos',
+    fire: 'Feuer',
+    water: 'Wasser',
+    humus: 'Humus',
+    ice: 'Eis',
+    air: 'Luft',
+    ore: 'Erz',
+    magic: 'Magisch',
+    divine: 'Göttlich',
+    perverted: 'Pervertiert',
+    nameless: 'Namenlos',
   };
 
   public potionType = new FormControl('', Validators.required);
   public genieAlchemy = new FormControl(0, Validators.required);
-  public elementType = new FormControl<ElementsAlchemy>(
-    null,
-    Validators.required
-  );
+  public elementType = new FormControl<ElementsAlchemy>(null, Validators.required);
   public purityIngredient = new FormControl<number>(null, Validators.required);
   public qsBrewing = new FormControl<number>(null, Validators.required);
 
@@ -114,9 +100,7 @@ export class AlchemyComponent {
 
   private geniusPoints: number = 0;
 
-  constructor(
-    private dialogService: DialogService
-  ) {
+  constructor(private dialogService: DialogService) {
     this.potionType.valueChanges.subscribe((newPotionType) => {
       this.potionTypeSignal.set(newPotionType);
     });
@@ -149,13 +133,7 @@ export class AlchemyComponent {
   }
 
   public isFormValid(): boolean {
-    return (
-      this.potionType.valid &&
-      this.genieAlchemy.valid &&
-      this.elementType.valid &&
-      this.purityIngredient.valid &&
-      this.qsBrewing.valid
-    );
+    return this.potionType.valid && this.genieAlchemy.valid && this.elementType.valid && this.purityIngredient.valid && this.qsBrewing.valid;
   }
 
   public potionMaking(): void {
@@ -205,29 +183,14 @@ export class AlchemyComponent {
 
   private async elixirMaking(): Promise<void> {
     this.geniusPoints = this.genieAlchemy.value || 0;
-    this.applicationDie = await this.processStep(
-      6,
-      'Anwendung',
-      ELIXIR_APPLICATION
-    );
+    this.applicationDie = await this.processStep(6, 'Anwendung', ELIXIR_APPLICATION);
     this.effectDie = await this.processStep(6, 'Wirkung', ELIXIR_EFFECT);
 
-    const elementsMap: Map<string, AlchemyDiceResult[]> = this.getElixirTypeMap(
-      this.effectDie || 0
-    );
-    this.specificEffectDie = await this.processStep(
-      20,
-      'Genaue Wirkung',
-      elementsMap.get(this.elementType.value || '') || []
-    );
+    const elementsMap: Map<string, AlchemyDiceResult[]> = this.getElixirTypeMap(this.effectDie || 0);
+    this.specificEffectDie = await this.processStep(20, 'Genaue Wirkung', elementsMap.get(this.elementType.value || '') || []);
     this.specificEffect = elementsMap
       .get(this.elementType.value || '')
-      ?.find((elixir) =>
-        Utility.isWithinRange(
-          this.specificEffectDie || 0,
-          elixir.diceValueRange
-        )
-      );
+      ?.find((elixir) => Utility.isWithinRange(this.specificEffectDie || 0, elixir.diceValueRange));
 
     if (this.specificEffect?.category !== EffectCategory.Ineffectiv) {
       this.durationDie = await this.processDuration(6, 'Dauer');
@@ -238,97 +201,47 @@ export class AlchemyComponent {
 
   private async poisonMaking(): Promise<void> {
     this.geniusPoints = this.genieAlchemy.value || 0;
-    this.applicationDie = await this.processStep(
-      20,
-      'Anwendung',
-      POISON_APPLICATION
-    );
-    this.application = POISON_APPLICATION.find((poison: AlchemyDiceResult) =>
-      Utility.isWithinRange(this.applicationDie || 0, poison.diceValueRange)
-    );
+    this.applicationDie = await this.processStep(20, 'Anwendung', POISON_APPLICATION);
+    this.application = POISON_APPLICATION.find((poison: AlchemyDiceResult) => Utility.isWithinRange(this.applicationDie || 0, poison.diceValueRange));
 
     if (this.application?.category !== EffectCategory.Ineffectiv) {
-      this.resistanceDie = await this.processStep(
-        12,
-        'Widerstandsprobe',
-        POISON_RESISTANCE
-      );
-      this.effectDie = await this.processStep(
-        12,
-        'Wirkung',
-        POISON_EFFECT,
-        this.purityIngredient.value || 0
-      );
-      this.effect = POISON_EFFECT.find((poison: AlchemyDiceResult) =>
-        Utility.isWithinRange(this.effectDie || 0, poison.diceValueRange)
-      );
+      this.resistanceDie = await this.processStep(12, 'Widerstandsprobe', POISON_RESISTANCE);
+      this.effectDie = await this.processStep(12, 'Wirkung', POISON_EFFECT, this.purityIngredient.value || 0);
+      this.effect = POISON_EFFECT.find((poison: AlchemyDiceResult) => Utility.isWithinRange(this.effectDie || 0, poison.diceValueRange));
 
       if (this.effect?.category === 'effect') {
-        this.specificEffectDie = await this.processStep(
-          6,
-          'Dauer',
-          POISON_TRIGGER_EFFECT.get(this.elementType.value) || []
-        );
+        this.specificEffectDie = await this.processStep(6, 'Dauer', POISON_TRIGGER_EFFECT.get(this.elementType.value) || []);
       }
       this.updatePoisonText();
     } else {
-      this.potionText =
-        this.createResultPotionText() +
-        'Wirkungsloses Gift gebraut.';
+      this.potionText = this.createResultPotionText() + 'Wirkungsloses Gift gebraut.';
     }
   }
 
   private async stimulantMaking(): Promise<void> {
     this.geniusPoints = this.genieAlchemy.value || 0;
-    this.applicationDie = await this.processStep(
-      20,
-      'Anwendung',
-      STIMULANT_APPLICATION
-    );
-    this.application = STIMULANT_APPLICATION.find((stimulant) =>
-      Utility.isWithinRange(this.applicationDie || 0, stimulant.diceValueRange)
-    );
+    this.applicationDie = await this.processStep(20, 'Anwendung', STIMULANT_APPLICATION);
+    this.application = STIMULANT_APPLICATION.find((stimulant) => Utility.isWithinRange(this.applicationDie || 0, stimulant.diceValueRange));
 
     if (this.application?.alchemicResult !== 'wirkunglos') {
-      this.resistanceDie = await this.processStep(
-        12,
-        'Widerstandsprobe',
-        STIMULANT_RESISTANCE
-      );
-      this.effectDie = await this.processStep(
-        12,
-        'Sucht',
-        STIMULANT_ADDICTION,
-        this.purityIngredient.value || 0
-      );
+      this.resistanceDie = await this.processStep(12, 'Widerstandsprobe', STIMULANT_RESISTANCE);
+      this.effectDie = await this.processStep(12, 'Sucht', STIMULANT_ADDICTION, this.purityIngredient.value || 0);
       this.updateStimulantText();
     } else {
-      this.potionText =
-        this.createResultPotionText() +
-        'Wirkungsloses Rauschmittel gebraut.';
+      this.potionText = this.createResultPotionText() + 'Wirkungsloses Rauschmittel gebraut.';
     }
   }
 
-  private async processStep(
-    diceSides: number,
-    type: string,
-    alchemicTable: AlchemyDiceResult[],
-    modifier: number = 0
-  ): Promise<number> {
-    const dice: number[] = Array.from(
-      { length: diceSides === 12 ? 2 : 1 },
-      () => {
-        if (diceSides === 20) {
-          return Utility.rollDice(20);
-        } else {
-          return Utility.rollDice(6);
-        }
+  private async processStep(diceSides: number, type: string, alchemicTable: AlchemyDiceResult[], modifier: number = 0): Promise<number> {
+    const dice: number[] = Array.from({ length: diceSides === 12 ? 2 : 1 }, () => {
+      if (diceSides === 20) {
+        return Utility.rollDice(20);
+      } else {
+        return Utility.rollDice(6);
       }
-    );
+    });
     const die: number = diceSides === 12 ? Utility.addNumbers(dice) : dice[0];
-    const result: AlchemyDiceResult = alchemicTable.find((elixir) =>
-      Utility.isWithinRange(die + modifier, elixir.diceValueRange)
-    );
+    const result: AlchemyDiceResult = alchemicTable.find((elixir) => Utility.isWithinRange(die + modifier, elixir.diceValueRange));
     if (!result) throw new Error(`No result found for ${type}`);
     const diceChangeResult: DiceChangeResult = await this.openDiceResultDialog(
       this.geniusPoints,
@@ -343,9 +256,7 @@ export class AlchemyComponent {
     return diceChangeResult.diceResult;
   }
 
-  private getElixirTypeMap(
-    effectDie: number
-  ): Map<string, AlchemyDiceResult[]> {
+  private getElixirTypeMap(effectDie: number): Map<string, AlchemyDiceResult[]> {
     switch (effectDie) {
       case 1:
       case 2:
@@ -362,19 +273,11 @@ export class AlchemyComponent {
     }
   }
 
-  private async processDuration(
-    diceSides: number,
-    type: string
-  ): Promise<number> {
+  private async processDuration(diceSides: number, type: string): Promise<number> {
     const dice: number[] = [Utility.rollDice(6), Utility.rollDice(6)];
     const durationDie: number = Utility.addNumbers(dice);
-    const result: AlchemyDiceResult | undefined = EFFECT_DURATIONS.get(
-      this.specificEffect?.category || ''
-    )?.find((elixir) =>
-      Utility.isWithinRange(
-        durationDie + (this.purityIngredient.value || 0),
-        elixir.diceValueRange
-      )
+    const result: AlchemyDiceResult | undefined = EFFECT_DURATIONS.get(this.specificEffect?.category || '')?.find((elixir) =>
+      Utility.isWithinRange(durationDie + (this.purityIngredient.value || 0), elixir.diceValueRange)
     );
     if (!result) throw new Error(`No result found for ${type}`);
     const diceChangeResult: DiceChangeResult = await this.openDiceResultDialog(
@@ -397,36 +300,25 @@ export class AlchemyComponent {
 
   private updatePotionText(): void {
     if (this.specificEffect?.alchemicResult !== EffectCategory.Ineffectiv) {
-      const effectResult: string =
-        ELIXIR_EFFECT.find((elixir) =>
-          Utility.isWithinRange(this.effectDie || 0, elixir.diceValueRange)
-        )?.alchemicResult || '';
+      const effectResult: string = ELIXIR_EFFECT.find((elixir) => Utility.isWithinRange(this.effectDie || 0, elixir.diceValueRange))?.alchemicResult || '';
       const specificEffectResult: string = this.specificEffect.alchemicResult || '';
       const applicationResult: string =
-        ELIXIR_APPLICATION.find((elixir) =>
-          Utility.isWithinRange(this.applicationDie || 0, elixir.diceValueRange)
-        )?.alchemicResult || '';
+        ELIXIR_APPLICATION.find((elixir) => Utility.isWithinRange(this.applicationDie || 0, elixir.diceValueRange))?.alchemicResult || '';
       const durationResult: string =
-        EFFECT_DURATIONS.get(this.specificEffect.category)?.find((elixir) =>
-          Utility.isWithinRange(this.durationDie || 0, elixir.diceValueRange)
-        )?.alchemicResult || '';
+        EFFECT_DURATIONS.get(this.specificEffect.category)?.find((elixir) => Utility.isWithinRange(this.durationDie || 0, elixir.diceValueRange))
+          ?.alchemicResult || '';
 
       this.potionText =
         this.createResultPotionText() +
         `${effectResult} mit folgenden Eigenschaften: ${specificEffectResult}, Anwendung: ${applicationResult}, Dauer: ${durationResult}`;
     } else {
-      this.potionText =
-        this.createResultPotionText() + 'Wirkungsloses Elixier gebraut.';
+      this.potionText = this.createResultPotionText() + 'Wirkungsloses Elixier gebraut.';
     }
 
-    const effectsForCategory = ELIXIR_EFFECTS_QS_GROUPS.get(
-      this.specificEffect.category
-    );
+    const effectsForCategory = ELIXIR_EFFECTS_QS_GROUPS.get(this.specificEffect.category);
 
     if (effectsForCategory) {
-      const qsEffect = effectsForCategory.find(
-        (qsEffect: AlchemyQSResult) => qsEffect.qs === this.qsBrewing.value
-      );
+      const qsEffect = effectsForCategory.find((qsEffect: AlchemyQSResult) => qsEffect.qs === this.qsBrewing.value);
       this.qsEffectText = qsEffect.alchemicResult;
     } else {
       console.error(`No effects found for category: ${this.effect.category}`);
@@ -436,64 +328,41 @@ export class AlchemyComponent {
   private updatePoisonText(): void {
     const applicationResult: string = this.application?.alchemicResult || '';
     const resistanceResult: string =
-      POISON_RESISTANCE.find((poison) =>
-        Utility.isWithinRange(this.resistanceDie || 0, poison.diceValueRange)
-      )?.alchemicResult || '';
+      POISON_RESISTANCE.find((poison) => Utility.isWithinRange(this.resistanceDie || 0, poison.diceValueRange))?.alchemicResult || '';
 
     let triggerEffect: string = '';
 
     if (this.effect?.category === EffectCategory.Effect) {
-      this.specificEffect = POISON_TRIGGER_EFFECT.get(
-        this.elementType.value
-      ).find((poison: AlchemyDiceResult) =>
-        Utility.isWithinRange(
-          this.specificEffectDie || 0,
-          poison.diceValueRange
-        )
+      this.specificEffect = POISON_TRIGGER_EFFECT.get(this.elementType.value).find((poison: AlchemyDiceResult) =>
+        Utility.isWithinRange(this.specificEffectDie || 0, poison.diceValueRange)
       );
       triggerEffect = this.specificEffect?.alchemicResult ?? '';
     }
-    const effectResult: string =
-      (this.effect?.alchemicResult ?? '').replace(/\{\{effect\}\}/g, triggerEffect);
+    const effectResult: string = (this.effect?.alchemicResult ?? '').replace(/\{\{effect\}\}/g, triggerEffect);
 
     this.potionText =
       this.createResultPotionText() +
       `Gift mit folgenden Eigenschaften: Anwendung: ${applicationResult}, Widerstand: ${resistanceResult}, Wirkung: ${effectResult}`;
 
-    const qsEffect = POISON_EFFECTS_QS_GROUPS.find(
-      (qsEffect: AlchemyQSResult) => qsEffect.qs === this.qsBrewing.value
-    );
+    const qsEffect = POISON_EFFECTS_QS_GROUPS.find((qsEffect: AlchemyQSResult) => qsEffect.qs === this.qsBrewing.value);
     this.qsEffectText = qsEffect.alchemicResult;
   }
 
   private updateStimulantText(): void {
-    const stimulantEffect: StimulantEffect | undefined = STIMULANT_EFFECT.get(
-      this.elementType.value
-    );
+    const stimulantEffect: StimulantEffect | undefined = STIMULANT_EFFECT.get(this.elementType.value);
     if (!stimulantEffect) return;
     const applicationResult: string = this.application?.alchemicResult || '';
     const resistanceResult: string =
-      STIMULANT_RESISTANCE.find((stimulant) =>
-        Utility.isWithinRange(
-          this.resistanceDie || 0,
-          stimulant.diceValueRange
-        )
-      )?.alchemicResult || '';
+      STIMULANT_RESISTANCE.find((stimulant) => Utility.isWithinRange(this.resistanceDie || 0, stimulant.diceValueRange))?.alchemicResult || '';
     const effectResult: string =
-      STIMULANT_ADDICTION.find((stimulant) =>
-        Utility.isWithinRange(
-          (this.effectDie || 0) + (this.purityIngredient.value || 0),
-          stimulant.diceValueRange
-        )
-      )?.alchemicResult || '';
+      STIMULANT_ADDICTION.find((stimulant) => Utility.isWithinRange((this.effectDie || 0) + (this.purityIngredient.value || 0), stimulant.diceValueRange))
+        ?.alchemicResult || '';
 
     this.potionText =
       this.createResultPotionText() +
       `${stimulantEffect.effect} Anwendung: ${applicationResult}, Widerstand: ${resistanceResult}, Suchteintritt: ${effectResult}, Nebenwirkung: ${stimulantEffect.sideEffect}, Überdosierung: ${stimulantEffect.overdose}`;
 
-    const qsEffect = STIMULANT_EFFECTS_QS_GROUPS.find(
-      (qsEffect: AlchemyQSResult) => qsEffect.qs === this.qsBrewing.value
-    );
+    const qsEffect = STIMULANT_EFFECTS_QS_GROUPS.find((qsEffect: AlchemyQSResult) => qsEffect.qs === this.qsBrewing.value);
     this.qsEffectText = qsEffect.alchemicResult;
   }
 }
