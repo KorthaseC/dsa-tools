@@ -1,17 +1,22 @@
-import { Rulebook } from "./base-creation.model";
+import { Attribute, NamedEntry, SourceReference } from './base-creation.model';
 
 export interface Prerequisite {
   name: string;
   required: boolean;
+  minLvl?: number;
 }
 
-export interface Advantage {
-  name: string;
+export interface AttributeRequirement {
+  attribute: Attribute;
+  minValue: number;
+}
+
+export interface Advantage extends NamedEntry {
   cost: number;
-  label: string;
   lvl?: number;
+  maxLvl?: number;
   mandatory?: boolean;
-  prerequisite: Prerequisite[]
-  rulebook?: Rulebook;
-  url?: string;
+  prerequisite: Prerequisite[];
+  speciesRestriction?: string[];
+  attributeRequirement?: AttributeRequirement[];
 }

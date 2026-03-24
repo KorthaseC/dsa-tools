@@ -1,0 +1,64 @@
+.c-import-error {
+  background: #f44336;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.c-validation-section {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 4px solid;
+
+  h3 {
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+.c-errors {
+  background: #ffebee;
+  border-color: #f44336;
+  color: #c62828;
+}
+
+.c-warnings,
+.c-parse-warnings {
+  background: #fff3e0;
+  border-color: #ff9800;
+  color: #e65100;
+}
+
+.c-infos {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  color: #1565c0;
+}
+
+.c-success {
+  background: #e8f5e9;
+  border-color: #4caf50;
+  color: #2e7d32;
+}
+
+.c-details {
+  display: block;
+  font-size: 0.85em;
+  opacity: 0.8;
+}

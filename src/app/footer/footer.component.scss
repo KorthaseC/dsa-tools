@@ -8,6 +8,7 @@
   justify-content: space-between;
   padding: 0 1rem;
   box-sizing: border-box;
+  position: relative;
 }
 
 .c-left {
@@ -29,6 +30,9 @@
   display: flex;
   align-items: center;
   gap: 0 1rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 
   a {
     color: #b0a080;

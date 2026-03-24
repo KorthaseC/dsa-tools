@@ -4,9 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { MessageModule } from 'primeng/message';
 import { StepperModule } from 'primeng/stepper';
 import { TooltipModule } from 'primeng/tooltip';
 import { CharacterStateService } from '../../services/character-state.service';
+import { CharacterValidationService } from '../../services/character-validation.service';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SpeciesComponent } from '../species/species.component';
 
@@ -20,6 +22,7 @@ import { SpeciesComponent } from '../species/species.component';
         StepperModule,
         ButtonModule,
         InputNumberModule,
+        MessageModule,
         ExperienceComponent,
         TooltipModule,
         SpeciesComponent,
@@ -31,12 +34,22 @@ import { SpeciesComponent } from '../species/species.component';
 })
 export class CharacterWizardComponent  {
   private state = inject(CharacterStateService);
+  private validation = inject(CharacterValidationService);
   currentStep = 0;
 
   experienceLevel = this.state.experienceLevel;
   currentAp = this.state.currentAp;
 
   species = this.state.species
+
+  validationResults = computed(() => {
+    const char = this.state.character();
+    if (!char) return [];
+    return this.validation.validate(char);
+  });
+
+  validationErrors = computed(() => this.validationResults().filter(r => r.severity === 'error'));
+  validationWarnings = computed(() => this.validationResults().filter(r => r.severity === 'warning'));
 
 
   steps = [

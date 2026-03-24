@@ -5,12 +5,11 @@ export enum ExperienceLevelId {
   Competent = 'competent',
   Masterful = 'masterful',
   Brilliant = 'brilliant',
-  Legendary = 'legendary'
+  Legendary = 'legendary',
 }
 
-
 export interface ExperienceLevel {
-  id: string;
+  id: ExperienceLevelId;
   label: string;
   ap: number;
   maxAttribute: number;

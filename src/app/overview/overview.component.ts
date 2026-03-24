@@ -14,10 +14,10 @@ interface FeatureCard {
 }
 
 @Component({
-    selector: 'app-overview',
-    imports: [CardModule, RouterModule, ],
-    templateUrl: './overview.component.html',
-    styleUrl: './overview.component.scss'
+  selector: 'app-overview',
+  imports: [CardModule, RouterModule],
+  templateUrl: './overview.component.html',
+  styleUrl: './overview.component.scss',
 })
 export class OverviewComponent {
   public featureCards: FeatureCard[] = [
@@ -87,8 +87,8 @@ export class OverviewComponent {
     {
       title: 'Charaktererschaffer',
       routerLink: '/character',
-      imgSrc: 'assets/icons/nandus.svg',
-      imgAlt: 'Nandus Symbol',
+      imgSrc: 'assets/icons/tsa.svg',
+      imgAlt: 'Tsa Symbol',
       description: 'Tool zur Erstellung von Charakteren',
       cols: 1,
       rows: 1,

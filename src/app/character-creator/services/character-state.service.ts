@@ -18,9 +18,10 @@ export class CharacterStateService {
     const char = this.character();
     if (!char) return 0;
   
-    const totalAdvantageCost = char.advantages.reduce((sum, adv) => sum + (adv.mandatory ? 0 : adv.cost), 0);
+    const advantageCost = char.advantages.reduce((sum, adv) => sum + (adv.mandatory ? 0 : adv.cost), 0);
+    const disadvantageCost = char.disadvantages?.reduce((sum, dis) => sum + (dis.mandatory ? 0 : dis.cost), 0) ?? 0;
     const speziesCost = char.speciesCost;
-    return totalAdvantageCost + speziesCost;
+    return advantageCost + disadvantageCost + speziesCost;
   });
 
   isCurrentStepValid(stepIndex: number): boolean {

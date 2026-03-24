@@ -3,184 +3,257 @@
 </p-panel>
 
 <div class="c-species-cards">
-  @for(species of speciesList; track species.type) {
-  <p-card [class.c-selected]="isSelected(species.type)" (click)="selectSpecies(species.type)">
-    <div class="corner-top-right"></div>
-    <div class="corner-bottom-left"></div>
-    <div></div>
-    <h2>{{ species.displayName }}</h2>
-    <div class="display-inline-flex">
-      <figure class="c-species-figure">
-        <img [src]="'assets/species/' + species.image + '.png'" [alt]="species.image" class="c-species-image" />
-        <figcaption class="c-species-caption">Artwork © 2016 Ulisses Spiele. Illustration von Elif Siebenpfeiffer. Quelle: Aventurischer Almanach.</figcaption>
-      </figure>
-      <p-divider layout="vertical" />
-      <div class="c-species-attributes">
-        <div>LE:</div>
-        <div>{{ species.baseStats.le }}</div>
-        <div>SK:</div>
-        <div>{{ species.baseStats.sk }}</div>
-        <div>ZK:</div>
-        <div>{{ species.baseStats.zk }}</div>
-        <div>GS:</div>
-        <div>{{ species.baseStats.gs }}</div>
-        <div>Kosten:</div>
-        <div>{{ species.apCost }} AP</div>
+  @for (species of speciesList; track species.type) {
+    <p-card [class.c-selected]="isSelected(species.type)" (click)="selectSpecies(species.type)">
+      <div class="corner-top-right"></div>
+      <div class="corner-bottom-left"></div>
+      <div></div>
+      <h2>{{ species.label }}</h2>
+      <div class="display-inline-flex">
+        <figure class="c-species-figure">
+          <img [src]="'assets/species/' + species.image + '.png'" [alt]="species.image" class="c-species-image" />
+          <figcaption class="c-species-caption">
+            Artwork © 2016 Ulisses Spiele. Illustration von Elif Siebenpfeiffer. Quelle: Aventurischer Almanach.
+          </figcaption>
+        </figure>
+        <p-divider layout="vertical" />
+        <div class="c-species-attributes">
+          <div>LE:</div>
+          <div>{{ species.baseStats.le }}</div>
+          <div>SK:</div>
+          <div>{{ species.baseStats.sk }}</div>
+          <div>ZK:</div>
+          <div>{{ species.baseStats.zk }}</div>
+          <div>GS:</div>
+          <div>{{ species.baseStats.gs }}</div>
+          <div>Kosten:</div>
+          <div>{{ species.apCost }} AP</div>
+        </div>
       </div>
-    </div>
-  </p-card>
+    </p-card>
   }
 </div>
 
-@if(selectedSpecies()){
-<p-tabs value="0">
-  <p-tablist>
-    <p-tab value="0">Beschreibung</p-tab>
-    <p-tab value="1">Allgemein</p-tab>
-    <p-tab value="2">Nach-/Vorteile</p-tab>
-  </p-tablist>
-  <p-tabpanels>
-    <p-tabpanel value="0">
-      <p class="m-0">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </p-tabpanel>
-    <p-tabpanel value="1">
-      <span>
-        <h3>Eigenschaftsänderungen</h3>
-        <p>
-          Bestimmte Attribute dürfen bei der Charaktererschaffung höher oder niedriger gesteigert werden als normalerweise erlaubt. Die dafür nötigen
-          Abenteuerpunkte müssen trotzdem bezahlt werden – auch wenn der neue Maximalwert höher ist.
+@if (selectedSpecies()) {
+  <p-tabs value="0">
+    <p-tablist>
+      <p-tab value="0">Beschreibung</p-tab>
+      <p-tab value="1">Allgemein</p-tab>
+      <p-tab value="2">Nach-/Vorteile</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+      <p-tabpanel value="0">
+        <p class="m-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        @for (attributeMod of selectedSpecies().attributeMods; track $index) { @switch (attributeMod.type) { @case ('choice') {
-        <div class="c-attribute-modification">
-          <p>Wähle ein Attribut:</p>
-          <div class="c-checkbox-radio-container">
-            @for (option of attributeMod.selectionOptions; track option) {
-            <div class="c-checkbox-radio-wrapper">
-              <p-radiobutton
-                [inputId]="'choice_' + option"
-                name="choicelAttribut"
-                [value]="{ type: 'choice', attribute: option, modifier: attributeMod.modifier, }"
-                [(ngModel)]="selectedMaxAttributeChanges"
-                (ngModelChange)="onChoiceAttributeChange()"
-              ></p-radiobutton>
-              <label [for]="'choice_' + option"> {{ option }} {{ attributeMod.modifier > 0 ? '+' + attributeMod.modifier : attributeMod.modifier }}</label>
-            </div>
+      </p-tabpanel>
+      <p-tabpanel value="1">
+        <span>
+          <h3>Eigenschaftsänderungen</h3>
+          <p>
+            Bestimmte Attribute dürfen bei der Charaktererschaffung höher oder niedriger gesteigert werden als normalerweise erlaubt. Die dafür nötigen
+            Abenteuerpunkte müssen trotzdem bezahlt werden – auch wenn der neue Maximalwert höher ist.
+          </p>
+          @for (attributeMod of selectedSpecies().attributeMods; track $index) {
+            @switch (attributeMod.type) {
+              @case ('choice') {
+                <div class="c-attribute-modification">
+                  <p>Wähle ein Attribut:</p>
+                  <div class="c-checkbox-radio-container">
+                    @for (option of attributeMod.selectionOptions; track option) {
+                      <div class="c-checkbox-radio-wrapper">
+                        <p-radiobutton
+                          [inputId]="'choice_' + option"
+                          name="choicelAttribut"
+                          [value]="{ type: 'choice', attribute: option, modifier: attributeMod.modifier }"
+                          [(ngModel)]="selectedMaxAttributeChanges"
+                          (ngModelChange)="onChoiceAttributeChange()"
+                        ></p-radiobutton>
+                        <label [for]="'choice_' + option">
+                          {{ option }} {{ attributeMod.modifier > 0 ? '+' + attributeMod.modifier : attributeMod.modifier }}</label
+                        >
+                      </div>
+                    }
+                  </div>
+                </div>
+                {{ selectedMaxAttributeChanges | json }}
+              }
+              @case ('fixed') {
+                @if (attributeMod.attribute && attributeMod.modifier) {
+                  <div class="c-attribute-modification">
+                    <p>{{ attributeMod.attribute }}: {{ attributeMod.modifier > 0 ? '+' + attributeMod.modifier : attributeMod.modifier }} (Vorgeschrieben)</p>
+                  </div>
+                }
+              }
             }
-          </div>
-        </div>
-        {{ selectedMaxAttributeChanges | json }}
-        } @case ('fixed') { @if (attributeMod.attribute && attributeMod.modifier) {
-        <div class="c-attribute-modification">
-          <p>{{ attributeMod.attribute }}: {{ attributeMod.modifier > 0 ? '+' + attributeMod.modifier : attributeMod.modifier }} (Vorgeschrieben)</p>
-        </div>
-        } } } }
-      </span>
-    </p-tabpanel>
-    <p-tabpanel value="2">
-      @if(selectedSpecies().autoAdvantages.length>0) {
-      <span>
-        <span class="display-inline-flex">
-          <h3>Automatische Vorteile</h3>
-          <span class="c-disable-check">
-            <p-checkbox inputId="autoAdvDeselectable" [value]="autoAdvDeselectable()" [(ngModel)]="autoAdvDeselectableModel" binary="true" />
-            <label for="autoAdvDeselectable"> Automatische Vor-/ Nachteile abwählen?</label>
-          </span>
+          }
         </span>
-        <p-divider />
-        <div class="c-checkbox-radio-container">
-          @for(advantage of autoAdvantages(); track advantage) {
-          <div class="c-checkbox-radio-wrapper">
-            <p-checkbox
-              [disabled]="!autoAdvDeselectable()"
-              [inputId]="advantage.name"
-              name="autoAdvs"
-              [value]="advantage"
-              [ngModel]="selectedAdvantages"
-              (ngModelChange)="changeAdvantages(advantage)"
-            />
-            <label [for]="advantage.name"> {{ advantage.label }} </label>
-          </div>
-          }
-        </div>
-      </span>
-      } @if(selectedSpecies().autoAdvantages.length>0) {
-      <span>
-        <h3>Automatische Nachtteile</h3>
-        <p-divider />
-        <div class="c-checkbox-radio-container">
-          @for(advantage of autoAdvantages(); track advantage) {
-          <div class="c-checkbox-radio-wrapper">
-            <p-checkbox
-              [disabled]="!autoAdvDeselectable()"
-              [inputId]="advantage.name"
-              name="autoAdvs"
-              [value]="advantage"
-              [ngModel]="selectedAdvantages"
-              (ngModelChange)="changeAdvantages(advantage)"
-            />
-            <label [for]="advantage.name"> {{ advantage.label }} </label>
-          </div>
-          }
-        </div>
-      </span>
-      } @if(selectedSpecies().recommendedAdvantages.length>0) {
-      <span>
-        <span class="display-inline-flex">
-          <h3>Dringend empfohlene Vorteile</h3>
-          <span class="c-disable-check">
-            <p-checkbox inputId="autoAdvDeselectable" [value]="recommendedAdvDeselectable()" [(ngModel)]="recommendedAdvDeselectableModel" binary="true" />
-            <label for="autoAdvDeselectable"> Empfohlene Vor-/ Nachtteile abwählen? </label>
-          </span>
-        </span>
-        <p-divider />
-        <div class="c-checkbox-radio-container">
-          @for(advantage of recommendedAdvantages(); track advantage) {
-          <div class="c-checkbox-radio-wrapper">
-            <p-checkbox
-              [disabled]="!recommendedAdvDeselectable()"
-              [inputId]="advantage.name"
-              name="autoAdvs"
-              [value]="advantage"
-              [ngModel]="selectedAdvantages"
-              (ngModelChange)="changeAdvantages(advantage)"
-            />
-            <label [for]="advantage.name"> {{ advantage.label }} </label>
-          </div>
-          }
-        </div>
-      </span>
-      } @if(selectedSpecies().typicalAdvantages.length>0) {
-      <span>
-        <h3>Typische Vorteile</h3>
-        <p-divider />
-        @for (group of typicalAdvantages(); track group.group) {
-        <div class="mb-3">
-          @if (group.group) {
-          <h4>{{ group.group }}</h4>
-          }
-          <div class="c-checkbox-radio-container">
-            @for (advantage of group.advantages; track advantage.name) {
-            <div class="c-checkbox-radio-wrapper">
-              <p-checkbox
-                [inputId]="advantage.name"
-                name="typicalAdvs"
-                [value]="advantage"
-                [ngModel]="selectedAdvantages"
-                (ngModelChange)="changeAdvantages(advantage)"
-              />
-              <label [for]="advantage.name">{{ advantage.label }}</label>
+      </p-tabpanel>
+      <p-tabpanel value="2">
+        @if (selectedSpecies().autoAdvantages.length > 0) {
+          <span>
+            <span class="display-inline-flex">
+              <h3>Automatische Vorteile</h3>
+              <span class="c-disable-check">
+                <p-checkbox inputId="autoAdvDeselectable" [value]="autoAdvDeselectable()" [(ngModel)]="autoAdvDeselectableModel" binary="true" />
+                <label for="autoAdvDeselectable"> Automatische Vor-/ Nachteile abwählen?</label>
+              </span>
+            </span>
+            <p-divider />
+            <div class="c-checkbox-radio-container">
+              @for (advantage of autoAdvantages(); track advantage) {
+                <div class="c-checkbox-radio-wrapper">
+                  <p-checkbox
+                    [disabled]="!autoAdvDeselectable()"
+                    [inputId]="advantage.name"
+                    name="autoAdvs"
+                    [value]="advantage"
+                    [ngModel]="selectedAdvantages"
+                    (ngModelChange)="changeAdvantages(advantage)"
+                  />
+                  <label [for]="advantage.name"> {{ advantage.label }} </label>
+                </div>
+              }
             </div>
-            }
-          </div>
-        </div>
+          </span>
         }
-      </span>
-      }
-    </p-tabpanel>
-  </p-tabpanels>
-</p-tabs>
+        @if (selectedSpecies().autoDisadvantages.length > 0) {
+          <span>
+            <h3>Automatische Nachteile</h3>
+            <p-divider />
+            <div class="c-checkbox-radio-container">
+              @for (disadvantage of autoDisadvantages(); track disadvantage) {
+                <div class="c-checkbox-radio-wrapper">
+                  <p-checkbox
+                    [disabled]="!autoAdvDeselectable()"
+                    [inputId]="'disadv_' + disadvantage.name"
+                    name="autoDisadvs"
+                    [value]="disadvantage"
+                    [ngModel]="selectedDisadvantages"
+                    (ngModelChange)="changeDisadvantages(disadvantage)"
+                  />
+                  <label [for]="'disadv_' + disadvantage.name"> {{ disadvantage.label }} </label>
+                </div>
+              }
+            </div>
+          </span>
+        }
+        @if (selectedSpecies().recommendedAdvantages.length > 0) {
+          <span>
+            <span class="display-inline-flex">
+              <h3>Dringend empfohlene Vorteile</h3>
+              <span class="c-disable-check">
+                <p-checkbox inputId="autoAdvDeselectable" [value]="recommendedAdvDeselectable()" [(ngModel)]="recommendedAdvDeselectableModel" binary="true" />
+                <label for="autoAdvDeselectable"> Empfohlene Vor-/ Nachtteile abwählen? </label>
+              </span>
+            </span>
+            <p-divider />
+            <div class="c-checkbox-radio-container">
+              @for (advantage of recommendedAdvantages(); track advantage) {
+                <div class="c-checkbox-radio-wrapper">
+                  <p-checkbox
+                    [disabled]="!recommendedAdvDeselectable()"
+                    [inputId]="advantage.name"
+                    name="autoAdvs"
+                    [value]="advantage"
+                    [ngModel]="selectedAdvantages"
+                    (ngModelChange)="changeAdvantages(advantage)"
+                  />
+                  <label [for]="advantage.name"> {{ advantage.label }} </label>
+                </div>
+              }
+            </div>
+          </span>
+        }
+        @if (selectedSpecies().typicalAdvantages.length > 0) {
+          <span>
+            <h3>Typische Vorteile</h3>
+            <p-divider />
+            @for (group of typicalAdvantages(); track group.group) {
+              <div class="mb-3">
+                @if (group.group) {
+                  <h4>{{ group.group }}</h4>
+                }
+                <div class="c-checkbox-radio-container">
+                  @for (advantage of group.advantages; track advantage.name) {
+                    <div class="c-checkbox-radio-wrapper">
+                      <p-checkbox
+                        [inputId]="advantage.name"
+                        name="typicalAdvs"
+                        [value]="advantage"
+                        [ngModel]="selectedAdvantages"
+                        (ngModelChange)="changeAdvantages(advantage)"
+                      />
+                      <label [for]="advantage.name">{{ advantage.label }}</label>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </span>
+        }
+        @if (selectedSpecies().recommendedDisadvantages.length > 0) {
+          <span>
+            <span class="display-inline-flex">
+              <h3>Dringend empfohlene Nachteile</h3>
+              <span class="c-disable-check">
+                <p-checkbox
+                  inputId="recommendedDisadvDeselectable"
+                  [value]="recommendedAdvDeselectable()"
+                  [(ngModel)]="recommendedAdvDeselectableModel"
+                  binary="true"
+                />
+                <label for="recommendedDisadvDeselectable"> Empfohlene Nachteile abwählen? </label>
+              </span>
+            </span>
+            <p-divider />
+            <div class="c-checkbox-radio-container">
+              @for (disadvantage of recommendedDisadvantages(); track disadvantage) {
+                <div class="c-checkbox-radio-wrapper">
+                  <p-checkbox
+                    [disabled]="!recommendedAdvDeselectable()"
+                    [inputId]="'disadv_' + disadvantage.name"
+                    name="recommendedDisadvs"
+                    [value]="disadvantage"
+                    [ngModel]="selectedDisadvantages"
+                    (ngModelChange)="changeDisadvantages(disadvantage)"
+                  />
+                  <label [for]="'disadv_' + disadvantage.name"> {{ disadvantage.label }} </label>
+                </div>
+              }
+            </div>
+          </span>
+        }
+        @if (selectedSpecies().typicalDisadvantages.length > 0) {
+          <span>
+            <h3>Typische Nachteile</h3>
+            <p-divider />
+            @for (group of typicalDisadvantages(); track group.group) {
+              <div class="mb-3">
+                @if (group.group) {
+                  <h4>{{ group.group }}</h4>
+                }
+                <div class="c-checkbox-radio-container">
+                  @for (disadvantage of group.advantages; track disadvantage.name) {
+                    <div class="c-checkbox-radio-wrapper">
+                      <p-checkbox
+                        [inputId]="'disadv_' + disadvantage.name"
+                        name="typicalDisadvs"
+                        [value]="disadvantage"
+                        [ngModel]="selectedDisadvantages"
+                        (ngModelChange)="changeDisadvantages(disadvantage)"
+                      />
+                      <label [for]="'disadv_' + disadvantage.name">{{ disadvantage.label }}</label>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </span>
+        }
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
 }

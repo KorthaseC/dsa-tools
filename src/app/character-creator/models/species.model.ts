@@ -1,4 +1,4 @@
-import { Attribute } from "./base-creation.model";
+import { Attribute, NamedEntry } from './base-creation.model';
 
 export enum SpeciesType {
   Achaz = 'achaz',
@@ -8,13 +8,13 @@ export enum SpeciesType {
   Halforc = 'halforc',
   Holberker = 'holberker',
   Human = 'human',
+  Nachtalb = 'nachtalb',
   Orc = 'orc',
-  Dwarf = 'dwarf'
+  Dwarf = 'dwarf',
 }
 
-export interface Species {
+export interface Species extends NamedEntry {
   type: SpeciesType;
-  displayName: string;
   image: string;
   apCost: number;
   baseStats: SpeciesBaseStats;
@@ -43,5 +43,5 @@ export interface SpeciesAttributeModification {
 
 export interface GroupedAdvantages {
   group?: string;
-  advantages: string[]
+  advantages: string[];
 }

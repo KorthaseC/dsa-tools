@@ -1,24 +1,21 @@
 import { Advantage } from './advantage.model';
 
-export interface WithSource {
-  sourceShort: string;
-  sourceLong: string;
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+export const REGELWIKI_BASE = 'https://dsa.ulisses-regelwiki.de/';
+
+// ─── Source & Reference Types ─────────────────────────────────────────────────
+
+export interface SourceReference {
+  book: string;
+  page?: number;
 }
 
-export interface WithApCost {
-  apCost: number;
-}
-
-export interface BaseCreationEntry extends WithSource, WithApCost {
-  id: string;
+export interface NamedEntry {
   name: string;
-  description?: string;
-  isCustom?: boolean;
-}
-
-export interface Rulebook {
-  short: string;
-  long: string;
+  label: string;
+  url?: string;
+  sources?: SourceReference[];
 }
 
 export type Attribute = 'MU' | 'KL' | 'IN' | 'CH' | 'FF' | 'GE' | 'KO' | 'KK';
@@ -29,13 +26,23 @@ export interface MaxAttributeChange {
   type: 'choice' | 'fixed';
 }
 
+// ─── Increase Factor ──────────────────────────────────────────────────────────
+
 export enum IncreaseFactor {
-  A = 1,
-  B = 2,
-  C = 3,
-  D = 4,
-  E = 15,
+  A = 'A',
+  B = 'B',
+  C = 'C',
+  D = 'D',
+  E = 'E',
 }
+
+export const INCREASE_FACTOR_COST: Record<IncreaseFactor, number> = {
+  [IncreaseFactor.A]: 1,
+  [IncreaseFactor.B]: 2,
+  [IncreaseFactor.C]: 3,
+  [IncreaseFactor.D]: 4,
+  [IncreaseFactor.E]: 15,
+};
 
 export interface Character {
   name: string;
@@ -48,7 +55,7 @@ export interface Character {
   profession: string;
   attributes: Attributes;
   advantages: Advantage[];
-  disadvantages: string[];
+  disadvantages: Advantage[];
   specialAbilities: {
     combat: string[];
     general: string[];
@@ -63,16 +70,15 @@ export interface Character {
     knowledge: Skill[];
     crafts: Skill[];
   };
-  magic: any[]; // Kann später spezifiziert werden, falls nötig
+  magic: MagicEntry[];
   equipment: {
     closeCombat: CloseCombatWeapon[];
-    rangeCombat: any[]; // Kann bei Bedarf typisiert werden
+    rangeCombat: RangedWeapon[];
     armor: Armor[];
-    generell: any[]; // Kann bei Bedarf typisiert werden
+    general: EquipmentItem[];
   };
   currency: Currency;
   notes: string;
-  accessList: any[];
 }
 
 export interface Attributes {
@@ -92,7 +98,7 @@ export interface Attributes {
   toughness: number;
   dodge: number;
   movement: number;
-  initiative: string;
+  initiative: number;
   fatePoints: number;
   fatePointsMax: number;
 }
@@ -109,7 +115,7 @@ export interface CombatTechnique {
 
 export interface Skill {
   name: string;
-  probe: [string, string, string];
+  probe: [Attribute, Attribute, Attribute];
   value: number;
 }
 
@@ -132,4 +138,23 @@ export interface Currency {
   silverthalers: number;
   haler: number;
   kreutzer: number;
+}
+
+export interface RangedWeapon {
+  weapon: string;
+  combatTechnique: string;
+  reload: number;
+  damage: string;
+  range: string;
+}
+
+export interface EquipmentItem {
+  name: string;
+  quantity: number;
+  weight?: number;
+}
+
+export interface MagicEntry {
+  name: string;
+  value: number;
 }

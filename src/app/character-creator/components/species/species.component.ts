@@ -8,12 +8,13 @@ import { DividerModule } from 'primeng/divider';
 import { PanelModule } from 'primeng/panel';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TabsModule } from 'primeng/tabs';
-import { ADVANTAGE } from '../../constants/advantage.const';
+import { ADVANTAGE, DISADVANTAGE } from '../../constants/advantage.const';
 import { ALL_SPECIES } from '../../constants/species.const';
 import { Advantage } from '../../models/advantage.model';
 import { Attribute, MaxAttributeChange } from '../../models/base-creation.model';
 import { Species, SpeciesType } from '../../models/species.model';
 import { CharacterStateService } from '../../services/character-state.service';
+import { resolveAdvantageByName } from '../../utils/utils';
 
 @Component({
     selector: 'app-species',
@@ -42,16 +43,28 @@ export class SpeciesComponent {
 
   //-------Advantages------------
   readonly autoAdvantages = computed(() =>
-    this.toAdvantages(this.selectedSpecies()?.autoAdvantages ?? [], true)
+    this.toAdvantages(this.selectedSpecies()?.autoAdvantages ?? [], ADVANTAGE, true)
   );
   readonly recommendedAdvantages = computed(() =>
-    this.toAdvantages(this.selectedSpecies()?.recommendedAdvantages ?? [])
+    this.toAdvantages(this.selectedSpecies()?.recommendedAdvantages ?? [], ADVANTAGE)
   );
   readonly typicalAdvantages = computed(() =>
-    this.toGroupedAdvantages(this.selectedSpecies()?.typicalAdvantages ?? [])
+    this.toGroupedAdvantages(this.selectedSpecies()?.typicalAdvantages ?? [], ADVANTAGE)
+  );
+
+  //-------Disadvantages------------
+  readonly autoDisadvantages = computed(() =>
+    this.toAdvantages(this.selectedSpecies()?.autoDisadvantages ?? [], DISADVANTAGE, true)
+  );
+  readonly recommendedDisadvantages = computed(() =>
+    this.toAdvantages(this.selectedSpecies()?.recommendedDisadvantages ?? [], DISADVANTAGE)
+  );
+  readonly typicalDisadvantages = computed(() =>
+    this.toGroupedAdvantages(this.selectedSpecies()?.typicalDisadvantages ?? [], DISADVANTAGE)
   );
 
   selectedAdvantages: Advantage[] = this.state.character()?.advantages ?? [];
+  selectedDisadvantages: Advantage[] = this.state.character()?.disadvantages ?? [];
 
   autoAdvDeselectable = this.state.autoAdvDeselectable;
   recommendedAdvDeselectable = this.state.recommendedAdvDeselectable;
@@ -81,6 +94,7 @@ export class SpeciesComponent {
     this.state.selectedSpecies.set(species);
 
     this.selectedAdvantages = [...this.autoAdvantages(), ...this.recommendedAdvantages()];
+    this.selectedDisadvantages = [...this.autoDisadvantages(), ...this.recommendedDisadvantages()];
     const attributeMods: MaxAttributeChange[] = [];
     species.attributeMods.forEach((attMod => {
       if(attMod.type === 'fixed') {
@@ -88,7 +102,7 @@ export class SpeciesComponent {
       }
     }))
 
-    this.state.character.update(c => ({...c, species: this.selectedSpecies().type, speciesCost: this.selectedSpecies().apCost, maxAttributeChanges: attributeMods, advantages: this.selectedAdvantages}))
+    this.state.character.update(c => ({...c, species: this.selectedSpecies().type, speciesCost: this.selectedSpecies().apCost, maxAttributeChanges: attributeMods, advantages: this.selectedAdvantages, disadvantages: this.selectedDisadvantages}))
   }
 
   isSelected(type: SpeciesType): boolean {
@@ -105,6 +119,16 @@ export class SpeciesComponent {
     this.state.character.update(c => ({...c, advantages: this.selectedAdvantages}))
   }
 
+  changeDisadvantages(disadvantage: Advantage) {
+    const index = this.selectedDisadvantages.findIndex(a => a === disadvantage);
+    if (index > -1) {
+      this.selectedDisadvantages = this.selectedDisadvantages.filter(a => a !== disadvantage);
+    } else {
+      this.selectedDisadvantages = [...this.selectedDisadvantages, disadvantage];
+    }
+    this.state.character.update(c => ({...c, disadvantages: this.selectedDisadvantages}))
+  }
+
   onChoiceAttributeChange(): void {
     let attributeMods: MaxAttributeChange[] = [];
     if( this.state.character().maxAttributeChanges.some(attMod => attMod.type === 'fixed')) {
@@ -114,18 +138,16 @@ export class SpeciesComponent {
     this.state.character.update(c => ({...c, maxAttributeChanges: attributeMods}))
   }
 
-  private toAdvantages(names: string[], mandatory?: boolean): Advantage[] {
-    return names.map(name => {
-        const base = ADVANTAGE.find(a => a.name === name);
-        return base ? { ...base, mandatory } : null;
-      })
+  private toAdvantages(names: string[], catalog: Advantage[], mandatory?: boolean): Advantage[] {
+    return names.map(name => resolveAdvantageByName(name, catalog, { mandatory }))
+      .filter(Boolean) as Advantage[];
   }
 
-  private toGroupedAdvantages(grouped: { group?: string; advantages: string[] }[]): { group?: string; advantages: Advantage[] }[] {
+  private toGroupedAdvantages(grouped: { group?: string; advantages: string[] }[], catalog: Advantage[]): { group?: string; advantages: Advantage[] }[] {
     return grouped.map(entry => ({
       group: entry.group,
       advantages: entry.advantages
-        .map(name => ADVANTAGE.find(a => a.name === name))
+        .map(name => resolveAdvantageByName(name, catalog))
         .filter(Boolean) as Advantage[],
     }));
   }

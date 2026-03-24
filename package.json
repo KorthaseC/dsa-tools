@@ -1,12 +1,12 @@
 {
   "name": "dsa-tools",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "authors": "sc",
   "description": "dsa-tools",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "node replace-env-vars.js && ng build && node create-redirects.js",
+    "build": "node replace-env-vars.js && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
