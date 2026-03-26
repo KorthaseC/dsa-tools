@@ -1,4 +1,30 @@
-<p-floatlabel variant="on" class="width-30">
-  <input pInputText id="name" [(ngModel)]="character().name" autocomplete="off" class="width-100" />
-  <label for="name">Name</label>
-</p-floatlabel>
+<div class="formgrid grid row-gap-2">
+  @for (attr of attributes(); track attr.key) {
+    <div class="col-6 md:col-3 lg:col p-1">
+      <div class="c-attribute-box">
+        <div class="c-attribute-header">
+          <span class="c-attribute-abbr">{{ attr.label }}</span>
+          <button
+            class="c-attr-roll-btn"
+            type="button"
+            [style.background]="attr.color"
+            (click)="rollAttribute(attr.color)"
+            [pTooltip]="attr.label + ' Probe'"
+            tooltipPosition="top"
+          >
+            <img src="assets/icons/d20.svg" alt="d20" class="c-d20-icon" />
+          </button>
+        </div>
+        <p-inputnumber
+          [ngModel]="attr.value"
+          (ngModelChange)="updateAttribute(attr.key, $event)"
+          [min]="1"
+          [max]="19"
+          [showButtons]="false"
+          [useGrouping]="false"
+          [inputStyle]="{ width: '100%', textAlign: 'center' }"
+        />
+      </div>
+    </div>
+  }
+</div>

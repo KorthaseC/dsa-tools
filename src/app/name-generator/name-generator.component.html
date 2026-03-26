@@ -1,5 +1,4 @@
 <div class="name-generator-container pb-5">
-
   <!-- Controls box: noble checkbox + gender radios -->
   <div class="filter-section mb-4">
     <span class="section-label">Optionen</span>
@@ -25,7 +24,6 @@
 
   <!-- Main layout: left = tabs/regions, right = sticky button + results -->
   <div class="grid align-items-start">
-
     <div class="col-12 md:col-7">
       <p-tabs [value]="activeTabValue" (valueChange)="onTabChange($event)">
         <p-tablist>
@@ -54,12 +52,7 @@
                       }
                     </div>
                   } @else {
-                    <p-tree
-                      [value]="treeNodes"
-                      selectionMode="single"
-                      [(selection)]="selectedTreeNode"
-                      (onNodeSelect)="onTreeNodeSelect($event)"
-                    />
+                    <p-tree [value]="treeNodes" selectionMode="single" [(selection)]="selectedTreeNode" (onNodeSelect)="onTreeNodeSelect($event)" />
                   }
                 </div>
               }
@@ -72,12 +65,7 @@
     <div class="col-12 md:col-5">
       <div class="sticky-md">
         <div class="mb-3 align-items-center gap-2">
-          <p-button
-            label="Erzeuge zufällige Namen"
-            (onClick)="getNames()"
-            [disabled]="!isFormValid() || isLoading"
-            class="flex-1"
-          />
+          <p-button label="Erzeuge zufällige Namen" (onClick)="getNames()" [disabled]="!isFormValid() || isLoading" class="flex-1" />
           @if (isLoading) {
             <p-progressSpinner class="c-spinner" />
           }
@@ -98,9 +86,7 @@
               </div>
             }
             @if (resultContext?.noble && resultContext?.hasNotNoble) {
-              <div class="noble-warning mb-3">
-                Bei dieser Auswahl gibt es keine adelige Namen, daher werden nur normale Namen angezeigt.
-              </div>
+              <div class="noble-warning mb-3">Bei dieser Auswahl gibt es keine adelige Namen, daher werden nur normale Namen angezeigt.</div>
             }
             <ul class="m-0 pl-4">
               @for (name of names; track name) {
@@ -111,6 +97,5 @@
         }
       </div>
     </div>
-
   </div>
 </div>

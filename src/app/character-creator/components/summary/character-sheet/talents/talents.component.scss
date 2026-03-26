@@ -1,0 +1,156 @@
+// Accordion count badge
+.c-count {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(200, 169, 110, 0.7);
+  margin-left: 0.4rem;
+}
+
+// Roll check button
+.c-check-roll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  border-radius: 50%;
+  background: rgba(200, 169, 110, 0.12);
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  padding: 3px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.15);
+    background: rgba(200, 169, 110, 0.25);
+  }
+
+  .c-d20-icon {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) saturate(100%) invert(60%) sepia(40%) saturate(400%) hue-rotate(5deg) brightness(0.9);
+  }
+}
+
+// Responsive table column visibility
+// (PrimeFlex has no table-cell display class, so we define these here)
+@media screen and (max-width: 767px) {
+  .c-hide-sm {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .c-hide-md {
+    display: none !important;
+  }
+}
+
+// Horizontal scroll wrapper — fallback for very narrow screens
+.c-table-wrap {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 106, 62, 0.35) transparent;
+}
+
+// Talent table: column widths
+::ng-deep .c-talent-table {
+  // Remove the bottom margin the global override adds — accordion provides spacing
+  margin-bottom: 0 !important;
+
+  // Header cells
+  .p-datatable-thead > tr > th {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+
+  // Narrow columns: shrink to minimum content width
+  .p-datatable-thead > tr > .c-th-narrow {
+    width: 1px;
+  }
+
+  // Body cells
+  .p-datatable-tbody > tr > td {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+
+  // Uniform compact height for all inputs and selects
+  .p-select {
+    --p-select-padding-y: 0.2rem;
+    --p-select-padding-x: 0.35rem;
+
+    // Disabled selects: full colour but no border, subtle background — read-only table feel
+    &.p-disabled {
+      background: #2a2a2a !important;
+      cursor: default;
+      .p-select-label {
+        cursor: default;
+        color: var(--p-select-color);
+        opacity: 1;
+      }
+    }
+  }
+
+  input.p-inputtext {
+    padding: 0.2rem 0.35rem;
+
+    // Disabled name input: same borderless read-only feel
+    &:disabled {
+      border-color: transparent;
+      background: #2a2a2a !important;
+      cursor: default;
+      opacity: 1;
+      color: var(--p-inputtext-color);
+    }
+  }
+
+  // FW inputnumber: match the minimum width of the probe selects
+  p-inputnumber .p-inputtext {
+    min-width: 3.5rem;
+  }
+}
+
+// Center-aligned body cells
+.c-td-center {
+  text-align: center;
+}
+
+// Roll button cell — flex-center the circular button
+.c-td-roll {
+  text-align: center;
+
+  .c-check-roll-btn {
+    margin: 0 auto;
+  }
+}
+
+::ng-deep {
+  // Hide the dropdown chevron on disabled selects so the value fills the space
+  p-select.p-disabled {
+    .p-select-dropdown {
+      display: none !important;
+    }
+    .p-select-label {
+      padding-right: 0.5rem !important;
+      text-align: center;
+    }
+  }
+
+  p-select .p-select {
+    width: 100%;
+  }
+
+  p-inputnumber .p-inputtext {
+    width: 100%;
+    text-align: center;
+    padding: 0.2rem 0.25rem;
+  }
+}

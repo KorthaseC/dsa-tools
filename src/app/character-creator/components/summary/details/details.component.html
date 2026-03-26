@@ -1,1 +1,10 @@
-<p>details works!</p>
+<div class="c-identity">
+  <span class="c-character-name">{{ character()?.name || '—' }}</span>
+  <span class="c-identity-sub">
+    {{ character()?.species || '—' }}
+    @if (character()?.profession) {
+      <span class="c-identity-sep">·</span>
+      {{ character()?.profession }}
+    }
+  </span>
+</div>

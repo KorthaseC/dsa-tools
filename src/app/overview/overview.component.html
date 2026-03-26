@@ -1,23 +1,23 @@
-<div class="grid mr-b-40">
+<div class="grid mb-8">
   @for (featureCard of featureCards; track featureCard) {
-  <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 c-col">
-    <p-card [routerLink]="[featureCard.routerLink]" class="c-overview-card">
-      <ng-template #header>
-        <span class="corner-top-right"></span>
-        <span class="corner-bottom-left"></span>
-        <div class="c-card-header">
-          <h2>{{ featureCard.title }}</h2>
+    <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 c-col">
+      <p-card [routerLink]="[featureCard.routerLink]" class="c-overview-card">
+        <ng-template #header>
+          <span class="corner-top-right"></span>
+          <span class="corner-bottom-left"></span>
+          <div class="c-card-header">
+            <h2>{{ featureCard.title }}</h2>
+          </div>
+        </ng-template>
+        <div class="c-card-body-inner">
+          <div class="c-card-img-wrapper">
+            <img [src]="featureCard.imgSrc" [alt]="featureCard.imgAlt" class="c-card-img" />
+          </div>
+          <div class="c-card-desc-wrapper">
+            <p class="c-card-desc">{{ featureCard.description }}</p>
+          </div>
         </div>
-      </ng-template>
-      <div class="c-card-body-inner">
-        <div class="c-card-img-wrapper">
-          <img [src]="featureCard.imgSrc" [alt]="featureCard.imgAlt" class="c-card-img" />
-        </div>
-        <div class="c-card-desc-wrapper">
-          <p class="c-card-desc">{{ featureCard.description }}</p>
-        </div>
-      </div>
-    </p-card>
-  </div>
+      </p-card>
+    </div>
   }
 </div>

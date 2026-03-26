@@ -6,7 +6,7 @@
     [options]="experienceLevels"
     [ngModel]="selected()"
     (ngModelChange)="setSelected($event)"
-    class="width-100"
+    class="w-full"
   >
     <ng-template pOption let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
     <ng-template pSelectedItem let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>

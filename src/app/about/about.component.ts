@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-
 interface Feature {
   title: string;
   description: string;
@@ -9,10 +8,10 @@ interface Feature {
 }
 
 @Component({
-    selector: 'app-about',
-    imports: [ RouterModule],
-    templateUrl: './about.component.html',
-    styleUrl: './about.component.scss'
+  selector: 'app-about',
+  imports: [RouterModule],
+  templateUrl: './about.component.html',
+  styleUrl: './about.component.scss',
 })
 export class AboutComponent {
   public features: Feature[] = [
@@ -69,7 +68,7 @@ export class AboutComponent {
     {
       title: 'Impressum',
       description: 'Rechtliche Hinweise und Disclaimer zu dieser Fanseite.',
-      routerLink: '/impressum',
+      routerLink: '/imprint',
     },
   ];
 }

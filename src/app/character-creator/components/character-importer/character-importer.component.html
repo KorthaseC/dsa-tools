@@ -1,79 +1,84 @@
-@if(!character()){
-<p-fileupload
-  mode="basic"
-  chooseLabel="Upload Character json"
-  chooseIcon="pi pi-upload"
-  name="char import"
-  accept=".json"
-  maxFileSize="1000000"
-  (onSelect)="onUpload($event)"
-  [auto]="true"
-/>
+@if (!character()) {
+  <p-fileupload
+    mode="basic"
+    chooseLabel="Upload Character json"
+    chooseIcon="pi pi-upload"
+    name="char import"
+    accept=".json"
+    maxFileSize="1000000"
+    (onSelect)="onUpload($event)"
+    [auto]="true"
+  />
 }
 
-@if(importError()) {
-<div class="c-import-error">
-  <i class="pi pi-times-circle"></i>
-  <span>{{ importError() }}</span>
-</div>
+@if (importError()) {
+  <div class="c-import-error">
+    <i class="pi pi-times-circle"></i>
+    <span>{{ importError() }}</span>
+  </div>
 }
 
-@if(character()){
-<app-attributes-header></app-attributes-header>
+@if (character()) {
+  <app-character-header></app-character-header>
 
-@if(parseWarnings().length > 0) {
-<div class="c-validation-section c-parse-warnings">
-  <h3><i class="pi pi-exclamation-triangle"></i> Import-Hinweise</h3>
-  <ul>
-    @for(warning of parseWarnings(); track warning) {
-    <li>{{ warning }}</li>
-    }
-  </ul>
-</div>
-}
+  @if (parseWarnings().length > 0) {
+    <div class="c-validation-section c-parse-warnings">
+      <h3><i class="pi pi-exclamation-triangle"></i> Import-Hinweise</h3>
+      <ul>
+        @for (warning of parseWarnings(); track warning) {
+          <li>{{ warning }}</li>
+        }
+      </ul>
+    </div>
+  }
 
-@if(errors().length > 0) {
-<div class="c-validation-section c-errors">
-  <h3><i class="pi pi-times-circle"></i> Regelverstöße ({{ errors().length }})</h3>
-  <ul>
-    @for(result of errors(); track result.ruleId + (result.source ?? '')) {
-    <li>
-      <strong>{{ result.source }}</strong>: {{ result.message }}
-      @if(result.details) { <span class="c-details">{{ result.details }}</span> }
-    </li>
-    }
-  </ul>
-</div>
-}
+  @if (errors().length > 0) {
+    <div class="c-validation-section c-errors">
+      <h3><i class="pi pi-times-circle"></i> Regelverstöße ({{ errors().length }})</h3>
+      <ul>
+        @for (result of errors(); track result.ruleId + (result.source ?? '')) {
+          <li>
+            <strong>{{ result.source }}</strong
+            >: {{ result.message }}
+            @if (result.details) {
+              <span class="c-details">{{ result.details }}</span>
+            }
+          </li>
+        }
+      </ul>
+    </div>
+  }
 
-@if(warnings().length > 0) {
-<div class="c-validation-section c-warnings">
-  <h3><i class="pi pi-exclamation-triangle"></i> Warnungen ({{ warnings().length }})</h3>
-  <ul>
-    @for(result of warnings(); track result.ruleId + (result.source ?? '')) {
-    <li>
-      <strong>{{ result.source }}</strong>: {{ result.message }}
-    </li>
-    }
-  </ul>
-</div>
-}
+  @if (warnings().length > 0) {
+    <div class="c-validation-section c-warnings">
+      <h3><i class="pi pi-exclamation-triangle"></i> Warnungen ({{ warnings().length }})</h3>
+      <ul>
+        @for (result of warnings(); track result.ruleId + (result.source ?? '')) {
+          <li>
+            <strong>{{ result.source }}</strong
+            >: {{ result.message }}
+          </li>
+        }
+      </ul>
+    </div>
+  }
 
-@if(infos().length > 0) {
-<div class="c-validation-section c-infos">
-  <h3><i class="pi pi-info-circle"></i> Informationen ({{ infos().length }})</h3>
-  <ul>
-    @for(result of infos(); track result.ruleId + (result.source ?? '')) {
-    <li>{{ result.message }}</li>
-    }
-  </ul>
-</div>
-}
+  @if (infos().length > 0) {
+    <div class="c-validation-section c-infos">
+      <h3><i class="pi pi-info-circle"></i> Informationen ({{ infos().length }})</h3>
+      <ul>
+        @for (result of infos(); track result.ruleId + (result.source ?? '')) {
+          <li>{{ result.message }}</li>
+        }
+      </ul>
+    </div>
+  }
 
-@if(errors().length === 0 && warnings().length === 0 && parseWarnings().length === 0) {
-<div class="c-validation-section c-success">
-  <h3><i class="pi pi-check-circle"></i> Charakter erfolgreich importiert – keine Probleme gefunden</h3>
-</div>
-}
+  <!--  @if (errors().length === 0 && warnings().length === 0 && parseWarnings().length === 0) {
+    <div class="c-validation-section c-success">
+      <h3><i class="pi pi-check-circle"></i> Charakter erfolgreich importiert – keine Probleme gefunden</h3>
+    </div>
+  } -->
 
+  <app-character-sheet></app-character-sheet>
 }

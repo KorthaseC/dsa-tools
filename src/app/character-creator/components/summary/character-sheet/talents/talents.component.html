@@ -1,0 +1,93 @@
+<p-accordion [multiple]="true" [value]="openPanels()" (valueChange)="onPanelsChange($event)">
+  @for (cat of categories(); track cat.key) {
+    <p-accordion-panel [value]="cat.key">
+      <p-accordion-header>{{ cat.label }}</p-accordion-header>
+
+      <p-accordion-content>
+        <div class="c-table-wrap">
+          <p-table [value]="cat.rows" [tableStyle]="{ width: '100%' }" styleClass="c-talent-table">
+            <ng-template #header>
+              <tr>
+                <th class="c-th">Talent</th>
+                <th class="c-th c-th-narrow c-hide-sm">P1</th>
+                <th class="c-th c-th-narrow c-hide-sm">P2</th>
+                <th class="c-th c-th-narrow c-hide-sm">P3</th>
+                <th class="c-th c-th-narrow"></th>
+                <th class="c-th c-th-narrow c-hide-sm">SF</th>
+                <th class="c-th c-th-narrow">FW</th>
+                <th class="c-th c-th-narrow c-hide-md">Routine</th>
+              </tr>
+            </ng-template>
+
+            <ng-template #body let-row>
+              <tr>
+                <!-- Talent name -->
+                <td class="c-td">
+                  <input pInputText [value]="row.def.label" [disabled]="true" class="w-full" readonly />
+                </td>
+
+                <!-- Probe 1 -->
+                <td class="c-td c-td-center c-hide-sm">
+                  <p-select [ngModel]="row.def.check[0]" [options]="attributeOptions" [disabled]="true" class="w-full" />
+                </td>
+
+                <!-- Probe 2 -->
+                <td class="c-td c-td-center c-hide-sm">
+                  <p-select [ngModel]="row.def.check[1]" [options]="attributeOptions" [disabled]="true" class="w-full" />
+                </td>
+
+                <!-- Probe 3 -->
+                <td class="c-td c-td-center c-hide-sm">
+                  <p-select [ngModel]="row.def.check[2]" [options]="attributeOptions" [disabled]="true" class="w-full" />
+                </td>
+
+                <!-- Roll check button -->
+                <td class="c-td c-td-roll">
+                  <button
+                    class="c-check-roll-btn"
+                    type="button"
+                    (click)="rollCheck(row.def.check)"
+                    [pTooltip]="row.def.check[0] + '/' + row.def.check[1] + '/' + row.def.check[2] + ' Probe'"
+                    tooltipPosition="top"
+                  >
+                    <img src="assets/icons/d20.svg" alt="Probe würfeln" class="c-d20-icon" />
+                  </button>
+                </td>
+
+                <!-- Steigerungsfaktor -->
+                <td class="c-td c-td-center c-hide-sm">
+                  <p-select [ngModel]="row.def.increaseFactor" [options]="increaseFactorOptions" [disabled]="true" class="w-full" />
+                </td>
+
+                <!-- FW (editable) -->
+                <td class="c-td c-td-center">
+                  <p-inputnumber
+                    [ngModel]="row.fw"
+                    (ngModelChange)="pendingFw[cat.key + ':' + row.def.name] = $event"
+                    (onBlur)="commitPendingFw(cat.key, row.def)"
+                    [min]="0"
+                    [max]="25"
+                    [showButtons]="false"
+                    [useGrouping]="false"
+                    class="w-full"
+                  />
+                </td>
+
+                <!-- Routine -->
+                <td class="c-td c-td-center c-hide-md">
+                  <p-select
+                    [ngModel]="getRoutine(row.def.name)"
+                    (ngModelChange)="setRoutine(row.def.name, $event)"
+                    [options]="routineOptions"
+                    [disabled]="true"
+                    class="w-full"
+                  />
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </p-accordion-content>
+    </p-accordion-panel>
+  }
+</p-accordion>

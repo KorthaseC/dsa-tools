@@ -1,0 +1,24 @@
+.c-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.c-character-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #e4d3a2;
+  line-height: 1.3;
+}
+
+.c-identity-sub {
+  font-size: 0.8rem;
+  color: #c8a96e;
+  letter-spacing: 0.03em;
+}
+
+.c-identity-sep {
+  margin: 0 0.25rem;
+  opacity: 0.6;
+}

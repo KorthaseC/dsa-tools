@@ -1,0 +1,73 @@
+.c-attribute-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid rgba(200, 169, 110, 0.45);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem 0.4rem;
+  background: rgba(200, 169, 110, 0.06);
+
+  .c-attribute-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    width: 100%;
+  }
+
+  .c-attribute-abbr {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #c8a96e;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .c-attr-roll-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    cursor: pointer;
+    line-height: 0;
+    opacity: 0.85;
+    transition:
+      opacity 0.15s,
+      transform 0.15s;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .c-d20-icon {
+      width: 10px;
+      height: 10px;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  ::ng-deep input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(200, 169, 110, 0.35) !important;
+    border-radius: 0 !important;
+    color: #e4d3a2 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    padding: 0.1rem 0 !important;
+    box-shadow: none !important;
+
+    &:focus {
+      border-bottom-color: #c8a96e !important;
+      box-shadow: none !important;
+    }
+  }
+}

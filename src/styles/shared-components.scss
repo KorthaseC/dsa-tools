@@ -90,3 +90,61 @@
     font-style: italic;
   }
 }
+
+// ── Dice popover ──────────────────────────────────────────────────────────────
+// PrimeNG sets inset-inline-start via JS. When the 290px popover overflows the
+// viewport right edge, PrimeNG clamps the position but does NOT recalculate
+// --p-popover-arrow-left, so the arrow ends up misaligned.
+// Fix: force right-edge alignment and pin the arrow at a fixed offset matching
+// the button center (header right-padding 16px + half button 18px = 34px from
+// viewport right; popover offset 8px → arrow 26px from popover right edge).
+.dice-popover {
+  left: auto !important;
+  inset-inline-end: 0.5rem !important;
+  width: 290px !important;
+
+  &::before,
+  &::after {
+    left: auto !important;
+    right: 16px !important;
+    margin-left: 0 !important;
+  }
+}
+
+// ── Footer popover menu ───────────────────────────────────────────────────────
+.footer-menu {
+  .footer-menu-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 160px;
+  }
+
+  .footer-menu-social {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--p-popover-border-color, #5a4a30);
+  }
+
+  .footer-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    a {
+      color: var(--p-popover-color, #e4d3a2);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+      padding: 0.2rem 0;
+      transition: color 0.15s;
+
+      &:hover {
+        color: white;
+        text-decoration: underline;
+      }
+    }
+  }
+}

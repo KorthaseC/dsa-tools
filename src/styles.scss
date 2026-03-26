@@ -2,10 +2,10 @@
 @use 'styles/shared-components';
 @import 'primeicons/primeicons.css';
 
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
+// ── Base ─────────────────────────────────────────────────────────────────────
 html,
 body {
   margin: 0;
@@ -30,28 +30,9 @@ h2 {
   font-size: xx-large !important;
 }
 
+// ── Custom width utilities (no PrimeFlex equivalent for percentages) ─────────
 .width-15 {
   width: 15%;
-}
-
-.width-20 {
-  width: 20%;
-}
-
-.width-25 {
-  width: 25%;
-}
-
-.width-30 {
-  width: 30%;
-}
-
-.width-50 {
-  width: 50% !important;
-}
-
-.width-60 {
-  width: 60%;
 }
 
 .width-80 {
@@ -62,105 +43,12 @@ h2 {
   width: 85%;
 }
 
-.width-100 {
-  width: 100%;
-}
-
-.mr-b-5 {
-  margin-bottom: 5px;
-}
-
-.mr-b-20 {
-  margin-bottom: 20px;
-}
-
-.mr-b-40 {
-  margin-bottom: 40px !important;
-}
-
-.mr-t-5 {
-  margin-top: 5px !important;
-}
-
-.mr-t-20 {
-  margin-top: 20px;
-}
-
-.mr-l-5 {
-  margin-left: 5px;
-}
-
-.mr-l-10 {
-  margin-left: 10px;
-}
-
-.mr-l-20 {
-  margin-left: 20px !important;
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
-.mr-r-5 {
-  margin-right: 5px;
-}
-
-.mr-r-20 {
-  margin-right: 20px;
-}
-
-.p-l-16 {
-  padding-left: 16px;
-}
-
-.display-flex {
-  display: flex;
-}
-
-.display-inline-flex {
-  display: inline-flex;
-}
-
-.justify-flex-start {
-  justify-content: flex-start;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.blend-img {
-  mix-blend-mode: multiply;
-}
-
-.invert-img {
-  filter: invert(1);
-}
-
-.round-icon {
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 canvas {
   width: 100%;
   height: 100%;
 }
 
-.button {
-  margin-bottom: 30px;
-  button:disabled {
-    background-color: gray;
-  }
-}
-
-.cursor {
-  cursor: pointer;
-}
-
 // Responsive sticky — applies position:sticky only on md breakpoint and above
-// Mirrors the PrimeFlex md: convention (≥768px)
 @media (min-width: 768px) {
   .sticky-md {
     position: sticky;
