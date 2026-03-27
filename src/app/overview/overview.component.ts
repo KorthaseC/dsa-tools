@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { CardModule } from 'primeng/card';
 
+import { APP_ROUTES } from '../app.constants';
+
 interface FeatureCard {
   title: string;
   routerLink: string;
@@ -23,7 +25,7 @@ export class OverviewComponent {
   public featureCards: FeatureCard[] = [
     {
       title: 'Kalender',
-      routerLink: '/calendar',
+      routerLink: APP_ROUTES.calendar,
       imgSrc: 'assets/icons/satinavs.svg',
       imgAlt: 'Satinav Symbol',
       description: 'Tool zur Berechnung von Wochentag und Mondphase',
@@ -32,7 +34,7 @@ export class OverviewComponent {
     },
     {
       title: 'Währungsrechner',
-      routerLink: '/currency',
+      routerLink: APP_ROUTES.currency,
       imgSrc: 'assets/icons/phex.svg',
       imgAlt: 'Phex Symbol',
       description: 'Tool zur Berechnung der Währungen',
@@ -41,7 +43,7 @@ export class OverviewComponent {
     },
     {
       title: 'Alchemielabor',
-      routerLink: '/alchemy',
+      routerLink: APP_ROUTES.alchemy,
       imgSrc: 'assets/icons/ausfaellen.svg',
       imgAlt: 'Alchemy Symbol',
       description: 'Tool zur Erstellung von alchemistischen Mitteln',
@@ -50,7 +52,7 @@ export class OverviewComponent {
     },
     {
       title: 'Tavernengenerator',
-      routerLink: '/tavern',
+      routerLink: APP_ROUTES.tavern,
       imgSrc: 'assets/icons/travia.svg',
       imgAlt: 'Travia Symbol',
       description: 'Tool zur Erstellung von zufälligen Tavernen',
@@ -59,7 +61,7 @@ export class OverviewComponent {
     },
     {
       title: 'Namensgenerator',
-      routerLink: '/names',
+      routerLink: APP_ROUTES.names,
       imgSrc: 'assets/icons/namenloser.svg',
       imgAlt: 'Nameless Symbol',
       description: 'Tool zur Erstellung von zufälligen Namen',
@@ -68,7 +70,7 @@ export class OverviewComponent {
     },
     {
       title: 'Schmiede',
-      routerLink: '/smith',
+      routerLink: APP_ROUTES.smith,
       imgSrc: 'assets/icons/ingerimm.svg',
       imgAlt: 'Ingerimm Symbol',
       description: 'Tool zur Berechnung von Preisen beim Schmied',
@@ -77,7 +79,7 @@ export class OverviewComponent {
     },
     {
       title: 'Büchergenerator',
-      routerLink: '/books',
+      routerLink: APP_ROUTES.books,
       imgSrc: 'assets/icons/nandus.svg',
       imgAlt: 'Nandus Symbol',
       description: 'Tool zur Erstellung von zufälligen Büchern',
@@ -86,7 +88,7 @@ export class OverviewComponent {
     },
     {
       title: 'Charaktererschaffer',
-      routerLink: '/character',
+      routerLink: APP_ROUTES.character,
       imgSrc: 'assets/icons/tsa.svg',
       imgAlt: 'Tsa Symbol',
       description: 'Tool zur Erstellung von Charakteren',

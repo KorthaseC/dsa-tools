@@ -3,9 +3,9 @@ import { TabsModule } from 'primeng/tabs';
 import { TalentsComponent } from './talents/talents.component';
 
 @Component({
-  selector: 'app-character-sheet',
+  selector: 'app-cs-tabs',
   imports: [TabsModule, TalentsComponent],
-  templateUrl: './character-sheet.component.html',
-  styleUrl: './character-sheet.component.scss',
+  templateUrl: './tabs.component.html',
+  styleUrl: './tabs.component.scss',
 })
-export class CharacterSheetComponent {}
+export class TabsComponent {}

@@ -2,13 +2,12 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CharacterStateService } from '../../services/character-state.service';
 import { CharacterImportService, ImportResult } from '../../services/character-import.service';
-import { CharacterHeaderComponent } from '../summary/character-header/character-header.component';
 import { ValidationResult } from '../../models/validation.model';
-import { CharacterSheetComponent } from '../summary/character-sheet/character-sheet.component';
+import { CharacterSheetComponent } from '../character-sheet/character-sheet.component';
 
 @Component({
   selector: 'app-character-importer',
-  imports: [FileUploadModule, CharacterHeaderComponent, CharacterSheetComponent],
+  imports: [FileUploadModule, CharacterSheetComponent],
   templateUrl: './character-importer.component.html',
   styleUrl: './character-importer.component.scss',
 })

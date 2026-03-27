@@ -2,30 +2,31 @@ import { Component, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputNumber } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
-import { CharacterStateService } from '../../../services/character-state.service';
-import { DiceRollService } from '../../../../shared/dice-roll.service';
-import { Attributes } from '../../../models/base-creation.model';
+import { CharacterStateService } from '../../../../services/character-state.service';
+import { DiceRollService } from '../../../../../shared/dice-roll.service';
+import { Attributes } from '../../../../models/base-creation.model';
+import { ATTR_COLORS } from '../../../../constants/attribute-colors.const';
 
 @Component({
-  selector: 'app-attributes-header',
+  selector: 'app-cs-attributes',
   imports: [FormsModule, InputNumber, TooltipModule],
-  templateUrl: './attributes-header.component.html',
-  styleUrl: './attributes-header.component.scss',
+  templateUrl: './attributes.component.html',
+  styleUrl: './attributes.component.scss',
 })
-export class AttributesHeaderComponent {
+export class AttributesComponent {
   private state = inject(CharacterStateService);
   private diceService = inject(DiceRollService);
   character = this.state.character;
 
   readonly attrDefs: { label: string; key: keyof Attributes; color: string }[] = [
-    { label: 'MU', key: 'courage', color: '#e74c3c' },
-    { label: 'KL', key: 'sagacity', color: '#9b59b6' },
-    { label: 'IN', key: 'intuition', color: '#2ecc71' },
-    { label: 'CH', key: 'charisma', color: '#3d3d3d' },
-    { label: 'FF', key: 'dexterity', color: '#f1c40f' },
-    { label: 'GE', key: 'agility', color: '#3498db' },
-    { label: 'KO', key: 'constitution', color: '#95a5a6' },
-    { label: 'KK', key: 'strength', color: '#e67e22' },
+    { label: 'MU', key: 'courage', color: ATTR_COLORS.MU },
+    { label: 'KL', key: 'sagacity', color: ATTR_COLORS.KL },
+    { label: 'IN', key: 'intuition', color: ATTR_COLORS.IN },
+    { label: 'CH', key: 'charisma', color: ATTR_COLORS.CH },
+    { label: 'FF', key: 'dexterity', color: ATTR_COLORS.FF },
+    { label: 'GE', key: 'agility', color: ATTR_COLORS.GE },
+    { label: 'KO', key: 'constitution', color: ATTR_COLORS.KO },
+    { label: 'KK', key: 'strength', color: ATTR_COLORS.KK },
   ];
 
   readonly attributes = computed(() => {

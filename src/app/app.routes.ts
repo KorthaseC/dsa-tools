@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AlchemyComponent } from './alchemy/alchemy.component';
+import { APP_ROUTES } from './app.constants';
 import { BookGeneratorComponent } from './book-generator/book-generator.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
 import { CharacterImporterComponent } from './character-creator/components/character-importer/character-importer.component';
@@ -17,7 +18,7 @@ import { TavernGeneratorComponent } from './tavern-generator/tavern-generator.co
 
 export const routes: Routes = [
   {
-    path: 'overview',
+    path: APP_ROUTES.overview.slice(1),
     component: OverviewComponent,
     data: {
       title: 'overviewTitle',
@@ -26,7 +27,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'calendar',
+    path: APP_ROUTES.calendar.slice(1),
     component: CalendarComponent,
     data: {
       title: 'calendarTitle',
@@ -35,7 +36,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'currency',
+    path: APP_ROUTES.currency.slice(1),
     component: CurrencyComponent,
     data: {
       title: 'currencyTitle',
@@ -44,7 +45,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'alchemy',
+    path: APP_ROUTES.alchemy.slice(1),
     component: AlchemyComponent,
     data: {
       title: 'alchemyTitle',
@@ -53,12 +54,12 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'tavern',
+    path: APP_ROUTES.tavern.slice(1),
     component: TavernGeneratorComponent,
     data: { title: 'tavernTitle', description: 'tavern', keywords: 'tavern' },
   },
   {
-    path: 'names',
+    path: APP_ROUTES.names.slice(1),
     component: NameGeneratorComponent,
     data: {
       title: 'nameGeneratorTitle',
@@ -67,7 +68,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'smith',
+    path: APP_ROUTES.smith.slice(1),
     component: SmithGeneratorComponent,
     data: {
       title: 'smithGeneratorTitle',
@@ -76,7 +77,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'books',
+    path: APP_ROUTES.books.slice(1),
     component: BookGeneratorComponent,
     data: {
       title: 'bookGeneratorTitle',
@@ -85,7 +86,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'character',
+    path: APP_ROUTES.character.slice(1),
     component: CharacterLoaderComponent,
     data: {
       title: 'characterCreatorTitle',
@@ -94,7 +95,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'character-creator',
+    path: APP_ROUTES.characterCreator.slice(1),
     component: CharacterWizardComponent,
     data: {
       title: 'characterCreatorTitle',
@@ -103,7 +104,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'character-importer',
+    path: APP_ROUTES.characterImporter.slice(1),
     component: CharacterImporterComponent,
     data: {
       title: 'characterCreatorTitle',
@@ -112,32 +113,32 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'report',
+    path: APP_ROUTES.report.slice(1),
     component: BugReportComponent,
     data: { title: 'reportTitle', description: 'report', keywords: 'report' },
   },
   {
-    path: 'legal',
+    path: APP_ROUTES.legal.slice(1),
     component: LegalNoticeComponent,
     data: { title: 'legalTitle', description: 'legal', keywords: 'legal' },
   },
   {
-    path: 'imprint',
+    path: APP_ROUTES.imprint.slice(1),
     component: ImpressumComponent,
     data: { title: 'imprintTitle', description: 'impressum', keywords: 'impressum' },
   },
   {
-    path: 'about',
+    path: APP_ROUTES.about.slice(1),
     component: AboutComponent,
     data: { title: 'aboutTitle', description: 'about', keywords: 'about' },
   },
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: APP_ROUTES.about.slice(1),
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: 'overview',
+    redirectTo: APP_ROUTES.overview.slice(1),
   },
 ];

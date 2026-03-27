@@ -1,10 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CharacterStateService } from '../../../services/character-state.service';
+import { CharacterStateService } from '../../../../services/character-state.service';
 
 @Component({
-  selector: 'app-details',
-  imports: [CommonModule],
+  selector: 'app-cs-details',
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })

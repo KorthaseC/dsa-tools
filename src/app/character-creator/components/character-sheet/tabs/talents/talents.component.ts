@@ -11,6 +11,7 @@ import { CRAFT_TALENTS, KNOWLEDGE_TALENTS, NATURE_TALENTS, PHYSICAL_TALENTS, SOC
 import { CharacterStateService } from '../../../../services/character-state.service';
 import { DiceRollService } from '../../../../../shared/dice-roll.service';
 import { IncreaseFactor, Skill } from '../../../../models/base-creation.model';
+import { ATTR_COLORS } from '../../../../constants/attribute-colors.const';
 
 type SkillKey = 'physical' | 'social' | 'nature' | 'knowledge' | 'crafts';
 
@@ -23,7 +24,7 @@ const CATEGORY_DEFS: { label: string; key: SkillKey; talents: TalentDefinition[]
 ];
 
 @Component({
-  selector: 'app-talents',
+  selector: 'app-cs-talents',
   imports: [FormsModule, AccordionModule, InputNumber, InputTextModule, SelectModule, TableModule, TooltipModule],
   templateUrl: './talents.component.html',
   styleUrl: './talents.component.scss',
@@ -33,16 +34,7 @@ export class TalentsComponent {
   private diceService = inject(DiceRollService);
   character = this.state.character;
 
-  readonly ATTR_COLORS: Record<string, string> = {
-    MU: '#e74c3c',
-    KL: '#9b59b6',
-    IN: '#2ecc71',
-    CH: '#3d3d3d',
-    FF: '#f1c40f',
-    GE: '#3498db',
-    KO: '#95a5a6',
-    KK: '#e67e22',
-  };
+  readonly attrColors = ATTR_COLORS;
 
   private readonly LS_KEY = 'dsa-talents-open-panels';
 
@@ -87,8 +79,6 @@ export class TalentsComponent {
     this.routines.update((r) => ({ ...r, [name]: val }));
   }
 
-  // Holds in-progress FW edits while the user is typing.
-  // Plain object (not a signal) so keystrokes don't trigger change detection.
   readonly pendingFw: Record<string, number> = {};
 
   commitPendingFw(key: SkillKey, def: TalentDefinition): void {
@@ -102,9 +92,9 @@ export class TalentsComponent {
 
   rollCheck(check: [string, string, string]): void {
     const [a, b, c] = check;
-    this.diceService.roll('1d20', this.ATTR_COLORS[a] ?? '#ffffff');
-    this.diceService.add('1d20', this.ATTR_COLORS[b] ?? '#ffffff');
-    this.diceService.add('1d20', this.ATTR_COLORS[c] ?? '#ffffff');
+    this.diceService.roll('1d20', this.attrColors[a] ?? '#ffffff');
+    this.diceService.add('1d20', this.attrColors[b] ?? '#ffffff');
+    this.diceService.add('1d20', this.attrColors[c] ?? '#ffffff');
   }
 
   updateFw(key: SkillKey, def: TalentDefinition, value: number | null): void {

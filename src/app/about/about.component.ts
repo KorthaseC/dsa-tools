@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { APP_ROUTES } from '../app.constants';
+
 interface Feature {
   title: string;
   description: string;
@@ -18,57 +20,57 @@ export class AboutComponent {
     {
       title: 'Übersicht',
       description: 'Eine zentrale Anlaufstelle, die alle verfügbaren Funktionen dieser Webseite auf einen Blick zeigt.',
-      routerLink: '/overview',
+      routerLink: APP_ROUTES.overview,
     },
     {
       title: 'Kalender',
       description: 'Berechne Wochentag und Madaphase für ein beliebiges aventurisches Datum im aventurischen Kalender.',
-      routerLink: '/calendar',
+      routerLink: APP_ROUTES.calendar,
     },
     {
       title: 'Währungsrechner',
       description: 'Konvertiere mühelos zwischen den verschiedenen Währungen Aventuriens, um Handel und Kaufgeschäfte realistisch darzustellen.',
-      routerLink: '/currency',
+      routerLink: APP_ROUTES.currency,
     },
     {
       title: 'Alchemie',
       description: 'Nutze unser Alchemie-Tool, um Tränke und Mixturen zu erstellen, die deine Helden im Spiel nutzen können.',
-      routerLink: '/alchemy',
+      routerLink: APP_ROUTES.alchemy,
     },
     {
       title: 'Tavernengenerator',
       description: 'Erstelle zufällige Tavernen und Gasthäuser, in denen eure Helden einkehren können - inklusive Namen und Besonderheiten.',
-      routerLink: '/tavern',
+      routerLink: APP_ROUTES.tavern,
     },
     {
       title: 'Namensgenerator',
       description: 'Finde passende Namen für Charaktere, die in eurer Geschichte vorkommen.',
-      routerLink: '/names',
+      routerLink: APP_ROUTES.names,
     },
     {
       title: 'Schmiedegenerator',
       description: 'Generiere zufällige Waffen und Rüstungen mit einzigartigen Eigenschaften.',
-      routerLink: '/smith',
+      routerLink: APP_ROUTES.smith,
     },
     {
       title: 'Büchergenerator',
       description: 'Erstelle einzigartige Bücher und Schriftrollen, die eure Helden in der Welt von Aventurien entdecken können.',
-      routerLink: '/books',
+      routerLink: APP_ROUTES.books,
     },
     {
       title: 'Bugreport und Feedback',
       description: 'Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.',
-      routerLink: '/report',
+      routerLink: APP_ROUTES.report,
     },
     {
       title: 'Datenschutz',
       description: 'Hier findest du unsere Datenschutzerklärung.',
-      routerLink: '/legal',
+      routerLink: APP_ROUTES.legal,
     },
     {
       title: 'Impressum',
       description: 'Rechtliche Hinweise und Disclaimer zu dieser Fanseite.',
-      routerLink: '/imprint',
+      routerLink: APP_ROUTES.imprint,
     },
   ];
 }

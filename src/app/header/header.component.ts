@@ -1,37 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterModule,
-} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { filter } from 'rxjs';
-import { ROUTE_TITLES } from '../app.constants';
+import { APP_ROUTES, ROUTE_TITLES } from '../app.constants';
 import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
 
 @Component({
-    selector: 'app-header',
-    imports: [TooltipModule, RouterModule, DiceRollsComponent],
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss'
+  selector: 'app-header',
+  imports: [TooltipModule, RouterModule, DiceRollsComponent],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
   public pageTitle: string = 'overviewTitle';
 
   public readonly pageTitles = ROUTE_TITLES;
+  public readonly routes = APP_ROUTES;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.updatePageTitle();
-      });
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+      this.updatePageTitle();
+    });
   }
 
   private updatePageTitle(): void {

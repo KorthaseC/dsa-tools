@@ -38,7 +38,6 @@
 }
 
 // Responsive table column visibility
-// (PrimeFlex has no table-cell display class, so we define these here)
 @media screen and (max-width: 767px) {
   .c-hide-sm {
     display: none !important;
@@ -60,34 +59,28 @@
 
 // Talent table: column widths
 ::ng-deep .c-talent-table {
-  // Remove the bottom margin the global override adds — accordion provides spacing
   margin-bottom: 0 !important;
 
-  // Header cells
   .p-datatable-thead > tr > th {
     padding: 0.35rem 0.5rem;
     font-size: 0.65rem;
     white-space: nowrap;
   }
 
-  // Narrow columns: shrink to minimum content width
   .p-datatable-thead > tr > .c-th-narrow {
     width: 1px;
   }
 
-  // Body cells
   .p-datatable-tbody > tr > td {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     vertical-align: middle;
   }
 
-  // Uniform compact height for all inputs and selects
   .p-select {
     --p-select-padding-y: 0.2rem;
     --p-select-padding-x: 0.35rem;
 
-    // Disabled selects: full colour but no border, subtle background — read-only table feel
     &.p-disabled {
       background: #2a2a2a !important;
       cursor: default;
@@ -102,7 +95,6 @@
   input.p-inputtext {
     padding: 0.2rem 0.35rem;
 
-    // Disabled name input: same borderless read-only feel
     &:disabled {
       border-color: transparent;
       background: #2a2a2a !important;
@@ -112,18 +104,15 @@
     }
   }
 
-  // FW inputnumber: match the minimum width of the probe selects
   p-inputnumber .p-inputtext {
     min-width: 3.5rem;
   }
 }
 
-// Center-aligned body cells
 .c-td-center {
   text-align: center;
 }
 
-// Roll button cell — flex-center the circular button
 .c-td-roll {
   text-align: center;
 
@@ -133,7 +122,6 @@
 }
 
 ::ng-deep {
-  // Hide the dropdown chevron on disabled selects so the value fills the space
   p-select.p-disabled {
     .p-select-dropdown {
       display: none !important;
