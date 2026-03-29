@@ -7,6 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "node replace-env-vars.js && ng build",
+    "build:prod": "node replace-env-vars.js && ng build --configuration production && git checkout src/environments/environment.prod.ts",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

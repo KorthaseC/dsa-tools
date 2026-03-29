@@ -10,9 +10,9 @@ describe('NameGeneratorService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [],
-    providers: [NameGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-});
+      imports: [],
+      providers: [NameGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+    });
 
     service = TestBed.inject(NameGeneratorService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -34,9 +34,7 @@ describe('NameGeneratorService', () => {
 
     const promise = service.getNameList(region, gender, isNoble);
 
-    const req = httpMock.expectOne(
-      'https://dsa-name-generator.onrender.com/generate-names'
-    );
+    const req = httpMock.expectOne('https://api.dsa-tools.de/generate-names');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       origin: region,
@@ -56,9 +54,7 @@ describe('NameGeneratorService', () => {
 
     const promise = service.getNameList(region);
 
-    const req = httpMock.expectOne(
-      'https://dsa-name-generator.onrender.com/generate-names'
-    );
+    const req = httpMock.expectOne('https://api.dsa-tools.de/generate-names');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       origin: region,
@@ -78,9 +74,7 @@ describe('NameGeneratorService', () => {
 
     const promise = service.getNameList(region, gender, isNoble);
 
-    const req = httpMock.expectOne(
-      'https://dsa-name-generator.onrender.com/generate-names'
-    );
+    const req = httpMock.expectOne('https://api.dsa-tools.de/generate-names');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       origin: region,
