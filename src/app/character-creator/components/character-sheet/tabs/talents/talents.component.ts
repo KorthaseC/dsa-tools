@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccordionModule } from 'primeng/accordion';
 import { InputNumber } from 'primeng/inputnumber';
@@ -28,6 +28,7 @@ const CATEGORY_DEFS: { label: string; key: SkillKey; talents: TalentDefinition[]
   imports: [FormsModule, AccordionModule, InputNumber, InputTextModule, SelectModule, TableModule, TooltipModule],
   templateUrl: './talents.component.html',
   styleUrl: './talents.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TalentsComponent {
   private state = inject(CharacterStateService);

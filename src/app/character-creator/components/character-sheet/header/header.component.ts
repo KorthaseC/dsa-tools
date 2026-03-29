@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DetailsComponent } from './details/details.component';
 import { AttributesComponent } from './attributes/attributes.component';
 
@@ -7,5 +7,6 @@ import { AttributesComponent } from './attributes/attributes.component';
   imports: [DetailsComponent, AttributesComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {}

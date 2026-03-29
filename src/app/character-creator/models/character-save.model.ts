@@ -44,8 +44,7 @@ export interface LanguageRef {
 }
 
 export interface CombatTechniqueRef {
-  at: number;
-  pa?: number;
+  ktw: number;
 }
 
 export interface SkillRef {

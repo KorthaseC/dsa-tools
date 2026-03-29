@@ -1,0 +1,181 @@
+// ─── Section layout ───────────────────────────────────────────────────────────
+
+.c-section {
+  margin-bottom: 2rem;
+}
+
+.c-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(200, 169, 110, 0.85);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.03em;
+}
+
+// ─── Horizontal scroll wrapper ────────────────────────────────────────────────
+
+.c-table-wrap {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 106, 62, 0.35) transparent;
+}
+
+// ─── Responsive column visibility ────────────────────────────────────────────
+
+@media screen and (max-width: 767px) {
+  .c-hide-sm {
+    display: none !important;
+  }
+}
+
+// ─── Roll value-buttons ───────────────────────────────────────────────────────
+
+%roll-btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 1.75rem;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: 1px solid;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    filter 0.15s,
+    opacity 0.15s;
+
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// AT / FK button → light red
+.c-at-btn {
+  @extend %roll-btn-base;
+  border-color: rgba(220, 100, 100, 0.55);
+  background: rgba(220, 100, 100, 0.13);
+  color: #e57373;
+}
+
+// PA button → light green
+.c-pa-btn {
+  @extend %roll-btn-base;
+  border-color: rgba(100, 180, 120, 0.55);
+  background: rgba(100, 180, 120, 0.13);
+  color: #81c784;
+}
+
+// ─── PrimeNG table overrides ─────────────────────────────────────────────────
+
+::ng-deep .c-combat-table {
+  margin-bottom: 0 !important;
+
+  .p-datatable-thead > tr > th {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+
+  .p-datatable-thead > tr > .c-th-narrow {
+    width: 1px;
+  }
+
+  .p-datatable-tbody > tr > td {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+
+  .p-select {
+    --p-select-padding-y: 0.2rem;
+    --p-select-padding-x: 0.35rem;
+
+    &.p-disabled {
+      background: #2a2a2a !important;
+      cursor: default;
+
+      .p-select-label {
+        cursor: default;
+        color: var(--p-select-color);
+        opacity: 1;
+      }
+    }
+  }
+
+  input.p-inputtext {
+    padding: 0.2rem 0.35rem;
+
+    &:disabled {
+      border-color: transparent;
+      background: #2a2a2a !important;
+      cursor: default;
+      opacity: 1;
+      color: var(--p-inputtext-color);
+    }
+  }
+
+  p-inputnumber .p-inputtext {
+    min-width: 3rem;
+    text-align: center;
+    padding: 0.2rem 0.25rem;
+  }
+}
+
+// ─── PrimeNG multiselect disabled state ──────────────────────────────────────
+
+::ng-deep {
+  p-multiselect.p-disabled {
+    .p-multiselect-dropdown {
+      display: none !important;
+    }
+
+    .p-multiselect-label {
+      padding-right: 0.5rem !important;
+      text-align: center;
+    }
+  }
+
+  p-multiselect .p-multiselect {
+    --p-multiselect-padding-y: 0.2rem;
+    --p-multiselect-padding-x: 0.35rem;
+
+    &.p-disabled {
+      background: #2a2a2a !important;
+      cursor: default;
+    }
+  }
+
+  p-select.p-disabled {
+    .p-select-dropdown {
+      display: none !important;
+    }
+
+    .p-select-label {
+      padding-right: 0.5rem !important;
+      text-align: center;
+    }
+  }
+
+  p-select .p-select {
+    width: 100%;
+  }
+
+  p-inputnumber .p-inputtext {
+    width: 100%;
+    text-align: center;
+    padding: 0.2rem 0.25rem;
+  }
+}
+
+// ─── Cell alignment ───────────────────────────────────────────────────────────
+
+.c-td-center {
+  text-align: center;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
 
@@ -7,5 +7,6 @@ import { TabsComponent } from './tabs/tabs.component';
   imports: [HeaderComponent, TabsComponent],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacterSheetComponent {}

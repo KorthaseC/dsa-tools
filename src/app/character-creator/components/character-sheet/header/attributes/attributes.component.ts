@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputNumber } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
@@ -12,6 +12,7 @@ import { ATTR_COLORS } from '../../../../constants/attribute-colors.const';
   imports: [FormsModule, InputNumber, TooltipModule],
   templateUrl: './attributes.component.html',
   styleUrl: './attributes.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AttributesComponent {
   private state = inject(CharacterStateService);

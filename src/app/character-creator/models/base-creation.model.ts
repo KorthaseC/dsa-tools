@@ -109,8 +109,7 @@ export interface Language {
 }
 
 export interface CombatTechnique {
-  at: number;
-  pa?: number;
+  ktw: number;
 }
 
 export interface Skill {

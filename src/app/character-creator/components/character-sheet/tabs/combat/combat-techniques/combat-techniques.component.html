@@ -1,0 +1,145 @@
+<p-accordion [multiple]="true" [value]="openPanels()" (valueChange)="onPanelsChange($event)">
+  <!-- ── Nahkampf ──────────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="melee">
+    <p-accordion-header>Nahkampf</p-accordion-header>
+    <p-accordion-content>
+      <div class="c-table-wrap">
+        <p-table [value]="meleeRows()" [tableStyle]="{ width: '100%' }" styleClass="c-combat-table">
+          <ng-template #header>
+            <tr>
+              <th class="c-th">Kampftechnik</th>
+              <th class="c-th c-th-narrow c-hide-sm">Leiteigenschaft</th>
+              <th class="c-th c-th-narrow c-hide-sm">SF</th>
+              <th class="c-th c-th-narrow">KTW</th>
+              <th class="c-th c-th-narrow">AT</th>
+              <th class="c-th c-th-narrow">PA</th>
+            </tr>
+          </ng-template>
+
+          <ng-template #body let-row>
+            <tr>
+              <!-- Kampftechnik name -->
+              <td class="c-td">
+                <input pInputText [value]="row.def.label" [disabled]="true" class="w-full" readonly />
+              </td>
+
+              <!-- Leiteigenschaft -->
+              <td class="c-td c-td-center c-hide-sm">
+                <p-multiselect
+                  [ngModel]="row.attrModel"
+                  [options]="attributeOptions"
+                  [disabled]="true"
+                  [selectionLimit]="2"
+                  [maxSelectedLabels]="2"
+                  [showToggleAll]="false"
+                  class="w-full"
+                />
+              </td>
+
+              <!-- Steigerungsfaktor -->
+              <td class="c-td c-td-center c-hide-sm">
+                <p-select [ngModel]="row.def.increaseFactor" [options]="increaseFactorOptions" [disabled]="true" class="w-full" />
+              </td>
+
+              <!-- KTW (editable) -->
+              <td class="c-td c-td-center">
+                <p-inputnumber
+                  [ngModel]="row.ktw"
+                  (ngModelChange)="setPendingKtw(row.def.name, $event)"
+                  (onBlur)="commitKtw(row.def.name)"
+                  [min]="6"
+                  [max]="25"
+                  [showButtons]="false"
+                  [useGrouping]="false"
+                  class="w-full"
+                />
+              </td>
+
+              <!-- AT (pre-computed, light red) -->
+              <td class="c-td c-td-center">
+                <button class="c-at-btn" type="button" (click)="rollAt()" [pTooltip]="'AT würfeln (' + row.at + ')'" tooltipPosition="top">
+                  {{ row.at }}
+                </button>
+              </td>
+
+              <!-- PA (pre-computed, light green) -->
+              <td class="c-td c-td-center">
+                <button class="c-pa-btn" type="button" (click)="rollPa()" [pTooltip]="'PA würfeln (' + row.pa + ')'" tooltipPosition="top">
+                  {{ row.pa }}
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+
+  <!-- ── Fernkampf ─────────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="ranged">
+    <p-accordion-header>Fernkampf</p-accordion-header>
+    <p-accordion-content>
+      <div class="c-table-wrap">
+        <p-table [value]="rangedRows()" [tableStyle]="{ width: '100%' }" styleClass="c-combat-table">
+          <ng-template #header>
+            <tr>
+              <th class="c-th">Kampftechnik</th>
+              <th class="c-th c-th-narrow c-hide-sm">Leiteigenschaft</th>
+              <th class="c-th c-th-narrow c-hide-sm">SF</th>
+              <th class="c-th c-th-narrow">KTW</th>
+              <th class="c-th c-th-narrow">FK</th>
+            </tr>
+          </ng-template>
+
+          <ng-template #body let-row>
+            <tr>
+              <!-- Kampftechnik name -->
+              <td class="c-td">
+                <input pInputText [value]="row.def.label" [disabled]="true" class="w-full" readonly />
+              </td>
+
+              <!-- Leiteigenschaft -->
+              <td class="c-td c-td-center c-hide-sm">
+                <p-multiselect
+                  [ngModel]="row.attrModel"
+                  [options]="attributeOptions"
+                  [disabled]="true"
+                  [selectionLimit]="2"
+                  [maxSelectedLabels]="2"
+                  [showToggleAll]="false"
+                  class="w-full"
+                />
+              </td>
+
+              <!-- Steigerungsfaktor -->
+              <td class="c-td c-td-center c-hide-sm">
+                <p-select [ngModel]="row.def.increaseFactor" [options]="increaseFactorOptions" [disabled]="true" class="w-full" />
+              </td>
+
+              <!-- KTW (editable) -->
+              <td class="c-td c-td-center">
+                <p-inputnumber
+                  [ngModel]="row.ktw"
+                  (ngModelChange)="setPendingKtw(row.def.name, $event)"
+                  (onBlur)="commitKtw(row.def.name)"
+                  [min]="6"
+                  [max]="25"
+                  [showButtons]="false"
+                  [useGrouping]="false"
+                  class="w-full"
+                />
+              </td>
+
+              <!-- FK = AT for ranged (pre-computed, light red) -->
+              <td class="c-td c-td-center">
+                <button class="c-at-btn" type="button" (click)="rollAt()" [pTooltip]="'FK würfeln (' + row.fk + ')'" tooltipPosition="top">
+                  {{ row.fk }}
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+</p-accordion>
