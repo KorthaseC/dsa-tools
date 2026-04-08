@@ -1,21 +1,22 @@
-const fs = require("fs");
-const path = require("path");
-require("dotenv").config();
+const fs = require('fs');
+const path = require('path');
 
-const prodEnvFilePath = path.resolve(
-  __dirname,
-  "src/environments/environment.prod.ts"
-);
+const localEnvPath = path.resolve(__dirname, 'src/environments/environment.local.ts');
+const prodEnvPath = path.resolve(__dirname, 'src/environments/environment.prod.ts');
 
-const googleScriptId = process.env.GOOGLE_SCRIPT_ID;
+const localContent = fs.readFileSync(localEnvPath, 'utf-8');
+const idMatch = localContent.match(/googleScriptId:\s*'(.*)'/);
 
-const replaceEnvVariables = (filePath) => {
-  let fileContent = fs.readFileSync(filePath, "utf-8");
-  fileContent = fileContent.replace(
-    "GOOGLE_SCRIPT_ID_PLACEHOLDER",
-    googleScriptId
-  );
-  fs.writeFileSync(filePath, fileContent, "utf-8");
-};
+if (!idMatch || !idMatch[1]) {
+  console.error('FEHLER: Keine googleScriptId in environment.local.ts gefunden!');
+  process.exit(1);
+}
 
-replaceEnvVariables(prodEnvFilePath);
+const realId = idMatch[1];
+
+let prodContent = fs.readFileSync(prodEnvPath, 'utf-8');
+prodContent = prodContent.replace('GOOGLE_SCRIPT_ID_PLACEHOLDER', realId);
+
+fs.writeFileSync(prodEnvPath, prodContent, 'utf-8');
+
+console.log(`Erfolg: ID (${realId.substring(0, 5)}...) wurde in environment.prod.ts eingesetzt.`);

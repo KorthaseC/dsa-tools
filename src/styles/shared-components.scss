@@ -26,6 +26,17 @@
   padding-top: 0.5rem;
 }
 
+// ── Result label ─────────────────────────────────────────────────────────────
+// Used by: calendar, tavern-generator, token-generator (+ token-generator adds no overrides)
+// book-generator, dice-result define their own local variants.
+.result-label {
+  font-weight: 600;
+  color: #5a3a10;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 // ── Result value ─────────────────────────────────────────────────────────────
 // Used by: alchemy, book-generator, currency, smith-generator, bug-report
 // tavern-generator and calendar override font-size to 1.1rem locally.

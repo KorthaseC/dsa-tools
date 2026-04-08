@@ -11,6 +11,7 @@ export const APP_ROUTES = {
   names: '/names',
   smith: '/smith',
   books: '/books',
+  token: '/token',
   character: '/character',
   characterCreator: '/character-creator',
   characterImporter: '/character-importer',
@@ -39,6 +40,7 @@ export const ROUTE_TITLES: Record<string, string> = {
   legalTitle: 'Datenschutz',
   imprintTitle: 'Impressum',
   characterCreatorTitle: 'Helden Ersteller',
+  tokenGeneratorTitle: 'Token Generator',
 };
 
 /** Maps route names to their German meta description content */
@@ -56,6 +58,7 @@ export const META_DESCRIPTIONS: Record<string, string> = {
   books: 'Erstelle einzigartige Bücher und Schriftrollen, die deine Helden in Aventurien entdecken können.',
   report: 'Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.',
   legal: 'Hier findest du rechtliche Hinweise zu unserer inoffiziellen DSA-Hilfeseite.',
+  token: 'Erstelle einen runden Charakter-Token für dein DSA-Abenteuer aus einem eigenen Bild.',
 };
 
 /** Maps route names to their German meta keywords content */
@@ -73,4 +76,5 @@ export const META_KEYWORDS: Record<string, string> = {
   books: 'DSA Büchergenerator, Das Schwarze Auge Bücher, Aventurische Schriftrollen',
   report: 'DSA Feedback, Bugreport, Das Schwarze Auge Support',
   legal: 'DSA Rechtliches, Das Schwarze Auge Rechtlich, rechtliche Hinweise',
+  token: 'DSA Token, Charakter Token, Das Schwarze Auge Token, Charakter Bild',
 };

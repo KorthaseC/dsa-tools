@@ -13,15 +13,11 @@ interface BookRequestApi {
   providedIn: 'root',
 })
 export class BookGeneratorService {
-  private apiBaseUrl: string = 'https://dsa-name-generator.onrender.com/';
+  private apiBaseUrl: string = 'https://api.dsa-tools.de/';
 
   constructor(private readonly http: HttpClient) {}
 
-  public async getBooksList(
-    bookCount: number,
-    bookType?: string,
-    feature?: string
-  ): Promise<Book[]> {
+  public async getBooksList(bookCount: number, bookType?: string, feature?: string): Promise<Book[]> {
     const url: string = this.apiBaseUrl + 'generate-books';
     const headers = { 'Content-Type': 'application/json' };
     const body: BookRequestApi = {
@@ -34,9 +30,7 @@ export class BookGeneratorService {
     }
 
     try {
-      const response = await firstValueFrom(
-        this.http.post<Book[]>(url, body, { headers })
-      );
+      const response = await firstValueFrom(this.http.post<Book[]>(url, body, { headers }));
       return response;
     } catch (error) {
       console.error('Error fetching books:', error);

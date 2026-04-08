@@ -15,6 +15,7 @@ import { NameGeneratorComponent } from './name-generator/name-generator.componen
 import { OverviewComponent } from './overview/overview.component';
 import { SmithGeneratorComponent } from './smith-generator/smith-generator.component';
 import { TavernGeneratorComponent } from './tavern-generator/tavern-generator.component';
+import { TokenGeneratorComponent } from './token-generator/token-generator.component';
 
 export const routes: Routes = [
   {
@@ -86,6 +87,16 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'token',
+    component: TokenGeneratorComponent,
+    data: { title: 'tokenGeneratorTitle', description: 'token', keywords: 'token' },
+  },
+  {
+    path: 'token',
+    component: TokenGeneratorComponent,
+    data: { title: 'tokenGeneratorTitle', description: 'token', keywords: 'token' },
+  },
+  {
     path: APP_ROUTES.character.slice(1),
     component: CharacterLoaderComponent,
     data: {
@@ -121,6 +132,11 @@ export const routes: Routes = [
     path: APP_ROUTES.legal.slice(1),
     component: LegalNoticeComponent,
     data: { title: 'legalTitle', description: 'legal', keywords: 'legal' },
+  },
+  {
+    path: 'imprint',
+    component: ImpressumComponent,
+    data: { title: 'imprintTitle', description: 'impressum', keywords: 'impressum' },
   },
   {
     path: APP_ROUTES.imprint.slice(1),

@@ -58,19 +58,28 @@ export class AboutComponent {
       routerLink: APP_ROUTES.books,
     },
     {
+      featureName: 'books',
+      routerLink: '/books',
+    },
+    {
+      title: 'Token Generator',
+      description: 'Erstelle runde Charakter-Token für dein DSA-Abenteuer aus einem eigenen Bild.',
+      routerLink: '/token',
+    },
+    {
       title: 'Bugreport und Feedback',
       description: 'Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.',
-      routerLink: APP_ROUTES.report,
+      routerLink: '/report',
     },
     {
       title: 'Datenschutz',
       description: 'Hier findest du unsere Datenschutzerklärung.',
-      routerLink: APP_ROUTES.legal,
+      routerLink: '/legal',
     },
     {
       title: 'Impressum',
       description: 'Rechtliche Hinweise und Disclaimer zu dieser Fanseite.',
-      routerLink: APP_ROUTES.imprint,
+      routerLink: '/imprint',
     },
   ];
 }

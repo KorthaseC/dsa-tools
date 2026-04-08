@@ -10,9 +10,9 @@ describe('BookGeneratorService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [],
-    providers: [BookGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-});
+      imports: [],
+      providers: [BookGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+    });
 
     service = TestBed.inject(BookGeneratorService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -49,9 +49,7 @@ describe('BookGeneratorService', () => {
 
     const promise = service.getBooksList(bookCount, bookType, feature);
 
-    const req = httpMock.expectOne(
-      'https://dsa-name-generator.onrender.com/generate-books'
-    );
+    const req = httpMock.expectOne('https://api.dsa-tools.de/generate-books');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       bookCounter: bookCount,
@@ -88,9 +86,7 @@ describe('BookGeneratorService', () => {
 
     const promise = service.getBooksList(bookCount, bookType, feature);
 
-    const req = httpMock.expectOne(
-      'https://dsa-name-generator.onrender.com/generate-books'
-    );
+    const req = httpMock.expectOne('https://api.dsa-tools.de/generate-books');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       bookCounter: bookCount,
@@ -110,9 +106,7 @@ describe('BookGeneratorService', () => {
 
     const promise = service.getBooksList(bookCount, bookType, feature);
 
-    const req = httpMock.expectOne(
-      'https://dsa-name-generator.onrender.com/generate-books'
-    );
+    const req = httpMock.expectOne('https://api.dsa-tools.de/generate-books');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
       bookCounter: bookCount,

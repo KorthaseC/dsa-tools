@@ -13,15 +13,11 @@ interface NameRequest {
   providedIn: 'root',
 })
 export class NameGeneratorService {
-  private namesBaseUrl: string = 'https://dsa-name-generator.onrender.com/';
+  private namesBaseUrl: string = 'https://api.dsa-tools.de/';
 
   constructor(private readonly http: HttpClient) {}
 
-  public async getNameList(
-    region: NameRegion,
-    gender?: string,
-    isNoble?: boolean
-  ): Promise<string[]> {
+  public async getNameList(region: NameRegion, gender?: string, isNoble?: boolean): Promise<string[]> {
     const url: string = this.namesBaseUrl + 'generate-names';
     const headers = { 'Content-Type': 'application/json' };
     const body: NameRequest = {
@@ -34,9 +30,7 @@ export class NameGeneratorService {
     }
 
     try {
-      const response = await firstValueFrom(
-        this.http.post<string[]>(url, body, { headers })
-      );
+      const response = await firstValueFrom(this.http.post<string[]>(url, body, { headers }));
       return response;
     } catch (error) {
       console.error('Error fetching names:', error);
