@@ -148,3 +148,231 @@
     }
   }
 }
+
+// ── Character-sheet table utilities ──────────────────────────────────────────
+// Used by: combat-techniques, talents, combat-equipment
+
+// Horizontal scroll wrapper — works on mobile via -webkit-overflow-scrolling
+.c-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 106, 62, 0.35) transparent;
+}
+
+// Responsive column visibility
+@media screen and (max-width: 767px) {
+  .c-hide-sm {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .c-hide-md {
+    display: none !important;
+  }
+}
+
+// Cell / input alignment
+.c-td-center {
+  text-align: center;
+}
+
+.c-input-center {
+  text-align: center;
+}
+
+// ── PrimeNG p-table base overrides ──────────────────────────────────────────
+// Replaces per-component c-combat-table / c-talent-table classes.
+.c-sheet-table {
+  margin-bottom: 0 !important;
+
+  .p-datatable-thead > tr > th {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+
+  .p-datatable-thead > tr > .c-th-narrow {
+    width: 1px;
+  }
+
+  .p-datatable-tbody > tr > td {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+
+  // PrimeNG only sets z-index: 1 on th.p-datatable-frozen-column, not td.
+  // Without this, scrolling body cells paint over frozen body cells.
+  td.p-datatable-frozen-column {
+    z-index: 1;
+  }
+}
+
+// ── Compact select without dropdown arrow ────────────────────────────────────
+// Use styleClass="c-select--minimal" on p-select in narrow table columns.
+// The full cell remains clickable to open the overlay; the chevron icon is just
+// hidden to reclaim the ~1.5rem it would cost in tight columns.
+.c-select--minimal {
+  .p-select-dropdown {
+    display: none !important;
+  }
+
+  .p-select-label {
+    padding-right: 0.35rem !important;
+    text-align: center;
+  }
+}
+
+// ── PrimeNG form control overrides for sheet tables ─────────────────────────
+.c-sheet-table {
+  .p-select {
+    --p-select-padding-y: 0.2rem;
+    --p-select-padding-x: 0.35rem;
+    width: 100%;
+
+    &.p-disabled {
+      background: #2a2a2a !important;
+      cursor: default;
+
+      .p-select-label {
+        cursor: default;
+        color: var(--p-select-color);
+        opacity: 1;
+      }
+    }
+  }
+
+  input.p-inputtext {
+    padding: 0.2rem 0.35rem;
+
+    &:disabled {
+      border-color: transparent;
+      background: #2a2a2a !important;
+      cursor: default;
+      opacity: 1;
+      color: var(--p-inputtext-color);
+    }
+  }
+
+  p-inputnumber .p-inputtext {
+    min-width: 3rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.2rem 0.25rem;
+  }
+
+  p-select .p-select {
+    width: 100%;
+  }
+
+  p-select.p-disabled {
+    .p-select-dropdown {
+      display: none !important;
+    }
+
+    .p-select-label {
+      padding-right: 0.5rem !important;
+      text-align: center;
+    }
+  }
+
+  // AT/PA roll buttons fill their cell so no truncation occurs
+  .c-at-btn,
+  .c-pa-btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+// ── Roll value-buttons ──────────────────────────────────────────────────────
+// Used by: combat-techniques (AT/PA/FK), combat-equipment (AT/PA)
+.c-at-btn,
+.c-pa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 1.75rem;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: 1px solid;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    filter 0.15s,
+    opacity 0.15s;
+
+  &:hover:not(:disabled) {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+// AT / FK button → light red
+.c-at-btn {
+  border-color: rgba(220, 100, 100, 0.55);
+  background: rgba(220, 100, 100, 0.13);
+  color: #e57373;
+}
+
+// PA button → light green
+.c-pa-btn {
+  border-color: rgba(100, 180, 120, 0.55);
+  background: rgba(100, 180, 120, 0.13);
+  color: #81c784;
+}
+
+// ── Delete button ───────────────────────────────────────────────────────────
+// Used by: combat-equipment (row delete)
+.c-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: #2a2a2a;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    background 0.15s;
+
+  &:hover {
+    color: #e57373;
+    background: rgba(220, 100, 100, 0.13);
+  }
+}
+
+// ── Placeholder text for future sections ────────────────────────────────────
+// Used by: combat-equipment
+.c-placeholder {
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+  font-size: 0.875rem;
+  padding: 1rem;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  text-align: center;
+}
+
+// ── Add row button container ────────────────────────────────────────────────
+// Used by: combat-equipment
+.c-add-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}

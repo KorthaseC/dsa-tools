@@ -1,0 +1,234 @@
+<p-accordion [multiple]="true" [value]="openPanels()" (valueChange)="onPanelsChange($event)">
+  <!-- ── Nahkampfwaffen ──────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="nahkampfwaffen">
+    <p-accordion-header>Nahkampfwaffen</p-accordion-header>
+    <p-accordion-content>
+      <p-table
+        [value]="meleeWeaponRows()"
+        [tableStyle]="{ 'min-width': '62rem', 'table-layout': 'fixed' }"
+        styleClass="c-sheet-table"
+        [scrollable]="true"
+        (onRowReorder)="onRowReorder($event)"
+      >
+        <ng-template #header>
+          <tr>
+            <th style="width: 2rem" pFrozenColumn alignFrozen="left"></th>
+            <th style="width: 9rem" pFrozenColumn alignFrozen="left">Waffe</th>
+            <th style="width: 9rem">Kampftechnik</th>
+            <th style="width: 8.5rem" class="c-hide-sm">Schadensb.</th>
+            <th style="width: 4.5rem">TP</th>
+            <th style="width: 3.5rem">AT-Mod</th>
+            <th style="width: 3.5rem">PA-Mod</th>
+            <th style="width: 5.5rem" class="c-hide-sm">Reichweite</th>
+            <th style="width: 3rem" class="c-hide-sm">BF</th>
+            <th style="width: 3.5rem" class="c-hide-sm">BS</th>
+            <th style="width: 3.5rem">AT</th>
+            <th style="width: 3.5rem">PA</th>
+            <th style="width: 4.5rem" class="c-hide-sm">Gewicht</th>
+            <th style="width: 2rem"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-row let-index="rowIndex">
+          <tr [pReorderableRow]="index">
+            <!-- Drag handle / touch reorder -->
+            <td class="c-td-center" pFrozenColumn alignFrozen="left">
+              <span class="pi pi-bars c-drag-handle" pReorderableRowHandle></span>
+              <div class="c-reorder-touch">
+                <button class="c-move-btn" type="button" (click)="moveRowUp(index)" [disabled]="index === 0"><i class="pi pi-chevron-up"></i></button>
+                <button class="c-move-btn" type="button" (click)="moveRowDown(index)" [disabled]="index === meleeWeaponRows().length - 1">
+                  <i class="pi pi-chevron-down"></i>
+                </button>
+              </div>
+            </td>
+
+            <!-- Waffe -->
+            <td pFrozenColumn alignFrozen="left">
+              <input pInputText [ngModel]="row.weapon" (ngModelChange)="updateMeleeField(row.id, 'weapon', $event)" placeholder="Waffe" class="w-full" />
+            </td>
+
+            <!-- Kampftechnik -->
+            <td>
+              <p-select
+                [ngModel]="row.combatTechnique"
+                (ngModelChange)="updateMeleeField(row.id, 'combatTechnique', $event)"
+                [options]="combatTechniqueOptions"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="–"
+                appendTo="body"
+                class="w-full"
+              />
+            </td>
+
+            <!-- Schadensbonus -->
+            <td class="c-hide-sm">
+              <div class="c-split-cell">
+                <span class="c-leiteigenschaft c-split-left">{{ row.leiteigenschaft.join('/') || '–' }}</span>
+                <p-inputnumber
+                  [ngModel]="row.schadensbonus"
+                  (ngModelChange)="updateMeleeField(row.id, 'schadensbonus', $event ?? 0)"
+                  [showButtons]="false"
+                  [useGrouping]="false"
+                  class="c-split-right"
+                />
+              </div>
+            </td>
+
+            <!-- TP -->
+            <td class="c-td-center">
+              <input pInputText [ngModel]="row.tp" (ngModelChange)="updateMeleeField(row.id, 'tp', $event)" placeholder="1W6" class="w-full c-input-center" />
+            </td>
+
+            <!-- AT-Mod -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.atMod"
+                (ngModelChange)="updateMeleeField(row.id, 'atMod', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [min]="-9"
+                [max]="9"
+                class="w-full"
+              />
+            </td>
+
+            <!-- PA-Mod -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.paMod"
+                (ngModelChange)="updateMeleeField(row.id, 'paMod', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [min]="-9"
+                [max]="9"
+                class="w-full"
+              />
+            </td>
+
+            <!-- Reichweite -->
+            <td class="c-td-center c-hide-sm">
+              <p-select
+                [ngModel]="row.reichweite"
+                (ngModelChange)="updateMeleeField(row.id, 'reichweite', $event)"
+                [options]="reichweiteOptions"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="–"
+                appendTo="body"
+                styleClass="c-select--minimal"
+                class="w-full"
+              />
+            </td>
+
+            <!-- BF -->
+            <td class="c-td-center c-hide-sm">
+              <p-inputnumber
+                [ngModel]="row.bf"
+                (ngModelChange)="updateMeleeField(row.id, 'bf', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [min]="0"
+                [max]="9"
+                class="w-full"
+              />
+            </td>
+
+            <!-- BS -->
+            <td class="c-td-center c-hide-sm">
+              <p-select
+                [ngModel]="row.bs"
+                (ngModelChange)="updateMeleeField(row.id, 'bs', $event)"
+                [options]="bsOptions"
+                optionLabel="label"
+                optionValue="value"
+                appendTo="body"
+                styleClass="c-select--minimal"
+                class="w-full"
+              />
+            </td>
+
+            <!-- AT (computed, rollable) -->
+            <td class="c-td-center">
+              <button
+                class="c-at-btn"
+                type="button"
+                (click)="rollAt()"
+                [pTooltip]="row.combatTechnique ? 'AT würfeln (' + row.at + ')' : 'Kampftechnik wählen'"
+                tooltipPosition="top"
+                [disabled]="!row.combatTechnique"
+              >
+                {{ row.combatTechnique ? row.at : '–' }}
+              </button>
+            </td>
+
+            <!-- PA (computed, rollable) -->
+            <td class="c-td-center">
+              <button
+                class="c-pa-btn"
+                type="button"
+                (click)="rollPa()"
+                [pTooltip]="row.combatTechnique ? 'PA würfeln (' + row.pa + ')' : 'Kampftechnik wählen'"
+                tooltipPosition="top"
+                [disabled]="!row.combatTechnique"
+              >
+                {{ row.combatTechnique ? row.pa : '–' }}
+              </button>
+            </td>
+
+            <!-- Gewicht -->
+            <td class="c-td-center c-hide-sm">
+              <p-inputnumber
+                [ngModel]="row.gewicht"
+                (ngModelChange)="updateMeleeField(row.id, 'gewicht', $event ?? 0)"
+                [minFractionDigits]="2"
+                [maxFractionDigits]="2"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [locale]="'de-DE'"
+                class="w-full"
+              />
+            </td>
+
+            <!-- Delete -->
+            <td class="c-td-center">
+              <button class="c-delete-btn" type="button" (click)="confirmDelete(row.id, $event)" pTooltip="Zeile entfernen" tooltipPosition="top">
+                <i class="pi pi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <div class="c-add-row">
+        <button pButton type="button" label="Waffe hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addMeleeWeapon()"></button>
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+
+  <!-- ── Fernkampfwaffen ─────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="fernkampfwaffen">
+    <p-accordion-header>Fernkampfwaffen</p-accordion-header>
+    <p-accordion-content>
+      <p class="c-placeholder">In Bearbeitung …</p>
+    </p-accordion-content>
+  </p-accordion-panel>
+
+  <!-- ── Rüstungen ───────────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="ruestungen">
+    <p-accordion-header>Rüstungen</p-accordion-header>
+    <p-accordion-content>
+      <p class="c-placeholder">In Bearbeitung …</p>
+    </p-accordion-content>
+  </p-accordion-panel>
+
+  <!-- ── Schilde / Parrierwaffen ─────────────────────────────────────────────── -->
+  <p-accordion-panel value="schilde">
+    <p-accordion-header>Schilde / Parrierwaffen</p-accordion-header>
+    <p-accordion-content>
+      <p class="c-placeholder">In Bearbeitung …</p>
+    </p-accordion-content>
+  </p-accordion-panel>
+</p-accordion>
+
+<p-confirmpopup />

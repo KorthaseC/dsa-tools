@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CombatPlaceholderComponent } from './combat-placeholder/combat-placeholder.component';
+import { CombatEquipmentComponent } from './combat-equipment/combat-equipment.component';
 import { CombatTechniquesComponent } from './combat-techniques/combat-techniques.component';
 
 @Component({
   selector: 'app-cs-combat',
-  imports: [CombatPlaceholderComponent, CombatTechniquesComponent],
+  imports: [CombatEquipmentComponent, CombatTechniquesComponent],
   templateUrl: './combat.component.html',
   styleUrl: './combat.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

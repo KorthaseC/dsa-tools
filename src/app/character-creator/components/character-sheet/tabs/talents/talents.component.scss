@@ -37,108 +37,10 @@
   }
 }
 
-// Responsive table column visibility
-@media screen and (max-width: 767px) {
-  .c-hide-sm {
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 991px) {
-  .c-hide-md {
-    display: none !important;
-  }
-}
-
-// Horizontal scroll wrapper — fallback for very narrow screens
-.c-table-wrap {
-  overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(138, 106, 62, 0.35) transparent;
-}
-
-// Talent table: column widths
-::ng-deep .c-talent-table {
-  margin-bottom: 0 !important;
-
-  .p-datatable-thead > tr > th {
-    padding: 0.35rem 0.5rem;
-    font-size: 0.65rem;
-    white-space: nowrap;
-  }
-
-  .p-datatable-thead > tr > .c-th-narrow {
-    width: 1px;
-  }
-
-  .p-datatable-tbody > tr > td {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    vertical-align: middle;
-  }
-
-  .p-select {
-    --p-select-padding-y: 0.2rem;
-    --p-select-padding-x: 0.35rem;
-
-    &.p-disabled {
-      background: #2a2a2a !important;
-      cursor: default;
-      .p-select-label {
-        cursor: default;
-        color: var(--p-select-color);
-        opacity: 1;
-      }
-    }
-  }
-
-  input.p-inputtext {
-    padding: 0.2rem 0.35rem;
-
-    &:disabled {
-      border-color: transparent;
-      background: #2a2a2a !important;
-      cursor: default;
-      opacity: 1;
-      color: var(--p-inputtext-color);
-    }
-  }
-
-  p-inputnumber .p-inputtext {
-    min-width: 3.5rem;
-  }
-}
-
-.c-td-center {
-  text-align: center;
-}
-
 .c-td-roll {
   text-align: center;
 
   .c-check-roll-btn {
     margin: 0 auto;
-  }
-}
-
-::ng-deep {
-  p-select.p-disabled {
-    .p-select-dropdown {
-      display: none !important;
-    }
-    .p-select-label {
-      padding-right: 0.5rem !important;
-      text-align: center;
-    }
-  }
-
-  p-select .p-select {
-    width: 100%;
-  }
-
-  p-inputnumber .p-inputtext {
-    width: 100%;
-    text-align: center;
-    padding: 0.2rem 0.25rem;
   }
 }

@@ -51,6 +51,20 @@ $hover-bg: rgba(200, 169, 110, 0.15);
   line-height: 1.4;
 }
 
+// Allow long option labels to wrap in multiselect overlays
+.p-multiselect-overlay {
+  width: 0 !important;
+}
+
+.p-multiselect-overlay .p-multiselect-option {
+  white-space: normal;
+  height: auto;
+  min-height: 2.5rem;
+  align-items: flex-start;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 // ── Light-mode token overrides ─────────────────────────────────────────────
 :root {
   // Checkbox / Radiobutton hover (checked state)
@@ -121,6 +135,25 @@ body.app-dark {
   --p-select-option-color: #{$text-primary};
   --p-select-overlay-border-color: #{$surface-warm-border};
   --p-select-focus-border-color: #{$gold-primary};
+
+  // MultiSelect — mirror select tokens
+  --p-multiselect-background: #{$surface-card};
+  --p-multiselect-color: #{$text-primary};
+  --p-multiselect-border-color: #{$surface-warm-border};
+  --p-multiselect-hover-border-color: #{$gold-primary};
+  --p-multiselect-focus-border-color: #{$gold-primary};
+  --p-multiselect-overlay-background: #{$surface-card};
+  --p-multiselect-overlay-color: #{$text-primary};
+  --p-multiselect-overlay-border-color: #{$surface-warm-border};
+  --p-multiselect-option-focus-background: #{$surface-warm-bg};
+  --p-multiselect-option-selected-background: #4a3820;
+  --p-multiselect-option-selected-color: #{$gold-primary};
+  --p-multiselect-option-selected-focus-background: #5a4010;
+  --p-multiselect-option-selected-focus-color: #{$gold-primary};
+  --p-multiselect-option-color: #{$text-primary};
+  --p-multiselect-chip-background: #{$surface-warm-bg};
+  --p-multiselect-disabled-background: #{$surface-card};
+  --p-multiselect-disabled-color: #{$text-primary};
 
   // Float label
   --p-floatlabel-color: #{$gold-muted};
@@ -428,8 +461,34 @@ p-tabpanel {
 // p-motion uses visibility:hidden + max-height:0 but no overflow:hidden, so invisible
 // content still contributes to the scroll container's scroll height (most visible on
 // the last panel). Clipping it here is safe: overlays/dropdowns are portalled.
+//
+// grid-template-columns: 100% — PrimeNG v21 animates via CSS Grid (0fr→1fr).
+// Without this, the grid column is unconstrained (auto/max-content), so the
+// direct child expands to fit wide tables instead of being bounded by the
+// accordion width, which prevents overflow-x: auto from firing on c-table-wrap.
+// Pinning the column to 100% of the accordion width fixes horizontal scrolling
+// while preserving the open/close animation (as per primeng/issues/19324).
+//
+// min-width: 0 on grid items — CSS grid items default to min-width: auto, which
+// allows each level of the nested grid chain to grow to max-content width even
+// when the parent column is 100%. Adding min-width: 0 at each grid-item level
+// (.p-motion inside .p-accordioncontent and .p-accordioncontent-wrapper inside
+// .p-motion) forces them to respect their grid cell bounds. Once the chain is
+// properly constrained, overflow-x: auto on .c-table-wrap can create the scroll
+// container instead of the accordion swallowing all horizontal space.
 .p-accordioncontent {
   overflow: hidden;
+  grid-template-columns: 100%;
+
+  // .p-motion is the direct grid item of .p-accordioncontent
+  .p-motion {
+    min-width: 0;
+  }
+}
+
+// .p-accordioncontent-wrapper is the direct grid item of .p-motion
+.p-accordioncontent-wrapper {
+  min-width: 0;
 }
 
 // ── Accordion (dark mode) ──────────────────────────────────────────────────────────────

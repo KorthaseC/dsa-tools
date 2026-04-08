@@ -1,0 +1,129 @@
+// ─── Split cell (Schadensbonus: Leiteigenschaft + number) ────────────────────
+
+.c-split-cell {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+
+  .c-split-left {
+    flex: 1 1 55%;
+    min-width: 0;
+  }
+
+  .c-split-right {
+    flex: 1 1 45%;
+    min-width: 0;
+  }
+}
+
+// ─── Drag handle ─────────────────────────────────────────────────────────────
+
+.c-drag-handle {
+  color: #2a2a2a;
+  font-size: 0.75rem;
+  cursor: grab;
+
+  &:hover {
+    color: rgba(200, 169, 110, 0.7);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  @media (pointer: coarse) {
+    display: none;
+  }
+}
+
+// ─── Touch reorder buttons (visible only on touch/coarse-pointer devices) ────
+
+.c-reorder-touch {
+  display: none;
+
+  @media (pointer: coarse) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    align-items: center;
+  }
+}
+
+.c-move-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.2rem;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: rgba(200, 169, 110, 0.5);
+  cursor: pointer;
+  font-size: 0.6rem;
+  padding: 0;
+  transition:
+    color 0.15s,
+    background 0.15s;
+
+  &:hover:not(:disabled) {
+    color: rgba(200, 169, 110, 1);
+    background: rgba(200, 169, 110, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+}
+
+// ─── Leiteigenschaft label (replaces disabled multiselect) ───────────────────
+
+.c-leiteigenschaft {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(200, 169, 110, 0.7);
+  text-align: center;
+  display: block;
+}
+
+// ─── Touch drag highlight classes ────────────────────────────────────────────
+
+.c-row-dragging {
+  opacity: 0.5;
+}
+
+.c-row-drop-target {
+  outline: 2px solid rgba(200, 169, 110, 0.6);
+  outline-offset: -2px;
+}
+
+// ─── Frozen column separator (Waffe column = 2nd frozen) ─────────────────────
+
+:host ::ng-deep .c-sheet-table {
+  th:nth-child(2).p-datatable-frozen-column,
+  td:nth-child(2).p-datatable-frozen-column {
+    border-right: 1px solid rgba(200, 169, 110, 0.25) !important;
+  }
+}
+
+// ─── Text truncation for fixed-width cells ──────────────────────────────────
+
+:host ::ng-deep .c-sheet-table {
+  .p-datatable-tbody > tr > td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .p-select-label,
+  .p-multiselect-label,
+  input.p-inputtext {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

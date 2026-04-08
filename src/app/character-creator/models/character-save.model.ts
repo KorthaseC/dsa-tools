@@ -72,6 +72,15 @@ export interface CloseCombatWeaponRef {
   at: number;
   pa: number;
   dp: string;
+  combatTechnique?: string;
+  schadensbonus?: number;
+  tp?: string;
+  atMod?: number;
+  paMod?: number;
+  reichweite?: string;
+  bf?: number;
+  bs?: string;
+  gewicht?: number;
 }
 
 export interface ArmorRef {

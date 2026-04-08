@@ -3,6 +3,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 
 import Aura from '@primeng/themes/aura';
+import { ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
@@ -75,6 +76,7 @@ export const appConfig: ApplicationConfig = {
       translation: DE_TRANSLATION,
     }),
     provideHttpClient(),
+    ConfirmationService,
     DialogService,
   ],
 };
