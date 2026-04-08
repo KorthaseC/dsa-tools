@@ -87,12 +87,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'token',
-    component: TokenGeneratorComponent,
-    data: { title: 'tokenGeneratorTitle', description: 'token', keywords: 'token' },
-  },
-  {
-    path: 'token',
+    path: APP_ROUTES.token.slice(1),
     component: TokenGeneratorComponent,
     data: { title: 'tokenGeneratorTitle', description: 'token', keywords: 'token' },
   },
@@ -132,11 +127,6 @@ export const routes: Routes = [
     path: APP_ROUTES.legal.slice(1),
     component: LegalNoticeComponent,
     data: { title: 'legalTitle', description: 'legal', keywords: 'legal' },
-  },
-  {
-    path: 'imprint',
-    component: ImpressumComponent,
-    data: { title: 'imprintTitle', description: 'impressum', keywords: 'impressum' },
   },
   {
     path: APP_ROUTES.imprint.slice(1),
