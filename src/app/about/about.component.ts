@@ -56,6 +56,11 @@ export class AboutComponent {
       routerLink: '/books',
     },
     {
+      title: 'Token Generator',
+      description: 'Erstelle runde Charakter-Token für dein DSA-Abenteuer aus einem eigenen Bild.',
+      routerLink: '/token',
+    },
+    {
       title: 'Bugreport und Feedback',
       description: 'Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.',
       routerLink: '/report',

@@ -14,10 +14,10 @@ interface FeatureCard {
 }
 
 @Component({
-    selector: 'app-overview',
-    imports: [CardModule, RouterModule, ],
-    templateUrl: './overview.component.html',
-    styleUrl: './overview.component.scss'
+  selector: 'app-overview',
+  imports: [CardModule, RouterModule],
+  templateUrl: './overview.component.html',
+  styleUrl: './overview.component.scss',
 })
 export class OverviewComponent {
   public featureCards: FeatureCard[] = [
@@ -81,6 +81,15 @@ export class OverviewComponent {
       imgSrc: 'assets/icons/nandus.svg',
       imgAlt: 'Nandus Symbol',
       description: 'Tool zur Erstellung von zufälligen Büchern',
+      cols: 1,
+      rows: 1,
+    },
+    {
+      title: 'Token Generator',
+      routerLink: '/token',
+      imgSrc: 'assets/icons/rur-und-gror.svg',
+      imgAlt: 'Rur und Gror Symbol',
+      description: 'Tool zur Erstellung von Charakter-Token',
       cols: 1,
       rows: 1,
     },

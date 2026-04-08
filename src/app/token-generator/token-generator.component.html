@@ -1,0 +1,96 @@
+<div class="token-container pb-5">
+  <!-- ── Upload phase ─────────────────────────────────────────────────── -->
+  @if (!imageLoaded) {
+    <p-fileupload
+      #fileUpload
+      mode="advanced"
+      accept="image/*"
+      [maxFileSize]="10000000"
+      [customUpload]="true"
+      [auto]="true"
+      [showUploadButton]="false"
+      [showCancelButton]="false"
+      (onSelect)="onFileSelected($event)"
+      styleClass="token-fileupload"
+    >
+      <ng-template pTemplate="header"></ng-template>
+      <ng-template pTemplate="content">
+        <div class="upload-area__inner">
+          <img src="assets/other/Coin.png" alt="Münze" class="upload-area__coin" />
+          <p class="upload-area__hint mt-3">Klicke hier oder ziehe ein Bild hinein</p>
+          <p class="upload-area__sub">Unterstützte Formate: JPG, PNG, WebP</p>
+          <p-button label="Bild auswählen" icon="pi pi-upload" styleClass="mt-3" (onClick)="chooseFile()" />
+        </div>
+      </ng-template>
+    </p-fileupload>
+  }
+
+  <!-- ── Editor phase ──────────────────────────────────────────────────── -->
+  @if (imageLoaded) {
+    <div class="editor-section">
+      <div class="canvas-wrapper">
+        <canvas #editorCanvas [width]="400" [height]="400" class="editor-canvas" aria-label="Token Editor"></canvas>
+      </div>
+
+      <p class="editor-hint mt-2">
+        <i class="pi pi-arrows-alt"></i> Ziehen zum Verschieben &nbsp;|&nbsp; <i class="pi pi-search-plus"></i> Scrollen / Pinch zum Zoomen
+      </p>
+
+      <div class="flex flex-wrap gap-2 mt-3 justify-content-center">
+        <p-button label="Anderes Bild" icon="pi pi-refresh" severity="secondary" (onClick)="changeImage()" />
+        <p-button label="Token generieren" icon="pi pi-download" (onClick)="generateToken()" />
+      </div>
+    </div>
+  }
+
+  <!-- ── Result phase ──────────────────────────────────────────────────── -->
+  @if (downloadUrl) {
+    <div class="result-section mt-4">
+      <div class="result-card">
+        <div class="flex justify-content-between align-items-center mb-3">
+          <span class="result-label">Vorschau</span>
+        </div>
+        <div class="flex flex-column align-items-center gap-3">
+          <img [src]="downloadUrl" alt="Token Vorschau" class="result-preview" />
+
+          <!-- Filename row -->
+          <div class="filename-row">
+            <input
+              pInputText
+              [(ngModel)]="downloadFileName"
+              [disabled]="!isEditingFileName"
+              class="filename-input"
+              (keydown.enter)="confirmFileName()"
+              (keydown.escape)="isEditingFileName = false"
+            />
+            <span class="filename-ext">.png</span>
+            @if (!isEditingFileName) {
+              <p-button
+                icon="pi pi-pencil"
+                [text]="true"
+                [rounded]="true"
+                size="small"
+                (onClick)="isEditingFileName = true"
+                aria-label="Dateiname bearbeiten"
+              />
+            } @else {
+              <p-button
+                icon="pi pi-check"
+                [text]="true"
+                [rounded]="true"
+                size="small"
+                severity="success"
+                (onClick)="confirmFileName()"
+                aria-label="Bestätigen"
+              />
+            }
+          </div>
+
+          <a [href]="downloadUrl" [download]="downloadFileName + '.png'" class="no-underline">
+            <p-button label="Token herunterladen" icon="pi pi-download" />
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</div>

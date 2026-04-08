@@ -11,6 +11,7 @@ import { NameGeneratorComponent } from './name-generator/name-generator.componen
 import { OverviewComponent } from './overview/overview.component';
 import { SmithGeneratorComponent } from './smith-generator/smith-generator.component';
 import { TavernGeneratorComponent } from './tavern-generator/tavern-generator.component';
+import { TokenGeneratorComponent } from './token-generator/token-generator.component';
 
 export const routes: Routes = [
   {
@@ -80,6 +81,11 @@ export const routes: Routes = [
       description: 'books',
       keywords: 'books',
     },
+  },
+  {
+    path: 'token',
+    component: TokenGeneratorComponent,
+    data: { title: 'tokenGeneratorTitle', description: 'token', keywords: 'token' },
   },
   {
     path: 'report',
