@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "node replace-env-vars.js && ng build",
-    "build:prod": "node replace-env-vars.js && ng build --configuration production && git checkout src/environments/environment.prod.ts",
+    "build:prod": "node replace-env-vars.js && ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,6 +24,7 @@
     "@angular/router": "^21.2.5",
     "@primeng/themes": "^21.0.4",
     "dotenv": "^16.4.5",
+    "pdf-lib": "^1.17.1",
     "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
     "primeng": "^21.1.3",

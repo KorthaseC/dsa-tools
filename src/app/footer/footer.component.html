@@ -1,5 +1,4 @@
 <footer class="c-footer">
-
   <!-- Left: menu button (mobile only) + social icons (desktop only) -->
   <div class="c-left">
     <p-button
@@ -38,18 +37,17 @@
 
   <!-- Center: nav links (desktop only) -->
   <nav class="c-nav">
-    <a [routerLink]="['/about']">Über</a>
-    <a [routerLink]="['/report']">Bugreport/Feedback</a>
-    <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">Regel-Wiki</a>
+    <a [routerLink]="[routes.about]">Über</a>
+    <a [routerLink]="[routes.report]">Bugreport/Feedback</a>
+    <a class="cursor-pointer" (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">Regel-Wiki</a>
   </nav>
 
   <!-- Right: always visible -->
   <div class="c-right">
-    <a [routerLink]="['/imprint']">Impressum</a>
-    <a [routerLink]="['/legal']">Datenschutz</a>
+    <a [routerLink]="[routes.imprint]">Impressum</a>
+    <a [routerLink]="[routes.legal]">Datenschutz</a>
     <span class="c-version">v{{ version }}</span>
   </div>
-
 </footer>
 
 <!-- Mobile popover menu -->
@@ -77,9 +75,9 @@
       </p-button>
     </div>
     <div class="footer-menu-links">
-      <a [routerLink]="['/about']" (click)="menu.hide()">Über</a>
-      <a [routerLink]="['/report']" (click)="menu.hide()">Bugreport/Feedback</a>
-      <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/'); menu.hide()">Regel-Wiki</a>
+      <a [routerLink]="[routes.about]" (click)="menu.hide()">Über</a>
+      <a [routerLink]="[routes.report]" (click)="menu.hide()">Bugreport/Feedback</a>
+      <a class="cursor-pointer" (click)="goToLink('https://dsa.ulisses-regelwiki.de/'); menu.hide()">Regel-Wiki</a>
     </div>
   </div>
 </p-popover>

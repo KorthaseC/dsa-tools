@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { FileUpload, FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 /** Ratio of the inner coin circle radius to half the canvas width (0..1).
  *  Calibrated against Coin.png – the transparent inner hole spans ~72 % of the half-width. */
@@ -15,7 +16,7 @@ const CANVAS_SIZE = 400;
 
 @Component({
   selector: 'app-token-generator',
-  imports: [CommonModule, FormsModule, ButtonModule, FileUploadModule, InputTextModule],
+  imports: [CommonModule, FormsModule, ButtonModule, FileUploadModule, InputTextModule, SelectButtonModule],
   templateUrl: './token-generator.component.html',
   styleUrl: './token-generator.component.scss',
 })
@@ -27,6 +28,12 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
   public downloadUrl: string | null = null;
   public downloadFileName = 'token';
   public isEditingFileName = false;
+  public downloadFormat: 'png' | 'webp' = 'png';
+  public generatedFormat: 'png' | 'webp' = 'png';
+  public readonly formatOptions = [
+    { label: 'PNG', value: 'png' },
+    { label: 'WebP', value: 'webp' },
+  ];
 
   private img: HTMLImageElement | null = null;
   private coinImg: HTMLImageElement | null = null;
@@ -110,7 +117,8 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
     }
     const canvas = this.canvasRef.nativeElement;
     this.draw(true);
-    this.downloadUrl = canvas.toDataURL('image/png');
+    this.generatedFormat = this.downloadFormat;
+    this.downloadUrl = canvas.toDataURL(`image/${this.downloadFormat}`);
     this.isEditingFileName = false;
     // Restore the editor view after capturing
     requestAnimationFrame(() => this.draw(false));

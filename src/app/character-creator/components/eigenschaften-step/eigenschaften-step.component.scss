@@ -1,0 +1,54 @@
+.c-eig-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.c-eig-sum {
+  font-variant-numeric: tabular-nums;
+  color: var(--p-text-muted-color, #94a3b8);
+
+  &.c-over {
+    color: var(--p-red-400, #f87171);
+    font-weight: 600;
+  }
+}
+
+.c-eig-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0.5rem 1rem;
+}
+
+.c-eig-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--p-surface-700, #334155);
+  border-radius: 0.4rem;
+}
+
+.c-eig-label {
+  width: 2.2rem;
+  font-weight: 700;
+}
+
+.c-eig-value {
+  width: 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-eig-cost {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--p-text-muted-color, #94a3b8);
+  font-variant-numeric: tabular-nums;
+}

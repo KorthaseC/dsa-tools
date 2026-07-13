@@ -1,0 +1,64 @@
+.c-origin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+// The "Spezies, Kultur & Profession" heading lives in THIS child component, so the color must be set
+// here (the shared .c-overview-heading rule in overview.component.scss can't reach across the boundary).
+.c-overview-heading {
+  color: #5a3a10; // dark warm brown — readable on the parchment card (matches the Vorteile heading)
+}
+
+.c-origin-lock.c-origin-unlocked {
+  color: var(--p-primary-color, #818cf8);
+}
+
+.c-origin-grid {
+  display: grid;
+  grid-template-columns: 1fr; // mobile: stacked
+  gap: 0.75rem 1rem;
+
+  // desktop: Spezies / Kultur / Profession share the row equally
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.c-origin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0; // let the field shrink inside its grid cell (so the panel can match its width)
+
+  label {
+    font-size: 0.8rem;
+    color: var(--p-text-muted-color, #94a3b8);
+  }
+
+  // p-autocomplete renders inline-flex by default; force full width + a flex row so the input grows
+  // and the dropdown button stretches to the SAME height (looks like one joined control), like p-select.
+  ::ng-deep p-autocomplete,
+  ::ng-deep .p-autocomplete {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  ::ng-deep .p-autocomplete-input {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  ::ng-deep .p-autocomplete-dropdown {
+    flex: 0 0 auto;
+    align-self: stretch; // match the input height exactly
+  }
+}
+
+.c-origin-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--p-text-muted-color, #94a3b8);
+}

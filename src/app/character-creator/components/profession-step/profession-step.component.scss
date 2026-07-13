@@ -1,0 +1,129 @@
+// Layout, list, package lists and the parchment detail base are shared — see
+// src/styles/selection-step.scss (.c-sel*, .c-pkg*, .c-sel-detail). This file only holds
+// the profession-specific detail columns, language/script slots and parchment re-tints.
+
+.c-prof-detail-title {
+  margin: 0 0 0.4rem;
+}
+
+.c-prof-sub {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-prof-notes {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+}
+
+.c-prof-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.25rem 1.5rem;
+
+  @media (max-width: 60rem) {
+    grid-template-columns: 1fr;
+  }
+
+  h4 {
+    margin: 0.75rem 0 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  section > *:first-child {
+    margin-top: 0;
+  }
+}
+
+// Special-ability grants can carry a long TEXT param (e.g. "Körperbeherrschung: Gebiet"). Render them as
+// a single flowing "Label (Param)" line that wraps — the default two-column .c-pkg li (value right-aligned)
+// made a long param overlap the label and spill into the next column.
+.c-pkg li.c-pkg-line {
+  display: block;
+  overflow-wrap: anywhere;
+
+  .c-pkg-fw {
+    margin-left: 0.3rem;
+  }
+}
+
+// ── Language / script grants ────────────────────────────────────────────────────
+.c-lang-slots,
+.c-lang-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.c-lang-slot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.1rem;
+
+  ::ng-deep .p-select {
+    width: 100%;
+  }
+
+  // Compact the inline ×-remove buttons (global .app-dark .p-button fills them gold).
+  ::ng-deep .p-button {
+    width: 1.75rem;
+    height: 1.75rem;
+    min-width: 0;
+    padding: 0;
+    border-radius: 0.35rem;
+  }
+  ::ng-deep .p-button-icon {
+    font-size: 0.8rem;
+  }
+}
+
+.c-lang-select {
+  flex: 1 1 auto;
+  min-width: 8rem;
+}
+
+.c-lang-name {
+  flex: 1 1 auto;
+  font-size: 0.85rem;
+}
+
+.c-lang-lvl {
+  flex: 0 0 auto;
+
+  ::ng-deep .p-inputnumber-input {
+    width: 3.25rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+.c-prof-allow {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-prof-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0.4rem 0;
+  font-size: 0.82rem;
+
+  i {
+    margin-top: 0.15rem;
+    color: #8a5a00;
+  }
+}
+
+// ── Parchment re-tints beyond the shared .c-sel-detail base ─────────────────────
+.c-prof-detail {
+  .c-prof-sub,
+  .c-prof-notes,
+  .c-prof-allow,
+  .c-prof-hint {
+    color: #6a4a20;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="c-eig">
+  <header class="c-eig-head">
+    <h3>Eigenschaften</h3>
+    <span class="c-eig-sum" [class.c-over]="sum() > maxPoints()">{{ sum() }} / {{ maxPoints() }} Punkte</span>
+  </header>
+
+  <div class="c-eig-grid">
+    @for (r of rows(); track r.key) {
+      <div class="c-eig-row">
+        <span class="c-eig-label" [style.color]="r.color">{{ r.label }}</span>
+        <button type="button" pButton icon="pi pi-minus" class="p-button-text p-button-sm" [disabled]="r.value <= MIN" (click)="dec(r)"></button>
+        <span class="c-eig-value">{{ r.value }}</span>
+        <button type="button" pButton icon="pi pi-plus" class="p-button-text p-button-sm" [disabled]="r.value >= r.max" (click)="inc(r)" [pTooltip]="'Max ' + r.max" tooltipPosition="top"></button>
+        <span class="c-eig-cost">{{ r.apCost }} AP</span>
+      </div>
+    }
+  </div>
+</div>

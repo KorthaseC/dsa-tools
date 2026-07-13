@@ -1,0 +1,12 @@
+<app-cs-combat-equipment />
+
+<p-accordion [multiple]="true" [value]="saPanel()" (valueChange)="onSaPanel($event)">
+  <p-accordion-panel value="sa">
+    <p-accordion-header>Kampfsonderfertigkeiten</p-accordion-header>
+    <p-accordion-content>
+      <app-cs-special-abilities [buckets]="['combat']" />
+    </p-accordion-content>
+  </p-accordion-panel>
+</p-accordion>
+
+<app-cs-combat-techniques />

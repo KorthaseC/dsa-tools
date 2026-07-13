@@ -1,0 +1,56 @@
+<div class="c-overview">
+  <section class="c-ap-summary">
+    <div class="c-ap-box">
+      <span class="c-ap-label">AP gesamt</span>
+      <p-inputnumber
+        [ngModel]="ap().total"
+        (ngModelChange)="setTotalAp($event)"
+        [min]="0"
+        [useGrouping]="false"
+        inputStyleClass="c-ap-input"
+      />
+    </div>
+    <div class="c-ap-box">
+      <span class="c-ap-label">AP ausgegeben</span>
+      <span class="c-ap-val">{{ ap().spent }}</span>
+    </div>
+    <div class="c-ap-box" [class.c-ap-negative]="ap().available < 0">
+      <span class="c-ap-label">AP verfügbar</span>
+      <span class="c-ap-val">{{ ap().available }}</span>
+    </div>
+  </section>
+
+  <section class="c-overview-section">
+    <app-cs-origin />
+  </section>
+
+  <p-accordion [multiple]="true" [value]="openPanels()" (valueChange)="onPanelsChange($event)">
+    <p-accordion-panel value="perso">
+      <p-accordion-header>Persönliche Daten</p-accordion-header>
+      <p-accordion-content>
+        <app-cs-bio />
+      </p-accordion-content>
+    </p-accordion-panel>
+
+    <p-accordion-panel value="grundwerte">
+      <p-accordion-header>Grundwerte</p-accordion-header>
+      <p-accordion-content>
+        <app-cs-derived-panel />
+      </p-accordion-content>
+    </p-accordion-panel>
+
+    <p-accordion-panel value="sprachen">
+      <p-accordion-header>Sprachen &amp; Schriften</p-accordion-header>
+      <p-accordion-content>
+        <app-cs-languages-scripts />
+      </p-accordion-content>
+    </p-accordion-panel>
+
+    <p-accordion-panel value="sf">
+      <p-accordion-header>Allgemeine Sonderfertigkeiten</p-accordion-header>
+      <p-accordion-content>
+        <app-cs-special-abilities [buckets]="['general']" />
+      </p-accordion-content>
+    </p-accordion-panel>
+  </p-accordion>
+</div>

@@ -1,31 +1,18 @@
-
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { SelectModule } from 'primeng/select';
 import { Utility } from '../../shared/utility';
-import { AlchemyDiceResult } from '../alcheny.models';
+import { AlchemyDiceResult } from '../alchemy.models';
 
 @Component({
-    selector: 'app-dice-results',
-    imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    FloatLabelModule,
-    ButtonModule,
-    SelectModule,
-    
-],
-    templateUrl: './dice-result.component.html',
-    styleUrl: './dice-result.component.scss'
+  selector: 'app-dice-results',
+  imports: [FormsModule, ReactiveFormsModule, FloatLabelModule, ButtonModule, SelectModule],
+  templateUrl: './dice-result.component.html',
+  styleUrl: './dice-result.component.scss',
 })
 export class DiceResultComponent implements OnInit {
   public changeDieOne = new FormControl<number>(null, Validators.required);
@@ -49,10 +36,7 @@ export class DiceResultComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    const rawOptions =
-      this.data.diceType === 6 || this.data.diceType === 12
-        ? this.changeDiceOptionsSixSided
-        : this.changeDiceOptionstwentySided;
+    const rawOptions = this.data.diceType === 6 || this.data.diceType === 12 ? this.changeDiceOptionsSixSided : this.changeDiceOptionstwentySided;
 
     this.modValue = this.data.value - Utility.addNumbers(this.data.dice);
 
@@ -84,11 +68,7 @@ export class DiceResultComponent implements OnInit {
       diceResult += this.data.dice[0]; // Origin value of dice 1
     }
 
-    if (
-      dieTwoValue !== null &&
-      this.data.dice.length > 1 &&
-      dieTwoValue !== this.data.dice[1]
-    ) {
+    if (dieTwoValue !== null && this.data.dice.length > 1 && dieTwoValue !== this.data.dice[1]) {
       geniusPoints -= 1;
       diceResult += dieTwoValue;
     } else if (this.data.dice.length > 1) {
@@ -106,9 +86,7 @@ export class DiceResultComponent implements OnInit {
     if (this.data.dice.length > 1) return String(dieValue);
     if (!this.data.alchemicTable) return String(dieValue);
     const sum = dieValue + this.modValue;
-    const result = this.data.alchemicTable.find((a: AlchemyDiceResult) =>
-      Utility.isWithinRange(sum, a.diceValueRange)
-    );
+    const result = this.data.alchemicTable.find((a: AlchemyDiceResult) => Utility.isWithinRange(sum, a.diceValueRange));
     const text = result ? result.alchemicResult.replace(/\{\{effect\}\}/g, 'Effekt') : '';
     return text ? `${dieValue} – ${text}` : String(dieValue);
   }
@@ -118,41 +96,28 @@ export class DiceResultComponent implements OnInit {
     const one = this.changeDieOne.value ?? this.data.dice[0];
     const two = this.data.dice.length > 1 ? (this.changeDieTwo.value ?? this.data.dice[1]) : 0;
     const sum = one + two + this.modValue;
-    const result = this.data.alchemicTable.find((a: AlchemyDiceResult) =>
-      Utility.isWithinRange(sum, a.diceValueRange)
-    );
-    if (!result) { this.changeDicePreview = ''; return; }
+    const result = this.data.alchemicTable.find((a: AlchemyDiceResult) => Utility.isWithinRange(sum, a.diceValueRange));
+    if (!result) {
+      this.changeDicePreview = '';
+      return;
+    }
     let text = result.alchemicResult.replace(/\{\{effect\}\}/g, 'Effekt');
     this.changeDicePreview = text;
   }
 
   public hasRemainingGeniusPoints(): boolean {
     let geniusPoints: number = this.data.geniusPoints;
-    if (
-      this.changeDieOne.value !== null &&
-      this.changeDieOne.value !== this.data.dice[0]
-    ) {
+    if (this.changeDieOne.value !== null && this.changeDieOne.value !== this.data.dice[0]) {
       geniusPoints -= 1;
     }
-    if (
-      this.changeDieTwo.value !== null &&
-      this.changeDieTwo.value !== this.data.dice[1]
-    ) {
+    if (this.changeDieTwo.value !== null && this.changeDieTwo.value !== this.data.dice[1]) {
       geniusPoints -= 1;
     }
     return geniusPoints > 0;
   }
 
-  public isControlUnset(
-    control: FormControl<number>,
-    dieOne: boolean
-  ): boolean {
-    return (
-      control.value === null ||
-      (dieOne
-        ? control.value === this.data.dice[0]
-        : control.value === this.data.dice[1])
-    );
+  public isControlUnset(control: FormControl<number>, dieOne: boolean): boolean {
+    return control.value === null || (dieOne ? control.value === this.data.dice[0] : control.value === this.data.dice[1]);
   }
 
   private translateResult(): void {

@@ -1,0 +1,271 @@
+:host {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// ─── First cell: expand toggle + drag/reorder grouped together ────────────────
+
+.c-cell-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+// ─── Expand toggle button ─────────────────────────────────────────────────────
+
+.c-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #2a2a2a;
+  cursor: pointer;
+  font-size: 0.65rem;
+  padding: 0;
+  flex-shrink: 0;
+  transition:
+    color 0.15s,
+    background 0.15s;
+
+  &:hover {
+    color: rgba(200, 169, 110, 0.8);
+    background: rgba(200, 169, 110, 0.1);
+  }
+}
+
+// ─── Drag handle ─────────────────────────────────────────────────────────────
+
+.c-drag-handle {
+  color: #2a2a2a;
+  font-size: 0.75rem;
+  cursor: grab;
+  flex-shrink: 0;
+
+  &:hover {
+    color: rgba(200, 169, 110, 0.7);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  @media (pointer: coarse) {
+    display: none;
+  }
+}
+
+// ─── Touch reorder buttons ────────────────────────────────────────────────────
+
+.c-reorder-touch {
+  display: none;
+
+  @media (pointer: coarse) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    align-items: center;
+  }
+}
+
+.c-move-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.2rem;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #2a2a2a;
+  cursor: pointer;
+  font-size: 0.6rem;
+  padding: 0;
+  transition:
+    color 0.15s,
+    background 0.15s;
+
+  &:hover:not(:disabled) {
+    color: rgba(200, 169, 110, 1);
+    background: rgba(200, 169, 110, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+}
+
+// ─── Touch drag feedback ──────────────────────────────────────────────────────
+
+.c-row-dragging {
+  opacity: 0.5;
+}
+
+.c-row-drop-target {
+  outline: 2px solid rgba(200, 169, 110, 0.6);
+  outline-offset: -2px;
+}
+
+// ─── Row expansion cell ───────────────────────────────────────────────────────
+
+.c-expansion-cell {
+  background: transparent !important;
+  border-top: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+// ─── Detail form grid (inside expansion) ─────────────────────────────────────
+
+.c-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 2rem 0.75rem 3rem;
+}
+
+// One row: short-value fields shrink so Zielkategorie/Merkmal/Seite (+ the Regelwiki link) all fit
+// alongside. Wraps only as a fallback on very narrow widths (the table scrolls horizontally otherwise).
+.c-detail-row-1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem 0.6rem;
+}
+
+.c-detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1 1 6rem;
+  min-width: 0;
+
+  label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5a4a30;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+}
+
+// Per-field widths — short values shrink so everything fits one line; the value stays readable and the
+// full text is on the tooltip. SF is a single letter (tiny); Merkmal/Aspekt gets the most room.
+.c-df-xs {
+  flex: 0 1 3rem;
+}
+.c-df-s {
+  flex: 1 1 5rem;
+}
+.c-df-m {
+  flex: 1 1 7rem;
+}
+.c-df-l {
+  flex: 1 1 9rem;
+}
+
+// Seite/Regelwerk box + the external Regelwiki link, side by side.
+.c-detail-source {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  input {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+// ─── Zaubererweiterungen section ──────────────────────────────────────────────
+
+.c-erweiterungen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-top: 1px solid rgba(200, 169, 110, 0.2);
+  padding-top: 0.5rem;
+}
+
+.c-erweiterungen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5a4a30;
+}
+
+// The add-dropdown lives in a flex column; give it a normal block context so the
+// p-select host takes full width instead of collapsing to its content.
+.c-ext-add {
+  display: block;
+  width: 100%;
+
+  // v21 p-select is `inline-flex` and, in this flex-column context, doesn't distribute width — the
+  // label collapses to `width: 1%` (a few px) and the dropdown arrow wraps below. Force the host (the
+  // `.p-select` element) to block-level flex at full width so the label grows and the arrow sits right.
+  ::ng-deep .p-select {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.c-erweiterung-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.c-ext-name {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.c-ext-delete-btn {
+  flex-shrink: 0;
+}
+
+.c-ext-empty {
+  font-size: 0.78rem;
+  color: rgba(200, 169, 110, 0.4);
+  font-style: italic;
+}
+
+// ─── D20 check roll button (same as talents) ──────────────────────────────────
+
+.c-td-roll {
+  text-align: center;
+}
+
+// ─── Text truncation for fixed-width cells ──────────────────────────────────
+
+:host ::ng-deep .c-sheet-table {
+  .p-datatable-tbody > tr > td:not(.c-expansion-cell) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // The roll cell holds the d20 button (no text). The truncation rule above uses a high-specificity td
+  // selector; match it here (same specificity, later in source) so this wins — otherwise the clipped
+  // inline button renders a stray "…" next to the glyph.
+  .p-datatable-tbody > tr > td.c-td-roll {
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .p-select-label,
+  input.p-inputtext {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

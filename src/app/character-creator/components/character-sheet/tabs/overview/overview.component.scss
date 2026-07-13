@@ -1,0 +1,62 @@
+.c-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.c-ap-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.75rem;
+}
+
+.c-ap-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid var(--p-surface-600, #475569);
+  border-radius: 0.5rem;
+  background: var(--p-surface-800, #1e293b);
+}
+
+.c-ap-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-ap-val {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-ap-negative .c-ap-val {
+  color: var(--p-red-400, #f87171);
+}
+
+// "AP gesamt" is editable — the input matches the big read-only values of the other two boxes.
+.c-ap-box p-inputnumber {
+  width: 100%;
+}
+
+::ng-deep .c-ap-input {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  padding: 0.1rem 0.25rem;
+  background: transparent;
+  border: 1px dashed var(--p-surface-500, #64748b);
+}
+
+.c-overview-heading {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: #5a3a10; // dark warm brown — readable on the parchment card (matches the Vorteile heading)
+}

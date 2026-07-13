@@ -1,0 +1,854 @@
+<p-accordion [multiple]="true" [value]="openPanels()" (valueChange)="onPanelsChange($event)">
+  <!-- ── Nahkampfwaffen ──────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="nahkampfwaffen">
+    <p-accordion-header>Nahkampfwaffen</p-accordion-header>
+    <p-accordion-content>
+      <p-table
+        [value]="meleeWeaponRows()"
+        [tableStyle]="{ 'min-width': '26rem', 'table-layout': 'fixed' }"
+        class="c-sheet-table"
+        (onRowReorder)="onRowReorder($event)"
+        dataKey="id"
+        [expandedRowKeys]="expandedRows()"
+        (expandedRowKeysChange)="onExpandedRowsChange($any($event))"
+        [rowTrackBy]="trackById"
+      >
+        <ng-template #header>
+          <tr>
+            <th style="width: 3rem"></th>
+            <th>Waffe</th>
+            <th style="width: 8rem">TP</th>
+            <th style="width: 3.5rem">AT</th>
+            <th style="width: 3.5rem">PA</th>
+            <th style="width: 2rem"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-row let-index="rowIndex" let-expanded="expanded">
+          <tr [pReorderableRow]="index">
+            <!-- Drag handle / touch reorder + expand toggle -->
+            <td class="c-td-center">
+              <div class="c-cell-actions">
+                <button type="button" class="c-expand-btn" [pRowToggler]="row">
+                  <i [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </button>
+                <span class="pi pi-bars c-drag-handle" pReorderableRowHandle></span>
+                <div class="c-reorder-touch">
+                  <button class="c-move-btn" type="button" (click)="moveRowUp(index)" [disabled]="index === 0"><i class="pi pi-chevron-up"></i></button>
+                  <button class="c-move-btn" type="button" (click)="moveRowDown(index)" [disabled]="index === meleeWeaponRows().length - 1">
+                    <i class="pi pi-chevron-down"></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+
+            <!-- Waffe (searchable catalog dropdown; free text still allowed) -->
+            <td>
+              <p-autocomplete
+                [ngModel]="row.weapon"
+                [suggestions]="meleeSuggestions()"
+                (completeMethod)="filterMeleeWeapons($event)"
+                (onSelect)="onMeleeWeaponSelect(row.id, $event)"
+                (onBlur)="updateMeleeField(row.id, 'weapon', $any($event).target.value)"
+                [dropdown]="true"
+                [forceSelection]="false"
+                appendTo="body"
+                placeholder="Waffe wählen/eingeben"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+              />
+            </td>
+
+            <!-- TP -->
+            <td class="c-td-center">
+              <input #tpRef pInputText [value]="row.damage" (blur)="updateMeleeField(row.id, 'damage', tpRef.value)" placeholder="1W6" class="w-full c-input-center" />
+            </td>
+
+            <!-- AT (computed, rollable) -->
+            <td class="c-td-center">
+              <button
+                class="c-at-btn"
+                type="button"
+                (click)="rollAt()"
+                [pTooltip]="row.combatTechnique ? 'AT würfeln (' + row.at + ')' : 'Kampftechnik wählen'"
+                tooltipPosition="top"
+                [disabled]="!row.combatTechnique"
+              >
+                {{ row.combatTechnique ? row.at : '–' }}
+              </button>
+            </td>
+
+            <!-- PA (computed, rollable) -->
+            <td class="c-td-center">
+              <button
+                class="c-pa-btn"
+                type="button"
+                (click)="rollPa()"
+                [pTooltip]="row.combatTechnique ? 'PA würfeln (' + row.pa + ')' : 'Kampftechnik wählen'"
+                tooltipPosition="top"
+                [disabled]="!row.combatTechnique"
+              >
+                {{ row.combatTechnique ? row.pa : '–' }}
+              </button>
+            </td>
+
+            <!-- Delete -->
+            <td class="c-td-center">
+              <button class="c-delete-btn" type="button" (click)="confirmDelete(row.id, $event)" pTooltip="Zeile entfernen" tooltipPosition="top">
+                <i class="pi pi-times"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template #expandedrow let-row>
+          <tr>
+            <td colspan="6" class="c-expansion-cell">
+              <div class="c-detail-grid">
+                <!-- ── Row 1: Kampftechnik + Schadensbonus ── -->
+                <div class="c-detail-row-1">
+                  <div class="c-detail-field c-detail-kt">
+                    <label>Kampftechnik</label>
+                    <p-select
+                      [ngModel]="row.combatTechnique"
+                      (ngModelChange)="updateMeleeField(row.id, 'combatTechnique', $event)"
+                      [options]="combatTechniqueOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      placeholder="–"
+                      appendTo="body"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field c-detail-sb">
+                    <label>Schadensb.</label>
+                    <div class="c-split-cell">
+                      <span class="c-leiteigenschaft c-split-left">{{ row.leiteigenschaft.join('/') || '–' }}</span>
+                      <p-inputnumber
+                        class="c-split-right"
+                        [ngModel]="row.damageBonus"
+                        (ngModelChange)="updateMeleeField(row.id, 'damageBonus', $event ?? 0)"
+                        [showButtons]="false"
+                        [useGrouping]="false"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── Row 2: Modifiers + Secondary stats ── -->
+                <div class="c-detail-row-2">
+                  <div class="c-detail-field">
+                    <label>AT-Mod</label>
+                    <p-inputnumber
+                      [ngModel]="row.atMod"
+                      (ngModelChange)="updateMeleeField(row.id, 'atMod', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="-9"
+                      [max]="9"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>PA-Mod</label>
+                    <p-inputnumber
+                      [ngModel]="row.paMod"
+                      (ngModelChange)="updateMeleeField(row.id, 'paMod', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="-9"
+                      [max]="9"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>Reichweite</label>
+                    <p-select
+                      [ngModel]="row.range"
+                      (ngModelChange)="updateMeleeField(row.id, 'range', $event)"
+                      [options]="reichweiteOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      placeholder="–"
+                      appendTo="body"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>BF</label>
+                    <p-inputnumber
+                      [ngModel]="row.bf"
+                      (ngModelChange)="updateMeleeField(row.id, 'bf', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      [max]="9"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>BS</label>
+                    <p-select
+                      [ngModel]="row.bs"
+                      (ngModelChange)="updateMeleeField(row.id, 'bs', $event)"
+                      [options]="bsOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      appendTo="body"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>Gewicht (Stein)</label>
+                    <p-inputnumber
+                      [ngModel]="row.weight"
+                      (ngModelChange)="updateMeleeField(row.id, 'weight', $event ?? 0)"
+                      [minFractionDigits]="2"
+                      [maxFractionDigits]="2"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [locale]="'de-DE'"
+                      class="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <div class="c-add-row">
+        <button pButton type="button" label="Waffe hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addMeleeWeapon()"></button>
+        <button
+          pButton
+          type="button"
+          label="In Ausrüstung übertragen"
+          icon="pi pi-arrow-right"
+          class="p-button-text p-button-sm c-transfer-btn"
+          (click)="transferToEquipment('closeCombat', $event)"
+          pTooltip="Diese Waffen in die Besitz-Ausrüstung übertragen"
+          tooltipPosition="top"
+        ></button>
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+
+  <!-- ── Fernkampfwaffen ─────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="fernkampfwaffen">
+    <p-accordion-header>Fernkampfwaffen</p-accordion-header>
+    <p-accordion-content>
+      <p-table
+        [value]="rangedWeaponRows()"
+        [tableStyle]="{ 'min-width': '26rem', 'table-layout': 'fixed' }"
+        class="c-sheet-table"
+        (onRowReorder)="onRangedRowReorder($event)"
+        dataKey="id"
+        [expandedRowKeys]="rangedExpandedRows()"
+        (expandedRowKeysChange)="onRangedExpandedRowsChange($any($event))"
+        [rowTrackBy]="trackById"
+      >
+        <ng-template #header>
+          <tr>
+            <th style="width: 3rem"></th>
+            <th>Waffe</th>
+            <th style="width: 8rem">TP</th>
+            <th style="width: 3.5rem">FK</th>
+            <th style="width: 2rem"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-row let-index="rowIndex" let-expanded="expanded">
+          <tr [pReorderableRow]="index">
+            <!-- Drag handle / touch reorder + expand toggle -->
+            <td class="c-td-center">
+              <div class="c-cell-actions">
+                <button type="button" class="c-expand-btn" [pRowToggler]="row">
+                  <i [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </button>
+                <span class="pi pi-bars c-drag-handle" pReorderableRowHandle></span>
+                <div class="c-reorder-touch">
+                  <button class="c-move-btn" type="button" (click)="moveRangedRowUp(index)" [disabled]="index === 0"><i class="pi pi-chevron-up"></i></button>
+                  <button class="c-move-btn" type="button" (click)="moveRangedRowDown(index)" [disabled]="index === rangedWeaponRows().length - 1">
+                    <i class="pi pi-chevron-down"></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+
+            <!-- Waffe (searchable catalog dropdown; free text still allowed) -->
+            <td>
+              <p-autocomplete
+                [ngModel]="row.weapon"
+                [suggestions]="rangedSuggestions()"
+                (completeMethod)="filterRangedWeapons($event)"
+                (onSelect)="onRangedWeaponSelect(row.id, $event)"
+                (onBlur)="updateRangedField(row.id, 'weapon', $any($event).target.value)"
+                [dropdown]="true"
+                [forceSelection]="false"
+                appendTo="body"
+                placeholder="Waffe wählen/eingeben"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+              />
+            </td>
+
+            <!-- TP -->
+            <td class="c-td-center">
+              <input
+                #rwTpRef
+                pInputText
+                [value]="row.damage"
+                (blur)="updateRangedField(row.id, 'damage', rwTpRef.value)"
+                placeholder="1W6"
+                class="w-full c-input-center"
+              />
+            </td>
+
+            <!-- FK (computed, rollable) -->
+            <td class="c-td-center">
+              <button
+                class="c-fk-btn"
+                type="button"
+                (click)="rollFk()"
+                [pTooltip]="row.combatTechnique ? 'FK würfeln (' + row.fk + ')' : 'Kampftechnik wählen'"
+                tooltipPosition="top"
+                [disabled]="!row.combatTechnique"
+              >
+                {{ row.combatTechnique ? row.fk : '–' }}
+              </button>
+            </td>
+
+            <!-- Delete -->
+            <td class="c-td-center">
+              <button class="c-delete-btn" type="button" (click)="confirmDeleteRanged(row.id, $event)" pTooltip="Zeile entfernen" tooltipPosition="top">
+                <i class="pi pi-times"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template #expandedrow let-row>
+          <tr>
+            <td colspan="5" class="c-expansion-cell">
+              <div class="c-detail-grid">
+                <!-- ── Row 1: Kampftechnik + Munition ── -->
+                <div class="c-detail-row-1">
+                  <div class="c-detail-field c-detail-kt">
+                    <label>Kampftechnik</label>
+                    <p-select
+                      [ngModel]="row.combatTechnique"
+                      (ngModelChange)="updateRangedField(row.id, 'combatTechnique', $event)"
+                      [options]="rangedCombatTechniqueOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      placeholder="–"
+                      appendTo="body"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field c-detail-sb">
+                    <label>Munition</label>
+                    <input
+                      #rwMunitionRef
+                      pInputText
+                      [value]="row.ammunition"
+                      (blur)="updateRangedField(row.id, 'ammunition', rwMunitionRef.value)"
+                      placeholder="–"
+                      class="w-full"
+                    />
+                  </div>
+                </div>
+
+                <!-- ── Row 2: Ladezeiten + Reichweite + secondary stats ── -->
+                <div class="c-detail-row-2">
+                  <div class="c-detail-field">
+                    <label>Ladezeit Std.</label>
+                    <p-inputnumber
+                      [ngModel]="row.reloadTimeDefault"
+                      (ngModelChange)="updateRangedField(row.id, 'reloadTimeDefault', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>Ladezeit Akt.</label>
+                    <p-inputnumber
+                      [ngModel]="row.reloadTimeCurrent"
+                      (ngModelChange)="updateRangedField(row.id, 'reloadTimeCurrent', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>RW Nah</label>
+                    <p-inputnumber
+                      [ngModel]="row.rangeClose"
+                      (ngModelChange)="updateRangedField(row.id, 'rangeClose', $event)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      placeholder="Nah"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>RW Mittel</label>
+                    <p-inputnumber
+                      [ngModel]="row.rangeMedium"
+                      (ngModelChange)="updateRangedField(row.id, 'rangeMedium', $event)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      placeholder="Mittel"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>RW Fern</label>
+                    <p-inputnumber
+                      [ngModel]="row.rangeFar"
+                      (ngModelChange)="updateRangedField(row.id, 'rangeFar', $event)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      placeholder="Fern"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>BF</label>
+                    <p-inputnumber
+                      [ngModel]="row.bf"
+                      (ngModelChange)="updateRangedField(row.id, 'bf', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      [max]="9"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>BS</label>
+                    <p-select
+                      [ngModel]="row.bs"
+                      (ngModelChange)="updateRangedField(row.id, 'bs', $event)"
+                      [options]="bsOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      appendTo="body"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>FK-Mod</label>
+                    <p-inputnumber
+                      [ngModel]="row.fkMod"
+                      (ngModelChange)="updateRangedField(row.id, 'fkMod', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="-9"
+                      [max]="9"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>Gewicht (Stein)</label>
+                    <p-inputnumber
+                      [ngModel]="row.weight"
+                      (ngModelChange)="updateRangedField(row.id, 'weight', $event ?? 0)"
+                      [minFractionDigits]="2"
+                      [maxFractionDigits]="2"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [locale]="'de-DE'"
+                      class="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <div class="c-add-row">
+        <button
+          pButton
+          type="button"
+          label="Fernkampfwaffe hinzufügen"
+          icon="pi pi-plus"
+          class="p-button-text p-button-sm"
+          (click)="addRangedWeapon()"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="In Ausrüstung übertragen"
+          icon="pi pi-arrow-right"
+          class="p-button-text p-button-sm c-transfer-btn"
+          (click)="transferToEquipment('rangeCombat', $event)"
+          pTooltip="Diese Waffen in die Besitz-Ausrüstung übertragen"
+          tooltipPosition="top"
+        ></button>
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+
+  <!-- ── Rüstungen ───────────────────────────────────────────────────────────── -->
+  <p-accordion-panel value="ruestungen">
+    <p-accordion-header>Rüstungen</p-accordion-header>
+    <p-accordion-content>
+      <p-table
+        [value]="armorRows()"
+        [tableStyle]="{ 'min-width': '32rem', 'table-layout': 'fixed' }"
+        class="c-sheet-table"
+        (onRowReorder)="onArmorRowReorder($event)"
+        dataKey="id"
+        [expandedRowKeys]="armorExpandedRows()"
+        (expandedRowKeysChange)="onArmorExpandedRowsChange($any($event))"
+        [rowTrackBy]="trackById"
+      >
+        <ng-template #header>
+          <tr>
+            <th style="width: 3rem"></th>
+            <th>Rüstung</th>
+            <th style="width: 5rem">RS</th>
+            <th style="width: 5rem">BE</th>
+            <th style="width: 5rem">GS</th>
+            <th style="width: 5rem">INI</th>
+            <th style="width: 2rem"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-row let-index="rowIndex" let-expanded="expanded">
+          <tr [pReorderableRow]="index">
+            <!-- Expand toggle + drag handle / touch reorder -->
+            <td class="c-td-center">
+              <div class="c-cell-actions">
+                <button type="button" class="c-expand-btn" [pRowToggler]="row">
+                  <i [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </button>
+                <span class="pi pi-bars c-drag-handle" pReorderableRowHandle></span>
+                <div class="c-reorder-touch">
+                  <button class="c-move-btn" type="button" (click)="moveArmorRowUp(index)" [disabled]="index === 0"><i class="pi pi-chevron-up"></i></button>
+                  <button class="c-move-btn" type="button" (click)="moveArmorRowDown(index)" [disabled]="index === armorRows().length - 1">
+                    <i class="pi pi-chevron-down"></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+
+            <!-- Rüstung (searchable catalog dropdown; free text still allowed) -->
+            <td>
+              <p-autocomplete
+                [ngModel]="row.name"
+                [suggestions]="armorSuggestions()"
+                (completeMethod)="filterArmor($event)"
+                (onSelect)="onArmorSelect(row.id, $event)"
+                (onBlur)="updateArmorField(row.id, 'name', $any($event).target.value)"
+                [dropdown]="true"
+                [forceSelection]="false"
+                appendTo="body"
+                placeholder="Rüstung wählen/eingeben"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+              />
+            </td>
+
+            <!-- RS -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.rs"
+                (ngModelChange)="updateArmorField(row.id, 'rs', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [min]="0"
+                class="w-full c-input-center"
+              />
+            </td>
+
+            <!-- BE -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.be"
+                (ngModelChange)="updateArmorField(row.id, 'be', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [min]="0"
+                class="w-full c-input-center"
+              />
+            </td>
+
+            <!-- GS (Zus. Abzüge Geschwindigkeit) -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.penaltyMovement"
+                (ngModelChange)="updateArmorField(row.id, 'penaltyMovement', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                class="w-full c-input-center"
+              />
+            </td>
+
+            <!-- INI (Zus. Abzüge Initiative) -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.penaltyInitiative"
+                (ngModelChange)="updateArmorField(row.id, 'penaltyInitiative', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                class="w-full c-input-center"
+              />
+            </td>
+
+            <!-- Delete -->
+            <td class="c-td-center">
+              <button class="c-delete-btn" type="button" (click)="confirmDeleteArmor(row.id, $event)" pTooltip="Zeile entfernen" tooltipPosition="top">
+                <i class="pi pi-times"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template #expandedrow let-row>
+          <tr>
+            <td colspan="7" class="c-expansion-cell">
+              <div class="c-detail-grid">
+                <div class="c-detail-row-2">
+                  <div class="c-detail-field">
+                    <label>St.</label>
+                    <p-inputnumber
+                      [ngModel]="row.st"
+                      (ngModelChange)="updateArmorField(row.id, 'st', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>VE</label>
+                    <p-select
+                      [ngModel]="row.ve"
+                      (ngModelChange)="updateArmorField(row.id, 've', $event)"
+                      [options]="bsOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      placeholder="–"
+                      appendTo="body"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>Gewicht (Stein)</label>
+                    <p-inputnumber
+                      [ngModel]="row.weight"
+                      (ngModelChange)="updateArmorField(row.id, 'weight', $event ?? 0)"
+                      [minFractionDigits]="2"
+                      [maxFractionDigits]="2"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [locale]="'de-DE'"
+                      class="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <div class="c-add-row">
+        <button pButton type="button" label="Rüstung hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addArmorRow()"></button>
+        <button
+          pButton
+          type="button"
+          label="In Ausrüstung übertragen"
+          icon="pi pi-arrow-right"
+          class="p-button-text p-button-sm c-transfer-btn"
+          (click)="transferToEquipment('armor', $event)"
+          pTooltip="Diese Rüstungen in die Besitz-Ausrüstung übertragen"
+          tooltipPosition="top"
+        ></button>
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+
+  <!-- ── Schilde / Parrierwaffen ─────────────────────────────────────────────── -->
+  <p-accordion-panel value="schilde">
+    <p-accordion-header>Schilde / Parrierwaffen</p-accordion-header>
+    <p-accordion-content>
+      <p-table
+        [value]="shieldRows()"
+        [tableStyle]="{ 'min-width': '22rem', 'table-layout': 'fixed' }"
+        class="c-sheet-table"
+        (onRowReorder)="onShieldRowReorder($event)"
+        dataKey="id"
+        [expandedRowKeys]="shieldExpandedRows()"
+        (expandedRowKeysChange)="onShieldExpandedRowsChange($any($event))"
+        [rowTrackBy]="trackById"
+      >
+        <ng-template #header>
+          <tr>
+            <th style="width: 3rem"></th>
+            <th>Schild / Parierwaffe</th>
+            <th style="width: 3.5rem">AT Mod.</th>
+            <th style="width: 3.5rem">PA Mod.</th>
+            <th style="width: 2rem"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-row let-index="rowIndex" let-expanded="expanded">
+          <tr [pReorderableRow]="index">
+            <!-- Expand toggle + drag handle / touch reorder -->
+            <td class="c-td-center">
+              <div class="c-cell-actions">
+                <button type="button" class="c-expand-btn" [pRowToggler]="row">
+                  <i [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </button>
+                <span class="pi pi-bars c-drag-handle" pReorderableRowHandle></span>
+                <div class="c-reorder-touch">
+                  <button class="c-move-btn" type="button" (click)="moveShieldRowUp(index)" [disabled]="index === 0"><i class="pi pi-chevron-up"></i></button>
+                  <button class="c-move-btn" type="button" (click)="moveShieldRowDown(index)" [disabled]="index === shieldRows().length - 1">
+                    <i class="pi pi-chevron-down"></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+
+            <!-- Name (searchable catalog dropdown; free text still allowed) -->
+            <td>
+              <p-autocomplete
+                [ngModel]="row.name"
+                [suggestions]="shieldSuggestions()"
+                (completeMethod)="filterShields($event)"
+                (onSelect)="onShieldSelect(row.id, $event)"
+                (onBlur)="updateShieldField(row.id, 'name', $any($event).target.value)"
+                [dropdown]="true"
+                [forceSelection]="false"
+                appendTo="body"
+                placeholder="Schild / Parierwaffe wählen/eingeben"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+              />
+            </td>
+
+            <!-- AT Mod. -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.atMod"
+                (ngModelChange)="updateShieldField(row.id, 'atMod', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [min]="-9"
+                [max]="9"
+                class="w-full c-input-center"
+              />
+            </td>
+
+            <!-- PA Mod. -->
+            <td class="c-td-center">
+              <p-inputnumber
+                [ngModel]="row.paMod"
+                (ngModelChange)="updateShieldField(row.id, 'paMod', $event ?? 0)"
+                [showButtons]="false"
+                [useGrouping]="false"
+                [min]="-9"
+                [max]="9"
+                class="w-full c-input-center"
+              />
+            </td>
+
+            <!-- Delete -->
+            <td class="c-td-center">
+              <button class="c-delete-btn" type="button" (click)="confirmDeleteShield(row.id, $event)" pTooltip="Zeile entfernen" tooltipPosition="top">
+                <i class="pi pi-times"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template #expandedrow let-row>
+          <tr>
+            <td colspan="5" class="c-expansion-cell">
+              <div class="c-detail-grid">
+                <div class="c-detail-row-2">
+                  <div class="c-detail-field">
+                    <label>Str.</label>
+                    <p-inputnumber
+                      [ngModel]="row.st"
+                      (ngModelChange)="updateShieldField(row.id, 'st', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>BF</label>
+                    <p-inputnumber
+                      [ngModel]="row.bf"
+                      (ngModelChange)="updateShieldField(row.id, 'bf', $event ?? 0)"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [min]="0"
+                      [max]="9"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>BS</label>
+                    <p-select
+                      [ngModel]="row.bs"
+                      (ngModelChange)="updateShieldField(row.id, 'bs', $event)"
+                      [options]="bsOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      appendTo="body"
+                      class="w-full"
+                    />
+                  </div>
+                  <div class="c-detail-field">
+                    <label>Gewicht (Stein)</label>
+                    <p-inputnumber
+                      [ngModel]="row.weight"
+                      (ngModelChange)="updateShieldField(row.id, 'weight', $event ?? 0)"
+                      [minFractionDigits]="2"
+                      [maxFractionDigits]="2"
+                      [showButtons]="false"
+                      [useGrouping]="false"
+                      [locale]="'de-DE'"
+                      class="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <div class="c-add-row">
+        <button pButton type="button" label="Schild hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addShieldRow()"></button>
+        <button
+          pButton
+          type="button"
+          label="In Ausrüstung übertragen"
+          icon="pi pi-arrow-right"
+          class="p-button-text p-button-sm c-transfer-btn"
+          (click)="transferToEquipment('shields', $event)"
+          pTooltip="Diese Schilde/Parierwaffen in die Besitz-Ausrüstung übertragen"
+          tooltipPosition="top"
+        ></button>
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+</p-accordion>
+
+<p-confirmpopup />

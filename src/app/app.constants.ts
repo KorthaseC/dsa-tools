@@ -1,5 +1,25 @@
 /** App-level metadata constants: page title, route titles, meta descriptions and keywords. */
 
+/** All application route paths defined in one place. */
+export const APP_ROUTES = {
+  about: '/about',
+  overview: '/overview',
+  calendar: '/calendar',
+  currency: '/currency',
+  alchemy: '/alchemy',
+  tavern: '/tavern',
+  names: '/names',
+  smith: '/smith',
+  books: '/books',
+  token: '/token',
+  character: '/character',
+  characterCreator: '/character-creator',
+  characterSheet: '/character-sheet',
+  report: '/report',
+  legal: '/legal',
+  imprint: '/imprint',
+} as const;
+
 /** The base title shown in the browser tab */
 export const APP_TITLE = 'DSA Tools';
 
@@ -19,7 +39,7 @@ export const ROUTE_TITLES: Record<string, string> = {
   reportTitle: 'Reports',
   legalTitle: 'Datenschutz',
   imprintTitle: 'Impressum',
-  characterCreatorTitle: 'Helden Ersteller',
+  characterCreatorTitle: 'Charaktererschaffung',
   tokenGeneratorTitle: 'Token Generator',
 };
 
@@ -39,6 +59,7 @@ export const META_DESCRIPTIONS: Record<string, string> = {
   report: 'Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.',
   legal: 'Hier findest du rechtliche Hinweise zu unserer inoffiziellen DSA-Hilfeseite.',
   token: 'Erstelle einen runden Charakter-Token für dein DSA-Abenteuer aus einem eigenen Bild.',
+  'character-creator': 'Erschaffe und verwalte komplette DSA5-Helden Schritt für Schritt – von Spezies und Profession bis zur fertigen Heldenurkunde als PDF.',
 };
 
 /** Maps route names to their German meta keywords content */
@@ -57,4 +78,5 @@ export const META_KEYWORDS: Record<string, string> = {
   report: 'DSA Feedback, Bugreport, Das Schwarze Auge Support',
   legal: 'DSA Rechtliches, Das Schwarze Auge Rechtlich, rechtliche Hinweise',
   token: 'DSA Token, Charakter Token, Das Schwarze Auge Token, Charakter Bild',
+  'character-creator': 'DSA Charaktererschaffung, Heldenerschaffung, DSA5 Charakterbogen, Das Schwarze Auge Helden erstellen',
 };

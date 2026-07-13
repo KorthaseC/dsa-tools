@@ -44,5 +44,21 @@ Thumbs.db
 # Environment files
 .env
 
-# Angular environment files
+# Angular environment files — both hold the real googleScriptId, so neither is committed.
+# environment.local.ts is the local secret source; environment.prod.ts is generated from it by
+# replace-env-vars.js at build time (production build artifact). The tracked template is environment.ts.
 /src/environments/environment.local.ts
+/src/environments/environment.prod.ts
+
+# Copyrighted source ruleset PDF — input to tools/extract-pdf-data.mjs only, never
+# distributed (Ulisses commercial material) and never needed at runtime.
+*.pdf
+
+# Regenerable extractor output dumps (~5.6 MB). Written by tools/extract-pdf-data.mjs,
+# never read back; the app uses only src/app/character-creator/constants/*.const.ts.
+/tools/dsa-data/professions.json
+/tools/dsa-data/spells.json
+/tools/dsa-data/selection-options.json
+/tools/dsa-data/liturgies.json
+/tools/dsa-data/species.json
+/tools/dsa-data/species-resolved.json

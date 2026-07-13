@@ -1,0 +1,139 @@
+<div class="c-wizard" [class.c-wizard-wide]="wizard.phase() === 'hub'">
+  <!-- ── AP budget bar ── -->
+  <header class="result-card c-wizard-ap">
+    <span>AP gesamt <b>{{ ap().total }}</b></span>
+    <span>ausgegeben <b>{{ ap().spent }}</b></span>
+    <span [class.c-ap-over]="ap().available < 0">verfügbar <b>{{ ap().available }}</b></span>
+  </header>
+
+  @if (wizard.phase() === 'origin') {
+    <!-- ── Stepper header ── -->
+    <ol class="c-wizard-steps">
+      @for (step of wizard.steps; track step; let i = $index) {
+        <li
+          class="c-wizard-step"
+          [class.c-active]="i === wizard.originStep()"
+          [class.c-done]="wizard.isConfirmed(i)"
+          [class.c-locked]="!wizard.isUnlocked(i)"
+          (click)="wizard.goToStep(i)"
+        >
+          <span class="c-step-index">
+            @if (wizard.isConfirmed(i)) {
+              <i class="pi pi-check"></i>
+            } @else {
+              {{ i + 1 }}
+            }
+          </span>
+          <span class="c-step-label">{{ step }}</span>
+        </li>
+      }
+    </ol>
+
+    <!-- ── Step panel ── -->
+    <section class="c-wizard-panel">
+      @switch (wizard.originStep()) {
+        @case (0) {
+          <app-experience />
+        }
+        @case (1) {
+          <app-species />
+        }
+        @case (2) {
+          <app-culture-step />
+        }
+        @case (3) {
+          <app-profession-step />
+        }
+        @default {
+          <p class="c-wizard-placeholder">Dieser Schritt wird in Kürze ergänzt.</p>
+        }
+      }
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="c-wizard-footer">
+      <button pButton type="button" label="Zurück" icon="pi pi-arrow-left" class="p-button-text" [disabled]="wizard.originStep() === 0" (click)="wizard.back()"></button>
+      <div class="c-wizard-footer-right">
+        <button pButton type="button" label="Neu beginnen" severity="secondary" class="p-button-text" (click)="startOver($event)"></button>
+        <button
+          pButton
+          type="button"
+          [label]="isLastOriginStep() ? 'Zur Ausarbeitung' : 'Weiter'"
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          [disabled]="!canAdvance()"
+          (click)="advance()"
+        ></button>
+      </div>
+    </footer>
+  } @else if (wizard.phase() === 'hub') {
+    <!-- ── Phase 2 hub: tracker nav + active section ── -->
+    <div class="c-hub">
+      <nav class="c-hub-nav">
+        @for (s of hubSections(); track s.key) {
+          <button type="button" class="c-hub-navitem" [class.c-active]="hubSection() === s.key" [class.c-error]="s.status === 'error'" (click)="hubSection.set(s.key)">
+            <i class="pi" [class.pi-check-circle]="s.status === 'ok'" [class.pi-exclamation-circle]="s.status === 'error'"></i>
+            <span class="c-hub-label">{{ s.label }}</span>
+            @if (s.figure) { <span class="c-hub-figure">{{ s.figure }}</span> }
+          </button>
+        }
+      </nav>
+
+      <section class="c-hub-content">
+        @switch (hubSection()) {
+          @case ('eigenschaften') { <app-eigenschaften-step /> }
+          @case ('traits') { <app-cs-traits /> }
+          @case ('talente') { <app-cs-talents /> }
+          @case ('kampf') { <app-cs-combat /> }
+          @case ('zauber') { <app-cs-magic-tab /> }
+          @case ('liturgien') { <app-cs-liturgy-tab /> }
+          @case ('sf') { <app-cs-special-abilities [buckets]="['general']" /> }
+          @case ('besitz') { <app-cs-besitz /> }
+          @case ('homebrew') { <app-cs-homebrew /> }
+          @case ('abschluss') {
+            <div class="c-abschluss">
+              <div class="c-abschluss-field">
+                <label for="heroName">Heldenname</label>
+                <input id="heroName" pInputText [(ngModel)]="heroName" placeholder="Name des Helden" class="w-full" />
+              </div>
+
+              <div class="c-abschluss-ap">
+                <span>AP gesamt <b>{{ ap().total }}</b></span>
+                <span>ausgegeben <b>{{ ap().spent }}</b></span>
+                <span [class.c-ap-over]="ap().available < 0">verfügbar <b>{{ ap().available }}</b></span>
+              </div>
+
+              @if (errors().length) {
+                <div class="c-abschluss-msgs">
+                  <h4>Regelverstöße ({{ errors().length }})</h4>
+                  @for (e of errors(); track e.ruleId + (e.source ?? '')) { <p-message severity="error">{{ e.message }}</p-message> }
+                </div>
+              } @else {
+                <p class="c-abschluss-ok"><i class="pi pi-check-circle"></i> Keine Regelverstöße — der Held ist regelkonform.</p>
+              }
+              @if (warnings().length) {
+                <div class="c-abschluss-msgs">
+                  <h4>Hinweise ({{ warnings().length }})</h4>
+                  @for (w of warnings(); track w.ruleId + (w.source ?? '')) { <p-message severity="warn">{{ w.message }}</p-message> }
+                </div>
+              }
+
+              <button pButton type="button" label="Held abschließen" icon="pi pi-check" iconPos="right" [disabled]="!canFinish()" (click)="finish()"></button>
+            </div>
+          }
+        }
+      </section>
+    </div>
+
+    <footer class="c-wizard-footer">
+      <button pButton type="button" label="Zurück" icon="pi pi-arrow-left" class="p-button-text" (click)="wizard.back()"></button>
+      <button pButton type="button" label="Neu beginnen" severity="secondary" class="p-button-text" (click)="startOver($event)"></button>
+    </footer>
+  }
+
+  <!-- ── Sticky validation bar (always visible; badge = hint) ── -->
+  <app-validation-bar />
+
+  <!-- Anchored confirm for the destructive "Neu beginnen" reset (draft is otherwise kept deliberately). -->
+  <p-confirmpopup />
+</div>

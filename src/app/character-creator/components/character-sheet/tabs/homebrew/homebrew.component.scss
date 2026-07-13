@@ -1,0 +1,106 @@
+.c-hb {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.c-hb-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.c-hb-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #5a3a10; // dark warm brown — readable on the parchment card (matches the Vorteile heading)
+}
+
+.c-hb-hint {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--p-text-muted-color);
+  max-width: 60ch;
+}
+
+.c-hb-total {
+  flex: 0 0 auto;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--p-primary-color);
+}
+
+.c-hb-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--p-content-border-color);
+  border-radius: var(--p-border-radius, 6px);
+  background: var(--p-surface-800);
+}
+
+.c-hb-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.c-hb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  label {
+    font-size: 0.7rem;
+    color: var(--p-text-muted-color);
+  }
+}
+
+.c-hb-label {
+  flex: 1 1 12rem;
+  min-width: 10rem;
+}
+
+.c-hb-kind {
+  flex: 0 0 12rem;
+}
+
+.c-hb-probe {
+  flex: 0 0 14rem;
+}
+
+.c-hb-prereq {
+  flex: 1 1 16rem;
+}
+
+.c-hb-note,
+.c-hb-effect {
+  width: 100%;
+}
+
+.c-hb-effect {
+  resize: vertical;
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  color: var(--p-inputtext-color, inherit);
+  background: var(--p-inputtext-background, var(--p-surface-700));
+  border: 1px solid var(--p-inputtext-border-color, var(--p-content-border-color));
+  border-radius: var(--p-border-radius, 6px);
+}
+
+.c-hb-del {
+  margin-left: auto;
+  align-self: center;
+}
+
+.c-hb-empty {
+  font-size: 0.85rem;
+  color: var(--p-text-muted-color);
+}
+
+.c-hb-add {
+  align-self: flex-start;
+}

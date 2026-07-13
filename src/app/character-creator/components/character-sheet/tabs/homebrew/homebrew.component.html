@@ -1,0 +1,45 @@
+<div class="c-hb">
+  <header class="c-hb-head">
+    <div>
+      <h2 class="c-hb-title">Homebrew</h2>
+      <p class="c-hb-hint">Charakter-spezifische Einträge (eigene SF/Vorteile oder Hausregel-Anpassungen). Werden im Charakter gespeichert und in die AP gezählt.</p>
+    </div>
+    <span class="c-hb-total">{{ totalCost() }} AP</span>
+  </header>
+
+  @for (e of entries(); track trackById($index, e)) {
+    <section class="c-hb-row">
+      <div class="c-hb-line">
+        <input pInputText [ngModel]="e.label" (ngModelChange)="update(e.id, 'label', $event)" placeholder="Name" class="c-hb-label" />
+        <p-select [ngModel]="e.kind" (ngModelChange)="update(e.id, 'kind', $event)" [options]="kindOptions" optionLabel="label" optionValue="value" appendTo="body" class="c-hb-kind" />
+        <span class="c-hb-field">
+          <label>Kosten</label>
+          <p-inputnumber [ngModel]="e.cost" (ngModelChange)="update(e.id, 'cost', $event ?? 0)" [showButtons]="true" buttonLayout="horizontal" [useGrouping]="false" [step]="1" />
+        </span>
+        <span class="c-hb-field">
+          <label>Stufe</label>
+          <p-inputnumber [ngModel]="e.level ?? null" (ngModelChange)="update(e.id, 'level', $event ?? undefined)" [min]="1" [showButtons]="true" buttonLayout="horizontal" [useGrouping]="false" placeholder="–" />
+        </span>
+        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm c-hb-del" (click)="remove(e.id)" pTooltip="Entfernen" tooltipPosition="top"></button>
+      </div>
+
+      <div class="c-hb-line">
+        <input pInputText [ngModel]="e.probe ?? ''" (ngModelChange)="update(e.id, 'probe', $event)" placeholder="Probe (z. B. MU/KL/IN)" class="c-hb-probe" />
+        <input pInputText [ngModel]="e.prerequisiteText ?? ''" (ngModelChange)="update(e.id, 'prerequisiteText', $event)" placeholder="Voraussetzungen" class="c-hb-prereq" />
+      </div>
+
+      <textarea
+        class="c-hb-effect"
+        [ngModel]="e.effectText ?? ''"
+        (ngModelChange)="update(e.id, 'effectText', $event)"
+        rows="2"
+        placeholder="Effekt / Regel"
+      ></textarea>
+      <input pInputText [ngModel]="e.note ?? ''" (ngModelChange)="update(e.id, 'note', $event)" placeholder="Notiz (z. B. Anpassung von …)" class="c-hb-note" />
+    </section>
+  } @empty {
+    <p class="c-hb-empty">Noch keine Homebrew-Einträge.</p>
+  }
+
+  <button type="button" pButton icon="pi pi-plus" label="Homebrew-Eintrag hinzufügen" class="p-button-sm c-hb-add" (click)="add()"></button>
+</div>

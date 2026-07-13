@@ -1,0 +1,35 @@
+<div class="c-origin-header">
+  <h2 class="c-overview-heading">Spezies, Kultur &amp; Profession</h2>
+  <button
+    type="button"
+    pButton
+    [icon]="settings.baseValueEditing() ? 'pi pi-lock-open' : 'pi pi-lock'"
+    class="p-button-text p-button-sm c-origin-lock"
+    [class.c-origin-unlocked]="settings.baseValueEditing()"
+    (click)="settings.toggleBaseValueEditing()"
+    [pTooltip]="settings.baseValueEditing() ? 'Bearbeitung gesperrt lassen' : 'Bearbeitung erlauben (Homebrew)'"
+    tooltipPosition="left"
+  ></button>
+</div>
+
+<div class="c-origin-grid">
+  @for (f of fields; track f.key) {
+    <div class="c-origin-field">
+      <label>{{ f.label }}</label>
+      <p-autocomplete
+        [(ngModel)]="vals[f.key]"
+        [suggestions]="filtered[f.key]"
+        (completeMethod)="search(f.key, $event)"
+        [dropdown]="true"
+        [disabled]="!settings.baseValueEditing()"
+        (onSelect)="commit(f.key)"
+        (onBlur)="commit(f.key)"
+        class="w-full"
+      />
+    </div>
+  }
+</div>
+
+@if (!settings.baseValueEditing()) {
+  <p class="c-origin-hint">Spezies, Kultur und Profession sind nach der Erschaffung fest. Zum Bearbeiten das Schloss öffnen (Homebrew).</p>
+}

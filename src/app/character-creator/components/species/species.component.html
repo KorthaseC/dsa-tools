@@ -1,0 +1,449 @@
+@if (viewMode() === 'cards') {
+  <p class="c-species-hint">Wähle eine Spezies. Sie beeinflusst Attribute, Abenteuerpunkte-Kosten und verfügbare Vor- &amp; Nachteile.</p>
+
+  <div class="c-species-cards">
+    @for (species of speciesList; track species.type) {
+      <p-card [class.c-selected]="isSelected(species.type)" (click)="selectSpecies(species.type)">
+        <div class="corner-top-right"></div>
+        <div class="corner-bottom-left"></div>
+        <div></div>
+        <h2>{{ species.label }}</h2>
+        <div class="inline-flex">
+          <figure class="c-species-figure">
+            <img [src]="'assets/species/' + species.image + '.png'" [alt]="species.image" class="c-species-image" />
+            <figcaption class="c-species-caption">
+              Artwork © 2016 Ulisses Spiele. Illustration von Elif Siebenpfeiffer. Quelle: Aventurischer Almanach.
+            </figcaption>
+          </figure>
+          <p-divider layout="vertical" />
+          <div class="c-species-attributes">
+            <div>LE:</div>
+            <div>{{ species.baseStats.le }}</div>
+            <div>SK:</div>
+            <div>{{ species.baseStats.sk }}</div>
+            <div>ZK:</div>
+            <div>{{ species.baseStats.zk }}</div>
+            <div>GS:</div>
+            <div>{{ species.baseStats.gs }}</div>
+            <div>Kosten:</div>
+            <div>{{ species.apCost }} AP</div>
+          </div>
+        </div>
+      </p-card>
+    }
+  </div>
+}
+
+@if (viewMode() === 'detail' && selectedSpecies()) {
+  <div class="result-card c-species-detail">
+    <div class="c-species-detail-header">
+      <h2 class="c-species-detail-title">{{ selectedSpecies().label }}</h2>
+      <p-button
+        label="Andere Spezies wählen"
+        icon="pi pi-arrow-left"
+        severity="secondary"
+        [text]="true"
+        (onClick)="backToCards()"
+      />
+    </div>
+
+    <div class="c-species-summary">
+      <div class="result-row"><span class="result-label">Lebenspunkte (Basis)</span><span class="result-value">{{ selectedSpecies().baseStats.le }}</span></div>
+      <div class="result-row"><span class="result-label">Seelenkraft (Basis)</span><span class="result-value">{{ selectedSpecies().baseStats.sk }}</span></div>
+      <div class="result-row"><span class="result-label">Zähigkeit (Basis)</span><span class="result-value">{{ selectedSpecies().baseStats.zk }}</span></div>
+      <div class="result-row"><span class="result-label">Geschwindigkeit</span><span class="result-value">{{ selectedSpecies().baseStats.gs }}</span></div>
+      <div class="result-row"><span class="result-label">Kosten</span><span class="result-value">{{ selectedSpecies().apCost }} AP</span></div>
+    </div>
+
+    <p-tabs value="0">
+      <p-tablist>
+        <p-tab value="0">Eigenschaften</p-tab>
+        <p-tab value="1">Vor- &amp; Nachteile</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <span>
+            <h3>Eigenschaftsänderungen</h3>
+            <p>
+              Bestimmte Attribute dürfen bei der Charaktererschaffung höher oder niedriger gesteigert werden als normalerweise erlaubt. Die dafür nötigen
+              Abenteuerpunkte müssen trotzdem bezahlt werden – auch wenn der neue Maximalwert höher ist.
+            </p>
+            @if (needsAttributeChoice()) {
+              <p class="c-gm-warning">
+                <i class="pi pi-exclamation-triangle"></i>
+                Bitte wähle ein Attribut, um fortzufahren.
+              </p>
+            }
+            @for (attributeMod of selectedSpecies().attributeMods; track $index) {
+            @switch (attributeMod.type) {
+              @case ('choice') {
+                <div class="c-attribute-modification">
+                  <p>Wähle ein Attribut:</p>
+                  <div class="c-checkbox-radio-container">
+                    @for (option of attributeMod.selectionOptions; track option) {
+                      <div class="c-checkbox-radio-wrapper">
+                        <p-radiobutton
+                          [inputId]="'choice_' + option"
+                          name="choicelAttribut"
+                          [value]="option"
+                          [(ngModel)]="selectedChoiceAttribute"
+                          (ngModelChange)="onChoiceAttributeChange(attributeMod.modifier)"
+                        ></p-radiobutton>
+                        <label [for]="'choice_' + option">
+                          {{ option }} {{ attributeMod.modifier > 0 ? '+' + attributeMod.modifier : attributeMod.modifier }}</label
+                        >
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+              @case ('fixed') {
+                @if (attributeMod.attribute && attributeMod.modifier) {
+                  <div class="c-attribute-modification">
+                    <p>{{ attributeMod.attribute }}: {{ attributeMod.modifier > 0 ? '+' + attributeMod.modifier : attributeMod.modifier }} (Vorgeschrieben)</p>
+                  </div>
+                }
+              }
+            }
+          }
+        </span>
+      </p-tabpanel>
+
+        <p-tabpanel value="1">
+          @if (selectedSpecies().autoAdvantages.length > 0) {
+            <span>
+              <div class="c-section-head">
+                <h3>Automatische Vorteile</h3>
+                <button
+                  type="button"
+                  pButton
+                  [icon]="autoAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"
+                  class="p-button-text p-button-sm c-deselect-lock"
+                  [class.c-unlocked]="autoAdvDeselectable()"
+                  (click)="toggleAutoAdvDeselectable()"
+                  [pTooltip]="autoAdvDeselectable() ? 'Abwählen wieder sperren' : 'Automatische Vor-/Nachteile abwählen (Homebrew)'"
+                  tooltipPosition="left"
+                ></button>
+              </div>
+              @if (autoAdvDeselectable()) {
+                <p class="c-gm-warning">
+                  <i class="pi pi-exclamation-triangle"></i>
+                  Das Abwählen automatischer Vor-/Nachteile muss mit dem Spielleiter abgestimmt werden. Automatische Einträge sind kostenlos; ihr Entfernen bringt keine AP zurück.
+                </p>
+              }
+              <p-divider />
+              <div class="c-checkbox-radio-container">
+                @for (advantage of autoAdvantages(); track advantage) {
+                  <div class="c-checkbox-radio-wrapper">
+                    <p-checkbox
+                      [disabled]="!autoAdvDeselectable()"
+                      [inputId]="advantage.name"
+                      name="autoAdvs"
+                      [value]="advantage.name"
+                      [ngModel]="selectedAdvantageNames()"
+                      (ngModelChange)="changeAdvantages(advantage)"
+                    />
+                    <label [for]="advantage.name"> {{ fixedLabel(advantage) }} </label>
+                  </div>
+                }
+              </div>
+            </span>
+          }
+          @if (selectedSpecies().autoDisadvantages.length > 0) {
+            <span>
+              <h3>Automatische Nachteile</h3>
+              <p-divider />
+              <div class="c-checkbox-radio-container">
+                @for (disadvantage of autoDisadvantages(); track disadvantage) {
+                  <div class="c-checkbox-radio-wrapper">
+                    <p-checkbox
+                      [disabled]="!autoAdvDeselectable()"
+                      [inputId]="'disadv_' + disadvantage.name"
+                      name="autoDisadvs"
+                      [value]="disadvantage.name"
+                      [ngModel]="selectedDisadvantageNames()"
+                      (ngModelChange)="changeDisadvantages(disadvantage)"
+                    />
+                    <label [for]="'disadv_' + disadvantage.name"> {{ fixedLabel(disadvantage) }} </label>
+                  </div>
+                }
+              </div>
+            </span>
+          }
+          @if (selectedSpecies().recommendedAdvantages.length > 0) {
+            <span>
+              <div class="c-section-head">
+                <h3>Dringend empfohlene Vorteile</h3>
+                <button
+                  type="button"
+                  pButton
+                  [icon]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"
+                  class="p-button-text p-button-sm c-deselect-lock"
+                  [class.c-unlocked]="recommendedAdvDeselectable()"
+                  (click)="toggleRecommendedAdvDeselectable()"
+                  [pTooltip]="recommendedAdvDeselectable() ? 'Abwählen wieder sperren' : 'Empfohlene Vor-/Nachteile abwählen'"
+                  tooltipPosition="left"
+                ></button>
+              </div>
+              @if (recommendedAdvDeselectable()) {
+                <p class="c-gm-warning">
+                  <i class="pi pi-exclamation-triangle"></i>
+                  Das Abwählen dringend empfohlener Vor-/Nachteile sollte mit dem Spielleiter abgestimmt werden.
+                </p>
+              }
+              <p-divider />
+              <div class="c-checkbox-radio-container">
+                @for (advantage of recommendedAdvantages(); track advantage) {
+                  <div class="c-checkbox-radio-wrapper">
+                    <p-checkbox
+                      [disabled]="!recommendedAdvDeselectable()"
+                      [inputId]="advantage.name"
+                      name="recommendedAdvs"
+                      [value]="advantage.name"
+                      [ngModel]="selectedAdvantageNames()"
+                      (ngModelChange)="changeAdvantages(advantage)"
+                    />
+                    <label [for]="advantage.name"> {{ fixedLabel(advantage) }} </label>
+                  </div>
+                }
+              </div>
+            </span>
+          }
+          @if (selectedSpecies().typicalAdvantages.length > 0) {
+            <span>
+              <h3>Typische Vorteile</h3>
+              <p-divider />
+              @for (group of typicalAdvantages(); track group.group) {
+                <div class="mb-3">
+                  @if (group.group) {
+                    <h4>{{ group.group }}</h4>
+                  }
+                  <div class="c-checkbox-radio-container">
+                    @for (advantage of group.advantages; track advantage.name) {
+                      @if (!isLeveled(advantage)) {
+                        <div class="c-checkbox-radio-wrapper">
+                          <p-checkbox
+                            [inputId]="advantage.name"
+                            name="typicalAdvs"
+                            [value]="advantage.name"
+                            [ngModel]="selectedAdvantageNames()"
+                            (ngModelChange)="changeAdvantages(advantage)"
+                          />
+                          <label [for]="advantage.name">{{ advantage.label }}</label>
+                        </div>
+                      } @else if (typicalLevelOptions(advantage).length > 0) {
+                        <div class="c-checkbox-radio-wrapper">
+                          <p-checkbox
+                            [inputId]="advantage.name"
+                            binary="true"
+                            [ngModel]="isTypicalActive(advantage.name)"
+                            (ngModelChange)="toggleTypical(advantage)"
+                          />
+                          @if (typicalHasSingleLevel(advantage)) {
+                            <label [for]="advantage.name">{{ typicalSingleLabel(advantage) }}</label>
+                          } @else {
+                            <label [for]="advantage.name">{{ baseLabel(advantage) }}</label>
+                            <p-select
+                              class="c-level-select"
+                              [options]="typicalLevelOptions(advantage)"
+                              optionLabel="label"
+                              optionValue="value"
+                              appendTo="body"
+                              [ngModel]="getTypicalLevel(advantage)"
+                              (ngModelChange)="setTypicalLevel(advantage, $event)"
+                            />
+                          }
+                        </div>
+                      }
+                    }
+                  </div>
+                </div>
+              }
+            </span>
+          }
+          @if (atypicalAdvantages().length > 0) {
+            <span>
+              <div class="c-section-head">
+                <h3>Untypische Vorteile</h3>
+                <button
+                  type="button"
+                  pButton
+                  [icon]="atypicalAdvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"
+                  class="p-button-text p-button-sm c-deselect-lock"
+                  [class.c-unlocked]="atypicalAdvUnlocked()"
+                  (click)="toggleAtypicalAdvUnlocked()"
+                  [pTooltip]="atypicalAdvUnlocked() ? 'Untypische Vorteile wieder sperren' : 'Untypische Vorteile auswählbar machen (Homebrew)'"
+                  tooltipPosition="left"
+                ></button>
+              </div>
+              @if (atypicalAdvUnlocked()) {
+                <p class="c-gm-warning">
+                  <i class="pi pi-exclamation-triangle"></i>
+                  Untypische Vorteile sind nicht für diese Spezies vorgesehen und müssen mit dem Spielleiter abgestimmt werden (Homebrew).
+                </p>
+              }
+              <p-divider />
+              <div class="c-checkbox-radio-container">
+                @for (advantage of atypicalAdvantages(); track advantage.name) {
+                  <div class="c-checkbox-radio-wrapper">
+                    <p-checkbox
+                      [disabled]="!atypicalAdvUnlocked()"
+                      [inputId]="'atyp_' + advantage.name"
+                      name="atypicalAdvs"
+                      [value]="advantage.name"
+                      [ngModel]="selectedAdvantageNames()"
+                      (ngModelChange)="changeAdvantages(advantage)"
+                    />
+                    <label [for]="'atyp_' + advantage.name">{{ fixedLabel(advantage) }}</label>
+                  </div>
+                }
+              </div>
+              @if (hasSelectedAtypicalAdvantage()) {
+                <p class="c-gm-warning">
+                  <i class="pi pi-exclamation-triangle"></i>
+                  Eine untypische Wahl wurde getroffen — bitte mit dem Spielleiter abstimmen.
+                </p>
+              }
+            </span>
+          }
+          @if (selectedSpecies().recommendedDisadvantages.length > 0) {
+            <span>
+              <div class="c-section-head">
+                <h3>Dringend empfohlene Nachteile</h3>
+                <button
+                  type="button"
+                  pButton
+                  [icon]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"
+                  class="p-button-text p-button-sm c-deselect-lock"
+                  [class.c-unlocked]="recommendedAdvDeselectable()"
+                  (click)="toggleRecommendedAdvDeselectable()"
+                  [pTooltip]="recommendedAdvDeselectable() ? 'Abwählen wieder sperren' : 'Empfohlene Vor-/Nachteile abwählen'"
+                  tooltipPosition="left"
+                ></button>
+              </div>
+              @if (recommendedAdvDeselectable()) {
+                <p class="c-gm-warning">
+                  <i class="pi pi-exclamation-triangle"></i>
+                  Das Abwählen dringend empfohlener Vor-/Nachteile sollte mit dem Spielleiter abgestimmt werden.
+                </p>
+              }
+              <p-divider />
+              <div class="c-checkbox-radio-container">
+                @for (disadvantage of recommendedDisadvantages(); track disadvantage) {
+                  <div class="c-checkbox-radio-wrapper">
+                    <p-checkbox
+                      [disabled]="!recommendedAdvDeselectable()"
+                      [inputId]="'disadv_' + disadvantage.name"
+                      name="recommendedDisadvs"
+                      [value]="disadvantage.name"
+                      [ngModel]="selectedDisadvantageNames()"
+                      (ngModelChange)="changeDisadvantages(disadvantage)"
+                    />
+                    <label [for]="'disadv_' + disadvantage.name"> {{ fixedLabel(disadvantage) }} </label>
+                  </div>
+                }
+              </div>
+            </span>
+          }
+          @if (selectedSpecies().typicalDisadvantages.length > 0) {
+            <span>
+              <h3>Typische Nachteile</h3>
+              <p-divider />
+              @for (group of typicalDisadvantages(); track group.group) {
+                <div class="mb-3">
+                  @if (group.group) {
+                    <h4>{{ group.group }}</h4>
+                  }
+                  <div class="c-checkbox-radio-container">
+                    @for (disadvantage of group.advantages; track disadvantage.name) {
+                      @if (!isLeveled(disadvantage)) {
+                        <div class="c-checkbox-radio-wrapper">
+                          <p-checkbox
+                            [inputId]="'disadv_' + disadvantage.name"
+                            name="typicalDisadvs"
+                            [value]="disadvantage.name"
+                            [ngModel]="selectedDisadvantageNames()"
+                            (ngModelChange)="changeDisadvantages(disadvantage)"
+                          />
+                          <label [for]="'disadv_' + disadvantage.name">{{ disadvantage.label }}</label>
+                        </div>
+                      } @else if (typicalLevelOptions(disadvantage, true).length > 0) {
+                        <div class="c-checkbox-radio-wrapper">
+                          <p-checkbox
+                            [inputId]="'disadv_' + disadvantage.name"
+                            binary="true"
+                            [ngModel]="isTypicalActive(disadvantage.name, true)"
+                            (ngModelChange)="toggleTypical(disadvantage, true)"
+                          />
+                          @if (typicalHasSingleLevel(disadvantage, true)) {
+                            <label [for]="'disadv_' + disadvantage.name">{{ typicalSingleLabel(disadvantage, true) }}</label>
+                          } @else {
+                            <label [for]="'disadv_' + disadvantage.name">{{ baseLabel(disadvantage) }}</label>
+                            <p-select
+                              class="c-level-select"
+                              [options]="typicalLevelOptions(disadvantage, true)"
+                              optionLabel="label"
+                              optionValue="value"
+                              appendTo="body"
+                              [ngModel]="getTypicalLevel(disadvantage, true)"
+                              (ngModelChange)="setTypicalLevel(disadvantage, $event, true)"
+                            />
+                          }
+                        </div>
+                      }
+                    }
+                  </div>
+                </div>
+              }
+            </span>
+          }
+          @if (atypicalDisadvantages().length > 0) {
+            <span>
+              <div class="c-section-head">
+                <h3>Untypische Nachteile</h3>
+                <button
+                  type="button"
+                  pButton
+                  [icon]="atypicalDisadvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"
+                  class="p-button-text p-button-sm c-deselect-lock"
+                  [class.c-unlocked]="atypicalDisadvUnlocked()"
+                  (click)="toggleAtypicalDisadvUnlocked()"
+                  [pTooltip]="atypicalDisadvUnlocked() ? 'Untypische Nachteile wieder sperren' : 'Untypische Nachteile auswählbar machen (Homebrew)'"
+                  tooltipPosition="left"
+                ></button>
+              </div>
+              @if (atypicalDisadvUnlocked()) {
+                <p class="c-gm-warning">
+                  <i class="pi pi-exclamation-triangle"></i>
+                  Untypische Nachteile sind nicht für diese Spezies vorgesehen und müssen mit dem Spielleiter abgestimmt werden (Homebrew).
+                </p>
+              }
+              <p-divider />
+              <div class="c-checkbox-radio-container">
+                @for (disadvantage of atypicalDisadvantages(); track disadvantage.name) {
+                  <div class="c-checkbox-radio-wrapper">
+                    <p-checkbox
+                      [disabled]="!atypicalDisadvUnlocked()"
+                      [inputId]="'atypdis_' + disadvantage.name"
+                      name="atypicalDisadvs"
+                      [value]="disadvantage.name"
+                      [ngModel]="selectedDisadvantageNames()"
+                      (ngModelChange)="changeDisadvantages(disadvantage)"
+                    />
+                    <label [for]="'atypdis_' + disadvantage.name">{{ fixedLabel(disadvantage) }}</label>
+                  </div>
+                }
+              </div>
+              @if (hasSelectedAtypicalDisadvantage()) {
+                <p class="c-gm-warning">
+                  <i class="pi pi-exclamation-triangle"></i>
+                  Eine untypische Wahl wurde getroffen — bitte mit dem Spielleiter abstimmen.
+                </p>
+              }
+            </span>
+          }
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+}

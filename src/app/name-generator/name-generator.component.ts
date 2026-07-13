@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -13,28 +8,14 @@ import { TabsModule } from 'primeng/tabs';
 import { TreeModule } from 'primeng/tree';
 import { TreeNode } from 'primeng/api';
 
-import {
-  NameRegion,
-  RACE_PANEL,
-  RacePanel,
-  TreeNode as AppTreeNode,
-} from './name-generator.model';
+import { NameRegion, RACE_PANEL, RacePanel, TreeNode as AppTreeNode } from './name-generator.model';
 import { NameGeneratorService } from './name-generator.service';
 
 @Component({
-    selector: 'app-name-generator',
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        RadioButtonModule,
-        TreeModule,
-        CheckboxModule,
-        ProgressSpinnerModule,
-        TabsModule,
-    ],
-    templateUrl: './name-generator.component.html',
-    styleUrl: './name-generator.component.scss'
+  selector: 'app-name-generator',
+  imports: [FormsModule, ReactiveFormsModule, ButtonModule, RadioButtonModule, TreeModule, CheckboxModule, ProgressSpinnerModule, TabsModule],
+  templateUrl: './name-generator.component.html',
+  styleUrl: './name-generator.component.scss',
 })
 export class NameGeneratorComponent {
   public activeTabValue: string = RACE_PANEL[0].title;
@@ -53,22 +34,18 @@ export class NameGeneratorComponent {
 
   private region: NameRegion;
 
-  constructor(
-    private nameService: NameGeneratorService
-  ) {
+  constructor(private nameService: NameGeneratorService) {
     const savedTab = localStorage.getItem('openPanelIndex');
     if (savedTab !== null) {
       // legacy: numeric index stored as string
       const asNumber = parseInt(savedTab, 10);
-      this.activeTabValue = isNaN(asNumber)
-        ? savedTab
-        : (RACE_PANEL[asNumber]?.title ?? RACE_PANEL[0].title);
+      this.activeTabValue = isNaN(asNumber) ? savedTab : (RACE_PANEL[asNumber]?.title ?? RACE_PANEL[0].title);
     }
     this._buildTreeNodes(this.activeTabValue);
   }
 
   private _buildTreeNodes(tabTitle: string): void {
-    const panel = this.racePanels.find(p => p.title === tabTitle);
+    const panel = this.racePanels.find((p) => p.title === tabTitle);
     const treeData = panel?.treeData ?? [];
     this.treeNodes = this._toTreeNodes(treeData);
   }
@@ -102,9 +79,7 @@ export class NameGeneratorComponent {
   }
 
   public setRegion(region: any, isTree: boolean): void {
-    this.hasNotNoble = isTree
-      ? !this.hasNoble(region?.value)
-      : !region?.hasNoble;
+    this.hasNotNoble = isTree ? !this.hasNoble(region?.value) : !region?.hasNoble;
     this.region = region?.value;
     this.selectedRegionLabel = region?.label ?? null;
   }
@@ -124,11 +99,7 @@ export class NameGeneratorComponent {
       hasNotNoble: this.hasNotNoble,
     };
     try {
-      this.names = await this.nameService.getNameList(
-        this.region,
-        this.genderControl.value,
-        this.isNoble.value
-      );
+      this.names = await this.nameService.getNameList(this.region, this.genderControl.value, this.isNoble.value);
     } catch (error) {
       console.error('Error loading names:', error);
     } finally {

@@ -1,0 +1,44 @@
+<div class="c-entry">
+  <header class="c-entry-head">
+    <h2 class="c-entry-title">Heldenerschaffung</h2>
+    <p class="c-entry-sub">Wie möchtest du deinen Helden beginnen?</p>
+  </header>
+
+  <div class="c-entry-cards">
+    <button type="button" class="c-entry-card" (click)="goToWizard()">
+      <span class="c-entry-icon"><i class="pi pi-compass"></i></span>
+      <h3 class="c-entry-card-title">Geführte Erschaffung</h3>
+      <p class="c-entry-card-desc">
+        Schritt für Schritt durch Spezies, Kultur, Profession und den Rest. Der Assistent führt dich und
+        rechnet die AP mit – ideal für neue Helden.
+      </p>
+      <span class="c-entry-cta">Assistent starten <i class="pi pi-arrow-right"></i></span>
+    </button>
+
+    <button type="button" class="c-entry-card" (click)="goToEmptySheet()">
+      <span class="c-entry-icon"><i class="pi pi-file-edit"></i></span>
+      <h3 class="c-entry-card-title">Leeres Heldendokument</h3>
+      <p class="c-entry-card-desc">
+        Beginne mit einem leeren Bogen und trage alles frei selbst ein. Volle Kontrolle – für erfahrene
+        Spieler, die ihren Helden schon kennen.
+      </p>
+      <span class="c-entry-cta">Leeren Bogen öffnen <i class="pi pi-arrow-right"></i></span>
+    </button>
+
+    <button type="button" class="c-entry-card" (click)="importInput.click()">
+      <span class="c-entry-icon"><i class="pi pi-upload"></i></span>
+      <h3 class="c-entry-card-title">Charakter importieren</h3>
+      <p class="c-entry-card-desc">
+        Lade ein zuvor exportiertes JSON oder einen PDF-Bogen, um weiterzumachen, deinen Helden zu prüfen
+        oder ihn zu steigern.
+      </p>
+      <span class="c-entry-cta">JSON oder PDF auswählen <i class="pi pi-arrow-right"></i></span>
+    </button>
+  </div>
+
+  @if (importError()) {
+    <div class="c-entry-error" role="alert"><i class="pi pi-times-circle"></i> {{ importError() }}</div>
+  }
+
+  <input #importInput type="file" accept=".json,.pdf,application/json,application/pdf" hidden (change)="onImportFile($event)" />
+</div>

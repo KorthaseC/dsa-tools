@@ -1,0 +1,5150 @@
+[
+  {
+    "name": "abrollen",
+    "label": "Abrollen",
+    "cost": 8,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "korperbeherrschung",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Abrollen.html",
+    "labelKey": "abrollen"
+  },
+  {
+    "name": "analytiker",
+    "label": "Analytiker",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "magiekunde",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Analytiker.html",
+    "labelKey": "analytiker"
+  },
+  {
+    "name": "anfuhrer",
+    "label": "Anführer",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Anfuehrer.html",
+    "labelKey": "anfuehrer"
+  },
+  {
+    "name": "athlet",
+    "label": "Athlet",
+    "cost": 20,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "korperbeherrschung",
+        "required": true,
+        "minLvl": 4
+      },
+      {
+        "name": "kraftakt",
+        "required": true,
+        "minLvl": 4
+      },
+      {
+        "name": "behabig",
+        "required": false
+      },
+      {
+        "name": "fettleibig",
+        "required": false
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Athlet.html",
+    "labelKey": "athlet"
+  },
+  {
+    "name": "bauchreden",
+    "label": "Bauchreden",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "gaukeleien",
+        "required": true,
+        "minLvl": 8
+      },
+      {
+        "name": "korperbeherrschung",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bauchreden.html",
+    "labelKey": "bauchreden"
+  },
+  {
+    "name": "drohgebarden",
+    "label": "Drohgebärden",
+    "cost": 10,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "einschuchtern",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Drohgebaerden.html",
+    "labelKey": "drohgebaerden"
+  },
+  {
+    "name": "eisernerWille",
+    "label": "Eiserner Wille I-II",
+    "cost": 15,
+    "category": "General",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Eiserner_Wille_I-II.html",
+    "labelKey": "eisernerwille"
+  },
+  {
+    "name": "entfesselungskunstler",
+    "label": "Entfesselungskünstler",
+    "cost": 8,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "korperbeherrschung",
+        "required": true,
+        "minLvl": 10
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Entfesselungskuenstler.html",
+    "labelKey": "entfesselungskuenstler"
+  },
+  {
+    "name": "falschspielen",
+    "label": "Falschspielen",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "brettGlucksspiel",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Falschspielen.html",
+    "labelKey": "falschspielen"
+  },
+  {
+    "name": "fertigkeitsspezialisierung",
+    "label": "Fertigkeitsspezialisierung (Talente)",
+    "cost": 1,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Fertigkeitsspezialisierung_Talente.html",
+    "labelKey": "fertigkeitsspezialisierungtalente"
+  },
+  {
+    "name": "freiklettern",
+    "label": "Freiklettern",
+    "cost": 6,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "klettern",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Freiklettern.html",
+    "labelKey": "freiklettern"
+  },
+  {
+    "name": "fuchsisch",
+    "label": "Füchsisch",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Fuechsisch.html",
+    "labelKey": "fuechsisch"
+  },
+  {
+    "name": "gelandekunde",
+    "label": "Geländekunde",
+    "cost": 15,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Gelaendekunde.html",
+    "labelKey": "gelaendekunde"
+  },
+  {
+    "name": "gestalterWille",
+    "label": "Gestählter Wille",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "willenskraft",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Gestaelter_Wille.html",
+    "labelKey": "gestaehlterwille"
+  },
+  {
+    "name": "jager",
+    "label": "Jäger",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "fahrtensuchen",
+        "required": true,
+        "minLvl": 4
+      },
+      {
+        "name": "tierkunde",
+        "required": true,
+        "minLvl": 4
+      },
+      {
+        "name": "verbergen",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Jaeger.html",
+    "labelKey": "jaeger"
+  },
+  {
+    "name": "kampftrinker",
+    "label": "Kampftrinker I-IV",
+    "cost": 2,
+    "category": "General",
+    "lvl": 1,
+    "maxLvl": 4,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kampftrinker_I-IV.html",
+    "labelKey": "kampftrinker"
+  },
+  {
+    "name": "kunstreiten",
+    "label": "Kunstreiten",
+    "cost": 3,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "reiten",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kunstreiten.html",
+    "labelKey": "kunstreiten"
+  },
+  {
+    "name": "lehrer",
+    "label": "Lehrer I-III",
+    "cost": 3,
+    "category": "General",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Lehrer_I-III.html",
+    "labelKey": "lehrer"
+  },
+  {
+    "name": "lippenlesen",
+    "label": "Lippenlesen",
+    "cost": 10,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "sinnesscharfe",
+        "required": true,
+        "minLvl": 4
+      },
+      {
+        "name": "blind",
+        "required": false
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Lippenlesen.html",
+    "labelKey": "lippenlesen"
+  },
+  {
+    "name": "navigation",
+    "label": "Navigation",
+    "cost": 10,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "booteSchiffe",
+        "required": true,
+        "minLvl": 8
+      },
+      {
+        "name": "rechnen",
+        "required": true,
+        "minLvl": 8
+      },
+      {
+        "name": "sternkunde",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Navigation.html",
+    "labelKey": "navigation"
+  },
+  {
+    "name": "nervenAusStahl",
+    "label": "Nerven aus Stahl",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "menschenkenntnis",
+        "required": true,
+        "minLvl": 4
+      },
+      {
+        "name": "willenskraft",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Nerven_aus_Stahl.html",
+    "labelKey": "nervenausstahl"
+  },
+  {
+    "name": "ortskenntnis",
+    "label": "Ortskenntnis",
+    "cost": 2,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Ortskenntnis.html",
+    "labelKey": "ortskenntnis"
+  },
+  {
+    "name": "provozieren",
+    "label": "Provozieren",
+    "cost": 12,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "einschuchtern",
+        "required": true,
+        "minLvl": 8
+      },
+      {
+        "name": "uberreden",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Provozieren.html",
+    "labelKey": "provozieren"
+  },
+  {
+    "name": "sammler",
+    "label": "Sammler",
+    "cost": 2,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "pflanzenkunde",
+        "required": true,
+        "minLvl": 4
+      },
+      {
+        "name": "wildnisleben",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Sammler.html",
+    "labelKey": "sammler"
+  },
+  {
+    "name": "schmerzenUnterdrucken",
+    "label": "Schmerzen unterdrücken",
+    "cost": 20,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "selbstbeherrschung",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Schmerzen_unterdruecken.html",
+    "labelKey": "schmerzenunterdruecken"
+  },
+  {
+    "name": "selbstbewusstesAuftreten",
+    "label": "Selbstbewusstes Auftreten",
+    "cost": 10,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "etikette",
+        "required": true,
+        "minLvl": 8
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Selbstbewusstes_Auftreten.html",
+    "labelKey": "selbstbewusstesauftreten"
+  },
+  {
+    "name": "skifahren",
+    "label": "Skifahren",
+    "cost": 4,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "korperbeherrschung",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Skifahren.html",
+    "labelKey": "skifahren"
+  },
+  {
+    "name": "tierstimmenImitieren",
+    "label": "Tierstimmen imitieren",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "tierkunde",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Tierstimmen_imitieren.html",
+    "labelKey": "tierstimmenimitieren"
+  },
+  {
+    "name": "verfuhrungskunst",
+    "label": "Verführungskunst",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "betoren",
+        "required": true,
+        "minLvl": 10
+      },
+      {
+        "name": "etikette",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Verfuehrungskunst.html",
+    "labelKey": "verfuehrungskunst"
+  },
+  {
+    "name": "wettervorhersage",
+    "label": "Wettervorhersage",
+    "cost": 2,
+    "category": "General",
+    "prerequisite": [
+      {
+        "name": "wildnisleben",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Wettervorhersage.html",
+    "labelKey": "wettervorhersage"
+  },
+  {
+    "name": "abrichter",
+    "label": "Abrichter",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Abrichter.html",
+    "labelKey": "abrichter"
+  },
+  {
+    "name": "ackerbau",
+    "label": "Ackerbau",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Ackerbau.html",
+    "labelKey": "ackerbau"
+  },
+  {
+    "name": "alchimiezirkel",
+    "label": "Alchimiezirkel I-III",
+    "cost": 0,
+    "category": "General",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Alchimiezirkel_I-III.html",
+    "labelKey": "alchimiezirkel"
+  },
+  {
+    "name": "alchimischeAquivalenzlehre",
+    "label": "Alchimistische Äquivalenzlehre",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Alchimistische_Aequivalenzlehre.html",
+    "labelKey": "alchimistischeaequivalenzlehre"
+  },
+  {
+    "name": "anpeitscher",
+    "label": "Anpeitscher",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Anpeitscher.html",
+    "labelKey": "anpeitscher"
+  },
+  {
+    "name": "architekt",
+    "label": "Architekt",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Architekt.html",
+    "labelKey": "architekt"
+  },
+  {
+    "name": "archivar",
+    "label": "Archivar",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Archivar.html",
+    "labelKey": "archivar"
+  },
+  {
+    "name": "bastler",
+    "label": "Bastler",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bastler.html",
+    "labelKey": "bastler"
+  },
+  {
+    "name": "bergbau",
+    "label": "Bergbau",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bergbau.html",
+    "labelKey": "bergbau"
+  },
+  {
+    "name": "bernsteinErhitzen",
+    "label": "Bernstein erhitzen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bernstein_erhitzen.html",
+    "labelKey": "bernsteinerhitzen"
+  },
+  {
+    "name": "bierbrauerei",
+    "label": "Bierbrauerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bierbrauerei.html",
+    "labelKey": "bierbrauerei"
+  },
+  {
+    "name": "bildhauerei",
+    "label": "Bildhauerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bildhauerei.html",
+    "labelKey": "bildhauerei"
+  },
+  {
+    "name": "bineMaschores",
+    "label": "Bine Maschores",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bine_Maschores.html",
+    "labelKey": "binemaschores"
+  },
+  {
+    "name": "bootsbauer",
+    "label": "Bootsbauer",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Bootsbauer.html",
+    "labelKey": "bootsbauer"
+  },
+  {
+    "name": "buchdrucker",
+    "label": "Buchdrucker",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Buchdrucker.html",
+    "labelKey": "buchdrucker"
+  },
+  {
+    "name": "buchherstellung",
+    "label": "Buchherstellung",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Buchherstellung.html",
+    "labelKey": "buchherstellung"
+  },
+  {
+    "name": "deichbauer",
+    "label": "Deichbauer",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Deichbauer.html",
+    "labelKey": "deichbauer"
+  },
+  {
+    "name": "diener",
+    "label": "Diener",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Diener.html",
+    "labelKey": "diener"
+  },
+  {
+    "name": "dokumentfalscher",
+    "label": "Dokumentfälscher",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Dokumentfaelscher.html",
+    "labelKey": "dokumentfaelscher"
+  },
+  {
+    "name": "edelsteinschleifen",
+    "label": "Edelsteinschleifen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Edelsteinschleifen.html",
+    "labelKey": "edelsteinschleifen"
+  },
+  {
+    "name": "eleganeFrisur",
+    "label": "Elegante Frisur",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Elegante_Frisur.html",
+    "labelKey": "elegantefrisur"
+  },
+  {
+    "name": "entfernungenSchatzen",
+    "label": "Entfernungen schätzen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Entfernungen_schaetzen.html",
+    "labelKey": "entfernungenschaetzen"
+  },
+  {
+    "name": "erholsamesBad",
+    "label": "Erholsames Bad",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Erholsames_Bad.html",
+    "labelKey": "erholsamesbad"
+  },
+  {
+    "name": "ermutigenderGesang",
+    "label": "Ermutigender Gesang",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Ermutigender_Gesang.html",
+    "labelKey": "ermutigendergesang"
+  },
+  {
+    "name": "fallenEntscharfen",
+    "label": "Fallen entschärfen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Fallen_entscharfen.html",
+    "labelKey": "fallenentschaerfen"
+  },
+  {
+    "name": "fallenWiederScharfmachen",
+    "label": "Fallen wieder scharfmachen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Fallen_wieder_scharfmachen.html",
+    "labelKey": "fallenwiederscharfmachen"
+  },
+  {
+    "name": "fallentarnung",
+    "label": "Fallentarnung",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Fallentarnung.html",
+    "labelKey": "fallentarnung"
+  },
+  {
+    "name": "faszinierender Gesang",
+    "label": "Faszinierender Gesang",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Faszinierender_Gesang.html",
+    "labelKey": "faszinierendergesang"
+  },
+  {
+    "name": "feuerschlucker",
+    "label": "Feuerschlucker",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Feuerschlucker.html",
+    "labelKey": "feuerschlucker"
+  },
+  {
+    "name": "fischer",
+    "label": "Fischer",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Fischer.html",
+    "labelKey": "fischer"
+  },
+  {
+    "name": "facherspache",
+    "label": "Fächersprache",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Faechersprache.html",
+    "labelKey": "faechersprache"
+  },
+  {
+    "name": "galanterie",
+    "label": "Galanterie",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Galanterie.html",
+    "labelKey": "galanterie"
+  },
+  {
+    "name": "geschosshersteller",
+    "label": "Geschosshersteller",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Geschosshersteller.html",
+    "labelKey": "geschosshersteller"
+  },
+  {
+    "name": "gespurFurHimmelsrichtungen",
+    "label": "Gespür für Himmelsrichtungen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Gespur_fuer_Himmelsrichtungen.html",
+    "labelKey": "gespuerfuerhimmelsrichtungen"
+  },
+  {
+    "name": "giftMelkenLand",
+    "label": "Gift melken (Land- und Lufttiere)",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [],
+    "prerequisiteText": "Tierkunde 8, Heilkunde Gift 4",
+    "url": "https://dsa.ulisses-regelwiki.de/gift-melken-land-und-lufttiere.html",
+    "labelKey": "giftmelkenlandundlufttiere"
+  },
+  {
+    "name": "giftMelkenWasser",
+    "label": "Gift melken (Wassertiere)",
+    "cost": 5,
+    "category": "General",
+    "prerequisite": [],
+    "prerequisiteText": "Fischen & Angeln 8, Heilkunde Gift 4",
+    "url": "https://dsa.ulisses-regelwiki.de/gift-melken-wassertiere.html",
+    "labelKey": "giftmelkenwassertiere"
+  },
+  {
+    "name": "giftverstarkung",
+    "label": "Giftverstärkung (Giftart)",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Giftverstaerkung.html",
+    "labelKey": "giftverstaerkunggiftart"
+  },
+  {
+    "name": "gildenrecht",
+    "label": "Gildenrecht",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Gildenrecht.html",
+    "labelKey": "gildenrecht"
+  },
+  {
+    "name": "glasblaserei",
+    "label": "Glasbläserei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Glasblaeserei.html",
+    "labelKey": "glasblaeserei"
+  },
+  {
+    "name": "hauswirtschaft",
+    "label": "Hauswirtschaft",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Hauswirtschaft.html",
+    "labelKey": "hauswirtschaft"
+  },
+  {
+    "name": "hehlerei",
+    "label": "Hehlerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Hehlerei.html",
+    "labelKey": "hehlerei"
+  },
+  {
+    "name": "heilungsspezialgebiet",
+    "label": "Heilungsspezialgebiet (Anwendungsgebiet)",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Heilungsspezialgebiet.html",
+    "labelKey": "heilungsspezialgebietanwendungsgebiet"
+  },
+  {
+    "name": "heraldik",
+    "label": "Heraldik",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Heraldik.html",
+    "labelKey": "heraldik"
+  },
+  {
+    "name": "heraldikspezialist",
+    "label": "Heraldikspezialist",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Heraldikspezialist.html",
+    "labelKey": "heraldikspezialist"
+  },
+  {
+    "name": "hofzeremoniell",
+    "label": "Hofzeremoniell",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Hofzeremoniell.html",
+    "labelKey": "hofzeremoniell"
+  },
+  {
+    "name": "holzkenntnis",
+    "label": "Holzkenntnis",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Holzkenntnis.html",
+    "labelKey": "holzkenntnis"
+  },
+  {
+    "name": "iglubau",
+    "label": "Iglubau",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Iglubau.html",
+    "labelKey": "iglubau"
+  },
+  {
+    "name": "instrumenteBauen",
+    "label": "Instrumente bauen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Instrumente_bauen.html",
+    "labelKey": "instrumentebauen"
+  },
+  {
+    "name": "kalligraphie",
+    "label": "Kalligraphie",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kalligraphie.html",
+    "labelKey": "kalligraphie"
+  },
+  {
+    "name": "kapellmeister",
+    "label": "Kapellmeister",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kapellmeister.html",
+    "labelKey": "kapellmeister"
+  },
+  {
+    "name": "kartographie",
+    "label": "Kartographie",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kartographie.html",
+    "labelKey": "kartographie"
+  },
+  {
+    "name": "kohlezeichnungen",
+    "label": "Kohlezeichnungen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kohlezeichnungen.html",
+    "labelKey": "kohlezeichnungen"
+  },
+  {
+    "name": "konditor",
+    "label": "Konditor",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Konditor.html",
+    "labelKey": "konditor"
+  },
+  {
+    "name": "kristallzucht",
+    "label": "Kristallzucht",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kristallzucht.html",
+    "labelKey": "kristallzucht"
+  },
+  {
+    "name": "kryptographie",
+    "label": "Kryptographie",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kryptographie.html",
+    "labelKey": "kryptographie"
+  },
+  {
+    "name": "krautermischung",
+    "label": "Kräutermischung",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kraeutermischung.html",
+    "labelKey": "kraeutermischung"
+  },
+  {
+    "name": "kunstflug",
+    "label": "Kunstflug",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kunstflug.html",
+    "labelKey": "kunstflug"
+  },
+  {
+    "name": "kupferstich",
+    "label": "Kupferstich",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kupferstich.html",
+    "labelKey": "kupferstich"
+  },
+  {
+    "name": "kurzschrift",
+    "label": "Kurzschrift",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kurzschrift.html",
+    "labelKey": "kurzschrift"
+  },
+  {
+    "name": "kutschenbauer",
+    "label": "Kutschenbauer",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Kutschenbauer.html",
+    "labelKey": "kutschenbauer"
+  },
+  {
+    "name": "legGaLeg",
+    "label": "Leg-ga-leg",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Leg-ga-leg.html",
+    "labelKey": "leggaleg"
+  },
+  {
+    "name": "leibdiener",
+    "label": "Leibdiener",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Leibdiener.html",
+    "labelKey": "leibdiener"
+  },
+  {
+    "name": "lieblingDerMassen",
+    "label": "Liebling der Massen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Liebling_der_Massen.html",
+    "labelKey": "lieblingdermassen"
+  },
+  {
+    "name": "masseur",
+    "label": "Masseur/in",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Masseur.html",
+    "labelKey": "masseurin"
+  },
+  {
+    "name": "meisterDerImprovisation",
+    "label": "Meister der Improvisation",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Meister_der_Improvisation.html",
+    "labelKey": "meisterderimprovisation"
+  },
+  {
+    "name": "menschenstimmenImitieren",
+    "label": "Menschenstimmen imitieren",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Menschenstimmen_imitieren.html",
+    "labelKey": "menschenstimmenimitieren"
+  },
+  {
+    "name": "meteoreisenVerarbeiten",
+    "label": "Meteoreisen verarbeiten I-III",
+    "cost": 0,
+    "category": "General",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Meteoreisen_verarbeiten_I-III.html",
+    "labelKey": "meteoreisenverarbeiten"
+  },
+  {
+    "name": "mobelHerstellen",
+    "label": "Möbel herstellen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Moebel_herstellen.html",
+    "labelKey": "moebelherstellen"
+  },
+  {
+    "name": "namensschmeichler",
+    "label": "Namensschmeichler",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Namensschmeichler.html",
+    "labelKey": "namensschmeichler"
+  },
+  {
+    "name": "opernsanger",
+    "label": "Opernsänger",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Opernsaenger.html",
+    "labelKey": "opernsaenger"
+  },
+  {
+    "name": "orientierungUnterTage",
+    "label": "Orientierung unter Tage",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Orientierung_unter_Tage.html",
+    "labelKey": "orientierunguntertage"
+  },
+  {
+    "name": "palenkelubung",
+    "label": "Palenkelübung",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Palenkeluebung.html",
+    "labelKey": "palenkeluebung"
+  },
+  {
+    "name": "pflanzenErhalten",
+    "label": "Pflanzen erhalten",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Pflanzen_erhalten.html",
+    "labelKey": "pflanzenerhalten"
+  },
+  {
+    "name": "porzellanarbeiten",
+    "label": "Porzellanarbeiten",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Porzellanarbeiten.html",
+    "labelKey": "porzellanarbeiten"
+  },
+  {
+    "name": "prunkkleidungHerstellen",
+    "label": "Prunkkleidung herstellen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Prunkkleidung_herstellen.html",
+    "labelKey": "prunkkleidungherstellen"
+  },
+  {
+    "name": "pyromantiker",
+    "label": "Pyromantiker",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Pyromantiker.html",
+    "labelKey": "pyromantiker"
+  },
+  {
+    "name": "rahjasutraKenntnisse",
+    "label": "Rahjasutra-Kenntnisse",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Rahjasutra_Kenntnisse.html",
+    "labelKey": "rahjasutrakenntnisse"
+  },
+  {
+    "name": "rosstauscher",
+    "label": "Rosstäuscher",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Rosstaeuscher.html",
+    "labelKey": "rosstaeuscher"
+  },
+  {
+    "name": "rustungsbau",
+    "label": "Rüstungsbau",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Ruestungsbau.html",
+    "labelKey": "ruestungsbau"
+  },
+  {
+    "name": "schiffsbauer",
+    "label": "Schiffsbauer",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Schiffsbauer.html",
+    "labelKey": "schiffsbauer"
+  },
+  {
+    "name": "schleiertanz",
+    "label": "Schleiertanz",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Schleiertanz.html",
+    "labelKey": "schleiertanz"
+  },
+  {
+    "name": "schmuckHerstellen",
+    "label": "Schmuck herstellen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Schmuck_herstellen.html",
+    "labelKey": "schmuckherstellen"
+  },
+  {
+    "name": "schnapsbrennerei",
+    "label": "Schnapsbrennerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Schnapsbrennerei.html",
+    "labelKey": "schnapsbrennerei"
+  },
+  {
+    "name": "schnellschreiber",
+    "label": "Schnellschreiber",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Schnellschreiber.html",
+    "labelKey": "schnellschreiber"
+  },
+  {
+    "name": "schriftstellerei",
+    "label": "Schriftstellerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Schriftstellerei.html",
+    "labelKey": "schriftstellerei"
+  },
+  {
+    "name": "seileHerstellen",
+    "label": "Seile herstellen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Seile_herstellen.html",
+    "labelKey": "seileherstellen"
+  },
+  {
+    "name": "silberguss",
+    "label": "Silberguss",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Silberguss.html",
+    "labelKey": "silberguss"
+  },
+  {
+    "name": "sinnlicherTanz",
+    "label": "Sinnlicher Tanz",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Sinnlicher_Tanz.html",
+    "labelKey": "sinnlichertanz"
+  },
+  {
+    "name": "smutje",
+    "label": "Smutje",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Smutje.html",
+    "labelKey": "smutje"
+  },
+  {
+    "name": "spracheDerBlumen",
+    "label": "Sprache der Blumen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Sprache_der_Blumen.html",
+    "labelKey": "sprachederblumen"
+  },
+  {
+    "name": "staatskunst",
+    "label": "Staatskunst",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Staatskunst.html",
+    "labelKey": "staatskunst"
+  },
+  {
+    "name": "stechenderBlick",
+    "label": "Stechender Blick",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Stechender_Blick.html",
+    "labelKey": "stechenderblick"
+  },
+  {
+    "name": "stellmacherei",
+    "label": "Stellmacherei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Stellmacherei.html",
+    "labelKey": "stellmacherei"
+  },
+  {
+    "name": "turnierkenntnis",
+    "label": "Turnierkenntnis",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Turnierkenntnis.html",
+    "labelKey": "turnierkenntnis"
+  },
+  {
+    "name": "tatowierer",
+    "label": "Tätowierer",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Taetowierer.html",
+    "labelKey": "taetowierer"
+  },
+  {
+    "name": "topferei",
+    "label": "Töpferei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Toepferei.html",
+    "labelKey": "toepferei"
+  },
+  {
+    "name": "unterminieren",
+    "label": "Unterminieren",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Unterminieren.html",
+    "labelKey": "unterminieren"
+  },
+  {
+    "name": "unterschlupfFinden",
+    "label": "Unterschlupf finden",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Unterschlupf_finden.html",
+    "labelKey": "unterschlupffinden"
+  },
+  {
+    "name": "versteckeFinden",
+    "label": "Verstecke finden",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Verstecke_finden.html",
+    "labelKey": "versteckefinden"
+  },
+  {
+    "name": "viehzucht",
+    "label": "Viehzucht",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Viehzucht.html",
+    "labelKey": "viehzucht"
+  },
+  {
+    "name": "waffenbau",
+    "label": "Waffenbau",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Waffenbau.html",
+    "labelKey": "waffenbau"
+  },
+  {
+    "name": "wandmalerei",
+    "label": "Wandmalerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Wandmalerei.html",
+    "labelKey": "wandmalerei"
+  },
+  {
+    "name": "wegabkurzungenKennen",
+    "label": "Wegabkürzungen kennen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Wegabkuerzungen_kennen.html",
+    "labelKey": "wegabkuerzungenkennen"
+  },
+  {
+    "name": "wegkenntnis",
+    "label": "Wegkenntnis",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Wegkenntnis.html",
+    "labelKey": "wegkenntnis"
+  },
+  {
+    "name": "werteSchatzen",
+    "label": "Werte schätzen",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Werte_schaetzen.html",
+    "labelKey": "werteschaetzen"
+  },
+  {
+    "name": "winzerei",
+    "label": "Winzerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Winzerei.html",
+    "labelKey": "winzerei"
+  },
+  {
+    "name": "zahlenmystik",
+    "label": "Zahlenmystik",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Zahlenmystik.html",
+    "labelKey": "zahlenmystik"
+  },
+  {
+    "name": "zyklopenschmied",
+    "label": "Zyklopenschmied",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Zyklopenschmied.html",
+    "labelKey": "zyklopenschmied"
+  },
+  {
+    "name": "olmalerei",
+    "label": "Ölmalerei",
+    "cost": 0,
+    "category": "General",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Oelmalerei.html",
+    "labelKey": "oelmalerei"
+  },
+  {
+    "name": "armbrustUberdrehen",
+    "label": "Armbrust überdrehen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Armbrust_ueberdrehen.html",
+    "labelKey": "armbrustueberdrehen"
+  },
+  {
+    "name": "aufDistanzHalten",
+    "label": "Auf Distanz halten I-II",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Auf_Distanz_halten_I-II.html",
+    "labelKey": "aufdistanzhalten"
+  },
+  {
+    "name": "auflaufen",
+    "label": "Auflaufen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Auflaufen.html",
+    "labelKey": "auflaufen"
+  },
+  {
+    "name": "aufmerksamkeit",
+    "label": "Aufmerksamkeit",
+    "cost": 15,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Aufmerksamkeit.html",
+    "labelKey": "aufmerksamkeit"
+  },
+  {
+    "name": "ausfall",
+    "label": "Ausfall I-II",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Ausfall_I-II.html",
+    "labelKey": "ausfall"
+  },
+  {
+    "name": "ballistischerSchuss",
+    "label": "Ballistischer Schuss",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Ballistischer_Schuss.html",
+    "labelKey": "ballistischerschuss"
+  },
+  {
+    "name": "beidhandigerKampf",
+    "label": "Beidhändiger Kampf I-II",
+    "cost": 20,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Beidhaendiger_Kampf_I-II.html",
+    "labelKey": "beidhaendigerkampf"
+  },
+  {
+    "name": "belastungsgewohnung",
+    "label": "Belastungsgewöhnung I-II",
+    "cost": 20,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "KO",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Belastungsgewohnung_I-II.html",
+    "labelKey": "belastungsgewoehnung"
+  },
+  {
+    "name": "berittenerKampf",
+    "label": "Berittener Kampf",
+    "cost": 20,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "reiten",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Berittener_Kampf.html",
+    "labelKey": "berittenerkampf"
+  },
+  {
+    "name": "berittenerSchutze",
+    "label": "Berittener Schütze",
+    "cost": 10,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "berittenerKampf",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Berittener_Schuetze.html",
+    "labelKey": "berittenerschuetze"
+  },
+  {
+    "name": "beschutzer",
+    "label": "Beschützer",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Beschuetzer.html",
+    "labelKey": "beschuetzer"
+  },
+  {
+    "name": "betaubungsschlag",
+    "label": "Betäubungsschlag",
+    "cost": 15,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "KK",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Betaeubungsschlag.html",
+    "labelKey": "betaeubungsschlag"
+  },
+  {
+    "name": "blindkampf",
+    "label": "Blindkampf I-II",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Blindkampf_I-II.html",
+    "labelKey": "blindkampf"
+  },
+  {
+    "name": "doppelangriff",
+    "label": "Doppelangriff",
+    "cost": 25,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "beidhandigerKampf",
+        "required": true
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Doppelangriff.html",
+    "labelKey": "doppelangriff"
+  },
+  {
+    "name": "einhandigerKampf",
+    "label": "Einhändiger Kampf",
+    "cost": 10,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Einhaendiger_Kampf.html",
+    "labelKey": "einhaendigerkampf"
+  },
+  {
+    "name": "entwaffnen",
+    "label": "Entwaffnen",
+    "cost": 40,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Entwaffnen.html",
+    "labelKey": "entwaffnen"
+  },
+  {
+    "name": "feindgespur",
+    "label": "Feindgespür",
+    "cost": 10,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Feindgespur.html",
+    "labelKey": "feindgespuer"
+  },
+  {
+    "name": "festnageln",
+    "label": "Festnageln",
+    "cost": 20,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Festnageln.html",
+    "labelKey": "festnageln"
+  },
+  {
+    "name": "finte",
+    "label": "Finte I-III",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Finte_I-III.html",
+    "labelKey": "finte"
+  },
+  {
+    "name": "formation",
+    "label": "Formation",
+    "cost": 20,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "kriegskunst",
+        "required": true,
+        "minLvl": 6
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Formation.html",
+    "labelKey": "formation"
+  },
+  {
+    "name": "geschossabwehr",
+    "label": "Geschossabwehr I-III",
+    "cost": 5,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "FF",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Geschossabwehr_I-III.html",
+    "labelKey": "geschossabwehr"
+  },
+  {
+    "name": "gezielterAngriff",
+    "label": "Gezielter Angriff",
+    "cost": 10,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gezielter_Angriff.html",
+    "labelKey": "gezielterangriff"
+  },
+  {
+    "name": "gezielterSchuss",
+    "label": "Gezielter Schuss",
+    "cost": 10,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "FF",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gezielter_Schuss.html",
+    "labelKey": "gezielterschuss"
+  },
+  {
+    "name": "hammerschlag",
+    "label": "Hammerschlag",
+    "cost": 25,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "wuchtschlag",
+        "required": true,
+        "minLvl": 3
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "MU",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Hammerschlag.html",
+    "labelKey": "hammerschlag"
+  },
+  {
+    "name": "kampfreflexe",
+    "label": "Kampfreflexe I-III",
+    "cost": 10,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kampfreflexe_I-III.html",
+    "labelKey": "kampfreflexe"
+  },
+  {
+    "name": "klingensturm",
+    "label": "Klingensturm",
+    "cost": 30,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Klingensturm.html",
+    "labelKey": "klingensturm"
+  },
+  {
+    "name": "meisterlichesAusweichen",
+    "label": "Meisterliches Ausweichen",
+    "cost": 15,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "verbesserteAusweichen",
+        "required": true,
+        "minLvl": 2
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Meisterliches_Ausweichen.html",
+    "labelKey": "meisterlichesausweichen"
+  },
+  {
+    "name": "meisterparade",
+    "label": "Meisterparade",
+    "cost": 25,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Meisterparade.html",
+    "labelKey": "meisterparade"
+  },
+  {
+    "name": "praeziserSchussWurf",
+    "label": "Präziser Schuss/Wurf I-III",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Praeziser_Schuss_Wurf_I-III.html",
+    "labelKey": "praeziserschusswurf"
+  },
+  {
+    "name": "riposte",
+    "label": "Riposte",
+    "cost": 20,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Riposte.html",
+    "labelKey": "riposte"
+  },
+  {
+    "name": "rundumschlag",
+    "label": "Rundumschlag I-II",
+    "cost": 25,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Rundumschlag_I-II.html",
+    "labelKey": "rundumschlag"
+  },
+  {
+    "name": "scharfschutze",
+    "label": "Scharfschütze I-II",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [
+      {
+        "name": "praeziserSchussWurf",
+        "required": true
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Scharfschuetze_I-II.html",
+    "labelKey": "scharfschuetze"
+  },
+  {
+    "name": "schildspalter",
+    "label": "Schildspalter",
+    "cost": 15,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "wuchtschlag",
+        "required": true
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "KK",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Schildspalter.html",
+    "labelKey": "schildspalter"
+  },
+  {
+    "name": "schnellladen",
+    "label": "Schnellladen (Kampftechnik)",
+    "cost": 5,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "FF",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Schnellladen.html",
+    "labelKey": "schnellladenkampftechnik"
+  },
+  {
+    "name": "schnellziehen",
+    "label": "Schnellziehen",
+    "cost": 10,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "FF",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Schnellziehen.html",
+    "labelKey": "schnellziehen"
+  },
+  {
+    "name": "sturmangriff",
+    "label": "Sturmangriff",
+    "cost": 25,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "wuchtschlag",
+        "required": true
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "MU",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Sturmangriff.html",
+    "labelKey": "sturmangriff"
+  },
+  {
+    "name": "todesstoss",
+    "label": "Todesstoß",
+    "cost": 30,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "praeziserStich",
+        "required": true,
+        "minLvl": 3
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "MU",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Todesstoss.html",
+    "labelKey": "todesstoss"
+  },
+  {
+    "name": "unterlaufen",
+    "label": "Unterlaufen I-II",
+    "cost": 10,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Unterlaufen_I-II.html",
+    "labelKey": "unterlaufen"
+  },
+  {
+    "name": "verbesserteAusweichen",
+    "label": "Verbessertes Ausweichen I-III",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [
+      {
+        "name": "korperbeherrschung",
+        "required": true,
+        "minLvl": 4
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Verbessertes_Ausweichen_I-III.html",
+    "labelKey": "verbessertesausweichen"
+  },
+  {
+    "name": "verteidigungshaltung",
+    "label": "Verteidigungshaltung",
+    "cost": 10,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "IN",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Verteidigungshaltung.html",
+    "labelKey": "verteidigungshaltung"
+  },
+  {
+    "name": "wirbelangriff",
+    "label": "Wirbelangriff I-II",
+    "cost": 20,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "GE",
+        "minValue": 15
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Wirbelangriff_I-II.html",
+    "labelKey": "wirbelangriff"
+  },
+  {
+    "name": "wuchtschlag",
+    "label": "Wuchtschlag I-III",
+    "cost": 15,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "KK",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Wuchtschlag_I-III.html",
+    "labelKey": "wuchtschlag"
+  },
+  {
+    "name": "zuFallBringen",
+    "label": "Zu Fall bringen",
+    "cost": 20,
+    "category": "Combat",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "KK",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zu_Fall_bringen.html",
+    "labelKey": "zufallbringen"
+  },
+  {
+    "name": "berittenerFlugkampf",
+    "label": "Berittener Flugkampf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "berittenerKampf",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Berittener_Flugkampf.html",
+    "labelKey": "berittenerflugkampf"
+  },
+  {
+    "name": "beritteneLanzenformation",
+    "label": "Berittene Lanzenformation",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Berittene_Lanzenformation.html",
+    "labelKey": "berittenelanzenformation"
+  },
+  {
+    "name": "betaubungswurf",
+    "label": "Betäubungswurf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Betaeubungswurf.html",
+    "labelKey": "betaeubungswurf"
+  },
+  {
+    "name": "blutgratsche",
+    "label": "Blutgrätsche",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Blutgraetsche.html",
+    "labelKey": "blutgraetsche"
+  },
+  {
+    "name": "drachenkampfTaktik",
+    "label": "Drachenkampf-Taktik",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Drachenkampf-Taktik.html",
+    "labelKey": "drachenkampftaktik"
+  },
+  {
+    "name": "durchgezogenerTritt",
+    "label": "Durchgezogener Tritt I-III",
+    "cost": 0,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Durchgezogener_Tritt_I-III.html",
+    "labelKey": "durchgezogenertritt"
+  },
+  {
+    "name": "eisenhagel",
+    "label": "Eisenhagel I-II",
+    "cost": 0,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Eisenhagel_I-II.html",
+    "labelKey": "eisenhagel"
+  },
+  {
+    "name": "ellbogenangriff",
+    "label": "Ellbogenangriff I-III",
+    "cost": 0,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Ellbogenangriff_I-III.html",
+    "labelKey": "ellbogenangriff"
+  },
+  {
+    "name": "gefechtsformation",
+    "label": "Gefechtsformation",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gefechtsformation.html",
+    "labelKey": "gefechtsformation"
+  },
+  {
+    "name": "gegenhalten",
+    "label": "Gegenhalten",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gegenhalten.html",
+    "labelKey": "gegenhalten"
+  },
+  {
+    "name": "geschutzeBedienen",
+    "label": "Geschütze bedienen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Geschuetze_bedienen.html",
+    "labelKey": "geschuetzebedienen"
+  },
+  {
+    "name": "gratsche",
+    "label": "Grätsche",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Graetsche.html",
+    "labelKey": "graetsche"
+  },
+  {
+    "name": "haltegriff",
+    "label": "Haltegriff",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Haltegriff.html",
+    "labelKey": "haltegriff"
+  },
+  {
+    "name": "harpunieren",
+    "label": "Harpunieren",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Harpunieren.html",
+    "labelKey": "harpunieren"
+  },
+  {
+    "name": "herunterstossen",
+    "label": "Herunterstoßen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Herunterstossen.html",
+    "labelKey": "herunterstossen"
+  },
+  {
+    "name": "kampfImWasser",
+    "label": "Kampf im Wasser",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kampf_im_Wasser.html",
+    "labelKey": "kampfimwasser"
+  },
+  {
+    "name": "kampfstilKombination",
+    "label": "Kampfstil-Kombination",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kampfstil-Kombination.html",
+    "labelKey": "kampfstilkombination"
+  },
+  {
+    "name": "kernschuss",
+    "label": "Kernschuss I-III",
+    "cost": 0,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kernschuss_I-III.html",
+    "labelKey": "kernschuss"
+  },
+  {
+    "name": "kettenkugelkampf",
+    "label": "Kettenkugelkampf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kettenkugelkampf.html",
+    "labelKey": "kettenkugelkampf"
+  },
+  {
+    "name": "klingeDrehen",
+    "label": "Klinge drehen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Klinge_drehen.html",
+    "labelKey": "klingedrehen"
+  },
+  {
+    "name": "klingenfanger",
+    "label": "Klingenfänger",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Klingenfaenger.html",
+    "labelKey": "klingenfaenger"
+  },
+  {
+    "name": "klingentatzer",
+    "label": "Klingentänzer",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Klingentaenzer.html",
+    "labelKey": "klingentaenzer"
+  },
+  {
+    "name": "kraftvollerSpeerwurf",
+    "label": "Kraftvoller Speerwurf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kraftvoller_Speerwurf.html",
+    "labelKey": "kraftvollerspeerwurf"
+  },
+  {
+    "name": "kreuzblock",
+    "label": "Kreuzblock",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kreuzblock.html",
+    "labelKey": "kreuzblock"
+  },
+  {
+    "name": "lanzenangriff",
+    "label": "Lanzenangriff",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Lanzenangriff.html",
+    "labelKey": "lanzenangriff"
+  },
+  {
+    "name": "lanzenfuhrung",
+    "label": "Lanzenführung",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Lanzenfuehrung.html",
+    "labelKey": "lanzenfuehrung"
+  },
+  {
+    "name": "machtvolleMeisterparade",
+    "label": "Machtvolle Meisterparade",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "meisterparade",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Machtvolle_Meisterparade.html",
+    "labelKey": "machtvollemeisterparade"
+  },
+  {
+    "name": "meisterDerImprovisiertenWaffen",
+    "label": "Meister der improvisierten Waffen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Meister_der_improvisierten_Waffen.html",
+    "labelKey": "meisterderimprovisiertenwaffen"
+  },
+  {
+    "name": "meisterlicheGeschossabwehr",
+    "label": "Meisterliche Geschossabwehr I-III",
+    "cost": 0,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [
+      {
+        "name": "geschossabwehr",
+        "required": true,
+        "minLvl": 3
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Meisterliche_Geschossabwehr_I-III.html",
+    "labelKey": "meisterlichegeschossabwehr"
+  },
+  {
+    "name": "pikenwall",
+    "label": "Pikenwall",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Pikenwall.html",
+    "labelKey": "pikenwall"
+  },
+  {
+    "name": "praeziserStich",
+    "label": "Präziser Stich I-III",
+    "cost": 0,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Praeziser_Stich_I-III.html",
+    "labelKey": "praeziserstich"
+  },
+  {
+    "name": "querschuss",
+    "label": "Querschuss I-III",
+    "cost": 0,
+    "category": "Combat",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Querschuss_I-III.html",
+    "labelKey": "querschuss"
+  },
+  {
+    "name": "reissangriff",
+    "label": "Reißangriff",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Reissangriff.html",
+    "labelKey": "reissangriff"
+  },
+  {
+    "name": "schildschlag",
+    "label": "Schildschlag",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Schildschlag.html",
+    "labelKey": "schildschlag"
+  },
+  {
+    "name": "schildwall",
+    "label": "Schildwall",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Schildwall.html",
+    "labelKey": "schildwall"
+  },
+  {
+    "name": "schwitzkasten",
+    "label": "Schwitzkasten",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Schwitzkasten.html",
+    "labelKey": "schwitzkasten"
+  },
+  {
+    "name": "spiessgespann",
+    "label": "Spießgespann",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Spiessgespann.html",
+    "labelKey": "spiessgespann"
+  },
+  {
+    "name": "turnierreiterei",
+    "label": "Turnierreiterei",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "berittenerKampf",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Turnierreiterei.html",
+    "labelKey": "turnierreiterei"
+  },
+  {
+    "name": "umrennen",
+    "label": "Umrennen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Umrennen.html",
+    "labelKey": "umrennen"
+  },
+  {
+    "name": "umwickeln",
+    "label": "Umwickeln",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Umwickeln.html",
+    "labelKey": "umwickeln"
+  },
+  {
+    "name": "unterwasserkampf",
+    "label": "Unterwasserkampf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Unterwasserkampf.html",
+    "labelKey": "unterwasserkampf"
+  },
+  {
+    "name": "verbesserteUnterlaufen",
+    "label": "Verbessertes Unterlaufen",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "unterlaufen",
+        "required": true,
+        "minLvl": 2
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Verbessertes_Unterlaufen.html",
+    "labelKey": "verbessertesunterlaufen"
+  },
+  {
+    "name": "verteilterEisenhagel",
+    "label": "Verteilter Eisenhagel",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "eisenhagel",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Verteilter_Eisenhagel.html",
+    "labelKey": "verteiltereisenhagel"
+  },
+  {
+    "name": "vorstoss",
+    "label": "Vorstoß",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Vorstoss.html",
+    "labelKey": "vorstoss"
+  },
+  {
+    "name": "weitwurf",
+    "label": "Weitwurf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Weitwurf.html",
+    "labelKey": "weitwurf"
+  },
+  {
+    "name": "wurf",
+    "label": "Wurf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Wurf.html",
+    "labelKey": "wurf"
+  },
+  {
+    "name": "zweihandwaffenDoppelschlag",
+    "label": "Zweihandwaffen-Doppelschlag",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zweihandwaffen-Doppelschlag.html",
+    "labelKey": "zweihandwaffendoppelschlag"
+  },
+  {
+    "name": "zweihandwaffenKampf",
+    "label": "Zweihandwaffen-Kampf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zweihandwaffen-Kampf.html",
+    "labelKey": "zweihandwaffenkampf"
+  },
+  {
+    "name": "zweihandigerReiterkampf",
+    "label": "Zweihändiger Reiterkampf",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [
+      {
+        "name": "berittenerKampf",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zweihaendiger_Reiterkampf.html",
+    "labelKey": "zweihaendigerreiterkampf"
+  },
+  {
+    "name": "khaFormation",
+    "label": "Kha-Formation",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kha-Formation.html",
+    "labelKey": "khaformation"
+  },
+  {
+    "name": "planklerFormation",
+    "label": "Plänkler-Formation",
+    "cost": 0,
+    "category": "Combat",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Plaenkler-Formation.html",
+    "labelKey": "plaenklerformation"
+  },
+  {
+    "name": "achazschleicherStil",
+    "label": "Achazschleicher-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Achazschleicher-Stil.html",
+    "labelKey": "achazschleicherstil"
+  },
+  {
+    "name": "adersinStil",
+    "label": "Adersin-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Adersin-Stil.html",
+    "labelKey": "adersinstil"
+  },
+  {
+    "name": "adoruStil",
+    "label": "Adoru-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Adoru-Stil.html",
+    "labelKey": "adorustil"
+  },
+  {
+    "name": "alterAdersinStil",
+    "label": "Alter Adersin-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Alter_Adersin-Stil.html",
+    "labelKey": "alteradersinstil"
+  },
+  {
+    "name": "alDrakorhimStil",
+    "label": "Al'Drakorhim-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_AlDrakorhim-Stil.html",
+    "labelKey": "aldrakorhimstil"
+  },
+  {
+    "name": "amazonenStil",
+    "label": "Amazonen-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Amazonen-Stil.html",
+    "labelKey": "amazonenstil"
+  },
+  {
+    "name": "garethStil",
+    "label": "Gareth-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gareth-Stil.html",
+    "labelKey": "garethstil"
+  },
+  {
+    "name": "gardistenStil",
+    "label": "Gardisten-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gardisten-Stil.html",
+    "labelKey": "gardistenstil"
+  },
+  {
+    "name": "golgaritenstil",
+    "label": "Golgariten-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Golgariten-Stil.html",
+    "labelKey": "golgaritenstil"
+  },
+  {
+    "name": "soldatenStil",
+    "label": "Soldaten-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Soldaten-Stil.html",
+    "labelKey": "soldatenstil"
+  },
+  {
+    "name": "soldnerStil",
+    "label": "Söldner-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Soeldner-Stil.html",
+    "labelKey": "soeldnerstil"
+  },
+  {
+    "name": "thorwalStil",
+    "label": "Thorwal-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Thorwal-Stil.html",
+    "labelKey": "thorwalstil"
+  },
+  {
+    "name": "xorloschStil",
+    "label": "Xorlosch-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Xorlosch-Stil.html",
+    "labelKey": "xorloschstil"
+  },
+  {
+    "name": "bornlandischesRaufen",
+    "label": "Bornländisches Raufen",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Bornlaendisches_Raufen.html",
+    "labelKey": "bornlaendischesraufen"
+  },
+  {
+    "name": "boxerStil",
+    "label": "Boxer-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Boxer-Stil.html",
+    "labelKey": "boxerstil"
+  },
+  {
+    "name": "gladiatorenStil",
+    "label": "Gladiatoren-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gladiatoren-Stil.html",
+    "labelKey": "gladiatorenstil"
+  },
+  {
+    "name": "hammerfaustStil",
+    "label": "Hammerfaust-Stil",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Hammerfaust-Stil.html",
+    "labelKey": "hammerfauststil"
+  },
+  {
+    "name": "unauerSchule",
+    "label": "Unauer Schule",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Unauer_Schule.html",
+    "labelKey": "unauerschule"
+  },
+  {
+    "name": "zyklopaischesRingen",
+    "label": "Zyklopäisches Ringen",
+    "cost": 0,
+    "category": "CombatStyle",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zyklopaeisches_Ringen.html",
+    "labelKey": "zyklopaeischesringen"
+  },
+  {
+    "name": "befehlFlugangriff",
+    "label": "Befehl Flugangriff",
+    "cost": 0,
+    "category": "Command",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Befehl_Flugangriff.html",
+    "labelKey": "befehlflugangriff"
+  },
+  {
+    "name": "befehlKlammerangriff",
+    "label": "Befehl Klammerangriff",
+    "cost": 0,
+    "category": "Command",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Befehl_Klammerangriff.html",
+    "labelKey": "befehlklammerangriff"
+  },
+  {
+    "name": "befehlMachtigerSchlag",
+    "label": "Befehl Mächtiger Schlag",
+    "cost": 0,
+    "category": "Command",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Befehl_Maechtiger_Schlag.html",
+    "labelKey": "befehlmaechtigerschlag"
+  },
+  {
+    "name": "befehlSichelangriff",
+    "label": "Befehl Sichelangriff",
+    "cost": 0,
+    "category": "Command",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Befehl_Sichelangriff.html",
+    "labelKey": "befehlsichelangriff"
+  },
+  {
+    "name": "befehlTrampeln",
+    "label": "Befehl Trampeln",
+    "cost": 0,
+    "category": "Command",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Befehl_Trampeln.html",
+    "labelKey": "befehltrampeln"
+  },
+  {
+    "name": "befehlUberrennen",
+    "label": "Befehl Überrennen",
+    "cost": 0,
+    "category": "Command",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/sf_Befehl_Ueberrennen.html",
+    "labelKey": "befehlueberrennen"
+  },
+  {
+    "name": "attackeVerbessern",
+    "label": "Attacke verbessern",
+    "cost": 5,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Attacke_verbessern.html",
+    "labelKey": "attackeverbessern"
+  },
+  {
+    "name": "ausweichenVerbessern",
+    "label": "Ausweichen verbessern",
+    "cost": 5,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Ausweichen_verbessern.html",
+    "labelKey": "ausweichenverbessern"
+  },
+  {
+    "name": "beistandDerGotter",
+    "label": "Beistand der Götter I-II",
+    "cost": 0,
+    "category": "FatePoint",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Beistand_der_Goetter_I-II.html",
+    "labelKey": "beistanddergoetter"
+  },
+  {
+    "name": "eigenschaftVerbessern",
+    "label": "Eigenschaft verbessern",
+    "cost": 5,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Eigenschaft_verbessern.html",
+    "labelKey": "eigenschaftverbessern"
+  },
+  {
+    "name": "elementarrettung",
+    "label": "Elementarrettung I-III",
+    "cost": 0,
+    "category": "FatePoint",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Elementarrettung_I-III.html",
+    "labelKey": "elementarrettung"
+  },
+  {
+    "name": "empathie",
+    "label": "Empathie",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Empathie.html",
+    "labelKey": "empathie"
+  },
+  {
+    "name": "erholsameRegeneration",
+    "label": "Erholsame Regeneration",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Erholsame_Regeneration.html",
+    "labelKey": "erholsameregeneration"
+  },
+  {
+    "name": "feenrettung",
+    "label": "Feenrettung",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Feenrettung.html",
+    "labelKey": "feenrettung"
+  },
+  {
+    "name": "fernkampfVerbessern",
+    "label": "Fernkampf verbessern",
+    "cost": 5,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Fernkampf_verbessern.html",
+    "labelKey": "fernkampfverbessern"
+  },
+  {
+    "name": "fleischwunde",
+    "label": "Fleischwunde",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Fleischwunde.html",
+    "labelKey": "fleischwunde"
+  },
+  {
+    "name": "freundVonFreunden",
+    "label": "Freund von Freunden",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Freund_von_Freunden.html",
+    "labelKey": "freundvonfreunden"
+  },
+  {
+    "name": "gespurFurDasBose",
+    "label": "Gespür für das Böse",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Gespur_fuer_das_Boese.html",
+    "labelKey": "gespuerfuerdasboese"
+  },
+  {
+    "name": "haltetDurch",
+    "label": "Haltet durch!",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Haltet_durch.html",
+    "labelKey": "haltetdurch"
+  },
+  {
+    "name": "heilkraft",
+    "label": "Heilkraft I-III",
+    "cost": 0,
+    "category": "FatePoint",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Heilkraft_I-III.html",
+    "labelKey": "heilkraft"
+  },
+  {
+    "name": "letzteReserve",
+    "label": "Letzte Reserve",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Letzte_Reserve.html",
+    "labelKey": "letztereserve"
+  },
+  {
+    "name": "magiegespur",
+    "label": "Magiegespür",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Magiegespur.html",
+    "labelKey": "magiegespuer"
+  },
+  {
+    "name": "paradeVerbessern",
+    "label": "Parade verbessern",
+    "cost": 5,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Parade_verbessern.html",
+    "labelKey": "paradeverbessern"
+  },
+  {
+    "name": "prophezeiung",
+    "label": "Prophezeiung",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Prophezeiung.html",
+    "labelKey": "prophezeiung"
+  },
+  {
+    "name": "schicksalsmacht",
+    "label": "Schicksalsmacht",
+    "cost": 15,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Schicksalsmacht.html",
+    "labelKey": "schicksalsmacht"
+  },
+  {
+    "name": "wachsamkeit",
+    "label": "Wachsamkeit",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Wachsamkeit.html",
+    "labelKey": "wachsamkeit"
+  },
+  {
+    "name": "winkDesSchicksals",
+    "label": "Wink des Schicksals",
+    "cost": 12,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Wink_des_Schicksals.html",
+    "labelKey": "winkdesschicksals"
+  },
+  {
+    "name": "zeichenDesSchicksals",
+    "label": "Zeichen des Schicksals",
+    "cost": 0,
+    "category": "FatePoint",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Zeichen_des_Schicksals.html",
+    "labelKey": "zeichendesschicksals"
+  },
+  {
+    "name": "backpfeifenSturm",
+    "label": "Backpfeifen-Sturm",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Backpfeifen-Sturm.html",
+    "labelKey": "backpfeifensturm"
+  },
+  {
+    "name": "durchDieWand",
+    "label": "Durch die Wand",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Durch_die_Wand.html",
+    "labelKey": "durchdiewand"
+  },
+  {
+    "name": "hoseHerunterziehen",
+    "label": "Hose Herunterziehen/Hemd Hochziehen",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Hose_Herunterziehen.html",
+    "labelKey": "hoseherunterziehenhemdhochziehen"
+  },
+  {
+    "name": "kneipenBlutgratsche",
+    "label": "Kneipen-Blutgrätsche",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Kneipen-Blutgraetsche.html",
+    "labelKey": "kneipenblutgraetsche"
+  },
+  {
+    "name": "kneipenGeschossabwehr",
+    "label": "Kneipen-Geschossabwehr",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Kneipen-Geschossabwehr.html",
+    "labelKey": "kneipengeschossabwehr"
+  },
+  {
+    "name": "kneipenKopfstoss",
+    "label": "Kneipen-Kopfstoß",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Kneipen-Kopfstoss.html",
+    "labelKey": "kneipenkopfstoss"
+  },
+  {
+    "name": "kopfeAneinanderschlagen",
+    "label": "Köpfe Aneinanderschlagen",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Koepfe_Aneinanderschlagen.html",
+    "labelKey": "koepfeaneinanderschlagen"
+  },
+  {
+    "name": "schlagAufDenKopf",
+    "label": "Schlag auf den Kopf",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Schlag_auf_den_Kopf.html",
+    "labelKey": "schlagaufdenkopf"
+  },
+  {
+    "name": "turGegenDenKopfKnallen",
+    "label": "Tür gegen den Kopf Knallen",
+    "cost": 0,
+    "category": "Brawling",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Tuer_gegen_den_Kopf_Knallen.html",
+    "labelKey": "tuergegendenkopfknallen"
+  },
+  {
+    "name": "sprache_garethi",
+    "label": "Sprache: Garethi",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachegarethi"
+  },
+  {
+    "name": "sprache_tulamidya",
+    "label": "Sprache: Tulamidya",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachetulamidya"
+  },
+  {
+    "name": "sprache_thorwalsch",
+    "label": "Sprache: Thorwalsch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachethorwalsch"
+  },
+  {
+    "name": "sprache_bosparano",
+    "label": "Sprache: Bosparano",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachebosparano"
+  },
+  {
+    "name": "sprache_isdira",
+    "label": "Sprache: Isdira",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheisdira"
+  },
+  {
+    "name": "sprache_asdharia",
+    "label": "Sprache: Asdharia",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheasdharia"
+  },
+  {
+    "name": "sprache_rogolan",
+    "label": "Sprache: Rogolan",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracherogolan"
+  },
+  {
+    "name": "sprache_rssahh",
+    "label": "Sprache: Rssahh",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracherssahh"
+  },
+  {
+    "name": "sprache_alaani",
+    "label": "Sprache: Alaani",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachealaani"
+  },
+  {
+    "name": "sprache_atak",
+    "label": "Sprache: Atak",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheatak"
+  },
+  {
+    "name": "sprache_aureliani",
+    "label": "Sprache: Aureliani",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheaureliani"
+  },
+  {
+    "name": "sprache_fjarningsch",
+    "label": "Sprache: Fjarningsch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachefjarningsch"
+  },
+  {
+    "name": "sprache_goblinisch",
+    "label": "Sprache: Goblinisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachegoblinisch"
+  },
+  {
+    "name": "sprache_gjalskisch",
+    "label": "Sprache: Gjalskisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachegjalskisch"
+  },
+  {
+    "name": "sprache_nujuka",
+    "label": "Sprache: Nujuka",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachenujuka"
+  },
+  {
+    "name": "sprache_ologhaijan",
+    "label": "Sprache: Ologhaijan",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheologhaijan"
+  },
+  {
+    "name": "sprache_oloarkh",
+    "label": "Sprache: Oloarkh",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheoloarkh"
+  },
+  {
+    "name": "sprache_tahaya",
+    "label": "Sprache: Tahaya",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachetahaya"
+  },
+  {
+    "name": "sprache_urTulamidya",
+    "label": "Sprache: Ur-Tulamidya",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheurtulamidya"
+  },
+  {
+    "name": "sprache_zhayad",
+    "label": "Sprache: Zhayad",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachezhayad"
+  },
+  {
+    "name": "sprache_angram",
+    "label": "Sprache: Angram",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheangram"
+  },
+  {
+    "name": "sprache_sagaThorwalsch",
+    "label": "Sprache: Saga-Thorwalsch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachesagathorwalsch"
+  },
+  {
+    "name": "sprache_ferkina",
+    "label": "Sprache: Ferkina",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheferkina"
+  },
+  {
+    "name": "sprache_ruuz",
+    "label": "Sprache: Ruuz",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheruuz"
+  },
+  {
+    "name": "sprache_zelemja",
+    "label": "Sprache: Zelemja",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachezelemja"
+  },
+  {
+    "name": "sprache_trollisch",
+    "label": "Sprache: Trollisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachetrollisch"
+  },
+  {
+    "name": "sprache_rabensprache",
+    "label": "Sprache: Rabensprache",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracherabensprache"
+  },
+  {
+    "name": "sprache_zyklopaeisch",
+    "label": "Sprache: Zyklopäisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachezyklopaeisch"
+  },
+  {
+    "name": "sprache_adorunu",
+    "label": "Sprache: Adorunu",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheadorunu"
+  },
+  {
+    "name": "sprache_amuurak",
+    "label": "Sprache: Amuurak",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheamuurak"
+  },
+  {
+    "name": "sprache_krakonisch",
+    "label": "Sprache: Krakonisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachekrakonisch"
+  },
+  {
+    "name": "sprache_rissoal",
+    "label": "Sprache: Rissoal",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracherissoal"
+  },
+  {
+    "name": "sprache_tiefzwergisch",
+    "label": "Sprache: Tiefzwergisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachetiefzwergisch"
+  },
+  {
+    "name": "sprache_ogrisch",
+    "label": "Sprache: Ogrisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheogrisch"
+  },
+  {
+    "name": "sprache_molochisch",
+    "label": "Sprache: Molochisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachemolochisch"
+  },
+  {
+    "name": "sprache_bukanisch",
+    "label": "Sprache: Bukanisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachebukanisch"
+  },
+  {
+    "name": "sprache_grolmisch",
+    "label": "Sprache: Grolmisch",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachegrolmisch"
+  },
+  {
+    "name": "sprache_golp",
+    "label": "Sprache: Golp",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachegolp"
+  },
+  {
+    "name": "sprache_yetan",
+    "label": "Sprache: Yetan",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "spracheyetan"
+  },
+  {
+    "name": "sprache_zhulchammaqra",
+    "label": "Sprache: Zhulchammaqra",
+    "cost": 2,
+    "category": "Language",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "sprachezhulchammaqra"
+  },
+  {
+    "name": "schrift_kuslikerZeichen",
+    "label": "Schrift: Kusliker Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftkuslikerzeichen"
+  },
+  {
+    "name": "schrift_tulamidyaZeichen",
+    "label": "Schrift: Tulamidya-Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schrifttulamidyazeichen"
+  },
+  {
+    "name": "schrift_thorwalscheRunen",
+    "label": "Schrift: Thorwalsche Runen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftthorwalscherunen"
+  },
+  {
+    "name": "schrift_imperialeZeichen",
+    "label": "Schrift: Imperiale Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftimperialezeichen"
+  },
+  {
+    "name": "schrift_isdiraZeichen",
+    "label": "Schrift: Isdira-/Asdharia-Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftisdiraasdhariazeichen"
+  },
+  {
+    "name": "schrift_rogolanRunen",
+    "label": "Schrift: Rogolan-Runen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftrogolanrunen"
+  },
+  {
+    "name": "schrift_chrmk",
+    "label": "Schrift: Chrmk",
+    "cost": 4,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftchrmk"
+  },
+  {
+    "name": "schrift_hjaldingscheRunen",
+    "label": "Schrift: Hjaldingsche Runen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schrifthjaldingscherunen"
+  },
+  {
+    "name": "schrift_nanduriazZeichen",
+    "label": "Schrift: Nanduria-Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftnanduriazeichen"
+  },
+  {
+    "name": "schrift_adorunuZeichen",
+    "label": "Schrift: Adorunu-Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftadorunuzeichen"
+  },
+  {
+    "name": "schrift_angramBilderschrift",
+    "label": "Schrift: Angram-Bilderschrift",
+    "cost": 4,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftangrambilderschrift"
+  },
+  {
+    "name": "schrift_gimaril",
+    "label": "Schrift: Gimaril",
+    "cost": 4,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftgimaril"
+  },
+  {
+    "name": "schrift_gjalskerRunen",
+    "label": "Schrift: Gjalsker Runen",
+    "cost": 4,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftgjalskerrunen"
+  },
+  {
+    "name": "schrift_drakhardZinke",
+    "label": "Schrift: Drakhard-Zinke",
+    "cost": 4,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftdrakhardzinke"
+  },
+  {
+    "name": "schrift_geheiligteGlyphenVonUnau",
+    "label": "Schrift: Geheiligte Glyphen von Unau",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftgeheiligteglyphenvonunau"
+  },
+  {
+    "name": "schrift_urTulamidyaZeichen",
+    "label": "Schrift: Ur-Tulamidya-Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schrifturtulamidyazeichen"
+  },
+  {
+    "name": "schrift_zhayadzZeichen",
+    "label": "Schrift: Zhayad-Zeichen",
+    "cost": 2,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftzhayadzeichen"
+  },
+  {
+    "name": "schrift_amulashtraGlyphenAlt",
+    "label": "Schrift: Amulashtra-Glyphen, alt",
+    "cost": 6,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftamulashtraglyphenalt"
+  },
+  {
+    "name": "schrift_amulashtraGlyphenModern",
+    "label": "Schrift: Amulashtra-Glyphen, modern",
+    "cost": 4,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftamulashtraglyphenmodern"
+  },
+  {
+    "name": "schrift_altesAlaani",
+    "label": "Schrift: Altes Alaani",
+    "cost": 4,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftaltesalaani"
+  },
+  {
+    "name": "schrift_chuchas",
+    "label": "Schrift: Chuchas",
+    "cost": 6,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftchuchas"
+  },
+  {
+    "name": "schrift_trollischeRaumbilderschrift",
+    "label": "Schrift: Trollische Raumbilderschrift",
+    "cost": 6,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schrifttrollischeraumbilderschrift"
+  },
+  {
+    "name": "schrift_kemiSymbole",
+    "label": "Schrift: Kemi-Symbole",
+    "cost": 6,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftkemisymbole"
+  },
+  {
+    "name": "schrift_mahrischeGlyphen",
+    "label": "Schrift: Mahrische Glyphen",
+    "cost": 6,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftmahrischeglyphen"
+  },
+  {
+    "name": "schrift_arkanil",
+    "label": "Schrift: Arkanil",
+    "cost": 8,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftarkanil"
+  },
+  {
+    "name": "schrift_draknedGlyphen",
+    "label": "Schrift: Drakned-Glyphen",
+    "cost": 6,
+    "category": "Script",
+    "prerequisite": [],
+    "url": "https://dsa.ulisses-regelwiki.de/Sprachen.html",
+    "labelKey": "schriftdraknedglyphen"
+  },
+  {
+    "name": "aspektkenntnis",
+    "label": "Aspektkenntnis",
+    "cost": 15,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Aspektkenntnis.html",
+    "labelKey": "aspektkenntnis"
+  },
+  {
+    "name": "fokussierung",
+    "label": "Fokussierung",
+    "cost": 8,
+    "category": "KarmalGeneral",
+    "prerequisite": [],
+    "attributeRequirement": [
+      {
+        "attribute": "MU",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Fokussierung.html",
+    "labelKey": "fokussierung"
+  },
+  {
+    "name": "karmaleMeditation",
+    "label": "Karmale Meditation",
+    "cost": 15,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Karmale_Meditation.html",
+    "labelKey": "karmalemeditation"
+  },
+  {
+    "name": "karmaleRegeneration",
+    "label": "Karmale Regeneration I-II",
+    "cost": 12,
+    "category": "KarmalGeneral",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Karmale_Regeneration_I-II.html",
+    "labelKey": "karmaleregeneration"
+  },
+  {
+    "name": "lieblingsliturgie",
+    "label": "Lieblingsliturgie",
+    "cost": 3,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Lieblingsliturgie.html",
+    "labelKey": "lieblingsliturgie"
+  },
+  {
+    "name": "liturgieAbbrechen",
+    "label": "Liturgie abbrechen",
+    "cost": 8,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Liturgie_abbrechen.html",
+    "labelKey": "liturgieabbrechen"
+  },
+  {
+    "name": "liturgieVereinen",
+    "label": "Liturgie vereinen I-II",
+    "cost": 15,
+    "category": "KarmalGeneral",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Liturgie_vereinen_I-II.html",
+    "labelKey": "liturgievereinen"
+  },
+  {
+    "name": "routinierteLiturgiewiederholung",
+    "label": "Routinierte Liturgiewiederholung",
+    "cost": 10,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "attributeRequirement": [
+      {
+        "attribute": "KL",
+        "minValue": 13
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Routinierte_Liturgiewiederholung.html",
+    "labelKey": "routinierteliturgiewiederholung"
+  },
+  {
+    "name": "segnungsbruch",
+    "label": "Segnungsbruch",
+    "cost": 2,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Segnungsbruch.html",
+    "labelKey": "segnungsbruch"
+  },
+  {
+    "name": "starkeSegnungen",
+    "label": "Starke Segnungen",
+    "cost": 2,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Starke_Segnungen.html",
+    "labelKey": "starkesegnungen"
+  },
+  {
+    "name": "abgeschwachteLiturgie",
+    "label": "Abgeschwächte Liturgie",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Abgeschwachte_Liturgie.html",
+    "labelKey": "abgeschwaechteliturgie"
+  },
+  {
+    "name": "blutpfand",
+    "label": "Blutpfand",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Blutpfand.html",
+    "labelKey": "blutpfand"
+  },
+  {
+    "name": "chimarenschreck",
+    "label": "Chimärenschreck",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Chimaerenschreck.html",
+    "labelKey": "chimaerenschreck"
+  },
+  {
+    "name": "daimonidenschreck",
+    "label": "Daimonidenschreck",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Daimonidenschreck.html",
+    "labelKey": "daimonidenschreck"
+  },
+  {
+    "name": "entruckungsmeditation",
+    "label": "Entrückungsmeditation",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Entruckungsmeditation.html",
+    "labelKey": "entrueckungsmeditation"
+  },
+  {
+    "name": "extremStarkeSegnungen",
+    "label": "Extrem starke Segnungen",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      },
+      {
+        "name": "starkeSegnungen",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Extrem_starke_Segnungen.html",
+    "labelKey": "extremstarkesegnungen"
+  },
+  {
+    "name": "extremStarkerSegnungsbruch",
+    "label": "Extrem starker Segnungsbruch",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      },
+      {
+        "name": "segnungsbruch",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Extrem_starker_Segnungsbruch.html",
+    "labelKey": "extremstarkersegnungsbruch"
+  },
+  {
+    "name": "furchtNehmen",
+    "label": "Furcht nehmen",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Furcht_nehmen.html",
+    "labelKey": "furchtnehmen"
+  },
+  {
+    "name": "gefestigterZeremonieablauf",
+    "label": "Gefestigter Zeremonieablauf",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Gefestigter_Zeremonieablauf.html",
+    "labelKey": "gefestigterzeremonieablauf"
+  },
+  {
+    "name": "geisterschreck",
+    "label": "Geisterschreck",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Geisterschreck.html",
+    "labelKey": "geisterschreck"
+  },
+  {
+    "name": "geweihterKarmalleib",
+    "label": "Geweihter Karmalleib",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Geweihter_Karmalleib.html",
+    "labelKey": "geweihterkarmalleib"
+  },
+  {
+    "name": "golemschreck",
+    "label": "Golemschreck",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Golemschreck.html",
+    "labelKey": "golemschreck"
+  },
+  {
+    "name": "gottlicherSchutz",
+    "label": "Göttlicher Schutz I-II",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "lvl": 1,
+    "maxLvl": 2,
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Goettlicher_Schutz_I-II.html",
+    "labelKey": "goettlicherschutz"
+  },
+  {
+    "name": "hauptsegnung",
+    "label": "Hauptsegnung I-III",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Hauptsegnung_I-III.html",
+    "labelKey": "hauptsegnung"
+  },
+  {
+    "name": "heiligerKarmalleib",
+    "label": "Heiliger Karmalleib",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      },
+      {
+        "name": "geweihterKarmalleib",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Heiliger_Karmalleib.html",
+    "labelKey": "heiligerkarmalleib"
+  },
+  {
+    "name": "hoheWeihe",
+    "label": "Hohe Weihe I-III",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Hohe_Weihe_I-III.html",
+    "labelKey": "hoheweihe"
+  },
+  {
+    "name": "improvisierteLiburgieGebet",
+    "label": "Improvisierte Liturgie (Gebet)",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Improvisierte_Liturgie_Gebet.html",
+    "labelKey": "improvisierteliturgiegebet"
+  },
+  {
+    "name": "improvisierteLiburgieGesten",
+    "label": "Improvisierte Liturgie (Gesten)",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Improvisierte_Liturgie_Gesten.html",
+    "labelKey": "improvisierteliturgiegesten"
+  },
+  {
+    "name": "klarerBlick",
+    "label": "Klarer Blick",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Klarer_Blick.html",
+    "labelKey": "klarerblick"
+  },
+  {
+    "name": "kontrolleDesKarmalkorpers",
+    "label": "Kontrolle des Karmalkörpers",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Kontrolle_des_Karmalkoerpers.html",
+    "labelKey": "kontrolledeskarmalkoerpers"
+  },
+  {
+    "name": "liturgiebindung",
+    "label": "Liturgiebindung",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Liturgiebindung.html",
+    "labelKey": "liturgiebindung"
+  },
+  {
+    "name": "machtigeKontrolleDesKarmalkorpers",
+    "label": "Mächtige Kontrolle des Karmalkörpers",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      },
+      {
+        "name": "kontrolleDesKarmalkorpers",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Maechtige_Kontrolle_des_Karmalkoerpers.html",
+    "labelKey": "maechtigekontrolledeskarmalkoerpers"
+  },
+  {
+    "name": "mauerDesGeistes",
+    "label": "Mauer des Geistes",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Mauer_des_Geistes.html",
+    "labelKey": "mauerdesgeistes"
+  },
+  {
+    "name": "mirakelmacht",
+    "label": "Mirakelmacht",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Mirakelmacht.html",
+    "labelKey": "mirakelmacht"
+  },
+  {
+    "name": "stabileRegeneration",
+    "label": "Stabile Regeneration",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Stabile_Regeneration.html",
+    "labelKey": "stabileregeneration"
+  },
+  {
+    "name": "starkeDesGlaubens",
+    "label": "Stärke des Glaubens",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Staerke_des_Glaubens.html",
+    "labelKey": "staerkedesglaubens"
+  },
+  {
+    "name": "starkerSegnungsbruch",
+    "label": "Starker Segnungsbruch",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      },
+      {
+        "name": "segnungsbruch",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Starker_Segnungsbruch.html",
+    "labelKey": "starkersegnungsbruch"
+  },
+  {
+    "name": "schildDesGlaubens",
+    "label": "Schild des Glaubens",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Schild_des_Glaubens.html",
+    "labelKey": "schilddesglaubens"
+  },
+  {
+    "name": "traumweber",
+    "label": "Traumweber I-III",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "lvl": 1,
+    "maxLvl": 3,
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Traumweber_I-III.html",
+    "labelKey": "traumweber"
+  },
+  {
+    "name": "untotenschreck",
+    "label": "Untotenschreck",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Untotenschreck.html",
+    "labelKey": "untotenschreck"
+  },
+  {
+    "name": "wahreStarkeDesGlaubens",
+    "label": "Wahre Stärke des Glaubens",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      },
+      {
+        "name": "starkeDesGlaubens",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Wahre_Staerke_des_Glaubens.html",
+    "labelKey": "wahrestaerkedesglaubens"
+  },
+  {
+    "name": "wahrerGlaube",
+    "label": "Wahrer Glaube",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Wahrer_Glaube.html",
+    "labelKey": "wahrerglaube"
+  },
+  {
+    "name": "zeremonialgegenstandeHerstellen",
+    "label": "Zeremonialgegenstände herstellen",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zeremonialgegenstaende_herstellen.html",
+    "labelKey": "zeremonialgegenstaendeherstellen"
+  },
+  {
+    "name": "zuruckInDieNiederhollen",
+    "label": "Zurück in die Niederhöllen",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zurueck_in_die_Niederhoellen.html",
+    "labelKey": "zurueckindieniederhoellen"
+  },
+  {
+    "name": "zweiSegnungenGleichzeitig",
+    "label": "Zwei Segnungen gleichzeitig",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zwei_Segnungen_gleichzeitig.html",
+    "labelKey": "zweisegnungengleichzeitig"
+  },
+  {
+    "name": "zweifachgeweihterKarmalleib",
+    "label": "Zweifachgeweihter Karmalleib",
+    "cost": 0,
+    "category": "KarmalGeneral",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      },
+      {
+        "name": "geweihterKarmalleib",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/ksf_Zweifachgeweihter_Karmalleib.html",
+    "labelKey": "zweifachgeweihterkarmalleib"
+  },
+  {
+    "name": "traditionPraioskirche",
+    "label": "Tradition (Praioskirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Praioskirche.html",
+    "labelKey": "traditionpraioskirche"
+  },
+  {
+    "name": "traditionRondrageweihte",
+    "label": "Tradition (Rondrageweihte)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Rondrageweihte.html",
+    "labelKey": "traditionrondrageweihte"
+  },
+  {
+    "name": "traditionEfferdkirche",
+    "label": "Tradition (Efferdkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Efferdkirche.html",
+    "labelKey": "traditionefferdkirche"
+  },
+  {
+    "name": "traditionTraviaKirche",
+    "label": "Tradition (Travia-Kirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Travia-Kirche.html",
+    "labelKey": "traditiontraviakirche"
+  },
+  {
+    "name": "traditionBoronkirche",
+    "label": "Tradition (Boronkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Boronkirche.html",
+    "labelKey": "traditionboronkirche"
+  },
+  {
+    "name": "traditionHesindkirche",
+    "label": "Tradition (Hesindkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Hesindkirche.html",
+    "labelKey": "traditionhesindkirche"
+  },
+  {
+    "name": "traditionFirunkirche",
+    "label": "Tradition (Firunkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Firunkirche.html",
+    "labelKey": "traditionfirunkirche"
+  },
+  {
+    "name": "traditionTsaKirche",
+    "label": "Tradition (Tsa-Kirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Tsa-Kirche.html",
+    "labelKey": "traditiontsakirche"
+  },
+  {
+    "name": "traditionPhexkirche",
+    "label": "Tradition (Phexkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Phexkirche.html",
+    "labelKey": "traditionphexkirche"
+  },
+  {
+    "name": "traditionPerainekirche",
+    "label": "Tradition (Perainekirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Perainekirche.html",
+    "labelKey": "traditionperainekirche"
+  },
+  {
+    "name": "traditionIngerimmkirche",
+    "label": "Tradition (Ingerimmkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Ingerimmkirche.html",
+    "labelKey": "traditioningerimmkirche"
+  },
+  {
+    "name": "traditionRahjakirche",
+    "label": "Tradition (Rahjakirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Rahjakirche.html",
+    "labelKey": "traditionrahjakirche"
+  },
+  {
+    "name": "traditionAngroschkirche",
+    "label": "Tradition (Angroschkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Angroschkirche.html",
+    "labelKey": "traditionangroschkirche"
+  },
+  {
+    "name": "traditionNanduskirche",
+    "label": "Tradition (Nanduskirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Nanduskirche.html",
+    "labelKey": "traditionnanduskirche"
+  },
+  {
+    "name": "traditionKorkirche",
+    "label": "Tradition (Korkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Korkirche.html",
+    "labelKey": "traditionkorkirche"
+  },
+  {
+    "name": "traditionIfirnskirche",
+    "label": "Tradition (Ifirnskirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Ifirnskirche.html",
+    "labelKey": "traditionifirnskirche"
+  },
+  {
+    "name": "traditionSwafnirkirche",
+    "label": "Tradition (Swafnirkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Swafnirkirche.html",
+    "labelKey": "traditionswafnirkirche"
+  },
+  {
+    "name": "traditionAveskirche",
+    "label": "Tradition (Aveskirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Aveskirche.html",
+    "labelKey": "traditionaveskirche"
+  },
+  {
+    "name": "traditionGraveshkirche",
+    "label": "Tradition (Graveshkirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Graveshkirche.html",
+    "labelKey": "traditiongraveshkirche"
+  },
+  {
+    "name": "traditionMarbokirche",
+    "label": "Tradition (Marbokirche)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Marbokirche.html",
+    "labelKey": "traditionmarbokirche"
+  },
+  {
+    "name": "traditionNamenloserKult",
+    "label": "Tradition (Namenloser Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Namenloser_Kult.html",
+    "labelKey": "traditionnamenloserkult"
+  },
+  {
+    "name": "traditionNivesenschamanen",
+    "label": "Tradition (Nivesenschamanen)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Nivesenschamanen.html",
+    "labelKey": "traditionnivesenschamanen"
+  },
+  {
+    "name": "traditionFerkinaschamanen",
+    "label": "Tradition (Ferkinaschamanen)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Ferkinaschamanen.html",
+    "labelKey": "traditionferkinaschamanen"
+  },
+  {
+    "name": "traditionFjarningerschamanen",
+    "label": "Tradition (Fjarningerschamanen)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Fjarningerschamanen.html",
+    "labelKey": "traditionfjarningerschamanen"
+  },
+  {
+    "name": "traditionGjalskerTierkrieger",
+    "label": "Tradition (Gjalskerländer Tierkrieger)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Gjalskerlaender_Tierkrieger.html",
+    "labelKey": "traditiongjalskerlaendertierkrieger"
+  },
+  {
+    "name": "traditionTrollzackerSchamanen",
+    "label": "Tradition (Trollzacker-Schamanen)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Trollzacker-Schamanen.html",
+    "labelKey": "traditiontrollzackerschamanen"
+  },
+  {
+    "name": "traditionAchazschamanen",
+    "label": "Tradition (Achazschamanen)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Achazschamanen.html",
+    "labelKey": "traditionachazschamanen"
+  },
+  {
+    "name": "traditionChrSsirSsrKult",
+    "label": "Tradition (Chr'Ssir'Ssr-Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_ChrSsirSsr-Kult.html",
+    "labelKey": "traditionchrssirssrkult"
+  },
+  {
+    "name": "traditionHSzintKult",
+    "label": "Tradition (H'Szint-Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_HSzint-Kult.html",
+    "labelKey": "traditionhszintkult"
+  },
+  {
+    "name": "traditionNuminoruKult",
+    "label": "Tradition (Numinoru-Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Numinoru-Kult.html",
+    "labelKey": "traditionnuminorukult"
+  },
+  {
+    "name": "traditionShinxirKult",
+    "label": "Tradition (Shinxir-Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Shinxir-Kult.html",
+    "labelKey": "traditionshinxirkult"
+  },
+  {
+    "name": "traditionTairachKult",
+    "label": "Tradition (Tairach-Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Tairach-Kult.html",
+    "labelKey": "traditiontairachkult"
+  },
+  {
+    "name": "traditionZsahhKult",
+    "label": "Tradition (Zsahh-Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Zsahh-Kult.html",
+    "labelKey": "traditionzsahhkult"
+  },
+  {
+    "name": "traditionRadschaKult",
+    "label": "Tradition (Radscha-Kult)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Radscha-Kult.html",
+    "labelKey": "traditionradschakult"
+  },
+  {
+    "name": "traditionTahaya",
+    "label": "Tradition (Tahaya)",
+    "cost": 0,
+    "category": "KarmalTradition",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/tradition_Tahaya.html",
+    "labelKey": "traditiontahaya"
+  },
+  {
+    "name": "predigtDerGemeinschaft",
+    "label": "Predigt der Gemeinschaft",
+    "cost": 0,
+    "category": "KarmalSermon",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/predigt_Gemeinschaft.html",
+    "labelKey": "predigtdergemeinschaft"
+  },
+  {
+    "name": "predigtDerZuversicht",
+    "label": "Predigt der Zuversicht",
+    "cost": 0,
+    "category": "KarmalSermon",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/predigt_Zuversicht.html",
+    "labelKey": "predigtderzuversicht"
+  },
+  {
+    "name": "predigtDesGottvertrauens",
+    "label": "Predigt des Gottvertrauens",
+    "cost": 0,
+    "category": "KarmalSermon",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/predigt_Gottvertrauens.html",
+    "labelKey": "predigtdesgottvertrauens"
+  },
+  {
+    "name": "predigtDesWohlgefallens",
+    "label": "Predigt des Wohlgefallens",
+    "cost": 0,
+    "category": "KarmalSermon",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/predigt_Wohlgefallens.html",
+    "labelKey": "predigtdeswohlgefallens"
+  },
+  {
+    "name": "predigtWiderMissgeschicke",
+    "label": "Predigt wider Missgeschicke",
+    "cost": 0,
+    "category": "KarmalSermon",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/predigt_wider_Missgeschicke.html",
+    "labelKey": "predigtwidermissgeschicke"
+  },
+  {
+    "name": "visionDerBestimmung",
+    "label": "Vision der Bestimmung",
+    "cost": 0,
+    "category": "KarmalVision",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/vision_Bestimmung.html",
+    "labelKey": "visionderbestimmung"
+  },
+  {
+    "name": "visionDerEntruckung",
+    "label": "Vision der Entrückung",
+    "cost": 0,
+    "category": "KarmalVision",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/vision_Entrueckung.html",
+    "labelKey": "visionderentrueckung"
+  },
+  {
+    "name": "visionDerGottheit",
+    "label": "Vision der Gottheit",
+    "cost": 0,
+    "category": "KarmalVision",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/vision_Gottheit.html",
+    "labelKey": "visiondergottheit"
+  },
+  {
+    "name": "visionDesSchicksals",
+    "label": "Vision des Schicksals",
+    "cost": 0,
+    "category": "KarmalVision",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/vision_Schicksals.html",
+    "labelKey": "visiondesschicksals"
+  },
+  {
+    "name": "visionDesWahrenGlaubens",
+    "label": "Vision des Wahren Glaubens",
+    "cost": 0,
+    "category": "KarmalVision",
+    "prerequisite": [
+      {
+        "name": "geweihter",
+        "required": true
+      }
+    ],
+    "url": "https://dsa.ulisses-regelwiki.de/vision_Wahren_Glaubens.html",
+    "labelKey": "visiondeswahrenglaubens"
+  }
+]

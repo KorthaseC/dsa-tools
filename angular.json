@@ -24,18 +24,10 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/assets/sitemap.xml",
-              "src/assets/robots.txt",
-              "src/_redirects"
-            ],
-            "styles": [
-              "node_modules/primeflex/primeflex.css",
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "assets": ["src/favicon.ico", "src/assets", "src/assets/sitemap.xml", "src/assets/robots.txt"],
+            "styles": ["node_modules/primeflex/primeflex.css", "src/styles.scss"],
+            "scripts": [],
+            "allowedCommonJsDependencies": ["pako"]
           },
           "configurations": {
             "production": {
@@ -53,13 +45,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
+                  "maximumWarning": "4mb",
                   "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kb",
+                  "maximumError": "8kb"
                 }
               ],
               "outputHashing": "all"
@@ -103,10 +95,7 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "node_modules/primeflex/primeflex.css",
-              "src/styles.scss"
-            ],
+            "styles": ["node_modules/primeflex/primeflex.css", "src/styles.scss"],
             "scripts": []
           }
         }

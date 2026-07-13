@@ -1,0 +1,238 @@
+// ─── First cell: expand toggle + drag/reorder grouped together ────────────────
+
+.c-cell-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+// ─── Expand toggle button ─────────────────────────────────────────────────────
+
+.c-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #2a2a2a;
+  cursor: pointer;
+  font-size: 0.65rem;
+  padding: 0;
+  flex-shrink: 0;
+  transition:
+    color 0.15s,
+    background 0.15s;
+
+  &:hover {
+    color: rgba(200, 169, 110, 0.8);
+    background: rgba(200, 169, 110, 0.1);
+  }
+}
+
+// ─── Drag handle ─────────────────────────────────────────────────────────────
+
+.c-drag-handle {
+  color: #2a2a2a;
+  font-size: 0.75rem;
+  cursor: grab;
+  flex-shrink: 0;
+
+  &:hover {
+    color: rgba(200, 169, 110, 0.7);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  @media (pointer: coarse) {
+    display: none;
+  }
+}
+
+// ─── Touch reorder buttons (visible only on touch/coarse-pointer devices) ────
+
+.c-reorder-touch {
+  display: none;
+
+  @media (pointer: coarse) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    align-items: center;
+  }
+}
+
+.c-move-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.2rem;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #2a2a2a;
+  cursor: pointer;
+  font-size: 0.6rem;
+  padding: 0;
+  transition:
+    color 0.15s,
+    background 0.15s;
+
+  &:hover:not(:disabled) {
+    color: rgba(200, 169, 110, 1);
+    background: rgba(200, 169, 110, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+}
+
+// ─── Touch drag highlight classes ────────────────────────────────────────────
+
+.c-row-dragging {
+  opacity: 0.5;
+}
+
+.c-row-drop-target {
+  outline: 2px solid rgba(200, 169, 110, 0.6);
+  outline-offset: -2px;
+}
+
+// ─── Row expansion cell ───────────────────────────────────────────────────────
+
+.c-expansion-cell {
+  background: transparent !important;
+  border-top: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+// ─── Detail form grid (inside expansion) ─────────────────────────────────────
+
+.c-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.5rem 2rem 0.5rem 3rem;
+}
+
+// Row 1: Kampftechnik (wider) + Schadensbonus (narrower)
+.c-detail-row-1 {
+  display: flex;
+  gap: 0.75rem;
+
+  .c-detail-kt {
+    flex: 4;
+    min-width: 0;
+  }
+
+  .c-detail-sb {
+    flex: 2;
+    min-width: 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+}
+
+// Row 2: six secondary fields in auto-fill columns
+.c-detail-row-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+  gap: 0.5rem 0.75rem;
+}
+
+.c-detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+
+  label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5a4a30;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  p-inputnumber {
+    width: 100%;
+
+    .p-inputtext {
+      width: 100%;
+    }
+  }
+}
+
+// ─── Split cell for Schadensbonus (Leiteigenschaft + input side by side) ──────
+
+.c-split-cell {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+
+  .c-split-left {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .c-split-right {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+// ─── Leiteigenschaft label ────────────────────────────────────────────────────
+
+.c-leiteigenschaft {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #5a3a10; // dark warm brown — readable on the light parchment detail area (was faded gold)
+  display: block;
+}
+
+// ─── Add / transfer button row ───────────────────────────────────────────────
+.c-add-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// Push "In Ausrüstung übertragen" to the far right, away from "hinzufügen", so it isn't hit by accident
+// (a confirm popup guards it as well).
+.c-transfer-btn {
+  margin-left: auto;
+}
+
+// ─── Text truncation for fixed-width cells ──────────────────────────────────
+
+:host ::ng-deep .c-sheet-table {
+  .p-datatable-tbody > tr > td:not(.c-expansion-cell) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .p-select-label,
+  .p-multiselect-label,
+  input.p-inputtext {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

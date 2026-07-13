@@ -1,0 +1,142 @@
+.c-sa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.c-sa-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+// Only the bucket total (right-aligned) — the accordion header already names the category.
+.c-sa-head {
+  display: flex;
+  justify-content: flex-end;
+}
+
+// Selected SAs flow into two columns (left→right, wrapping to the next row); one column when narrow.
+.c-sa-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.5rem;
+}
+
+@media (max-width: 40rem) {
+  .c-sa-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-sa-total {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-sa-row {
+  display: flex;
+  flex-wrap: wrap; // let a sub-select / level input drop to its own line instead of overflowing the column
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--p-surface-700, #334155);
+}
+
+.c-sa-name {
+  flex: 1 1 8rem;
+  min-width: 0;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Sub-selection / free-text param: shrinks to FIT its column (like the name) instead of forcing itself to
+// full width or onto its own line. The 2-column list layout stays; the label truncates in the dropdown.
+.c-sa-param {
+  flex: 1 1 6rem;
+  min-width: 0;
+}
+
+// Compact level input (like the traits tab): fixed narrow width, centered, no oversized spinner buttons.
+.c-sa-lvl {
+  width: 3.25rem;
+  flex: 0 0 auto;
+
+  ::ng-deep .p-inputnumber-input {
+    width: 100%;
+    padding: 0.35rem 0.4rem;
+    text-align: center;
+  }
+}
+
+.c-sa-cost {
+  min-width: 4rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-sa-empty {
+  margin: 0.25rem 0;
+  font-size: 0.82rem;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-sa-add {
+  margin-top: 0.5rem;
+  width: 50%;
+}
+
+@media (max-width: 40rem) {
+  .c-sa-add {
+    width: 100%;
+  }
+}
+
+// GM cost-adjustment toggle.
+.c-sa-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--p-text-muted-color, #94a3b8);
+
+  label {
+    cursor: pointer;
+  }
+}
+
+.c-sa-cost-input {
+  width: 5rem;
+  flex: 0 0 auto;
+
+  ::ng-deep .p-inputnumber-input {
+    width: 100%;
+    padding: 0.35rem 0.4rem;
+    text-align: right;
+  }
+}
+
+.c-sa-adjusted {
+  color: var(--p-primary-color, #a78bfa);
+  font-style: italic;
+}
+
+// Homebrew SFs mirrored read-only into their bucket (edited in the Homebrew tab) but counted in AP.
+// Subtle dimming + a gold "Homebrew" badge distinguish them from catalog SFs.
+.c-sa-row-hb {
+  opacity: 0.9;
+}
+
+.c-sa-hb-tag {
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  background: rgba(200, 169, 110, 0.22);
+  color: #5a3a10;
+}

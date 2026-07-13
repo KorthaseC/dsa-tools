@@ -1,0 +1,120 @@
+<div class="c-sa">
+  <div class="c-sa-toolbar">
+    <p-checkbox [ngModel]="costOverrideUnlocked()" (ngModelChange)="costOverrideUnlocked.set($event)" [binary]="true" inputId="saCostEdit" />
+    <label for="saCostEdit">Kosten anpassen (Spielleiter)</label>
+  </div>
+
+  @for (b of visibleBuckets(); track b.key) {
+    <section class="c-sa-section">
+      <div class="c-sa-head">
+        <span class="c-sa-total">{{ bucketCost(b.key) }} AP</span>
+      </div>
+
+      <div class="c-sa-list">
+        @for (e of entries(b.key); track e.index) {
+        <div class="c-sa-row">
+          <span class="c-sa-name">{{ e.sa?.label ?? e.ref.name }}</span>
+          <app-rule-link [url]="e.sa?.url" />
+          @if (hasSelection(e.sa)) {
+            <p-select
+              [ngModel]="e.ref.param || null"
+              (ngModelChange)="setParam(b.key, e.index, $event ?? '')"
+              [options]="selectionOptions(e.sa)"
+              optionLabel="label"
+              optionValue="name"
+              placeholder="Auswählen …"
+              [filter]="true"
+              filterBy="label"
+              appendTo="body"
+              [virtualScroll]="true"
+              [virtualScrollItemSize]="38"
+              class="c-sa-param"
+            />
+          } @else if (needsParamText(e.ref.name, e.sa)) {
+            <input pInputText [ngModel]="e.ref.param ?? ''" (ngModelChange)="setParam(b.key, e.index, $event)" placeholder="Auswahl …" class="c-sa-param" />
+          }
+          @if (isLeveled(e.sa) && !e.ref.granted) {
+            <p-inputnumber
+              [ngModel]="e.ref.lvl ?? 1"
+              (ngModelChange)="setLevel(b.key, e.ref.name, $event)"
+              [min]="1"
+              [max]="e.sa?.maxLvl"
+              [useGrouping]="false"
+              [maxlength]="2"
+              [allowEmpty]="false"
+              class="c-sa-lvl"
+            />
+          }
+          @if (e.ref.granted) {
+            <span class="c-sa-cost" pTooltip="Durch Kultur frei" tooltipPosition="top">frei</span>
+            <!-- Ortskenntnis-style param SAs are user-managed here, so keep them removable even when free;
+                 profession/species grants stay locked (no delete). -->
+            @if (isParam(e.ref.name)) {
+              <button
+                type="button"
+                pButton
+                icon="pi pi-times"
+                class="p-button-text p-button-sm"
+                (click)="removeAt(b.key, e.index)"
+                pTooltip="Entfernen"
+                tooltipPosition="top"
+              ></button>
+            }
+          } @else {
+            @if (costOverrideUnlocked()) {
+              <p-inputnumber
+                [ngModel]="cost(e.ref)"
+                (ngModelChange)="setCostOverride(b.key, e.index, $event)"
+                [useGrouping]="false"
+                [allowEmpty]="true"
+                [maxlength]="5"
+                class="c-sa-cost-input"
+              />
+              @if (e.ref.costOverride != null) {
+                <button type="button" pButton icon="pi pi-undo" class="p-button-text p-button-sm" (click)="setCostOverride(b.key, e.index, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top"></button>
+              }
+            } @else {
+              <span class="c-sa-cost" [class.c-sa-adjusted]="e.ref.costOverride != null">{{ cost(e.ref) }} AP</span>
+            }
+            <button
+              type="button"
+              pButton
+              icon="pi pi-times"
+              class="p-button-text p-button-sm"
+              (click)="removeAt(b.key, e.index)"
+              pTooltip="Entfernen"
+              tooltipPosition="top"
+            ></button>
+          }
+        </div>
+        } @empty {
+          <p class="c-sa-empty">Keine gewählt.</p>
+        }
+
+        @for (hb of homebrewFor(b.key); track hb.id) {
+          <div class="c-sa-row c-sa-row-hb">
+            <span class="c-sa-name">{{ hb.label || 'Homebrew-SF' }}</span>
+            <span class="c-sa-hb-tag" pTooltip="Homebrew – im Homebrew-Tab bearbeiten" tooltipPosition="top">Homebrew</span>
+            <span class="c-sa-cost">{{ hbCost(hb) }} AP</span>
+          </div>
+        }
+      </div>
+
+      <p-select
+        appActionSelect
+        [ngModel]="addModels()[b.key]"
+        (ngModelChange)="add(b.key, $event)"
+        [options]="options(b.key)"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Sonderfertigkeit hinzufügen …"
+        [filter]="true"
+        filterBy="label"
+        appendTo="body"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="38"
+        class="c-sa-add"
+      />
+    </section>
+  }
+</div>

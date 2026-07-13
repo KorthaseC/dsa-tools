@@ -1,0 +1,64 @@
+.c-ls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.25rem;
+}
+
+.c-ls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.c-ls-title {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.c-ls-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem; // uniform row height so Sprachen (with level input) and Schriften line up
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--p-surface-700, #334155);
+}
+
+.c-ls-name {
+  flex: 1;
+  font-size: 0.88rem;
+}
+
+.c-ls-lvl {
+  width: 3rem;
+  flex: 0 0 auto;
+
+  // Compact: fill the small fixed width, centered, no oversized spinner buttons.
+  ::ng-deep .p-inputnumber {
+    width: 100%;
+  }
+
+  ::ng-deep .p-inputnumber-input {
+    width: 100%;
+    min-width: 0;
+    padding: 0.3rem 0.35rem;
+    text-align: center;
+  }
+}
+
+.c-ls-cost {
+  min-width: 3.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-ls-empty {
+  margin: 0.2rem 0;
+  font-size: 0.8rem;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-ls-add {
+  margin-top: 0.25rem;
+}

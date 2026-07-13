@@ -1,0 +1,75 @@
+:host {
+  display: block;
+}
+
+.c-tradition-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.c-tf-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Dark warm brown to match the Zaubertricks/Segnungen heading on the parchment card.
+.c-tf-title {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #5a3a10;
+}
+
+.c-tf-lock {
+  color: #5a3a10;
+}
+
+// Gold accent while unlocked (same signal as the species lock).
+.c-tf-lock.c-unlocked {
+  color: var(--p-primary-color, #c8a96e);
+}
+
+.c-tf-warning {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.78rem;
+  color: #8a5a1a;
+
+  i {
+    font-size: 0.85rem;
+  }
+}
+
+.c-tf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-tf-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+
+  label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5a3a10;
+  }
+
+  // v21: p-select is `inline-flex` and collapses inside a grid/flex cell (label shrinks to ~1%). Force the
+  // host element to block-level flex at full width so the label grows and the dropdown arrow sits right.
+  ::ng-deep .p-select {
+    display: flex;
+    width: 100%;
+  }
+}

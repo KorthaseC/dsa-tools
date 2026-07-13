@@ -1,0 +1,216 @@
+<div class="c-traits">
+  <div class="c-trait-toolbar">
+    <p-checkbox [ngModel]="costOverrideUnlocked()" (ngModelChange)="costOverrideUnlocked.set($event)" [binary]="true" inputId="traitCostEdit" />
+    <label for="traitCostEdit">Kosten anpassen (Spielleiter)</label>
+  </div>
+
+  <!-- ── Vorteile ── -->
+  <section class="c-trait-section">
+    <header class="c-trait-head">
+      <h2 class="c-trait-title">Vorteile</h2>
+      <span class="c-trait-total" [class.c-trait-over]="totalAdvCost() > 80">{{ totalAdvCost() }} / 80 AP</span>
+    </header>
+
+    @for (adv of advantages(); track $index; let i = $index) {
+      <div class="c-trait-row">
+        <span class="c-trait-name">{{ adv.label }}</span>
+        <app-rule-link [url]="adv.url" />
+        @if (isSelection(adv)) {
+          <p-select
+            [ngModel]="currentOption(adv)"
+            (ngModelChange)="setAdvantageOptionAt(i, $event)"
+            [options]="subOptions(adv, advantages())"
+            optionLabel="label"
+            optionValue="value"
+            optionDisabled="disabled"
+            placeholder="Kategorie wählen …"
+            [filter]="true"
+            filterBy="label"
+            appendTo="body"
+            class="c-trait-sub"
+          >
+            <ng-template pTemplate="item" let-opt>
+              <div class="c-sub-item">
+                <span>{{ opt.label }}</span>
+                @if (opt.costLabel) {
+                  <span class="c-sub-cost">{{ opt.costLabel }}</span>
+                }
+              </div>
+            </ng-template>
+          </p-select>
+        }
+        @if (isLeveled(adv)) {
+          <p-inputnumber
+            [ngModel]="adv.lvl ?? 1"
+            (ngModelChange)="setAdvantageLevelAt(i, $event)"
+            [min]="1"
+            [max]="adv.maxLvl"
+            [useGrouping]="false"
+            [maxlength]="2"
+            [allowEmpty]="false"
+            class="c-trait-lvl"
+          />
+        }
+        @if (costOverrideUnlocked() && !adv.mandatory && !isUnset(adv)) {
+          <p-inputnumber
+            [ngModel]="cost(adv)"
+            (ngModelChange)="setAdvantageCostOverrideAt(i, $event)"
+            [useGrouping]="false"
+            [allowEmpty]="true"
+            [maxlength]="5"
+            class="c-trait-cost-input"
+          />
+          @if (adv.costOverride != null) {
+            <button type="button" pButton icon="pi pi-undo" class="p-button-text p-button-sm" (click)="setAdvantageCostOverrideAt(i, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top"></button>
+          }
+        } @else {
+          <span class="c-trait-cost" [class.c-trait-adjusted]="adv.costOverride != null">{{ rowCostLabel(adv) }}</span>
+        }
+        @if (adv.mandatory) {
+          <span class="c-trait-tag" pTooltip="Automatisch durch Spezies (frei)" tooltipPosition="top">auto</span>
+        }
+        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm c-trait-del" (click)="removeAdvantageAt(i)" pTooltip="Entfernen" tooltipPosition="top"></button>
+      </div>
+    } @empty {
+      <p class="c-trait-empty">Noch keine Vorteile gewählt.</p>
+    }
+
+    @for (hb of homebrewAdvantages(); track hb.id) {
+      <div class="c-trait-row c-trait-row-hb">
+        <span class="c-trait-name">{{ hb.label || 'Homebrew-Vorteil' }}</span>
+        <span class="c-trait-tag c-trait-tag-hb" pTooltip="Homebrew – im Homebrew-Tab bearbeiten" tooltipPosition="top">Homebrew</span>
+        <span class="c-trait-cost">{{ hbCost(hb) }} AP</span>
+      </div>
+    }
+
+    <p-select
+      appActionSelect
+      [ngModel]="addAdvModel()"
+      (ngModelChange)="addAdvantage($event)"
+      [options]="advantageOptions()"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Vorteil hinzufügen …"
+      [filter]="true"
+      filterBy="label"
+      appendTo="body"
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="38"
+      class="c-trait-add"
+    >
+      <ng-template pTemplate="item" let-opt>
+        <div class="c-add-item">
+          <span>{{ opt.label }}</span>
+          <span class="c-add-cost">{{ opt.cost }}</span>
+        </div>
+      </ng-template>
+    </p-select>
+  </section>
+
+  <!-- ── Nachteile ── -->
+  <section class="c-trait-section">
+    <header class="c-trait-head">
+      <h2 class="c-trait-title">Nachteile</h2>
+      <div class="c-trait-cap">
+        <p-checkbox [ngModel]="capDisadvantageAp()" (ngModelChange)="setCapDisadvantageAp($event)" [binary]="true" inputId="capDisAp" />
+        <label for="capDisAp" pTooltip="An: Nachteile bringen höchstens 80 AP (Rest zählt nicht). Aus: der volle Wert wird angerechnet." tooltipPosition="top">AP-Gewinn max. 80</label>
+      </div>
+      <span class="c-trait-total" [class.c-trait-over]="totalDisCost() < -80">{{ -totalDisCost() }} / 80 AP</span>
+    </header>
+
+    @for (dis of disadvantages(); track $index; let i = $index) {
+      <div class="c-trait-row">
+        <span class="c-trait-name">{{ dis.label }}</span>
+        <app-rule-link [url]="dis.url" />
+        @if (isSelection(dis)) {
+          <p-select
+            [ngModel]="currentOption(dis)"
+            (ngModelChange)="setDisadvantageOptionAt(i, $event)"
+            [options]="subOptions(dis, disadvantages())"
+            optionLabel="label"
+            optionValue="value"
+            optionDisabled="disabled"
+            placeholder="Kategorie wählen …"
+            [filter]="true"
+            filterBy="label"
+            appendTo="body"
+            class="c-trait-sub"
+          >
+            <ng-template pTemplate="item" let-opt>
+              <div class="c-sub-item">
+                <span>{{ opt.label }}</span>
+                @if (opt.costLabel) {
+                  <span class="c-sub-cost">{{ opt.costLabel }}</span>
+                }
+              </div>
+            </ng-template>
+          </p-select>
+        }
+        @if (isLeveled(dis)) {
+          <p-inputnumber
+            [ngModel]="dis.lvl ?? 1"
+            (ngModelChange)="setDisadvantageLevelAt(i, $event)"
+            [min]="1"
+            [max]="dis.maxLvl"
+            [useGrouping]="false"
+            [maxlength]="2"
+            [allowEmpty]="false"
+            class="c-trait-lvl"
+          />
+        }
+        @if (costOverrideUnlocked() && !dis.mandatory && !isUnset(dis)) {
+          <p-inputnumber
+            [ngModel]="cost(dis)"
+            (ngModelChange)="setDisadvantageCostOverrideAt(i, $event)"
+            [useGrouping]="false"
+            [allowEmpty]="true"
+            [maxlength]="5"
+            class="c-trait-cost-input"
+          />
+          @if (dis.costOverride != null) {
+            <button type="button" pButton icon="pi pi-undo" class="p-button-text p-button-sm" (click)="setDisadvantageCostOverrideAt(i, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top"></button>
+          }
+        } @else {
+          <span class="c-trait-cost" [class.c-trait-adjusted]="dis.costOverride != null">{{ rowCostLabel(dis) }}</span>
+        }
+        @if (dis.mandatory) {
+          <span class="c-trait-tag" pTooltip="Automatisch durch Spezies (frei)" tooltipPosition="top">auto</span>
+        }
+        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm c-trait-del" (click)="removeDisadvantageAt(i)" pTooltip="Entfernen" tooltipPosition="top"></button>
+      </div>
+    } @empty {
+      <p class="c-trait-empty">Noch keine Nachteile gewählt.</p>
+    }
+
+    @for (hb of homebrewDisadvantages(); track hb.id) {
+      <div class="c-trait-row c-trait-row-hb">
+        <span class="c-trait-name">{{ hb.label || 'Homebrew-Nachteil' }}</span>
+        <span class="c-trait-tag c-trait-tag-hb" pTooltip="Homebrew – im Homebrew-Tab bearbeiten" tooltipPosition="top">Homebrew</span>
+        <span class="c-trait-cost">{{ hbCost(hb) }} AP</span>
+      </div>
+    }
+
+    <p-select
+      appActionSelect
+      [ngModel]="addDisModel()"
+      (ngModelChange)="addDisadvantage($event)"
+      [options]="disadvantageOptions()"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Nachteil hinzufügen …"
+      [filter]="true"
+      filterBy="label"
+      appendTo="body"
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="38"
+      class="c-trait-add"
+    >
+      <ng-template pTemplate="item" let-opt>
+        <div class="c-add-item">
+          <span>{{ opt.label }}</span>
+          <span class="c-add-cost">{{ opt.cost }}</span>
+        </div>
+      </ng-template>
+    </p-select>
+  </section>
+</div>

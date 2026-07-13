@@ -1,0 +1,34 @@
+.c-exp {
+  width: 100%;
+}
+
+.c-exp-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.c-exp-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.c-exp-select {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.c-exp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.c-exp-info .result-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}

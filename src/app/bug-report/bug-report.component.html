@@ -1,90 +1,83 @@
 <div class="bug-report-container pb-5">
-  @if(!isFormSend) {
-  <form [formGroup]="bugReportForm" class="flex flex-column row-gap-4">
+  @if (!isFormSend) {
+    <form [formGroup]="bugReportForm" class="flex flex-column row-gap-4">
+      <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="username" formControlName="username" required class="w-full" />
+        <label for="username">Username</label>
+      </p-floatlabel>
 
-    <p-floatlabel variant="on" class="w-full">
-      <input pInputText id="username" formControlName="username" required class="w-full" />
-      <label for="username">Username</label>
-    </p-floatlabel>
+      <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="email" formControlName="email" class="w-full" />
+        <label for="email">Email (optional)</label>
+      </p-floatlabel>
 
-    <p-floatlabel variant="on" class="w-full">
-      <input pInputText id="email" formControlName="email" class="w-full" />
-      <label for="email">Email (optional)</label>
-    </p-floatlabel>
-
-    <div class="type-section">
-      <span class="section-label">Art des Anliegens</span>
-      <div class="flex gap-4">
-        <div class="flex align-items-center gap-2">
-          <p-radiobutton inputId="typeBug" value="bug-report" formControlName="reportType" />
-          <label for="typeBug">Bugreport</label>
-        </div>
-        <div class="flex align-items-center gap-2">
-          <p-radiobutton inputId="typeFeedback" value="feedback" formControlName="reportType" />
-          <label for="typeFeedback">Feedback</label>
+      <div class="type-section">
+        <span class="section-label">Art des Anliegens</span>
+        <div class="flex gap-4">
+          <div class="flex align-items-center gap-2">
+            <p-radiobutton inputId="typeBug" value="bug-report" formControlName="reportType" />
+            <label for="typeBug">Bugreport</label>
+          </div>
+          <div class="flex align-items-center gap-2">
+            <p-radiobutton inputId="typeFeedback" value="feedback" formControlName="reportType" />
+            <label for="typeFeedback">Feedback</label>
+          </div>
         </div>
       </div>
-    </div>
 
-    <p-floatlabel variant="on" class="w-full">
-      <p-datepicker
-        inputId="date"
-        formControlName="date"
-        [required]="true"
-        class="w-full"
-        appendTo="body"
-      />
-      <label for="date">Datum (wann der Bug festgestellt wurde)</label>
-    </p-floatlabel>
+      <p-floatlabel variant="on" class="w-full">
+        <p-datepicker inputId="date" formControlName="date" [required]="true" class="w-full" appendTo="body" />
+        <label for="date">Datum (wann der Bug festgestellt wurde)</label>
+      </p-floatlabel>
 
-    <p-floatlabel variant="on" class="w-full">
-      <textarea pTextarea id="description" formControlName="description" required class="w-full" rows="4"></textarea>
-      <label for="description">Beschreibung</label>
-    </p-floatlabel>
+      <p-floatlabel variant="on" class="w-full">
+        <textarea pTextarea id="description" formControlName="description" required class="w-full" rows="4"></textarea>
+        <label for="description">Beschreibung</label>
+      </p-floatlabel>
 
-    @if(bugReportForm.get('reportType')?.value === 'bug-report') {
-    <p-floatlabel variant="on" class="w-full">
-      <textarea pTextarea id="expected" formControlName="expected" class="w-full" rows="4"></textarea>
-      <label for="expected">Erwartetes Verhalten</label>
-    </p-floatlabel>
-    }
-
-    <div class="upload-section">
-      <span class="upload-label">Bild-Anhang (optional)</span>
-      <input type="file" (change)="onFileChange($event)" accept="image/*" formControlName="file" class="file-input" />
-      @if(fileTooLarge) {
-      <div class="field-error">Datei ist zu groß. Maximal 2 MB erlaubt.</div>
+      @if (bugReportForm.get('reportType')?.value === 'bug-report') {
+        <p-floatlabel variant="on" class="w-full">
+          <textarea pTextarea id="expected" formControlName="expected" class="w-full" rows="4"></textarea>
+          <label for="expected">Erwartetes Verhalten</label>
+        </p-floatlabel>
       }
-    </div>
 
-    <div class="privacy-notice">
-      Mit dem Absenden stimmst du der Verarbeitung deiner eingegebenen Daten zur Bearbeitung deines Anliegens gemäß unserer
-      <a [routerLink]="['/legal']" class="privacy-link">Datenschutzerklärung</a> zu.
-    </div>
-
-    <div class="flex align-items-center gap-3">
-      <div class="w-full md:w-auto">
-        <p-button
-          label="Formular senden"
-          (onClick)="onSubmit()"
-          [disabled]="!bugReportForm.valid || fileTooLarge || submissionCount >= maxSubmissions || isLoading"
-          styleClass="w-full"
-        />
+      <div class="upload-section">
+        <span class="upload-label">Bild-Anhang (optional)</span>
+        <input type="file" (change)="onFileChange($event)" accept="image/*" formControlName="file" class="file-input" />
+        @if (fileTooLarge) {
+          <div class="field-error">Datei ist zu groß. Maximal 2 MB erlaubt.</div>
+        }
       </div>
-      @if(isLoading) {
-      <p-progressSpinner class="c-spinner" />
-      }
-    </div>
 
-    @if(submissionCount >= maxSubmissions) {
-    <div class="field-error">Maximale Anzahl an Tickets erreicht.</div>
-    }
-  </form>
+      <div class="privacy-notice">
+        Mit dem Absenden stimmst du der Verarbeitung deiner eingegebenen Daten zur Bearbeitung deines Anliegens gemäß unserer
+        <a [routerLink]="[routes.legal]" class="privacy-link">Datenschutzerklärung</a> zu.
+      </div>
+
+      <div class="flex align-items-center gap-3">
+        <div class="w-full md:w-auto">
+          <p-button
+            label="Formular senden"
+            (onClick)="onSubmit()"
+            [disabled]="!bugReportForm.valid || fileTooLarge || submissionCount >= maxSubmissions || isLoading"
+            styleClass="w-full"
+          />
+        </div>
+        @if (isLoading) {
+          <p-progressSpinner class="c-spinner" />
+        }
+      </div>
+
+      @if (submissionCount >= maxSubmissions) {
+        <div class="field-error">Maximale Anzahl an Tickets erreicht.</div>
+      }
+    </form>
   }
 
-  @if(isFormSend) {
-  <div class="result-card">
-    <span class="result-value">Vielen Dank. Dein Anliegen ist eingegangen.</span>
-  </div>
+  @if (isFormSend) {
+    <div class="result-card">
+      <span class="result-value">Vielen Dank. Dein Anliegen ist eingegangen.</span>
+    </div>
   }
 </div>

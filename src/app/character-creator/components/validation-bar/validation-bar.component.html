@@ -1,0 +1,37 @@
+<!-- ── Sticky validation bar (always visible; badge = hint) ── -->
+<aside
+  class="c-validation-bar"
+  [class.c-vb-error]="errors().length"
+  [class.c-vb-warn]="!errors().length && hintCount()"
+  [class.c-vb-ok]="!errors().length && !hintCount()"
+>
+  <button type="button" class="c-vb-header" (click)="toggleValidationPanel()">
+    @if (errors().length) {
+      <i class="pi pi-exclamation-triangle"></i>
+      <span class="c-vb-summary">{{ errors().length }} Regelverstöße@if (hintCount()) {<span> · {{ hintCount() }} Hinweise</span>}</span>
+    } @else if (hintCount()) {
+      <i class="pi pi-info-circle"></i>
+      <span class="c-vb-summary">{{ hintCount() }} Hinweise</span>
+    } @else {
+      <i class="pi pi-check-circle"></i>
+      <span class="c-vb-summary">Regelkonform</span>
+    }
+    @if (errors().length || hintCount()) {
+      <i class="c-vb-chevron pi" [class.pi-chevron-up]="!validationPanelOpen()" [class.pi-chevron-down]="validationPanelOpen()"></i>
+    }
+  </button>
+
+  @if (validationPanelOpen() && (errors().length || hintCount())) {
+    <div class="c-vb-body">
+      @for (e of errors(); track e.ruleId + (e.source ?? '')) {
+        <p-message severity="error">{{ e.message }}</p-message>
+      }
+      @for (w of warnings(); track w.ruleId + (w.source ?? '')) {
+        <p-message severity="warn">{{ w.message }}</p-message>
+      }
+      @for (i of infos(); track i.ruleId + (i.source ?? '')) {
+        <p-message severity="info">{{ i.message }}</p-message>
+      }
+    </div>
+  }
+</aside>

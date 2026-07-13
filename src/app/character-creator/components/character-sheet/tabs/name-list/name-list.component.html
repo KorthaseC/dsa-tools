@@ -1,0 +1,34 @@
+<div class="c-name-list">
+  @if (title()) {
+    <h3 class="c-name-list-title">{{ title() }}</h3>
+  }
+
+  <div class="c-name-list-chips">
+    @for (item of selectedItems(); track item.name) {
+      <span class="c-name-chip">
+        {{ item.label }}
+        <button type="button" class="c-name-chip-x" (click)="remove.emit(item.name)" pTooltip="Entfernen" tooltipPosition="top">
+          <i class="pi pi-times"></i>
+        </button>
+      </span>
+    } @empty {
+      <span class="c-name-list-empty">Keine gewählt.</span>
+    }
+  </div>
+
+  <p-select
+    appActionSelect
+    [ngModel]="addModel()"
+    (ngModelChange)="onAdd($event)"
+    [options]="availableOptions()"
+    optionLabel="label"
+    optionValue="value"
+    [placeholder]="placeholder()"
+    [filter]="true"
+    filterBy="label"
+    appendTo="body"
+    [virtualScroll]="true"
+    [virtualScrollItemSize]="38"
+    class="c-name-list-add"
+  />
+</div>

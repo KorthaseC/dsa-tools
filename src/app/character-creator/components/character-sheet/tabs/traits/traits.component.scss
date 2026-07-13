@@ -1,0 +1,207 @@
+.c-traits {
+  display: grid;
+  // Vorteile & Nachteile always share the width equally (minmax(0,…) prevents a long row blowing out
+  // one column); they stack to one column only on narrow screens.
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 48rem) {
+  .c-traits {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-trait-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.c-trait-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+// The traits card sits on the light parchment (both the sheet tab AND the wizard hub), so its on-card
+// text is set to dark parchment tones — otherwise it inherits the dark-theme's light color / dim-gold
+// muted var and reads as faded, hard-to-read gold. (Dropdown-overlay texts below stay light.)
+.c-trait-title {
+  margin: 0;
+  font-size: 1rem;
+  color: #5a3a10;
+}
+
+.c-trait-total {
+  margin-left: auto; // push the total to the right edge (the cap toggle sits next to the title)
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: #6a4a20;
+
+  &.c-trait-over {
+    color: var(--p-red-600, #c0392b);
+    font-weight: 600;
+  }
+}
+
+.c-trait-row {
+  display: flex;
+  flex-wrap: wrap; // allow the sub-selector to drop to its own line on narrow widths
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3.1rem; // tall enough to fit the full-size sub-select → every row is the same height
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--p-surface-700, #334155);
+}
+
+.c-trait-name {
+  flex: 1 1 8rem;
+  min-width: 0;
+  font-size: 0.9rem;
+  color: #2a1a08;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Normal (default) select size — same as the SF tab's sub-select; no height shrink. Row uniformity is
+// handled by .c-trait-row's min-height, which is tall enough to fit the full-size select.
+.c-trait-sub {
+  flex: 0 1 13rem;
+  min-width: 0;
+}
+
+// Narrow / mobile: the category select takes its own full-width row beneath the name.
+@media (max-width: 34rem) {
+  .c-trait-sub {
+    order: 1;
+    flex-basis: 100%;
+  }
+}
+
+.c-trait-lvl {
+  width: 3.25rem;
+  flex: 0 0 auto;
+
+  // Compact: no spinner buttons, centered two-digit value.
+  ::ng-deep .p-inputnumber-input {
+    width: 100%;
+    padding: 0.35rem 0.4rem;
+    text-align: center;
+  }
+}
+
+.c-trait-cost {
+  min-width: 4.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #6a4a20; // on-parchment row cost
+}
+
+// Dropdown item rows (sub-selector + add dropdown): label left, cost right.
+.c-sub-item,
+.c-add-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+// Sub-option rows have no virtualScroll (variable height), so let long labels WRAP instead of scrolling
+// the overlay horizontally. Top-align so the cost stays on the first line.
+.c-sub-item {
+  align-items: flex-start;
+
+  > span:first-child {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}
+
+.c-sub-cost,
+.c-add-cost {
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--p-text-muted-color, #94a3b8);
+  white-space: nowrap;
+}
+
+.c-trait-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  background: var(--p-surface-700, #334155);
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+// Homebrew adv/dis are mirrored here read-only (edited in the Homebrew tab) but count toward the 80-AP
+// maximum. A subtle dimming + a gold "Homebrew" badge set them apart from catalog picks.
+.c-trait-row-hb {
+  opacity: 0.9;
+}
+
+.c-trait-tag-hb {
+  background: rgba(200, 169, 110, 0.22);
+  color: #5a3a10;
+  text-transform: none;
+}
+
+.c-trait-empty {
+  margin: 0.25rem 0;
+  font-size: 0.82rem;
+  color: #6a4a20;
+}
+
+.c-trait-add {
+  margin-top: 0.5rem;
+}
+
+// GM cost-adjustment toggle spans the full grid width above both sections.
+.c-trait-toolbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #6a4a20;
+
+  label {
+    cursor: pointer;
+  }
+}
+
+.c-trait-cost-input {
+  width: 5rem;
+  flex: 0 0 auto;
+
+  ::ng-deep .p-inputnumber-input {
+    width: 100%;
+    padding: 0.35rem 0.4rem;
+    text-align: right;
+  }
+}
+
+// A cost that carries a GM override is highlighted when shown as a (locked) label.
+.c-trait-adjusted {
+  color: #8a5a00; // GM-override highlight, readable on parchment
+  font-style: italic;
+}
+
+// Disadvantage 80-AP cap toggle — sits inline in the Nachteile title row.
+.c-trait-cap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: #6a4a20;
+
+  label {
+    cursor: pointer;
+  }
+}

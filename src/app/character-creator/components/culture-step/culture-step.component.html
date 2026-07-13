@@ -1,0 +1,234 @@
+<div class="c-sel">
+  <!-- ── Culture list: search + scroll + groups (species-typical first) ── -->
+  <div class="c-sel-list">
+    <input pInputText [ngModel]="filter()" (ngModelChange)="filter.set($event)" placeholder="Kultur suchen …" class="c-sel-filter w-full" />
+    <div class="c-sel-scroll">
+      @for (g of groups(); track g.label) {
+        <div class="c-sel-divider">
+          {{ g.label }} ({{ g.items.length }})
+          @if (g.hint) { <span class="c-sel-divider-hint">{{ g.hint }}</span> }
+        </div>
+        @for (c of g.items; track c.name) {
+          <button type="button" class="c-sel-item" [class.c-selected]="isSelected(c)" (click)="select(c)">
+            <span class="c-sel-name">{{ c.label }}</span>
+            <span class="c-sel-ap">{{ c.apCost }} AP</span>
+          </button>
+        }
+      } @empty {
+        <p class="c-sel-empty">Keine Kultur gefunden.</p>
+      }
+    </div>
+  </div>
+
+  <!-- ── Selected culture package (parchment result-card) ── -->
+  @if (selected(); as c) {
+    <div class="result-card c-sel-detail c-culture-detail">
+      <h2 class="c-culture-detail-title">{{ c.label }}</h2>
+      @if (isAtypicalCulture()) {
+        <p class="c-gm-warning">
+          <i class="pi pi-exclamation-triangle"></i>
+          Diese Kultur ist für deine Spezies untypisch — bitte mit dem Spielleiter abstimmen.
+        </p>
+      }
+
+      <div class="c-culture-meta">
+        <!-- Read-only culture facts -->
+        <div class="c-culture-info">
+          <div><label>Sprache</label><span>{{ c.language }}</span></div>
+          <div><label>Schrift</label><span>{{ c.script }}</span></div>
+        </div>
+        <!-- Player choices — controls share one baseline (align-items:end) -->
+        <div class="c-culture-inputs">
+          <div class="c-culture-field">
+            <label>Muttersprache <span class="c-free">(Stufe 3, frei)</span></label>
+            <p-select
+              [(ngModel)]="motherTongue"
+              [options]="languageOptions"
+              optionLabel="label"
+              optionValue="value"
+              [filter]="true"
+              filterBy="label"
+              placeholder="Sprache wählen …"
+              appendTo="body"
+            />
+          </div>
+          <div class="c-culture-field">
+            <label>Ortskenntnis <span class="c-free">(frei)</span></label>
+            <input pInputText [(ngModel)]="ortskenntnisTown" placeholder="Heimatort" />
+          </div>
+          <div class="c-culture-field">
+            <label>Sozialstatus</label>
+            <p-select
+              [(ngModel)]="socialStatus"
+              [options]="socialStatusGroups()"
+              [group]="true"
+              optionLabel="label"
+              optionValue="value"
+              optionGroupLabel="label"
+              optionGroupChildren="items"
+              placeholder="Status wählen …"
+              appendTo="body"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="c-culture-cols">
+        <section>
+          <h4>Kulturpaket (Talente)</h4>
+          <div class="c-culture-pack-toggle">
+            <p-checkbox [(ngModel)]="useCulturePackage" [binary]="true" inputId="useCulturePackage" />
+            <label for="useCulturePackage">Kulturpaket verwenden</label>
+          </div>
+          @if (!useCulturePackage) {
+            <p class="c-reco-hint">Ohne Kulturpaket — keine Talentänderungen, keine AP-Kosten.</p>
+          }
+          <ul class="c-pkg" [class.c-pkg-disabled]="!useCulturePackage">
+            @for (s of c.culturePackage; track s.skill) {
+              <li><span>{{ s.skill }}</span><span class="c-pkg-fw">+{{ s.bonus }}</span></li>
+            }
+          </ul>
+        </section>
+
+        <section>
+          <h4>Typische Vorteile</h4>
+          <div class="c-reco">
+            <ng-container *ngTemplateOutlet="recoList; context: { $implicit: typicalAdvantages() }"></ng-container>
+          </div>
+
+          <h4>Typische Nachteile</h4>
+          <div class="c-reco">
+            <ng-container *ngTemplateOutlet="recoList; context: { $implicit: typicalDisadvantages() }"></ng-container>
+          </div>
+        </section>
+
+        <section>
+          <h4>Untypische Vor-/Nachteile</h4>
+          <p class="c-reco-hint">Untypisch — nur mit Spielleiter-Absprache.</p>
+          <div class="c-reco">
+            @for (r of atypicalAdvantages(); track r.label) {
+              <div class="c-reco-text">{{ r.label }}</div>
+            }
+            @for (r of atypicalDisadvantages(); track r.label) {
+              <div class="c-reco-text">{{ r.label }}</div>
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- ── Shared renderer for a list of recommended traits (plain / leveled / selection) ── -->
+<ng-template #recoList let-list>
+  @for (r of list; track r.label) {
+    @switch (r.kind) {
+      @case ('selection') {
+        <div class="c-reco-sel">
+          <div class="c-reco-sel-head">
+            <span class="c-reco-sel-label">{{ r.label }}</span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-text p-button-sm c-reco-add"
+              [disabled]="!canAddMore(r)"
+              (click)="addInstance(r)"
+              pTooltip="Weitere Auswahl hinzufügen"
+              tooltipPosition="top"
+            ></button>
+          </div>
+          @for (inst of instancesFor(r); track inst.name) {
+            <div class="c-reco-row">
+              <p-select
+                [ngModel]="currentOption(inst)"
+                (ngModelChange)="setOption(r, inst.name, $event)"
+                [options]="subOptions(r, inst)"
+                optionLabel="label"
+                optionValue="value"
+                optionDisabled="disabled"
+                placeholder="Kategorie wählen …"
+                [filter]="true"
+                filterBy="label"
+                appendTo="body"
+                [virtualScroll]="true"
+                [virtualScrollItemSize]="38"
+                class="c-reco-sub"
+              >
+                <ng-template pTemplate="item" let-opt>
+                  <div class="c-sub-item">
+                    <span>{{ opt.label }}</span>
+                    <span class="c-sub-cost">{{ opt.costLabel }}</span>
+                  </div>
+                </ng-template>
+              </p-select>
+              @if (isLeveled(inst)) {
+                <p-inputnumber
+                  [ngModel]="inst.lvl ?? 1"
+                  (ngModelChange)="setInstanceLevel(r, inst.name, $event)"
+                  [min]="1"
+                  [max]="inst.maxLvl"
+                  [useGrouping]="false"
+                  [maxlength]="2"
+                  [allowEmpty]="false"
+                  class="c-reco-lvl"
+                />
+              }
+              <span class="c-reco-cost">{{ rowCostLabel(inst) }}</span>
+              <button
+                type="button"
+                pButton
+                icon="pi pi-times"
+                class="p-button-text p-button-sm c-reco-del"
+                (click)="removeInstance(r, inst.name)"
+                pTooltip="Entfernen"
+                tooltipPosition="top"
+              ></button>
+            </div>
+          }
+        </div>
+      }
+      @case ('leveled') {
+        <div class="c-reco-row">
+          <p-checkbox
+            [inputId]="(r.isDisadvantage ? 'dis_' : 'adv_') + r.label"
+            binary="true"
+            [ngModel]="isRecoSelected(r)"
+            (ngModelChange)="toggleReco(r)"
+          />
+          <label [for]="(r.isDisadvantage ? 'dis_' : 'adv_') + r.label">{{ r.label }}</label>
+          @if (isRecoSelected(r)) {
+            <p-inputnumber
+              [ngModel]="recoLevel(r)"
+              (ngModelChange)="setRecoLevel(r, $event)"
+              [min]="1"
+              [max]="r.resolved.maxLvl"
+              [useGrouping]="false"
+              [maxlength]="2"
+              [allowEmpty]="false"
+              class="c-reco-lvl"
+            />
+          }
+          <span class="c-reco-cost">{{ recoCostLabel(r) }}</span>
+        </div>
+      }
+      @default {
+        @if (r.resolved) {
+          <div class="c-reco-check">
+            <p-checkbox
+              [inputId]="(r.isDisadvantage ? 'dis_' : 'adv_') + r.label"
+              binary="true"
+              [ngModel]="isRecoSelected(r)"
+              (ngModelChange)="toggleReco(r)"
+            />
+            <label [for]="(r.isDisadvantage ? 'dis_' : 'adv_') + r.label">{{ r.label }}</label>
+          </div>
+        } @else {
+          <div class="c-reco-text">{{ r.label }}</div>
+        }
+      }
+    }
+  } @empty {
+    <p class="c-reco-none">–</p>
+  }
+</ng-template>

@@ -1,0 +1,57 @@
+.c-name-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.c-name-list-title {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #5a3a10; // dark warm brown — readable on the parchment card (matches the Vorteile heading)
+}
+
+.c-name-list-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.c-name-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--p-surface-700, #334155);
+  // Set the text colour explicitly (= the tab panel's colour) so the chip reads the same on the dark pill
+  // everywhere. Without this it inherits — the sheet gets the tab's light colour, but the wizard inherits
+  // `.main-container { color: black }` → unreadable black-on-dark.
+  color: var(--p-text-color, #e4d3a2);
+  font-size: 0.82rem;
+}
+
+.c-name-chip-x {
+  display: inline-flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--p-text-muted-color, #94a3b8);
+  padding: 0;
+
+  &:hover {
+    color: var(--p-red-400, #f87171);
+  }
+
+  i {
+    font-size: 0.7rem;
+  }
+}
+
+.c-name-list-empty {
+  font-size: 0.82rem;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-name-list-add {
+  max-width: 24rem;
+}

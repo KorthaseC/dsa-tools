@@ -1,0 +1,72 @@
+<div class="c-ls">
+  <!-- ── Sprachen ── -->
+  <section class="c-ls-section">
+    <h3 class="c-ls-title">Sprachen</h3>
+    @for (e of languages(); track e.ref.name) {
+      <div class="c-ls-row">
+        <span class="c-ls-name">{{ e.sa?.label ?? e.ref.name }}</span>
+        <label class="c-ls-mother" pTooltip="Muttersprache (frei, Stufe 3)" tooltipPosition="top">
+          <p-checkbox [ngModel]="e.ref.mother ?? false" (ngModelChange)="setMother(e.ref.name, $event)" [binary]="true" /> MS
+        </label>
+        <p-inputnumber
+          [ngModel]="e.ref.lvl"
+          (ngModelChange)="setLanguageLevel(e.ref.name, $event)"
+          [min]="1"
+          [max]="maxLvl(e.ref)"
+          [disabled]="e.ref.mother ?? false"
+          [showButtons]="false"
+          [useGrouping]="false"
+          class="c-ls-lvl"
+        />
+        <span class="c-ls-cost">{{ cost(e.ref) }} AP</span>
+        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeLanguage(e.ref.name)" pTooltip="Entfernen" tooltipPosition="top"></button>
+      </div>
+    } @empty {
+      <p class="c-ls-empty">Keine Sprachen gewählt.</p>
+    }
+    <p-select
+      appActionSelect
+      [ngModel]="addLangModel()"
+      (ngModelChange)="addLanguage($event)"
+      [options]="langOptions()"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Sprache hinzufügen …"
+      [filter]="true"
+      filterBy="label"
+      appendTo="body"
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="38"
+      class="c-ls-add"
+    />
+  </section>
+
+  <!-- ── Schriften ── -->
+  <section class="c-ls-section">
+    <h3 class="c-ls-title">Schriften</h3>
+    @for (e of scripts(); track e.ref.name) {
+      <div class="c-ls-row">
+        <span class="c-ls-name">{{ e.sa?.label ?? e.ref.name }}</span>
+        <span class="c-ls-cost">{{ cost(e.ref) }} AP</span>
+        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeScript(e.ref.name)" pTooltip="Entfernen" tooltipPosition="top"></button>
+      </div>
+    } @empty {
+      <p class="c-ls-empty">Keine Schriften gewählt.</p>
+    }
+    <p-select
+      appActionSelect
+      [ngModel]="addScriptModel()"
+      (ngModelChange)="addScript($event)"
+      [options]="scriptOptions()"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Schrift hinzufügen …"
+      [filter]="true"
+      filterBy="label"
+      appendTo="body"
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="38"
+      class="c-ls-add"
+    />
+  </section>
+</div>

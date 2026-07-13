@@ -1,0 +1,91 @@
+@if (derived(); as d) {
+  <div class="c-derived">
+    <!-- ── Energien (LeP/AsP/KaP): Zukauf (Leiteigenschafts-begrenzt) · permanenter Verlust · Rückkauf ── -->
+    <div class="c-derived-block">
+      <h3 class="c-derived-title">Energien</h3>
+      <div class="c-derived-table">
+        <div class="c-derived-head">
+          <span>Energie</span><span>Grundwert</span><span>Bonus</span><span>Zukauf</span><span>Verlust</span><span>Rückkauf</span><span>Max</span><span>Aktuell</span>
+        </div>
+        @for (p of energies; track p.key) {
+          <div class="c-derived-row">
+            <span class="c-derived-label">{{ p.label }}</span>
+            <span class="c-derived-ro">{{ d[p.key].base }}</span>
+            <p-inputnumber [ngModel]="d[p.key].bonus" (ngModelChange)="update(p.key, 'bonus', $event)" [showButtons]="false" [useGrouping]="false" />
+            <p-inputnumber
+              [ngModel]="d[p.key].bought"
+              (ngModelChange)="update(p.key, 'bought', $event)"
+              [min]="0"
+              [showButtons]="false"
+              [useGrouping]="false"
+              pTooltip="Zukauf (begrenzt durch die Leiteigenschaft)"
+              tooltipPosition="top"
+            />
+            <p-inputnumber
+              [ngModel]="(d[p.key].permanentLost ?? 0) + (d[p.key].autoLost ?? 0)"
+              (ngModelChange)="setLost(p.key, $event)"
+              [min]="d[p.key].autoLost ?? 0"
+              [showButtons]="false"
+              [useGrouping]="false"
+              [pTooltip]="
+                (d[p.key].autoLost ?? 0) > 0
+                  ? 'Permanent verlorene Punkte (senken das Maximum). Davon ' + (d[p.key].autoLost ?? 0) + ' automatisch durch gebundene Traditionsartefakte — dieser Anteil ist fix, der Rest frei eintragbar.'
+                  : 'Permanent verlorene Punkte (senken das Maximum)'
+              "
+              tooltipPosition="top"
+            />
+            <p-inputnumber
+              [ngModel]="d[p.key].boughtBack ?? 0"
+              (ngModelChange)="update(p.key, 'boughtBack', $event)"
+              [min]="0"
+              [max]="(d[p.key].permanentLost ?? 0) + (d[p.key].autoLost ?? 0)"
+              [showButtons]="false"
+              [useGrouping]="false"
+              pTooltip="Zurückgekaufte verlorene Punkte (2 AP pro Punkt; unbegrenzt, im Gegensatz zum Zukauf)"
+              tooltipPosition="top"
+            />
+            <span class="c-derived-ro c-derived-max">{{ d[p.key].max }}</span>
+            <p-inputnumber [ngModel]="d[p.key].current" (ngModelChange)="update(p.key, 'current', $event)" [showButtons]="false" [useGrouping]="false" />
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="c-derived-lower">
+      <!-- ── Abgeleitete Werte: nur über Boni steigerbar, kein Zukauf ── -->
+      <div class="c-derived-block">
+        <h3 class="c-derived-title">Abgeleitete Werte</h3>
+        <div class="c-derived-table c-derived-table--secondary">
+          <div class="c-derived-head">
+            <span>Wert</span><span>Grundwert</span><span>Bonus</span><span>Max</span>
+          </div>
+          @for (s of secondary; track s.key) {
+            <div class="c-derived-row">
+              <span class="c-derived-label">{{ s.label }}</span>
+              <span class="c-derived-ro">{{ d[s.key].base }}</span>
+              <p-inputnumber [ngModel]="d[s.key].bonus" (ngModelChange)="update(s.key, 'bonus', $event)" [showButtons]="false" [useGrouping]="false" />
+              <span class="c-derived-ro c-derived-max">{{ d[s.key].max }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- ── Schicksalspunkte: kein Zukauf, kein permanenter Verlust; getrennt von den Energien ── -->
+      <div class="c-derived-block">
+        <h3 class="c-derived-title">Schicksalspunkte</h3>
+        <div class="c-derived-table c-derived-table--fate">
+          <div class="c-derived-head">
+            <span>Wert</span><span>Grundwert</span><span>Bonus</span><span>Max</span><span>Aktuell</span>
+          </div>
+          <div class="c-derived-row">
+            <span class="c-derived-label">Schicksalspunkte</span>
+            <span class="c-derived-ro">{{ d.fatePoints.base }}</span>
+            <p-inputnumber [ngModel]="d.fatePoints.bonus" (ngModelChange)="update('fatePoints', 'bonus', $event)" [showButtons]="false" [useGrouping]="false" />
+            <span class="c-derived-ro c-derived-max">{{ d.fatePoints.max }}</span>
+            <p-inputnumber [ngModel]="d.fatePoints.current" (ngModelChange)="update('fatePoints', 'current', $event)" [showButtons]="false" [useGrouping]="false" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

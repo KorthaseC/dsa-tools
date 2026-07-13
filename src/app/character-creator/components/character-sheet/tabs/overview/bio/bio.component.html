@@ -1,0 +1,18 @@
+<div class="c-bio-grid">
+  @for (f of fields; track f.key) {
+    <div class="c-bio-field">
+      <label>{{ f.label }}</label>
+      <input pInputText #ref [value]="bio()[f.key] || ''" (blur)="update(f.key, ref.value)" class="w-full" />
+    </div>
+  }
+
+  <div class="c-bio-field c-bio-wide">
+    <label>Charakteristika</label>
+    <textarea pInputText #charRef [value]="bio().characteristics || ''" (blur)="update('characteristics', charRef.value)" class="w-full" rows="2"></textarea>
+  </div>
+
+  <div class="c-bio-field c-bio-wide">
+    <label>Sonstiges</label>
+    <textarea pInputText #miscRef [value]="bio().misc || ''" (blur)="update('misc', miscRef.value)" class="w-full" rows="2"></textarea>
+  </div>
+</div>
