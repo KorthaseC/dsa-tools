@@ -19,10 +19,13 @@
   margin: 0;
 }
 
+// An <a> (not a div) so crawlers see a real href and users can middle-click / "open in new tab".
 .feature-card {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  text-decoration: none;
+  color: inherit;
   background: rgba(200, 169, 110, 0.04);
   border: 1px solid #5a4a30;
   border-radius: 6px;

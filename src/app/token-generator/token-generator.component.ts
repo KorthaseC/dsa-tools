@@ -1,11 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, inject, NgZone, OnDestroy, PLATFORM_ID, ViewChild } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { FileUpload, FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 /** Ratio of the inner coin circle radius to half the canvas width (0..1).
  *  Calibrated against Coin.png – the transparent inner hole spans ~72 % of the half-width. */
@@ -16,7 +17,7 @@ const CANVAS_SIZE = 400;
 
 @Component({
   selector: 'app-token-generator',
-  imports: [CommonModule, FormsModule, ButtonModule, FileUploadModule, InputTextModule, SelectButtonModule],
+  imports: [PageIntroComponent, CommonModule, FormsModule, ButtonModule, FileUploadModule, InputTextModule, SelectButtonModule],
   templateUrl: './token-generator.component.html',
   styleUrl: './token-generator.component.scss',
 })
@@ -63,12 +64,17 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
   private boundTouchMove!: (e: TouchEvent) => void;
   private boundTouchEnd!: (e: TouchEvent) => void;
 
+  private readonly platformId = inject(PLATFORM_ID);
+
   constructor(
     private readonly ngZone: NgZone,
     private readonly cdr: ChangeDetectorRef
   ) {}
 
   ngAfterViewInit(): void {
+    // `Image` does not exist during the build-time prerender — and there is no canvas to paint on
+    // there either, so preloading is browser-only.
+    if (!isPlatformBrowser(this.platformId)) return;
     this.preloadCoinImage();
   }
 

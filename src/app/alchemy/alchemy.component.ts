@@ -34,6 +34,7 @@ import {
 import { lastValueFrom } from 'rxjs';
 import { Utility } from '../shared/utility';
 import { AlchemyDiceResult, AlchemyQSResult, DiceChangeResult, PurityOption } from './alchemy.models';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 enum PotionType {
   Elixir = 'ELIXIR',
@@ -43,7 +44,7 @@ enum PotionType {
 
 @Component({
   selector: 'app-alchemy',
-  imports: [FormsModule, ReactiveFormsModule, FloatLabelModule, ButtonModule, SelectModule],
+  imports: [PageIntroComponent, FormsModule, ReactiveFormsModule, FloatLabelModule, ButtonModule, SelectModule],
   templateUrl: './alchemy.component.html',
   styleUrl: './alchemy.component.scss',
 })

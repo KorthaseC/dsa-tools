@@ -1,10 +1,8 @@
+@use 'styles/fonts';
 @use 'styles/primeng-overrides';
 @use 'styles/shared-components';
 @use 'styles/selection-step';
 @import 'primeicons/primeicons.css';
-
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
 // ── Base ─────────────────────────────────────────────────────────────────────
 html,

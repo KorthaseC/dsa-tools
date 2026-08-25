@@ -25,6 +25,7 @@ import {
   METEOR_EFFECT_NAMES,
   QUALIFICATION_NAMES,
 } from './smith-generator.constants';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 import {
   ArmorBoni,
   ArmorType,
@@ -52,7 +53,7 @@ import {
 
 @Component({
     selector: 'app-smith-generator',
-    imports: [
+    imports: [PageIntroComponent, 
     FormsModule,
     ReactiveFormsModule,
     FloatLabelModule,

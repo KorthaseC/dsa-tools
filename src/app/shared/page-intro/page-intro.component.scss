@@ -1,0 +1,20 @@
+// Fill whatever container the host page provides (the tool pages use .{name}-container,
+// max-width: 800px; overview is full width) instead of imposing an own, narrower measure.
+:host {
+  display: block;
+}
+
+// Same card language as .legal-card / .feature-card, with a left accent bar marking it as the
+// page's introductory note rather than interactive content.
+.c-page-intro {
+  margin: 0 0 1.5rem;
+  padding: 0.875rem 1.25rem;
+  background: rgba(200, 169, 110, 0.06);
+  border: 1px solid rgba(90, 74, 48, 0.55);
+  border-left: 3px solid #c8a96e;
+  border-radius: 6px;
+  color: #5a4a30;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-wrap: pretty;
+}

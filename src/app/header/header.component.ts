@@ -13,6 +13,8 @@ import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
 })
 export class HeaderComponent implements OnInit {
   public pageTitle: string = 'overviewTitle';
+  /** On the home page the content supplies the <h1>, so the header renders a plain paragraph. */
+  public isHome = false;
 
   public readonly pageTitles = ROUTE_TITLES;
   public readonly routes = APP_ROUTES;
@@ -23,6 +25,9 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    // Resolve once up front: during prerender no further NavigationEnd fires, so without this every
+    // prerendered page would ship the default <h1> ("Übersicht") instead of its own title.
+    this.updatePageTitle();
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
       this.updatePageTitle();
     });
@@ -30,11 +35,10 @@ export class HeaderComponent implements OnInit {
 
   private updatePageTitle(): void {
     const activeRoute: ActivatedRoute = this.getActiveRoute(this.route);
-    if (activeRoute && activeRoute.snapshot.data['title']) {
-      this.pageTitle = activeRoute.snapshot.data['title'];
-    } else {
-      this.pageTitle = 'overviewTitle';
-    }
+    // snapshot can still be undefined when this runs before the first navigation resolves.
+    const data = activeRoute?.snapshot?.data ?? {};
+    this.pageTitle = data['title'] ?? 'overviewTitle';
+    this.isHome = data['isHome'] === true;
   }
 
   private getActiveRoute(route: ActivatedRoute): ActivatedRoute {

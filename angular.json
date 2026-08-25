@@ -21,10 +21,17 @@
             "index": "src/index.html",
             "baseHref": "/",
             "browser": "src/main.ts",
+            "server": "src/main.server.ts",
+            "outputMode": "static",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets", "src/assets/sitemap.xml", "src/assets/robots.txt"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              { "glob": "robots.txt", "input": "src/seo", "output": "/" },
+              { "glob": "sitemap.xml", "input": "src/seo", "output": "/" }
+            ],
             "styles": ["node_modules/primeflex/primeflex.css", "src/styles.scss"],
             "scripts": [],
             "allowedCommonJsDependencies": ["pako"]

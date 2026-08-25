@@ -26,7 +26,9 @@
       </div>
 
       <p-floatlabel variant="on" class="w-full">
-        <p-datepicker inputId="date" formControlName="date" [required]="true" class="w-full" appendTo="body" />
+        <!-- ngSkipHydration: appendTo="body" moves the overlay panel out of this component's subtree,
+             which the hydration serializer cannot reconcile (NG0502 during prerender). -->
+        <p-datepicker inputId="date" formControlName="date" [required]="true" class="w-full" appendTo="body" ngSkipHydration />
         <label for="date">Datum (wann der Bug festgestellt wurde)</label>
       </p-floatlabel>
 

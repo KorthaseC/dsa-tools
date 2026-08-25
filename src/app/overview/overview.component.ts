@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 
 import { APP_FEATURES } from '../app.features';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 @Component({
   selector: 'app-overview',
-  imports: [CardModule, RouterModule],
+  imports: [PageIntroComponent, CardModule, RouterModule],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
 })

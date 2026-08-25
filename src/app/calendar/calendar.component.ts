@@ -8,10 +8,11 @@ import { SelectModule } from 'primeng/select';
 import { DAY_OPTIONS, MONTH_NAMES, MOON_ICON, NAMELESS_DAY_OPTIONS, WEEKDAY_NAMES, Months, MoonPhase, Weekdays } from '../shared/constant';
 import { Utility } from '../shared/utility';
 import { FULL_MOON_REFERENCE_DAY, MOON_CYCLE_DAYS, MOON_PHASE_NAMES, WINDSTAG_REFERENCE_DAY } from './calendar.constants';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 @Component({
     selector: 'app-calendar',
-    imports: [
+    imports: [PageIntroComponent, 
         FormsModule,
         FloatLabelModule,
         ReactiveFormsModule,

@@ -63,6 +63,9 @@
 // Used by: about, impressum, legal-notice
 // currency and name-generator override border-bottom locally (0.25 opacity).
 // bug-report overrides font-size locally (0.875rem).
+// Applied to <h2> elements (these are real section headings, they only used to be <div>s).
+// margin-top is reset so the heading keeps its previous spacing; the bottom margin stays with the
+// mb-* utility class at each usage site.
 .section-label {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.05rem;
@@ -73,6 +76,7 @@
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(200, 169, 110, 0.4);
   display: block;
+  margin-top: 0;
 }
 
 // ── Spinner ───────────────────────────────────────────────────────────────────

@@ -8,6 +8,7 @@ import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SelectModule } from 'primeng/select';
 import { BookGeneratorService } from './book-generator.service';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 import {
   BOOK_FEATURE_NAMES,
   BOOK_NAMES_PART_ONE,
@@ -34,7 +35,7 @@ export interface Book {
 
 @Component({
     selector: 'app-book-generator',
-    imports: [
+    imports: [PageIntroComponent, 
         FormsModule,
         FloatLabelModule,
         ReactiveFormsModule,

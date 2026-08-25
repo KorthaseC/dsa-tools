@@ -1,11 +1,9 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs';
-import { APP_TITLE, META_DESCRIPTIONS, META_KEYWORDS, ROUTE_TITLES } from './app.constants';
+import { filter, map } from 'rxjs';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { SeoRouteData, SeoService } from './shared/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -14,32 +12,27 @@ import { HeaderComponent } from './header/header.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private titleService: Title,
-    private metaService: Meta,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  private readonly seo = inject(SeoService);
+  private readonly router = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
 
   public ngOnInit(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
+    // Also runs on the server: this is what writes title/description/canonical/OG into the
+    // prerendered HTML. Resolve once synchronously, because during prerender no NavigationEnd
+    // follows — every page would otherwise ship the bare defaults.
+    this.applySeo();
 
-    this.handleRouteChanges();
-  }
-
-  private handleRouteChanges(): void {
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
-        map(() => this.getPrimaryRoute()),
-        mergeMap((route) => route.data)
+        map(() => this.getPrimaryRoute().snapshot.data as SeoRouteData)
       )
-      .subscribe((data: any) => {
-        this.setTitleAndMeta(data);
-      });
+      .subscribe((data) => this.seo.update(data, this.router.url));
+  }
+
+  private applySeo(): void {
+    const route = this.getPrimaryRoute();
+    this.seo.update(route.snapshot.data as SeoRouteData, this.router.url);
   }
 
   private getPrimaryRoute(): ActivatedRoute {
@@ -48,28 +41,5 @@ export class AppComponent implements OnInit {
       route = route.firstChild;
     }
     return route;
-  }
-
-  private setTitleAndMeta(data?: any): void {
-    if (data?.title) {
-      const routeTitle = ROUTE_TITLES[data.title] ?? data.title;
-      this.titleService.setTitle(`${APP_TITLE} - ${routeTitle}`);
-    } else {
-      this.titleService.setTitle(APP_TITLE);
-    }
-
-    if (data?.description) {
-      const description = META_DESCRIPTIONS[data.description];
-      if (description) {
-        this.metaService.updateTag({ name: 'description', content: description });
-      }
-    }
-
-    if (data?.keywords) {
-      const keywords = META_KEYWORDS[data.keywords];
-      if (keywords) {
-        this.metaService.updateTag({ name: 'keywords', content: keywords });
-      }
-    }
   }
 }

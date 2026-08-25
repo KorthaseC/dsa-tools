@@ -5,10 +5,11 @@ import { CharacterStateService } from '../../services/character-state.service';
 import { CharacterImportService } from '../../services/character-import.service';
 import { CharacterPdfService } from '../../services/character-pdf.service';
 import { createEmptyCharacter } from '../../models/base-creation.model';
+import { PageIntroComponent } from '../../../shared/page-intro/page-intro.component';
 
 @Component({
   selector: 'app-character-loader',
-  imports: [],
+  imports: [PageIntroComponent, ],
   templateUrl: './character-loader.component.html',
   styleUrl: './character-loader.component.scss',
 })

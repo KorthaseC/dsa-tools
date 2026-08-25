@@ -34,6 +34,7 @@ import {
   TavernNamePartTwo,
   TavernSpecialFeature,
 } from './tavern-generator.model';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 import {
   ATTENDANT_NAMES,
   DAY_TIME_NAMES,
@@ -52,7 +53,7 @@ import {
 
 @Component({
     selector: 'app-tavern-generator',
-    imports: [
+    imports: [PageIntroComponent, 
     FormsModule,
     ReactiveFormsModule,
     FloatLabelModule,

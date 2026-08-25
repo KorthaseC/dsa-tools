@@ -10,10 +10,11 @@ import { TreeNode } from 'primeng/api';
 
 import { NameRegion, RACE_PANEL, RacePanel, TreeNode as AppTreeNode } from './name-generator.model';
 import { NameGeneratorService } from './name-generator.service';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 @Component({
   selector: 'app-name-generator',
-  imports: [FormsModule, ReactiveFormsModule, ButtonModule, RadioButtonModule, TreeModule, CheckboxModule, ProgressSpinnerModule, TabsModule],
+  imports: [PageIntroComponent, FormsModule, ReactiveFormsModule, ButtonModule, RadioButtonModule, TreeModule, CheckboxModule, ProgressSpinnerModule, TabsModule],
   templateUrl: './name-generator.component.html',
   styleUrl: './name-generator.component.scss',
 })
@@ -35,11 +36,16 @@ export class NameGeneratorComponent {
   private region: NameRegion;
 
   constructor(private nameService: NameGeneratorService) {
-    const savedTab = localStorage.getItem('openPanelIndex');
-    if (savedTab !== null) {
-      // legacy: numeric index stored as string
-      const asNumber = parseInt(savedTab, 10);
-      this.activeTabValue = isNaN(asNumber) ? savedTab : (RACE_PANEL[asNumber]?.title ?? RACE_PANEL[0].title);
+    // try/catch: no localStorage during prerender (and private mode can throw).
+    try {
+      const savedTab = localStorage.getItem('openPanelIndex');
+      if (savedTab !== null) {
+        // legacy: numeric index stored as string
+        const asNumber = parseInt(savedTab, 10);
+        this.activeTabValue = isNaN(asNumber) ? savedTab : (RACE_PANEL[asNumber]?.title ?? RACE_PANEL[0].title);
+      }
+    } catch {
+      // keep the default tab
     }
     this._buildTreeNodes(this.activeTabValue);
   }

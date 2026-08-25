@@ -75,13 +75,27 @@
   display: block;
 }
 
-// Make img-based p-button match the pi-icon p-button size
-::ng-deep .c-social .p-button,
-::ng-deep .footer-menu-social .p-button {
+// Anchors styled like the round icon buttons they replaced (they are real links now, so that the
+// GitHub/Discord/Regel-Wiki targets are crawlable and open in a new tab).
+.c-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  padding: 0 !important;
-  justify-content: center;
+  border-radius: 50%;
+  color: #b0a080;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(200, 169, 110, 0.12);
+    color: #c8a96e;
+  }
+
+  .pi {
+    font-size: 1.15rem;
+  }
 }
 
 @media (max-width: 768px) {

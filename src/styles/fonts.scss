@@ -1,0 +1,51 @@
+// Self-hosted webfonts — deliberately NOT loaded from fonts.googleapis.com.
+//
+// Embedding Google Fonts transmits every visitor's IP address to Google. LG München I ruled on
+// 20.01.2022 (3 O 17493/20) that doing so without consent violates the GDPR, which triggered a wave
+// of warning letters against German sites. Serving the files ourselves removes the third party
+// entirely — and saves the DNS lookup plus TLS handshake to two foreign hosts.
+//
+// These are byte-identical to what Google served, limited to the latin and latin-ext subsets
+// (cyrillic and vietnamese are not needed for a German site). Weight 400 only, matching exactly
+// what the previous @import requested — heavier weights in the app were, and still are, synthesised
+// by the browser. Refresh by re-downloading from the css2 API if the fonts ever get updated.
+
+/* Uncial Antiqua — latin-ext */
+@font-face {
+  font-family: 'Uncial Antiqua';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/uncial-antiqua-latin-ext-400.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Uncial Antiqua — latin */
+@font-face {
+  font-family: 'Uncial Antiqua';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/uncial-antiqua-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Cormorant Garamond — latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin-ext-400.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Cormorant Garamond — latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
