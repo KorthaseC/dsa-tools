@@ -3577,6 +3577,7 @@ export const SKILL_EXTENDED_SPECIAL_ABILITIES: SpecialAbility[] = [
     label: "Handwerkskunst (Talent)",
     cost: 2,
     category: SpecialAbilityCategory.SkillExtended,
+    costBySteigerungsfaktor: true,
     prerequisiteText: "passender Talentstil",
     requirements: [{ type: "style", styleKind: "skill", text: "passender Talentstil" }],
     effectText: "Einige Handwerkstalente, die für die Arbeit des Helden von großer Bedeutung sind, gehen ihm deutlich leichter von der Hand. Für jedes Talent, für das die Sonderfertigkeit erworben wird, bekommt er fortan +1 FP (bis zu einem Maximum von 18 FP). Der Held kann sich in Absprache mit dem Meister bis zu drei Talente aussuchen, allerdings müssen für jedes Talent die AP-Kosten der Sonderfertigkeit gezahlt werden.",

@@ -27,8 +27,6 @@ export const APP_TITLE = 'DSA Tools';
 export const ROUTE_TITLES: Record<string, string> = {
   overviewTitle: 'Übersicht',
   calendarTitle: 'Kalender Rechner',
-  madaTitle: 'Mada Phasen Rechner',
-  weekdayTitle: 'Wochentag Rechner',
   currencyTitle: 'Währungsrechner',
   alchemyTitle: 'Alchemielabor',
   tavernTitle: 'Tavernen Generator',
@@ -43,23 +41,25 @@ export const ROUTE_TITLES: Record<string, string> = {
   tokenGeneratorTitle: 'Token Generator',
 };
 
-/** Maps route names to their German meta description content */
+/** Maps route names to their German meta description content (ideal: ~150–160 Zeichen) */
 export const META_DESCRIPTIONS: Record<string, string> = {
-  about: 'Entdecke Tools und Generatoren, die dir bei deinen Abenteuern in der Welt von Das Schwarze Auge helfen.',
-  overview: 'Eine zentrale Anlaufstelle für alle verfügbaren Funktionen dieser Webseite, um deine DSA-Abenteuer zu unterstützen.',
-  calendar: 'Berechne Wochentag und Mondphase im aventurischen Kalender für dein DSA-Abenteuer.',
-  madaphase: 'Berechne die aktuelle Mada-Phase und entdecke die magischen Einflüsse in Aventurien.',
-  weekday: 'Bestimme den aktuellen Wochentag im aventurischen Kalender und verleihe deinem Abenteuer mehr Tiefe.',
-  currency: 'Konvertiere Währungen in Aventurien und gestalte realistische Handelsgeschäfte in deinem DSA-Abenteuer.',
-  alchemy: 'Erstelle Tränke und Mixturen für deine Helden in Aventurien mit unserem Alchemie-Tool.',
-  tavern: 'Erstelle zufällige Tavernen und Gasthäuser für dein DSA-Abenteuer mit einzigartigen Namen und Besonderheiten.',
-  names: 'Finde den perfekten Namen für Charaktere in deinem DSA-Abenteuer mit unserem Namensgenerator.',
-  smith: 'Generiere einzigartige Waffen und Rüstungen für deine Helden in Aventurien mit unserem Schmiedegenerator.',
-  books: 'Erstelle einzigartige Bücher und Schriftrollen, die deine Helden in Aventurien entdecken können.',
-  report: 'Hilf uns, die Webseite zu verbessern, indem du Fehler meldest oder Verbesserungsvorschläge machst.',
-  legal: 'Hier findest du rechtliche Hinweise zu unserer inoffiziellen DSA-Hilfeseite.',
-  token: 'Erstelle einen runden Charakter-Token für dein DSA-Abenteuer aus einem eigenen Bild.',
-  'character-creator': 'Erschaffe und verwalte komplette DSA5-Helden Schritt für Schritt – von Spezies und Profession bis zur fertigen Heldenurkunde als PDF.',
+  about: 'Alle DSA5-Tools dieser Fanseite im Überblick: von Kalenderrechner über Alchemie bis zur kompletten Heldenerschaffung.',
+  overview: 'Direkter Zugriff auf alle Tools: Kalender, Währungsrechner, Alchemielabor, Namensgenerator, Schmiede und mehr.',
+  calendar: 'Wochentag und Mondphase zu jedem Datum im aventurischen Kalender – praktisch für Zeitangaben im DSA5-Abenteuer.',
+  currency: 'Dukaten, Silbertaler, Heller und Kreuzer ineinander umrechnen – für realistische Handelsszenen am Spieltisch.',
+  alchemy: 'Tränke und Mixturen nach DSA5-Regeln zusammenstellen, inklusive Zutaten und Wirkungen für deine Alchemisten-Helden.',
+  tavern: 'Zufällige Tavernen mit Namen, Wirt und Besonderheiten generieren – für spontane Zwischenstopps im Abenteuer.',
+  names: 'Aventurische Namen nach Kulturkreis generieren – für NSCs, Helden oder ganze Sippen in deiner DSA5-Runde.',
+  smith: 'Preise, Waffen und Rüstungen beim Schmied berechnen – inklusive zufälliger Sonderfertigkeiten und Materialien.',
+  books: 'Zufällige Bücher, Schriftrollen und Aufzeichnungen mit Titel und Inhalt für Bibliotheken und Fundstücke im Abenteuer.',
+  token: 'Eigenes Bild in einen runden Charakter-Token umwandeln – passend für Roll20, Foundry VTT oder digitale Spielrunden.',
+  character:
+    'DSA5-Helden Schritt für Schritt erschaffen: Spezies, Kultur, Profession, Eigenschaften, Talente und Sonderfertigkeiten bis zur fertigen Heldenurkunde als PDF.',
+  'character-creator':
+    'DSA5-Helden Schritt für Schritt erschaffen: Spezies, Kultur, Profession, Eigenschaften, Talente und Sonderfertigkeiten bis zur fertigen Heldenurkunde als PDF.',
+  report: 'Fehler melden oder Ideen für neue Tools vorschlagen und so bei der Weiterentwicklung dieser Fanseite mithelfen.',
+  legal: 'Datenschutzerklärung zu Cookies, Analyse-Tools und Datenverarbeitung auf dieser inoffiziellen DSA-Fanseite.',
+  imprint: 'Anbieterkennzeichnung und rechtliche Hinweise zu dieser inoffiziellen Das Schwarze Auge Fanseite.',
 };
 
 /** Maps route names to their German meta keywords content */
@@ -67,16 +67,16 @@ export const META_KEYWORDS: Record<string, string> = {
   about: 'Das Schwarze Auge, DSA, Rollenspiel-Tools, DSA Generatoren, Aventurien, Spielhilfe',
   overview: 'DSA Übersicht, Rollenspiel-Tools, Das Schwarze Auge Funktionen, Aventurien Tools',
   calendar: 'Aventurischer Kalender, DSA Wochentag, Mondphase, Das Schwarze Auge Zeitrechnung',
-  madaphase: 'Mada-Phase, Mondphasen Aventurien, Magie in DSA, Das Schwarze Auge Magie',
-  weekday: 'Aventurischer Kalender, DSA Wochentag, Das Schwarze Auge Zeitrechnung',
   currency: 'DSA Währungsrechner, Aventurien Währung, Handel in Das Schwarze Auge',
   alchemy: 'DSA Alchemie, Tränke erstellen, Das Schwarze Auge Mixturen, Magie in Aventurien',
   tavern: 'DSA Tavernengenerator, Das Schwarze Auge Tavernen, Aventurische Gasthäuser',
   names: 'DSA Namensgenerator, Das Schwarze Auge Namen, Charaktere benennen',
   smith: 'DSA Schmiedegenerator, Waffen und Rüstungen, Das Schwarze Auge Handwerk',
   books: 'DSA Büchergenerator, Das Schwarze Auge Bücher, Aventurische Schriftrollen',
-  report: 'DSA Feedback, Bugreport, Das Schwarze Auge Support',
-  legal: 'DSA Rechtliches, Das Schwarze Auge Rechtlich, rechtliche Hinweise',
   token: 'DSA Token, Charakter Token, Das Schwarze Auge Token, Charakter Bild',
+  character: 'DSA Charaktererschaffung, Heldenerschaffung, DSA5 Charakterbogen, Das Schwarze Auge Helden erstellen',
   'character-creator': 'DSA Charaktererschaffung, Heldenerschaffung, DSA5 Charakterbogen, Das Schwarze Auge Helden erstellen',
+  report: 'DSA Feedback, Bugreport, Das Schwarze Auge Support',
+  legal: 'DSA Rechtliches, Datenschutz, Das Schwarze Auge Rechtlich',
+  imprint: 'DSA Impressum, Das Schwarze Auge Impressum, rechtliche Hinweise',
 };

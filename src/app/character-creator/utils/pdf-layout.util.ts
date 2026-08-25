@@ -157,7 +157,7 @@ export class SheetWriter {
 
   // ── Headings ────────────────────────────────────────────────────────────────────────
   pageHeading(main: string, sub?: string): void {
-    this.mark(main, 0);
+    this.mark(sub || main, 0);
     this.page.drawText(sanitize(main), { x: this.colX, y: this.y - 18, size: 18, font: this.bold, color: HEAD });
     this.y -= 21;
     if (sub) {
