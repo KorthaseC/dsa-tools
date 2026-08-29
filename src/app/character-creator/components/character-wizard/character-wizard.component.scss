@@ -91,17 +91,50 @@
   font-style: italic;
 }
 
+// Three fixed cells instead of space-between: the middle button ("Neu beginnen") stays centred even
+// when the right one is missing (the "Abschluss" hub section has no forward button).
 .c-wizard-footer {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  gap: 0.5rem;
   padding-top: 0.5rem;
   border-top: 1px solid var(--p-surface-700, #334155);
+
+  // The hub buttons carry section names ("Vor- & Nachteile"), so on narrow screens the reset moves
+  // to a second row to keep those labels from being clipped.
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.c-wizard-footer-right {
-  display: inline-flex;
-  gap: 0.5rem;
+.c-footer-left {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.c-footer-right {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+
+  .p-button-label {
+    white-space: nowrap;
+  }
+
+  @media (min-width: 40.0625rem) {
+    grid-column: 3;
+  }
+}
+
+.c-footer-center {
+  justify-self: center;
+
+  @media (max-width: 40rem) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
 
 // ── Hub (tracker nav + content) ────────────────────────────────────────────────

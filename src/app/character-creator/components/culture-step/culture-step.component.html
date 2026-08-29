@@ -6,7 +6,9 @@
       @for (g of groups(); track g.label) {
         <div class="c-sel-divider">
           {{ g.label }} ({{ g.items.length }})
-          @if (g.hint) { <span class="c-sel-divider-hint">{{ g.hint }}</span> }
+          @if (g.hint) {
+            <span class="c-sel-divider-hint">{{ g.hint }}</span>
+          }
         </div>
         @for (c of g.items; track c.name) {
           <button type="button" class="c-sel-item" [class.c-selected]="isSelected(c)" (click)="select(c)">
@@ -34,8 +36,12 @@
       <div class="c-culture-meta">
         <!-- Read-only culture facts -->
         <div class="c-culture-info">
-          <div><label>Sprache</label><span>{{ c.language }}</span></div>
-          <div><label>Schrift</label><span>{{ c.script }}</span></div>
+          <div>
+            <label>Sprache</label><span>{{ c.language }}</span>
+          </div>
+          <div>
+            <label>Schrift</label><span>{{ c.script }}</span>
+          </div>
         </div>
         <!-- Player choices — controls share one baseline (align-items:end) -->
         <div class="c-culture-inputs">
@@ -85,7 +91,10 @@
           }
           <ul class="c-pkg" [class.c-pkg-disabled]="!useCulturePackage">
             @for (s of c.culturePackage; track s.skill) {
-              <li><span>{{ s.skill }}</span><span class="c-pkg-fw">+{{ s.bonus }}</span></li>
+              <li>
+                <span>{{ s.skill }}</span
+                ><span class="c-pkg-fw">+{{ s.bonus }}</span>
+              </li>
             }
           </ul>
         </section>
@@ -190,12 +199,7 @@
       }
       @case ('leveled') {
         <div class="c-reco-row">
-          <p-checkbox
-            [inputId]="(r.isDisadvantage ? 'dis_' : 'adv_') + r.label"
-            binary="true"
-            [ngModel]="isRecoSelected(r)"
-            (ngModelChange)="toggleReco(r)"
-          />
+          <p-checkbox [inputId]="(r.isDisadvantage ? 'dis_' : 'adv_') + r.label" binary="true" [ngModel]="isRecoSelected(r)" (ngModelChange)="toggleReco(r)" />
           <label [for]="(r.isDisadvantage ? 'dis_' : 'adv_') + r.label">{{ r.label }}</label>
           @if (isRecoSelected(r)) {
             <p-inputnumber

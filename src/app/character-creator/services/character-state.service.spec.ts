@@ -34,6 +34,95 @@ describe('CharacterStateService — canonical entries sync', () => {
   });
 });
 
+describe('CharacterStateService — free Ortskenntnis town round-trips through the input', () => {
+  const svc = () => {
+    const s = new CharacterStateService();
+    s.character.set(createEmptyCharacter());
+    return s;
+  };
+  const granted = (s: CharacterStateService) => s.picks().specialAbilities.general.find((x) => x.name === 'ortskenntnis' && x.granted);
+  // What the culture step's two-way bound getter reads. A blank param is dropped on the way into the
+  // canonical entries, so it comes back as undefined — both mean "no town yet".
+  const town = (s: CharacterStateService) => granted(s)?.param ?? '';
+
+  it('keeps the granted SA when the town is cleared, and the field stays empty', () => {
+    const s = svc();
+    s.setOrtskenntnisTowns(['Gareth']);
+    s.setOrtskenntnisTowns(['']); // user deleted the last character
+    // Dropping the entry here is what made the culture step fall back to its "Heimatort" hint and
+    // write it back into the field — and it silently forfeited the culture's free Ortskenntnis.
+    expect(granted(s)).toBeTruthy();
+    expect(town(s)).toBe('');
+  });
+
+  it('stores the town exactly as typed so a trailing space is not swallowed mid-word', () => {
+    const s = svc();
+    s.setOrtskenntnisTowns(['Neue ']); // mid-typing "Neue Stadt"
+    expect(town(s)).toBe('Neue '); // trimming here would write "Neue" back into the input
+  });
+
+  it('seeds a blank town on applyCulture instead of the "Heimatort" placeholder text', () => {
+    const andergaster = ALL_CULTURES.find((c) => c.name === 'andergaster');
+    expect(andergaster).toBeTruthy();
+
+    const s = svc();
+    s.applyCulture(andergaster!);
+    expect(granted(s)).toBeTruthy();
+    expect(town(s)).toBe('');
+  });
+
+  it('does not overwrite a town the player already entered when the culture is re-applied', () => {
+    const andergaster = ALL_CULTURES.find((c) => c.name === 'andergaster');
+    const aranier = ALL_CULTURES.find((c) => c.name === 'aranier');
+    expect(andergaster && aranier).toBeTruthy();
+
+    const s = svc();
+    s.applyCulture(andergaster!);
+    s.setOrtskenntnisTowns(['Havena']);
+    s.applyCulture(aranier!);
+    expect(town(s)).toBe('Havena');
+  });
+});
+
+describe('CharacterStateService — social status defaults to "Frei", never to the culture list', () => {
+  const svc = () => {
+    const s = new CharacterStateService();
+    s.character.set(createEmptyCharacter());
+    return s;
+  };
+
+  it('does not make the hero nobility just because the culture offers "Adel"', () => {
+    // culture.socialStatus lists the tiers a culture ADDITIONALLY offers; andergaster has Adel+Unfrei.
+    const andergaster = ALL_CULTURES.find((c) => c.name === 'andergaster');
+    expect(andergaster!.socialStatus).toContain('Adel');
+
+    const s = svc();
+    s.applyCulture(andergaster!);
+    expect(s.character()!.bio.socialStatus).toBe('Frei'); // was 'Adel' (culture.socialStatus[0])
+  });
+
+  it('keeps a status the player picked when the culture changes', () => {
+    const andergaster = ALL_CULTURES.find((c) => c.name === 'andergaster');
+    const aranier = ALL_CULTURES.find((c) => c.name === 'aranier');
+    expect(andergaster && aranier).toBeTruthy();
+
+    const s = svc();
+    s.applyCulture(andergaster!);
+    s.updateBio({ socialStatus: 'Adel' });
+    s.applyCulture(aranier!);
+    expect(s.character()!.bio.socialStatus).toBe('Adel');
+  });
+
+  it('defaults cultures that list no extra tier to "Frei" as well', () => {
+    const plain = ALL_CULTURES.find((c) => c.socialStatus.length === 0);
+    expect(plain).toBeTruthy(); // 15 of the 45 cultures list nothing — they were left blank before
+
+    const s = svc();
+    s.applyCulture(plain!);
+    expect(s.character()!.bio.socialStatus).toBe('Frei');
+  });
+});
+
 describe('CharacterStateService — profession SA grants (kind-aware resolution)', () => {
   it('resolves a magic "Tradition (Gildenmagier)" grant to the magic SF, not the karmal placeholder', () => {
     const svc = new CharacterStateService();

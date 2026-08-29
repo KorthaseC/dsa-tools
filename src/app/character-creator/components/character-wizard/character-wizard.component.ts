@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
@@ -68,6 +68,16 @@ export class CharacterWizardComponent {
   // Enable draft persistence on entering the (lazy) character-creator → a reload restores the character.
   constructor() {
     this.state.enablePersistence();
+
+    // The hub nav is dynamic (Zauber/Liturgien only for Zauberer/Geweihte). If the active section
+    // disappears — e.g. the Zauberer advantage is removed — fall back to the first one; otherwise
+    // @switch points at a key that no longer exists and the content pane renders empty.
+    effect(() => {
+      const sections = this.hubSections();
+      if (sections.length && !sections.some((s) => s.key === this.hubSection())) {
+        this.hubSection.set(sections[0].key);
+      }
+    });
   }
   private validation = inject(CharacterValidationService);
   private router = inject(Router);
@@ -129,6 +139,46 @@ export class CharacterWizardComponent {
     ];
     return all.filter((s) => s.visible).map(({ visible, ...s }) => s);
   });
+
+  // ── Hub navigation ───────────────────────────────────────────────────────────
+  // Always index into hubSections(), never a fixed order: "Zauber & Rituale" and "Liturgien" are
+  // conditionally visible and get filtered out of that list.
+
+  /** Position of the active section within the *visible* list (−1 while it has just disappeared). */
+  private readonly hubIndex = computed(() => this.hubSections().findIndex((s) => s.key === this.hubSection()));
+
+  /** Next visible section — null on "Abschluss", which has no forward button. */
+  readonly nextHubSection = computed(() => {
+    const i = this.hubIndex();
+    return i < 0 ? null : (this.hubSections()[i + 1] ?? null);
+  });
+
+  /** Previous visible section — null on the first one, where "back" leaves the hub entirely. */
+  readonly prevHubSection = computed(() => {
+    const i = this.hubIndex();
+    return i > 0 ? (this.hubSections()[i - 1] ?? null) : null;
+  });
+
+  /** Back-button label: the previous section, or the last origin step ("Profession") at the top. */
+  readonly hubBackLabel = computed(() => this.prevHubSection()?.label ?? this.wizard.steps[this.wizard.steps.length - 1]);
+
+  hubNext(): void {
+    const s = this.nextHubSection();
+    if (s) this.goToHubSection(s.key);
+  }
+
+  /** From the first section, "back" leaves the hub (→ Profession); otherwise it steps one section back. */
+  hubBack(): void {
+    const s = this.prevHubSection();
+    if (s) this.goToHubSection(s.key);
+    else this.wizard.back();
+  }
+
+  /** Switch section and scroll to the top — long panels (Talente) would otherwise open mid-content. */
+  goToHubSection(key: string): void {
+    this.hubSection.set(key);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   get heroName(): string {
     return this.state.character()?.bio.name ?? '';

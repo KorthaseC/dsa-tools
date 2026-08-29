@@ -8,7 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { TooltipModule } from 'primeng/tooltip';
 import { ADVANTAGE, DISADVANTAGE } from '../../constants/advantage.const';
-import { ALL_CULTURES, SOCIAL_STATUS_ORDER } from '../../constants/culture.const';
+import { ALL_CULTURES, DEFAULT_SOCIAL_STATUS, SOCIAL_STATUS_ORDER } from '../../constants/culture.const';
 import { ALL_SPECIAL_ABILITIES } from '../../constants/special-ability.const';
 import { ALL_SPECIES } from '../../constants/species.const';
 import { Advantage } from '../../models/advantage.model';
@@ -102,15 +102,25 @@ export class CultureStepComponent {
   private readonly advantages = computed<Advantage[]>(() => this.state.picks().advantages);
   private readonly disadvantages = computed<Advantage[]>(() => this.state.picks().disadvantages);
 
-  /** Social-status options grouped as Typisch (culture) on top, then the remaining tiers. */
+  /**
+   * Social-status options, ordered "Frei" → what the culture actually has → the rest.
+   *
+   * A culture's `socialStatus` lists only the tiers that occur there BESIDES the implicit
+   * DEFAULT_SOCIAL_STATUS. Labelling that list "Typisch" and filing Frei under "Weitere" inverted
+   * the meaning: it read as if a culture without nobility made "Adel" the expected choice and
+   * "Frei" the exception. The last group stays selectable on purpose — a hero may come from a tier
+   * their culture does not really represent, that is a call for the group, not for the tool.
+   */
   readonly socialStatusGroups = computed(() => {
     const c = this.selected();
     if (!c) return [];
-    const typical = SOCIAL_STATUS_ORDER.filter((s) => c.socialStatus.includes(s));
-    const rest = SOCIAL_STATUS_ORDER.filter((s) => !c.socialStatus.includes(s));
-    const groups: { label: string; items: { label: string; value: string }[] }[] = [];
-    if (typical.length) groups.push({ label: 'Typisch', items: typical.map((s) => ({ label: s, value: s })) });
-    if (rest.length) groups.push({ label: 'Weitere', items: rest.map((s) => ({ label: s, value: s })) });
+    const opt = (s: string) => ({ label: s, value: s });
+    const others = SOCIAL_STATUS_ORDER.filter((s) => s !== DEFAULT_SOCIAL_STATUS);
+    const present = others.filter((s) => c.socialStatus.includes(s));
+    const absent = others.filter((s) => !c.socialStatus.includes(s));
+    const groups = [{ label: 'Standard', items: [opt(DEFAULT_SOCIAL_STATUS)] }];
+    if (present.length) groups.push({ label: `Kommt bei ${c.label} vor`, items: present.map(opt) });
+    if (absent.length) groups.push({ label: `Bei ${c.label} unüblich`, items: absent.map(opt) });
     return groups;
   });
 
@@ -163,8 +173,10 @@ export class CultureStepComponent {
   }
 
   // ── Ortskenntnis (single free home region; further ones are bought in the SF tab) ──
+  // Falls back to '' — never to the "Heimatort" hint. Substituting the hint here made the getter
+  // disagree with the empty input, so deleting the last character wrote the hint straight back in.
   get ortskenntnisTown(): string {
-    return this.state.picks().specialAbilities.general.find((s) => s.name === 'ortskenntnis' && s.granted)?.param ?? 'Heimatort';
+    return this.state.picks().specialAbilities.general.find((s) => s.name === 'ortskenntnis' && s.granted)?.param ?? '';
   }
   set ortskenntnisTown(town: string) {
     this.state.setOrtskenntnisTowns([town]);
@@ -179,8 +191,7 @@ export class CultureStepComponent {
   toggleReco(r: Recommendation): void {
     const adv = r.resolved;
     if (!adv) return;
-    const update = (list: Advantage[]) =>
-      list.some((a) => a.name === adv.name) ? list.filter((a) => a.name !== adv.name) : [...list, adv];
+    const update = (list: Advantage[]) => (list.some((a) => a.name === adv.name) ? list.filter((a) => a.name !== adv.name) : [...list, adv]);
     if (r.isDisadvantage) this.state.updateDisadvantages(update);
     else this.state.updateAdvantages(update);
   }

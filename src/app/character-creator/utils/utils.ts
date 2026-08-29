@@ -75,12 +75,36 @@ export function resolveAdvantageByName(name: string, catalog: Advantage[], optio
 }
 
 /**
+ * Display label with the character's free-text detail woven in, BEFORE the sub-option parenthesis:
+ * "Kontakt" + "Hasso" → "Kontakt: Hasso", and with a contact picked → "Kontakt: Hasso (Bettler - E: 1; Z: 2)".
+ * Returns the label unchanged for blank text, so an emptied field just drops back to the plain label.
+ */
+export function labelWithFreeText(label: string, text: string | undefined): string {
+  const t = (text ?? '').trim();
+  if (!t) return label;
+  const paren = label.indexOf(' (');
+  return paren < 0 ? `${label}: ${t}` : `${label.slice(0, paren)}: ${t}${label.slice(paren)}`;
+}
+
+/**
  * Extracts the base name from a parameterized advantage name.
  * e.g. 'begabung_singen' → 'begabung', 'zauberer' → 'zauberer'
  */
 export function getAdvantageBaseName(name: string): string {
   const idx = name.indexOf('_');
   return idx > 0 ? name.substring(0, idx) : name;
+}
+
+/**
+ * Display label with the chosen sub-option taken back out: "Kontakt (Bettler - E: 1; Z: 2)" → "Kontakt".
+ * For rows that render the option in a select of their own — repeating it in the label only made the
+ * row wider. Removes exactly the suffix resolveAdvantageByName appended, so a parenthesis that is part
+ * of the base label survives.
+ */
+export function labelWithoutOption(adv: Advantage): string {
+  const qualifier = getAdvantageQualifier(adv.name);
+  const option = qualifier ? selectionOptionsFor(adv).find((o) => o.name === qualifier) : undefined;
+  return option ? adv.label.replace(` (${option.label})`, '') || adv.label : adv.label;
 }
 
 /**

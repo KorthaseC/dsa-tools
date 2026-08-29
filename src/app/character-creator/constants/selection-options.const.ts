@@ -13174,75 +13174,129 @@ export const SELECTION_OPTIONS: Record<string, SelectionOption[]> = {
   "KontaktArray": [
     {
       "name": "bettler",
-      "label": "Bettler"
+      "label": "Bettler - E: 1; Z: 2",
+      "cost": 5,
+      "influence": 1,
+      "reliability": 2
     },
     {
       "name": "botenreiter",
-      "label": "Botenreiter"
+      "label": "Botenreiter - E: 2; Z: 3",
+      "cost": 13,
+      "influence": 2,
+      "reliability": 3
     },
     {
       "name": "freundauskindheitstagen",
-      "label": "Freund aus Kindheitstagen"
+      "label": "Freund aus Kindheitstagen - E: 2; Z: 5",
+      "cost": 29,
+      "influence": 2,
+      "reliability": 5
     },
     {
       "name": "geweihte",
-      "label": "Geweihte"
+      "label": "Geweihte - E: 3; Z: 3",
+      "cost": 18,
+      "influence": 3,
+      "reliability": 3
     },
     {
       "name": "handwerksmeister",
-      "label": "Handwerksmeister"
+      "label": "Handwerksmeister - E: 2; Z: 2",
+      "cost": 8,
+      "influence": 2,
+      "reliability": 2
     },
     {
       "name": "hehler",
-      "label": "Hehler"
+      "label": "Hehler - E: 3; Z: 1",
+      "cost": 10,
+      "influence": 3,
+      "reliability": 1
     },
     {
       "name": "junkerin",
-      "label": "Junkerin"
+      "label": "Junkerin - E: 3; Z: 2",
+      "cost": 13,
+      "influence": 3,
+      "reliability": 2
     },
     {
       "name": "kontakt",
-      "label": "Kontakt"
+      "label": "Kontakt - E: 1; Z: 1",
+      "cost": 2,
+      "influence": 1,
+      "reliability": 1
     },
     {
       "name": "magier",
-      "label": "Magier"
+      "label": "Magier - E: 3; Z: 3",
+      "cost": 18,
+      "influence": 3,
+      "reliability": 3
     },
     {
       "name": "schmuggler",
-      "label": "Schmuggler"
+      "label": "Schmuggler - E: 3; Z: 4",
+      "cost": 25,
+      "influence": 3,
+      "reliability": 4
     },
     {
       "name": "sklavin",
-      "label": "Sklavin"
+      "label": "Sklavin - E: 1; Z: 1",
+      "cost": 2,
+      "influence": 1,
+      "reliability": 1
     },
     {
       "name": "soldat",
-      "label": "Soldat"
+      "label": "Soldat - E: 1; Z: 3",
+      "cost": 10,
+      "influence": 1,
+      "reliability": 3
     },
     {
       "name": "soeldnerhauptmann",
-      "label": "Söldnerhauptmann"
+      "label": "Söldnerhauptmann - E: 3; Z: 2",
+      "cost": 13,
+      "influence": 3,
+      "reliability": 2
     },
     {
       "name": "stadtmagistrat",
-      "label": "Stadtmagistrat"
+      "label": "Stadtmagistrat - E: 3; Z: 2",
+      "cost": 13,
+      "influence": 3,
+      "reliability": 2
     },
     {
       "name": "stadtwache",
-      "label": "Stadtwache"
+      "label": "Stadtwache - E: 2; Z: 3",
+      "cost": 13,
+      "influence": 2,
+      "reliability": 3
     },
     {
       "name": "tempelvorsteherin",
-      "label": "Tempelvorsteherin"
+      "label": "Tempelvorsteherin - E: 4; Z: 3",
+      "cost": 25,
+      "influence": 4,
+      "reliability": 3
     },
     {
       "name": "unterweltkoenig",
-      "label": "Unterweltkönig"
+      "label": "Unterweltkönig - E: 2; Z: 4",
+      "cost": 20,
+      "influence": 2,
+      "reliability": 4
     },
     {
       "name": "wirt",
-      "label": "Wirt"
+      "label": "Wirt - E: 2; Z: 4",
+      "cost": 20,
+      "influence": 2,
+      "reliability": 4
     }
   ],
   "KrankheitArray": [

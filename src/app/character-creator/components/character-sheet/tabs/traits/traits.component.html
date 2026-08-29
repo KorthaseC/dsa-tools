@@ -13,8 +13,11 @@
 
     @for (adv of advantages(); track $index; let i = $index) {
       <div class="c-trait-row">
-        <span class="c-trait-name">{{ adv.label }}</span>
+        <span class="c-trait-name">{{ rowLabel(adv) }}</span>
         <app-rule-link [url]="adv.url" />
+        @if (adv.freeText) {
+          <input pInputText [ngModel]="adv.text ?? ''" (ngModelChange)="setAdvantageTextAt(i, $event)" [placeholder]="adv.freeText" class="c-trait-text" />
+        }
         @if (isSelection(adv)) {
           <p-select
             [ngModel]="currentOption(adv)"
@@ -120,8 +123,11 @@
 
     @for (dis of disadvantages(); track $index; let i = $index) {
       <div class="c-trait-row">
-        <span class="c-trait-name">{{ dis.label }}</span>
+        <span class="c-trait-name">{{ rowLabel(dis) }}</span>
         <app-rule-link [url]="dis.url" />
+        @if (dis.freeText) {
+          <input pInputText [ngModel]="dis.text ?? ''" (ngModelChange)="setDisadvantageTextAt(i, $event)" [placeholder]="dis.freeText" class="c-trait-text" />
+        }
         @if (isSelection(dis)) {
           <p-select
             [ngModel]="currentOption(dis)"

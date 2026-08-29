@@ -633,7 +633,23 @@ const SEL_CFG = {
   GliedmassenGetInfo: { cost: 'AP' },
   NaturWaffeGetInfo: { cost: 'AP' },
   WesenGetInfo: { wesen: true }, // label = "Wesen …" (Vorteil) / "Fluch …" (Nachteil)
+  // Kontakt: (Name) — KontaktGetInfo has NO AP field. A contact is priced by its own Einfluss (E) and
+  // Zuverlässigkeit (Z) as E² + Z², so the flat 2 AP on the advantage is only the generic contact's
+  // price (E1/Z1). `derive` runs after the slug is taken from the plain label, so the option name
+  // stays `bettler` while the label gains the two values — they are needed at the table, not just here.
+  KontaktGetInfo: { derive: kontaktOption },
 };
+
+/** Kontakt sub-option: price = E² + Z², with both values kept as data and shown in the label. */
+function kontaktOption(opt, rec, map) {
+  const e = Number(rec[map['E']]);
+  const z = Number(rec[map['Z']]);
+  if (!Number.isFinite(e) || !Number.isFinite(z) || e <= 0 || z <= 0) return;
+  opt.cost = e * e + z * z;
+  opt.influence = e;
+  opt.reliability = z;
+  opt.label = `${opt.label} - E: ${e}; Z: ${z}`;
+}
 
 // InfoID → aDaten index, parsed from the GetInfo's closing `switch(pInfoID)` return map.
 const selMapCache = new Map();
@@ -734,6 +750,9 @@ function resolveSelectionOptions(arrayFn, param) {
         const f = normFactor(r[sfIdx]);
         if (f) opt.factor = f;
       }
+      // Per-source derivation (cost/label from fields that are not a plain AP column). Runs last so
+      // `name` is already slugged from the undecorated label and stays stable across regenerations.
+      if (cfg.derive) cfg.derive(opt, r, map);
       built.push({ opt, rec: r });
     }
     // Build-up chains: an option's own "Voraussetzung(en):" line may reference a prior option of
@@ -1128,6 +1147,7 @@ function serEntry(e) {
   if (e.type) L.push(`    type: ${JSON.stringify(e.type)},`);
   if (e.speciesSpecific) L.push(`    speciesSpecific: true,`);
   if (e.costBySteigerungsfaktor) L.push(`    costBySteigerungsfaktor: true,`);
+  if (e.freeText) L.push(`    freeText: ${JSON.stringify(e.freeText)},`);
   if (e.selection) L.push(`    selection: ${serSelection(e.selection)},`);
   if (e.sourcesRaw) L.push(`    sources: ${e.sourcesRaw},`);
   else if (e.sources && e.sources.length) L.push(`    sources: ${JSON.stringify(e.sources)},`);
@@ -2977,6 +2997,16 @@ for (const e of [...advEntries, ...disEntries]) {
 // param'd SinnArray key; the costed option lists are curated in SELECTION_OPTIONS below.
 for (const e of [...advEntries, ...disEntries]) {
   if (e.selection?.id === 'SinnArray') e.selection = { ...e.selection, param: e.name === 'eingeschrankterSinn' ? 'eingeschrankt' : 'herausragend' };
+}
+// "Kontakt: (Name)" — the trailing "(Name)" is a free-text FIELD the player fills in, not part of the
+// entry's name. Strip it from the display label and flag the entry so the UI offers an input. Runs
+// here, AFTER slugs are minted, so the established `kontaktname` slug stays valid for saved characters.
+for (const e of [...advEntries, ...disEntries]) {
+  const m = String(e.label || '').match(/^(.*?):\s*\((Name)\)\s*$/i);
+  if (m) {
+    e.label = m[1].trim();
+    e.freeText = m[2];
+  }
 }
 
 const advOut =

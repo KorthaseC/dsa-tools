@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumber } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { TooltipModule } from 'primeng/tooltip';
 import { ActionSelectDirective } from '../../../../directives/action-select.directive';
@@ -17,6 +18,7 @@ import {
   applyAdvantageOptionAt,
   getAdvantageBaseName,
   getAdvantageQualifier,
+  labelWithoutOption,
   optionCost,
   selectionCostRange,
   selectionOptionsFor,
@@ -39,7 +41,7 @@ interface AddOption {
 
 @Component({
   selector: 'app-cs-traits',
-  imports: [FormsModule, ButtonModule, CheckboxModule, InputNumber, SelectModule, TooltipModule, ActionSelectDirective, RuleLinkComponent],
+  imports: [FormsModule, ButtonModule, CheckboxModule, InputNumber, InputTextModule, SelectModule, TooltipModule, ActionSelectDirective, RuleLinkComponent],
   templateUrl: './traits.component.html',
   styleUrl: './traits.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -93,6 +95,15 @@ export class TraitsComponent {
 
   isSelection(adv: Advantage): boolean {
     return adv.selection != null;
+  }
+
+  /**
+   * Name shown at the start of a row. A selection row drops the chosen option, because the select
+   * beside it already spells it out (and for Kontakt so does the name field) — three copies of the
+   * same text pushed the cost and delete button onto a second line.
+   */
+  rowLabel(adv: Advantage): string {
+    return this.isSelection(adv) ? labelWithoutOption(adv) : adv.label;
   }
 
   /** The currently chosen sub-option name, or null while still unset. */
@@ -168,6 +179,18 @@ export class TraitsComponent {
 
   setDisadvantageOptionAt(index: number, optionName: string | null): void {
     this.state.updateDisadvantages((list) => applyAdvantageOptionAt(index, optionName, DISADVANTAGE, list));
+  }
+
+  /**
+   * Free-text detail of a `freeText` entry (Kontakt's name). Stored EXACTLY as typed — trimming here
+   * would fight the input's binding and swallow spaces mid-word. Blank clears the field.
+   */
+  setAdvantageTextAt(index: number, text: string): void {
+    this.state.updateAdvantages((list) => list.map((a, i) => (i === index ? { ...a, text: text || undefined } : a)));
+  }
+
+  setDisadvantageTextAt(index: number, text: string): void {
+    this.state.updateDisadvantages((list) => list.map((a, i) => (i === index ? { ...a, text: text || undefined } : a)));
   }
 
   /** GM cost override (total AP). `null`/empty clears it → back to the catalog cost. */

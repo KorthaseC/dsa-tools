@@ -3,6 +3,14 @@ import { Culture } from '../models/culture.model';
 /** Social-status tiers (low → high) shared by all cultures; used to group the dropdown. */
 export const SOCIAL_STATUS_ORDER = ['Unfrei', 'Frei', 'Adel'];
 
+/**
+ * The tier every culture has and every hero defaults to. A culture's own `socialStatus` list holds
+ * only the ADDITIONAL tiers that occur there (which is why almost none of them mention "Frei", and
+ * why the "Kultur muss über einen passenden Adel verfügen" prerequisite reads that list) — so this
+ * one is implicit everywhere and must never be taken from the culture data.
+ */
+export const DEFAULT_SOCIAL_STATUS = 'Frei';
+
 // ─── Human Cultures ───────────────────────────────────────────────────────────
 
 export const HUMAN_CULTURES: Culture[] = [

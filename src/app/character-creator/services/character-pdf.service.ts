@@ -5,7 +5,7 @@ import { HOMEBREW_SA_BUCKET } from '../models/homebrew.model';
 import { CharacterResolverService } from './character-resolver.service';
 import { resolvePicksForCharacter } from '../catalog/character-entries';
 import { specialAbilityCost } from '../utils/ap-budget.util';
-import { advantageCost, totalTalentCost, computeRoutine } from '../utils/utils';
+import { advantageCost, labelWithFreeText, totalTalentCost, computeRoutine } from '../utils/utils';
 import { ATTR_KEY } from '../utils/derived-stats.util';
 import { SheetWriter, roman, Bookmark } from '../utils/pdf-layout.util';
 import { ALL_SPECIES } from '../constants/species.const';
@@ -263,7 +263,13 @@ export class CharacterPdfService {
     // Per-item AP; auto/mandatory (species-granted, free) shown in parentheses. Name + level are kept
     // separate so flowEntries can truncate the name but always keep the level.
     const advAp = (x: { mandatory?: boolean } & Parameters<typeof advantageCost>[0]) => (x.mandatory ? `(${advantageCost(x)})` : String(advantageCost(x)));
-    const advItem = (x: { label?: string; name: string; lvl?: number; mandatory?: boolean }) => ({ name: x.label ?? x.name, level: x.lvl ? roman(x.lvl) : '', right: advAp(x as any) });
+    // The printed sheet has no input boxes, so a free-text detail (Kontakt's name) is woven into the
+    // label here — the editor leaves it out because the row shows it in its own field.
+    const advItem = (x: { label?: string; name: string; lvl?: number; mandatory?: boolean; text?: string }) => ({
+      name: labelWithFreeText(x.label ?? x.name, x.text),
+      level: x.lvl ? roman(x.lvl) : '',
+      right: advAp(x as any),
+    });
 
     const sections = [
       { title: 'Vorteile', right: `${advTotal} AP`, items: [...picks.advantages.map(advItem), ...hbAdv.map(hbItem)], minBlank: 3 },

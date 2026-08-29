@@ -52,9 +52,13 @@
 
     <!-- ── Footer ── -->
     <footer class="c-wizard-footer">
-      <button pButton type="button" label="Zurück" icon="pi pi-arrow-left" class="p-button-text" [disabled]="wizard.originStep() === 0" (click)="wizard.back()"></button>
-      <div class="c-wizard-footer-right">
+      <div class="c-footer-left">
+        <button pButton type="button" label="Zurück" icon="pi pi-arrow-left" class="p-button-text" [disabled]="wizard.originStep() === 0" (click)="wizard.back()"></button>
+      </div>
+      <div class="c-footer-center">
         <button pButton type="button" label="Neu beginnen" severity="secondary" class="p-button-text" (click)="startOver($event)"></button>
+      </div>
+      <div class="c-footer-right">
         <button
           pButton
           type="button"
@@ -71,7 +75,7 @@
     <div class="c-hub">
       <nav class="c-hub-nav">
         @for (s of hubSections(); track s.key) {
-          <button type="button" class="c-hub-navitem" [class.c-active]="hubSection() === s.key" [class.c-error]="s.status === 'error'" (click)="hubSection.set(s.key)">
+          <button type="button" class="c-hub-navitem" [class.c-active]="hubSection() === s.key" [class.c-error]="s.status === 'error'" (click)="goToHubSection(s.key)">
             <i class="pi" [class.pi-check-circle]="s.status === 'ok'" [class.pi-exclamation-circle]="s.status === 'error'"></i>
             <span class="c-hub-label">{{ s.label }}</span>
             @if (s.figure) { <span class="c-hub-figure">{{ s.figure }}</span> }
@@ -125,9 +129,20 @@
       </section>
     </div>
 
+    <!-- Forward/back are named after their TARGET section, keeping the wizard rhythm in the open phase.
+         Pure navigation: no gate — rule violations stay visible in the nav and on "Abschluss". -->
     <footer class="c-wizard-footer">
-      <button pButton type="button" label="Zurück" icon="pi pi-arrow-left" class="p-button-text" (click)="wizard.back()"></button>
-      <button pButton type="button" label="Neu beginnen" severity="secondary" class="p-button-text" (click)="startOver($event)"></button>
+      <div class="c-footer-left">
+        <button pButton type="button" [label]="hubBackLabel()" icon="pi pi-arrow-left" class="p-button-text" (click)="hubBack()"></button>
+      </div>
+      <div class="c-footer-center">
+        <button pButton type="button" label="Neu beginnen" severity="secondary" class="p-button-text" (click)="startOver($event)"></button>
+      </div>
+      <div class="c-footer-right">
+        @if (nextHubSection(); as next) {
+          <button pButton type="button" [label]="next.label" icon="pi pi-arrow-right" iconPos="right" (click)="hubNext()"></button>
+        }
+      </div>
     </footer>
   }
 

@@ -32,13 +32,17 @@ interface NameLvl {
   lvl?: number;
   mandatory?: boolean; // free/auto-granted advantage (0 AP) — persisted via ChosenEntry.granted
   costOverride?: number; // character-local total-AP override (GM ruling)
+  /** Free-text detail of a `freeText` entry (Kontakt's name) — persisted as the `name` ChosenOption,
+   *  the same way a special ability's free-text param is (Ortskenntnis' town). */
+  text?: string;
 }
 
 /** Flatten the split pick fields into one ordered ChosenEntry[] (the v3 canonical pick list). */
 export function toChosenEntries(advantages: readonly NameLvl[], disadvantages: readonly NameLvl[], sa: SpecialAbilities): ChosenEntry[] {
   const entries: ChosenEntry[] = [];
-  for (const a of advantages) entries.push({ kind: 'advantage', id: a.name, ...(a.lvl != null ? { level: a.lvl } : {}), ...(a.mandatory ? { granted: true } : {}), ...(a.costOverride != null ? { costOverride: a.costOverride } : {}) });
-  for (const a of disadvantages) entries.push({ kind: 'disadvantage', id: a.name, ...(a.lvl != null ? { level: a.lvl } : {}), ...(a.mandatory ? { granted: true } : {}), ...(a.costOverride != null ? { costOverride: a.costOverride } : {}) });
+  const freeText = (a: NameLvl) => (a.text ? { options: [{ key: 'name', id: a.text }] } : {});
+  for (const a of advantages) entries.push({ kind: 'advantage', id: a.name, ...(a.lvl != null ? { level: a.lvl } : {}), ...freeText(a), ...(a.mandatory ? { granted: true } : {}), ...(a.costOverride != null ? { costOverride: a.costOverride } : {}) });
+  for (const a of disadvantages) entries.push({ kind: 'disadvantage', id: a.name, ...(a.lvl != null ? { level: a.lvl } : {}), ...freeText(a), ...(a.mandatory ? { granted: true } : {}), ...(a.costOverride != null ? { costOverride: a.costOverride } : {}) });
   for (const bucket of ['general', 'combat', 'magic', 'karmal'] as const) {
     for (const r of sa[bucket]) {
       entries.push({
@@ -67,8 +71,10 @@ export function fromChosenEntries(entries: readonly ChosenEntry[] | undefined): 
   const specialAbilities: SpecialAbilities = { general: [], combat: [], magic: [], karmal: [] };
   for (const e of entries ?? []) {
     const override = e.costOverride != null ? { costOverride: e.costOverride } : {};
-    if (e.kind === 'advantage') advantages.push({ name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...(e.granted ? { mandatory: true } : {}), ...override });
-    else if (e.kind === 'disadvantage') disadvantages.push({ name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...(e.granted ? { mandatory: true } : {}), ...override });
+    const name = e.options?.find((o) => o.key === 'name')?.id;
+    const text = name ? { text: name } : {};
+    if (e.kind === 'advantage') advantages.push({ name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...text, ...(e.granted ? { mandatory: true } : {}), ...override });
+    else if (e.kind === 'disadvantage') disadvantages.push({ name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...text, ...(e.granted ? { mandatory: true } : {}), ...override });
     else if (e.kind === 'specialAbility') {
       const param = e.options?.find((o) => o.key === 'param')?.id;
       const ref: SpecialAbilityRef = { name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...(param ? { param } : {}), ...(e.granted ? { granted: true } : {}), ...override };

@@ -19,12 +19,16 @@ export interface ResolvedPicks {
   specialAbilities: SpecialAbilities;
 }
 
-function resolveRefs(refs: readonly { name: string; lvl?: number; mandatory?: boolean; costOverride?: number }[], catalog: Advantage[]): Advantage[] {
+function resolveRefs(
+  refs: readonly { name: string; lvl?: number; mandatory?: boolean; costOverride?: number; text?: string }[],
+  catalog: Advantage[]
+): Advantage[] {
   return refs.map((ref) => {
     const resolved =
       resolveAdvantageByName(ref.name, catalog, { lvl: ref.lvl, ...(ref.mandatory ? { mandatory: true } : {}) }) ??
       ({ name: ref.name, label: ref.name, cost: 0, ...(ref.lvl != null ? { lvl: ref.lvl } : {}), ...(ref.mandatory ? { mandatory: true } : {}) } as Advantage);
-    return ref.costOverride != null ? { ...resolved, costOverride: ref.costOverride } : resolved;
+    const costed = ref.costOverride != null ? { ...resolved, costOverride: ref.costOverride } : resolved;
+    return ref.text ? { ...costed, text: ref.text } : costed;
   });
 }
 
@@ -38,8 +42,7 @@ export function resolvePicks(entries: readonly ChosenEntry[] | undefined): Resol
   };
 }
 
-const autoRefName = (ref: SpeciesAdvantageRef): string =>
-  typeof ref === 'string' ? ref : ref.option ? `${ref.name}_${ref.option}` : ref.name;
+const autoRefName = (ref: SpeciesAdvantageRef): string => (typeof ref === 'string' ? ref : ref.option ? `${ref.name}_${ref.option}` : ref.name);
 
 /** The advantage/disadvantage names a species grants automatically (free). */
 function speciesAutoNames(speciesType: string | undefined): { adv: Set<string>; dis: Set<string> } {

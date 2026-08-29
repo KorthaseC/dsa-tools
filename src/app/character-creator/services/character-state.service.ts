@@ -1,7 +1,7 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { ADVANTAGE, DISADVANTAGE } from '../constants/advantage.const';
 import { ALL_CEREMONIES } from '../constants/ceremony.const';
-import { ALL_CULTURES } from '../constants/culture.const';
+import { ALL_CULTURES, DEFAULT_SOCIAL_STATUS } from '../constants/culture.const';
 import { ALL_LITURGIES } from '../constants/liturgy.const';
 import { ALL_PROFESSIONS } from '../constants/profession.const';
 import { ALL_RITUALS } from '../constants/ritual.const';
@@ -346,12 +346,17 @@ export class CharacterStateService {
       // Free mother tongue (level 3) from the culture's first language; replace any prior one.
       const motherSa = cultureMotherTongue(culture);
       const languages: LanguageRef[] = [...c.languages.filter((l) => !l.mother), ...(motherSa ? [{ name: motherSa, lvl: 3, mother: true }] : [])];
-      // Free Ortskenntnis for the home region (keep an existing granted one, else default "Heimatort").
+      // Free Ortskenntnis for the home region (keep an existing granted one, else add a blank entry).
+      // The town starts empty on purpose: "Heimatort" is the input's placeholder, and seeding it as a
+      // real value made every character ship with a home town literally called "Heimatort".
       const cur = resolvePicks(c.entries);
       const general = [...cur.specialAbilities.general];
-      if (!general.some((s) => s.name === 'ortskenntnis' && s.granted)) general.push({ name: 'ortskenntnis', param: 'Heimatort', granted: true });
+      if (!general.some((s) => s.name === 'ortskenntnis' && s.granted)) general.push({ name: 'ortskenntnis', param: '', granted: true });
       const sa = { ...cur.specialAbilities, general };
-      const bio: Bio = { ...c.bio, socialStatus: culture.socialStatus[0] ?? c.bio.socialStatus };
+      // Default to "Frei" and keep whatever the player already chose. Taking culture.socialStatus[0]
+      // made every culture that lists "Adel" start the hero off as nobility — that list holds the
+      // tiers a culture ADDITIONALLY offers, not its default.
+      const bio: Bio = { ...c.bio, socialStatus: c.bio.socialStatus || DEFAULT_SOCIAL_STATUS };
       return { ...c, culture: culture.name, cultureCost: culture.apCost, useCulturePackage, skills, languages, entries: toChosenEntries(cur.advantages, cur.disadvantages, sa), bio };
     });
   }
@@ -373,11 +378,23 @@ export class CharacterStateService {
     this.updateLanguages((list) => [...list.filter((l) => !l.mother), ...(name ? [{ name, lvl: 3, mother: true }] : [])]);
   }
 
-  /** Replace the culture's free Ortskenntnis home regions with the given town list. */
+  /**
+   * Replace the culture's free Ortskenntnis home regions with the given town list.
+   *
+   * Towns are stored exactly as typed. Normalising here would fight the two-way bound input in the
+   * culture step: a trimmed value gets written straight back into the field, so a trailing space is
+   * swallowed the moment it is typed and multi-word town names become impossible to enter.
+   *
+   * Blanking every town keeps ONE entry with an empty param instead of dropping the SA — the
+   * Ortskenntnis itself is granted by the culture, only the town is user input, so clearing the
+   * field must not silently forfeit a free special ability.
+   */
   setOrtskenntnisTowns(towns: string[]): void {
+    const named = towns.filter((t) => t.trim());
+    const kept = named.length === 0 && towns.length > 0 ? [''] : named;
     this.updateSpecialAbilities('general', (list) => [
       ...list.filter((s) => !(s.name === 'ortskenntnis' && s.granted)),
-      ...towns.filter((t) => t.trim()).map((t) => ({ name: 'ortskenntnis', param: t.trim(), granted: true } as SpecialAbilityRef)),
+      ...kept.map((t) => ({ name: 'ortskenntnis', param: t, granted: true } as SpecialAbilityRef)),
     ]);
   }
 

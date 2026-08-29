@@ -8,6 +8,10 @@ export interface SelectionOption {
   cost?: number; // per-option AP cost, when it differs between options
   /** Steigerungsfaktor (A–E) of the underlying skill, for SF-priced advantages (Begabung, Unfähig, …). */
   factor?: string;
+  /** Kontakt only — Einfluss (E) and Zuverlässigkeit (Z) of the contact. Play-relevant values that also
+   *  price the option: `cost` = E² + Z². Kept as data so the label stays derivable, not the other way round. */
+  influence?: number;
+  reliability?: number;
   /** Other option names that must be picked first (build-up chains, e.g. magical ranks). */
   requires?: string[];
   /** Ancestral-blood gating: this option is only available if the character's matching Ahnenblut (Ahn)
@@ -48,4 +52,10 @@ export interface Advantage extends NamedEntry {
   /** `cost` is per Steigerungsfaktor-point: effective cost = cost × SF-index of the chosen option
    *  (Begabung, Unfähig, Herausragende Fertigkeit/Kampftechnik, Waffenbegabung). */
   costBySteigerungsfaktor?: boolean;
+  /** Catalog flag: this entry takes a free-text detail, and this is the field's German label
+   *  ("Name" for Kontakt). Derived from a `": (Name)"` label suffix in the PDF. */
+  freeText?: string;
+  /** Character-local free-text detail for a `freeText` entry (the contact's name). Purely
+   *  descriptive — it never affects cost. Persisted as a ChosenOption under the key `name`. */
+  text?: string;
 }

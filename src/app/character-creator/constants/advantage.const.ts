@@ -763,9 +763,10 @@ export const ADVANTAGE: Advantage[] = [
   },
   {
     name: "kontaktname",
-    label: "Kontakt: (Name)",
+    label: "Kontakt",
     cost: 2,
     type: "Profan",
+    freeText: "Name",
     selection: { id: "KontaktArray" },
     sources: [{"book":"AK2","page":58},{"book":"KSC","page":136}],
   },

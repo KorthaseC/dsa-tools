@@ -5,14 +5,15 @@ import { CharacterResolverService } from '../services/character-resolver.service
 import { CharacterStateService } from '../services/character-state.service';
 import { CharacterValidationService } from '../services/character-validation.service';
 import { EXPERIENCE_LEVELS } from '../constants/experience-levels.const';
-import { resolvePicksForCharacter } from '../catalog/character-entries';
+import { resolvePicks, resolvePicksForCharacter } from '../catalog/character-entries';
+import { toChosenEntries } from '../catalog/save-entries';
 import { createEmptyCharacter } from '../models/base-creation.model';
 import { ALL_SPECIAL_ABILITIES } from '../constants/special-ability.const';
 import { ADVANTAGE, DISADVANTAGE } from '../constants/advantage.const';
 import { ALL_PROFESSIONS } from '../constants/profession.const';
 import { computeSpentAp, specialAbilityCost } from './ap-budget.util';
 import { recomputeDerivedStats } from './derived-stats.util';
-import { SF_INDEX, resolveAdvantageByName, selectionOptionsFor } from './utils';
+import { SF_INDEX, labelWithFreeText, labelWithoutOption, resolveAdvantageByName, selectionCostRange, selectionOptionsFor } from './utils';
 
 function saveData(overrides: Partial<CharacterSaveData> = {}): CharacterSaveData {
   return {
@@ -292,5 +293,89 @@ describe('tradition-artifact binding — permanent AsP loss + buy-back AP', () =
     const asp = state.character()!.derived.astralPoints;
     expect(asp.boughtBack).toBeGreaterThan(0); // the binding's pAsP was bought back by the package
     expect(asp.max).toBe(asp.base + asp.bonus + asp.bought); // net loss 0 → max unchanged
+  });
+});
+
+describe('Kontakt — AP cost follows the chosen contact (E² + Z²)', () => {
+  const resolver = new CharacterResolverService();
+  const kontakt = ADVANTAGE.find((a) => a.name === 'kontaktname')!;
+
+  it('prices every contact from its own Einfluss and Zuverlässigkeit', () => {
+    const opts = selectionOptionsFor(kontakt);
+    expect(opts.length).toBe(18);
+    for (const o of opts) {
+      expect(o.influence).withContext(o.label).toBeGreaterThan(0);
+      expect(o.reliability).withContext(o.label).toBeGreaterThan(0);
+      expect(o.cost).withContext(o.label).toBe(o.influence! ** 2 + o.reliability! ** 2);
+      expect(o.label).toContain(`E: ${o.influence}; Z: ${o.reliability}`);
+    }
+  });
+
+  it('resolves a picked contact to its own cost, not the advantage’s flat base', () => {
+    expect(kontakt.cost).toBe(2); // the base is the generic contact (E 1 / Z 1) — the fallback, not the price
+    expect(resolveAdvantageByName('kontaktname_bettler', ADVANTAGE)!.cost).toBe(5); // 1² + 2²
+    expect(resolveAdvantageByName('kontaktname_hehler', ADVANTAGE)!.cost).toBe(10); // 3² + 1²
+    expect(resolveAdvantageByName('kontaktname_freundauskindheitstagen', ADVANTAGE)!.cost).toBe(29); // 2² + 5²
+    expect(resolveAdvantageByName('kontaktname_tempelvorsteherin', ADVANTAGE)!.cost).toBe(25); // 4² + 3²
+  });
+
+  it('spans the add-dropdown range from the cheapest to the priciest contact', () => {
+    expect(selectionCostRange(kontakt)).toEqual({ min: 2, max: 29 });
+  });
+
+  it('charges the contact-specific cost to the AP budget', () => {
+    const base = computeSpentAp(resolver.resolve(saveData({ entries: [] })));
+    const cheap = computeSpentAp(resolver.resolve(saveData({ entries: [{ kind: 'advantage', id: 'kontaktname_bettler' }] })));
+    const dear = computeSpentAp(resolver.resolve(saveData({ entries: [{ kind: 'advantage', id: 'kontaktname_freundauskindheitstagen' }] })));
+    expect(cheap - base).toBe(5);
+    expect(dear - base).toBe(29); // was 2 for both while the flat base cost applied
+  });
+});
+
+describe('Kontakt — free-text contact name', () => {
+  const kontakt = ADVANTAGE.find((a) => a.name === 'kontaktname')!;
+
+  it('drops the "(Name)" placeholder from the catalog label and flags the free-text field', () => {
+    expect(kontakt.label).toBe('Kontakt');
+    expect(kontakt.freeText).toBe('Name');
+  });
+
+  it('round-trips the typed name through the canonical entries', () => {
+    const entries = toChosenEntries([{ name: 'kontaktname_bettler', text: 'Hasso' }], [], {
+      general: [],
+      combat: [],
+      magic: [],
+      karmal: [],
+    });
+    expect(entries[0].options).toEqual([{ key: 'name', id: 'Hasso' }]);
+    expect(resolvePicks(entries).advantages[0].text).toBe('Hasso');
+  });
+
+  it('stores the name exactly as typed, spaces included', () => {
+    const entries = toChosenEntries([{ name: 'kontaktname_wirt', text: 'Alrik von ' }], [], { general: [], combat: [], magic: [], karmal: [] });
+    expect(resolvePicks(entries).advantages[0].text).toBe('Alrik von '); // trimming would eat the space mid-typing
+  });
+
+  it('keeps the name OUT of the resolved label — the editor row shows it in its own field', () => {
+    const entries = toChosenEntries([{ name: 'kontaktname_bettler', text: 'Hasso' }], [], { general: [], combat: [], magic: [], karmal: [] });
+    const adv = resolvePicks(entries).advantages[0];
+    expect(adv.label).toBe('Kontakt (Bettler - E: 1; Z: 2)');
+    expect(adv.cost).toBe(5); // the name is descriptive only — it never moves the price
+  });
+
+  it('strips the option again for the editor row, where the select shows it', () => {
+    const entries = toChosenEntries([{ name: 'kontaktname_bettler', text: 'Hasso' }], [], { general: [], combat: [], magic: [], karmal: [] });
+    expect(labelWithoutOption(resolvePicks(entries).advantages[0])).toBe('Kontakt');
+  });
+
+  it('leaves a label alone when no option is picked yet', () => {
+    const entries = toChosenEntries([{ name: 'kontaktname' }], [], { general: [], combat: [], magic: [], karmal: [] });
+    expect(labelWithoutOption(resolvePicks(entries).advantages[0])).toBe('Kontakt');
+  });
+
+  it('composes the printed label for consumers without an input box (the PDF sheet)', () => {
+    expect(labelWithFreeText('Kontakt (Bettler - E: 1; Z: 2)', 'Hasso')).toBe('Kontakt: Hasso (Bettler - E: 1; Z: 2)');
+    expect(labelWithFreeText('Kontakt', 'Hasso')).toBe('Kontakt: Hasso'); // no contact type picked yet
+    expect(labelWithFreeText('Kontakt (Bettler - E: 1; Z: 2)', '  ')).toBe('Kontakt (Bettler - E: 1; Z: 2)'); // blank → unchanged
   });
 });
