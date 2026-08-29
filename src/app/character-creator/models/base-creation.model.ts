@@ -159,6 +159,10 @@ export interface SpecialAbilityRef {
   name: string;
   lvl?: number;
   param?: string; // free-text qualifier, e.g. the Ortskenntnis home region
+  /** Second, purely descriptive detail of a `freeText` entry: the Anwendungsgebiet inside the talent
+   *  `param` names (Fertigkeitsspezialisierung). Kept apart from `param` on purpose — `param` drives
+   *  the SF-factor cost lookup and the `selectedTalent` prerequisite, which must not see the area. */
+  area?: string;
   granted?: boolean; // granted for free (e.g. by culture) → 0 AP
   costOverride?: number; // character-local total-AP override (GM ruling); `granted` still wins
 }

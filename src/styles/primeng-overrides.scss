@@ -51,6 +51,24 @@ $hover-bg: rgba(200, 169, 110, 0.15);
   line-height: 1.4;
 }
 
+// Sub-option overlays of the special-ability tab. Their trigger is narrow (it shares a row with the
+// SA name, level and cost), so the width PrimeNG copies from it would wrap option labels into a
+// four-line column. Give the panel real room instead — at this width every catalog label fits in at
+// most two lines, so nothing scrolls sideways and nothing is cut off.
+//
+// These lists hold up to ~870 options, so they keep virtualScroll, which requires a UNIFORM row
+// height: pin it to the component's virtualScrollItemSize (56) instead of the `height: auto` above.
+.c-sa-option-panel {
+  width: auto !important;
+  min-width: min(28rem, 92vw);
+}
+
+.c-sa-option-panel .p-select-option {
+  height: 56px;
+  min-height: 0;
+  align-items: center;
+}
+
 // Allow long option labels to wrap in multiselect overlays
 .p-multiselect-overlay {
   width: 0 !important;

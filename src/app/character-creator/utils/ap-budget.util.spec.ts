@@ -9,6 +9,7 @@ import { resolvePicks, resolvePicksForCharacter } from '../catalog/character-ent
 import { toChosenEntries } from '../catalog/save-entries';
 import { createEmptyCharacter } from '../models/base-creation.model';
 import { ALL_SPECIAL_ABILITIES } from '../constants/special-ability.const';
+import { ALL_TALENTS } from '../constants/talent.const';
 import { ADVANTAGE, DISADVANTAGE } from '../constants/advantage.const';
 import { ALL_PROFESSIONS } from '../constants/profession.const';
 import { computeSpentAp, specialAbilityCost } from './ap-budget.util';
@@ -377,5 +378,107 @@ describe('Kontakt — free-text contact name', () => {
     expect(labelWithFreeText('Kontakt (Bettler - E: 1; Z: 2)', 'Hasso')).toBe('Kontakt: Hasso (Bettler - E: 1; Z: 2)');
     expect(labelWithFreeText('Kontakt', 'Hasso')).toBe('Kontakt: Hasso'); // no contact type picked yet
     expect(labelWithFreeText('Kontakt (Bettler - E: 1; Z: 2)', '  ')).toBe('Kontakt (Bettler - E: 1; Z: 2)'); // blank → unchanged
+  });
+});
+
+describe('per-option priced special abilities (Berufsgeheimnis & co.)', () => {
+  const opts = (name: string) => selectionOptionsFor(ALL_SPECIAL_ABILITIES.find((s) => s.name === name)!);
+
+  it('charges the chosen Berufsgeheimnis its own AP, not the catalog base', () => {
+    const bg = ALL_SPECIAL_ABILITIES.find((s) => s.name === 'berufsgeheimnis')!;
+    expect(bg.cost).toBe(1); // base = the cheapest secret; it is only the fallback
+
+    const antidot = opts('berufsgeheimnis').find((o) => o.label === 'Antidot')!;
+    const roterLeu = opts('berufsgeheimnis').find((o) => o.label === 'Der Rote Leu')!;
+    expect(specialAbilityCost({ name: 'berufsgeheimnis', param: antidot.name })).toBe(antidot.cost!);
+    expect(specialAbilityCost({ name: 'berufsgeheimnis', param: roterLeu.name })).toBe(roterLeu.cost!);
+    expect(roterLeu.cost).toBe(50); // the priciest one — was billed as 1 AP before
+  });
+
+  it('falls back to the catalog cost while no secret is chosen', () => {
+    expect(specialAbilityCost({ name: 'berufsgeheimnis' })).toBe(1);
+  });
+
+  it('prices "Blut der Anderswelt" like the Feenblut benefit it simulates', () => {
+    // Rule text: "Das Paktgeschenk kostet ebenso viele Abenteuerpunkte wie der Vorteil."
+    const fell = opts('blutderanderswelt').find((o) => o.label === 'Dickes Fell')!;
+    expect(fell.cost).toBe(15);
+    expect(specialAbilityCost({ name: 'blutderanderswelt', param: fell.name })).toBe(15); // was a flat 5
+  });
+
+  it('keeps granted and override picks ahead of the option price', () => {
+    const roterLeu = opts('berufsgeheimnis').find((o) => o.label === 'Der Rote Leu')!;
+    expect(specialAbilityCost({ name: 'berufsgeheimnis', param: roterLeu.name, granted: true })).toBe(0);
+    expect(specialAbilityCost({ name: 'berufsgeheimnis', param: roterLeu.name, costOverride: 7 })).toBe(7);
+  });
+
+  it('counts the option price in the overall AP budget', () => {
+    const resolver = new CharacterResolverService();
+    const roterLeu = opts('berufsgeheimnis').find((o) => o.label === 'Der Rote Leu')!;
+    const base = computeSpentAp(resolver.resolve(saveData({ entries: [], homebrew: [] })));
+    const withBg = computeSpentAp(
+      resolver.resolve(saveData({ homebrew: [], entries: [{ kind: 'specialAbility', id: 'berufsgeheimnis', options: [{ key: 'param', id: roterLeu.name }] }] }))
+    );
+    expect(withBg - base).toBe(50);
+  });
+
+  it('leaves every Berufsgeheimnis option priced by the data (no silent 0 AP)', () => {
+    const list = opts('berufsgeheimnis');
+    expect(list.length).toBeGreaterThan(700);
+    expect(list.filter((o) => o.cost == null || o.cost <= 0).map((o) => o.label)).toEqual([]);
+  });
+});
+
+describe('Fertigkeitsspezialisierung — Anwendungsgebiet (free-text detail)', () => {
+  const sas = (refs: { name: string; param?: string; area?: string }[]) =>
+    toChosenEntries([], [], { general: refs, combat: [], magic: [], karmal: [] });
+  const back = (refs: { name: string; param?: string; area?: string }[]) => resolvePicks(sas(refs)).specialAbilities.general[0];
+
+  it('marks the catalog entry as taking a free-text area', () => {
+    const spez = ALL_SPECIAL_ABILITIES.find((s) => s.name === 'fertigkeitsspezialisierung')!;
+    expect(spez.freeText).toBe('Anwendungsgebiet');
+  });
+
+  it('persists param and area as two separate options on one entry', () => {
+    const [entry] = sas([{ name: 'fertigkeitsspezialisierung', param: 'Etikette', area: 'Benehmen' }]);
+    expect(entry.options).toEqual([
+      { key: 'param', id: 'Etikette' },
+      { key: 'area', id: 'Benehmen' },
+    ]);
+  });
+
+  it('round-trips the area, exactly as typed', () => {
+    expect(back([{ name: 'fertigkeitsspezialisierung', param: 'Etikette', area: 'Klatsch & ' }]).area).toBe('Klatsch & ');
+  });
+
+  it('leaves an entry without an area untouched', () => {
+    const ref = back([{ name: 'fertigkeitsspezialisierung', param: 'Etikette' }]);
+    expect(ref.param).toBe('Etikette');
+    expect(ref.area).toBeUndefined();
+  });
+
+  it('keeps an area-only entry working (talent not chosen yet)', () => {
+    const [entry] = sas([{ name: 'fertigkeitsspezialisierung', area: 'Benehmen' }]);
+    expect(entry.options).toEqual([{ key: 'area', id: 'Benehmen' }]);
+    expect(back([{ name: 'fertigkeitsspezialisierung', area: 'Benehmen' }]).area).toBe('Benehmen');
+  });
+
+  it('does NOT let the area touch cost or the talent prerequisite', () => {
+    // The area is descriptive only — param alone drives the SF-factor cost and `selectedTalent`.
+    const withArea = specialAbilityCost({ name: 'fertigkeitsspezialisierung', param: 'Etikette', area: 'Benehmen' });
+    const without = specialAbilityCost({ name: 'fertigkeitsspezialisierung', param: 'Etikette' });
+    expect(withArea).toBe(without);
+  });
+});
+
+describe('talent catalog — application areas are complete', () => {
+  it('every talent lists at least one named application area', () => {
+    const broken = ALL_TALENTS.filter((t) => !t.applicationAreas?.length).map((t) => t.name);
+    expect(broken).toEqual([]); // "Heilkunde Krankheiten" was empty until the parser fix
+  });
+
+  it('no application area has an empty name', () => {
+    const empties = ALL_TALENTS.flatMap((t) => (t.applicationAreas ?? []).filter((a) => !a.name.trim()).map(() => t.name));
+    expect(empties).toEqual([]);
   });
 });

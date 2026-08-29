@@ -27,10 +27,38 @@
               filterBy="label"
               appendTo="body"
               [virtualScroll]="true"
-              [virtualScrollItemSize]="38"
+              [virtualScrollItemSize]="56"
+              panelStyleClass="c-sa-option-panel"
               class="c-sa-param"
+            >
+              <!-- Options that carry their own price (Berufsgeheimnis: 1–50 AP) show it while choosing. -->
+              <ng-template pTemplate="item" let-opt>
+                <div class="c-sub-item">
+                  <span>{{ opt.label }}</span>
+                  @if (opt.cost != null) {
+                    <span class="c-sub-cost">{{ opt.cost }} AP</span>
+                  }
+                </div>
+              </ng-template>
+            </p-select>
+          }
+          @if (e.sa?.freeText; as areaLabel) {
+            <!-- Second detail (Fertigkeitsspezialisierung: the Anwendungsgebiet). Editable on purpose:
+                 the list suggests the chosen talent's areas, but a house-rule area can still be typed. -->
+            <p-select
+              [ngModel]="e.ref.area ?? ''"
+              (ngModelChange)="setArea(b.key, e.index, $event ?? '')"
+              [options]="areaOptions(e.ref)"
+              optionLabel="label"
+              optionValue="value"
+              [editable]="true"
+              [placeholder]="areaLabel"
+              appendTo="body"
+              panelStyleClass="c-sa-option-panel"
+              class="c-sa-area"
             />
-          } @else if (needsParamText(e.ref.name, e.sa)) {
+          }
+          @if (needsParamText(e.ref.name, e.sa)) {
             <input pInputText [ngModel]="e.ref.param ?? ''" (ngModelChange)="setParam(b.key, e.index, $event)" placeholder="Auswahl …" class="c-sa-param" />
           }
           @if (isLeveled(e.sa) && !e.ref.granted) {

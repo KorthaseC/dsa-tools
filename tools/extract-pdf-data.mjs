@@ -46,6 +46,17 @@ function parseValue(token) {
   try {
     return JSON.parse(token);
   } catch {
+    // Hand-maintained arrays in the PDF sometimes carry a hole from a trailing comma — TalentGetInfo
+    // has three `["", ]` rows in Heilkunde Krankheiten's Gebiete. That is invalid JSON, so the whole
+    // field used to degrade to a raw string and the entire list was lost. Close the holes and retry;
+    // the emptied entries are dropped later by the per-consumer `g[0]` filter.
+    if (token.startsWith('[')) {
+      try {
+        return JSON.parse(token.replace(/,\s*(?=[,\]])/g, ''));
+      } catch {
+        /* still not an array — fall through to the string form below */
+      }
+    }
     return token.replace(/^"|"$/g, '').replace(/\\"/g, '"').replace(/\\\\/g, '\\').replace(/\\[rnt]/g, ' ').trim();
   }
 }
@@ -2904,6 +2915,24 @@ for (const e of sfConcepts) {
   e.url = buildUrl(e.r[15]);
 }
 
+/**
+ * Free-text detail label of a selection SA, or null. The PDF encodes it in the part of the selection
+ * argument AFTER the pipe, introduced by a colon: "alle|: Gebiet" = choose from `alle`, then name a
+ * "Gebiet". Deliberately narrow:
+ *   - the colon is required, so the filter argument "Zauber|Ritual" (= spells OR rituals) is skipped;
+ *   - a comma is rejected, because "Wissen|: Gebiet 1, Gebiet 2" (Fachwissen) wants TWO detail
+ *     fields and the runtime carries only one — better none than a half-applied field.
+ * DSA labels contain German letters and spaces, hence the explicit character class.
+ */
+// The PDF abbreviates inside the selection argument; spell the field out for the UI label.
+const FREE_TEXT_LABEL = { Gebiet: 'Anwendungsgebiet' };
+function saFreeText(selection) {
+  const m = String(selection?.param ?? '').match(/\|\s*:\s*([A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß ]*)$/);
+  if (!m) return null;
+  const raw = m[1].trim();
+  return FREE_TEXT_LABEL[raw] ?? raw;
+}
+
 function serSA(e) {
   const L = ['  {', `    name: ${JSON.stringify(e.name)},`, `    label: ${JSON.stringify(e.label)},`, `    cost: ${e.cost},`, `    category: SpecialAbilityCategory.${e.cat},`];
   if (e.costBySteigerungsfaktor) L.push(`    costBySteigerungsfaktor: true,`); // cost = cost × SF-index of the chosen option
@@ -2923,6 +2952,11 @@ function serSA(e) {
   if (e.subCategory) L.push(`    subCategory: ${JSON.stringify(e.subCategory)},`);
   if (e.tradition && e.tradition.length) L.push(`    tradition: ${JSON.stringify(e.tradition)},`);
   if (e.merkmal) L.push(`    merkmal: ${JSON.stringify(e.merkmal)},`);
+  { // A selection param "…|: <Label>" means: pick from the list AND name a detail inside it
+    // (Fertigkeitsspezialisierung → "alle|: Gebiet" = a talent plus its Anwendungsgebiet).
+    const ft = saFreeText(e.selection);
+    if (ft) L.push(`    freeText: ${JSON.stringify(ft)},`);
+  }
   if (e.selection) L.push(`    selection: ${serSelection(e.selection)},`);
   if (e.speciesRestriction && e.speciesRestriction.length) L.push(`    speciesRestriction: ${JSON.stringify(e.speciesRestriction)},`);
   if (e.sources && e.sources.length) L.push(`    sources: ${JSON.stringify(e.sources)},`);

@@ -373,3 +373,50 @@ describe('CharacterValidationService — Ahnenblut option gating (Issue 1)', () 
     expect(bloodErrs('satyr').length).toBe(0);
   });
 });
+
+describe('CharacterValidationService — Fertigkeitsspezialisierung thresholds (6 / 12 / 18)', () => {
+  const resolver = new CharacterResolverService();
+  const validation = new CharacterValidationService();
+
+  // `n` specializations in Etikette, with the talent at `fw`.
+  const spez = (n: number, fw: number) =>
+    validation
+      .validate(
+        resolver.resolve(
+          saveData({
+            skills: { ...createDefaultSaveData().skills, social: [{ name: 'Etikette', fw }] },
+            entries: Array.from({ length: n }, (_, i) => ({
+              kind: 'specialAbility' as const,
+              id: 'fertigkeitsspezialisierung',
+              options: [{ key: 'param', id: 'Etikette' }, { key: 'area', id: `Gebiet ${i + 1}` }],
+            })),
+          })
+        )
+      )
+      .filter((r) => r.ruleId === 'requirement' && r.source === 'fertigkeitsspezialisierung');
+
+  it('accepts the first specialization from FW 6 and rejects it below', () => {
+    expect(spez(1, 6).length).toBe(0);
+    expect(spez(1, 5).length).toBe(1);
+    expect(spez(1, 5)[0].message).toContain('Fertigkeitswert 6');
+  });
+
+  it('reports the SECOND specialization once, against 12 — not twice against 6', () => {
+    const found = spez(2, 8); // first one (needs 6) is fine, second (needs 12) is not
+    expect(found.length).toBe(1); // used to be 2 identical messages
+    expect(found[0].message).toContain('Fertigkeitswert 12'); // used to say 6
+    expect(found[0].message).not.toContain('Fertigkeitswert 6');
+  });
+
+  it('names talent AND Anwendungsgebiet, so several specializations stay tellable apart', () => {
+    // `spez` gives each instance its own area, so the failing one is identifiable at a glance.
+    expect(spez(2, 8)[0].message).toContain('Fertigkeitsspezialisierung (Etikette: Gebiet 2)');
+  });
+
+  it('accepts two at FW 12 and demands 18 for the third', () => {
+    expect(spez(2, 12).length).toBe(0);
+    const three = spez(3, 12);
+    expect(three.length).toBe(1);
+    expect(three[0].message).toContain('Fertigkeitswert 18');
+  });
+});

@@ -16,6 +16,14 @@ export function selectionOptionsFor(entry: { selection?: AdvantageSelection }): 
 export const SF_INDEX: Record<string, number> = { A: 1, B: 2, C: 3, D: 4, E: 5 };
 
 /**
+ * Comparison key for catalog labels: lowercase, umlauts folded, everything non-alphanumeric dropped.
+ * Talent/combat-technique/spell ids ARE their German labels, so every lookup that matches a stored
+ * value against a catalog name has to run BOTH sides through this.
+ */
+export const normName = (s: string): string =>
+  s.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss').replace(/[^a-z0-9]/g, '');
+
+/**
  * Effective AP cost of a single sub-option. For SF-priced advantages (Begabung, Unfähig, …) the
  * advantage `cost` is per Steigerungsfaktor-point, so multiply by the option's SF-index; otherwise
  * use the option's own cost, falling back to the advantage's flat cost.

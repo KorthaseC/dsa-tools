@@ -45,11 +45,13 @@ export function toChosenEntries(advantages: readonly NameLvl[], disadvantages: r
   for (const a of disadvantages) entries.push({ kind: 'disadvantage', id: a.name, ...(a.lvl != null ? { level: a.lvl } : {}), ...freeText(a), ...(a.mandatory ? { granted: true } : {}), ...(a.costOverride != null ? { costOverride: a.costOverride } : {}) });
   for (const bucket of ['general', 'combat', 'magic', 'karmal'] as const) {
     for (const r of sa[bucket]) {
+      // `param` (the selection) and `area` (the free-text detail) are two ChosenOptions on ONE entry.
+      const options = [...(r.param ? [{ key: 'param', id: r.param }] : []), ...(r.area ? [{ key: 'area', id: r.area }] : [])];
       entries.push({
         kind: 'specialAbility',
         id: r.name,
         ...(r.lvl != null ? { level: r.lvl } : {}),
-        ...(r.param ? { options: [{ key: 'param', id: r.param }] } : {}),
+        ...(options.length ? { options } : {}),
         ...(r.granted ? { granted: true } : {}),
         ...(r.costOverride != null ? { costOverride: r.costOverride } : {}),
       });
@@ -77,7 +79,8 @@ export function fromChosenEntries(entries: readonly ChosenEntry[] | undefined): 
     else if (e.kind === 'disadvantage') disadvantages.push({ name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...text, ...(e.granted ? { mandatory: true } : {}), ...override });
     else if (e.kind === 'specialAbility') {
       const param = e.options?.find((o) => o.key === 'param')?.id;
-      const ref: SpecialAbilityRef = { name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...(param ? { param } : {}), ...(e.granted ? { granted: true } : {}), ...override };
+      const area = e.options?.find((o) => o.key === 'area')?.id;
+      const ref: SpecialAbilityRef = { name: e.id, ...(e.level != null ? { lvl: e.level } : {}), ...(param ? { param } : {}), ...(area ? { area } : {}), ...(e.granted ? { granted: true } : {}), ...override };
       specialAbilities[bucketForSACategory(SA_CATEGORY.get(e.id))].push(ref);
     }
   }

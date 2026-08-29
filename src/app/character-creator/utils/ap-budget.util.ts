@@ -52,12 +52,15 @@ export function specialAbilityCost(ref: SpecialAbilityRef & { mother?: boolean }
   if (ref.costOverride != null) return ref.costOverride; // character-local total-AP override (GM ruling)
   const sa = SPECIAL_ABILITY_MAP.get(ref.name);
   if (!sa) return 0;
+  const option = ref.param ? selectionOptionsFor(sa).find((o) => o.name === ref.param) : undefined;
   // SF-priced SFs (Lieblingszauber "3/12", Adaption "5/20", …): `cost` is per-Steigerungsfaktor-point;
   // effective = cost × the chosen option's SF-index (A=1…E=5). Before an option is picked → base (×1).
-  if (sa.costBySteigerungsfaktor) {
-    const opt = ref.param ? selectionOptionsFor(sa).find((o) => o.name === ref.param) : undefined;
-    return sa.cost * (opt?.factor ? SF_INDEX[opt.factor] ?? 1 : 1);
-  }
+  if (sa.costBySteigerungsfaktor) return sa.cost * (option?.factor ? SF_INDEX[option.factor] ?? 1 : 1);
+  // Per-option priced SFs: the chosen option carries its own AP value and the catalog `cost` is only
+  // the fallback until one is picked — the same rule optionCost() applies to advantages. Covers
+  // Berufsgeheimnis (1–50 AP per secret) and "Blut der Anderswelt", whose rule text says outright:
+  // "Das Paktgeschenk kostet ebenso viele Abenteuerpunkte wie der Vorteil."
+  if (option?.cost != null) return option.cost;
   const leveled = sa.maxLvl != null && sa.maxLvl > 1;
   if (!leveled) return sa.cost;
   const lvl = ref.lvl ?? 1;

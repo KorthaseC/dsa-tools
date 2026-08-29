@@ -11,7 +11,7 @@ import { Advantage } from '../models/advantage.model';
 import { SpecialAbilityCategory } from '../models/special-ability.model';
 import { SpeciesAdvantageRef } from '../models/species.model';
 import { ValidationContext, ValidationResult, ValidationRule } from '../models/validation.model';
-import { advantageCost, getAdvantageBaseName, getAdvantageQualifier, resolveAdvantageByName, selectionOptionsFor } from '../utils/utils';
+import { advantageCost, getAdvantageBaseName, getAdvantageQualifier, normName, resolveAdvantageByName, selectionOptionsFor } from '../utils/utils';
 import { homebrewApCostOfKind } from '../models/homebrew.model';
 import { ALL_SPELLS } from '../constants/spell.const';
 import { ALL_RITUALS } from '../constants/ritual.const';
@@ -25,8 +25,6 @@ import { getEntry, idFromLabel } from '../catalog/catalog-index';
 import { resolvePicksForCharacter } from '../catalog/character-entries';
 import { computeSpentAp } from '../utils/ap-budget.util';
 
-/** Normalizes a name for cross-catalog matching (SA prereqs are slugs; talents are German labels). */
-const normName = (s: string) => s.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss').replace(/[^a-z0-9]/g, '');
 const TALENT_NAMES = new Set(ALL_TALENTS.map((t) => normName(t.name)));
 /** Human-readable label for an advantage/disadvantage slug (handles `base_option` → "Base (Option)"). */
 const ADV_DIS_CATALOG = [...ADVANTAGE, ...DISADVANTAGE];
@@ -858,13 +856,14 @@ export class CharacterValidationService {
             const p = normName(ownerParam);
             return (character.spells ?? []).some((row) => normName(row.spellName) === p && (row.fw ?? 0) >= min);
           },
+          // `min` already carries the per-specialization scaling (6/12/18) — the evaluator applies the
+          // owner's ordinal, so every instance is checked against ITS own threshold instead of all of
+          // them against the highest one (which reported the same error once per specialization).
           selectedTalent: (min, ownerParam) => {
             if (!ownerParam) return true; // chosen talent not set yet → indeterminate
             const t = normName(String(ownerParam).split(':')[0]);
             const fw = Object.values(character.skills).flat().reduce((mx, s) => (normName(s.name) === t ? Math.max(mx, s.fw) : mx), 0);
-            // FW threshold scales with how many specializations are taken in that talent (6/12/18).
-            const cnt = saRefs.filter((rr) => saCatalog.get(rr.name)?.requirements?.some((q) => q.type === 'selectedTalent') && normName(String(rr.param ?? '').split(':')[0]) === t).length || 1;
-            return fw >= min * cnt;
+            return fw >= min;
           },
           spellExtension: (spell, ext) => {
             const sp = normName(spell); const ex = normName(ext);
@@ -877,12 +876,40 @@ export class CharacterValidationService {
           const q = getAdvantageQualifier(name);
           return q ? [{ key: 'option', id: normName(q) }] : [];
         };
+
+        // Number the specializations per talent in pick order: the 1st needs FW 6, the 2nd 12, the
+        // 3rd 18. Counted across every SA whose requirement is `selectedTalent`, since the DSA limit
+        // ("max. three specializations in one talent") is per TALENT, not per special ability.
+        const specializationOrdinal = new Map<(typeof saRefs)[number], number>();
+        const specializationsSoFar = new Map<string, number>();
+        for (const r of saRefs) {
+          if (!saCatalog.get(r.name)?.requirements?.some((q) => q.type === 'selectedTalent')) continue;
+          const talent = normName(String(r.param ?? '').split(':')[0]);
+          const n = (specializationsSoFar.get(talent) ?? 0) + 1;
+          specializationsSoFar.set(talent, n);
+          specializationOrdinal.set(r, n);
+        }
         const owners: { reqs?: readonly Requirement[]; source: string; word: string; owner: PrereqOwner }[] = [
           ...picks.advantages.map((a) => ({ reqs: a.requirements, source: a.name, word: 'Vorteil', owner: { label: a.label, level: a.lvl ?? 1, options: optsFromName(a.name) } })),
           ...picks.disadvantages.map((a) => ({ reqs: a.requirements, source: a.name, word: 'Nachteil', owner: { label: a.label, level: a.lvl ?? 1, options: optsFromName(a.name) } })),
           ...saRefs.map((r) => {
             const sa = saCatalog.get(r.name);
-            return { reqs: sa?.requirements, source: r.name, word: 'Sonderfertigkeit', owner: { label: sa?.label ?? r.name, level: r.lvl ?? 1, param: r.param, options: r.param ? [{ key: 'option', id: normName(r.param) }] : [] } };
+            // Name the chosen sub-option in the label: several Fertigkeitsspezialisierungen sit in the
+            // list under the same name, so "benötigt …" has to say WHICH talent is the problem.
+            const base = sa?.label ?? r.name;
+            const detail = [r.param, r.area].filter((s) => s?.trim()).join(': '); // "Etikette: Benehmen"
+            return {
+              reqs: sa?.requirements,
+              source: r.name,
+              word: 'Sonderfertigkeit',
+              owner: {
+                label: detail ? `${base} (${detail})` : base,
+                level: r.lvl ?? 1,
+                param: r.param,
+                options: r.param ? [{ key: 'option', id: normName(r.param) }] : [],
+                ordinal: specializationOrdinal.get(r),
+              },
+            };
           }),
         ];
 

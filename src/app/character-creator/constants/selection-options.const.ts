@@ -1531,2847 +1531,3558 @@ export const SELECTION_OPTIONS: Record<string, SelectionOption[]> = {
   "BerufsgeheimnisArray": [
     {
       "name": "1001rausch",
-      "label": "1001 Rausch"
+      "label": "1001 Rausch",
+      "cost": 4
     },
     {
       "name": "aal",
-      "label": "Aal"
+      "label": "Aal",
+      "cost": 4
     },
     {
       "name": "abilachterreitersaebel",
-      "label": "Abilachter Reitersäbel"
+      "label": "Abilachter Reitersäbel",
+      "cost": 2
     },
     {
       "name": "achazaxt",
-      "label": "Achazaxt"
+      "label": "Achazaxt",
+      "cost": 1
     },
     {
       "name": "achazreisser",
-      "label": "Achazreißer"
+      "label": "Achazreißer",
+      "cost": 2
     },
     {
       "name": "addiermaschine",
-      "label": "Addiermaschine"
-    },
-    {
-      "name": "albenhuserplattenharnisch",
-      "label": "Albenhuser Plattenharnisch"
-    },
-    {
-      "name": "albernischehandharfe",
-      "label": "Albernische Handharfe"
-    },
-    {
-      "name": "albuminerpfeifenmaennlein",
-      "label": "Albuminer Pfeifenmännlein"
-    },
-    {
-      "name": "alchimistenlabor",
-      "label": "Alchimistenlabor"
-    },
-    {
-      "name": "alchimistensaeure",
-      "label": "Alchimistensäure"
-    },
-    {
-      "name": "aleeza",
-      "label": "Aleeza"
-    },
-    {
-      "name": "algebra",
-      "label": "Algebra"
+      "label": "Addiermaschine",
+      "cost": 2
     },
     {
       "name": "alhani",
-      "label": "AlHani"
-    },
-    {
-      "name": "alkadoresh",
-      "label": "Alkadoresh"
-    },
-    {
-      "name": "alkahest",
-      "label": "Alkahest"
-    },
-    {
-      "name": "alptraumrabe",
-      "label": "Alptraumrabe"
+      "label": "Al’Hani",
+      "cost": 1
     },
     {
       "name": "alqitar",
-      "label": "AlQitar"
+      "label": "Al’Qitar",
+      "cost": 4
+    },
+    {
+      "name": "albenhuserplattenharnisch",
+      "label": "Albenhuser Plattenharnisch",
+      "cost": 3
+    },
+    {
+      "name": "albernischehandharfe",
+      "label": "Albernische Handharfe",
+      "cost": 1
+    },
+    {
+      "name": "albuminerpfeifenmaennlein",
+      "label": "Albuminer Pfeifenmännlein",
+      "cost": 1
+    },
+    {
+      "name": "alchimistenlabor",
+      "label": "Alchimistenlabor",
+      "cost": 2
+    },
+    {
+      "name": "alchimistensaeure",
+      "label": "Alchimistensäure",
+      "cost": 3
+    },
+    {
+      "name": "aleeza",
+      "label": "Aleeza",
+      "cost": 3
+    },
+    {
+      "name": "algebra",
+      "label": "Algebra",
+      "cost": 2
+    },
+    {
+      "name": "alkadoresh",
+      "label": "Alkadoresh",
+      "cost": 3
+    },
+    {
+      "name": "alkahest",
+      "label": "Alkahest",
+      "cost": 12
+    },
+    {
+      "name": "alptraumrabe",
+      "label": "Alptraumrabe",
+      "cost": 6
     },
     {
       "name": "alraunigerhomunculus",
-      "label": "Alrauniger Homunculus"
+      "label": "Alrauniger Homunculus",
+      "cost": 20
     },
     {
       "name": "alraunigerhomunculuszusatz",
-      "label": "Alrauniger Homunculus (Zusatz)"
+      "label": "Alrauniger Homunculus (Zusatz)",
+      "cost": 5
     },
     {
       "name": "althagenerpuppen",
-      "label": "Althagener Puppen"
+      "label": "Althagener Puppen",
+      "cost": 1
     },
     {
       "name": "alveransfeder",
-      "label": "Alveransfeder"
+      "label": "Alveransfeder",
+      "cost": 20
     },
     {
       "name": "amazonenruestung",
-      "label": "Amazonenrüstung"
+      "label": "Amazonenrüstung",
+      "cost": 2
     },
     {
       "name": "amazonensaebel",
-      "label": "Amazonensäbel"
+      "label": "Amazonensäbel",
+      "cost": 2
     },
     {
       "name": "anaurak",
-      "label": "Anaurak"
+      "label": "Anaurak",
+      "cost": 4
     },
     {
       "name": "anchopalerastrolabium",
-      "label": "Anchopaler Astrolabium"
+      "label": "Anchopaler Astrolabium",
+      "cost": 2
     },
     {
       "name": "andergasternostrianer",
-      "label": "Andergaster/Nostrianer"
+      "label": "Andergaster/Nostrianer",
+      "cost": 3
     },
     {
       "name": "andersweltlidschatten",
-      "label": "Anderswelt-Lidschatten"
+      "label": "Anderswelt-Lidschatten",
+      "cost": 3
     },
     {
       "name": "angbarermauerwehr",
-      "label": "Angbarer Mauerwehr"
+      "label": "Angbarer Mauerwehr",
+      "cost": 3
     },
     {
       "name": "angbarersappeursaxt",
-      "label": "Angbarer Sappeursaxt"
+      "label": "Angbarer Sappeursaxt",
+      "cost": 1
     },
     {
       "name": "angrakverarbeiten",
-      "label": "Angrak verarbeiten"
+      "label": "Angrak verarbeiten",
+      "cost": 2
     },
     {
       "name": "angstgift",
-      "label": "Angstgift"
+      "label": "Angstgift",
+      "cost": 4
     },
     {
       "name": "ankelhawwa",
-      "label": "Ank-el-Hawwa"
+      "label": "Ank-el-Hawwa",
+      "cost": 2
     },
     {
       "name": "annalendesgoetteralters",
-      "label": "Annalen des Götteralters"
+      "label": "Annalen des Götteralters",
+      "cost": 2
     },
     {
       "name": "antidot",
-      "label": "Antidot"
+      "label": "Antidot",
+      "cost": 2
     },
     {
       "name": "arbalette",
-      "label": "Arbalette"
+      "label": "Arbalette",
+      "cost": 4
     },
     {
       "name": "arkaniumverarbeiten",
-      "label": "Arkanium verarbeiten"
+      "label": "Arkanium verarbeiten",
+      "cost": 4
     },
     {
       "name": "armalion",
-      "label": "Armalion"
+      "label": "Armalion",
+      "cost": 20
     },
     {
       "name": "armbrustfalle",
-      "label": "Armbrustfalle"
+      "label": "Armbrustfalle",
+      "cost": 3
     },
     {
       "name": "armillarsphaere",
-      "label": "Armillarsphäre"
+      "label": "Armillarsphäre",
+      "cost": 3
     },
     {
       "name": "astrolabium",
-      "label": "Astrolabium"
+      "label": "Astrolabium",
+      "cost": 2
     },
     {
       "name": "aethrolabium",
-      "label": "Äthrolabium"
+      "label": "Äthrolabium",
+      "cost": 4
     },
     {
       "name": "atorai",
-      "label": "Atorai"
+      "label": "Atorai",
+      "cost": 2
     },
     {
       "name": "aufputschmittel",
-      "label": "Aufputschmittel"
+      "label": "Aufputschmittel",
+      "cost": 1
     },
     {
       "name": "augedespraios",
-      "label": "Auge des Praios"
+      "label": "Auge des Praios",
+      "cost": 20
     },
     {
       "name": "augenpest",
-      "label": "Augenpest"
+      "label": "Augenpest",
+      "cost": 1
     },
     {
       "name": "auripraedessonnenschild",
-      "label": "Auripraedes-Sonnenschild"
+      "label": "Auripraedes-Sonnenschild",
+      "cost": 1
     },
     {
       "name": "ausfahrbarerregenschirm",
-      "label": "Ausfahrbarer Regenschirm"
+      "label": "Ausfahrbarer Regenschirm",
+      "cost": 1
     },
     {
       "name": "aussatz",
-      "label": "Aussatz"
+      "label": "Aussatz",
+      "cost": 2
     },
     {
       "name": "automatischerdietrich",
-      "label": "Automatischer Dietrich"
+      "label": "Automatischer Dietrich",
+      "cost": 3
     },
     {
       "name": "baburinerstreitwagenbogen",
-      "label": "Baburiner Streitwagenbogen"
+      "label": "Baburiner Streitwagenbogen",
+      "cost": 4
     },
     {
       "name": "baburischerspiegelpanzer",
-      "label": "Baburischer Spiegelpanzer"
+      "label": "Baburischer Spiegelpanzer",
+      "cost": 3
     },
     {
       "name": "balestra",
-      "label": "Balestra"
+      "label": "Balestra",
+      "cost": 4
     },
     {
       "name": "balestrina",
-      "label": "Balestrina"
+      "label": "Balestrina",
+      "cost": 4
     },
     {
       "name": "balgringa",
-      "label": "Balgringa"
+      "label": "Balgringa",
+      "cost": 12
     },
     {
       "name": "ballaester",
-      "label": "Balläster"
+      "label": "Balläster",
+      "cost": 3
     },
     {
       "name": "ballknebel",
-      "label": "Ballknebel"
+      "label": "Ballknebel",
+      "cost": 1
     },
     {
       "name": "balshitar",
-      "label": "Balshitar"
+      "label": "Balshitar",
+      "cost": 3
     },
     {
-      "name": "baltrescherpailos",
-      "label": "Baltreïscher Pailos"
+      "name": "baltreischerpailos",
+      "label": "Baltreïscher Pailos",
+      "cost": 3
     },
     {
       "name": "bannkreide",
-      "label": "Bannkreide"
+      "label": "Bannkreide",
+      "cost": 2
     },
     {
       "name": "bannstaub",
-      "label": "Bannstaub"
+      "label": "Bannstaub",
+      "cost": 8
     },
     {
       "name": "basiliskenblick",
-      "label": "Basiliskenblick"
+      "label": "Basiliskenblick",
+      "cost": 3
     },
     {
       "name": "basiliskenzunge",
-      "label": "Basiliskenzunge"
+      "label": "Basiliskenzunge",
+      "cost": 2
     },
     {
       "name": "belmartfieber",
-      "label": "Belmartfieber"
+      "label": "Belmartfieber",
+      "cost": 1
     },
     {
       "name": "benigerautschiebogen",
-      "label": "Beni-Geraut-Schie-Bogen"
+      "label": "Beni-Geraut-Schie-Bogen",
+      "cost": 5
     },
     {
       "name": "bernsteinbrille",
-      "label": "Bernsteinbrille"
+      "label": "Bernsteinbrille",
+      "cost": 3
     },
     {
       "name": "bernsteinwaffenherstellen",
-      "label": "Bernsteinwaffen herstellen"
+      "label": "Bernsteinwaffen herstellen",
+      "cost": 3
     },
     {
       "name": "berserkerelixier",
-      "label": "Berserkerelixier"
+      "label": "Berserkerelixier",
+      "cost": 2
     },
     {
       "name": "beschwoerungskreide",
-      "label": "Beschwörungskreide"
+      "label": "Beschwörungskreide",
+      "cost": 4
     },
     {
       "name": "betaeubungsgift",
-      "label": "Betäubungsgift"
+      "label": "Betäubungsgift",
+      "cost": 4
     },
     {
       "name": "bhurkheschcreme",
-      "label": "Bhurkhesch-Creme"
+      "label": "Bhurkhesch-Creme",
+      "cost": 3
     },
     {
       "name": "binkalish",
-      "label": "Bin-Kalish"
+      "label": "Bin-Kalish",
+      "cost": 1
     },
     {
       "name": "birkholterdrachenspeer",
-      "label": "Birkholter Drachenspeer"
+      "label": "Birkholter Drachenspeer",
+      "cost": 2
     },
     {
       "name": "bishdarielsangesicht",
-      "label": "Bishdariels Angesicht"
+      "label": "Bishdariels Angesicht",
+      "cost": 8
     },
     {
       "name": "blauekeuche",
-      "label": "Blaue Keuche"
+      "label": "Blaue Keuche",
+      "cost": 3
     },
     {
       "name": "bleichesieche",
-      "label": "Bleiche Sieche"
+      "label": "Bleiche Sieche",
+      "cost": 1
     },
     {
       "name": "blutbaum",
-      "label": "Blutbaum"
+      "label": "Blutbaum",
+      "cost": 5
     },
     {
       "name": "blutigerrotz",
-      "label": "Blutiger Rotz"
+      "label": "Blutiger Rotz",
+      "cost": 2
     },
     {
       "name": "boltan",
-      "label": "Boltan"
+      "label": "Boltan",
+      "cost": 2
     },
     {
       "name": "bordar",
-      "label": "Bordar"
+      "label": "Bordar",
+      "cost": 2
     },
     {
       "name": "boronssichel",
-      "label": "Boronssichel"
+      "label": "Boronssichel",
+      "cost": 2
     },
     {
       "name": "borukar",
-      "label": "Borukar"
+      "label": "Borukar",
+      "cost": 2
     },
     {
       "name": "botenrabe",
-      "label": "Botenrabe"
+      "label": "Botenrabe",
+      "cost": 2
     },
     {
       "name": "brabacudagiftgewinnung",
-      "label": "Brabacudagift (Gewinnung)"
+      "label": "Brabacudagift (Gewinnung)",
+      "cost": 1
     },
     {
       "name": "brennglas",
-      "label": "Brennglas"
+      "label": "Brennglas",
+      "cost": 1
     },
     {
       "name": "brevierderzwoelfgunterweisung",
-      "label": "Brevier der zwölfg. Unterweisung"
+      "label": "Brevier der zwölfg. Unterweisung",
+      "cost": 2
     },
     {
       "name": "brillantzwergischeskurzschwert",
-      "label": "Brillantzwergisches Kurzschwert"
+      "label": "Brillantzwergisches Kurzschwert",
+      "cost": 1
     },
     {
       "name": "briza",
-      "label": "Briza"
+      "label": "Briza",
+      "cost": 1
     },
     {
       "name": "brobimtiefenaxt",
-      "label": "Brobim-Tiefenaxt"
+      "label": "Brobim-Tiefenaxt",
+      "cost": 2
     },
     {
       "name": "buchderschlange",
-      "label": "Buch der Schlange"
+      "label": "Buch der Schlange",
+      "cost": 2
     },
     {
       "name": "buettenpapier",
-      "label": "Büttenpapier"
+      "label": "Büttenpapier",
+      "cost": 1
     },
     {
       "name": "bylmaresh",
-      "label": "Bylmaresh"
+      "label": "Bylmaresh",
+      "cost": 1
     },
     {
       "name": "bymazar",
-      "label": "Bymazar"
+      "label": "Bymazar",
+      "cost": 1
     },
     {
       "name": "charismaelixier",
-      "label": "Charismaelixier"
+      "label": "Charismaelixier",
+      "cost": 4
     },
     {
       "name": "chimaerengift",
-      "label": "Chimärengift"
+      "label": "Chimärengift",
+      "cost": 3
     },
     {
       "name": "chimaerenschlaeger",
-      "label": "Chimärenschläger"
+      "label": "Chimärenschläger",
+      "cost": 3
     },
     {
       "name": "chirurgischeinstrumente",
-      "label": "Chirurgische Instrumente"
+      "label": "Chirurgische Instrumente",
+      "cost": 2
     },
     {
       "name": "chorhoperchiffrat",
-      "label": "Chorhoper Chiffrat"
+      "label": "Chorhoper Chiffrat",
+      "cost": 1
     },
     {
       "name": "codexalbyricus",
-      "label": "Codex Albyricus"
+      "label": "Codex Albyricus",
+      "cost": 2
     },
     {
       "name": "cryptographoverschluesselung",
-      "label": "Cryptographo-Verschlüsselung"
+      "label": "Cryptographo-Verschlüsselung",
+      "cost": 1
     },
     {
       "name": "cupritanverarbeiten",
-      "label": "Cupritan verarbeiten"
+      "label": "Cupritan verarbeiten",
+      "cost": 3
     },
     {
       "name": "dachsschlitten",
-      "label": "Dachsschlitten"
+      "label": "Dachsschlitten",
+      "cost": 4
     },
     {
       "name": "daemonenfaeule",
-      "label": "Dämonenfäule"
+      "label": "Dämonenfäule",
+      "cost": 12
     },
     {
       "name": "dasblutdeslandes",
-      "label": "Das Blut des Landes"
+      "label": "Das Blut des Landes",
+      "cost": 8
     },
     {
       "name": "dasersteschwarzeauge",
-      "label": "Das erste Schwarze Auge"
+      "label": "Das erste Schwarze Auge",
+      "cost": 1
     },
     {
       "name": "deichgabel",
-      "label": "Deichgabel"
+      "label": "Deichgabel",
+      "cost": 2
     },
     {
       "name": "delphinstab",
-      "label": "Delphinstab"
+      "label": "Delphinstab",
+      "cost": 5
     },
     {
       "name": "derroteleu",
-      "label": "Der Rote Leu"
+      "label": "Der Rote Leu",
+      "cost": 50
     },
     {
       "name": "dieboeseeins",
-      "label": "Die böse Eins"
+      "label": "Die böse Eins",
+      "cost": 1
     },
     {
       "name": "drachenschuppen",
-      "label": "Drachenschuppen"
+      "label": "Drachenschuppen",
+      "cost": 4
     },
     {
       "name": "drachenspeichel",
-      "label": "Drachenspeichel"
+      "label": "Drachenspeichel",
+      "cost": 4
     },
     {
       "name": "drachentoeter",
-      "label": "Drachentöter"
+      "label": "Drachentöter",
+      "cost": 5
     },
     {
       "name": "drachentrunk",
-      "label": "Drachentrunk"
+      "label": "Drachentrunk",
+      "cost": 4
     },
     {
       "name": "drachenzahn",
-      "label": "Drachenzahn"
+      "label": "Drachenzahn",
+      "cost": 2
     },
     {
       "name": "drascian",
-      "label": "Drascian"
+      "label": "Drascian",
+      "cost": 2
     },
     {
       "name": "drashkor",
-      "label": "Drashkor"
-    },
-    {
-      "name": "drehoel",
-      "label": "Dreh-Öl"
+      "label": "Drash’kor",
+      "cost": 2
     },
     {
       "name": "drehleier",
-      "label": "Drehleier"
+      "label": "Drehleier",
+      "cost": 2
+    },
+    {
+      "name": "drehoel",
+      "label": "Dreh-Öl",
+      "cost": 6
     },
     {
       "name": "dressurvonflugechsen",
-      "label": "Dressur von Flugechsen"
+      "label": "Dressur von Flugechsen",
+      "cost": 3
     },
     {
       "name": "dressurvongelbschwanzskorpionen",
-      "label": "Dressur von Gelbschwanzskorpionen"
+      "label": "Dressur von Gelbschwanzskorpionen",
+      "cost": 5
     },
     {
       "name": "dressurvongoldfelsern",
-      "label": "Dressur von Goldfelsern"
+      "label": "Dressur von Goldfelsern",
+      "cost": 2
     },
     {
       "name": "dressurvongreifkatzen",
-      "label": "Dressur von Greifkatzen"
+      "label": "Dressur von Greifkatzen",
+      "cost": 3
     },
     {
       "name": "dressurvonhippogriffen",
-      "label": "Dressur von Hippogriffen"
+      "label": "Dressur von Hippogriffen",
+      "cost": 4
     },
     {
       "name": "dressurvonhornechsen",
-      "label": "Dressur von Hornechsen"
+      "label": "Dressur von Hornechsen",
+      "cost": 4
     },
     {
       "name": "dressurvonikanariaschmetterlingen",
-      "label": "Dressur von Ikanaria-Schmetterlingen"
+      "label": "Dressur von Ikanaria-Schmetterlingen",
+      "cost": 5
     },
     {
       "name": "dressurvonkrokodilen",
-      "label": "Dressur von Krokodilen"
+      "label": "Dressur von Krokodilen",
+      "cost": 3
     },
     {
       "name": "dressurvonmammuts",
-      "label": "Dressur von Mammuts"
+      "label": "Dressur von Mammuts",
+      "cost": 3
     },
     {
       "name": "dressurvonriesenhirschkaefern",
-      "label": "Dressur von Riesenhirschkäfern"
+      "label": "Dressur von Riesenhirschkäfern",
+      "cost": 2
     },
     {
       "name": "dressurvonshadifs",
-      "label": "Dressur von Shadifs"
+      "label": "Dressur von Shadifs",
+      "cost": 2
     },
     {
       "name": "dressurvonsumpfegeln",
-      "label": "Dressur von Sumpfegeln"
+      "label": "Dressur von Sumpfegeln",
+      "cost": 5
     },
     {
       "name": "dressurvonwestwinddrachen",
-      "label": "Dressur von Westwinddrachen"
+      "label": "Dressur von Westwinddrachen",
+      "cost": 5
     },
     {
       "name": "dressurvonwollnashoernern",
-      "label": "Dressur von Wollnashörnern"
+      "label": "Dressur von Wollnashörnern",
+      "cost": 3
     },
     {
       "name": "dritterarm",
-      "label": "Dritter Arm"
+      "label": "Dritter Arm",
+      "cost": 3
     },
     {
-      "name": "drlerspitze",
-      "label": "Drôler Spitze"
+      "name": "drolerspitze",
+      "label": "Drôler Spitze",
+      "cost": 2
     },
     {
-      "name": "drlina",
-      "label": "Drôlina"
+      "name": "drolina",
+      "label": "Drôlina",
+      "cost": 2
     },
     {
       "name": "dschadraalzul",
-      "label": "Dschadra alZul"
+      "label": "Dschadra al’Zul",
+      "cost": 20
     },
     {
       "name": "duglumspest",
-      "label": "Duglumspest"
+      "label": "Duglumspest",
+      "cost": 12
     },
     {
       "name": "dunklepforten",
-      "label": "Dunkle Pforten"
+      "label": "Dunkle Pforten",
+      "cost": 1
     },
     {
       "name": "dunklesbuch",
-      "label": "Dunkles Buch"
+      "label": "Dunkles Buch",
+      "cost": 2
     },
     {
       "name": "durchdenefferdwallundzurueck",
-      "label": "Durch den Efferdwall und zurück"
+      "label": "Durch den Efferdwall und zurück",
+      "cost": 10
     },
     {
       "name": "echterbernsteindolch",
-      "label": "Echter Bernsteindolch"
+      "label": "Echter Bernsteindolch",
+      "cost": 5
     },
     {
       "name": "echtesbernsteinschwert",
-      "label": "Echtes Bernsteinschwert"
+      "label": "Echtes Bernsteinschwert",
+      "cost": 5
     },
     {
       "name": "edelsteingolem",
-      "label": "Edelsteingolem"
+      "label": "Edelsteingolem",
+      "cost": 4
     },
     {
       "name": "efferdhornvonrethis",
-      "label": "Efferdhorn von Rethis"
+      "label": "Efferdhorn von Rethis",
+      "cost": 10
     },
     {
       "name": "efferdperle",
-      "label": "Efferdperle"
+      "label": "Efferdperle",
+      "cost": 10
     },
     {
       "name": "eichhafenerharmlyner",
-      "label": "Eichhafener/Harmlyner"
+      "label": "Eichhafener/Harmlyner",
+      "cost": 3
     },
     {
       "name": "eidechsenauge",
-      "label": "Eidechsenauge"
+      "label": "Eidechsenauge",
+      "cost": 20
     },
     {
       "name": "eisenwalder",
-      "label": "Eisenwalder"
+      "label": "Eisenwalder",
+      "cost": 4
     },
     {
       "name": "eisgolem",
-      "label": "Eisgolem"
+      "label": "Eisgolem",
+      "cost": 2
     },
     {
       "name": "eissegler",
-      "label": "Eissegler"
+      "label": "Eissegler",
+      "cost": 3
     },
     {
       "name": "elburumerenigma",
-      "label": "Elburumer Enigma"
+      "label": "Elburumer Enigma",
+      "cost": 1
     },
     {
       "name": "elchsattel",
-      "label": "Elchsattel"
+      "label": "Elchsattel",
+      "cost": 2
     },
     {
       "name": "elfenbogen",
-      "label": "Elfenbogen"
+      "label": "Elfenbogen",
+      "cost": 5
     },
     {
       "name": "elfendegen",
-      "label": "Elfendegen"
+      "label": "Elfendegen",
+      "cost": 3
     },
     {
       "name": "elfendolch",
-      "label": "Elfendolch"
+      "label": "Elfendolch",
+      "cost": 1
     },
     {
       "name": "elfenschwert",
-      "label": "Elfenschwert"
+      "label": "Elfenschwert",
+      "cost": 1
     },
     {
       "name": "elfenspeer",
-      "label": "Elfenspeer"
+      "label": "Elfenspeer",
+      "cost": 2
     },
     {
       "name": "elixierderchimaerenerschaffung",
-      "label": "Elixier der Chimärenerschaffung"
+      "label": "Elixier der Chimärenerschaffung",
+      "cost": 8
     },
     {
       "name": "elixierderstille",
-      "label": "Elixier der Stille"
+      "label": "Elixier der Stille",
+      "cost": 3
     },
     {
       "name": "encyclopaediamagica",
-      "label": "Encyclopaedia Magica"
+      "label": "Encyclopaedia Magica",
+      "cost": 2
     },
     {
       "name": "enduriumverarbeiten",
-      "label": "Endurium verarbeiten"
+      "label": "Endurium verarbeiten",
+      "cost": 5
     },
     {
       "name": "epharitverarbeiten",
-      "label": "Epharit verarbeiten"
+      "label": "Epharit verarbeiten",
+      "cost": 2
     },
     {
       "name": "epharitruestung",
-      "label": "Epharit-Rüstung"
+      "label": "Epharit-Rüstung",
+      "cost": 4
     },
     {
       "name": "epharitschild",
-      "label": "Epharit-Schild"
+      "label": "Epharit-Schild",
+      "cost": 3
     },
     {
       "name": "epharitschwert",
-      "label": "Epharit-Schwert"
+      "label": "Epharit-Schwert",
+      "cost": 2
     },
     {
       "name": "epharitspeer",
-      "label": "Epharit-Speer"
+      "label": "Epharit-Speer",
+      "cost": 2
     },
     {
       "name": "erdkraftlack",
-      "label": "Erdkraft-Lack"
+      "label": "Erdkraft-Lack",
+      "cost": 1
     },
     {
       "name": "erscheinungspulver",
-      "label": "Erscheinungspulver"
+      "label": "Erscheinungspulver",
+      "cost": 4
     },
     {
       "name": "ersterschleier",
-      "label": "Erster Schleier"
+      "label": "Erster Schleier",
+      "cost": 10
     },
     {
       "name": "erstickungsfalle",
-      "label": "Erstickungsfalle"
+      "label": "Erstickungsfalle",
+      "cost": 4
     },
     {
       "name": "eulentraenen",
-      "label": "Eulentränen"
+      "label": "Eulentränen",
+      "cost": 2
     },
     {
       "name": "fallenfarbe",
-      "label": "Fallenfarbe"
+      "label": "Fallenfarbe",
+      "cost": 3
     },
     {
       "name": "falltuer",
-      "label": "Falltür"
+      "label": "Falltür",
+      "cost": 2
     },
     {
       "name": "faeltelungstechnik",
-      "label": "Fältelungstechnik"
+      "label": "Fältelungstechnik",
+      "cost": 3
     },
     {
       "name": "famulus",
-      "label": "Famulus"
+      "label": "Famulus",
+      "cost": 8
     },
     {
       "name": "farlornereiswasser",
-      "label": "Farlorner Eiswasser"
+      "label": "Farlorner Eiswasser",
+      "cost": 8
     },
     {
       "name": "fass60l",
-      "label": "Fass, 60 L"
+      "label": "Fass, 60 L",
+      "cost": 1
     },
     {
       "name": "fatastabak",
-      "label": "Fatas-Tabak"
+      "label": "Fatas-Tabak",
+      "cost": 4
     },
     {
       "name": "fehlerhaftesschwarzesaugeinnahemasturm",
-      "label": "Fehlerhaftes Schwarzes Auge in Nahemas Turm"
+      "label": "Fehlerhaftes Schwarzes Auge in Nahemas Turm",
+      "cost": 3
     },
     {
       "name": "feinmechanikerwerkzeug",
-      "label": "Feinmechanikerwerkzeug"
+      "label": "Feinmechanikerwerkzeug",
+      "cost": 3
     },
     {
       "name": "felsspalter",
-      "label": "Felsspalter"
+      "label": "Felsspalter",
+      "cost": 3
     },
     {
       "name": "ferdokerkriegslanze",
-      "label": "Ferdoker Kriegslanze"
+      "label": "Ferdoker Kriegslanze",
+      "cost": 2
     },
     {
       "name": "fernrohr",
-      "label": "Fernrohr"
+      "label": "Fernrohr",
+      "cost": 2
     },
     {
       "name": "fernrohrgrosses",
-      "label": "Fernrohr, großes"
+      "label": "Fernrohr, großes",
+      "cost": 5
     },
     {
       "name": "fernrohrkleines",
-      "label": "Fernrohr, kleines"
+      "label": "Fernrohr, kleines",
+      "cost": 3
     },
     {
       "name": "fernrohrzusammenschiebbar",
-      "label": "Fernrohr, zusammenschiebbar"
+      "label": "Fernrohr, zusammenschiebbar",
+      "cost": 4
     },
     {
       "name": "feuerpulver",
-      "label": "Feuerpulver"
+      "label": "Feuerpulver",
+      "cost": 8
     },
     {
       "name": "feuerschlickessenz",
-      "label": "Feuerschlick-Essenz"
+      "label": "Feuerschlick-Essenz",
+      "cost": 6
     },
     {
       "name": "feuerschlickpulver",
-      "label": "Feuerschlick-Pulver"
+      "label": "Feuerschlick-Pulver",
+      "cost": 3
     },
     {
       "name": "feuerwerk",
-      "label": "Feuerwerk"
+      "label": "Feuerwerk",
+      "cost": 3
     },
     {
       "name": "fidel",
-      "label": "Fidel"
+      "label": "Fidel",
+      "cost": 1
     },
     {
       "name": "filigraneskettenknuepfen",
-      "label": "Filigranes Kettenknüpfen"
+      "label": "Filigranes Kettenknüpfen",
+      "cost": 3
     },
     {
       "name": "fingerfertigkeitselixier",
-      "label": "Fingerfertigkeitselixier"
+      "label": "Fingerfertigkeitselixier",
+      "cost": 4
     },
     {
       "name": "finsterfang",
-      "label": "Finsterfang"
+      "label": "Finsterfang",
+      "cost": 8
     },
     {
       "name": "fischernachen",
-      "label": "Fischernachen"
+      "label": "Fischernachen",
+      "cost": 2
     },
     {
       "name": "flachbodenkahn",
-      "label": "Flachbodenkahn"
+      "label": "Flachbodenkahn",
+      "cost": 3
     },
     {
       "name": "flaschenzug",
-      "label": "Flaschenzug"
+      "label": "Flaschenzug",
+      "cost": 1
     },
     {
       "name": "flatterhomunculus",
-      "label": "Flatter-Homunculus"
+      "label": "Flatter-Homunculus",
+      "cost": 20
     },
     {
       "name": "flatterhomunculuszusatz",
-      "label": "Flatter-Homunculus (Zusatz)"
+      "label": "Flatter-Homunculus (Zusatz)",
+      "cost": 5
     },
     {
       "name": "flechtruestung",
-      "label": "Flechtrüstung"
+      "label": "Flechtrüstung",
+      "cost": 2
     },
     {
       "name": "fliesssandgolemid",
-      "label": "Fließsandgolemid"
+      "label": "Fließsandgolemid",
+      "cost": 5
     },
     {
       "name": "florett",
-      "label": "Florett"
+      "label": "Florett",
+      "cost": 3
     },
     {
       "name": "fortomblasch",
-      "label": "Fortomblasch"
+      "label": "Fortomblasch",
+      "cost": 3
     },
     {
       "name": "freundfeind",
-      "label": "Freundfeind"
+      "label": "Freundfeind",
+      "cost": 4
     },
     {
       "name": "friedenswasser",
-      "label": "Friedenswasser"
+      "label": "Friedenswasser",
+      "cost": 4
     },
     {
       "name": "frostriesen",
-      "label": "Frostriesen"
+      "label": "Frostriesen",
+      "cost": 1
     },
     {
       "name": "fruchtbarkeitstrunk",
-      "label": "Fruchtbarkeitstrunk"
+      "label": "Fruchtbarkeitstrunk",
+      "cost": 2
     },
     {
       "name": "funkenschlag",
-      "label": "Funkenschlag"
+      "label": "Funkenschlag",
+      "cost": 3
     },
     {
       "name": "furchtlostropfen",
-      "label": "Furchtlos-Tropfen"
+      "label": "Furchtlos-Tropfen",
+      "cost": 2
     },
     {
       "name": "galkzuul",
-      "label": "Galkzuul"
+      "label": "Gal’kzuul",
+      "cost": 2
     },
     {
       "name": "gaensekieldertravia",
-      "label": "Gänsekiel der Travia"
+      "label": "Gänsekiel der Travia",
+      "cost": 5
     },
     {
       "name": "garadan",
-      "label": "Garadan"
+      "label": "Garadan",
+      "cost": 2
     },
     {
       "name": "garetherplatte",
-      "label": "Garether Platte"
+      "label": "Garether Platte",
+      "cost": 4
     },
     {
       "name": "gargylgolem",
-      "label": "Gargyl-Golem"
+      "label": "Gargyl-Golem",
+      "cost": 5
     },
     {
       "name": "gebietigerlanze",
-      "label": "Gebietigerlanze"
+      "label": "Gebietigerlanze",
+      "cost": 2
     },
     {
       "name": "gefaessedesrohal",
-      "label": "Gefäße des Rohal"
+      "label": "Gefäße des Rohal",
+      "cost": 1
     },
     {
       "name": "gelberpfeilgiftfroschgiftgewinnung",
-      "label": "Gelber-Pfeilgiftfrosch-Gift (Gewinnung)"
+      "label": "Gelber-Pfeilgiftfrosch-Gift (Gewinnung)",
+      "cost": 4
     },
     {
       "name": "geometrie",
-      "label": "Geometrie"
+      "label": "Geometrie",
+      "cost": 1
     },
     {
       "name": "gestechruestung",
-      "label": "Gestechrüstung"
+      "label": "Gestechrüstung",
+      "cost": 3
     },
     {
       "name": "gewandtheitselixier",
-      "label": "Gewandtheitselixier"
+      "label": "Gewandtheitselixier",
+      "cost": 4
     },
     {
       "name": "ghulscheuche",
-      "label": "Ghulscheuche"
+      "label": "Ghulscheuche",
+      "cost": 8
     },
     {
       "name": "ghumaikal",
-      "label": "Ghumai-Kal"
+      "label": "Ghumai-Kal",
+      "cost": 4
     },
     {
       "name": "gilbe",
-      "label": "Gilbe"
+      "label": "Gilbe",
+      "cost": 3
     },
     {
       "name": "giramesch",
-      "label": "Giramesch"
+      "label": "Giramesch",
+      "cost": 1
     },
     {
       "name": "glas",
-      "label": "Glas"
+      "label": "Glas",
+      "cost": 1
     },
     {
       "name": "glasgolem",
-      "label": "Glasgolem"
+      "label": "Glasgolem",
+      "cost": 7
     },
     {
       "name": "gluecksspinnengiftgewinnung",
-      "label": "Glücksspinnengift (Gewinnung)"
+      "label": "Glücksspinnengift (Gewinnung)",
+      "cost": 4
     },
     {
       "name": "gnaedigerdrachenodem",
-      "label": "Gnädiger Drachenodem"
+      "label": "Gnädiger Drachenodem",
+      "cost": 4
     },
     {
       "name": "goldenesei",
-      "label": "Goldenes Ei"
+      "label": "Goldenes Ei",
+      "cost": 5
     },
     {
       "name": "gorischesglas",
-      "label": "Gorisches Glas"
+      "label": "Gorisches Glas",
+      "cost": 1
     },
     {
       "name": "goettlicherbalsam",
-      "label": "Göttlicher Balsam"
+      "label": "Göttlicher Balsam",
+      "cost": 4
     },
     {
       "name": "granatapfel",
-      "label": "Granatapfel"
+      "label": "Granatapfel",
+      "cost": 10
     },
     {
       "name": "gratenfelserahlspiess",
-      "label": "Gratenfelser Ahlspieß"
+      "label": "Gratenfelser Ahlspieß",
+      "cost": 1
     },
     {
       "name": "grijomaconstuzakmessermungobiss",
-      "label": "Grijomacons Tuzakmesser Mungobiss"
+      "label": "Grijomacons Tuzakmesser Mungobiss",
+      "cost": 4
     },
     {
       "name": "grosseraventurischeratlas",
-      "label": "Großer Aventurischer Atlas"
+      "label": "Großer Aventurischer Atlas",
+      "cost": 2
     },
     {
       "name": "grumbosch",
-      "label": "Grumbosch"
+      "label": "Grumbosch",
+      "cost": 2
     },
     {
       "name": "gruenesleiden",
-      "label": "Grünes Leiden"
+      "label": "Grünes Leiden",
+      "cost": 8
     },
     {
       "name": "gryphius",
-      "label": "Gryphius"
+      "label": "Gryphius",
+      "cost": 4
     },
     {
       "name": "gueldenerpanzer",
-      "label": "Güldener Panzer"
+      "label": "Güldener Panzer",
+      "cost": 4
     },
     {
       "name": "gumijokverarbeiten",
-      "label": "Gumijok verarbeiten"
+      "label": "Gumijok verarbeiten",
+      "cost": 2
     },
     {
       "name": "gumijokmano",
-      "label": "Gumijok-Mano"
+      "label": "Gumijok-Mano",
+      "cost": 4
     },
     {
       "name": "gumijoknokri",
-      "label": "Gumijok-Nokri"
+      "label": "Gumijok-Nokri",
+      "cost": 3
     },
     {
       "name": "gumijoktakri",
-      "label": "Gumijok-Takri"
+      "label": "Gumijok-Takri",
+      "cost": 2
     },
     {
       "name": "gumijoktepe",
-      "label": "Gumijok-Tepe"
+      "label": "Gumijok-Tepe",
+      "cost": 2
     },
     {
       "name": "gurukphaor",
-      "label": "Guruk-Phaor"
+      "label": "Guruk-Phaor",
+      "cost": 3
     },
     {
       "name": "haargolem",
-      "label": "Haargolem"
+      "label": "Haargolem",
+      "cost": 1
     },
     {
       "name": "halbgift",
-      "label": "Halbgift"
+      "label": "Halbgift",
+      "cost": 4
     },
     {
       "name": "handarmbrust",
-      "label": "Handarmbrust"
+      "label": "Handarmbrust",
+      "cost": 3
     },
     {
       "name": "handharfe",
-      "label": "Handharfe"
+      "label": "Handharfe",
+      "cost": 1
     },
     {
       "name": "handschellen",
-      "label": "Handschellen"
+      "label": "Handschellen",
+      "cost": 1
     },
     {
       "name": "handschuhderperaine",
-      "label": "Handschuh der Peraine"
+      "label": "Handschuh der Peraine",
+      "cost": 15
     },
     {
       "name": "handspiegel",
-      "label": "Handspiegel"
+      "label": "Handspiegel",
+      "cost": 1
     },
     {
       "name": "harizan",
-      "label": "Harizan"
+      "label": "Harizan",
+      "cost": 5
     },
     {
       "name": "harlijinstuzakmesserlotosdorn",
-      "label": "Harlijins Tuzakmesser Lotosdorn"
+      "label": "Harlijins Tuzakmesser Lotosdorn",
+      "cost": 4
     },
     {
       "name": "harpuneauswalbein",
-      "label": "Harpune aus Walbein"
+      "label": "Harpune aus Walbein",
+      "cost": 2
     },
     {
       "name": "hauchderweissagung",
-      "label": "Hauch der Weissagung"
+      "label": "Hauch der Weissagung",
+      "cost": 4
     },
     {
       "name": "havenerbuckler",
-      "label": "Havener Buckler"
+      "label": "Havener Buckler",
+      "cost": 2
     },
     {
       "name": "havenerpfortedesgrauens",
-      "label": "Havener Pforte des Grauens"
+      "label": "Havener Pforte des Grauens",
+      "cost": 2
     },
     {
       "name": "heiligelaternezuangbar",
-      "label": "Heilige Laterne zu Angbar"
+      "label": "Heilige Laterne zu Angbar",
+      "cost": 10
     },
     {
       "name": "heiligereiskristall",
-      "label": "Heiliger Eiskristall"
+      "label": "Heiliger Eiskristall",
+      "cost": 10
     },
     {
       "name": "heiligerkessel",
-      "label": "Heiliger Kessel"
+      "label": "Heiliger Kessel",
+      "cost": 15
     },
     {
       "name": "heiligesschwertrabenfeder",
-      "label": "Heiliges Schwert Rabenfeder"
+      "label": "Heiliges Schwert Rabenfeder",
+      "cost": 20
     },
     {
       "name": "heilsalbe",
-      "label": "Heilsalbe"
+      "label": "Heilsalbe",
+      "cost": 1
     },
     {
       "name": "heiltrank",
-      "label": "Heiltrank"
+      "label": "Heiltrank",
+      "cost": 4
     },
     {
       "name": "heokra",
-      "label": "Heokra"
+      "label": "Heokra",
+      "cost": 4
     },
     {
       "name": "herbariumkuslikum",
-      "label": "Herbarium Kuslikum"
+      "label": "Herbarium Kuslikum",
+      "cost": 2
     },
     {
       "name": "hilffreycherleytfadendeswanderndenadepten",
-      "label": "Hilffreycher Leytfaden des wandernden Adepten"
+      "label": "Hilffreycher Leytfaden des wandernden Adepten",
+      "cost": 2
     },
     {
       "name": "hochwertigesinstrumentarium",
-      "label": "Hochwertiges Instrumentarium"
+      "label": "Hochwertiges Instrumentarium",
+      "cost": 4
     },
     {
       "name": "holzfisch",
-      "label": "Holzfisch"
+      "label": "Holzfisch",
+      "cost": 1
     },
     {
       "name": "homunculuslemmini",
-      "label": "Homunculus Lemmini"
+      "label": "Homunculus Lemmini",
+      "cost": 20
     },
     {
       "name": "homunculuslemminizusatz",
-      "label": "Homunculus Lemmini (Zusatz)"
+      "label": "Homunculus Lemmini (Zusatz)",
+      "cost": 5
     },
     {
       "name": "homunculushuendchen",
-      "label": "Homunculushündchen"
+      "label": "Homunculushündchen",
+      "cost": 20
     },
     {
       "name": "homunculushuendchenzusatz",
-      "label": "Homunculushündchen (Zusatz)"
+      "label": "Homunculushündchen (Zusatz)",
+      "cost": 5
     },
     {
       "name": "honingertiegel",
-      "label": "Honinger Tiegel"
+      "label": "Honinger Tiegel",
+      "cost": 15
     },
     {
       "name": "horasierkrankheit",
-      "label": "Horasierkrankheit"
+      "label": "Horasierkrankheit",
+      "cost": 2
     },
     {
       "name": "hornisse",
-      "label": "Hornisse"
+      "label": "Hornisse",
+      "cost": 2
     },
     {
       "name": "humidor",
-      "label": "Humidor"
+      "label": "Humidor",
+      "cost": 1
     },
     {
       "name": "hundeschlitten",
-      "label": "Hundeschlitten"
+      "label": "Hundeschlitten",
+      "cost": 4
     },
     {
       "name": "hydron",
-      "label": "Hydron"
+      "label": "Hydron",
+      "cost": 3
     },
     {
       "name": "hylailerfeuer",
-      "label": "Hylailer Feuer"
+      "label": "Hylailer Feuer",
+      "cost": 10
     },
     {
       "name": "hypokaustum",
-      "label": "Hypokaustum"
+      "label": "Hypokaustum",
+      "cost": 3
     },
     {
       "name": "ifirnsbaellchen",
-      "label": "Ifirnsbällchen"
+      "label": "Ifirnsbällchen",
+      "cost": 2
     },
     {
       "name": "ifirnstrunk",
-      "label": "Ifirnstrunk"
+      "label": "Ifirnstrunk",
+      "cost": 2
     },
     {
       "name": "illuminiumverarbeiten",
-      "label": "Illuminium verarbeiten"
+      "label": "Illuminium verarbeiten",
+      "cost": 3
     },
     {
       "name": "infundibulumderallwissenden",
-      "label": "Infundibulum der Allwissenden"
+      "label": "Infundibulum der Allwissenden",
+      "cost": 10
     },
     {
       "name": "ingerimmshammer",
-      "label": "Ingerimms Hammer"
+      "label": "Ingerimms Hammer",
+      "cost": 1
     },
     {
       "name": "inrahspiel",
-      "label": "Inrahspiel"
+      "label": "Inrahspiel",
+      "cost": 1
     },
     {
       "name": "inselnimnebel",
-      "label": "Inseln im Nebel"
+      "label": "Inseln im Nebel",
+      "cost": 1
     },
     {
       "name": "iryanleder",
-      "label": "Iryanleder"
+      "label": "Iryanleder",
+      "cost": 2
     },
     {
       "name": "iryanruestung",
-      "label": "Iryanrüstung"
+      "label": "Iryanrüstung",
+      "cost": 4
     },
     {
       "name": "isenhagerarmbrust",
-      "label": "Isenhager Armbrust"
+      "label": "Isenhager Armbrust",
+      "cost": 4
     },
     {
       "name": "isnatoscherkettengeflecht",
-      "label": "Isnatoscher Kettengeflecht"
+      "label": "Isnatoscher Kettengeflecht",
+      "cost": 2
     },
     {
       "name": "jahresfieber",
-      "label": "Jahresfieber"
+      "label": "Jahresfieber",
+      "cost": 2
     },
     {
       "name": "jobornerliebeslicht",
-      "label": "Joborner Liebeslicht"
+      "label": "Joborner Liebeslicht",
+      "cost": 20
     },
     {
       "name": "kadaverbestie",
-      "label": "Kadaverbestie"
+      "label": "Kadaverbestie",
+      "cost": 7
     },
     {
       "name": "kaiserraulsreitersaebel",
-      "label": "Kaiser Rauls Reitersäbel"
+      "label": "Kaiser Rauls Reitersäbel",
+      "cost": 2
     },
     {
       "name": "kaiserwasser",
-      "label": "Kaiserwasser"
+      "label": "Kaiserwasser",
+      "cost": 12
     },
     {
       "name": "kaleschka",
-      "label": "Kaleschka"
+      "label": "Kaleschka",
+      "cost": 4
     },
     {
       "name": "kalteslicht",
-      "label": "Kaltes Licht"
+      "label": "Kaltes Licht",
+      "cost": 1
     },
     {
       "name": "kamelspiel",
-      "label": "Kamelspiel"
+      "label": "Kamelspiel",
+      "cost": 2
     },
     {
       "name": "kanalanschluss",
-      "label": "Kanalanschluss"
+      "label": "Kanalanschluss",
+      "cost": 1
     },
     {
       "name": "katzenaugensalbe",
-      "label": "Katzenaugensalbe"
+      "label": "Katzenaugensalbe",
+      "cost": 2
     },
     {
       "name": "kekechitinruestung",
-      "label": "Keke-Chitinrüstung"
+      "label": "Keke-Chitinrüstung",
+      "cost": 2
     },
     {
       "name": "kekemako",
-      "label": "Keke-Mako"
+      "label": "Keke-Mako",
+      "cost": 2
     },
     {
       "name": "kelchderrahja",
-      "label": "Kelch der Rahja"
+      "label": "Kelch der Rahja",
+      "cost": 10
     },
     {
       "name": "kelmon",
-      "label": "Kelmon"
+      "label": "Kelmon",
+      "cost": 2
     },
     {
       "name": "kettenbrecherpfeileundbolzen",
-      "label": "Kettenbrecher-Pfeile und -Bolzen"
+      "label": "Kettenbrecher-Pfeile und -Bolzen",
+      "cost": 2
     },
     {
       "name": "kleinessegelboot",
-      "label": "Kleines Segelboot"
+      "label": "Kleines Segelboot",
+      "cost": 1
     },
     {
       "name": "klingenfalle",
-      "label": "Klingenfalle"
+      "label": "Klingenfalle",
+      "cost": 3
     },
     {
       "name": "knorr",
-      "label": "Knorr"
+      "label": "Knorr",
+      "cost": 1
     },
     {
       "name": "kombinationsschloss",
-      "label": "Kombinationsschloss"
+      "label": "Kombinationsschloss",
+      "cost": 3
     },
     {
       "name": "kompass",
-      "label": "Kompass"
+      "label": "Kompass",
+      "cost": 2
     },
     {
       "name": "kompassmetallgehaeuse",
-      "label": "Kompass, Metallgehäuse"
+      "label": "Kompass, Metallgehäuse",
+      "cost": 2
     },
     {
       "name": "kompositbogen",
-      "label": "Kompositbogen"
+      "label": "Kompositbogen",
+      "cost": 4
     },
     {
       "name": "konstitutionselixier",
-      "label": "Konstitutionselixier"
+      "label": "Konstitutionselixier",
+      "cost": 4
     },
     {
       "name": "koerperkraftelixier",
-      "label": "Körperkraftelixier"
+      "label": "Körperkraftelixier",
+      "cost": 4
     },
     {
       "name": "korssamen",
-      "label": "Kors Samen"
+      "label": "Kors Samen",
+      "cost": 20
     },
     {
       "name": "korsett",
-      "label": "Korsett"
+      "label": "Korsett",
+      "cost": 2
     },
     {
       "name": "korspiess",
-      "label": "Korspieß"
+      "label": "Korspieß",
+      "cost": 3
     },
     {
       "name": "koschbasaltkaestchen",
-      "label": "Koschbasalt-Kästchen"
+      "label": "Koschbasalt-Kästchen",
+      "cost": 2
     },
     {
       "name": "kraftlinienundknoten",
-      "label": "Kraftlinien und -knoten"
+      "label": "Kraftlinien und -knoten",
+      "cost": 3
     },
     {
       "name": "krakensilberspeer",
-      "label": "Krakensilberspeer"
+      "label": "Krakensilberspeer",
+      "cost": 2
     },
     {
       "name": "kreidedertsa",
-      "label": "Kreide der Tsa"
+      "label": "Kreide der Tsa",
+      "cost": 5
     },
     {
       "name": "kriegerautomat",
-      "label": "Krieger-Automat"
+      "label": "Krieger-Automat",
+      "cost": 4
     },
     {
       "name": "kriegsbogen",
-      "label": "Kriegsbogen"
+      "label": "Kriegsbogen",
+      "cost": 4
     },
     {
       "name": "kriegsfaecher",
-      "label": "Kriegsfächer"
+      "label": "Kriegsfächer",
+      "cost": 1
     },
     {
       "name": "kriegspfeileundbolzen",
-      "label": "Kriegspfeile und -bolzen"
+      "label": "Kriegspfeile und -bolzen",
+      "cost": 1
     },
     {
       "name": "kristallkugel",
-      "label": "Kristallkugel"
+      "label": "Kristallkugel",
+      "cost": 1
     },
     {
       "name": "krugderheiligenlindegard",
-      "label": "Krug der Heiligen Lindegard"
+      "label": "Krug der Heiligen Lindegard",
+      "cost": 10
     },
     {
       "name": "krustenpanzer",
-      "label": "Krustenpanzer"
+      "label": "Krustenpanzer",
+      "cost": 8
     },
     {
       "name": "kukris",
-      "label": "Kukris"
+      "label": "Kukris",
+      "cost": 4
     },
     {
       "name": "kuerass",
-      "label": "Kürass"
+      "label": "Kürass",
+      "cost": 3
     },
     {
       "name": "kuslikerkode",
-      "label": "Kusliker Kode"
+      "label": "Kusliker Kode",
+      "cost": 1
     },
     {
       "name": "kuslikerkryptierung",
-      "label": "Kusliker Kryptierung"
+      "label": "Kusliker Kryptierung",
+      "cost": 1
     },
     {
       "name": "kussdesfrevlers",
-      "label": "Kuss des Frevlers"
+      "label": "Kuss des Frevlers",
+      "cost": 12
     },
     {
       "name": "kutsche",
-      "label": "Kutsche"
+      "label": "Kutsche",
+      "cost": 4
     },
     {
       "name": "lamellar",
-      "label": "Lamellar"
+      "label": "Lamellar",
+      "cost": 3
     },
     {
       "name": "landsegler",
-      "label": "Landsegler"
+      "label": "Landsegler",
+      "cost": 2
     },
     {
       "name": "lapislazulifloete",
-      "label": "Lapislazuliflöte"
+      "label": "Lapislazuliflöte",
+      "cost": 10
     },
     {
       "name": "larza",
-      "label": "Larza"
+      "label": "Larza",
+      "cost": 2
     },
     {
       "name": "laute",
-      "label": "Laute"
+      "label": "Laute",
+      "cost": 1
     },
     {
       "name": "lavawut",
-      "label": "Lavawut"
+      "label": "Lavawut",
+      "cost": 10
     },
     {
       "name": "lebenderuestung",
-      "label": "Lebende Rüstung"
+      "label": "Lebende Rüstung",
+      "cost": 4
     },
     {
       "name": "lebkuchengolem",
-      "label": "Lebkuchengolem"
+      "label": "Lebkuchengolem",
+      "cost": 3
     },
     {
       "name": "lederhandschuhe",
-      "label": "Lederhandschuhe"
+      "label": "Lederhandschuhe",
+      "cost": 1
     },
     {
       "name": "lederharnisch",
-      "label": "Lederharnisch"
+      "label": "Lederharnisch",
+      "cost": 3
     },
     {
       "name": "legierungsblend",
-      "label": "Legierungsblend"
+      "label": "Legierungsblend",
+      "cost": 14
     },
     {
       "name": "legionaervonyolghurmak",
-      "label": "Legionär von Yol-Ghurmak"
+      "label": "Legionär von Yol-Ghurmak",
+      "cost": 5
     },
     {
       "name": "legionaersschild",
-      "label": "Legionärsschild"
+      "label": "Legionärsschild",
+      "cost": 1
     },
     {
       "name": "lehmbacktechnik",
-      "label": "Lehmbacktechnik"
+      "label": "Lehmbacktechnik",
+      "cost": 2
     },
     {
       "name": "leichenblaesse",
-      "label": "Leichenblässe"
+      "label": "Leichenblässe",
+      "cost": 2
     },
     {
       "name": "leichteplatte",
-      "label": "Leichte Platte"
+      "label": "Leichte Platte",
+      "cost": 3
     },
     {
       "name": "leichteshakagraplattenruestung",
-      "label": "Leichte Shakagra-Plattenrüstung"
+      "label": "Leichte Shakagra-Plattenrüstung",
+      "cost": 4
     },
     {
       "name": "leier",
-      "label": "Leier"
+      "label": "Leier",
+      "cost": 1
     },
     {
       "name": "levthansband",
-      "label": "Levthansband"
+      "label": "Levthansband",
+      "cost": 10
     },
     {
       "name": "levthanstrunk",
-      "label": "Levthanstrunk"
+      "label": "Levthanstrunk",
+      "cost": 2
     },
     {
       "name": "lichtderpallinai",
-      "label": "Licht der Pallinai"
+      "label": "Licht der Pallinai",
+      "cost": 10
     },
     {
       "name": "lichtneblerbeutel",
-      "label": "Lichtnebler-Beutel"
+      "label": "Lichtnebler-Beutel",
+      "cost": 4
     },
     {
       "name": "liebeskuechlein",
-      "label": "Liebesküchlein"
+      "label": "Liebesküchlein",
+      "cost": 2
     },
     {
       "name": "liebestrunk",
-      "label": "Liebestrunk"
+      "label": "Liebestrunk",
+      "cost": 2
     },
     {
       "name": "lienen",
-      "label": "Lienen"
+      "label": "Lienen",
+      "cost": 4
     },
     {
       "name": "lindwurmschlaeger",
-      "label": "Lindwurmschläger"
+      "label": "Lindwurmschläger",
+      "cost": 3
     },
     {
       "name": "lotosoel",
-      "label": "Lotosöl"
+      "label": "Lotosöl",
+      "cost": 3
     },
     {
       "name": "lotostrunk",
-      "label": "Lotostrunk"
+      "label": "Lotostrunk",
+      "cost": 2
     },
     {
-      "name": "lrerlindwurmschlaeger",
-      "label": "Lûrer Lindwurmschläger"
+      "name": "lurerlindwurmschlaeger",
+      "label": "Lûrer Lindwurmschläger",
+      "cost": 3
     },
     {
       "name": "lykanthropie",
-      "label": "Lykanthropie"
+      "label": "Lykanthropie",
+      "cost": 10
     },
     {
       "name": "magiepaste",
-      "label": "Magiepaste"
+      "label": "Magiepaste",
+      "cost": 1
     },
     {
       "name": "magierdegen",
-      "label": "Magierdegen"
+      "label": "Magierdegen",
+      "cost": 1
     },
     {
       "name": "magierphilosophie",
-      "label": "Magierphilosophie"
+      "label": "Magierphilosophie",
+      "cost": 1
     },
     {
       "name": "magierrobe",
-      "label": "Magierrobe"
+      "label": "Magierrobe",
+      "cost": 3
     },
     {
       "name": "mahut",
-      "label": "Mahut"
+      "label": "Mahut",
+      "cost": 5
     },
     {
       "name": "mammutongolem",
-      "label": "Mammutongolem"
+      "label": "Mammutongolem",
+      "cost": 2
     },
     {
       "name": "mamra",
-      "label": "Mamra"
+      "label": "Mamra",
+      "cost": 3
     },
     {
       "name": "mantelderheiligenmascha",
-      "label": "Mantel der Heiligen Mascha"
+      "label": "Mantel der Heiligen Mascha",
+      "cost": 10
     },
     {
       "name": "mantikor",
-      "label": "Mantikor"
+      "label": "Mantikor",
+      "cost": 3
     },
     {
       "name": "mantikorgiftgewinnung",
-      "label": "Mantikorgift (Gewinnung)"
+      "label": "Mantikorgift (Gewinnung)",
+      "cost": 4
     },
     {
       "name": "marbodolch",
-      "label": "Marbodolch"
+      "label": "Marbodolch",
+      "cost": 2
     },
     {
       "name": "marbosblut",
-      "label": "Marbos Blut"
+      "label": "Marbos Blut",
+      "cost": 5
     },
     {
       "name": "marbosgabe",
-      "label": "Marbos Gabe"
+      "label": "Marbos Gabe",
+      "cost": 1
     },
     {
       "name": "markadir",
-      "label": "Markadir"
+      "label": "Markadir",
+      "cost": 2
     },
     {
       "name": "mauerbrechersappeursaxt",
-      "label": "Mauerbrecher-Sappeursaxt"
+      "label": "Mauerbrecher-Sappeursaxt",
+      "cost": 1
     },
     {
       "name": "mechanischwachsenderbaum",
-      "label": "Mechanisch wachsender Baum"
+      "label": "Mechanisch wachsender Baum",
+      "cost": 3
     },
     {
       "name": "mechanischeprunkuhren",
-      "label": "Mechanische Prunk-Uhren"
+      "label": "Mechanische Prunk-Uhren",
+      "cost": 3
     },
     {
       "name": "mechanischeschreiberin",
-      "label": "Mechanische Schreiberin"
+      "label": "Mechanische Schreiberin",
+      "cost": 3
     },
     {
       "name": "mechanischerelefant",
-      "label": "Mechanischer Elefant"
+      "label": "Mechanischer Elefant",
+      "cost": 6
     },
     {
       "name": "mechanischerhahn",
-      "label": "Mechanischer Hahn"
+      "label": "Mechanischer Hahn",
+      "cost": 3
     },
     {
       "name": "mechanischermaler",
-      "label": "Mechanischer Maler"
+      "label": "Mechanischer Maler",
+      "cost": 1
     },
     {
       "name": "mechanischesalchimistenbesteck",
-      "label": "Mechanisches Alchimistenbesteck"
+      "label": "Mechanisches Alchimistenbesteck",
+      "cost": 2
     },
     {
       "name": "mechanischesastrolabium",
-      "label": "Mechanisches Astrolabium"
+      "label": "Mechanisches Astrolabium",
+      "cost": 2
     },
     {
       "name": "mechanischesorchester",
-      "label": "Mechanisches Orchester"
+      "label": "Mechanisches Orchester",
+      "cost": 4
     },
     {
       "name": "mechanischespuppentheater",
-      "label": "Mechanisches Puppentheater"
+      "label": "Mechanisches Puppentheater",
+      "cost": 2
     },
     {
       "name": "meisterderbrabacudakueche",
-      "label": "Meister der Brabacudaküche"
+      "label": "Meister der Brabacudaküche",
+      "cost": 1
     },
     {
       "name": "menacoriten",
-      "label": "Menacoriten"
+      "label": "Menacoriten",
+      "cost": 1
     },
     {
       "name": "mengbilar",
-      "label": "Mengbilar"
+      "label": "Mengbilar",
+      "cost": 2
     },
     {
       "name": "mengbillerbannbaloel",
-      "label": "Mengbiller Bannbalöl"
+      "label": "Mengbiller Bannbalöl",
+      "cost": 3
     },
     {
       "name": "merachextrakt",
-      "label": "Merach-Extrakt"
+      "label": "Merach-Extrakt",
+      "cost": 3
     },
     {
       "name": "metallgolem",
-      "label": "Metallgolem"
+      "label": "Metallgolem",
+      "cost": 2
     },
     {
       "name": "meteoreisenverarbeiten",
-      "label": "Meteoreisen verarbeiten"
+      "label": "Meteoreisen verarbeiten",
+      "cost": 3
     },
     {
       "name": "mherwederringelpanzer",
-      "label": "Mherweder Ringelpanzer"
+      "label": "Mherweder Ringelpanzer",
+      "cost": 2
     },
     {
       "name": "mindoriumverarbeiten",
-      "label": "Mindorium verarbeiten"
+      "label": "Mindorium verarbeiten",
+      "cost": 3
     },
     {
       "name": "mondsilberschluessel",
-      "label": "Mondsilberschlüssel"
+      "label": "Mondsilberschlüssel",
+      "cost": 10
     },
     {
       "name": "mordpilzbefall",
-      "label": "Mordpilzbefall"
+      "label": "Mordpilzbefall",
+      "cost": 1
     },
     {
       "name": "morfugiftgewinnung",
-      "label": "Morfugift (Gewinnung)"
+      "label": "Morfugift (Gewinnung)",
+      "cost": 3
     },
     {
       "name": "mumiedermahabor",
-      "label": "Mumie der Maha Bor"
+      "label": "Mumie der Maha Bor",
+      "cost": 7
     },
     {
       "name": "muroloscherzwergenschlaegel",
-      "label": "Muroloscher Zwergenschlägel"
+      "label": "Muroloscher Zwergenschlägel",
+      "cost": 4
     },
     {
       "name": "mutelixier",
-      "label": "Mutelixier"
+      "label": "Mutelixier",
+      "cost": 4
     },
     {
       "name": "myranorgeographie",
-      "label": "Myranor-Geographie"
+      "label": "Myranor-Geographie",
+      "cost": 5
     },
     {
       "name": "myrkkyaakaika",
-      "label": "Myrkkyaa-Kaika"
+      "label": "Myrkkyaa-Kaika",
+      "cost": 4
     },
     {
       "name": "nachtwind",
-      "label": "Nachtwind"
+      "label": "Nachtwind",
+      "cost": 2
     },
     {
       "name": "nasenfloete",
-      "label": "Nasenflöte"
+      "label": "Nasenflöte",
+      "cost": 1
     },
     {
       "name": "nebelfarbe",
-      "label": "Nebelfarbe"
+      "label": "Nebelfarbe",
+      "cost": 3
     },
     {
       "name": "neckergel",
-      "label": "Neckergel"
+      "label": "Neckergel",
+      "cost": 2
     },
     {
       "name": "neethanerreiterharnisch",
-      "label": "Neethaner Reiterharnisch"
+      "label": "Neethaner Reiterharnisch",
+      "cost": 4
     },
     {
       "name": "nivesenbogen",
-      "label": "Nivesenbogen"
+      "label": "Nivesenbogen",
+      "cost": 4
     },
     {
       "name": "nordmaerkerritterruestung",
-      "label": "Nordmärker Ritterrüstung"
+      "label": "Nordmärker Ritterrüstung",
+      "cost": 3
     },
     {
       "name": "nostrischerlangbogen",
-      "label": "Nostrischer Langbogen"
+      "label": "Nostrischer Langbogen",
+      "cost": 3
     },
     {
       "name": "nostrischernussknacker",
-      "label": "Nostrischer Nussknacker"
+      "label": "Nostrischer Nussknacker",
+      "cost": 1
     },
     {
       "name": "nrydrshk",
-      "label": "Nrydrshk"
+      "label": "Nry’drshk",
+      "cost": 2
     },
     {
       "name": "ogerwurm",
-      "label": "Ogerwurm"
+      "label": "Ogerwurm",
+      "cost": 5
     },
     {
       "name": "omrais",
-      "label": "Omrais"
+      "label": "Omrais",
+      "cost": 4
     },
     {
       "name": "opferdolch",
-      "label": "Opferdolch"
+      "label": "Opferdolch",
+      "cost": 2
     },
     {
       "name": "opferdolchdesnamenlosen",
-      "label": "Opferdolch des Namenlosen"
+      "label": "Opferdolch des Namenlosen",
+      "cost": 2
     },
     {
       "name": "orgasmuskuechlein",
-      "label": "Orgasmusküchlein"
+      "label": "Orgasmusküchlein",
+      "cost": 3
     },
     {
       "name": "orkischerkalender",
-      "label": "Orkischer Kalender"
+      "label": "Orkischer Kalender",
+      "cost": 1
     },
     {
       "name": "oronischerrahjafrevler",
-      "label": "Oronischer Rahjafrevler"
+      "label": "Oronischer Rahjafrevler",
+      "cost": 3
     },
     {
       "name": "otta",
-      "label": "Otta"
+      "label": "Otta",
+      "cost": 2
     },
     {
       "name": "pailos",
-      "label": "Pailos"
+      "label": "Pailos",
+      "cost": 4
     },
     {
       "name": "palmyrerreitersaebel",
-      "label": "Palmyrer Reitersäbel"
+      "label": "Palmyrer Reitersäbel",
+      "cost": 1
     },
     {
       "name": "pamjara",
-      "label": "Pamjara"
+      "label": "Pamjara",
+      "cost": 3
     },
     {
       "name": "pantherruestung",
-      "label": "Pantherrüstung"
+      "label": "Pantherrüstung",
+      "cost": 5
     },
     {
       "name": "panzerarm",
-      "label": "Panzerarm"
+      "label": "Panzerarm",
+      "cost": 2
     },
     {
       "name": "panzerbrecherpfeileundbolzen",
-      "label": "Panzerbrecher-Pfeile und -Bolzen"
+      "label": "Panzerbrecher-Pfeile und -Bolzen",
+      "cost": 5
     },
     {
       "name": "panzerschreiter",
-      "label": "Panzerschreiter"
+      "label": "Panzerschreiter",
+      "cost": 4
     },
     {
       "name": "paralyse",
-      "label": "Paralyse"
+      "label": "Paralyse",
+      "cost": 3
     },
     {
       "name": "partisane",
-      "label": "Partisane"
+      "label": "Partisane",
+      "cost": 1
     },
     {
       "name": "partisanederbuergerlichen",
-      "label": "Partisane der Bürgerlichen"
+      "label": "Partisane der Bürgerlichen",
+      "cost": 1
     },
     {
       "name": "pastillengegenbetaeubung",
-      "label": "Pastillen gegen Betäubung"
+      "label": "Pastillen gegen Betäubung",
+      "cost": 4
     },
     {
       "name": "pastillengegenschmerzen",
-      "label": "Pastillen gegen Schmerzen"
+      "label": "Pastillen gegen Schmerzen",
+      "cost": 4
     },
     {
       "name": "peilscheibe",
-      "label": "Peilscheibe"
+      "label": "Peilscheibe",
+      "cost": 1
     },
     {
       "name": "peingeplagter",
-      "label": "Peingeplagter"
+      "label": "Peingeplagter",
+      "cost": 5
     },
     {
       "name": "peitschenderwaechter",
-      "label": "Peitschender Wächter"
+      "label": "Peitschender Wächter",
+      "cost": 8
     },
     {
       "name": "pelura",
-      "label": "Pelura"
+      "label": "Pelura",
+      "cost": 2
     },
     {
       "name": "pentagramm",
-      "label": "Pentagramm"
+      "label": "Pentagramm",
+      "cost": 1
     },
     {
       "name": "peraineskleinegnade",
-      "label": "Peraines kleine Gnade"
+      "label": "Peraines kleine Gnade",
+      "cost": 2
     },
     {
       "name": "pfaehler",
-      "label": "Pfähler"
+      "label": "Pfähler",
+      "cost": 6
     },
     {
       "name": "pfeilschussfalle",
-      "label": "Pfeilschussfalle"
+      "label": "Pfeilschussfalle",
+      "cost": 2
     },
     {
       "name": "pferdautomat",
-      "label": "Pferd-Automat"
+      "label": "Pferd-Automat",
+      "cost": 4
     },
     {
       "name": "phexensschattenraum",
-      "label": "Phexens Schattenraum"
+      "label": "Phexens Schattenraum",
+      "cost": 15
     },
     {
       "name": "phiole",
-      "label": "Phiole"
+      "label": "Phiole",
+      "cost": 2
     },
     {
       "name": "phylakteriker",
-      "label": "Phylakteriker"
+      "label": "Phylakteriker",
+      "cost": 10
     },
     {
       "name": "pike",
-      "label": "Pike"
+      "label": "Pike",
+      "cost": 2
     },
     {
       "name": "porzellan",
-      "label": "Porzellan"
+      "label": "Porzellan",
+      "cost": 1
     },
     {
       "name": "premerschuppenpanzer",
-      "label": "Premer Schuppenpanzer"
+      "label": "Premer Schuppenpanzer",
+      "cost": 3
     },
     {
       "name": "premstierleben",
-      "label": "Prems Tierleben"
+      "label": "Prems Tierleben",
+      "cost": 2
     },
     {
       "name": "priestermumie",
-      "label": "Priestermumie"
+      "label": "Priestermumie",
+      "cost": 7
     },
     {
       "name": "prunkpartisane",
-      "label": "Prunk-Partisane"
+      "label": "Prunk-Partisane",
+      "cost": 1
     },
     {
       "name": "puderderewigkeit",
-      "label": "Puder der Ewigkeit"
+      "label": "Puder der Ewigkeit",
+      "cost": 8
     },
     {
       "name": "pulverdesklarengeistes",
-      "label": "Pulver des Klaren Geistes"
+      "label": "Pulver des Klaren Geistes",
+      "cost": 2
     },
     {
       "name": "purpurblitz",
-      "label": "Purpurblitz"
+      "label": "Purpurblitz",
+      "cost": 5
     },
     {
       "name": "purpurtinte",
-      "label": "Purpurtinte"
+      "label": "Purpurtinte",
+      "cost": 1
     },
     {
       "name": "quadrant",
-      "label": "Quadrant"
+      "label": "Quadrant",
+      "cost": 3
     },
     {
       "name": "quasselpulver",
-      "label": "Quasselpulver"
+      "label": "Quasselpulver",
+      "cost": 2
     },
     {
       "name": "quecksilbergolem",
-      "label": "Quecksilber -Golem"
+      "label": "Quecksilber -Golem",
+      "cost": 5
     },
     {
       "name": "quecksilberverarbeiten",
-      "label": "Quecksilber verarbeiten"
+      "label": "Quecksilber verarbeiten",
+      "cost": 2
     },
     {
       "name": "quetschfalle",
-      "label": "Quetschfalle"
+      "label": "Quetschfalle",
+      "cost": 5
     },
     {
       "name": "rachenputzer",
-      "label": "Rachenputzer"
+      "label": "Rachenputzer",
+      "cost": 8
     },
     {
       "name": "racheschreiter",
-      "label": "Racheschreiter"
+      "label": "Racheschreiter",
+      "cost": 6
     },
     {
       "name": "radschalmuqua",
-      "label": "Radschalmuqua"
+      "label": "Radschalmuqua",
+      "cost": 3
     },
     {
       "name": "rebellennachtwind",
-      "label": "Rebellen-Nachtwind"
+      "label": "Rebellen-Nachtwind",
+      "cost": 2
     },
     {
       "name": "regenbogenstaub",
-      "label": "Regenbogenstaub"
+      "label": "Regenbogenstaub",
+      "cost": 4
     },
     {
       "name": "reisserkrw",
-      "label": "Reißer (KRW)"
+      "label": "Reißer (KRW)",
+      "cost": 2
     },
     {
       "name": "reiterharnisch",
-      "label": "Reiterharnisch"
+      "label": "Reiterharnisch",
+      "cost": 4
     },
     {
       "name": "reitersaebel",
-      "label": "Reitersäbel"
+      "label": "Reitersäbel",
+      "cost": 2
     },
     {
       "name": "respondarum",
-      "label": "Respondarum"
+      "label": "Respondarum",
+      "cost": 4
     },
     {
       "name": "retroelixier",
-      "label": "Retro-Elixier"
+      "label": "Retro-Elixier",
+      "cost": 5
     },
     {
       "name": "riesenaffenkrakenmolch",
-      "label": "Riesenaffenkrakenmolch"
+      "label": "Riesenaffenkrakenmolch",
+      "cost": 10
     },
     {
       "name": "rieseneichhoernchenanlocken",
-      "label": "Rieseneichhörnchen anlocken"
+      "label": "Rieseneichhörnchen anlocken",
+      "cost": 2
     },
     {
       "name": "riesengolemid",
-      "label": "Riesengolemid"
+      "label": "Riesengolemid",
+      "cost": 10
     },
     {
       "name": "riesenmumie",
-      "label": "Riesenmumie"
+      "label": "Riesenmumie",
+      "cost": 8
     },
     {
       "name": "riesenoktopode",
-      "label": "Riesenoktopode"
+      "label": "Riesenoktopode",
+      "cost": 7
     },
     {
       "name": "rimkur",
-      "label": "Rimkur"
+      "label": "Rimkur",
+      "cost": 1
     },
     {
       "name": "ringdesfirun",
-      "label": "Ring des Firun"
+      "label": "Ring des Firun",
+      "cost": 10
     },
     {
       "name": "ringelpanzer",
-      "label": "Ringelpanzer"
+      "label": "Ringelpanzer",
+      "cost": 2
     },
     {
       "name": "robbentoeter",
-      "label": "Robbentöter"
+      "label": "Robbentöter",
+      "cost": 3
     },
     {
       "name": "rondrakamm",
-      "label": "Rondrakamm"
+      "label": "Rondrakamm",
+      "cost": 4
     },
     {
       "name": "rosentaetowierung",
-      "label": "Rosentätowierung"
+      "label": "Rosentätowierung",
+      "cost": 2
     },
     {
       "name": "roteundweissekamele",
-      "label": "Rote und Weiße Kamele"
+      "label": "Rote und Weiße Kamele",
+      "cost": 2
     },
     {
       "name": "roterschleier",
-      "label": "Roter Schleier"
+      "label": "Roter Schleier",
+      "cost": 1
     },
     {
       "name": "ruderblattderjurga",
-      "label": "Ruderblatt der Jurga"
+      "label": "Ruderblatt der Jurga",
+      "cost": 10
     },
     {
       "name": "rukuubuur",
-      "label": "Rukuubuur"
+      "label": "Rukuubuur",
+      "cost": 2
     },
     {
       "name": "rutschfalle",
-      "label": "Rutschfalle"
+      "label": "Rutschfalle",
+      "cost": 2
     },
     {
       "name": "saatdeslebens",
-      "label": "Saat des Lebens"
+      "label": "Saat des Lebens",
+      "cost": 5
     },
     {
       "name": "sackuhr",
-      "label": "Sackuhr"
+      "label": "Sackuhr",
+      "cost": 3
     },
     {
       "name": "salamandrischerhomunculus",
-      "label": "Salamandrischer Homunculus"
+      "label": "Salamandrischer Homunculus",
+      "cost": 20
     },
     {
       "name": "salamandrischerhomunculuszusatz",
-      "label": "Salamandrischer Homunculus (Zusatz)"
+      "label": "Salamandrischer Homunculus (Zusatz)",
+      "cost": 5
     },
     {
       "name": "samowar",
-      "label": "Samowar"
+      "label": "Samowar",
+      "cost": 2
     },
     {
       "name": "sandschreckenkoenigin",
-      "label": "Sandschrecken-Königin"
+      "label": "Sandschrecken-Königin",
+      "cost": 3
     },
     {
       "name": "sarissaderseekrieger",
-      "label": "Sarissa der Seekrieger"
+      "label": "Sarissa der Seekrieger",
+      "cost": 1
     },
     {
       "name": "sattelmittaschen",
-      "label": "Sattel mit Taschen"
+      "label": "Sattel mit Taschen",
+      "cost": 2
     },
     {
       "name": "schaedelbohrer",
-      "label": "Schädelbohrer"
+      "label": "Schädelbohrer",
+      "cost": 1
     },
     {
       "name": "schaedelspinne",
-      "label": "Schädelspinne"
+      "label": "Schädelspinne",
+      "cost": 1
     },
     {
       "name": "schardeich",
-      "label": "Schardeich"
+      "label": "Schardeich",
+      "cost": 2
     },
     {
       "name": "scharfsinnelixier",
-      "label": "Scharfsinnelixier"
+      "label": "Scharfsinnelixier",
+      "cost": 1
     },
     {
       "name": "scharlachdorn",
-      "label": "Scharlachdorn"
+      "label": "Scharlachdorn",
+      "cost": 2
     },
     {
       "name": "schaube",
-      "label": "Schaube"
+      "label": "Schaube",
+      "cost": 1
     },
     {
       "name": "schaumkuss",
-      "label": "Schaumkuss"
+      "label": "Schaumkuss",
+      "cost": 2
     },
     {
       "name": "scherenwaechter",
-      "label": "Scherenwächter"
+      "label": "Scherenwächter",
+      "cost": 6
     },
     {
       "name": "schicksalsweiser",
-      "label": "Schicksalsweiser"
+      "label": "Schicksalsweiser",
+      "cost": 20
     },
     {
       "name": "schlachtvonjergan",
-      "label": "Schlacht von Jergan"
+      "label": "Schlacht von Jergan",
+      "cost": 1
     },
     {
       "name": "schlafgift",
-      "label": "Schlafgift"
+      "label": "Schlafgift",
+      "cost": 3
     },
     {
       "name": "schlaftrunk",
-      "label": "Schlaftrunk"
+      "label": "Schlaftrunk",
+      "cost": 2
     },
     {
       "name": "schlaftrunkaal",
-      "label": "Schlaftrunk (AAL)"
+      "label": "Schlaftrunk (AAL)",
+      "cost": 4
     },
     {
       "name": "schlangenbiss",
-      "label": "Schlangenbiss"
+      "label": "Schlangenbiss",
+      "cost": 4
     },
     {
       "name": "schlangenstabdeserzheiligenargelion",
-      "label": "Schlangenstab des Erzheiligen Argelion"
+      "label": "Schlangenstab des Erzheiligen Argelion",
+      "cost": 20
     },
     {
       "name": "schleierdergleichmut",
-      "label": "Schleier der Gleichmut"
+      "label": "Schleier der Gleichmut",
+      "cost": 10
     },
     {
       "name": "schmerzwein",
-      "label": "Schmerzwein"
+      "label": "Schmerzwein",
+      "cost": 2
     },
     {
       "name": "schmugglerroutenebelpfadkennen",
-      "label": "Schmugglerroute Nebelpfad kennen"
+      "label": "Schmugglerroute Nebelpfad kennen",
+      "cost": 1
     },
     {
       "name": "schmugglerroutesilberpfadkennen",
-      "label": "Schmugglerroute Silberpfad kennen"
+      "label": "Schmugglerroute Silberpfad kennen",
+      "cost": 1
     },
     {
       "name": "schokolade",
-      "label": "Schokolade"
+      "label": "Schokolade",
+      "cost": 2
     },
     {
       "name": "schreckensrabe",
-      "label": "Schreckensrabe"
+      "label": "Schreckensrabe",
+      "cost": 2
     },
     {
       "name": "schuppengewand",
-      "label": "Schuppengewand"
+      "label": "Schuppengewand",
+      "cost": 2
     },
     {
       "name": "schuppenpanzer",
-      "label": "Schuppenpanzer"
+      "label": "Schuppenpanzer",
+      "cost": 3
     },
     {
       "name": "schwadenbeutel",
-      "label": "Schwadenbeutel"
+      "label": "Schwadenbeutel",
+      "cost": 3
     },
     {
       "name": "schwarzewut",
-      "label": "Schwarze Wut"
+      "label": "Schwarze Wut",
+      "cost": 3
     },
     {
       "name": "schwarzerhetzer",
-      "label": "Schwarzer Hetzer"
+      "label": "Schwarzer Hetzer",
+      "cost": 6
     },
     {
       "name": "schwarzerspeer",
-      "label": "Schwarzer Speer"
+      "label": "Schwarzer Speer",
+      "cost": 20
     },
     {
       "name": "schwerearmbrust",
-      "label": "Schwere Armbrust"
+      "label": "Schwere Armbrust",
+      "cost": 4
     },
     {
       "name": "schwereplatte",
-      "label": "Schwere Platte"
+      "label": "Schwere Platte",
+      "cost": 4
     },
     {
       "name": "schwereshakagraplattenruestung",
-      "label": "Schwere Shakagra-Plattenrüstung"
-    },
-    {
-      "name": "seekriegersarissa",
-      "label": "Seekrieger-Sarissa"
+      "label": "Schwere Shakagra-Plattenrüstung",
+      "cost": 6
     },
     {
       "name": "seekriegerruestung",
-      "label": "Seekriegerrüstung"
+      "label": "Seekriegerrüstung",
+      "cost": 3
+    },
+    {
+      "name": "seekriegersarissa",
+      "label": "Seekrieger-Sarissa",
+      "cost": 1
     },
     {
       "name": "seelenrabe",
-      "label": "Seelenrabe"
+      "label": "Seelenrabe",
+      "cost": 4
     },
     {
       "name": "sehnenschneiderpfeileundbolzen",
-      "label": "Sehnenschneider-Pfeile und -Bolzen"
+      "label": "Sehnenschneider-Pfeile und -Bolzen",
+      "cost": 3
     },
     {
       "name": "seidenmalerei",
-      "label": "Seidenmalerei"
+      "label": "Seidenmalerei",
+      "cost": 1
     },
     {
       "name": "seidenstruempfe",
-      "label": "Seidenstrümpfe"
+      "label": "Seidenstrümpfe",
+      "cost": 1
     },
     {
       "name": "seidentuch",
-      "label": "Seidentuch"
+      "label": "Seidentuch",
+      "cost": 1
     },
     {
       "name": "seife",
-      "label": "Seife"
+      "label": "Seife",
+      "cost": 1
     },
     {
       "name": "seifeparfuemiert",
-      "label": "Seife, parfümiert"
+      "label": "Seife, parfümiert",
+      "cost": 2
     },
     {
       "name": "seifenblasenpackesel",
-      "label": "Seifenblasen-Packesel"
+      "label": "Seifenblasen-Packesel",
+      "cost": 3
     },
     {
       "name": "selemerspiegelpanzer",
-      "label": "Selemer Spiegelpanzer"
+      "label": "Selemer Spiegelpanzer",
+      "cost": 2
     },
     {
       "name": "senaloschersehnenschneider",
-      "label": "Senaloscher Sehnenschneider"
+      "label": "Senaloscher Sehnenschneider",
+      "cost": 1
     },
     {
       "name": "sewerischerfluegelharnisch",
-      "label": "Sewerischer Flügelharnisch"
+      "label": "Sewerischer Flügelharnisch",
+      "cost": 4
     },
     {
       "name": "shakagrabuckler",
-      "label": "Shakagra-Buckler"
+      "label": "Shakagra-Buckler",
+      "cost": 2
     },
     {
       "name": "shakagraenduriumverarbeiten",
-      "label": "Shakagra-Endurium verarbeiten"
+      "label": "Shakagra-Endurium verarbeiten",
+      "cost": 5
     },
     {
       "name": "shakagragiftdolch",
-      "label": "Shakagra-Giftdolch"
+      "label": "Shakagra-Giftdolch",
+      "cost": 2
     },
     {
       "name": "shakagrakrummsaebel",
-      "label": "Shakagra-Krummsäbel"
+      "label": "Shakagra-Krummsäbel",
+      "cost": 2
     },
     {
       "name": "shakagralangschild",
-      "label": "Shakagra-Langschild"
+      "label": "Shakagra-Langschild",
+      "cost": 2
     },
     {
       "name": "shakagraschwert",
-      "label": "Shakagra-Schwert"
+      "label": "Shakagra-Schwert",
+      "cost": 4
     },
     {
       "name": "shakri",
-      "label": "Shakri"
+      "label": "Shakri",
+      "cost": 4
     },
     {
       "name": "shakritar",
-      "label": "Shakritar"
+      "label": "Shakri’tar",
+      "cost": 6
     },
     {
       "name": "shelhezan",
-      "label": "Shelhezan"
+      "label": "Shelhezan",
+      "cost": 1
     },
     {
       "name": "shidaresh",
-      "label": "Shidaresh"
+      "label": "Shidaresh",
+      "cost": 3
     },
     {
       "name": "shintroid",
-      "label": "Shintroid"
+      "label": "Shintroid",
+      "cost": 3
     },
     {
       "name": "shinxir",
-      "label": "Shinxir"
+      "label": "Shinxir",
+      "cost": 1
     },
     {
       "name": "shisha",
-      "label": "Shisha"
+      "label": "Shisha",
+      "cost": 1
     },
     {
       "name": "silaserschluesseltext",
-      "label": "Silaser Schlüsseltext"
+      "label": "Silaser Schlüsseltext",
+      "cost": 1
     },
     {
       "name": "singendeklingenacht",
-      "label": "Singende Klinge Nacht"
+      "label": "Singende Klinge „Nacht“",
+      "cost": 2
     },
     {
       "name": "singendeklingetag",
-      "label": "Singende Klinge Tag"
+      "label": "Singende Klinge „Tag“",
+      "cost": 2
     },
     {
       "name": "sippenchronik",
-      "label": "Sippenchronik"
+      "label": "Sippenchronik",
+      "cost": 2
     },
     {
       "name": "skeidh",
-      "label": "Skeidh"
+      "label": "Skeidh",
+      "cost": 2
     },
     {
       "name": "skorpionruestung",
-      "label": "Skorpionrüstung"
+      "label": "Skorpionrüstung",
+      "cost": 3
     },
     {
       "name": "skorpionschrecke",
-      "label": "Skorpionschrecke"
+      "label": "Skorpionschrecke",
+      "cost": 4
     },
     {
       "name": "skraja",
-      "label": "Skraja"
+      "label": "Skraja",
+      "cost": 1
     },
     {
       "name": "skrechumumie",
-      "label": "Skrechumumie"
+      "label": "Skrechumumie",
+      "cost": 9
     },
     {
-      "name": "skta",
-      "label": "Skúta"
+      "name": "skuta",
+      "label": "Skúta",
+      "cost": 1
     },
     {
       "name": "snekkar",
-      "label": "Snekkar"
+      "label": "Snekkar",
+      "cost": 2
     },
     {
       "name": "sonnenamulettgold",
-      "label": "Sonnenamulett (Gold)"
+      "label": "Sonnenamulett (Gold)",
+      "cost": 2
     },
     {
       "name": "sonnenlichtelixier",
-      "label": "Sonnenlicht-Elixier"
+      "label": "Sonnenlicht-Elixier",
+      "cost": 5
     },
     {
       "name": "sonnenschild",
-      "label": "Sonnenschild"
+      "label": "Sonnenschild",
+      "cost": 1
     },
     {
       "name": "sonnenstein",
-      "label": "Sonnenstein"
+      "label": "Sonnenstein",
+      "cost": 1
     },
     {
       "name": "sonnenzepter",
-      "label": "Sonnenzepter"
+      "label": "Sonnenzepter",
+      "cost": 2
     },
     {
       "name": "spaeher",
-      "label": "Späher"
+      "label": "Späher",
+      "cost": 1
     },
     {
       "name": "spiegelpanzer",
-      "label": "Spiegelpanzer"
+      "label": "Spiegelpanzer",
+      "cost": 3
     },
     {
       "name": "spieluhr",
-      "label": "Spieluhr"
+      "label": "Spieluhr",
+      "cost": 3
     },
     {
       "name": "spieluhrautomaten",
-      "label": "Spieluhr (Automaten)"
+      "label": "Spieluhr (Automaten)",
+      "cost": 2
     },
     {
       "name": "spinett",
-      "label": "Spinett"
+      "label": "Spinett",
+      "cost": 2
     },
     {
       "name": "spinnenwaechter",
-      "label": "Spinnenwächter"
+      "label": "Spinnenwächter",
+      "cost": 5
     },
     {
       "name": "spinnrad",
-      "label": "Spinnrad"
+      "label": "Spinnrad",
+      "cost": 2
     },
     {
       "name": "springarm",
-      "label": "Springarm"
+      "label": "Springarm",
+      "cost": 2
     },
     {
       "name": "stabileszazamotoxin",
-      "label": "Stabiles Zazamotoxin"
+      "label": "Stabiles Zazamotoxin",
+      "cost": 8
     },
     {
       "name": "standhaftigkeitstrunk",
-      "label": "Standhaftigkeitstrunk"
+      "label": "Standhaftigkeitstrunk",
+      "cost": 3
     },
     {
       "name": "standharfe",
-      "label": "Standharfe"
+      "label": "Standharfe",
+      "cost": 2
     },
     {
       "name": "standortdesgeheimenhavenerphextempel",
-      "label": "Standort des geheimen Havener Phextempel"
+      "label": "Standort des geheimen Havener Phextempel",
+      "cost": 1
     },
     {
       "name": "steindesingerimm",
-      "label": "Stein des Ingerimm"
+      "label": "Stein des Ingerimm",
+      "cost": 15
     },
     {
       "name": "steinfalle",
-      "label": "Steinfalle"
+      "label": "Steinfalle",
+      "cost": 4
     },
     {
       "name": "stinktoepfchen",
-      "label": "Stinktöpfchen"
+      "label": "Stinktöpfchen",
+      "cost": 3
     },
     {
       "name": "stockdegen",
-      "label": "Stockdegen"
+      "label": "Stockdegen",
+      "cost": 2
     },
     {
       "name": "stuhlderentspannung",
-      "label": "Stuhl der Entspannung"
+      "label": "Stuhl der Entspannung",
+      "cost": 3
     },
     {
       "name": "suedweiser",
-      "label": "Südweiser"
+      "label": "Südweiser",
+      "cost": 2
     },
     {
       "name": "suedweisermetallgehaeuse",
-      "label": "Südweiser, Metallgehäuse"
+      "label": "Südweiser, Metallgehäuse",
+      "cost": 2
     },
     {
       "name": "sumpffieber",
-      "label": "Sumpffieber"
+      "label": "Sumpffieber",
+      "cost": 2
     },
     {
       "name": "sunsura",
-      "label": "Sunsura"
+      "label": "Sunsura",
+      "cost": 2
     },
     {
       "name": "synaerethikon",
-      "label": "Synärethikon"
+      "label": "Synärethikon",
+      "cost": 14
     },
     {
       "name": "tafelderheiligencanyzeth",
-      "label": "Tafel der Heiligen Canyzeth"
+      "label": "Tafel der Heiligen Canyzeth",
+      "cost": 15
     },
     {
       "name": "tagebuch",
-      "label": "Tagebuch"
+      "label": "Tagebuch",
+      "cost": 2
     },
     {
       "name": "taggebannter",
-      "label": "Taggebannter"
+      "label": "Taggebannter",
+      "cost": 10
     },
     {
       "name": "tarnelixier",
-      "label": "Tarnelixier"
+      "label": "Tarnelixier",
+      "cost": 6
     },
     {
       "name": "tarnfarbe",
-      "label": "Tarnfarbe"
+      "label": "Tarnfarbe",
+      "cost": 3
     },
     {
       "name": "taschenuhr",
-      "label": "Taschenuhr"
+      "label": "Taschenuhr",
+      "cost": 3
     },
     {
       "name": "taetowierung",
-      "label": "Tätowierung"
+      "label": "Tätowierung",
+      "cost": 1
     },
     {
       "name": "techtalselixier",
-      "label": "Techtals Elixier"
+      "label": "Techtals Elixier",
+      "cost": 8
     },
     {
       "name": "teppich",
-      "label": "Teppich"
+      "label": "Teppich",
+      "cost": 1
     },
     {
       "name": "tharsil",
-      "label": "Tharsil"
+      "label": "Tharsil",
+      "cost": 1
     },
     {
       "name": "tharvunparfuem",
-      "label": "Tharvun-Parfüm"
+      "label": "Tharvun-Parfüm",
+      "cost": 2
     },
     {
       "name": "thuranischerbuchenbengel",
-      "label": "Thuranischer Buchenbengel"
+      "label": "Thuranischer Buchenbengel",
+      "cost": 1
     },
     {
       "name": "thuranstolzlangbogen",
-      "label": "Thuranstolz-Langbogen"
+      "label": "Thuranstolz-Langbogen",
+      "cost": 3
     },
     {
       "name": "tijakoolshauch",
-      "label": "Tijakools Hauch"
+      "label": "Tijakools Hauch",
+      "cost": 3
     },
     {
       "name": "titaniumverarbeiten",
-      "label": "Titanium verarbeiten"
+      "label": "Titanium verarbeiten",
+      "cost": 6
     },
     {
       "name": "tollwut",
-      "label": "Tollwut"
+      "label": "Tollwut",
+      "cost": 3
     },
     {
       "name": "tonkemla",
-      "label": "TonKemla"
+      "label": "Ton’Kemla",
+      "cost": 4
     },
     {
       "name": "torfgabel",
-      "label": "Torfgabel"
+      "label": "Torfgabel",
+      "cost": 1
     },
     {
       "name": "torfkahn",
-      "label": "Torfkahn"
+      "label": "Torfkahn",
+      "cost": 1
     },
     {
       "name": "trachtdergesichtslosen",
-      "label": "Tracht der Gesichtslosen"
+      "label": "Tracht der Gesichtslosen",
+      "cost": 4
     },
     {
       "name": "trankdergottesnaehe",
-      "label": "Trank der Gottesnähe"
+      "label": "Trank der Gottesnähe",
+      "cost": 2
     },
     {
       "name": "trankdertausendaugen",
-      "label": "Trank der tausend Augen"
+      "label": "Trank der tausend Augen",
+      "cost": 6
     },
     {
       "name": "traumsand",
-      "label": "Traumsand"
+      "label": "Traumsand",
+      "cost": 1
     },
     {
       "name": "traumwind",
-      "label": "Traumwind"
+      "label": "Traumwind",
+      "cost": 1
     },
     {
       "name": "trequonakugeln",
-      "label": "Trequonakugeln"
+      "label": "Trequonakugeln",
+      "cost": 2
     },
     {
       "name": "tresor",
-      "label": "Tresor"
+      "label": "Tresor",
+      "cost": 3
     },
     {
       "name": "trontsanderholzschiffchen",
-      "label": "Trontsander Holzschiffchen"
+      "label": "Trontsander Holzschiffchen",
+      "cost": 1
     },
     {
       "name": "trophaeengolem",
-      "label": "Trophäengolem"
+      "label": "Trophäengolem",
+      "cost": 2
     },
     {
       "name": "tulmadron",
-      "label": "Tulmadron"
+      "label": "Tulmadron",
+      "cost": 6
     },
     {
       "name": "tulmadronabbau",
-      "label": "Tulmadron-Abbau"
+      "label": "Tulmadron-Abbau",
+      "cost": 2
     },
     {
       "name": "turibulumvonpalakaralanfa",
-      "label": "Turibulum von Palakar (AlAnfa)"
+      "label": "Turibulum von Palakar (Al’Anfa)",
+      "cost": 10
     },
     {
       "name": "turibulumvonpalakarpunin",
-      "label": "Turibulum von Palakar (Punin)"
+      "label": "Turibulum von Palakar (Punin)",
+      "cost": 10
     },
     {
       "name": "turnierruestung",
-      "label": "Turnierrüstung"
+      "label": "Turnierrüstung",
+      "cost": 5
     },
     {
       "name": "tuzakmesser",
-      "label": "Tuzakmesser"
+      "label": "Tuzakmesser",
+      "cost": 4
     },
     {
       "name": "uddahjalerkriegsbeil",
-      "label": "Uddahjaler Kriegsbeil"
+      "label": "Uddahjaler Kriegsbeil",
+      "cost": 1
     },
     {
       "name": "uhrwerk",
-      "label": "Uhrwerk"
+      "label": "Uhrwerk",
+      "cost": 4
     },
     {
       "name": "umhangdertarnung",
-      "label": "Umhang der Tarnung"
+      "label": "Umhang der Tarnung",
+      "cost": 2
     },
     {
       "name": "unauerglasrohmaterial",
-      "label": "Unauer Glas (Rohmaterial)"
+      "label": "Unauer Glas (Rohmaterial)",
+      "cost": 1
     },
     {
       "name": "unauerkompositbogen",
-      "label": "Unauer Kompositbogen"
+      "label": "Unauer Kompositbogen",
+      "cost": 4
     },
     {
       "name": "unauerporzellan",
-      "label": "Unauer Porzellan"
+      "label": "Unauer Porzellan",
+      "cost": 4
     },
     {
       "name": "unauerporzellanfiguerchen",
-      "label": "Unauer Porzellanfigürchen"
+      "label": "Unauer Porzellanfigürchen",
+      "cost": 1
     },
     {
       "name": "unauerporzellangeschirr",
-      "label": "Unauer Porzellangeschirr"
+      "label": "Unauer Porzellangeschirr",
+      "cost": 1
     },
     {
       "name": "ungluecksrabe",
-      "label": "Unglücksrabe"
+      "label": "Unglücksrabe",
+      "cost": 10
     },
     {
       "name": "unsichtbarkeitselixier",
-      "label": "Unsichtbarkeitselixier"
+      "label": "Unsichtbarkeitselixier",
+      "cost": 4
     },
     {
       "name": "unverwundbarkeitselixier",
-      "label": "Unverwundbarkeitselixier"
+      "label": "Unverwundbarkeitselixier",
+      "cost": 8
     },
     {
       "name": "uthuriageographie",
-      "label": "Uthuria-Geographie"
+      "label": "Uthuria-Geographie",
+      "cost": 5
     },
     {
       "name": "vademecumfuerdaswaffenhandwerk",
-      "label": "Vademecum für das Waffenhandwerk"
+      "label": "Vademecum für das Waffenhandwerk",
+      "cost": 2
     },
     {
       "name": "vallusianischeverschluesselung",
-      "label": "Vallusianische Verschlüsselung"
+      "label": "Vallusianische Verschlüsselung",
+      "cost": 1
     },
     {
       "name": "valvarandir",
-      "label": "Valvarandir"
+      "label": "Valvarandir",
+      "cost": 5
     },
     {
       "name": "vampirsuppressorium",
-      "label": "Vampir-Suppressorium"
+      "label": "Vampir-Suppressorium",
+      "cost": 8
     },
     {
       "name": "verfluchterkapitaen",
-      "label": "Verfluchter Kapitän"
+      "label": "Verfluchter Kapitän",
+      "cost": 6
     },
     {
       "name": "verwandlungselixier",
-      "label": "Verwandlungselixier"
+      "label": "Verwandlungselixier",
+      "cost": 4
     },
     {
       "name": "veteranenhand",
-      "label": "Veteranenhand"
+      "label": "Veteranenhand",
+      "cost": 1
     },
     {
       "name": "vidsander",
-      "label": "Vidsander"
+      "label": "Vidsander",
+      "cost": 3
     },
     {
       "name": "vinsalterei",
-      "label": "Vinsalter Ei"
+      "label": "Vinsalter Ei",
+      "cost": 3
     },
     {
       "name": "vollmetallbuckler",
-      "label": "Vollmetallbuckler"
+      "label": "Vollmetallbuckler",
+      "cost": 2
     },
     {
       "name": "vorfahrendermittellaender",
-      "label": "Vorfahren der Mittelländer"
+      "label": "Vorfahren der Mittelländer",
+      "cost": 1
     },
     {
       "name": "wachsmumie",
-      "label": "Wachsmumie"
+      "label": "Wachsmumie",
+      "cost": 2
     },
     {
       "name": "wachtrunk",
-      "label": "Wachtrunk"
+      "label": "Wachtrunk",
+      "cost": 3
     },
     {
       "name": "waffenbalsam",
-      "label": "Waffenbalsam"
+      "label": "Waffenbalsam",
+      "cost": 4
     },
     {
       "name": "wahrheitsserum",
-      "label": "Wahrheitsserum"
+      "label": "Wahrheitsserum",
+      "cost": 4
     },
     {
       "name": "wahrheitstrank",
-      "label": "Wahrheitstrank"
+      "label": "Wahrheitstrank",
+      "cost": 4
     },
     {
       "name": "wahrscheinlichkeitsrechnung",
-      "label": "Wahrscheinlichkeitsrechnung"
+      "label": "Wahrscheinlichkeitsrechnung",
+      "cost": 2
     },
     {
       "name": "waldwachterarmbrust",
-      "label": "Waldwachter Armbrust"
+      "label": "Waldwachter Armbrust",
+      "cost": 4
     },
     {
       "name": "waldwachterfelsspalter",
-      "label": "Waldwachter Felsspalter"
+      "label": "Waldwachter Felsspalter",
+      "cost": 3
     },
     {
       "name": "walspiess",
-      "label": "Walspieß"
+      "label": "Walspieß",
+      "cost": 2
     },
     {
       "name": "warunkerhammer",
-      "label": "Warunker Hammer"
+      "label": "Warunker Hammer",
+      "cost": 2
     },
     {
       "name": "wasserkrugdesefferd",
-      "label": "Wasserkrug des Efferd"
+      "label": "Wasserkrug des Efferd",
+      "cost": 5
     },
     {
       "name": "wasserpfeifeausglas",
-      "label": "Wasserpfeife aus Glas"
+      "label": "Wasserpfeife aus Glas",
+      "cost": 1
     },
     {
       "name": "webstuhl",
-      "label": "Webstuhl"
+      "label": "Webstuhl",
+      "cost": 3
     },
     {
       "name": "wechselscheindernordlandbank",
-      "label": "Wechselschein der Nordlandbank"
+      "label": "Wechselschein der Nordlandbank",
+      "cost": 4
     },
     {
       "name": "wegdurchdiesargassosee",
-      "label": "Weg durch die Sargasso-See"
+      "label": "Weg durch die Sargasso-See",
+      "cost": 10
     },
     {
       "name": "weissagungspulver",
-      "label": "Weissagungspulver"
+      "label": "Weissagungspulver",
+      "cost": 2
     },
     {
       "name": "wiemankaempftreitetundbiertrinkt",
-      "label": "Wie man kämpft, reitet und Bier trinkt"
+      "label": "Wie man kämpft, reitet und Bier trinkt",
+      "cost": 2
     },
     {
       "name": "wiedergaenger",
-      "label": "Wiedergänger"
+      "label": "Wiedergänger",
+      "cost": 10
     },
     {
       "name": "willenstrunk",
-      "label": "Willenstrunk"
+      "label": "Willenstrunk",
+      "cost": 4
     },
     {
       "name": "winddrache",
-      "label": "Winddrache"
+      "label": "Winddrache",
+      "cost": 2
     },
     {
       "name": "windenarmbrust",
-      "label": "Windenarmbrust"
+      "label": "Windenarmbrust",
+      "cost": 4
     },
     {
       "name": "windhagerdrachenmesser",
-      "label": "Windhager Drachenmesser"
+      "label": "Windhager Drachenmesser",
+      "cost": 2
     },
     {
       "name": "winterdeich",
-      "label": "Winterdeich"
+      "label": "Winterdeich",
+      "cost": 1
     },
     {
       "name": "wissenumgwenpetrylfundstaetten",
-      "label": "Wissen um Gwen Petryl-Fundstätten"
+      "label": "Wissen um Gwen Petryl-Fundstätten",
+      "cost": 1
     },
     {
       "name": "wissenumlataundyonahoh",
-      "label": "Wissen um Lata und Yonahoh"
+      "label": "Wissen um Lata und Yonahoh",
+      "cost": 2
     },
     {
       "name": "wolfsmesser",
-      "label": "Wolfsmesser"
+      "label": "Wolfsmesser",
+      "cost": 3
     },
     {
       "name": "wuehlschratzwergkrakenmolch",
-      "label": "Wühlschrat-Zwergkrakenmolch"
+      "label": "Wühlschrat-Zwergkrakenmolch",
+      "cost": 6
     },
     {
       "name": "wundersameruestung",
-      "label": "Wundersame Rüstung"
+      "label": "Wundersame Rüstung",
+      "cost": 20
     },
     {
       "name": "wurfsterndesphex",
-      "label": "Wurfstern des Phex"
+      "label": "Wurfstern des Phex",
+      "cost": 20
     },
     {
       "name": "wurmspiess",
-      "label": "Wurmspieß"
+      "label": "Wurmspieß",
+      "cost": 2
     },
     {
       "name": "xeledon",
-      "label": "Xeledon"
+      "label": "Xeledon",
+      "cost": 1
     },
     {
       "name": "xorloscherwurmspiess",
-      "label": "Xorloscher Wurmspieß"
+      "label": "Xorloscher Wurmspieß",
+      "cost": 2
     },
     {
       "name": "yalaiadscheschnepper",
-      "label": "Yalaiadsche Schnepper"
+      "label": "Yalaiadsche Schnepper",
+      "cost": 3
     },
     {
       "name": "yara",
-      "label": "Yara"
+      "label": "Yara",
+      "cost": 5
     },
     {
       "name": "zaehigkeitstrunk",
-      "label": "Zähigkeitstrunk"
+      "label": "Zähigkeitstrunk",
+      "cost": 2
     },
     {
       "name": "zarzil",
-      "label": "Zarzil"
+      "label": "Zarzil",
+      "cost": 3
     },
     {
       "name": "zauberkerze",
-      "label": "Zauberkerze"
+      "label": "Zauberkerze",
+      "cost": 2
     },
     {
       "name": "zauberkreide",
-      "label": "Zauberkreide"
+      "label": "Zauberkreide",
+      "cost": 2
     },
     {
       "name": "zaubertrank",
-      "label": "Zaubertrank"
+      "label": "Zaubertrank",
+      "cost": 8
     },
     {
       "name": "zeitalterforschung",
-      "label": "Zeitalterforschung"
+      "label": "Zeitalterforschung",
+      "cost": 1
     },
     {
       "name": "zerschmetterling",
-      "label": "Zerschmetterling"
+      "label": "Zerschmetterling",
+      "cost": 4
     },
     {
       "name": "zielwasser",
-      "label": "Zielwasser"
+      "label": "Zielwasser",
+      "cost": 3
     },
     {
       "name": "zinsspindel",
-      "label": "Zinsspindel"
-    },
-    {
-      "name": "zorganschokolade",
-      "label": "Zorgan-Schokolade"
+      "label": "Zinsspindel",
+      "cost": 4
     },
     {
       "name": "zorganerringelpanzer",
-      "label": "Zorganer Ringelpanzer"
+      "label": "Zorganer Ringelpanzer",
+      "cost": 3
     },
     {
       "name": "zorganpocken",
-      "label": "Zorganpocken"
+      "label": "Zorganpocken",
+      "cost": 5
+    },
+    {
+      "name": "zorganschokolade",
+      "label": "Zorgan-Schokolade",
+      "cost": 2
     },
     {
       "name": "zugbruecke",
-      "label": "Zugbrücke"
+      "label": "Zugbrücke",
+      "cost": 2
     },
     {
       "name": "zurbaranspflanzentinktur",
-      "label": "Zurbarans Pflanzentinktur"
+      "label": "Zurbarans Pflanzentinktur",
+      "cost": 8
     },
     {
       "name": "zurbaranstinktur",
-      "label": "Zurbarans Tinktur"
+      "label": "Zurbarans Tinktur",
+      "cost": 8
     },
     {
       "name": "zweililie",
-      "label": "Zweililie"
+      "label": "Zweililie",
+      "cost": 2
     },
     {
       "name": "zweililien",
-      "label": "Zweililien"
+      "label": "Zweililien",
+      "cost": 2
     },
     {
       "name": "zwergengoldverarbeiten",
-      "label": "Zwergengold verarbeiten"
+      "label": "Zwergengold verarbeiten",
+      "cost": 2
     },
     {
       "name": "zwergenguss",
-      "label": "Zwergenguss"
+      "label": "Zwergenguss",
+      "cost": 5
     },
     {
       "name": "zwergenschlaegel",
-      "label": "Zwergenschlägel"
+      "label": "Zwergenschlägel",
+      "cost": 3
     },
     {
       "name": "zwergenskraja",
-      "label": "Zwergenskraja"
+      "label": "Zwergenskraja",
+      "cost": 1
     },
     {
       "name": "zwergenspan",
-      "label": "Zwergenspan"
+      "label": "Zwergenspan",
+      "cost": 8
     },
     {
       "name": "zwergischetresore",
-      "label": "Zwergische Tresore"
+      "label": "Zwergische Tresore",
+      "cost": 2
     },
     {
       "name": "zwergischesschloss",
-      "label": "Zwergisches Schloss"
+      "label": "Zwergisches Schloss",
+      "cost": 2
     },
     {
       "name": "zwoelftraenenderefferdane",
-      "label": "Zwölf Tränen der Efferdane"
+      "label": "Zwölf Tränen der Efferdane",
+      "cost": 10
     },
     {
       "name": "zyklopischekettenruestung",
-      "label": "Zyklopische Kettenrüstung"
+      "label": "Zyklopische Kettenrüstung",
+      "cost": 10
     },
     {
       "name": "zyklopischeslangschwert",
-      "label": "Zyklopisches Langschwert"
+      "label": "Zyklopisches Langschwert",
+      "cost": 8
     }
   ],
   "BindungArray": [

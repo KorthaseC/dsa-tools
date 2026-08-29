@@ -657,6 +657,7 @@ export const GENERAL_SPECIAL_ABILITIES: SpecialAbility[] = [
     prerequisiteText: "Fertigkeitswert 6 (erste Spezialisierung), Fertigkeitswert 12 (zweite Spezialisierung), Fertigkeitswert 18 (dritte Spezialisierung)",
     requirements: [{ type: "selectedTalent", min: 6, text: "Fertigkeitswert 6 (erste Spezialisierung)" }],
     effectText: "Ein Held erhält einen Bonus von 2 auf seinen Fertigkeitswert, wenn das entsprechende Anwendungsgebiet eine Rolle bei der Probe spielt. Ein Held kann sich im Laufe seines Lebens bei einem Talent in maximal drei unterschiedlichen Anwendungsgebieten spezialisieren. Der Bonus der Spezialisierung kann das Maximum des FW nach Erfahrungsgrad des Helden bei der Heldenerschaffung übersteigen.",
+    freeText: "Anwendungsgebiet",
     selection: { id: "GruppeArray", param: "alle|: Gebiet", maxCount: 3 },
     sources: [{"book":"KHE","page":419},{"book":"KSC","page":255},{"book":"RGW","page":216}],
     url: "https://dsa.ulisses-regelwiki.de/SF_FertigkeitsspezialisierungTalente.html",

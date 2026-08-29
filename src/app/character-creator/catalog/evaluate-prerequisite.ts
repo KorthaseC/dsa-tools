@@ -22,6 +22,10 @@ export interface PrereqOwner {
   level: number;
   param?: string; // the chosen aspect / Merkmal / spell (SpecialAbilityRef.param today)
   options?: { key: string; id: string }[]; // chosen sub-options, for ifOption
+  /** Which repeat of the same pick this is (1-based), when an entry may be taken several times for
+   *  the same target and the threshold rises with each one: the Nth Fertigkeitsspezialisierung in a
+   *  talent needs FW ≥ 6 × N. Absent ⇒ treated as the first. */
+  ordinal?: number;
 }
 
 /** All character-side lookups the evaluator needs; built once per character (see build-eval-context). */
@@ -115,8 +119,13 @@ export function evaluate(expr: Prerequisite, ctx: EvalContext, owner: PrereqOwne
       return ctx.merkmalCount(expr.count, expr.min, owner.param) ? PASS : { status: 'fail', reasons: [`${expr.count} Zauber des Merkmals auf ${expr.min}`] };
     case 'selectedSpell':
       return ctx.selectedSpell(expr.min, owner.param) ? PASS : { status: 'fail', reasons: [`gewählter Zauber auf FW ${expr.min}`] };
-    case 'selectedTalent':
-      return ctx.selectedTalent(expr.min, owner.param) ? PASS : { status: 'fail', reasons: [`gewähltes Talent auf FW ${expr.min} je Spezialisierung`] };
+    case 'selectedTalent': {
+      // DSA5: the Nth specialization in the SAME talent needs FW ≥ min × N (6 / 12 / 18). Scaling
+      // happens HERE, where the owner's ordinal and the message live together — so the reason always
+      // states the threshold that was actually applied.
+      const need = expr.min * (owner.ordinal ?? 1);
+      return ok(ctx.selectedTalent(need, owner.param), `Fertigkeitswert ${need}`);
+    }
     case 'spellExtension':
       return ok(ctx.spellExtension(expr.spell, expr.ext), `Zaubererweiterung „${expr.ext}"`);
 

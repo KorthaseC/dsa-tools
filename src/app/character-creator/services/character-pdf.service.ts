@@ -696,16 +696,18 @@ function extLabel(map: Map<string, any>, spellName: string, extName: string): st
 }
 
 /** `{name,right}` for the page-1/SF flow lists; granted SAs show their nominal cost in parentheses (auto/free). */
-function saEntries(refs: Array<{ name: string; param?: string; granted?: boolean; lvl?: number }>): Array<{ name: string; level?: string; right: string }> {
+function saEntries(refs: Array<{ name: string; param?: string; area?: string; granted?: boolean; lvl?: number }>): Array<{ name: string; level?: string; right: string }> {
   return refs.map((r) => {
     const nominal = specialAbilityCost({ ...r, granted: false } as any);
     return { name: saName(r), level: '', right: r.granted ? `(${nominal})` : String(nominal) };
   });
 }
 
-function saName(r: { name: string; param?: string }): string {
+function saName(r: { name: string; param?: string; area?: string }): string {
   const label = SA_LABEL.get(r.name) ?? r.name;
-  return r.param ? `${label} (${r.param})` : label;
+  // "Talent: Gebiet" — the notation the PDF itself uses for a Fertigkeitsspezialisierung.
+  const detail = [r.param, r.area].filter((s) => s?.trim()).join(': ');
+  return detail ? `${label} (${detail})` : label;
 }
 
 /** Collects every embedded-file stream from a PDF's `catalog → Names → EmbeddedFiles` name tree. */

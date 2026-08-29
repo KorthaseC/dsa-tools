@@ -61,6 +61,45 @@
   min-width: 0;
 }
 
+// Anwendungsgebiet, next to the talent select. The rows wrap (see .c-sa-row) and the list is a
+// two-column grid, so in a narrow column this drops to its own line — that is the intended layout.
+.c-sa-area {
+  flex: 1 1 6rem;
+  min-width: 0;
+}
+
+// Dropdown item: label left, AP price right (Berufsgeheimnis). Labels WRAP rather than scroll the
+// overlay sideways — but these lists run to 700-870 entries (Zauber, Liturgie-Erweiterungen,
+// Berufsgeheimnisse), so virtualScroll stays on and it needs a uniform row height. Hence a two-line
+// clamp matched to virtualScrollItemSize. Paired with the panel width in primeng-overrides.scss,
+// two lines hold every option in the catalog (longest label: 89 characters).
+.c-sub-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+
+  > span:first-child {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+    min-width: 0;
+  }
+}
+
+.c-sub-cost {
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--p-text-muted-color, #94a3b8);
+  white-space: nowrap;
+}
+
 // Compact level input (like the traits tab): fixed narrow width, centered, no oversized spinner buttons.
 .c-sa-lvl {
   width: 3.25rem;

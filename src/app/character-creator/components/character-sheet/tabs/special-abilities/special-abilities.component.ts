@@ -7,11 +7,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { TooltipModule } from 'primeng/tooltip';
 import { ALL_SPECIAL_ABILITIES } from '../../../../constants/special-ability.const';
+import { ALL_TALENTS } from '../../../../constants/talent.const';
 import { SpecialAbilities, SpecialAbilityRef } from '../../../../models/base-creation.model';
 import { SpecialAbility } from '../../../../models/special-ability.model';
 import { HomebrewEntry, HOMEBREW_SA_BUCKET } from '../../../../models/homebrew.model';
 import { SelectionOption } from '../../../../models/advantage.model';
-import { selectionOptionsFor } from '../../../../utils/utils';
+import { normName, selectionOptionsFor } from '../../../../utils/utils';
 import { CharacterStateService, specialAbilityCost } from '../../../../services/character-state.service';
 import { ActionSelectDirective } from '../../../../directives/action-select.directive';
 import { RuleLinkComponent } from '../../../rule-link/rule-link.component';
@@ -154,6 +155,27 @@ export class SpecialAbilitiesComponent {
 
   setParam(bucket: BucketKey, index: number, param: string): void {
     this.state.updateSpecialAbilities(bucket, (list) => list.map((r, i) => (i === index ? { ...r, param } : r)));
+  }
+
+  /**
+   * Anwendungsgebiet of a `freeText` SA. Stored EXACTLY as typed — normalising here would fight the
+   * editable select's binding and swallow characters mid-word. Blank clears the field.
+   */
+  setArea(bucket: BucketKey, index: number, area: string): void {
+    this.state.updateSpecialAbilities(bucket, (list) => list.map((r, i) => (i === index ? { ...r, area: area || undefined } : r)));
+  }
+
+  /**
+   * Suggestions for the Anwendungsgebiet: the application areas of the talent picked in `param`.
+   * Empty when no talent is chosen or the catalog has none — the select stays editable either way,
+   * so a house-rule area can always be typed. `param` may still carry the raw ": Gebiet" suffix of a
+   * profession grant, hence the split; talent ids ARE their labels, so both sides need normName.
+   */
+  areaOptions(ref: SpecialAbilityRef): { label: string; value: string }[] {
+    const talent = normName(String(ref.param ?? '').split(':')[0]);
+    if (!talent) return [];
+    const areas = ALL_TALENTS.find((t) => normName(t.name) === talent)?.applicationAreas ?? [];
+    return areas.filter((a) => a.name.trim()).map((a) => ({ label: a.name, value: a.name }));
   }
 
   /** GM cost override (total AP). `null`/empty clears it → back to the catalog cost. */

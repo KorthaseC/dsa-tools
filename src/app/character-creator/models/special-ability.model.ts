@@ -67,6 +67,11 @@ export interface SpecialAbility extends NamedEntry {
   /** Sub-selection (pick a specific spell/talent/element/…); the chosen value is stored in SpecialAbilityRef.param.
    *  Lookup key into SELECTION_OPTIONS is `param ? `${id}:${param}` : id`. */
   selection?: AdvantageSelection;
+  /** This entry takes a SECOND, free-text detail beyond `selection`, and this is the field's German
+   *  label ("Anwendungsgebiet" for Fertigkeitsspezialisierung). Same meaning as Advantage.freeText.
+   *  Derived from a `"…|: <Label>"` selection param in the PDF. The value lives in
+   *  SpecialAbilityRef.area and is purely descriptive — it never affects cost or prerequisites. */
+  freeText?: string;
   /** Merkmal (trait), when present. */
   merkmal?: string;
 }

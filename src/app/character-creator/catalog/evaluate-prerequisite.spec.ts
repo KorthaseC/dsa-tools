@@ -103,3 +103,28 @@ describe('evaluate (id-based prerequisite engine)', () => {
     expect(evaluate(ast, mockCtx({ caster: false }), owner).status).toBe('fail');
   });
 });
+
+describe('selectedTalent — the Nth specialization needs FW ≥ min × N', () => {
+  const ast: Prerequisite = { op: 'selectedTalent', min: 6 };
+  // The ctx only answers "is the chosen talent at FW ≥ the threshold it was handed".
+  const withFw = (fw: number) => mockCtx({ selectedTalent: (min) => fw >= min });
+  const spec = (ordinal?: number): PrereqOwner => ({ label: 'Fertigkeitsspezialisierung', level: 1, param: 'Etikette', ordinal });
+
+  it('scales the threshold with the owner ordinal', () => {
+    expect(evaluate(ast, withFw(8), spec(1)).status).toBe('pass'); // 1st needs 6
+    expect(evaluate(ast, withFw(8), spec(2)).status).toBe('fail'); // 2nd needs 12
+    expect(evaluate(ast, withFw(12), spec(2)).status).toBe('pass');
+    expect(evaluate(ast, withFw(12), spec(3)).status).toBe('fail'); // 3rd needs 18
+    expect(evaluate(ast, withFw(18), spec(3)).status).toBe('pass');
+  });
+
+  it('names the threshold that was actually applied, not the base one', () => {
+    expect(evaluate(ast, withFw(8), spec(2)).reasons).toEqual(['Fertigkeitswert 12']);
+    expect(evaluate(ast, withFw(12), spec(3)).reasons).toEqual(['Fertigkeitswert 18']);
+  });
+
+  it('treats a missing ordinal as the first specialization', () => {
+    expect(evaluate(ast, withFw(6), spec()).status).toBe('pass');
+    expect(evaluate(ast, withFw(5), spec()).reasons).toEqual(['Fertigkeitswert 6']);
+  });
+});
