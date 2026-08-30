@@ -142,7 +142,7 @@
               <div class="c-detail-field c-df-m">
                 <label>Seite / Regelwerk</label>
                 <div class="c-detail-source">
-                  <input pInputText [value]="row.page" [disabled]="true" placeholder="–" [pTooltip]="row.page || ''" tooltipPosition="top" class="w-full" />
+                  <input pInputText [value]="row.page" [disabled]="true" placeholder="–" [pTooltip]="bookTooltip(row.page)" tooltipPosition="top" class="w-full" />
                   <app-rule-link [url]="ruleUrl(row)" />
                 </div>
               </div>

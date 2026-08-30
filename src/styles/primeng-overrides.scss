@@ -169,8 +169,13 @@ body.app-dark {
   --p-inputtext-hover-border-color: #{$gold-primary};
   --p-inputtext-focus-border-color: #{$gold-primary};
   --p-inputtext-placeholder-color: #{$gold-dim};
+  // Disabled here means READ-ONLY, not unavailable: the magic detail row, the tradition fields and
+  // the species/culture/profession inputs are locked so they cannot be typed into, but their content
+  // still has to be read. $gold-dim reaches only 2.5:1 on these surfaces (WCAG AA wants 4.5:1 for
+  // text, 3:1 even for UI), so disabled TEXT uses $gold-muted (5.0:1) while the dimmed background
+  // keeps signalling that the field is locked.
   --p-inputtext-disabled-background: #{$surface-card};
-  --p-inputtext-disabled-color: #{$gold-dim};
+  --p-inputtext-disabled-color: #{$gold-muted};
 
   // Select / Dropdown
   --p-select-background: #{$surface-card};
@@ -188,7 +193,7 @@ body.app-dark {
   --p-select-overlay-border-color: #{$surface-warm-border};
   --p-select-focus-border-color: #{$gold-primary};
   --p-select-disabled-background: #{$surface-card};
-  --p-select-disabled-color: #{$gold-dim};
+  --p-select-disabled-color: #{$gold-muted};
 
   // MultiSelect — mirror select tokens
   --p-multiselect-background: #{$surface-card};
@@ -216,7 +221,7 @@ body.app-dark {
   --p-autocomplete-hover-border-color: #{$gold-primary};
   --p-autocomplete-focus-border-color: #{$gold-primary};
   --p-autocomplete-disabled-background: #{$surface-card};
-  --p-autocomplete-disabled-color: #{$gold-dim};
+  --p-autocomplete-disabled-color: #{$gold-muted};
   --p-autocomplete-placeholder-color: #{$gold-dim};
   --p-autocomplete-overlay-background: #{$surface-card};
   --p-autocomplete-overlay-color: #{$text-primary};
@@ -726,9 +731,12 @@ textarea.p-inputtext:disabled {
 .p-autocomplete.p-disabled .p-autocomplete-input,
 input.p-inputtext:disabled,
 textarea.p-inputtext:disabled {
-  color: $gold-dim;
+  // $gold-muted, not $gold-dim: these fields are locked for editing but still meant to be READ
+  // (spell cost/range/source, tradition, species/culture/profession). $gold-dim sits at 2.5:1 on the
+  // field background — below even the 3:1 UI floor; $gold-muted reaches 5.0:1.
+  color: $gold-muted;
   // Disabled <input> elements ignore `color` in WebKit/Blink; this is the property that actually paints.
-  -webkit-text-fill-color: $gold-dim;
+  -webkit-text-fill-color: $gold-muted;
 }
 
 // ── ConfirmPopup (row-delete confirmation) ───────────────────────────────────

@@ -9,6 +9,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { ConfirmationService } from 'primeng/api';
 
+import { formatBookReference } from '../../../../utils/utils';
 import { ALL_SPELLS } from '../../../../constants/spell.const';
 import { ALL_RITUALS } from '../../../../constants/ritual.const';
 import { ALL_LITURGIES } from '../../../../constants/liturgy.const';
@@ -225,6 +226,15 @@ export class MagicComponent {
   /** Catalog extensions (Erweiterungen) defined for the row's selected spell/liturgy. */
   catalogExtensions(row: MagicRow): SpellExtension[] {
     return this.spellMap().get(row.spellName)?.extensions ?? [];
+  }
+
+  /**
+   * Tooltip for the "Seite / Regelwerk" field: the book's full title. Empty when nothing can be
+   * added — an unresolvable reference would otherwise produce a tooltip repeating the field itself.
+   */
+  bookTooltip(page: string | undefined): string {
+    const resolved = formatBookReference(page);
+    return resolved === (page ?? '').trim() ? '' : resolved;
   }
 
   /** Display label for an extension: name with its required FW and AP cost, e.g. "Größere Reichweite (FW 8, 2 AP)". */

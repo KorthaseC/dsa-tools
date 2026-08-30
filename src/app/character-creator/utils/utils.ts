@@ -1,6 +1,7 @@
 import { IncreaseFactor, INCREASE_FACTOR_COST } from '../models/base-creation.model';
 import { Advantage, AdvantageSelection, SelectionOption } from '../models/advantage.model';
 import { ADVANTAGE, DISADVANTAGE } from '../constants/advantage.const';
+import { BOOK_TITLES } from '../constants/book.const';
 import { SELECTION_OPTIONS } from '../constants/selection-options.const';
 
 /** Registry key for a selection's option list: `param ? `${id}:${param}` : id`. */
@@ -14,6 +15,26 @@ export function selectionOptionsFor(entry: { selection?: AdvantageSelection }): 
 }
 
 export const SF_INDEX: Record<string, number> = { A: 1, B: 2, C: 3, D: 4, E: 5 };
+
+// Abbreviation → title, as a Map so a book key that collides with an Object prototype member
+// ("constructor", "toString") cannot resolve to something that is not a title.
+const BOOK_TITLE_BY_ABBR = new Map(Object.entries(BOOK_TITLES));
+
+/**
+ * Readable form of a source reference: "AM1 114" → "Aventurische Magie I, Seite 114".
+ *
+ * Returns the input UNCHANGED when it cannot be resolved — hand-curated entries already carry a full
+ * title ("Aventurisches Kompendium"), and an abbreviation the book list does not know must stay as
+ * printed rather than be guessed at.
+ */
+export function formatBookReference(ref: string | undefined | null): string {
+  const text = (ref ?? '').trim();
+  if (!text) return '';
+  const withPage = text.match(/^(\S+)\s+(\d+)$/); // "<Kürzel> <Seite>"; abbreviations never contain spaces
+  const title = BOOK_TITLE_BY_ABBR.get(withPage ? withPage[1] : text);
+  if (!title) return text;
+  return withPage ? `${title}, Seite ${withPage[2]}` : title;
+}
 
 /**
  * Comparison key for catalog labels: lowercase, umlauts folded, everything non-alphanumeric dropped.
