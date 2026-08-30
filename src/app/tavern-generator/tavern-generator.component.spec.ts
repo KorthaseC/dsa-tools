@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Utility } from '../shared/utility';
 import { TavernGeneratorComponent } from './tavern-generator.component';
 import { TAVERN_LOCATIONS } from './tavern-generator.model';
@@ -10,9 +9,7 @@ describe('TavernGeneratorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        TavernGeneratorComponent,
-      ]
+      imports: [TavernGeneratorComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TavernGeneratorComponent);
@@ -61,10 +58,12 @@ describe('TavernGeneratorComponent', () => {
     });
     spyOn<any>(component, 'generateKeeper').and.returnValue('John Doe');
     spyOn<any>(component, 'generateAttendant').and.returnValue('Jane Doe');
+    // getTavern() only generates a special event when there IS an active day time, and the underlying
+    // guest levels are rolled at random — without this stub the assertion below failed on every run
+    // whose day times all came up "empty"/"low" (roughly one in three).
+    spyOn<any>(component, 'getActiveDayTimes').and.returnValue(['evening']);
     spyOn<any>(component, 'generateSpecialEvent').and.returnValue('Festival');
-    spyOn<any>(component, 'generateSpecialFeature').and.returnValue(
-      'Fireplace'
-    );
+    spyOn<any>(component, 'generateSpecialFeature').and.returnValue('Fireplace');
     spyOn<any>(component, 'generateSpecialGuest').and.returnValue('Nobleman');
 
     component.location.setValue(TAVERN_LOCATIONS[0]);
@@ -87,6 +86,7 @@ describe('TavernGeneratorComponent', () => {
     });
     expect(component.keeper).toBe('John Doe');
     expect(component.attendant).toBe('Jane Doe');
+    expect(component.activeDays).toEqual(['evening']);
     expect(component.specialEvent).toBe('Festival');
     expect(component.specialFeature).toBe('Fireplace');
     expect(component.specialGuest).toBe('Nobleman');
@@ -95,7 +95,9 @@ describe('TavernGeneratorComponent', () => {
   it('should calculate bed price correctly', () => {
     component.priceGuestLvl = 3;
     const bedPriceText = component.calculateBedPrice();
-    expect(bedPriceText).toBe('Die Kosten für ein Bett im Gemeinschaftszimmer sind 6 Heller, für ein Doppelzimmer sind es 5 Silbertaler und für ein Einzelzimmer sind es 3 Silbertaler.');
+    expect(bedPriceText).toBe(
+      'Die Kosten für ein Bett im Gemeinschaftszimmer sind 6 Heller, für ein Doppelzimmer sind es 5 Silbertaler und für ein Einzelzimmer sind es 3 Silbertaler.'
+    );
   });
 
   it('should distribute beds correctly', () => {

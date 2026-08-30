@@ -17,6 +17,7 @@ import { ALL_SPELLS } from '../constants/spell.const';
 import { ALL_RITUALS } from '../constants/ritual.const';
 import { ALL_LITURGIES } from '../constants/liturgy.const';
 import { ALL_CEREMONIES } from '../constants/ceremony.const';
+import { canLearnExtension, SpellExtension } from '../models/magic.model';
 import { Requirement } from '../models/requirement.model';
 import { EntryRef } from '../models/entry-kind';
 import { buildPrerequisite } from '../catalog/build-prerequisite';
@@ -78,6 +79,16 @@ const ASPECT_BY_LITURGY = new Map<string, string[]>(
 const MERKMAL_BY_SPELL = new Map<string, string[]>(
   ALL_SPELLS.map((s) => [normName(s.label), (s.trait ?? '').split(',').map((t) => normName(t)).filter(Boolean)]),
 );
+// spell/ritual/liturgy/ceremony name AND label (normalized) → the catalog entry, so a row can be
+// resolved back to its Erweiterungen. Both keys are indexed because rows store the catalog `name`
+// while imported/legacy rows may carry the label.
+const EXTENDABLE_BY_NAME = new Map<string, { label: string; extensions?: SpellExtension[] }>();
+for (const e of [...ALL_SPELLS, ...ALL_RITUALS, ...ALL_LITURGIES, ...ALL_CEREMONIES]) {
+  if (!e.extensions?.length) continue;
+  EXTENDABLE_BY_NAME.set(normName(e.name), e);
+  EXTENDABLE_BY_NAME.set(normName(e.label), e);
+}
+
 // spell/ritual name+label (normalized) → the traditions that know it natively, for the `maxForeignSpells`
 // creation cap (a Fremdzauber is one whose traditions don't include the caster's own tradition).
 // ALL_SPELL_TRADITIONS is the full tradition vocabulary — the rule only fires for a tradition it knows,
@@ -104,6 +115,7 @@ export class CharacterValidationService {
     this.talentMaxRule(),
     this.combatTechniqueMaxRule(),
     this.spellLiturgyMaxRule(),
+    this.spellExtensionRule(),
     this.foreignSpellRule(),
     this.unknownAdvantageRule(),
     this.autoAdvantageRule(),
@@ -345,6 +357,56 @@ export class CharacterValidationService {
 
   /** Checks spell/liturgy creation caps: each FW ≤ maxTalent, and the count of spells resp. liturgies
    *  ≤ maxSpells. (maxForeignSpells is not checked yet — needs per-spell tradition data.) */
+  /**
+   * Zauber-/Liturgie-Erweiterungen: each one needs its parent at `requiredSkillValue`, and successive
+   * extensions need their predecessor. Nothing checked this — the add-dropdown offers every extension
+   * of the entry regardless of FW (its own comment even says "validated later via a message"), and
+   * lowering the FW afterwards left an unearned extension sitting on the row.
+   *
+   * `canLearnExtension` is the shared definition of "may be learned"; it decides, and this rule only
+   * works out WHICH half failed so the message can say so.
+   */
+  private spellExtensionRule(): ValidationRule {
+    return {
+      id: 'spell-extension',
+      check(character: Character): ValidationResult[] {
+        const results: ValidationResult[] = [];
+        const check = (rows: { spellName: string; fw: number; extensions?: { name: string }[] }[], word: string) => {
+          for (const row of rows) {
+            if (!row.extensions?.length) continue;
+            const entry = EXTENDABLE_BY_NAME.get(normName(row.spellName));
+            if (!entry?.extensions?.length) continue;
+            const catalog = entry.extensions;
+            const resolve = (n: string) => catalog.find((x) => normName(x.name) === normName(n));
+            // Canonical slugs of what is actually learned, so `requires` (which holds slugs) matches.
+            // Unresolvable picks are legacy/free-text rows — left alone rather than reported as wrong.
+            const learned = new Set(row.extensions.map((e) => resolve(e.name)?.name).filter((n): n is string => !!n));
+
+            for (const chosen of row.extensions) {
+              const ext = resolve(chosen.name);
+              if (!ext || canLearnExtension(ext, row.fw, learned)) continue;
+              const missing = (ext.requires ?? []).filter((r) => !learned.has(r)).map((r) => resolve(r)?.label ?? r);
+              const reason =
+                row.fw < ext.requiredSkillValue
+                  ? `benötigt FW ${ext.requiredSkillValue} (aktuell ${row.fw})`
+                  : `setzt ${missing.map((m) => `„${m}"`).join(' und ')} voraus`;
+              results.push({
+                ruleId: 'spell-extension',
+                severity: 'error',
+                category: 'magic',
+                message: `${word} „${ext.label}" von „${entry.label}" ${reason}`,
+                source: row.spellName,
+              });
+            }
+          }
+        };
+        check(character.spells ?? [], 'Zaubererweiterung');
+        check(character.liturgies ?? [], 'Liturgieerweiterung');
+        return results;
+      },
+    };
+  }
+
   private spellLiturgyMaxRule(): ValidationRule {
     return {
       id: 'spell-liturgy-max',

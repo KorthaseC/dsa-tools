@@ -5,5 +5,6 @@
     <app-cs-tabs></app-cs-tabs>
   </div>
 
-  <app-validation-bar />
+  <!-- Only the finished sheet may fold the manual-check hints away; the wizard needs them. -->
+  <app-validation-bar [allowHidingHints]="true" />
 </div>

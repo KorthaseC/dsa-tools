@@ -10,9 +10,11 @@ import { toChosenEntries } from '../catalog/save-entries';
 import { createEmptyCharacter } from '../models/base-creation.model';
 import { ALL_SPECIAL_ABILITIES } from '../constants/special-ability.const';
 import { ALL_TALENTS } from '../constants/talent.const';
+import { ALL_LITURGIES } from '../constants/liturgy.const';
+import { createEmptyMagicRow, createExtension } from '../models/magic-row.model';
 import { ADVANTAGE, DISADVANTAGE } from '../constants/advantage.const';
 import { ALL_PROFESSIONS } from '../constants/profession.const';
-import { computeSpentAp, specialAbilityCost } from './ap-budget.util';
+import { computeSpentAp, extensionApCost, magicRowsApCost, specialAbilityCost } from './ap-budget.util';
 import { recomputeDerivedStats } from './derived-stats.util';
 import { SF_INDEX, labelWithFreeText, labelWithoutOption, resolveAdvantageByName, selectionCostRange, selectionOptionsFor } from './utils';
 
@@ -480,5 +482,62 @@ describe('talent catalog — application areas are complete', () => {
   it('no application area has an empty name', () => {
     const empties = ALL_TALENTS.flatMap((t) => (t.applicationAreas ?? []).filter((a) => !a.name.trim()).map(() => t.name));
     expect(empties).toEqual([]);
+  });
+});
+
+describe('Zauber-/Liturgieerweiterungen cost AP', () => {
+  const resolver = new CharacterResolverService();
+  // Aerofugo: Zauberdauer modifizierbar 3 AP (FW 8) · Größerer Radius 3 AP (FW 10) · Ersticken 1 6 AP (FW 12)
+  const row = (fw: number, extensions: string[]) => {
+    const r = createEmptyMagicRow();
+    r.spellName = 'aerofugo';
+    r.fw = fw;
+    r.increaseFactor = 'B';
+    r.extensions = extensions.map((name) => createExtension(name));
+    return r;
+  };
+
+  it('prices a single extension at its catalog AP', () => {
+    expect(extensionApCost(row(12, ['zauberdauermodifizierbar']))).toBe(3);
+    expect(extensionApCost(row(12, ['ersticken1']))).toBe(6);
+  });
+
+  it('adds several extensions up', () => {
+    expect(extensionApCost(row(12, ['zauberdauermodifizierbar', 'groessererradius', 'ersticken1']))).toBe(12); // 3+3+6
+  });
+
+  it('charges an extension once even if a save lists it twice', () => {
+    expect(extensionApCost(row(12, ['ersticken1', 'ersticken1']))).toBe(6);
+  });
+
+  it('charges nothing for a row without extensions or an unknown name', () => {
+    expect(extensionApCost(row(12, []))).toBe(0);
+    expect(extensionApCost(row(12, ['voellig-erfundene-erweiterung']))).toBe(0);
+  });
+
+  it('adds the extension AP on top of the row FW cost', () => {
+    const plain = magicRowsApCost([row(12, [])]);
+    const withExt = magicRowsApCost([row(12, ['ersticken1'])]);
+    expect(withExt - plain).toBe(6);
+  });
+
+  it('reaches the overall AP budget — the figure every consumer reads', () => {
+    const base = computeSpentAp(resolver.resolve(saveData({ homebrew: [], entries: [], spells: [row(12, [])] })));
+    const withExt = computeSpentAp(
+      resolver.resolve(saveData({ homebrew: [], entries: [], spells: [row(12, ['zauberdauermodifizierbar', 'ersticken1'])] })),
+    );
+    expect(withExt - base).toBe(9); // 3 + 6 — was 0 before extensions were priced
+  });
+
+  it('prices liturgy extensions the same way', () => {
+    const lit = ALL_LITURGIES.find((l) => l.extensions?.length);
+    expect(lit).toBeTruthy();
+    const ext = lit!.extensions![0];
+    const r = createEmptyMagicRow();
+    r.spellName = lit!.name;
+    r.fw = 18;
+    r.increaseFactor = 'B';
+    r.extensions = [createExtension(ext.name)];
+    expect(extensionApCost(r)).toBe(ext.apCost);
   });
 });

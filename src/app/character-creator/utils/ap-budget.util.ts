@@ -1,11 +1,16 @@
+import { ALL_CEREMONIES } from '../constants/ceremony.const';
 import { ALL_COMBAT_TECHNIQUES } from '../constants/combat-technique.const';
+import { ALL_LITURGIES } from '../constants/liturgy.const';
+import { ALL_RITUALS } from '../constants/ritual.const';
+import { ALL_SPELLS } from '../constants/spell.const';
 import { ALL_SPECIAL_ABILITIES } from '../constants/special-ability.const';
 import { ALL_TALENTS } from '../constants/talent.const';
 import { resolvePicksForCharacter } from '../catalog/character-entries';
 import { Attributes, Character, IncreaseFactor, SkillGroups, SpecialAbilityRef } from '../models/base-creation.model';
 import { homebrewApCost, homebrewApCostOfKind } from '../models/homebrew.model';
 import { SpecialAbility } from '../models/special-ability.model';
-import { SF_INDEX, advantageCost, selectionOptionsFor, totalTalentCost } from './utils';
+import { SpellExtension } from '../models/magic.model';
+import { SF_INDEX, advantageCost, normName, selectionOptionsFor, totalTalentCost } from './utils';
 
 // Single source of truth for "AP spent". The per-slice cost helpers and computeSpentAp() below are
 // the one place spend is computed; CharacterStateService.ap, CharacterResolverService.computeApBudget
@@ -41,9 +46,43 @@ export function combatTechniqueApCost(cts: Record<string, { ktw: number }>): num
   }, 0);
 }
 
-/** Sum of spell/liturgy AP (activation + FW), each via its Steigerungsfaktor. */
-export function magicRowsApCost(rows: { fw: number; increaseFactor: string }[]): number {
-  return rows.reduce((sum, r) => sum + totalTalentCost(r.fw, asFactor(r.increaseFactor), true), 0);
+// Spell/ritual/liturgy/ceremony name AND label (normalized) → its Erweiterungen, so the ones a row
+// picked can be priced. Both keys are indexed because rows store the catalog `name` while imported
+// rows may carry the label.
+const EXTENSIONS_BY_ENTRY = new Map<string, SpellExtension[]>();
+for (const e of [...ALL_SPELLS, ...ALL_RITUALS, ...ALL_LITURGIES, ...ALL_CEREMONIES]) {
+  if (!e.extensions?.length) continue;
+  EXTENSIONS_BY_ENTRY.set(normName(e.name), e.extensions);
+  EXTENSIONS_BY_ENTRY.set(normName(e.label), e.extensions);
+}
+
+interface MagicRowCost {
+  fw: number;
+  increaseFactor: string;
+  spellName?: string;
+  extensions?: { name: string }[];
+}
+
+/**
+ * AP for the Erweiterungen chosen on one row. Each carries its own flat price on top of the row's FW
+ * cost. Counted once per extension even if a save lists it twice — an extension is either learned or
+ * not. Names the catalog does not know (legacy/free-text rows) have no price and count as 0.
+ */
+export function extensionApCost(row: MagicRowCost): number {
+  if (!row.extensions?.length) return 0;
+  const catalog = EXTENSIONS_BY_ENTRY.get(normName(row.spellName ?? ''));
+  if (!catalog) return 0;
+  const priced = new Map<string, number>();
+  for (const chosen of row.extensions) {
+    const ext = catalog.find((x) => normName(x.name) === normName(chosen.name));
+    if (ext) priced.set(ext.name, ext.apCost);
+  }
+  return [...priced.values()].reduce((sum, ap) => sum + ap, 0);
+}
+
+/** Sum of spell/liturgy AP: activation + FW via the Steigerungsfaktor, plus the chosen Erweiterungen. */
+export function magicRowsApCost(rows: MagicRowCost[]): number {
+  return rows.reduce((sum, r) => sum + totalTalentCost(r.fw, asFactor(r.increaseFactor), true) + extensionApCost(r), 0);
 }
 
 /** Effective AP cost of a single special ability / language / script ref. */

@@ -75,3 +75,34 @@
   overflow-y: auto;
   padding: 0 1rem 0.8rem;
 }
+
+// Secondary text in the header badge and next to the filter label (counts, "… ausgeblendet").
+.c-vb-muted {
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+// Filter row, pinned to the top of the scrolling message list so it stays findable with many hints.
+.c-vb-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  margin-bottom: 0.15rem;
+  background: inherit;
+  font-size: 0.85rem;
+
+  label {
+    cursor: pointer;
+  }
+}
+
+.c-vb-hidden-note {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.75;
+}

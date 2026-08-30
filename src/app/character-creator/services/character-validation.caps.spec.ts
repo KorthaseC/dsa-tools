@@ -1,7 +1,7 @@
 import { ExperienceLevelId } from '../models/experience-level.model';
 import { SpeciesType } from '../models/species.model';
 import { CharacterSaveData, createDefaultSaveData } from '../models/character-save.model';
-import { createEmptyMagicRow, MagicRow } from '../models/magic-row.model';
+import { createEmptyMagicRow, createExtension, MagicRow } from '../models/magic-row.model';
 import { ALL_SPECIES } from '../constants/species.const';
 import { ADVANTAGE } from '../constants/advantage.const';
 import { CharacterResolverService } from './character-resolver.service';
@@ -418,5 +418,63 @@ describe('CharacterValidationService — Fertigkeitsspezialisierung thresholds (
     const three = spez(3, 12);
     expect(three.length).toBe(1);
     expect(three[0].message).toContain('Fertigkeitswert 18');
+  });
+});
+
+describe('CharacterValidationService — Zauber-/Liturgieerweiterungen', () => {
+  const resolver = new CharacterResolverService();
+  const validation = new CharacterValidationService();
+
+  // Aerofugo: Zauberdauer modifizierbar (FW 8) · Ersticken 1 (FW 12) · Ersticken 2 (FW 16, braucht Ersticken 1)
+  const withSpell = (fw: number, extensions: string[]) => {
+    const row = createEmptyMagicRow();
+    row.spellName = 'aerofugo';
+    row.fw = fw;
+    row.increaseFactor = 'B';
+    row.extensions = extensions.map((name) => createExtension(name));
+    return validation
+      .validate(resolver.resolve(saveData({ spells: [row] })))
+      .filter((r) => r.ruleId === 'spell-extension');
+  };
+
+  it('accepts an extension the skill value covers', () => {
+    expect(withSpell(8, ['zauberdauermodifizierbar'])).toEqual([]);
+  });
+
+  it('flags an extension the skill value does not reach', () => {
+    const found = withSpell(8, ['ersticken1']); // needs FW 12
+    expect(found.length).toBe(1);
+    expect(found[0].message).toContain('Ersticken 1');
+    expect(found[0].message).toContain('benötigt FW 12 (aktuell 8)');
+    expect(found[0].severity).toBe('error');
+  });
+
+  it('flags every offending extension separately', () => {
+    const found = withSpell(10, ['zauberdauermodifizierbar', 'ersticken1', 'laengerewirkungsdauer']);
+    expect(found.length).toBe(2); // FW 8 one is fine; FW 12 and FW 14 are not
+  });
+
+  it('flags a successive extension whose predecessor is missing', () => {
+    const found = withSpell(16, ['ersticken2']); // FW is enough, Ersticken 1 is not there
+    expect(found.length).toBe(1);
+    expect(found[0].message).toContain('setzt „Ersticken 1" voraus');
+  });
+
+  it('accepts the successive extension once the predecessor is learned', () => {
+    expect(withSpell(16, ['ersticken1', 'ersticken2'])).toEqual([]);
+  });
+
+  it('reports the skill value first when both conditions fail', () => {
+    const found = withSpell(8, ['ersticken2']);
+    expect(found.length).toBe(1);
+    expect(found[0].message).toContain('benötigt FW 16 (aktuell 8)');
+  });
+
+  it('ignores an extension name the catalog does not know (legacy/free-text rows)', () => {
+    expect(withSpell(4, ['voellig-erfundene-erweiterung'])).toEqual([]);
+  });
+
+  it('leaves rows without extensions alone', () => {
+    expect(withSpell(20, [])).toEqual([]);
   });
 });

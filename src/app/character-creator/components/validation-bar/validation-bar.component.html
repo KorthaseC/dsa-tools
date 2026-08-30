@@ -8,7 +8,12 @@
   <button type="button" class="c-vb-header" (click)="toggleValidationPanel()">
     @if (errors().length) {
       <i class="pi pi-exclamation-triangle"></i>
-      <span class="c-vb-summary">{{ errors().length }} Regelverstöße@if (hintCount()) {<span> · {{ hintCount() }} Hinweise</span>}</span>
+      <span class="c-vb-summary"
+        >{{ errors().length }} Regelverstöße
+        @if (hintCount()) {
+          <span> · {{ hintCount() }} Hinweise</span>
+        }
+      </span>
     } @else if (hintCount()) {
       <i class="pi pi-info-circle"></i>
       <span class="c-vb-summary">{{ hintCount() }} Hinweise</span>
@@ -16,21 +21,41 @@
       <i class="pi pi-check-circle"></i>
       <span class="c-vb-summary">Regelkonform</span>
     }
-    @if (errors().length || hintCount()) {
+    <!-- Hidden hints stay visible AS A COUNT, so the bar never pretends they went away. -->
+    @if (hiddenHintCount()) {
+      <span class="c-vb-muted">· {{ hiddenHintCount() }} ausgeblendet</span>
+    }
+    @if (hasPanelContent()) {
       <i class="c-vb-chevron pi" [class.pi-chevron-up]="!validationPanelOpen()" [class.pi-chevron-down]="validationPanelOpen()"></i>
     }
   </button>
 
-  @if (validationPanelOpen() && (errors().length || hintCount())) {
+  @if (validationPanelOpen() && hasPanelContent()) {
     <div class="c-vb-body">
+      <!-- Filter first, not buried under thirty messages — this is where the noise is, so this is
+           where the switch belongs. Offered on the finished sheet only. -->
+      @if (allowHidingHints() && (infos().length || hiddenHintCount())) {
+        <div class="c-vb-toolbar">
+          <p-checkbox [ngModel]="hintsHidden()" (ngModelChange)="setHideHints($event)" [binary]="true" inputId="hideManualHints" />
+          <label for="hideManualHints">
+            Manuell zu prüfende Hinweise ausblenden
+            <span class="c-vb-muted">({{ infos().length }})</span>
+          </label>
+        </div>
+      }
+
       @for (e of errors(); track e.ruleId + (e.source ?? '')) {
         <p-message severity="error">{{ e.message }}</p-message>
       }
       @for (w of warnings(); track w.ruleId + (w.source ?? '')) {
         <p-message severity="warn">{{ w.message }}</p-message>
       }
-      @for (i of infos(); track i.ruleId + (i.source ?? '')) {
+      @for (i of visibleInfos(); track i.ruleId + (i.source ?? '')) {
         <p-message severity="info">{{ i.message }}</p-message>
+      }
+
+      @if (hiddenHintCount()) {
+        <p class="c-vb-hidden-note">{{ hiddenHintCount() }} Hinweise ausgeblendet - es sind Bedingungen, die die Regelprüfung nicht selbst entscheiden kann.</p>
       }
     </div>
   }
