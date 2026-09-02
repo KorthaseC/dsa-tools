@@ -128,7 +128,7 @@ export const APP_FEATURES: AppFeature[] = [
     overviewDescription: 'Tool zur Erstellung von Charakter-Token',
     aboutDescription: 'Erstelle runde Charakter-Token für dein DSA-Abenteuer aus einem eigenen Bild.',
     introText:
-      'Für Roll20, Foundry VTT oder andere digitale Spielrunden brauchst du runde Charakter-Token. Lade ein eigenes Bild hoch, rücke den Ausschnitt zurecht und lade den fertigen Token als PNG herunter. Die Verarbeitung läuft komplett in deinem Browser - dein Bild verlässt deinen Rechner nicht.',
+      'Für Roll20, Foundry VTT oder andere digitale Spielrunden brauchst du runde Charakter-Token. Lade ein eigenes Bild hoch, rücke den Ausschnitt zurecht und lade den fertigen Token als PNG oder WebP herunter. Die Verarbeitung läuft komplett in deinem Browser - dein Bild verlässt deinen Rechner nicht.',
     icon: 'assets/icons/rur-und-gror.svg',
     iconAlt: 'Rur und Gror Symbol',
     surfaces: ['about', 'overview'],

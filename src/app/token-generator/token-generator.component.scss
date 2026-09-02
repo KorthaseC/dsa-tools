@@ -14,24 +14,30 @@
     display: none;
   }
 
+  // PrimeNG ships an opaque panel background here. It has to be cleared on
+  // both the wrapper and the content, otherwise the parchment behind the
+  // page is covered by a white rectangle.
   &.p-fileupload-advanced {
     border: none;
     border-radius: 12px;
+    background: transparent;
   }
 
   .p-fileupload-content {
-    border: 2px dashed #c8a96a;
+    border: 2px dashed #a8853f;
     border-radius: 12px;
-    background-color: rgba(200, 149, 42, 0.06);
+    background-color: rgba(120, 80, 20, 0.05);
     cursor: pointer;
     padding: 2rem 1rem;
     transition:
       border-color 0.2s,
       background-color 0.2s;
 
+    // Hover darkens the tint slightly rather than lightening it, so the
+    // dropzone stays consistent with the parchment background.
     &:hover {
-      border-color: #a0732a;
-      background-color: rgba(200, 149, 42, 0.12);
+      border-color: #7a5518;
+      background-color: rgba(120, 80, 20, 0.1);
     }
   }
 }
@@ -48,7 +54,7 @@
   width: 120px;
   height: 120px;
   object-fit: contain;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .upload-area__hint {
@@ -58,8 +64,10 @@
   margin: 0;
 }
 
+// Secondary text uses a muted brown instead of neutral grey, which turns
+// muddy and low-contrast on a warm background.
 .upload-area__sub {
-  color: #888;
+  color: #7a6244;
   font-size: 0.8rem;
   margin: 0.25rem 0 0;
 }
@@ -94,7 +102,7 @@
 }
 
 .editor-hint {
-  color: #888;
+  color: #7a6244;
   font-size: 0.8rem;
   text-align: center;
 }
@@ -139,6 +147,8 @@
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
 
+  // Read-only state renders as plain text with a thin outline, so the field
+  // reads as a label until the edit button is pressed.
   &:disabled {
     background: transparent;
     border-color: transparent;
@@ -152,6 +162,6 @@
 }
 
 .filename-ext {
-  color: #888;
+  color: #7a6244;
   font-size: 0.875rem;
 }
