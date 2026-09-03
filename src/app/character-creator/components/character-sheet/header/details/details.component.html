@@ -17,29 +17,35 @@
     <button
       type="button"
       pButton
-      icon="pi pi-file-pdf"
-      class="p-button-text p-button-sm c-export-btn"
+      class="c-export-btn"
       (click)="exportPdf()"
       pTooltip="Als PDF-Bogen exportieren (Pergament, mit eingebettetem Charakter zum Re-Import)"
       tooltipPosition="bottom"
-    ></button>
+      text
+      size="small"
+      iconOnly
+    ><i class="pi pi-file-pdf"></i></button>
     <button
       type="button"
       pButton
-      icon="pi pi-print"
-      class="p-button-text p-button-sm c-export-btn"
+      class="c-export-btn"
       (click)="exportPdfWhite()"
       pTooltip="Als PDF-Bogen exportieren (weißer Hintergrund, druckfreundlich)"
       tooltipPosition="bottom"
-    ></button>
+      text
+      size="small"
+      iconOnly
+    ><i class="pi pi-print"></i></button>
     <button
       type="button"
       pButton
-      icon="pi pi-download"
-      class="p-button-text p-button-sm c-export-btn"
+      class="c-export-btn"
       (click)="exportJson()"
       pTooltip="Als JSON exportieren"
       tooltipPosition="bottom"
-    ></button>
+      text
+      size="small"
+      iconOnly
+    ><i class="pi pi-download"></i></button>
   </div>
 </div>

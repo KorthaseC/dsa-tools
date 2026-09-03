@@ -139,13 +139,17 @@
             <button
               type="button"
               pButton
-              icon="pi pi-plus"
-              class="p-button-text p-button-sm c-reco-add"
+              class="c-reco-add"
               [disabled]="!canAddMore(r)"
               (click)="addInstance(r)"
               pTooltip="Weitere Auswahl hinzufügen"
               tooltipPosition="top"
-            ></button>
+              text
+              size="small"
+              iconOnly
+            >
+              <i class="pi pi-plus"></i>
+            </button>
           </div>
           @for (inst of instancesFor(r); track inst.name) {
             <div class="c-reco-row">
@@ -187,12 +191,16 @@
               <button
                 type="button"
                 pButton
-                icon="pi pi-times"
-                class="p-button-text p-button-sm c-reco-del"
+                class="c-reco-del"
                 (click)="removeInstance(r, inst.name)"
                 pTooltip="Entfernen"
                 tooltipPosition="top"
-              ></button>
+                text
+                size="small"
+                iconOnly
+              >
+                <i class="pi pi-times"></i>
+              </button>
             </div>
           }
         </div>
