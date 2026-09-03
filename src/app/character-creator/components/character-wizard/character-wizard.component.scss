@@ -119,7 +119,9 @@
   grid-row: 1;
   justify-self: end;
 
-  .p-button-label {
+  // Since PrimeNG 22 the label is direct text content, not a .p-button-label
+  // wrapper, so the no-wrap rule belongs on the button itself.
+  .p-button {
     white-space: nowrap;
   }
 

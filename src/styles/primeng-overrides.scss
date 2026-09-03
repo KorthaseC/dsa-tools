@@ -644,24 +644,11 @@ p-tabpanel {
     }
   }
 
-  // `p-accordion-header` is the component's TAG selector, not a class, so the `.p-accordion-header` rules
-  // that used to live here matched nothing after the v21 rename. The real class is `.p-accordionheader`.
-  // Colours are NOT repeated here on purpose — the `--p-accordion-header-*` tokens above already drive
-  // background and colour including the hover/active variants, and hard values would clobber them.
-  // Only the typography is left, which no token covers; v22 also dropped the header-text wrapper, so it
-  // now sits on the header itself.
-  .p-accordionheader {
-    border: none;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-
-    .p-accordionheader-toggle-icon {
-      color: $gold-dim;
-      font-size: 0.75rem;
-    }
-  }
+  // A `.p-accordion-header` block used to sit here with a serif type scale and its own colours. It never
+  // matched anything: `p-accordion-header` is the component's TAG selector, not a class (the class is
+  // `.p-accordionheader`). Rewriting it to the real class would have silently switched on styling that
+  // had been dormant since v21, so it was removed instead — the header's look comes entirely from the
+  // `--p-accordion-header-*` tokens above. Reviving that typography is a design decision of its own.
 
   .p-accordion-content {
     background: $surface-warm-accent;

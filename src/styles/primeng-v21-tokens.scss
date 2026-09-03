@@ -1,0 +1,441 @@
+// PrimeNG 22 compatibility layer — pinned Aura v21 design tokens.
+//
+// PrimeNG 22 shipped a design refresh that tightened spacing and sizing across the board:
+// datatable cell padding went 0.75rem/1rem -> 0.5rem/0.875rem, accordion header padding
+// 1.125rem -> 1rem, icon and avatar sizes each down a step. None of it is breakage, but it
+// changes how the whole app reads, so the previous values are pinned here.
+//
+// 281 tokens, every one verified to have had a DIFFERENT default in v21 than in v22.
+// Tokens the project sets itself are deliberately absent — those already win.
+// Dark-mode colours are NOT part of this: only 2 of 489 changed, both cosmetically irrelevant.
+//
+// How this was produced, should PrimeNG 23 need the same treatment:
+//   1. npm pack primeng@<old> @primeuix/styles@<old> @primeng/themes@<old> into a scratch dir
+//   2. import each Aura preset in node and flatten it to --p-* names WITH values
+//      (skip the primitive/semantic/components wrapper keys; v22+ encodes dark values
+//       inline as light-dark(light, dark), so split on the top-level comma)
+//   3. diff the two maps and emit the old value for every key whose value changed
+//
+// body.app-dark (0,1,1) rather than :root, for the same reason as in primeng-overrides.scss:
+// it has to outrank PrimeNG's own token block, which is injected after this stylesheet.
+
+body.app-dark {
+  // accordion
+  --p-accordion-content-padding: 0 1.125rem 1.125rem 1.125rem;
+  --p-accordion-header-padding: 1.125rem;
+
+  // autocomplete
+  --p-autocomplete-dropdown-lg-width: 3rem;
+  --p-autocomplete-dropdown-sm-width: 2rem;
+  --p-autocomplete-dropdown-width: 2.5rem;
+
+  // avatar
+  --p-avatar-group-offset: -0.75rem;
+  --p-avatar-icon-size: 1rem;
+  --p-avatar-lg-font-size: 1.5rem;
+  --p-avatar-lg-group-offset: -1rem;
+  --p-avatar-lg-height: 3rem;
+  --p-avatar-lg-icon-size: 1.5rem;
+  --p-avatar-lg-width: 3rem;
+  --p-avatar-root-font-size: 1rem;
+  --p-avatar-root-height: 2rem;
+  --p-avatar-root-width: 2rem;
+  --p-avatar-xl-font-size: 2rem;
+  --p-avatar-xl-group-offset: -1.5rem;
+  --p-avatar-xl-height: 4rem;
+  --p-avatar-xl-icon-size: 2rem;
+  --p-avatar-xl-width: 4rem;
+
+  // badge
+  --p-badge-lg-font-size: 0.875rem;
+  --p-badge-lg-height: 1.75rem;
+  --p-badge-lg-min-width: 1.75rem;
+  --p-badge-root-font-size: 0.75rem;
+  --p-badge-root-height: 1.5rem;
+  --p-badge-root-min-width: 1.5rem;
+  --p-badge-root-padding: 0 0.5rem;
+  --p-badge-sm-font-size: 0.625rem;
+  --p-badge-sm-height: 1.25rem;
+  --p-badge-sm-min-width: 1.25rem;
+  --p-badge-xl-font-size: 1rem;
+  --p-badge-xl-height: 2rem;
+  --p-badge-xl-min-width: 2rem;
+
+  // breadcrumb
+  --p-breadcrumb-root-padding: 1rem;
+
+  // button
+  --p-button-root-icon-only-width: 2.5rem;
+  --p-button-root-lg-icon-only-width: 3rem;
+  --p-button-root-sm-icon-only-width: 2rem;
+
+  // card
+  --p-card-body-padding: 1.25rem;
+  --p-card-title-font-size: 1.25rem;
+
+  // carousel
+  --p-carousel-indicator-width: 2rem;
+
+  // cascadeselect
+  --p-cascadeselect-dropdown-width: 2.5rem;
+  --p-cascadeselect-option-icon-size: 0.875rem;
+
+  // checkbox
+  --p-checkbox-icon-lg-size: 1rem;
+  --p-checkbox-icon-size: 0.875rem;
+  --p-checkbox-icon-sm-size: 0.75rem;
+  --p-checkbox-root-height: 1.25rem;
+  --p-checkbox-root-lg-height: 1.5rem;
+  --p-checkbox-root-lg-width: 1.5rem;
+  --p-checkbox-root-sm-height: 1rem;
+  --p-checkbox-root-sm-width: 1rem;
+  --p-checkbox-root-width: 1.25rem;
+
+  // chip
+  --p-chip-icon-size: 1rem;
+  --p-chip-image-height: 2rem;
+  --p-chip-image-width: 2rem;
+  --p-chip-remove-icon-size: 1rem;
+  --p-chip-root-border-radius: 16px;
+  --p-chip-root-gap: 0.5rem;
+  --p-chip-root-padding-x: 0.75rem;
+  --p-chip-root-padding-y: 0.5rem;
+
+  // colorpicker
+  --p-colorpicker-preview-height: 1.5rem;
+  --p-colorpicker-preview-width: 1.5rem;
+
+  // confirmdialog
+  --p-confirmdialog-content-gap: 1rem;
+  --p-confirmdialog-icon-size: 2rem;
+
+  // confirmpopup
+  --p-confirmpopup-content-gap: 1rem;
+  --p-confirmpopup-footer-gap: 0.5rem;
+  --p-confirmpopup-icon-size: 1.5rem;
+  --p-confirmpopup-root-arrow-offset: 1.25rem;
+
+  // contextmenu
+  --p-contextmenu-root-transition-duration: var(--p-transition-duration);
+
+  // datatable
+  --p-datatable-body-cell-lg-padding: 1rem 1.25rem;
+  --p-datatable-body-cell-padding: 0.75rem 1rem;
+  --p-datatable-body-cell-sm-padding: 0.375rem 0.5rem;
+  --p-datatable-footer-cell-lg-padding: 1rem 1.25rem;
+  --p-datatable-footer-cell-padding: 0.75rem 1rem;
+  --p-datatable-footer-cell-sm-padding: 0.375rem 0.5rem;
+  --p-datatable-footer-lg-padding: 1rem 1.25rem;
+  --p-datatable-footer-padding: 0.75rem 1rem;
+  --p-datatable-footer-sm-padding: 0.375rem 0.5rem;
+  --p-datatable-header-cell-lg-padding: 1rem 1.25rem;
+  --p-datatable-header-cell-padding: 0.75rem 1rem;
+  --p-datatable-header-cell-selected-background: var(--p-highlight-background);
+  --p-datatable-header-cell-selected-color: var(--p-highlight-color);
+  --p-datatable-header-cell-sm-padding: 0.375rem 0.5rem;
+  --p-datatable-header-lg-padding: 1rem 1.25rem;
+  --p-datatable-header-padding: 0.75rem 1rem;
+  --p-datatable-header-sm-padding: 0.375rem 0.5rem;
+  --p-datatable-loading-icon-size: 2rem;
+  --p-datatable-root-transition-duration: var(--p-transition-duration);
+  --p-datatable-row-toggle-button-size: 1.75rem;
+  --p-datatable-sort-icon-size: 0.875rem;
+
+  // dataview
+  --p-dataview-footer-padding: 0.75rem 1rem;
+  --p-dataview-header-padding: 0.75rem 1rem;
+
+  // datepicker
+  --p-datepicker-date-height: 2rem;
+  --p-datepicker-date-width: 2rem;
+  --p-datepicker-dropdown-lg-width: 3rem;
+  --p-datepicker-dropdown-sm-width: 2rem;
+  --p-datepicker-dropdown-width: 2.5rem;
+  --p-datepicker-month-padding: 0.375rem;
+  --p-datepicker-time-picker-button-gap: 0.25rem;
+  --p-datepicker-year-padding: 0.375rem;
+
+  // dialog
+  --p-dialog-footer-gap: 0.5rem;
+  --p-dialog-title-font-size: 1.25rem;
+
+  // divider
+  --p-divider-horizontal-content-padding: 0 0.5rem;
+  --p-divider-horizontal-padding: 0 1rem;
+  --p-divider-vertical-content-padding: 0.5rem 0;
+  --p-divider-vertical-margin: 0 1rem;
+  --p-divider-vertical-padding: 0.5rem 0;
+
+  // dock
+  --p-dock-item-size: 3rem;
+
+  // drawer
+  --p-drawer-title-font-size: 1.5rem;
+
+  // fieldset
+  --p-fieldset-legend-padding: 0.5rem 0.75rem;
+  --p-fieldset-root-padding: 0 1.125rem 1.125rem 1.125rem;
+
+  // fileupload
+  --p-fileupload-content-gap: 1rem;
+  --p-fileupload-content-padding: 0 1.125rem 1.125rem 1.125rem;
+  --p-fileupload-file-gap: 1rem;
+  --p-fileupload-file-info-gap: 0.5rem;
+  --p-fileupload-file-padding: 1rem;
+  --p-fileupload-header-padding: 1.125rem;
+
+  // floatlabel
+  --p-floatlabel-in-input-padding-top: 1.5rem;
+  --p-floatlabel-over-active-top: -1.25rem;
+  --p-floatlabel-root-active-font-size: 0.75rem;
+  --p-floatlabel-root-font-weight: 500;
+
+  // form
+  --p-form-field-lg-font-size: 1.125rem;
+  --p-form-field-lg-padding-x: 0.875rem;
+  --p-form-field-lg-padding-y: 0.625rem;
+  --p-form-field-padding-x: 0.75rem;
+  --p-form-field-padding-y: 0.5rem;
+  --p-form-field-sm-font-size: 0.875rem;
+  --p-form-field-sm-padding-x: 0.625rem;
+  --p-form-field-sm-padding-y: 0.375rem;
+
+  // galleria
+  --p-galleria-caption-padding: 1rem;
+  --p-galleria-close-button-icon-size: 1.5rem;
+  --p-galleria-close-button-size: 3rem;
+  --p-galleria-indicator-button-height: 1rem;
+  --p-galleria-indicator-button-width: 1rem;
+  --p-galleria-indicator-list-padding: 1rem;
+  --p-galleria-nav-button-size: 3rem;
+  --p-galleria-nav-icon-size: 1.5rem;
+  --p-galleria-thumbnail-nav-button-icon-size: 1rem;
+  --p-galleria-thumbnail-nav-button-size: 2rem;
+  --p-galleria-thumbnails-content-padding: 1rem 0.25rem;
+
+  // icon
+  --p-icon-size: 1rem;
+
+  // iftalabel
+  --p-iftalabel-input-padding-top: 1.5rem;
+  --p-iftalabel-root-font-size: 0.75rem;
+  --p-iftalabel-root-font-weight: 400;
+
+  // image
+  --p-image-action-icon-size: 1.5rem;
+  --p-image-action-size: 3rem;
+  --p-image-preview-icon-size: 1.5rem;
+
+  // inputgroup
+  --p-inputgroup-addon-min-width: 2.5rem;
+  --p-inputgroup-addon-padding: 0.5rem;
+
+  // inputnumber
+  --p-inputnumber-button-width: 2.5rem;
+
+  // inputotp
+  --p-inputotp-input-lg-width: 3rem;
+  --p-inputotp-input-sm-width: 2rem;
+  --p-inputotp-input-width: 2.5rem;
+
+  // list
+  --p-list-header-padding: 0.5rem 1rem 0.25rem 1rem;
+  --p-list-option-group-padding: 0.5rem 0.75rem;
+  --p-list-option-padding: 0.5rem 0.75rem;
+
+  // listbox
+  --p-listbox-checkmark-gutter-end: 0.375rem;
+  --p-listbox-checkmark-gutter-start: -0.375rem;
+
+  // megamenu
+  --p-megamenu-mobile-button-size: 1.75rem;
+  --p-megamenu-root-horizontal-orientation-padding: 0.5rem 0.75rem;
+  --p-megamenu-root-transition-duration: var(--p-transition-duration);
+
+  // menu
+  --p-menu-root-transition-duration: var(--p-transition-duration);
+
+  // menubar
+  --p-menubar-mobile-button-size: 1.75rem;
+  --p-menubar-root-padding: 0.5rem 0.75rem;
+  --p-menubar-root-transition-duration: var(--p-transition-duration);
+  --p-menubar-submenu-mobile-indent: 1rem;
+
+  // message
+  --p-message-close-button-height: 1.75rem;
+  --p-message-close-button-width: 1.75rem;
+  --p-message-close-icon-lg-size: 1.125rem;
+  --p-message-close-icon-size: 1rem;
+  --p-message-close-icon-sm-size: 0.875rem;
+  --p-message-content-lg-padding: 0.625rem 0.875rem;
+  --p-message-content-padding: 0.5rem 0.75rem;
+  --p-message-content-sm-padding: 0.375rem 0.625rem;
+  --p-message-icon-lg-size: 1.25rem;
+  --p-message-icon-size: 1.125rem;
+  --p-message-icon-sm-size: 1rem;
+  --p-message-text-font-size: 1rem;
+  --p-message-text-lg-font-size: 1.125rem;
+  --p-message-text-sm-font-size: 0.875rem;
+
+  // metergroup
+  --p-metergroup-label-gap: 0.5rem;
+  --p-metergroup-label-icon-size: 1rem;
+  --p-metergroup-label-list-horizontal-gap: 1rem;
+  --p-metergroup-label-list-vertical-gap: 0.5rem;
+  --p-metergroup-label-marker-size: 0.5rem;
+  --p-metergroup-meters-size: 0.5rem;
+  --p-metergroup-root-gap: 1rem;
+
+  // multiselect
+  --p-multiselect-dropdown-width: 2.5rem;
+  --p-multiselect-list-header-padding: var(--p-list-header-padding);
+  --p-multiselect-option-focus-color: var(--p-list-option-focus-color);
+
+  // navigation
+  --p-navigation-item-padding: 0.5rem 0.75rem;
+  --p-navigation-submenu-icon-size: 0.875rem;
+  --p-navigation-submenu-label-padding: 0.5rem 0.75rem;
+
+  // orderlist
+  --p-orderlist-root-gap: 1.125rem;
+
+  // organizationchart
+  --p-organizationchart-node-padding: 0.75rem 1rem;
+  --p-organizationchart-node-toggle-button-size: 1.5rem;
+  --p-organizationchart-node-toggleable-padding: 0.75rem 1rem 1.25rem 1rem;
+  --p-organizationchart-root-gutter: 0.75rem;
+
+  // overlay
+  --p-overlay-modal-padding: 1.25rem;
+  --p-overlay-popover-padding: 0.75rem;
+
+  // paginator
+  --p-paginator-jump-to-page-input-max-width: 2.5rem;
+  --p-paginator-nav-button-height: 2.5rem;
+  --p-paginator-nav-button-width: 2.5rem;
+  --p-paginator-root-padding: 0.5rem 1rem;
+
+  // panel
+  --p-panel-content-padding: 0 1.125rem 1.125rem 1.125rem;
+  --p-panel-footer-padding: 0 1.125rem 1.125rem 1.125rem;
+  --p-panel-header-padding: 1.125rem;
+  --p-panel-toggleable-header-padding: 0.375rem 1.125rem;
+
+  // panelmenu
+  --p-panelmenu-root-transition-duration: var(--p-transition-duration);
+
+  // password
+  --p-password-meter-height: .75rem;
+
+  // picklist
+  --p-picklist-root-gap: 1.125rem;
+
+  // popover
+  --p-popover-root-arrow-offset: 1.25rem;
+
+  // progressbar
+  --p-progressbar-label-font-size: 0.75rem;
+  --p-progressbar-root-height: 1.25rem;
+
+  // radiobutton
+  --p-radiobutton-icon-lg-size: 1rem;
+  --p-radiobutton-icon-size: 0.75rem;
+  --p-radiobutton-root-height: 1.25rem;
+  --p-radiobutton-root-lg-height: 1.5rem;
+  --p-radiobutton-root-lg-width: 1.5rem;
+  --p-radiobutton-root-sm-height: 1rem;
+  --p-radiobutton-root-sm-width: 1rem;
+  --p-radiobutton-root-width: 1.25rem;
+
+  // select
+  --p-select-checkmark-gutter-end: 0.375rem;
+  --p-select-checkmark-gutter-start: -0.375rem;
+  --p-select-dropdown-width: 2.5rem;
+
+  // stepper
+  --p-stepper-separator-margin: 0 0 0 1.625rem;
+  --p-stepper-step-gap: 1rem;
+  --p-stepper-step-number-font-size: 1.143rem;
+  --p-stepper-step-padding: 0.5rem;
+  --p-stepper-steppanel-indent: 1rem;
+  --p-stepper-steppanels-padding: 0.875rem 0.5rem 1.125rem 0.5rem;
+
+  // tabs
+  --p-tabs-active-bar-bottom: -1px;
+  --p-tabs-nav-button-width: 2.5rem;
+  --p-tabs-tab-border-width: 0 0 1px 0;
+  --p-tabs-tab-hover-border-color: var(--p-content-border-color);
+  --p-tabs-tab-margin: 0 0 -1px 0;
+  --p-tabs-tab-padding: 1rem 1.125rem;
+  --p-tabs-tabpanel-padding: 0.875rem 1.125rem 1.125rem 1.125rem;
+
+  // tag
+  --p-tag-icon-size: 0.75rem;
+  --p-tag-root-font-size: 0.875rem;
+  --p-tag-root-padding: 0.25rem 0.5rem;
+
+  // terminal
+  --p-terminal-root-height: 18rem;
+
+  // tieredmenu
+  --p-tieredmenu-root-transition-duration: var(--p-transition-duration);
+  --p-tieredmenu-submenu-mobile-indent: 1rem;
+
+  // timeline
+  --p-timeline-event-marker-size: 1.125rem;
+  --p-timeline-event-min-height: 5rem;
+  --p-timeline-horizontal-event-content-padding: 1rem 0;
+  --p-timeline-vertical-event-content-padding: 0 1rem;
+
+  // toast
+  --p-toast-close-button-height: 1.75rem;
+  --p-toast-close-button-width: 1.75rem;
+  --p-toast-close-icon-size: 1rem;
+  --p-toast-detail-font-size: 0.875rem;
+  --p-toast-icon-size: 1.125rem;
+  --p-toast-root-transition-duration: var(--p-transition-duration);
+  --p-toast-root-width: 25rem;
+  --p-toast-summary-font-size: 1rem;
+  --p-toast-text-gap: 0.5rem;
+
+  // togglebutton
+  --p-togglebutton-content-lg-padding: 0.25rem 0.75rem;
+  --p-togglebutton-content-padding: 0.25rem 0.75rem;
+  --p-togglebutton-content-sm-padding: 0.25rem 0.75rem;
+
+  // toggleswitch
+  --p-toggleswitch-handle-size: 1rem;
+  --p-toggleswitch-root-height: 1.5rem;
+  --p-toggleswitch-root-width: 2.5rem;
+
+  // toolbar
+  --p-toolbar-root-padding: 0.75rem;
+
+  // tooltip
+  --p-tooltip-root-padding: 0.5rem 0.75rem;
+
+  // tree
+  --p-tree-loading-icon-size: 2rem;
+  --p-tree-node-gap: 0.25rem;
+  --p-tree-node-toggle-button-size: 1.75rem;
+  --p-tree-root-indent: 1rem;
+  --p-tree-root-padding: 1rem;
+  --p-tree-root-transition-duration: var(--p-transition-duration);
+
+  // treeselect
+  --p-treeselect-dropdown-width: 2.5rem;
+
+  // treetable
+  --p-treetable-body-cell-padding: 0.75rem 1rem;
+  --p-treetable-footer-cell-padding: 0.75rem 1rem;
+  --p-treetable-footer-padding: 0.75rem 1rem;
+  --p-treetable-header-cell-padding: 0.75rem 1rem;
+  --p-treetable-header-padding: 0.75rem 1rem;
+  --p-treetable-loading-icon-size: 2rem;
+  --p-treetable-node-toggle-button-size: 1.75rem;
+  --p-treetable-root-transition-duration: var(--p-transition-duration);
+  --p-treetable-sort-icon-size: 0.875rem;
+
+  // virtualscroller
+  --p-virtualscroller-loader-icon-size: 2rem;
+}

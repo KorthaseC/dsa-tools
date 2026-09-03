@@ -1,4 +1,7 @@
 @use 'styles/fonts';
+// Before primeng-overrides on purpose: same specificity, so source order decides and the
+// hand-written overrides keep winning over the pinned v21 defaults.
+@use 'styles/primeng-v21-tokens';
 @use 'styles/primeng-overrides';
 @use 'styles/shared-components';
 @use 'styles/selection-step';

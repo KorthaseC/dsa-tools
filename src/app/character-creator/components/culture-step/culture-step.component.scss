@@ -162,7 +162,9 @@ $reco-row-min: 2.1rem;
     border-radius: 0.35rem;
   }
 
-  ::ng-deep .p-button-icon {
+  // The icon is our own <i> since PrimeNG 22 — the directive no longer renders a
+  // .p-button-icon wrapper, so target the element directly.
+  ::ng-deep i {
     font-size: 0.8rem;
   }
 }
