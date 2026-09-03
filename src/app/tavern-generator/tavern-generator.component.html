@@ -64,13 +64,13 @@
   </div>
 
   <p-table [value]="guestLevels" styleClass="p-datatable-sm mb-3">
-    <ng-template pTemplate="header">
+    <ng-template #headerTemplate>
       <tr>
         <th>Tageszeit</th>
         <th>Gäste</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-element>
+    <ng-template #bodyTemplate let-element>
       <tr>
         <td>{{ dayTimeNames[element.dayTime] }}</td>
         <td>{{ guestLevelNames[element.guestLevel] }}</td>

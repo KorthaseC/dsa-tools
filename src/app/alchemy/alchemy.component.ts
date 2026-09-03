@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
@@ -46,6 +46,7 @@ enum PotionType {
   selector: 'app-alchemy',
   imports: [PageIntroComponent, FormsModule, ReactiveFormsModule, FloatLabelModule, ButtonModule, SelectModule],
   templateUrl: './alchemy.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './alchemy.component.scss',
 })
 export class AlchemyComponent {

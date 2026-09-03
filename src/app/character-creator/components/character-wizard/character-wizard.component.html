@@ -53,21 +53,17 @@
     <!-- ── Footer ── -->
     <footer class="c-wizard-footer">
       <div class="c-footer-left">
-        <button pButton type="button" label="Zurück" icon="pi pi-arrow-left" class="p-button-text" [disabled]="wizard.originStep() === 0" (click)="wizard.back()"></button>
+        <button pButton type="button" [disabled]="wizard.originStep() === 0" (click)="wizard.back()" text><i class="pi pi-arrow-left"></i> Zurück</button>
       </div>
       <div class="c-footer-center">
-        <button pButton type="button" label="Neu beginnen" severity="secondary" class="p-button-text" (click)="startOver($event)"></button>
+        <button pButton type="button" severity="secondary" (click)="startOver($event)" text>Neu beginnen</button>
       </div>
       <div class="c-footer-right">
         <button
           pButton
           type="button"
-          [label]="isLastOriginStep() ? 'Zur Ausarbeitung' : 'Weiter'"
-          icon="pi pi-arrow-right"
-          iconPos="right"
           [disabled]="!canAdvance()"
-          (click)="advance()"
-        ></button>
+          (click)="advance()">{{ isLastOriginStep() ? 'Zur Ausarbeitung' : 'Weiter' }} <i class="pi pi-arrow-right"></i></button>
       </div>
     </footer>
   } @else if (wizard.phase() === 'hub') {
@@ -122,7 +118,7 @@
                 </div>
               }
 
-              <button pButton type="button" label="Held abschließen" icon="pi pi-check" iconPos="right" [disabled]="!canFinish()" (click)="finish()"></button>
+              <button pButton type="button" [disabled]="!canFinish()" (click)="finish()">Held abschließen <i class="pi pi-check"></i></button>
             </div>
           }
         }
@@ -133,14 +129,14 @@
          Pure navigation: no gate — rule violations stay visible in the nav and on "Abschluss". -->
     <footer class="c-wizard-footer">
       <div class="c-footer-left">
-        <button pButton type="button" [label]="hubBackLabel()" icon="pi pi-arrow-left" class="p-button-text" (click)="hubBack()"></button>
+        <button pButton type="button" (click)="hubBack()" text><i class="pi pi-arrow-left"></i> {{ hubBackLabel() }}</button>
       </div>
       <div class="c-footer-center">
-        <button pButton type="button" label="Neu beginnen" severity="secondary" class="p-button-text" (click)="startOver($event)"></button>
+        <button pButton type="button" severity="secondary" (click)="startOver($event)" text>Neu beginnen</button>
       </div>
       <div class="c-footer-right">
         @if (nextHubSection(); as next) {
-          <button pButton type="button" [label]="next.label" icon="pi pi-arrow-right" iconPos="right" (click)="hubNext()"></button>
+          <button pButton type="button" (click)="hubNext()">{{ next.label }} <i class="pi pi-arrow-right"></i></button>
         }
       </div>
     </footer>

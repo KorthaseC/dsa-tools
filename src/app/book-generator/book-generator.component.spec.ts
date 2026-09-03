@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaginatorState } from 'primeng/paginator';
 import { BookGeneratorComponent, BookType } from './book-generator.component';
 import { BookGeneratorService } from './book-generator.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('BookGeneratorComponent', () => {
   let component: BookGeneratorComponent;
@@ -17,7 +17,7 @@ describe('BookGeneratorComponent', () => {
 
     await TestBed.configureTestingModule({
     imports: [BookGeneratorComponent],
-    providers: [{ provide: BookGeneratorService, useValue: mockBookService }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [{ provide: BookGeneratorService, useValue: mockBookService }, provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
 
     fixture = TestBed.createComponent(BookGeneratorComponent);

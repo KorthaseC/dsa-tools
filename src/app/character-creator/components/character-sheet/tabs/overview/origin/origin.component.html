@@ -3,13 +3,16 @@
   <button
     type="button"
     pButton
-    [icon]="settings.baseValueEditing() ? 'pi pi-lock-open' : 'pi pi-lock'"
-    class="p-button-text p-button-sm c-origin-lock"
+    text
+    size="small"
+    class="c-origin-lock"
     [class.c-origin-unlocked]="settings.baseValueEditing()"
     (click)="settings.toggleBaseValueEditing()"
     [pTooltip]="settings.baseValueEditing() ? 'Bearbeitung gesperrt lassen' : 'Bearbeitung erlauben (Homebrew)'"
     tooltipPosition="left"
-  ></button>
+  >
+    <i [class]="settings.baseValueEditing() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
+  </button>
 </div>
 
 <div class="c-origin-grid">

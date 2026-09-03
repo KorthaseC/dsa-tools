@@ -10,8 +10,8 @@
       (ngModelChange)="setSelected($event)"
       class="w-full"
     >
-      <ng-template pTemplate="item" let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
-      <ng-template pTemplate="selectedItem" let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
+      <ng-template #itemTemplate let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
+      <ng-template #selectedItemTemplate let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
     </p-select>
     <label for="experienceLevel">Erfahrungsgrad</label>
   </p-floatlabel>

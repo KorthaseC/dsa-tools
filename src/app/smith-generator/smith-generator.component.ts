@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -65,6 +65,7 @@ import {
     PopoverModule,
 ],
     templateUrl: './smith-generator.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './smith-generator.component.scss'
 })
 export class SmithGeneratorComponent {

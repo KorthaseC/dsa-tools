@@ -20,7 +20,7 @@
           <label>Stufe</label>
           <p-inputnumber [ngModel]="e.level ?? null" (ngModelChange)="update(e.id, 'level', $event ?? undefined)" [min]="1" [showButtons]="true" buttonLayout="horizontal" [useGrouping]="false" placeholder="–" />
         </span>
-        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm c-hb-del" (click)="remove(e.id)" pTooltip="Entfernen" tooltipPosition="top"></button>
+        <button type="button" pButton class="c-hb-del" (click)="remove(e.id)" pTooltip="Entfernen" tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
       </div>
 
       <div class="c-hb-line">
@@ -41,5 +41,5 @@
     <p class="c-hb-empty">Noch keine Homebrew-Einträge.</p>
   }
 
-  <button type="button" pButton icon="pi pi-plus" label="Homebrew-Eintrag hinzufügen" class="p-button-sm c-hb-add" (click)="add()"></button>
+  <button type="button" pButton class="c-hb-add" (click)="add()" size="small"><i class="pi pi-plus"></i> Homebrew-Eintrag hinzufügen</button>
 </div>

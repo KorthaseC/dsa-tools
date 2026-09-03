@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -16,6 +16,7 @@ import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
   selector: 'app-name-generator',
   imports: [PageIntroComponent, FormsModule, ReactiveFormsModule, ButtonModule, RadioButtonModule, TreeModule, CheckboxModule, ProgressSpinnerModule, TabsModule],
   templateUrl: './name-generator.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './name-generator.component.scss',
 })
 export class NameGeneratorComponent {

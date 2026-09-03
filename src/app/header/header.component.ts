@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { filter } from 'rxjs';
@@ -9,6 +9,7 @@ import { DiceRollsComponent } from '../dice-rolls/dice-rolls.component';
   selector: 'app-header',
   imports: [TooltipModule, RouterModule, DiceRollsComponent],
   templateUrl: './header.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {

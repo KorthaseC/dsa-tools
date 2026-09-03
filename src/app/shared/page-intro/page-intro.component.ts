@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APP_FEATURES } from '../../app.features';
 
@@ -16,6 +16,7 @@ import { APP_FEATURES } from '../../app.features';
       <p class="c-page-intro">{{ introText }}</p>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './page-intro.component.scss',
 })
 export class PageIntroComponent {

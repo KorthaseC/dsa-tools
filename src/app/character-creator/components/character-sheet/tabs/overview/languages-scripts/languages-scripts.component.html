@@ -19,7 +19,7 @@
           class="c-ls-lvl"
         />
         <span class="c-ls-cost">{{ cost(e.ref) }} AP</span>
-        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeLanguage(e.ref.name)" pTooltip="Entfernen" tooltipPosition="top"></button>
+        <button type="button" pButton (click)="removeLanguage(e.ref.name)" pTooltip="Entfernen" tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
       </div>
     } @empty {
       <p class="c-ls-empty">Keine Sprachen gewählt.</p>
@@ -48,7 +48,7 @@
       <div class="c-ls-row">
         <span class="c-ls-name">{{ e.sa?.label ?? e.ref.name }}</span>
         <span class="c-ls-cost">{{ cost(e.ref) }} AP</span>
-        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeScript(e.ref.name)" pTooltip="Entfernen" tooltipPosition="top"></button>
+        <button type="button" pButton (click)="removeScript(e.ref.name)" pTooltip="Entfernen" tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
       </div>
     } @empty {
       <p class="c-ls-empty">Keine Schriften gewählt.</p>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
@@ -47,6 +47,7 @@ export interface Book {
         PaginatorModule,
     ],
     templateUrl: './book-generator.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './book-generator.component.scss'
 })
 export class BookGeneratorComponent {

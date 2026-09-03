@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { AccordionModule } from 'primeng/accordion';
 import { InputTextModule } from 'primeng/inputtext';
@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 @Component({
   standalone: true,
   imports: [AccordionModule, InputTextModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <p-accordion [multiple]="true" [value]="open()" (valueChange)="onChange($event)">
       <p-accordion-panel value="sa">

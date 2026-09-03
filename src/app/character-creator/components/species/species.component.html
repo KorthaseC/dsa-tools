@@ -117,13 +117,16 @@
                 <button
                   type="button"
                   pButton
-                  [icon]="autoAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"
-                  class="p-button-text p-button-sm c-deselect-lock"
+                  text
+                  size="small"
+                  class="c-deselect-lock"
                   [class.c-unlocked]="autoAdvDeselectable()"
                   (click)="toggleAutoAdvDeselectable()"
                   [pTooltip]="autoAdvDeselectable() ? 'Abwählen wieder sperren' : 'Automatische Vor-/Nachteile abwählen (Homebrew)'"
                   tooltipPosition="left"
-                ></button>
+                >
+                  <i [class]="autoAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
+                </button>
               </div>
               @if (autoAdvDeselectable()) {
                 <p class="c-gm-warning">
@@ -177,13 +180,16 @@
                 <button
                   type="button"
                   pButton
-                  [icon]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"
-                  class="p-button-text p-button-sm c-deselect-lock"
+                  text
+                  size="small"
+                  class="c-deselect-lock"
                   [class.c-unlocked]="recommendedAdvDeselectable()"
                   (click)="toggleRecommendedAdvDeselectable()"
                   [pTooltip]="recommendedAdvDeselectable() ? 'Abwählen wieder sperren' : 'Empfohlene Vor-/Nachteile abwählen'"
                   tooltipPosition="left"
-                ></button>
+                >
+                  <i [class]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
+                </button>
               </div>
               @if (recommendedAdvDeselectable()) {
                 <p class="c-gm-warning">
@@ -268,13 +274,16 @@
                 <button
                   type="button"
                   pButton
-                  [icon]="atypicalAdvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"
-                  class="p-button-text p-button-sm c-deselect-lock"
+                  text
+                  size="small"
+                  class="c-deselect-lock"
                   [class.c-unlocked]="atypicalAdvUnlocked()"
                   (click)="toggleAtypicalAdvUnlocked()"
                   [pTooltip]="atypicalAdvUnlocked() ? 'Untypische Vorteile wieder sperren' : 'Untypische Vorteile auswählbar machen (Homebrew)'"
                   tooltipPosition="left"
-                ></button>
+                >
+                  <i [class]="atypicalAdvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
+                </button>
               </div>
               @if (atypicalAdvUnlocked()) {
                 <p class="c-gm-warning">
@@ -313,13 +322,16 @@
                 <button
                   type="button"
                   pButton
-                  [icon]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"
-                  class="p-button-text p-button-sm c-deselect-lock"
+                  text
+                  size="small"
+                  class="c-deselect-lock"
                   [class.c-unlocked]="recommendedAdvDeselectable()"
                   (click)="toggleRecommendedAdvDeselectable()"
                   [pTooltip]="recommendedAdvDeselectable() ? 'Abwählen wieder sperren' : 'Empfohlene Vor-/Nachteile abwählen'"
                   tooltipPosition="left"
-                ></button>
+                >
+                  <i [class]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
+                </button>
               </div>
               @if (recommendedAdvDeselectable()) {
                 <p class="c-gm-warning">
@@ -404,13 +416,16 @@
                 <button
                   type="button"
                   pButton
-                  [icon]="atypicalDisadvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"
-                  class="p-button-text p-button-sm c-deselect-lock"
+                  text
+                  size="small"
+                  class="c-deselect-lock"
                   [class.c-unlocked]="atypicalDisadvUnlocked()"
                   (click)="toggleAtypicalDisadvUnlocked()"
                   [pTooltip]="atypicalDisadvUnlocked() ? 'Untypische Nachteile wieder sperren' : 'Untypische Nachteile auswählbar machen (Homebrew)'"
                   tooltipPosition="left"
-                ></button>
+                >
+                  <i [class]="atypicalDisadvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
+                </button>
               </div>
               @if (atypicalDisadvUnlocked()) {
                 <p class="c-gm-warning">

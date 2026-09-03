@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { APP_FEATURES } from '../app.features';
@@ -7,6 +7,7 @@ import { APP_FEATURES } from '../app.features';
   selector: 'app-about',
   imports: [RouterModule],
   templateUrl: './about.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './about.component.scss',
 })
 export class AboutComponent {

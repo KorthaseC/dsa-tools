@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
@@ -12,6 +12,7 @@ import { AlchemyDiceResult } from '../alchemy.models';
   selector: 'app-dice-results',
   imports: [FormsModule, ReactiveFormsModule, FloatLabelModule, ButtonModule, SelectModule],
   templateUrl: './dice-result.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './dice-result.component.scss',
 })
 export class DiceResultComponent implements OnInit {

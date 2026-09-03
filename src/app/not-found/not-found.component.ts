@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from '../app.constants';
 
@@ -6,6 +6,7 @@ import { APP_ROUTES } from '../app.constants';
   selector: 'app-not-found',
   imports: [RouterModule],
   templateUrl: './not-found.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './not-found.component.scss',
 })
 export class NotFoundComponent {

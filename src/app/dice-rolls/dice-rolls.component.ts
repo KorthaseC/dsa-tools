@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, inject, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, inject, Inject, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -11,6 +11,7 @@ import { DiceRollService } from '../shared/dice-roll.service';
   selector: 'app-dice-rolls',
   imports: [ButtonModule, CheckboxModule, FormsModule, PopoverModule, TooltipModule],
   templateUrl: './dice-rolls.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './dice-rolls.component.scss',
 })
 export class DiceRollsComponent implements AfterViewInit {

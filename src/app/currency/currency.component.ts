@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormControl,
   FormsModule,
@@ -25,6 +25,7 @@ import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
     
 ],
     templateUrl: './currency.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './currency.component.scss'
 })
 export class CurrencyComponent implements OnInit {

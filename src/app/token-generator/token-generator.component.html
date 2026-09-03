@@ -14,8 +14,8 @@
       (onSelect)="onFileSelected($event)"
       styleClass="token-fileupload"
     >
-      <ng-template pTemplate="header"></ng-template>
-      <ng-template pTemplate="content">
+      <ng-template #headerTemplate></ng-template>
+      <ng-template #contentTemplate>
         <div class="upload-area__inner">
           <img src="assets/other/Coin.png" alt="Münze" class="upload-area__coin" />
           <p class="upload-area__hint mt-3">Klicke hier oder ziehe ein Bild hinein</p>

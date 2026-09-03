@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { FooterComponent } from './footer/footer.component';
@@ -9,6 +9,7 @@ import { SeoRouteData, SeoService } from './shared/seo.service';
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {

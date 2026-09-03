@@ -2,7 +2,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TestBed } from '@angular/core/testing';
 import { NameRegion } from './name-generator.model';
 import { NameGeneratorService } from './name-generator.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('NameGeneratorService', () => {
   let service: NameGeneratorService;
@@ -11,7 +11,7 @@ describe('NameGeneratorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],
-      providers: [NameGeneratorService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+      providers: [NameGeneratorService, provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()],
     });
 
     service = TestBed.inject(NameGeneratorService);

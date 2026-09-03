@@ -40,7 +40,7 @@
         placeholder="Gegenstand aus Katalog suchen …"
         class="c-catalog-add"
       >
-        <ng-template pTemplate="item" let-opt>
+        <ng-template #itemTemplate let-opt>
           <div class="c-cat-opt">
             <span class="c-cat-label">{{ opt.label }}</span>
             <span class="c-cat-price">{{ opt.price }} S</span>
@@ -93,7 +93,7 @@
             </td>
             <td><input pInputText #whereRef [value]="item.carriedWhere ?? ''" (blur)="updateItem(index, 'carriedWhere', whereRef.value)" placeholder="–" class="w-full" /></td>
             <td class="c-td-center">
-              <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeItem(index)" pTooltip="Entfernen" tooltipPosition="top"></button>
+              <button type="button" pButton (click)="removeItem(index)" pTooltip="Entfernen" tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
             </td>
           </tr>
         </ng-template>
@@ -107,7 +107,7 @@
     </div>
 
     <div class="c-besitz-add">
-      <button pButton type="button" label="Gegenstand hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addItem()"></button>
+      <button pButton type="button" (click)="addItem()" text size="small"><i class="pi pi-plus"></i> Gegenstand hinzufügen</button>
     </div>
   </section>
 

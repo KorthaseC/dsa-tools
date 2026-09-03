@@ -32,7 +32,7 @@
             appendTo="body"
             class="c-trait-sub"
           >
-            <ng-template pTemplate="item" let-opt>
+            <ng-template #itemTemplate let-opt>
               <div class="c-sub-item">
                 <span>{{ opt.label }}</span>
                 @if (opt.costLabel) {
@@ -64,7 +64,7 @@
             class="c-trait-cost-input"
           />
           @if (adv.costOverride != null) {
-            <button type="button" pButton icon="pi pi-undo" class="p-button-text p-button-sm" (click)="setAdvantageCostOverrideAt(i, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top"></button>
+            <button type="button" pButton (click)="setAdvantageCostOverrideAt(i, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top" text size="small"><i class="pi pi-undo"></i></button>
           }
         } @else {
           <span class="c-trait-cost" [class.c-trait-adjusted]="adv.costOverride != null">{{ rowCostLabel(adv) }}</span>
@@ -72,7 +72,7 @@
         @if (adv.mandatory) {
           <span class="c-trait-tag" pTooltip="Automatisch durch Spezies (frei)" tooltipPosition="top">auto</span>
         }
-        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm c-trait-del" (click)="removeAdvantageAt(i)" pTooltip="Entfernen" tooltipPosition="top"></button>
+        <button type="button" pButton class="c-trait-del" (click)="removeAdvantageAt(i)" pTooltip="Entfernen" tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
       </div>
     } @empty {
       <p class="c-trait-empty">Noch keine Vorteile gewählt.</p>
@@ -101,7 +101,7 @@
       [virtualScrollItemSize]="38"
       class="c-trait-add"
     >
-      <ng-template pTemplate="item" let-opt>
+      <ng-template #itemTemplate let-opt>
         <div class="c-add-item">
           <span>{{ opt.label }}</span>
           <span class="c-add-cost">{{ opt.cost }}</span>
@@ -142,7 +142,7 @@
             appendTo="body"
             class="c-trait-sub"
           >
-            <ng-template pTemplate="item" let-opt>
+            <ng-template #itemTemplate let-opt>
               <div class="c-sub-item">
                 <span>{{ opt.label }}</span>
                 @if (opt.costLabel) {
@@ -174,7 +174,7 @@
             class="c-trait-cost-input"
           />
           @if (dis.costOverride != null) {
-            <button type="button" pButton icon="pi pi-undo" class="p-button-text p-button-sm" (click)="setDisadvantageCostOverrideAt(i, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top"></button>
+            <button type="button" pButton (click)="setDisadvantageCostOverrideAt(i, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top" text size="small"><i class="pi pi-undo"></i></button>
           }
         } @else {
           <span class="c-trait-cost" [class.c-trait-adjusted]="dis.costOverride != null">{{ rowCostLabel(dis) }}</span>
@@ -182,7 +182,7 @@
         @if (dis.mandatory) {
           <span class="c-trait-tag" pTooltip="Automatisch durch Spezies (frei)" tooltipPosition="top">auto</span>
         }
-        <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm c-trait-del" (click)="removeDisadvantageAt(i)" pTooltip="Entfernen" tooltipPosition="top"></button>
+        <button type="button" pButton class="c-trait-del" (click)="removeDisadvantageAt(i)" pTooltip="Entfernen" tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
       </div>
     } @empty {
       <p class="c-trait-empty">Noch keine Nachteile gewählt.</p>
@@ -211,7 +211,7 @@
       [virtualScrollItemSize]="38"
       class="c-trait-add"
     >
-      <ng-template pTemplate="item" let-opt>
+      <ng-template #itemTemplate let-opt>
         <div class="c-add-item">
           <span>{{ opt.label }}</span>
           <span class="c-add-cost">{{ opt.cost }}</span>

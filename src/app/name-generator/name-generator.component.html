@@ -68,7 +68,7 @@
         <div class="mb-3 align-items-center gap-2">
           <p-button label="Erzeuge zufällige Namen" (onClick)="getNames()" [disabled]="!isFormValid() || isLoading" class="flex-1" />
           @if (isLoading) {
-            <p-progressSpinner class="c-spinner" />
+            <p-progress-spinner class="c-spinner" />
           }
         </div>
 

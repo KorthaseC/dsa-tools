@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { CardModule } from 'primeng/card';
@@ -10,6 +10,7 @@ import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
   selector: 'app-overview',
   imports: [PageIntroComponent, CardModule, RouterModule],
   templateUrl: './overview.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './overview.component.scss',
 })
 export class OverviewComponent {

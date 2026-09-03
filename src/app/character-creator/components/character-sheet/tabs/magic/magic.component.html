@@ -196,7 +196,7 @@
   </p-table>
 
 <div class="c-add-row">
-  <button pButton type="button" [label]="labels().addButton" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addRow()"></button>
+  <button pButton type="button" (click)="addRow()" text size="small"><i class="pi pi-plus"></i> {{ labels().addButton }}</button>
 </div>
 
 <p-confirmpopup />

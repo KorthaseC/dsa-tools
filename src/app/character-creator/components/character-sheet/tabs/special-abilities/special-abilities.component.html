@@ -32,7 +32,7 @@
               class="c-sa-param"
             >
               <!-- Options that carry their own price (Berufsgeheimnis: 1–50 AP) show it while choosing. -->
-              <ng-template pTemplate="item" let-opt>
+              <ng-template #itemTemplate let-opt>
                 <div class="c-sub-item">
                   <span>{{ opt.label }}</span>
                   @if (opt.cost != null) {
@@ -81,12 +81,9 @@
               <button
                 type="button"
                 pButton
-                icon="pi pi-times"
-                class="p-button-text p-button-sm"
                 (click)="removeAt(b.key, e.index)"
                 pTooltip="Entfernen"
-                tooltipPosition="top"
-              ></button>
+                tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
             }
           } @else {
             @if (costOverrideUnlocked()) {
@@ -99,7 +96,7 @@
                 class="c-sa-cost-input"
               />
               @if (e.ref.costOverride != null) {
-                <button type="button" pButton icon="pi pi-undo" class="p-button-text p-button-sm" (click)="setCostOverride(b.key, e.index, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top"></button>
+                <button type="button" pButton (click)="setCostOverride(b.key, e.index, null)" pTooltip="Auf Katalogwert zurücksetzen" tooltipPosition="top" text size="small"><i class="pi pi-undo"></i></button>
               }
             } @else {
               <span class="c-sa-cost" [class.c-sa-adjusted]="e.ref.costOverride != null">{{ cost(e.ref) }} AP</span>
@@ -107,12 +104,9 @@
             <button
               type="button"
               pButton
-              icon="pi pi-times"
-              class="p-button-text p-button-sm"
               (click)="removeAt(b.key, e.index)"
               pTooltip="Entfernen"
-              tooltipPosition="top"
-            ></button>
+              tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
           }
         </div>
         } @empty {

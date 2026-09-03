@@ -219,17 +219,13 @@
       </p-table>
 
       <div class="c-add-row">
-        <button pButton type="button" label="Waffe hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addMeleeWeapon()"></button>
+        <button pButton type="button" (click)="addMeleeWeapon()" text size="small"><i class="pi pi-plus"></i> Waffe hinzufügen</button>
         <button
           pButton
-          type="button"
-          label="In Ausrüstung übertragen"
-          icon="pi pi-arrow-right"
-          class="p-button-text p-button-sm c-transfer-btn"
+          type="button" class="c-transfer-btn"
           (click)="transferToEquipment('closeCombat', $event)"
           pTooltip="Diese Waffen in die Besitz-Ausrüstung übertragen"
-          tooltipPosition="top"
-        ></button>
+          tooltipPosition="top" text size="small"><i class="pi pi-arrow-right"></i> In Ausrüstung übertragen</button>
       </div>
     </p-accordion-content>
   </p-accordion-panel>
@@ -480,21 +476,13 @@
         <button
           pButton
           type="button"
-          label="Fernkampfwaffe hinzufügen"
-          icon="pi pi-plus"
-          class="p-button-text p-button-sm"
-          (click)="addRangedWeapon()"
-        ></button>
+          (click)="addRangedWeapon()" text size="small"><i class="pi pi-plus"></i> Fernkampfwaffe hinzufügen</button>
         <button
           pButton
-          type="button"
-          label="In Ausrüstung übertragen"
-          icon="pi pi-arrow-right"
-          class="p-button-text p-button-sm c-transfer-btn"
+          type="button" class="c-transfer-btn"
           (click)="transferToEquipment('rangeCombat', $event)"
           pTooltip="Diese Waffen in die Besitz-Ausrüstung übertragen"
-          tooltipPosition="top"
-        ></button>
+          tooltipPosition="top" text size="small"><i class="pi pi-arrow-right"></i> In Ausrüstung übertragen</button>
       </div>
     </p-accordion-content>
   </p-accordion-panel>
@@ -665,17 +653,13 @@
       </p-table>
 
       <div class="c-add-row">
-        <button pButton type="button" label="Rüstung hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addArmorRow()"></button>
+        <button pButton type="button" (click)="addArmorRow()" text size="small"><i class="pi pi-plus"></i> Rüstung hinzufügen</button>
         <button
           pButton
-          type="button"
-          label="In Ausrüstung übertragen"
-          icon="pi pi-arrow-right"
-          class="p-button-text p-button-sm c-transfer-btn"
+          type="button" class="c-transfer-btn"
           (click)="transferToEquipment('armor', $event)"
           pTooltip="Diese Rüstungen in die Besitz-Ausrüstung übertragen"
-          tooltipPosition="top"
-        ></button>
+          tooltipPosition="top" text size="small"><i class="pi pi-arrow-right"></i> In Ausrüstung übertragen</button>
       </div>
     </p-accordion-content>
   </p-accordion-panel>
@@ -835,17 +819,13 @@
       </p-table>
 
       <div class="c-add-row">
-        <button pButton type="button" label="Schild hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addShieldRow()"></button>
+        <button pButton type="button" (click)="addShieldRow()" text size="small"><i class="pi pi-plus"></i> Schild hinzufügen</button>
         <button
           pButton
-          type="button"
-          label="In Ausrüstung übertragen"
-          icon="pi pi-arrow-right"
-          class="p-button-text p-button-sm c-transfer-btn"
+          type="button" class="c-transfer-btn"
           (click)="transferToEquipment('shields', $event)"
           pTooltip="Diese Schilde/Parierwaffen in die Besitz-Ausrüstung übertragen"
-          tooltipPosition="top"
-        ></button>
+          tooltipPosition="top" text size="small"><i class="pi pi-arrow-right"></i> In Ausrüstung übertragen</button>
       </div>
     </p-accordion-content>
   </p-accordion-panel>

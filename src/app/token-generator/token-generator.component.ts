@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, PLATFORM_ID, effect, inject, viewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, PLATFORM_ID, effect, inject, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -19,6 +19,7 @@ const CANVAS_SIZE = 400;
   selector: 'app-token-generator',
   imports: [PageIntroComponent, CommonModule, FormsModule, ButtonModule, FileUploadModule, InputTextModule, SelectButtonModule],
   templateUrl: './token-generator.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './token-generator.component.scss',
 })
 export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
@@ -115,7 +116,8 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
 
   // ── Public event handlers ────────────────────────────────────────────────
 
-  public onFileSelected(event: { files: File[] }): void {
+  // PrimeNG 22 widened FileSelectEvent.files to File[] | FileList; indexing works for both.
+  public onFileSelected(event: { files: File[] | FileList }): void {
     const file = event.files?.[0];
     if (!file || !file.type.startsWith('image/')) {
       return;

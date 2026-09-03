@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NameGeneratorComponent } from './name-generator.component';
 import { NameRegion, RACE_PANEL } from './name-generator.model';
 import { NameGeneratorService } from './name-generator.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('NameGeneratorComponent', () => {
   let component: NameGeneratorComponent;
@@ -18,7 +18,7 @@ describe('NameGeneratorComponent', () => {
 
     await TestBed.configureTestingModule({
     imports: [NameGeneratorComponent],
-    providers: [{ provide: NameGeneratorService, useValue: nameServiceSpy }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [{ provide: NameGeneratorService, useValue: nameServiceSpy }, provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
 
     fixture = TestBed.createComponent(NameGeneratorComponent);

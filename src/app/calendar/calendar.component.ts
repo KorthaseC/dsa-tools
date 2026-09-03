@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
@@ -21,6 +21,7 @@ import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
         SelectModule,
     ],
     templateUrl: './calendar.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './calendar.component.scss'
 })
 export class CalendarComponent {

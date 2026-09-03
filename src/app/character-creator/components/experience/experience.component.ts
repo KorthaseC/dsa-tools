@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { SelectModule } from 'primeng/select';
@@ -11,6 +11,7 @@ import { CharacterStateService } from '../../services/character-state.service';
   selector: 'app-experience',
   imports: [FormsModule, FloatLabelModule, SelectModule],
   templateUrl: './experience.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './experience.component.scss',
 })
 export class ExperienceComponent {

@@ -8,9 +8,9 @@
     @for (r of rows(); track r.key) {
       <div class="c-eig-row">
         <span class="c-eig-label" [style.color]="r.color">{{ r.label }}</span>
-        <button type="button" pButton icon="pi pi-minus" class="p-button-text p-button-sm" [disabled]="r.value <= MIN" (click)="dec(r)"></button>
+        <button type="button" pButton [disabled]="r.value <= MIN" (click)="dec(r)" text size="small"><i class="pi pi-minus"></i></button>
         <span class="c-eig-value">{{ r.value }}</span>
-        <button type="button" pButton icon="pi pi-plus" class="p-button-text p-button-sm" [disabled]="r.value >= r.max" (click)="inc(r)" [pTooltip]="'Max ' + r.max" tooltipPosition="top"></button>
+        <button type="button" pButton [disabled]="r.value >= r.max" (click)="inc(r)" [pTooltip]="'Max ' + r.max" tooltipPosition="top" text size="small"><i class="pi pi-plus"></i></button>
         <span class="c-eig-cost">{{ r.apCost }} AP</span>
       </div>
     }

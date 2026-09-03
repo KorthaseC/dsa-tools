@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -26,6 +26,7 @@ import { BugReportService } from './bug-report.service';
     ProgressSpinnerModule,
   ],
   templateUrl: './bug-report.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './bug-report.component.scss',
 })
 export class BugReportComponent {

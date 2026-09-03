@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
@@ -33,6 +33,7 @@ import { resolveAdvantageByName } from '../../utils/utils';
         CommonModule
     ],
     templateUrl: './species.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './species.component.scss'
 })
 export class SpeciesComponent {

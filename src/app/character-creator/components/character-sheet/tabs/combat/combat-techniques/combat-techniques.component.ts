@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { AccordionModule } from 'primeng/accordion';
 import { InputNumber } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
-import { MultiSelectModule } from 'primeng/multiselect';
 import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
@@ -29,7 +28,7 @@ const ATTR_KEY: Record<Attribute, keyof Attributes> = {
 @Component({
   selector: 'app-cs-combat-techniques',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, AccordionModule, InputNumber, InputTextModule, MultiSelectModule, SelectModule, TableModule, TooltipModule],
+  imports: [FormsModule, AccordionModule, InputNumber, InputTextModule, SelectModule, TableModule, TooltipModule],
   templateUrl: './combat-techniques.component.html',
   styleUrl: './combat-techniques.component.scss',
 })
@@ -52,7 +51,7 @@ export class CombatTechniquesComponent {
     })()
   );
 
-  onPanelsChange(val: string | number | string[] | number[]): void {
+  onPanelsChange(val: string | number | (string | number)[]): void {
     const panels = (Array.isArray(val) ? val : [val]).map(String);
     this.openPanels.set(panels);
     localStorage.setItem(this.LS_KEY, JSON.stringify(panels));

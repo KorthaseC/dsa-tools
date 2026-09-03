@@ -4,13 +4,16 @@
     <button
       type="button"
       pButton
-      [icon]="unlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"
-      class="p-button-text p-button-sm c-tf-lock"
+      text
+      size="small"
+      class="c-tf-lock"
       [class.c-unlocked]="unlocked()"
       (click)="toggleUnlocked()"
       [pTooltip]="unlocked() ? 'Felder wieder sperren' : 'Felder zum Bearbeiten entsperren'"
       tooltipPosition="left"
-    ></button>
+    >
+      <i [class]="unlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
+    </button>
   </div>
 
   @if (unlocked()) {

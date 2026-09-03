@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { APP_ROUTES } from '../../../app.constants';
 import { CharacterStateService } from '../../services/character-state.service';
@@ -11,6 +11,7 @@ import { PageIntroComponent } from '../../../shared/page-intro/page-intro.compon
   selector: 'app-character-loader',
   imports: [PageIntroComponent, ],
   templateUrl: './character-loader.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './character-loader.component.scss',
 })
 export class CharacterLoaderComponent {

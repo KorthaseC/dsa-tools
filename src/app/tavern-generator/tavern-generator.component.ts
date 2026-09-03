@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormControl,
   FormsModule,
@@ -63,6 +63,7 @@ import {
     TableModule
 ],
     templateUrl: './tavern-generator.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './tavern-generator.component.scss'
 })
 export class TavernGeneratorComponent implements OnInit {

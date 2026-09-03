@@ -53,7 +53,7 @@ export class TalentsComponent {
     })()
   );
 
-  onPanelsChange(val: string | number | string[] | number[]): void {
+  onPanelsChange(val: string | number | (string | number)[]): void {
     const panels = (Array.isArray(val) ? val : [val]).map(String);
     this.openPanels.set(panels);
     localStorage.setItem(this.LS_KEY, JSON.stringify(panels));

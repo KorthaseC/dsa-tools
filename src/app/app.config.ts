@@ -1,13 +1,14 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideClientHydration } from '@angular/platform-browser';
+import { provideClientHydration, withNoIncrementalHydration } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 
-import Aura from '@primeng/themes/aura';
+import Aura from '@primeuix/themes/aura';
 import { ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 const DE_TRANSLATION = {
   dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
@@ -65,8 +66,9 @@ const DE_TRANSLATION = {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideClientHydration(),
+    provideClientHydration(withNoIncrementalHydration()),
     providePrimeNG({
+      license: environment.primeUiLicense,
       theme: {
         preset: Aura,
         options: {
@@ -75,7 +77,7 @@ export const appConfig: ApplicationConfig = {
       },
       translation: DE_TRANSLATION,
     }),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     ConfirmationService,
     DialogService,
   ],

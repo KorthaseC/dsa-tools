@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { BugReportComponent } from './bug-report.component';
 import { BugReportService } from './bug-report.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('BugReportComponent', () => {
   let component: BugReportComponent;
@@ -15,7 +15,7 @@ describe('BugReportComponent', () => {
         BugReportComponent,
         RouterModule.forRoot([]),
       ],
-      providers: [BugReportService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+      providers: [BugReportService, provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BugReportComponent);
