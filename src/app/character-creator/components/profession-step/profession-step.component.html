@@ -129,13 +129,13 @@
                   <div class="c-lang-slot">
                     <span class="c-lang-name">{{ langLabel(l.name) }}</span>
                     <p-inputnumber [ngModel]="l.lvl" (ngModelChange)="setExtraLangLevel(l.name, $event)" [min]="1" [max]="maxLangLvl" [useGrouping]="false" class="c-lang-lvl" />
-                    <button type="button" pButton (click)="removeExtraLanguage(l.name)" text size="small"><i class="pi pi-times"></i></button>
+                    <button type="button" pButton (click)="removeExtraLanguage(l.name)" text size="small" iconOnly><i class="pi pi-times"></i></button>
                   </div>
                 }
                 @for (s of extraScripts(); track s) {
                   <div class="c-lang-slot">
                     <span class="c-lang-name">{{ langLabel(s) }}</span>
-                    <button type="button" pButton (click)="removeExtraScript(s)" text size="small"><i class="pi pi-times"></i></button>
+                    <button type="button" pButton (click)="removeExtraScript(s)" text size="small" iconOnly><i class="pi pi-times"></i></button>
                   </div>
                 }
                 <p-select appActionSelect [ngModel]="addExtraLangModel()" (ngModelChange)="addExtraLanguage($event)" [options]="extraLangOptions()" optionLabel="label" optionValue="value" [filter]="true" filterBy="label" appendTo="body" placeholder="+ Sprache" class="c-lang-select" />

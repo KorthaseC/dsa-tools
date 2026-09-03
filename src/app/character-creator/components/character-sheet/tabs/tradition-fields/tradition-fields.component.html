@@ -10,8 +10,7 @@
       [class.c-unlocked]="unlocked()"
       (click)="toggleUnlocked()"
       [pTooltip]="unlocked() ? 'Felder wieder sperren' : 'Felder zum Bearbeiten entsperren'"
-      tooltipPosition="left"
-    >
+      tooltipPosition="left" iconOnly>
       <i [class]="unlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
     </button>
   </div>

@@ -20,7 +20,7 @@
           <label>Stufe</label>
           <p-inputnumber [ngModel]="e.level ?? null" (ngModelChange)="update(e.id, 'level', $event ?? undefined)" [min]="1" [showButtons]="true" buttonLayout="horizontal" [useGrouping]="false" placeholder="–" />
         </span>
-        <button type="button" pButton class="c-hb-del" (click)="remove(e.id)" pTooltip="Entfernen" tooltipPosition="top" text size="small"><i class="pi pi-times"></i></button>
+        <button type="button" pButton class="c-hb-del" (click)="remove(e.id)" pTooltip="Entfernen" tooltipPosition="top" text size="small" iconOnly><i class="pi pi-times"></i></button>
       </div>
 
       <div class="c-hb-line">

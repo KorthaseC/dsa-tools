@@ -9,8 +9,7 @@
     [class.c-origin-unlocked]="settings.baseValueEditing()"
     (click)="settings.toggleBaseValueEditing()"
     [pTooltip]="settings.baseValueEditing() ? 'Bearbeitung gesperrt lassen' : 'Bearbeitung erlauben (Homebrew)'"
-    tooltipPosition="left"
-  >
+    tooltipPosition="left" iconOnly>
     <i [class]="settings.baseValueEditing() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
   </button>
 </div>

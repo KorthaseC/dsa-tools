@@ -123,8 +123,7 @@
                   [class.c-unlocked]="autoAdvDeselectable()"
                   (click)="toggleAutoAdvDeselectable()"
                   [pTooltip]="autoAdvDeselectable() ? 'Abwählen wieder sperren' : 'Automatische Vor-/Nachteile abwählen (Homebrew)'"
-                  tooltipPosition="left"
-                >
+                  tooltipPosition="left" iconOnly>
                   <i [class]="autoAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
                 </button>
               </div>
@@ -186,8 +185,7 @@
                   [class.c-unlocked]="recommendedAdvDeselectable()"
                   (click)="toggleRecommendedAdvDeselectable()"
                   [pTooltip]="recommendedAdvDeselectable() ? 'Abwählen wieder sperren' : 'Empfohlene Vor-/Nachteile abwählen'"
-                  tooltipPosition="left"
-                >
+                  tooltipPosition="left" iconOnly>
                   <i [class]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
                 </button>
               </div>
@@ -280,8 +278,7 @@
                   [class.c-unlocked]="atypicalAdvUnlocked()"
                   (click)="toggleAtypicalAdvUnlocked()"
                   [pTooltip]="atypicalAdvUnlocked() ? 'Untypische Vorteile wieder sperren' : 'Untypische Vorteile auswählbar machen (Homebrew)'"
-                  tooltipPosition="left"
-                >
+                  tooltipPosition="left" iconOnly>
                   <i [class]="atypicalAdvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
                 </button>
               </div>
@@ -328,8 +325,7 @@
                   [class.c-unlocked]="recommendedAdvDeselectable()"
                   (click)="toggleRecommendedAdvDeselectable()"
                   [pTooltip]="recommendedAdvDeselectable() ? 'Abwählen wieder sperren' : 'Empfohlene Vor-/Nachteile abwählen'"
-                  tooltipPosition="left"
-                >
+                  tooltipPosition="left" iconOnly>
                   <i [class]="recommendedAdvDeselectable() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
                 </button>
               </div>
@@ -422,8 +418,7 @@
                   [class.c-unlocked]="atypicalDisadvUnlocked()"
                   (click)="toggleAtypicalDisadvUnlocked()"
                   [pTooltip]="atypicalDisadvUnlocked() ? 'Untypische Nachteile wieder sperren' : 'Untypische Nachteile auswählbar machen (Homebrew)'"
-                  tooltipPosition="left"
-                >
+                  tooltipPosition="left" iconOnly>
                   <i [class]="atypicalDisadvUnlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"></i>
                 </button>
               </div>
