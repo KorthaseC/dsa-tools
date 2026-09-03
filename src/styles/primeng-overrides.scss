@@ -644,29 +644,20 @@ p-tabpanel {
     }
   }
 
-  .p-accordion-header {
-    background: #1e1a14;
+  // `p-accordion-header` is the component's TAG selector, not a class, so the `.p-accordion-header` rules
+  // that used to live here matched nothing after the v21 rename. The real class is `.p-accordionheader`.
+  // Colours are NOT repeated here on purpose — the `--p-accordion-header-*` tokens above already drive
+  // background and colour including the hover/active variants, and hard values would clobber them.
+  // Only the typography is left, which no token covers; v22 also dropped the header-text wrapper, so it
+  // now sits on the header itself.
+  .p-accordionheader {
     border: none;
-    transition: background 0.15s;
-    color: $gold-primary;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
 
-    &:hover {
-      background: $surface-warm-accent !important;
-
-      .p-accordion-header-text {
-        color: $gold-primary;
-      }
-    }
-
-    .p-accordion-header-text {
-      color: $gold-muted;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    .p-accordion-toggle-icon {
+    .p-accordionheader-toggle-icon {
       color: $gold-dim;
       font-size: 0.75rem;
     }
