@@ -31,7 +31,7 @@
               [required]="true"
               [disabled]="!hasRemainingGeniusPoints() && isControlUnset(changeDieOne, true)"
               appendTo="body"
-              styleClass="w-full"
+              class="w-full"
             />
             <label for="dieOne">Würfel 1</label>
           </p-floatlabel>
@@ -49,7 +49,7 @@
                 [required]="true"
                 [disabled]="!hasRemainingGeniusPoints() && isControlUnset(changeDieTwo, false)"
                 appendTo="body"
-                styleClass="w-full"
+                class="w-full"
               />
               <label for="dieTwo">Würfel 2</label>
             </p-floatlabel>
@@ -71,7 +71,7 @@
       <p-button
         label="Bestätigen"
         (onClick)="emitDiceResult()"
-        styleClass="w-full"
+        class="w-full"
       />
     </div>
   </div>
