@@ -1,10 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, PLATFORM_ID, effect, inject, viewChild } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { FileUpload, FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 /** Ratio of the inner coin circle radius to half the canvas width (0..1).
  *  Calibrated against Coin.png – the transparent inner hole spans ~72 % of the half-width. */
@@ -15,21 +17,34 @@ const CANVAS_SIZE = 400;
 
 @Component({
   selector: 'app-token-generator',
-  imports: [CommonModule, FormsModule, ButtonModule, FileUploadModule, InputTextModule],
+  imports: [PageIntroComponent, CommonModule, FormsModule, ButtonModule, FileUploadModule, InputTextModule, SelectButtonModule],
   templateUrl: './token-generator.component.html',
   styleUrl: './token-generator.component.scss',
 })
 export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('editorCanvas') private canvasRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('fileUpload') private fileUploadRef!: FileUpload;
+  // Signal-based queries. The canvas lives behind an @if, so it only exists
+  // after a render pass. Reading it as a signal lets an effect react to its
+  // actual arrival instead of guessing when change detection has caught up.
+  private readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('editorCanvas');
+  private readonly fileUploadRef = viewChild<FileUpload>('fileUpload');
 
   public imageLoaded = false;
   public downloadUrl: string | null = null;
   public downloadFileName = 'token';
   public isEditingFileName = false;
+  public downloadFormat: 'png' | 'webp' = 'png';
+  public generatedFormat: 'png' | 'webp' = 'png';
+  public readonly formatOptions = [
+    { label: 'PNG', value: 'png' },
+    { label: 'WebP', value: 'webp' },
+  ];
 
   private img: HTMLImageElement | null = null;
   private coinImg: HTMLImageElement | null = null;
+
+  // The canvas the listeners are currently bound to. Used to attach and
+  // detach exactly once per canvas instance.
+  private attachedCanvas: HTMLCanvasElement | null = null;
 
   // Current pan offset (canvas-space coordinates of the image top-left corner)
   private offsetX = 0;
@@ -56,17 +71,46 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
   private boundTouchMove!: (e: TouchEvent) => void;
   private boundTouchEnd!: (e: TouchEvent) => void;
 
+  private readonly platformId = inject(PLATFORM_ID);
+
   constructor(
     private readonly ngZone: NgZone,
     private readonly cdr: ChangeDetectorRef
-  ) {}
+  ) {
+    // Binds and unbinds the canvas listeners as the element enters and leaves
+    // the DOM. Runs after the view is rendered, so the element is guaranteed
+    // to exist here — unlike a callback fired from an image load.
+    effect(() => {
+      const canvas = this.canvasRef()?.nativeElement ?? null;
+      if (canvas === this.attachedCanvas) {
+        return;
+      }
+
+      if (this.attachedCanvas) {
+        this.detachCanvasListeners(this.attachedCanvas);
+      }
+
+      this.attachedCanvas = canvas;
+
+      if (canvas) {
+        this.attachCanvasListeners(canvas);
+        this.draw();
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
+    // `Image` does not exist during the build-time prerender — and there is no canvas to paint on
+    // there either, so preloading is browser-only.
+    if (!isPlatformBrowser(this.platformId)) return;
     this.preloadCoinImage();
   }
 
   ngOnDestroy(): void {
-    this.detachCanvasListeners();
+    if (this.attachedCanvas) {
+      this.detachCanvasListeners(this.attachedCanvas);
+      this.attachedCanvas = null;
+    }
   }
 
   // ── Public event handlers ────────────────────────────────────────────────
@@ -88,14 +132,12 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
         this.ngZone.run(() => {
           this.img = image;
           this.fitImageToCircle();
-          const wasLoaded = this.imageLoaded;
           this.imageLoaded = true;
           this.downloadUrl = null;
-          // Synchronously process the @if so the canvas element exists in DOM.
-          this.cdr.detectChanges();
-          if (!wasLoaded) {
-            this.attachCanvasListeners();
-          }
+          this.cdr.markForCheck();
+          // Paints straight away when the canvas is already mounted (second
+          // and later images). On the first image the element does not exist
+          // yet and the effect above takes over once it does.
           this.draw();
         });
       };
@@ -105,12 +147,13 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
   }
 
   public generateToken(): void {
-    if (!this.img) {
+    const canvas = this.canvasRef()?.nativeElement;
+    if (!this.img || !canvas) {
       return;
     }
-    const canvas = this.canvasRef.nativeElement;
     this.draw(true);
-    this.downloadUrl = canvas.toDataURL('image/png');
+    this.generatedFormat = this.downloadFormat;
+    this.downloadUrl = canvas.toDataURL(`image/${this.downloadFormat}`);
     this.isEditingFileName = false;
     // Restore the editor view after capturing
     requestAnimationFrame(() => this.draw(false));
@@ -122,21 +165,29 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
   }
 
   public changeImage(): void {
+    // Only flips the state. Removing the canvas from the DOM makes the effect
+    // detach the listeners on its own.
     this.imageLoaded = false;
     this.downloadUrl = null;
     this.img = null;
-    this.detachCanvasListeners();
   }
 
   public chooseFile(): void {
-    this.fileUploadRef?.choose();
+    this.fileUploadRef()?.choose();
   }
 
   // ── Canvas drawing ───────────────────────────────────────────────────────
 
   private draw(exportMode = false): void {
-    const canvas = this.canvasRef.nativeElement;
-    const ctx = canvas.getContext('2d')!;
+    // No-op while the canvas is not mounted; the effect redraws once it is.
+    const canvas = this.canvasRef()?.nativeElement;
+    if (!canvas) {
+      return;
+    }
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return;
+    }
     const cx = CANVAS_SIZE / 2;
     const cy = CANVAS_SIZE / 2;
     const innerRadius = cx * INNER_CIRCLE_RATIO;
@@ -201,8 +252,12 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
 
   private onWheel(e: WheelEvent): void {
     e.preventDefault();
+    const canvas = this.canvasRef()?.nativeElement;
+    if (!canvas) {
+      return;
+    }
     const ratio = this.getCssToLogicalRatio();
-    const canvasRect = this.canvasRef.nativeElement.getBoundingClientRect();
+    const canvasRect = canvas.getBoundingClientRect();
 
     // Canvas-space coordinates of the mouse pointer
     const mouseX = (e.clientX - canvasRect.left) * ratio;
@@ -237,6 +292,10 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
 
   private onTouchMove(e: TouchEvent): void {
     e.preventDefault();
+    const canvas = this.canvasRef()?.nativeElement;
+    if (!canvas) {
+      return;
+    }
     const ratio = this.getCssToLogicalRatio();
 
     if (e.touches.length === 1 && this.isDragging) {
@@ -254,7 +313,7 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
       const newScale = Math.max(0.05, Math.min(20, this.scale * zoomFactor));
 
       // Zoom towards the midpoint of the two touches
-      const canvasRect = this.canvasRef.nativeElement.getBoundingClientRect();
+      const canvasRect = canvas.getBoundingClientRect();
       const midX = ((e.touches[0].clientX + e.touches[1].clientX) / 2 - canvasRect.left) * ratio;
       const midY = ((e.touches[0].clientY + e.touches[1].clientY) / 2 - canvasRect.top) * ratio;
 
@@ -294,10 +353,15 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
     this.offsetY = (CANVAS_SIZE - h * this.scale) / 2;
   }
 
-  /** Returns the ratio of logical canvas pixels to CSS pixels on screen. */
+  /** Returns the ratio of logical canvas pixels to CSS pixels on screen.
+   *  Falls back to 1 while the canvas is unmounted or has zero width. */
   private getCssToLogicalRatio(): number {
-    const cssWidth = this.canvasRef.nativeElement.getBoundingClientRect().width;
-    return CANVAS_SIZE / cssWidth;
+    const canvas = this.canvasRef()?.nativeElement;
+    if (!canvas) {
+      return 1;
+    }
+    const cssWidth = canvas.getBoundingClientRect().width;
+    return cssWidth > 0 ? CANVAS_SIZE / cssWidth : 1;
   }
 
   private pinchDistance(e: TouchEvent): number {
@@ -317,9 +381,7 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
     coin.src = 'assets/other/Coin.png';
   }
 
-  private attachCanvasListeners(): void {
-    const canvas = this.canvasRef.nativeElement;
-
+  private attachCanvasListeners(canvas: HTMLCanvasElement): void {
     this.boundPointerDown = (e) => this.ngZone.run(() => this.onPointerDown(e));
     this.boundPointerMove = (e) => this.ngZone.run(() => this.onPointerMove(e));
     this.boundPointerUp = (e) => this.ngZone.run(() => this.onPointerUp(e));
@@ -340,11 +402,7 @@ export class TokenGeneratorComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  private detachCanvasListeners(): void {
-    const canvas = this.canvasRef?.nativeElement;
-    if (!canvas) {
-      return;
-    }
+  private detachCanvasListeners(canvas: HTMLCanvasElement): void {
     canvas.removeEventListener('pointerdown', this.boundPointerDown);
     canvas.removeEventListener('pointermove', this.boundPointerMove);
     canvas.removeEventListener('pointerup', this.boundPointerUp);

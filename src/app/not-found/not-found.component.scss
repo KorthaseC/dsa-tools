@@ -1,0 +1,32 @@
+.not-found {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--p-text-muted-color);
+    line-height: 1.6;
+  }
+}
+
+.nf-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+
+  a {
+    color: var(--p-primary-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

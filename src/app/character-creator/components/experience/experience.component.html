@@ -1,0 +1,29 @@
+<div class="result-card c-exp">
+  <h2 class="c-exp-title">Wähle den Erfahrungsgrad</h2>
+  <p class="c-exp-hint">Der Erfahrungsgrad legt das AP-Budget und die Maximalwerte für die Erschaffung fest.</p>
+
+  <p-floatlabel variant="on" class="c-exp-select">
+    <p-select
+      inputId="experienceLevel"
+      [options]="experienceLevels"
+      [ngModel]="selected()"
+      (ngModelChange)="setSelected($event)"
+      class="w-full"
+    >
+      <ng-template pTemplate="item" let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
+      <ng-template pTemplate="selectedItem" let-level>{{ level.label }} – {{ level.ap }} AP</ng-template>
+    </p-select>
+    <label for="experienceLevel">Erfahrungsgrad</label>
+  </p-floatlabel>
+
+  @if (selected(); as lvl) {
+    <div class="c-exp-info">
+      <div class="result-row"><span class="result-label">Abenteuerpunkte</span><span class="result-value">{{ lvl.ap }} AP</span></div>
+      <div class="result-row"><span class="result-label">Max. Eigenschaft</span><span class="result-value">{{ lvl.maxAttribute }}</span></div>
+      <div class="result-row"><span class="result-label">Eigenschaftspunkte</span><span class="result-value">{{ lvl.maxAttributePoints }}</span></div>
+      <div class="result-row"><span class="result-label">Max. Fertigkeit</span><span class="result-value">{{ lvl.maxTalent }}</span></div>
+      <div class="result-row"><span class="result-label">Max. Kampftechnik</span><span class="result-value">{{ lvl.maxCombatTechnique }}</span></div>
+      <div class="result-row"><span class="result-label">Max. Zauber/Liturgien</span><span class="result-value">{{ lvl.maxSpells }} (+{{ lvl.maxForeignSpells }} fremd)</span></div>
+    </div>
+  }
+</div>

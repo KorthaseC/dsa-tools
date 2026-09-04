@@ -3,97 +3,22 @@ import { RouterModule } from '@angular/router';
 
 import { CardModule } from 'primeng/card';
 
-interface FeatureCard {
-  title: string;
-  routerLink: string;
-  imgSrc: string;
-  imgAlt: string;
-  description: string;
-  cols: number;
-  rows: number;
-}
+import { APP_FEATURES } from '../app.features';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 @Component({
   selector: 'app-overview',
-  imports: [CardModule, RouterModule],
+  imports: [PageIntroComponent, CardModule, RouterModule],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
 })
 export class OverviewComponent {
-  public featureCards: FeatureCard[] = [
-    {
-      title: 'Kalender',
-      routerLink: '/calendar',
-      imgSrc: 'assets/icons/satinavs.svg',
-      imgAlt: 'Satinav Symbol',
-      description: 'Tool zur Berechnung von Wochentag und Mondphase',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'Währungsrechner',
-      routerLink: '/currency',
-      imgSrc: 'assets/icons/phex.svg',
-      imgAlt: 'Phex Symbol',
-      description: 'Tool zur Berechnung der Währungen',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'Alchemielabor',
-      routerLink: '/alchemy',
-      imgSrc: 'assets/icons/ausfaellen.svg',
-      imgAlt: 'Alchemy Symbol',
-      description: 'Tool zur Erstellung von alchemistischen Mitteln',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'Tavernengenerator',
-      routerLink: '/tavern',
-      imgSrc: 'assets/icons/travia.svg',
-      imgAlt: 'Travia Symbol',
-      description: 'Tool zur Erstellung von zufälligen Tavernen',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'Namensgenerator',
-      routerLink: '/names',
-      imgSrc: 'assets/icons/namenloser.svg',
-      imgAlt: 'Nameless Symbol',
-      description: 'Tool zur Erstellung von zufälligen Namen',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'Schmiede',
-      routerLink: '/smith',
-      imgSrc: 'assets/icons/ingerimm.svg',
-      imgAlt: 'Ingerimm Symbol',
-      description: 'Tool zur Berechnung von Preisen beim Schmied',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'Büchergenerator',
-      routerLink: '/books',
-      imgSrc: 'assets/icons/nandus.svg',
-      imgAlt: 'Nandus Symbol',
-      description: 'Tool zur Erstellung von zufälligen Büchern',
-      cols: 1,
-      rows: 1,
-    },
-    {
-      title: 'Token Generator',
-      routerLink: '/token',
-      imgSrc: 'assets/icons/rur-und-gror.svg',
-      imgAlt: 'Rur und Gror Symbol',
-      description: 'Tool zur Erstellung von Charakter-Token',
-      cols: 1,
-      rows: 1,
-    },
-  ];
-
-  constructor() {}
+  /** Derived from the single feature registry (app.features.ts) — the Overview grid is never hand-maintained. */
+  public featureCards = APP_FEATURES.filter((f) => f.surfaces.includes('overview')).map((f) => ({
+    title: f.title,
+    routerLink: f.route,
+    imgSrc: f.icon!,
+    imgAlt: f.iconAlt!,
+    description: f.overviewDescription,
+  }));
 }

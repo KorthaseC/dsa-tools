@@ -1,0 +1,173 @@
+// ── Wizard selection step (culture-step, profession-step) ────────────────────────
+// Shared two-pane layout: a dark, searchable, GROUPED list on the left and a parchment
+// result-card DETAIL on the right. Both step components use these class names; feature-
+// specific bits (meta fields, recommendation rows, language slots) stay in the component SCSS.
+
+// Two-pane grid: list | detail.
+.c-sel {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) minmax(0, 2.3fr);
+  gap: 1.25rem;
+
+  @media (max-width: 52rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-sel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+// Scrollable, grouped list. NO flex `gap` / top padding: a transparent strip directly above a
+// sticky group header lets items show through it while scrolling — item spacing is a margin-bottom
+// on the items instead. Warm, thin scrollbar to match the sheet tabs / generators.
+.c-sel-scroll {
+  display: flex;
+  flex-direction: column;
+  max-height: 26rem;
+  overflow-y: auto;
+  padding: 0 0.4rem 0.15rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 169, 110, 0.5) transparent;
+
+  &::-webkit-scrollbar { width: 8px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: rgba(200, 169, 110, 0.45); border-radius: 4px; }
+  &::-webkit-scrollbar-thumb:hover { background: rgba(200, 169, 110, 0.7); }
+}
+
+// Sticky group heading. Group spacing is the header's OWN opaque top padding (not a transparent
+// margin) so a stuck header fully covers items scrolling underneath it (no peek-through).
+.c-sel-divider {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-top: 0;
+  padding: 0.55rem 0.5rem 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--p-primary-color, #c8a96e);
+  background: var(--p-surface-900, #1a1a1a);
+  border-bottom: 1px solid color-mix(in srgb, var(--p-primary-color, #c8a96e) 40%, transparent);
+
+  &:first-child { padding-top: 0.3rem; }
+}
+
+.c-sel-divider-hint {
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  color: var(--p-text-color, #d9c9a3);
+  opacity: 0.75;
+}
+
+.c-sel-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem; // item spacing (the scroll container has no flex gap — see .c-sel-scroll)
+  padding: 0.45rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--p-primary-color, #c8a96e) 18%, transparent);
+  border-radius: 0.4rem;
+  background: var(--p-surface-700, #2a2a2a);
+  color: var(--p-text-color, #ece0c4);
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.86rem;
+  transition: box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--p-primary-color, #c8a96e) 55%, transparent);
+    box-shadow: 0 0 10px 1px color-mix(in srgb, var(--p-primary-color, #c8a96e) 35%, transparent);
+  }
+
+  &.c-selected {
+    border-color: var(--p-primary-color, #c8a96e);
+    background: var(--p-surface-600, #3a3a3a);
+    box-shadow: 0 0 12px 2px color-mix(in srgb, var(--p-primary-color, #c8a96e) 55%, transparent);
+  }
+}
+
+.c-sel-name {
+  font-weight: 500;
+}
+
+.c-sel-ap {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--p-primary-color, #c8a96e) 78%, #ffffff);
+  font-variant-numeric: tabular-nums;
+
+  .c-selected & {
+    color: var(--p-primary-color, #c8a96e);
+  }
+}
+
+.c-sel-empty {
+  font-size: 0.82rem;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+// ── Package / grant lists (talents, combat techniques, spells, SA grants …) ──────
+.c-pkg {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap; // a long label/value wraps to a new line instead of overlapping the other
+    gap: 0.1rem 0.5rem;
+    padding: 0.15rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--p-surface-700, #334155);
+  }
+
+  // Let a long label shrink/wrap rather than push its value off the row.
+  li > span:first-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+.c-pkg-fw {
+  color: var(--p-text-muted-color, #94a3b8);
+  font-variant-numeric: tabular-nums;
+}
+
+// ── Parchment detail card (used ALONGSIDE the global .result-card) ────────────────
+// Re-tints the generic elements for the light parchment. Each component adds its own
+// feature-specific re-tints (meta labels, hints, sub-notes) under its own detail class.
+.c-sel-detail {
+  color: #2a1a08;
+  --p-divider-border-color: rgba(138, 106, 62, 0.45);
+
+  h2,
+  h3,
+  h4 {
+    color: #5a3a10;
+  }
+
+  p {
+    color: #4a3418;
+  }
+
+  label {
+    color: #2a1a08;
+  }
+
+  .c-pkg-fw {
+    color: #6a4a20;
+  }
+
+  .c-pkg li {
+    border-bottom-color: rgba(138, 106, 62, 0.35);
+  }
+}

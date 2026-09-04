@@ -11,10 +11,11 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { CURRENCYMAP, CurrencyRegion, CurrencyValue } from '../shared/constant';
+import { PageIntroComponent } from '../shared/page-intro/page-intro.component';
 
 @Component({
     selector: 'app-currency',
-    imports: [
+    imports: [PageIntroComponent, 
     FormsModule,
     ReactiveFormsModule,
     FloatLabelModule,

@@ -1,0 +1,195 @@
+.c-gm-warning {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--p-yellow-400, #facc15) 12%, transparent);
+  color: var(--p-yellow-400, #facc15);
+  font-size: 0.85rem;
+}
+
+.c-species-hint {
+  margin: 0 0 1rem;
+  color: var(--p-text-color-secondary, #b0a080);
+}
+
+.c-species-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+  justify-content: center;
+
+  p-card {
+    cursor: pointer;
+    width: 22rem;
+    border-radius: 12px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px 2px color-mix(in srgb, var(--p-primary-color, #c8a96e) 45%, transparent);
+    }
+  }
+}
+
+.c-species-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.c-species-detail-title {
+  margin: 0;
+}
+
+.c-species-image {
+  height: 15vh;
+  width: auto;
+  display: block;
+  justify-self: center;
+}
+
+.c-species-figure {
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+}
+
+.c-species-caption {
+  font-size: 0.6em;
+  color: #666;
+  max-width: 150px;
+}
+
+.c-selected {
+  border-radius: 12px;
+  box-shadow: 0 0 14px 4px color-mix(in srgb, var(--p-primary-color, #c8a96e) 70%, transparent);
+  outline: 2px solid var(--p-primary-color, #c8a96e);
+}
+
+.c-checkbox-radio-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 400px) {
+  .c-checkbox-radio-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-checkbox-radio-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  margin-bottom: 8px;
+
+  label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.c-level-select {
+  margin-left: auto;
+  width: 4.25rem;
+  flex: 0 0 auto;
+
+  ::ng-deep .p-select {
+    width: 4.25rem;
+  }
+
+  // Compact height so the select fits the checkbox row.
+  ::ng-deep .p-select-label {
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    font-size: 0.85rem;
+  }
+
+  ::ng-deep .p-select-dropdown {
+    width: 1.75rem;
+  }
+}
+
+.c-species-summary {
+  max-width: 28rem;
+
+  .result-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.c-species-attributes{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0px 4px;
+}
+
+// ── Detail view: everything lives inside one parchment result-card ──────────────
+.c-species-detail {
+  color: #2a1a08;
+  // Divider line tinted to match the parchment rather than the dark theme.
+  --p-divider-border-color: rgba(138, 106, 62, 0.45);
+
+  h3,
+  h4 {
+    color: #5a3a10;
+  }
+
+  p {
+    color: #4a3418;
+  }
+
+  // A theme/PrimeNG `label` rule overrides the inherited dark text, so set it explicitly.
+  label {
+    color: #2a1a08;
+  }
+
+  ::ng-deep {
+    .p-tab {
+      color: #6a4a20;
+    }
+
+    .p-tab.p-tab-active {
+      color: #2a1a08;
+    }
+
+    .p-tablist,
+    .p-tabpanels,
+    .p-tabpanel {
+      background: transparent;
+    }
+  }
+
+  .c-gm-warning {
+    color: #8a5a00;
+    background: color-mix(in srgb, #facc15 22%, transparent);
+  }
+}
+
+.c-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+.c-deselect-lock.c-unlocked {
+  color: var(--p-primary-color, #c8a96e);
+}

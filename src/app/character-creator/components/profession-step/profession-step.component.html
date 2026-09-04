@@ -1,0 +1,150 @@
+<div class="c-sel">
+  <div class="c-sel-list">
+    <input pInputText [ngModel]="filter()" (ngModelChange)="filter.set($event)" placeholder="Profession suchen …" class="c-sel-filter w-full" />
+    <p-select
+      [ngModel]="subTypeFilter()"
+      (ngModelChange)="subTypeFilter.set($event)"
+      [options]="subTypeOptions()"
+      [showClear]="true"
+      placeholder="Alle Typen"
+      appendTo="body"
+      class="c-prof-subfilter w-full"
+    />
+    <div class="c-sel-scroll">
+      @for (g of groups(); track g.key) {
+        <div class="c-sel-divider">{{ g.label }} ({{ g.items.length }})</div>
+        @for (p of g.items; track p.name) {
+          <button type="button" class="c-sel-item" [class.c-selected]="isSelected(p)" (click)="select(p)">
+            <span class="c-sel-name">{{ p.label }}</span>
+            <span class="c-sel-ap">{{ p.apCost }} AP</span>
+          </button>
+        }
+      } @empty {
+        <p class="c-sel-empty">Keine Profession gefunden.</p>
+      }
+    </div>
+  </div>
+
+  <!-- ── Selected profession (parchment result-card) ── -->
+  @if (selected(); as p) {
+    <div class="result-card c-sel-detail c-prof-detail">
+      <h3 class="c-prof-detail-title">{{ p.label }}</h3>
+      @if (p.subType) { <p class="c-prof-sub">{{ p.subType }} · {{ p.apRaw }} AP</p> }
+      @if (p.modificationNotes) { <p class="c-prof-notes">{{ p.modificationNotes }}</p> }
+
+      <div class="c-prof-cols">
+        <section>
+          <h4>Talente</h4>
+          <ul class="c-pkg">
+            @for (s of p.skills; track s.label) { <li><span>{{ s.label }}</span><span class="c-pkg-fw">+{{ s.bonus }}</span></li> }
+          </ul>
+          <h4>Kampftechniken</h4>
+          <ul class="c-pkg">
+            @for (ct of p.combatTechniques; track ct.label) { <li><span>{{ ct.label }}</span><span class="c-pkg-fw">{{ baseKtw + ct.ktw }}</span></li> }
+          </ul>
+        </section>
+
+        <section>
+          @if (p.advantages.length) {
+            <h4>Vorteile</h4>
+            <ul class="c-pkg">@for (a of p.advantages; track a.label) { <li>{{ a.label }}</li> }</ul>
+          }
+          @if (p.disadvantages.length) {
+            <h4>Nachteile</h4>
+            <ul class="c-pkg">@for (a of p.disadvantages; track a.label) { <li>{{ a.label }}</li> }</ul>
+          }
+          @if (p.generalSpecialAbilities.length) {
+            <h4>Allgemeine Sonderfertigkeiten</h4>
+            <ul class="c-pkg">@for (sa of p.generalSpecialAbilities; track sa.label) { <li class="c-pkg-line">{{ sa.label }}@if (sa.param) { <span class="c-pkg-fw">({{ sa.param }})</span> }</li> }</ul>
+          }
+          @if (p.combatSpecialAbilities.length) {
+            <h4>Kampf-Sonderfertigkeiten</h4>
+            <ul class="c-pkg">@for (sa of p.combatSpecialAbilities; track sa.label) { <li class="c-pkg-line">{{ sa.label }}@if (sa.param) { <span class="c-pkg-fw">({{ sa.param }})</span> }</li> }</ul>
+          }
+          @if (p.magicSpecialAbilities.length) {
+            <h4>Magische Sonderfertigkeiten</h4>
+            <ul class="c-pkg">@for (sa of p.magicSpecialAbilities; track sa.label) { <li class="c-pkg-line">{{ sa.label }}@if (sa.param) { <span class="c-pkg-fw">({{ sa.param }})</span> }</li> }</ul>
+          }
+          @if (p.karmalSpecialAbilities.length) {
+            <h4>Karmale Sonderfertigkeiten</h4>
+            <ul class="c-pkg">@for (sa of p.karmalSpecialAbilities; track sa.label) { <li class="c-pkg-line">{{ sa.label }}@if (sa.param) { <span class="c-pkg-fw">({{ sa.param }})</span> }</li> }</ul>
+          }
+        </section>
+
+        <section>
+          @if (p.tradition) { <p><strong>Tradition:</strong> {{ p.tradition }}</p> }
+          @if (p.guidingAttribute) { <p><strong>Leiteigenschaft:</strong> {{ p.guidingAttribute }}</p> }
+          @if (p.spells.length) {
+            <h4>Zauber</h4>
+            <ul class="c-pkg">@for (g of p.spells; track g.label) { <li><span>{{ g.label }}</span><span class="c-pkg-fw">{{ g.fw }}</span></li> }</ul>
+          }
+          @if (p.liturgies.length) {
+            <h4>Liturgien</h4>
+            <ul class="c-pkg">@for (g of p.liturgies; track g.label) { <li><span>{{ g.label }}</span><span class="c-pkg-fw">{{ g.fw }}</span></li> }</ul>
+          }
+          @if (p.blessings.length) {
+            <h4>Segnungen</h4>
+            <ul class="c-pkg">@for (b of p.blessings; track b) { <li>{{ b }}</li> }</ul>
+          }
+          @if (p.cantrips.length) {
+            <h4>Zaubertricks</h4>
+            <ul class="c-pkg">@for (c of p.cantrips; track c) { <li>{{ c }}</li> }</ul>
+          }
+          @if (p.languageGrants.length || p.scriptGrants.length || p.languageScriptAp) {
+            <h4>Sprachen &amp; Schriften</h4>
+            @if (p.languageScriptAp) {
+              <p class="c-prof-allow">Empfohlen: {{ p.languageScriptAp }} AP · Gewählt: {{ langSpent() }} AP</p>
+            }
+            <div class="c-lang-slots">
+              @for (slot of p.languageGrants; track $index; let i = $index) {
+                <div class="c-lang-slot">
+                  <p-select
+                    [ngModel]="slotChoice()[i]?.name ?? null"
+                    (ngModelChange)="setSlotName(i, $event)"
+                    [options]="slotOptions(slot.scriptAllowed)"
+                    optionLabel="label"
+                    optionValue="value"
+                    [filter]="true"
+                    filterBy="label"
+                    appendTo="body"
+                    [placeholder]="slot.scriptAllowed ? 'Sprache / Schrift' : 'Sprache'"
+                    [showClear]="true"
+                    class="c-lang-select"
+                  />
+                  @if (slotChoice()[i]?.name && !isScript(slotChoice()[i]?.name ?? null)) {
+                    <p-inputnumber [ngModel]="slotChoice()[i].lvl" (ngModelChange)="setSlotLevel(i, $event)" [min]="1" [max]="maxLangLvl" [useGrouping]="false" class="c-lang-lvl" />
+                  }
+                </div>
+              }
+              @for (s of p.scriptGrants; track s) { <div class="c-lang-slot"><span class="c-lang-name">{{ s }}</span></div> }
+            </div>
+
+            @if (p.languageScriptAp && langSpent() < p.languageScriptAp) {
+              <p class="c-prof-hint"><i class="pi pi-info-circle"></i> {{ p.languageScriptAp - langSpent() }} AP übrig — du kannst eine weitere Sprache/Schrift wählen, eine Stufe erhöhen oder die AP anderweitig nutzen.</p>
+            }
+
+            @if (extraLangs().length || extraScripts().length || (p.languageScriptAp && langSpent() < p.languageScriptAp)) {
+              <div class="c-lang-extras">
+                @for (l of extraLangs(); track l.name) {
+                  <div class="c-lang-slot">
+                    <span class="c-lang-name">{{ langLabel(l.name) }}</span>
+                    <p-inputnumber [ngModel]="l.lvl" (ngModelChange)="setExtraLangLevel(l.name, $event)" [min]="1" [max]="maxLangLvl" [useGrouping]="false" class="c-lang-lvl" />
+                    <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeExtraLanguage(l.name)"></button>
+                  </div>
+                }
+                @for (s of extraScripts(); track s) {
+                  <div class="c-lang-slot">
+                    <span class="c-lang-name">{{ langLabel(s) }}</span>
+                    <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeExtraScript(s)"></button>
+                  </div>
+                }
+                <p-select appActionSelect [ngModel]="addExtraLangModel()" (ngModelChange)="addExtraLanguage($event)" [options]="extraLangOptions()" optionLabel="label" optionValue="value" [filter]="true" filterBy="label" appendTo="body" placeholder="+ Sprache" class="c-lang-select" />
+                <p-select appActionSelect [ngModel]="addExtraScriptModel()" (ngModelChange)="addExtraScript($event)" [options]="extraScriptOptions()" optionLabel="label" optionValue="value" [filter]="true" filterBy="label" appendTo="body" placeholder="+ Schrift" class="c-lang-select" />
+              </div>
+            }
+          }
+        </section>
+      </div>
+    </div>
+  }
+</div>

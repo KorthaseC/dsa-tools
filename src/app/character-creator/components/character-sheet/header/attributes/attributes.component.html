@@ -1,0 +1,21 @@
+<div class="formgrid grid row-gap-2">
+  @for (attr of attributes(); track attr.key) {
+    <div class="col-3 md:col-3 lg:col p-1">
+      <div class="c-attribute-box">
+        <div class="c-attribute-header">
+          <span class="c-attribute-abbr">{{ attr.label }}</span>
+          <app-d20-roll [color]="attr.color" [size]="18" [label]="attr.label + ' Probe'" (roll)="rollAttribute(attr.color)" />
+        </div>
+        <p-inputnumber
+          [ngModel]="attr.value"
+          (ngModelChange)="updateAttribute(attr.key, $event)"
+          [min]="1"
+          [max]="19"
+          [showButtons]="false"
+          [useGrouping]="false"
+          [inputStyle]="{ width: '100%', textAlign: 'center' }"
+        />
+      </div>
+    </div>
+  }
+</div>

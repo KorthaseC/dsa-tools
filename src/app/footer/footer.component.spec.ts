@@ -28,10 +28,18 @@ describe('FooterComponent', () => {
     expect(component.version).toBe(packageInfo.version);
   });
 
-  it('should open link in a new tab', () => {
-    spyOn(window, 'open');
-    const url = 'https://example.com';
-    component.goToLink(url);
-    expect(window.open).toHaveBeenCalledWith(url, '_blank');
+  // These used to be (click) handlers on p-button/<a> without href, which made them invisible to
+  // crawlers. Keep them real anchors.
+  it('should render external links as real anchors with href and rel="noopener"', () => {
+    const anchors: HTMLAnchorElement[] = Array.from(fixture.nativeElement.querySelectorAll('a[href^="http"]'));
+    const hrefs = anchors.map((a) => a.getAttribute('href'));
+
+    expect(hrefs).toContain(component.links.github);
+    expect(hrefs).toContain(component.links.discord);
+    expect(hrefs).toContain(component.links.ruleWiki);
+    anchors.forEach((a) => {
+      expect(a.getAttribute('target')).toBe('_blank');
+      expect(a.getAttribute('rel')).toBe('noopener');
+    });
   });
 });

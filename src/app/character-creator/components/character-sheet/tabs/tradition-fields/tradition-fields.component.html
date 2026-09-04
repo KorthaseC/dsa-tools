@@ -1,0 +1,73 @@
+<div class="c-tradition-fields">
+  <div class="c-tf-head">
+    <h3 class="c-tf-title">Tradition &amp; Leiteigenschaft</h3>
+    <button
+      type="button"
+      pButton
+      [icon]="unlocked() ? 'pi pi-lock-open' : 'pi pi-lock'"
+      class="p-button-text p-button-sm c-tf-lock"
+      [class.c-unlocked]="unlocked()"
+      (click)="toggleUnlocked()"
+      [pTooltip]="unlocked() ? 'Felder wieder sperren' : 'Felder zum Bearbeiten entsperren'"
+      tooltipPosition="left"
+    ></button>
+  </div>
+
+  @if (unlocked()) {
+    <p class="c-tf-warning">
+      <i class="pi pi-exclamation-triangle"></i>
+      Diese Werte werden normalerweise automatisch aus der Profession gesetzt. Manuell nur bei Bedarf ändern.
+    </p>
+  }
+
+  <div class="c-tf-grid">
+    <div class="c-tf-box">
+      <label>Leiteigenschaft</label>
+      <p-select
+        [ngModel]="guiding()"
+        (ngModelChange)="setGuiding($event)"
+        [options]="attributeOptions"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="–"
+        [disabled]="!unlocked()"
+        [showClear]="true"
+        appendTo="body"
+      />
+    </div>
+
+    <div class="c-tf-box">
+      <label>{{ traitLabel() }}</label>
+      <p-select
+        [ngModel]="trait()"
+        (ngModelChange)="setTrait($event)"
+        [options]="traitOptions()"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="–"
+        [filter]="true"
+        filterBy="label"
+        [disabled]="!unlocked()"
+        [showClear]="true"
+        appendTo="body"
+      />
+    </div>
+
+    <div class="c-tf-box">
+      <label>Tradition</label>
+      <p-select
+        [ngModel]="tradition()"
+        (ngModelChange)="setTradition($event)"
+        [options]="traditionOptions()"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="–"
+        [filter]="true"
+        filterBy="label"
+        [disabled]="!unlocked()"
+        [showClear]="true"
+        appendTo="body"
+      />
+    </div>
+  </div>
+</div>

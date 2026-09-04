@@ -1,0 +1,8 @@
+// Shell — the tab is three separate accordion blocks (equipment / combat SAs / techniques). The
+// PrimeNG `.p-accordion { gap }` only spaces panels WITHIN one block, so lay the blocks out as a flex
+// column with the SAME 0.25rem gap → uniform spacing between every panel across the whole tab.
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

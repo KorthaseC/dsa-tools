@@ -1,0 +1,25 @@
+<div class="c-liturgy-tab">
+  <app-cs-magic [mode]="'liturgy'" />
+
+  <section class="c-liturgy-subsection">
+    <app-cs-name-list
+      title="Segnungen"
+      placeholder="Segnung hinzufügen …"
+      [options]="blessingOptions"
+      [selected]="blessings()"
+      (add)="addBlessing($event)"
+      (remove)="removeBlessing($event)"
+    />
+
+    <app-cs-tradition-fields [mode]="'liturgy'" />
+  </section>
+
+  <p-accordion [multiple]="true" [value]="saPanel()" (valueChange)="onSaPanel($event)">
+    <p-accordion-panel value="sa">
+      <p-accordion-header>Karmale Sonderfertigkeiten</p-accordion-header>
+      <p-accordion-content>
+        <app-cs-special-abilities [buckets]="['karmal']" />
+      </p-accordion-content>
+    </p-accordion-panel>
+  </p-accordion>
+</div>

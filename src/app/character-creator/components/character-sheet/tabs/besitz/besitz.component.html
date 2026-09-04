@@ -1,0 +1,140 @@
+<div class="c-besitz">
+  <!-- ── Ausrüstung ── -->
+  <section class="c-besitz-main">
+    <header class="c-besitz-head">
+      <h2 class="c-besitz-title">Ausrüstung</h2>
+      <div class="c-besitz-totals">
+        <span pTooltip="Tragkraft (KK × 2, in Stein)" tooltipPosition="bottom">Tragkraft: <b>{{ carryingCapacity() }}</b></span>
+        <span [class.c-over]="totalWeight() > carryingCapacity()">Gewicht: <b>{{ totalWeight() | number: '1.0-3' }}</b> Stein</span>
+        <span>Wert: <b>{{ totalValue() | number: '1.0-2' }}</b> S</span>
+      </div>
+    </header>
+
+    <!-- ── Katalog: nach Typ filtern + Gegenstand suchen/hinzufügen (Freitext bleibt über die Tabelle möglich) ── -->
+    <div class="c-besitz-catalog">
+      <p-select
+        [ngModel]="typeFilter()"
+        (ngModelChange)="typeFilter.set($event)"
+        [options]="itemTypes"
+        optionLabel="label"
+        optionValue="value"
+        [filter]="true"
+        filterBy="label"
+        [showClear]="true"
+        placeholder="Alle Typen"
+        appendTo="body"
+        class="c-catalog-type"
+      />
+      <p-select
+        appActionSelect
+        [ngModel]="addFromCatalogModel()"
+        (ngModelChange)="addFromCatalog($event)"
+        [options]="catalogOptions()"
+        optionLabel="label"
+        optionValue="value"
+        [filter]="true"
+        filterBy="label"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="36"
+        appendTo="body"
+        placeholder="Gegenstand aus Katalog suchen …"
+        class="c-catalog-add"
+      >
+        <ng-template pTemplate="item" let-opt>
+          <div class="c-cat-opt">
+            <span class="c-cat-label">{{ opt.label }}</span>
+            <span class="c-cat-price">{{ opt.price }} S</span>
+          </div>
+        </ng-template>
+      </p-select>
+    </div>
+
+    <div class="c-table-wrap">
+      <p-table
+        [value]="items()"
+        (onRowReorder)="onRowReorder($event)"
+        [rowTrackBy]="trackByIndex"
+        [tableStyle]="{ 'min-width': '30rem', 'table-layout': 'fixed' }"
+        class="c-sheet-table c-inv-table"
+      >
+        <ng-template #header>
+          <tr>
+            <th style="width: 2.5rem"></th>
+            <th>Gegenstand</th>
+            <th style="width: 3rem">#</th>
+            <th style="width: 5rem">Wert (S)</th>
+            <th style="width: 4.5rem">Gew.</th>
+            <th>Wo getragen</th>
+            <th style="width: 2.5rem"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-item let-index="rowIndex">
+          <tr [pReorderableRow]="index">
+            <!-- Reorder: drag handle (desktop) / up-down buttons (touch) -->
+            <td class="c-td-center">
+              <div class="c-cell-actions">
+                <span class="pi pi-bars c-drag-handle" pReorderableRowHandle></span>
+                <div class="c-reorder-touch">
+                  <button class="c-move-btn" type="button" (click)="moveItemUp(index)" [disabled]="index === 0"><i class="pi pi-chevron-up"></i></button>
+                  <button class="c-move-btn" type="button" (click)="moveItemDown(index)" [disabled]="index === items().length - 1"><i class="pi pi-chevron-down"></i></button>
+                </div>
+              </div>
+            </td>
+            <td><input pInputText #nameRef [value]="item.name" (blur)="updateItem(index, 'name', nameRef.value)" placeholder="Gegenstand" class="w-full" /></td>
+            <td>
+              <p-inputnumber [ngModel]="item.quantity" (ngModelChange)="updateItem(index, 'quantity', $event ?? 1)" [min]="1" [showButtons]="false" [useGrouping]="false" />
+            </td>
+            <td>
+              <p-inputnumber [ngModel]="item.value ?? 0" (ngModelChange)="updateItem(index, 'value', $event ?? 0)" [min]="0" [minFractionDigits]="0" [maxFractionDigits]="3" [showButtons]="false" [useGrouping]="false" />
+            </td>
+            <td>
+              <p-inputnumber [ngModel]="item.weight ?? 0" (ngModelChange)="updateItem(index, 'weight', $event ?? 0)" [min]="0" [minFractionDigits]="0" [maxFractionDigits]="5" [showButtons]="false" [useGrouping]="false" />
+            </td>
+            <td><input pInputText #whereRef [value]="item.carriedWhere ?? ''" (blur)="updateItem(index, 'carriedWhere', whereRef.value)" placeholder="–" class="w-full" /></td>
+            <td class="c-td-center">
+              <button type="button" pButton icon="pi pi-times" class="p-button-text p-button-sm" (click)="removeItem(index)" pTooltip="Entfernen" tooltipPosition="top"></button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template #emptymessage>
+          <tr>
+            <td colspan="7"><p class="c-besitz-empty">Noch keine Gegenstände.</p></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <div class="c-besitz-add">
+      <button pButton type="button" label="Gegenstand hinzufügen" icon="pi pi-plus" class="p-button-text p-button-sm" (click)="addItem()"></button>
+    </div>
+  </section>
+
+  <!-- ── Geldbeutel ── -->
+  <section class="c-besitz-purse">
+    <h2 class="c-besitz-title">Geldbeutel</h2>
+
+    <div class="c-purse-coins">
+      @for (coin of currencyFields; track coin.key) {
+        <div class="c-coin">
+          <label>{{ coin.label }}</label>
+          <p-inputnumber [ngModel]="$any(currency()[coin.key])" (ngModelChange)="updateCoin(coin.key, $event)" [min]="0" [showButtons]="false" [useGrouping]="false" />
+        </div>
+      }
+    </div>
+
+    <div class="c-purse-field">
+      <label>Edelsteine</label>
+      <textarea pTextarea #gemsRef [value]="currency().gems ?? ''" (blur)="updateCurrencyText('gems', gemsRef.value)" class="w-full" rows="2"></textarea>
+    </div>
+    <div class="c-purse-field">
+      <label>Schmuck</label>
+      <textarea pTextarea #jewRef [value]="currency().jewelry ?? ''" (blur)="updateCurrencyText('jewelry', jewRef.value)" class="w-full" rows="2"></textarea>
+    </div>
+    <div class="c-purse-field">
+      <label>Sonstiges</label>
+      <textarea pTextarea #miscRef [value]="currency().misc ?? ''" (blur)="updateCurrencyText('misc', miscRef.value)" class="w-full" rows="2"></textarea>
+    </div>
+  </section>
+</div>

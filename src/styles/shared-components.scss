@@ -1,6 +1,18 @@
 // Shared component styles used across multiple feature components.
 // Import this file via styles.scss — do NOT import it inside individual components.
 
+// ── Read-only sheet cell text ──────────────────────────────────────────────────
+// Lightweight replacement for disabled p-select/inputs in display-only table cells
+// (character-sheet talents / combat techniques / magic) — avoids hundreds of
+// heavyweight PrimeNG control instantiations.
+.c-cell-text {
+  display: inline-block;
+  width: 100%;
+  padding: 0.25rem 0.25rem;
+  color: var(--p-text-muted-color, #cbd5e1);
+  font-variant-numeric: tabular-nums;
+}
+
 // ── Result card ──────────────────────────────────────────────────────────────
 // Used by: alchemy, book-generator, calendar, name-generator (+ ul override),
 //          tavern-generator, smith-generator (+ animation override),
@@ -51,6 +63,9 @@
 // Used by: about, impressum, legal-notice
 // currency and name-generator override border-bottom locally (0.25 opacity).
 // bug-report overrides font-size locally (0.875rem).
+// Applied to <h2> elements (these are real section headings, they only used to be <div>s).
+// margin-top is reset so the heading keeps its previous spacing; the bottom margin stays with the
+// mb-* utility class at each usage site.
 .section-label {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.05rem;
@@ -61,6 +76,7 @@
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(200, 169, 110, 0.4);
   display: block;
+  margin-top: 0;
 }
 
 // ── Spinner ───────────────────────────────────────────────────────────────────
@@ -100,4 +116,303 @@
     color: #7a6a50;
     font-style: italic;
   }
+}
+
+// ── Dice popover ──────────────────────────────────────────────────────────────
+// PrimeNG sets inset-inline-start via JS and, when the 290px popover overflows the viewport right edge,
+// clamps the position but does NOT recalculate the arrow offset → the arrow never lines up with the
+// trigger. Pin it to the right edge and drop the arrow (arrowless is reliable; no misalignment possible).
+.dice-popover {
+  left: auto !important;
+  inset-inline-end: 0.5rem !important;
+  width: 290px !important;
+
+  &::before,
+  &::after {
+    display: none !important;
+  }
+}
+
+// ── Footer popover menu ───────────────────────────────────────────────────────
+.footer-menu {
+  .footer-menu-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 160px;
+  }
+
+  .footer-menu-social {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--p-popover-border-color, #5a4a30);
+  }
+
+  .footer-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    a {
+      color: var(--p-popover-color, #e4d3a2);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+      padding: 0.2rem 0;
+      transition: color 0.15s;
+
+      &:hover {
+        color: white;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// ── Character-sheet table utilities ──────────────────────────────────────────
+// Used by: combat-techniques, talents, combat-equipment
+
+// Horizontal scroll wrapper — works on mobile via -webkit-overflow-scrolling
+.c-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 106, 62, 0.35) transparent;
+}
+
+// Responsive column visibility
+@media screen and (max-width: 767px) {
+  .c-hide-sm {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .c-hide-md {
+    display: none !important;
+  }
+}
+
+// Cell / input alignment
+.c-td-center {
+  text-align: center;
+}
+
+.c-input-center {
+  text-align: center;
+}
+
+// ── PrimeNG p-table base overrides ──────────────────────────────────────────
+// Replaces per-component c-combat-table / c-talent-table classes.
+.c-sheet-table {
+  margin-bottom: 0 !important;
+
+  .p-datatable-thead > tr > th {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+
+  .p-datatable-thead > tr > .c-th-narrow {
+    width: 1px;
+  }
+
+  .p-datatable-tbody > tr > td {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+
+  // PrimeNG only sets z-index: 1 on th.p-datatable-frozen-column, not td.
+  // Without this, scrolling body cells paint over frozen body cells.
+  td.p-datatable-frozen-column {
+    z-index: 1;
+  }
+}
+
+// ── Compact select without dropdown arrow ────────────────────────────────────
+// Use styleClass="c-select--minimal" on p-select in narrow table columns.
+// The full cell remains clickable to open the overlay; the chevron icon is just
+// hidden to reclaim the ~1.5rem it would cost in tight columns.
+.c-select--minimal {
+  .p-select-dropdown {
+    display: none !important;
+  }
+
+  .p-select-label {
+    padding-right: 0.35rem !important;
+    text-align: center;
+  }
+}
+
+// ── PrimeNG form control overrides for sheet tables ─────────────────────────
+.c-sheet-table {
+  .p-select {
+    --p-select-padding-y: 0.2rem;
+    --p-select-padding-x: 0.35rem;
+    width: 100%;
+
+    &.p-disabled {
+      background: #2a2a2a !important;
+      cursor: default;
+
+      .p-select-label {
+        cursor: default;
+        color: var(--p-select-color);
+        opacity: 1;
+      }
+    }
+  }
+
+  input.p-inputtext {
+    padding: 0.2rem 0.35rem;
+
+    &:disabled {
+      border-color: transparent;
+      background: #2a2a2a !important;
+      cursor: default;
+      opacity: 1;
+      color: var(--p-inputtext-color);
+    }
+  }
+
+  p-inputnumber .p-inputtext {
+    min-width: 3rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.2rem 0.25rem;
+  }
+
+  p-select .p-select {
+    width: 100%;
+  }
+
+  p-select.p-disabled {
+    .p-select-dropdown {
+      display: none !important;
+    }
+
+    .p-select-label {
+      padding-right: 0.5rem !important;
+      text-align: center;
+    }
+  }
+
+  // AT/PA/FK roll buttons fill their cell so no truncation occurs
+  .c-at-btn,
+  .c-pa-btn,
+  .c-fk-btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+// ── Roll value-buttons ──────────────────────────────────────────────────────
+// Used by: combat-techniques (AT/PA/FK), combat-equipment (AT/PA/FK)
+.c-at-btn,
+.c-pa-btn,
+.c-fk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 1.75rem;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: 1px solid;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    filter 0.15s,
+    opacity 0.15s;
+
+  &:hover:not(:disabled) {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+// AT / FK button → light red
+.c-at-btn {
+  border-color: rgba(220, 100, 100, 0.55);
+  background: rgba(220, 100, 100, 0.13);
+  color: #e57373;
+}
+
+// PA button → light green
+.c-pa-btn {
+  border-color: rgba(100, 180, 120, 0.55);
+  background: rgba(100, 180, 120, 0.13);
+  color: #81c784;
+}
+
+// FK button → light blue
+.c-fk-btn {
+  border-color: rgba(100, 160, 220, 0.55);
+  background: rgba(100, 160, 220, 0.13);
+  color: #64b5f6;
+}
+
+// ── Delete button ───────────────────────────────────────────────────────────
+// Used by: combat-equipment (row delete)
+.c-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: #2a2a2a;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    background 0.15s;
+
+  &:hover {
+    color: #e57373;
+    background: rgba(220, 100, 100, 0.13);
+  }
+}
+
+// ── Placeholder text for future sections ────────────────────────────────────
+// Used by: combat-equipment
+.c-placeholder {
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+  font-size: 0.875rem;
+  padding: 1rem;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  text-align: center;
+}
+
+// ── Add row button container ────────────────────────────────────────────────
+// Used by: combat-equipment
+.c-add-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+// ── Shared d20 glyph mask (app-d20-roll) ──────────────────────────────────────
+// The one d20 SVG as a CSS mask, so it can be recoloured via `background-color`/currentColor. Lives in a
+// global stylesheet so the bundler resolves the asset url (it can't from inline component styles). The
+// app-d20-roll component sets colour, size and the disc look.
+.c-d20-mask {
+  -webkit-mask: url('../assets/icons/d20.svg') center / contain no-repeat;
+  mask: url('../assets/icons/d20.svg') center / contain no-repeat;
 }

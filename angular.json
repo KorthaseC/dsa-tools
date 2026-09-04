@@ -21,21 +21,20 @@
             "index": "src/index.html",
             "baseHref": "/",
             "browser": "src/main.ts",
+            "server": "src/main.server.ts",
+            "outputMode": "static",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/sitemap.xml",
-              "src/assets/robots.txt",
-              "src/_redirects"
+              { "glob": "robots.txt", "input": "src/seo", "output": "/" },
+              { "glob": "sitemap.xml", "input": "src/seo", "output": "/" }
             ],
-            "styles": [
-              "node_modules/primeflex/primeflex.css",
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "styles": ["node_modules/primeflex/primeflex.css", "src/styles.scss"],
+            "scripts": [],
+            "allowedCommonJsDependencies": ["pako"]
           },
           "configurations": {
             "production": {
@@ -53,13 +52,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
+                  "maximumWarning": "4mb",
                   "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kb",
+                  "maximumError": "8kb"
                 }
               ],
               "outputHashing": "all"
@@ -103,10 +102,7 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "node_modules/primeflex/primeflex.css",
-              "src/styles.scss"
-            ],
+            "styles": ["node_modules/primeflex/primeflex.css", "src/styles.scss"],
             "scripts": []
           }
         }

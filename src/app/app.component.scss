@@ -38,8 +38,10 @@ app-footer {
 .main-content {
   height: 100%;
   width: 100%;
-  background: #fffef0;
-  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+  background: #e8dcc0;
+  box-shadow:
+    2px 3px 20px black,
+    0 0 180px 40px rgba(138, 77, 15, 0.55) inset;
   display: flex;
   justify-content: center;
   overflow: auto;
@@ -58,7 +60,9 @@ app-footer {
   width: 100%;
   padding: 4em 0;
   background: #fffef0;
-  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+  box-shadow:
+    2px 3px 20px black,
+    0 0 60px #8a4d0f inset;
   filter: url(#wavy2);
   display: flex;
   justify-content: center;

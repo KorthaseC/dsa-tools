@@ -1,0 +1,87 @@
+.c-derived {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// Abgeleitete Werte + Schicksalspunkte sit side by side below the wide Energien table.
+.c-derived-lower {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.5rem;
+}
+
+.c-derived-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.c-derived-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.c-derived-head,
+.c-derived-row {
+  display: grid;
+  // Energien: label + Grundwert, Bonus, Zukauf, Verlust, Rückkauf, Max, Aktuell (7 value columns).
+  grid-template-columns: minmax(6.5rem, 1.2fr) repeat(7, minmax(2.6rem, 1fr));
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.c-derived-table--secondary {
+  .c-derived-head,
+  .c-derived-row {
+    // Abgeleitete Werte: label + Grundwert, Bonus, Max (3 value columns) — no Zukauf.
+    grid-template-columns: minmax(7rem, 1.3fr) repeat(3, minmax(3rem, 1fr));
+  }
+}
+
+.c-derived-table--fate {
+  .c-derived-head,
+  .c-derived-row {
+    // Schicksalspunkte: label + Grundwert, Bonus, Max, Aktuell (4 value columns).
+    grid-template-columns: minmax(7rem, 1.3fr) repeat(4, minmax(3rem, 1fr));
+  }
+}
+
+// Force the PrimeNG number inputs to fill their grid cell (never overflow into the neighbour column).
+.c-derived-row {
+  p-inputnumber {
+    width: 100%;
+    min-width: 0;
+  }
+
+  ::ng-deep .p-inputnumber {
+    width: 100%;
+  }
+
+  ::ng-deep .p-inputnumber-input {
+    width: 100%;
+    min-width: 0;
+    padding: 0.3rem 0.35rem;
+    text-align: center;
+  }
+}
+
+.c-derived-head {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-derived-label {
+  font-size: 0.85rem;
+}
+
+.c-derived-ro {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-derived-max {
+  font-weight: 600;
+}

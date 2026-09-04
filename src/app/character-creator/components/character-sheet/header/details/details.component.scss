@@ -1,0 +1,70 @@
+.c-identity {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.c-identity-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.c-character-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #e4d3a2;
+  line-height: 1.3;
+}
+
+.c-identity-sub {
+  font-size: 0.8rem;
+  color: #c8a96e;
+  letter-spacing: 0.03em;
+}
+
+.c-identity-sep {
+  margin: 0 0.25rem;
+  opacity: 0.6;
+}
+
+.c-identity-ap {
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  color: #b0a080;
+
+  strong {
+    color: #e4d3a2;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &.c-identity-ap-negative strong {
+    color: #f0846b; // over budget
+  }
+}
+
+// Utility actions — top-right of the identity block, stacked vertically and compact.
+.c-export-actions {
+  flex: 0 0 auto;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.c-export-btn {
+  flex: 0 0 auto;
+}
+
+// Smaller icon buttons (they're icon-only utilities, don't need the default size).
+:host ::ng-deep .c-export-btn.p-button {
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+
+  .p-button-icon {
+    font-size: 0.78rem;
+  }
+}

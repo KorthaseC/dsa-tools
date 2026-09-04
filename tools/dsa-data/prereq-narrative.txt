@@ -1,0 +1,171 @@
+PREREQUISITE PARSER — NARRATIVE FALLBACKS (167 distinct of 327 total)
+Each line: «verbatim fragment»  ⟵ owning entry/entries
+Review these to extend the grammar (classifyFragment in tools/extract-pdf-data.mjs).
+
+«11+ Punkte Volumenerweiterung»  ⟵  Zauberspeicher der:s Erzmaga:us
+«6 Monate lang an diesem Ort gelebt»  ⟵  Ortskenntnis
+«8+ Punkte Volumenerweiterung»  ⟵  Zauberspeicher der:s Maga:us
+«ab Stufe 8 den dritten Grad und ab Stufe 13 den vierten Grad.»  ⟵  Macht der Namenlosen Klinge
+«ab Stufe VIII den dritten Grad und ab Stufe XIII den vierten Grad.»  ⟵  Macht der Purpurnen Toga
+«alle anderen haben keine Voraussetzungen»  ⟵  Heilungsspezialgebiet
+«alle Elemente bis auf Humus und Wasser»  ⟵  Immunität gegen elementaren Schaden
+«alle genannten Talente 4»  ⟵  Akrobat:in; Athlet:in
+«Amputieren und Verbrennungen: Heilkunde Wunden 8»  ⟵  Heilungsspezialgebiet
+«an dem die Ware verkauft werden soll»  ⟵  Hehlerei
+«andere Körperteile können andere Voraussetzungen haben»  ⟵  Hypnotische Brüste; Hypnotisches Gemächt; Hypnotisches Gesäß
+«Animisten»  ⟵  Große Zauberauswahl
+«ausgewähltes Talent FW 8»  ⟵  Weg der:s Künstler:in (Gaukeleien); Weg der:s Künstler:in (Holzbearbeitung); Weg der:s Künstler:in (Lebensmittelbearbeitung); Weg der:s Künstler:in (Lederbearbeitung); Weg der:s Künstler:in (Malen & Zeichnen) (+23 more)
+«bei Fertigkeiten muss der FW höher liegen als der ursprüngliche FW des Schülers.»  ⟵  Lehrer:in
+«bei Personen mit einer Vagina wird der Vorteil Freudenfluss benötigt»  ⟵  Levthangeküsst
+«Berg»  ⟵  Licht der Kristalle
+«Berittener Flugkampf Kampftechnik: keine»  ⟵  Befehl Flugangriff
+«Berittener Kampf Kampftechnik: keine»  ⟵  Befehl Klammergriff; Befehl Mächtiger Schlag; Befehl Trampeln; Befehl Überrennen
+«Berufsgeheimnis Synärethikon (14 AP)»  ⟵  Synärethiker:in
+«Brüste: keine»  ⟵  Hypnotische Brüste; Hypnotisches Gemächt; Hypnotisches Gesäß
+«Chirurgie: Heilkunde Wunden 12»  ⟵  Heilungsspezialgebiet
+«den zweiten Grad»  ⟵  Macht der Purpurnen Toga
+«der aber nicht zu exotisch ist»  ⟵  Böse:r Namensvetter:in
+«Der Held muss einen Basilisken getötet haben.»  ⟵  Basiliskentöter:in
+«Der Held muss einen echten Drachen getötet haben.»  ⟵  Drachentöter:in
+«der ihn bei der Ausübung der Talente behindert»  ⟵  Akrobat:in; Athlet:in
+«die beigebrachte Fähigkeit muss der Lehrer selbst beherrschen»  ⟵  Lehrer:in
+«Die Heldin muss ein Gon…da-Gon-Palenkel gewonnen haben.»  ⟵  Gon
+«Die Heldin muss eine immense Ruhmestat vollbracht haben.»  ⟵  Sagaheld:in
+«die jeweils auf das Rezept zutreffende SF: Meister der Elixiere I»  ⟵  Genius der Alchimie
+«Domäne beliebig»  ⟵  Auge der Fee; Blut der Anderswelt; Bund der Gefühle; Salbung der Haut
+«Domäne Berg»  ⟵  Durch Fels und Gestein
+«Domäne Berg o. Element Eis»  ⟵  Verformung des Elements
+«Domäne Berg o. Element Erz»  ⟵  Elementare Härte
+«Domäne Finsternis»  ⟵  Dunkles Abbild der Bündnisgabe; Düsternis der Anderswelt; Feenstärke; Im Schatten der Bäume; Raub der Lebenskraft (Feen)
+«Domäne Licht»  ⟵  Licht der Kristalle; Kraft des Lebens
+«Domäne Licht o. alle Elemente»  ⟵  Macht wider Dämonen
+«Domäne Wald»  ⟵  Macht der Pflanzen (Feen); Ruf des Waldes (Feen)
+«Domäne Wasser»  ⟵  Feenflut; Kiemen des Barschs (Feen); Weg durch den Fluss (Feen)
+«Ein gewöhnlicher Name ohne großen Wiedererkennungswert»  ⟵  Allerweltsname
+«ein heldenhafter Name»  ⟵  Heldenhafter Name
+«Ein möglichst lächerlicher Name»  ⟵  Lächerlicher Name
+«Ein möglichst schurkischer Name»  ⟵  Schurk:in:name
+«ein möglichst unpassender Name»  ⟵  Unpassender Name
+«Ein Name mit Wiedererkennungswert»  ⟵  Böse:r Namensvetter:in
+«eine beliebige Schrift und die dazugehörige Sprache auf Stufe III»  ⟵  Kurzschrift
+«eine passende Geländekunde»  ⟵  Weg der:s Karawanenführer:in (Dschungel); Weg der:s Karawanenführer:in (Steppen); Weg der:s Karawanenführer:in (Wüsten)
+«Einnahme von Kors Samen (siehe Helden der Winterwacht Seite 79)»  ⟵  Blutpfand
+«Einweisung durch eine Dornrose»  ⟵  Sprache der Blumen
+«Element Feuer»  ⟵  Feuersturm; Lodernde Flammensäulen
+«Element Humus»  ⟵  Macht der Pflanzen (Elementare); Ruf des Waldes (Elementare)
+«Element Luft»  ⟵  Flugfähigkeit
+«Element Luft Elementarpakt Stufe I»  ⟵  Geschwind
+«Element Wasser»  ⟵  Kiemen des Barschs (Elementare); Weg durch den Fluss (Elementare)
+«Elementarpakt»  ⟵  Macht wider Dämonen; Verformung des Elements; Elementare Härte; Kraft des Lebens
+«Elementarpakt der entsprechenden Stufe»  ⟵  Elementarrettung
+«Elementarpakt Stufe I»  ⟵  Immunität gegen elementaren Schaden; Elementare Tarnung; Feuersturm; Weg durch den Fluss (Elementare)
+«Elementarpakt Stufe II»  ⟵  Ruf des Waldes (Elementare); Kiemen des Barschs (Elementare)
+«Elementarpakt Stufe III»  ⟵  Lodernde Flammensäulen; Macht der Pflanzen (Elementare); Flugfähigkeit
+«Elemente Eis»  ⟵  Elementare Tarnung
+«entsprechende Sprache auf Stufe III»  ⟵  Sprachspezialisierung
+«Erz und Wasser»  ⟵  Verformung des Elements
+«Fahrzeuge 10 Kampftechnik: …»  ⟵  Befehl Sichelangriff
+«Feenpakt der entsprechenden Stufe»  ⟵  Feenrettung
+«Feenpakt der gleichen Stufe»  ⟵  Dunkles Abbild der Bündnisgabe
+«Feenpakt Stufe I»  ⟵  Auge der Fee; Düsternis der Anderswelt; Im Schatten der Bäume; Licht der Kristalle; Salbung der Haut (+1 more)
+«Feenpakt Stufe II»  ⟵  Bund der Gefühle; Durch Fels und Gestein; Kiemen des Barschs (Feen); Raub der Lebenskraft (Feen); Ruf des Waldes (Feen)
+«Feenpakt Stufe III»  ⟵  Blut der Anderswelt; Feenflut; Feenstärke; Macht der Pflanzen (Feen)
+«für eine Integration der Magierkugel in den Knauf eines Bannschwerts außerdem: Miniaturkugel»  ⟵  Abnehmbare Magierkugel
+«Gargyl»  ⟵  Blick des Gargyls
+«GE 13 und KK 13»  ⟵  Meister:in der improvisierten Waffen
+«Geisterpakt der entsprechenden Stufe»  ⟵  Geisterrettung
+«Geisterpakt Stufe I»  ⟵  Geisterhafte Tarnung; Geistersicht
+«Geisterpakt Stufe II»  ⟵  Geisterpanzer; Geisterwaffe
+«Geisterpakt Stufe III»  ⟵  Geisterflug; Geisterstärke
+«Gemächt: Person mit Penis»  ⟵  Hypnotische Brüste; Hypnotisches Gemächt; Hypnotisches Gesäß
+«Geschichtswisse 8»  ⟵  Weg der:s Echsenkundigen
+«ggf. Vorteil Zauberer»  ⟵  Alchimiezirkel
+«halbes Jahr lang regelmäßig mit Kettenkugel geübt»  ⟵  Kettenkugelkampf
+«Handwerkstalent des jeweiligen Artefaktmaterials 10»  ⟵  Magische:r Meisterschmied:in
+«Handwerkstalent des jeweiligen Golemmaterials 10 bzw. Metallbearbeitung (Automatenkonstruktion) 10 für Automaten»  ⟵  Magische:r Meisterkonstrukteur:in
+«Heilkunde Gifte 10»  ⟵  Meister:in der Gifte; Meister:in der Rauschmittel
+«Held hat mindestens 6 Monate in entsprechender Umgebung gelebt»  ⟵  Geländekunde
+«Held muss mindestens eine Schrift und die gesprochene Sprache beherrschen»  ⟵  Schnellschreiber:in
+«Heldin muss körperlich Jungfrau sein.»  ⟵  Jungfrau
+«Herstellungstalent des Objekts 10»  ⟵  Einmalartefakt
+«höher»  ⟵  Herrschaftsanspruch
+«Humus»  ⟵  Elementare Tarnung
+«III (je nach Antäuschen- Stufe)»  ⟵  Antäuschen
+«jede andere Stufe benötigt die Vorgängerstufe Macht der Namenlosen Klinge als Voraussetzung und zusätzlich weitereGrade der Namenlosen Weihe: ab Stufe 4 den zweiten Grad»  ⟵  Macht der Namenlosen Klinge
+«jede andere Stufe benötigt die Vorgängerstufe Macht der Purpurnen Toga als Voraussetzung und zusätzlich weitere Grade der Namenlosen Weihe: ab»  ⟵  Macht der Purpurnen Toga
+«jeweiliges Talent FW 8»  ⟵  Beeindruckende Vorstellung (Talent)
+«kein anderes Paktgeschenk»  ⟵  Dunkles Abbild der Bündnisgabe
+«kein Hass auf Kobolde (und deren Untergruppen); keine Schlechte Eigenschaft Vorurteile gegen Kobolde»  ⟵  Koboldfreund:in
+«kein Vorteil Hass auf die (gewählte) Tierart»  ⟵  Tierfreund:in
+«keine Sonderfertigkeit Entspannender Schlaf»  ⟵  Pflanzenbestimmung
+«Kind der Finsternis»  ⟵  Blutdurst der Fledermaus
+«Kind der Nacht»  ⟵  Blick des Nachtmahrs; Blutdurst der Fledermaus; Kuss der Todesfee; Macht des Sukkubus; Griff der:s Pirscher:in (+4 more)
+«Lamijah»  ⟵  Kuss der Todesfee; Macht des Sukkubus; Nebelgestalt; Ruf der:s Vampir:in; Sikaryan-Gespür (+1 more)
+«Licht»  ⟵  Feenstärke
+«Meistertalentierte»  ⟵  Schutzgeist
+«Merkmal für den zu speichernden Zauber»  ⟵  Zauberspeicher-Kristallkugel
+«Merkmal Illusion»  ⟵  Illusionsspeicher
+«mindestens 12 Monate in einem Gjalsker Haerad gelebt»  ⟵  Palenkelübung
+«mindestens 2 Schicksalspunkte»  ⟵  Zeichen des Schicksals
+«Mitglied des Gremium honoris»  ⟵  Öffnung der Basilius-Globule
+«Mitglied einer Meschpoche»  ⟵  Ätzes geben; Bine Maschores
+«Paktgeschenk Zauberei mit Lebenskraft»  ⟵  Blutzauberer:in
+«passende Invocatio-Zauber FW 8»  ⟵  Wahrer Name (keine Hörner); Wahrer Name (max. 5 Hörner); Wahrer Name (min. 6 Hörner)
+«passende Merkmalskenntnis»  ⟵  Merkmalsverstärkung; Merkmalsfokus
+«passende Schrift und Sprache»  ⟵  Weg der:s Schreiber:in
+«passende Sprache auf Stufe III»  ⟵  Kryptographie
+«passendes Ritual FW 8»  ⟵  Wahrer Name (Dschinn); Wahrer Name (Elementarer Meister); Wahrer Name (Elementargeist)
+«Person mit Penis»  ⟵  Stattlicher Penis
+«Person mit Vagina»  ⟵  Freudenfluss; Wunderschöne Vagina; Auslaugende Vereinigung; Unersättliches Pferd
+«Präziser Schuss»  ⟵  Drehwurf; Machtvoller Kernschuss; Sprungwurf; Ballistischer Schuss; Scharfschütz:in (+1 more)
+«Präziser Schuss I»  ⟵  Präziser Schuss/Wurf
+«Präziser Schuss II»  ⟵  Präziser Schuss/Wurf
+«Prinzipientreue (Moralkodex einer Kirche) oder Verpflichtungen (gegenüber einer Kirche)»  ⟵  Akoluth:in
+«Runenschöpfer»  ⟵  Große Zauberauswahl
+«SF Bindung der Waffe»  ⟵  Animisten-Stil der Tapo-Tikaute
+«SF Präziser Schuss»  ⟵  Betäubendes Geschoss
+«SF Waffenbau und»  ⟵  Zyklopenschmied:in
+«Sonderfertigkeit Anführer und Formation»  ⟵  Gefechtsformation
+«Sonderfertigkeit Ausdauerndes Werwesen I»  ⟵  Ausdauernes Werwesen
+«Sonderfertigkeit Ausdauerndes Werwesen II»  ⟵  Ausdauernes Werwesen
+«Sonderfertigkeit Geländekunde Eis- & Schneekundig»  ⟵  Iglubau
+«Sonderfertigkeit Gespür für das Geld»  ⟵  Sinn für den Wert
+«Sonderfertigkeit Ortskenntnis in der jeweiligen Gegend»  ⟵  Wegkenntnis
+«Sonderfertigkeit Ortskenntnis in der jeweiligen Stadt»  ⟵  Wegabkürzungen kennen
+«Sonderfertigkeit Reversalis I des gleichen Zaubers»  ⟵  Reversalis
+«Sonderfertigkeit Schrift»  ⟵  Kryptographie
+«Sonderfertigkeit Tradition Intuitive Zauberer»  ⟵  Große Zauberauswahl
+«Sonderfertigkeit Tradition Meistertalentierte»  ⟵  Kein Bann des Eisens
+«Sonderfertigkeit Tradition Zauberbarden»  ⟵  Machtvolle Zaubermelodien; Weitreichende Zaubermelodien; Schwache Zaubermelodien; Verminderte Zaubermelodien
+«Sonderfertigkeit Tradition Zaubertänzer»  ⟵  Machtvolle Zaubertänze; Weitreichende Zaubertänze; Schwache Zaubertänze; Verminderte Zaubertänze
+«Sonderfertigkeiten Heraldik und Lanzenangriff»  ⟵  Turnierkenntnis
+«Sozialer Stand 3»  ⟵  Herrschaftsanspruch
+«Spezies des Zauberers muss über Haare verfügen»  ⟵  Körpergebundene Kraft
+«Spezies Zyklop#»  ⟵  Zyklopenschmied:in
+«Spiel mit der Fokusregel Veredelung (siehe Aventurisches Animatorium Seite 106)»  ⟵  Golemprägung
+«Status Dunkelfresser»  ⟵  Fressen für den Namenlosen
+«Status Feylamia»  ⟵  Blutdurst der Fledermaus; Gestaltswandlung; Hypnose
+«Status Kind der Finsternis»  ⟵  Blick des Nachtmahrs; Kuss der Todesfee; Macht des Sukkubus; Fledermausschwarm des Schreckens; Griff der:s Pirscher:in (+7 more)
+«Status Kind der Finsternis und der Vampir muss einer magischen Tradition angehören»  ⟵  Sog des Purpurnen
+«Status Kind der Nacht»  ⟵  Geschenk des Blutes; Rabengefieder; Rabenschwarm des Unheils
+«Status Lamijah»  ⟵  Liebkosung des Schmerzes
+«Status Lykanthrop»  ⟵  Ausdauernes Werwesen; Intelligentes Werwesen
+«Steinbearbeitung»  ⟵  Waffenbau
+«Tradition Intuitive Zauberer»  ⟵  Schutzgeist
+«Tradition muss Rituale einsetzen können»  ⟵  Kraftliniennutzung
+«Trz Sonderfertigkeit Knochenweihe»  ⟵  Tierische Kraft
+«V: Sonderfertigkeit Exzellenter Entschwörer»  ⟵  Exzellente Entschwörer:in
+«Verleihung durch die Rahjakirche»  ⟵  Held:in der Rahjakirche
+«Voraussetzungen für die Herstellung jeder Artefaktart gelten weiterhin»  ⟵  Vielfachartefakt
+«Wald»  ⟵  Im Schatten der Bäume; Kraft des Lebens
+«Wasser»  ⟵  Kraft des Lebens
+«Wasser o. Element Humus»  ⟵  Kraft des Lebens
+«Weg dutzendfach bereist haben»  ⟵  Ortskenntnis
+«Wesen verfügt automatisch über die SF»  ⟵  Verbeißen
+«Wesen verfügt über den Vorteil Wasserlebewesen»  ⟵  Unterwasserkampf
+«Wesenszug Olochtai»  ⟵  Olochtai-Stil
+«Wesenszug Zholochai»  ⟵  Zholochai-Stil
+«Zauberertradition kann Sonderfertigkeit Flugsalbe wählen»  ⟵  Keine Flugsalbe
+«Zauberertradition kann Sonderfertigkeit Vertrautenbindung wählen»  ⟵  Kein Vertrauter
+«Zeugung durch ekstatischen Höhepunkt»  ⟵  Einfühlsamkeit; Meister:in des Liebesspiels; Unerschöpfliche Lust; Unwiderstehlich
+«Zeugung durch ekstatischen Höhepunkt>»  ⟵  Auserwählte der Liebe

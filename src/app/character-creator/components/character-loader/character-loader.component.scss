@@ -1,0 +1,129 @@
+// Landing / start screen — three entry paths (guided wizard · empty sheet · import JSON).
+// Sits on the app's light parchment page, so the cards use the warm parchment palette with dark-brown
+// text (matches the sheet's on-parchment headings) and a gold hover glow (like the wizard hub nav).
+
+.c-entry {
+  max-width: 62rem;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+}
+
+.c-entry-head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.c-entry-title {
+  color: #5a3a10; // dark warm brown — readable on the light parchment page
+  margin: 0 0 0.4rem;
+}
+
+.c-entry-sub {
+  color: #6a4a20;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.c-entry-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 52rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-entry-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.9rem 1.35rem 1.5rem;
+  background: #f5e8c8;
+  border: 1px solid #8a6a3e;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  font: inherit;
+  color: #4a3418;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-3px);
+    border-color: #c8a96e;
+    box-shadow: 0 8px 22px rgba(90, 74, 48, 0.35);
+    outline: none;
+  }
+}
+
+.c-entry-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background: rgba(200, 169, 110, 0.18);
+  border: 1px solid rgba(138, 106, 62, 0.4);
+
+  i {
+    font-size: 1.6rem;
+    color: #8a5a00;
+  }
+}
+
+.c-entry-card:hover .c-entry-icon {
+  background: rgba(200, 169, 110, 0.32);
+}
+
+.c-entry-card-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #5a3a10;
+}
+
+.c-entry-card-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #4a3418;
+  flex: 1; // equal-height cards: push the CTA to the bottom regardless of text length
+}
+
+.c-entry-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #8a5a00;
+
+  i {
+    font-size: 0.8rem;
+    transition: transform 0.15s ease;
+  }
+}
+
+.c-entry-card:hover .c-entry-cta i {
+  transform: translateX(4px);
+}
+
+.c-entry-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.25rem auto 0;
+  max-width: 32rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(192, 57, 43, 0.12);
+  border: 1px solid rgba(192, 57, 43, 0.5);
+  color: #a03328;
+  font-size: 0.9rem;
+}
+

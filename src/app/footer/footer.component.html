@@ -1,5 +1,4 @@
 <footer class="c-footer">
-
   <!-- Left: menu button (mobile only) + social icons (desktop only) -->
   <div class="c-left">
     <p-button
@@ -13,73 +12,71 @@
       (onClick)="menu.toggle($event)"
     />
 
+    <!-- Real anchors with href, not (click) handlers on p-button: only these are crawlable, and
+         only these support middle-click / "open in new tab". -->
     <div class="c-social">
-      <p-button
-        icon="pi pi-github"
-        [rounded]="true"
-        [text]="true"
-        severity="secondary"
+      <a
+        [href]="links.github"
+        target="_blank"
+        rel="noopener"
+        class="c-social-link"
         pTooltip="Link zum Github-Projekt"
         tooltipPosition="top"
-        (onClick)="goToLink('https://github.com/KorthaseC/dsa-tools')"
-      />
-      <p-button
-        [rounded]="true"
-        [text]="true"
-        severity="secondary"
+        aria-label="Github-Projekt"
+      >
+        <i class="pi pi-github"></i>
+      </a>
+      <a
+        [href]="links.discord"
+        target="_blank"
+        rel="noopener"
+        class="c-social-link"
         pTooltip="Offizieller Ulisses Discord"
         tooltipPosition="top"
-        (onClick)="goToLink('https://discord.com/invite/xftRCTHj7Y')"
+        aria-label="Offizieller Ulisses Discord"
       >
         <img src="assets/icons/ulisses.svg" alt="Ulisses Discord" class="c-icon-img" />
-      </p-button>
+      </a>
     </div>
   </div>
 
   <!-- Center: nav links (desktop only) -->
   <nav class="c-nav">
-    <a [routerLink]="['/about']">Über</a>
-    <a [routerLink]="['/report']">Bugreport/Feedback</a>
-    <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/')">Regel-Wiki</a>
+    <a [routerLink]="['/']">Über</a>
+    <a [routerLink]="[routes.report]">Bugreport/Feedback</a>
+    <a [href]="links.ruleWiki" target="_blank" rel="noopener">Regel-Wiki</a>
   </nav>
 
   <!-- Right: always visible -->
   <div class="c-right">
-    <a [routerLink]="['/imprint']">Impressum</a>
-    <a [routerLink]="['/legal']">Datenschutz</a>
+    <a [routerLink]="[routes.imprint]">Impressum</a>
+    <a [routerLink]="[routes.legal]">Datenschutz</a>
     <span class="c-version">v{{ version }}</span>
   </div>
-
 </footer>
 
 <!-- Mobile popover menu -->
 <p-popover #menu styleClass="footer-menu">
   <div class="footer-menu-panel">
     <div class="footer-menu-social">
-      <p-button
-        icon="pi pi-github"
-        [rounded]="true"
-        [text]="true"
-        severity="secondary"
-        pTooltip="Link zum Github-Projekt"
-        tooltipPosition="top"
-        (onClick)="goToLink('https://github.com/KorthaseC/dsa-tools'); menu.hide()"
-      />
-      <p-button
-        [rounded]="true"
-        [text]="true"
-        severity="secondary"
-        pTooltip="Offizieller Ulisses Discord"
-        tooltipPosition="top"
-        (onClick)="goToLink('https://discord.com/invite/xftRCTHj7Y'); menu.hide()"
+      <a [href]="links.github" target="_blank" rel="noopener" class="c-social-link" aria-label="Github-Projekt" (click)="menu.hide()">
+        <i class="pi pi-github"></i>
+      </a>
+      <a
+        [href]="links.discord"
+        target="_blank"
+        rel="noopener"
+        class="c-social-link"
+        aria-label="Offizieller Ulisses Discord"
+        (click)="menu.hide()"
       >
         <img src="assets/icons/ulisses.svg" alt="Ulisses Discord" class="c-icon-img" />
-      </p-button>
+      </a>
     </div>
     <div class="footer-menu-links">
-      <a [routerLink]="['/about']" (click)="menu.hide()">Über</a>
-      <a [routerLink]="['/report']" (click)="menu.hide()">Bugreport/Feedback</a>
-      <a class="cursor" (click)="goToLink('https://dsa.ulisses-regelwiki.de/'); menu.hide()">Regel-Wiki</a>
+      <a [routerLink]="['/']" (click)="menu.hide()">Über</a>
+      <a [routerLink]="[routes.report]" (click)="menu.hide()">Bugreport/Feedback</a>
+      <a [href]="links.ruleWiki" target="_blank" rel="noopener" (click)="menu.hide()">Regel-Wiki</a>
     </div>
   </div>
 </p-popover>

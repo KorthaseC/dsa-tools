@@ -1,4 +1,5 @@
 <div class="token-container pb-5">
+  <app-page-intro />
   <!-- ── Upload phase ─────────────────────────────────────────────────── -->
   @if (!imageLoaded) {
     <p-fileupload
@@ -36,7 +37,10 @@
         <i class="pi pi-arrows-alt"></i> Ziehen zum Verschieben &nbsp;|&nbsp; <i class="pi pi-search-plus"></i> Scrollen / Pinch zum Zoomen
       </p>
 
-      <div class="flex flex-wrap gap-2 mt-3 justify-content-center">
+      <div class="flex justify-content-center mt-3">
+        <p-selectbutton [(ngModel)]="downloadFormat" [options]="formatOptions" optionLabel="label" optionValue="value" />
+      </div>
+      <div class="flex flex-wrap gap-2 mt-2 justify-content-center">
         <p-button label="Anderes Bild" icon="pi pi-refresh" severity="secondary" (onClick)="changeImage()" />
         <p-button label="Token generieren" icon="pi pi-download" (onClick)="generateToken()" />
       </div>
@@ -63,7 +67,7 @@
               (keydown.enter)="confirmFileName()"
               (keydown.escape)="isEditingFileName = false"
             />
-            <span class="filename-ext">.png</span>
+            <span class="filename-ext">.{{ generatedFormat }}</span>
             @if (!isEditingFileName) {
               <p-button
                 icon="pi pi-pencil"
@@ -86,7 +90,7 @@
             }
           </div>
 
-          <a [href]="downloadUrl" [download]="downloadFileName + '.png'" class="no-underline">
+          <a [href]="downloadUrl" [download]="downloadFileName + '.' + generatedFormat" class="no-underline">
             <p-button label="Token herunterladen" icon="pi pi-download" />
           </a>
         </div>

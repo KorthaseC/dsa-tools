@@ -1,0 +1,45 @@
+<div class="c-identity">
+  <div class="c-identity-main">
+    <span class="c-character-name">{{ character()?.bio?.name || '—' }}</span>
+    <span class="c-identity-sub">
+      {{ speciesLabel() || '—' }}
+      @if (professionLabel()) {
+        <span class="c-identity-sep">·</span>
+        {{ professionLabel() }}
+      }
+    </span>
+    <span class="c-identity-ap" [class.c-identity-ap-negative]="ap().available < 0">
+      <strong>{{ ap().available }}</strong> AP verfügbar
+    </span>
+  </div>
+
+  <div class="c-export-actions">
+    <button
+      type="button"
+      pButton
+      icon="pi pi-file-pdf"
+      class="p-button-text p-button-sm c-export-btn"
+      (click)="exportPdf()"
+      pTooltip="Als PDF-Bogen exportieren (Pergament, mit eingebettetem Charakter zum Re-Import)"
+      tooltipPosition="bottom"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-print"
+      class="p-button-text p-button-sm c-export-btn"
+      (click)="exportPdfWhite()"
+      pTooltip="Als PDF-Bogen exportieren (weißer Hintergrund, druckfreundlich)"
+      tooltipPosition="bottom"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-download"
+      class="p-button-text p-button-sm c-export-btn"
+      (click)="exportJson()"
+      pTooltip="Als JSON exportieren"
+      tooltipPosition="bottom"
+    ></button>
+  </div>
+</div>

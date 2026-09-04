@@ -4,15 +4,15 @@
     <p class="page-intro">Diese Webseite wurde entwickelt, um dich und deine Spielgruppe bei euren Abenteuern in der Welt von Das Schwarze Auge zu unterstützen. Hier findest du eine Vielzahl an Tools und Generatoren, die euch das Spielleben erleichtern und für noch mehr Immersion sorgen.</p>
   </div>
 
-  <div class="section-label mb-4">Funktionen im Überblick</div>
+  <h2 class="section-label mb-4">Funktionen im Überblick</h2>
 
   <div class="grid row-gap-3 mb-5">
     @for (feature of features; track feature) {
     <div class="col-12 md:col-6">
-      <div class="feature-card" [routerLink]="[feature.routerLink]">
+      <a class="feature-card" [routerLink]="[feature.routerLink]">
         <span class="feature-title">{{ feature.title }}</span>
         <p class="feature-desc">{{ feature.description }}</p>
-      </div>
+      </a>
     </div>
     }
   </div>

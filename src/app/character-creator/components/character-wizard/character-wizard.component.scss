@@ -1,0 +1,269 @@
+.c-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+// Phase 2 hub embeds the full character-sheet slices (traits / SF / equipment), which are built for the
+// sheet's ~1200px width. The left tracker nav eats ~14rem on top, so at 70rem the content is badly
+// squeezed — widen the whole wizard in hub phase so the content column gets close to its sheet width.
+.c-wizard.c-wizard-wide {
+  max-width: min(90rem, 98vw);
+}
+
+.c-wizard-ap {
+  flex-direction: row;
+  gap: 1.5rem;
+  margin-bottom: 0;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  color: #5a3a10;
+
+  b {
+    color: #2a1a08;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .c-ap-over b {
+    color: var(--p-red-600, #dc2626);
+  }
+}
+
+.c-wizard-steps {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.c-wizard-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--p-surface-600, #475569);
+  cursor: pointer;
+  font-size: 0.85rem;
+  user-select: none;
+
+  .c-step-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: var(--p-surface-700, #334155);
+    font-size: 0.75rem;
+  }
+
+  &.c-active {
+    border-color: var(--p-primary-color, #818cf8);
+
+    .c-step-index {
+      background: var(--p-primary-color, #818cf8);
+      color: var(--p-primary-contrast-color, #fff);
+    }
+  }
+
+  &.c-done .c-step-index {
+    background: var(--p-primary-color, #c8a96e);
+    color: var(--p-primary-contrast-color, #1a1206);
+  }
+
+  &.c-locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.c-wizard-panel {
+  min-height: 12rem;
+}
+
+.c-wizard-placeholder {
+  color: var(--p-text-muted-color, #94a3b8);
+  font-style: italic;
+}
+
+// Three fixed cells instead of space-between: the middle button ("Neu beginnen") stays centred even
+// when the right one is missing (the "Abschluss" hub section has no forward button).
+.c-wizard-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--p-surface-700, #334155);
+
+  // The hub buttons carry section names ("Vor- & Nachteile"), so on narrow screens the reset moves
+  // to a second row to keep those labels from being clipped.
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.c-footer-left {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.c-footer-right {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+
+  .p-button-label {
+    white-space: nowrap;
+  }
+
+  @media (min-width: 40.0625rem) {
+    grid-column: 3;
+  }
+}
+
+.c-footer-center {
+  justify-self: center;
+
+  @media (max-width: 40rem) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+// ── Hub (tracker nav + content) ────────────────────────────────────────────────
+.c-hub {
+  display: grid;
+  grid-template-columns: minmax(12rem, 14rem) minmax(0, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 52rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-hub-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.c-hub-navitem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem;
+  // Warm, gold-tinted to match the parchment page + the selection-step list items (was cold slate,
+  // with a leftover indigo active border).
+  border: 1px solid color-mix(in srgb, var(--p-primary-color, #c8a96e) 18%, transparent);
+  border-radius: 0.45rem;
+  background: var(--p-surface-700, #2a2a2a);
+  color: var(--p-text-color, #ece0c4);
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.88rem;
+  transition: box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+
+  i {
+    color: var(--p-primary-color, #c8a96e);
+  }
+
+  &.c-error i {
+    color: var(--p-red-400, #f87171);
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--p-primary-color, #c8a96e) 55%, transparent);
+    box-shadow: 0 0 10px 1px color-mix(in srgb, var(--p-primary-color, #c8a96e) 30%, transparent);
+  }
+
+  &.c-active {
+    border-color: var(--p-primary-color, #c8a96e);
+    background: var(--p-surface-600, #3a3a3a);
+    box-shadow: 0 0 12px 2px color-mix(in srgb, var(--p-primary-color, #c8a96e) 50%, transparent);
+  }
+
+  .c-hub-label {
+    flex: 1;
+  }
+
+  .c-hub-figure {
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--p-text-muted-color, #94a3b8);
+  }
+
+  &.c-error .c-hub-figure {
+    color: var(--p-red-400, #f87171);
+  }
+}
+
+.c-hub-content {
+  min-width: 0;
+  // Match the sheet's tab panel (tabs.component.scss .p-tabpanels): the hub embeds the SAME slice
+  // components, so give them the same parchment card. Without it, transparent sections (the cantrip/
+  // blessing name-lists) sat directly on the dark body and looked different from the slice.
+  background: rgba(245, 232, 200, 0.35);
+  border: 1px solid rgba(90, 74, 48, 0.5);
+  border-radius: 6px;
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+// ── Abschluss ──────────────────────────────────────────────────────────────────
+.c-abschluss {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 40rem;
+}
+
+.c-abschluss-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  label {
+    font-size: 0.8rem;
+    color: var(--p-text-muted-color, #94a3b8);
+  }
+}
+
+.c-abschluss-ap {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+
+  b {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .c-ap-over b {
+    color: var(--p-red-400, #f87171);
+  }
+}
+
+.c-abschluss-msgs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  h4 {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+.c-abschluss-ok {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--p-primary-color, #c8a96e);
+  font-size: 0.9rem;
+}

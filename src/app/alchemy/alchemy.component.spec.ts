@@ -3,7 +3,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { of } from 'rxjs';
 import { AlchemyComponent } from './alchemy.component';
 import { ElementsAlchemy } from './alchemy.constants';
-import { DiceChangeResult } from './alcheny.models';
+import { DiceChangeResult } from './alchemy.models';
 import { DiceResultComponent } from './dice-result/dice-result.component';
 
 describe('AlchemyComponent', () => {
@@ -16,9 +16,7 @@ describe('AlchemyComponent', () => {
     const dialogRefSpy = jasmine.createSpyObj('DynamicDialogRef', ['onClose']);
 
     await TestBed.configureTestingModule({
-      imports: [
-        AlchemyComponent,
-      ],
+      imports: [AlchemyComponent],
       providers: [
         { provide: DialogService, useValue: dialogSpy },
         { provide: DynamicDialogRef, useValue: dialogRefSpy },
@@ -63,14 +61,7 @@ describe('AlchemyComponent', () => {
     const dialogRefSpyObj = { onClose: of(mockDiceChangeResult) };
     dialog.open.and.returnValue(dialogRefSpyObj as any);
 
-    const result = await component['openDiceResultDialog'](
-      2,
-      10,
-      'Anwendung',
-      'result_8_9',
-      6,
-      [3, 4]
-    );
+    const result = await component['openDiceResultDialog'](2, 10, 'Anwendung', 'result_8_9', 6, [3, 4]);
 
     expect(dialog.open).toHaveBeenCalledWith(DiceResultComponent, {
       header: 'Würfelergebnis – Anwendung',
@@ -114,28 +105,14 @@ describe('AlchemyComponent', () => {
 
   it('should process elixir making correctly', async () => {
     spyOn<any>(component, 'processStep').and.returnValue(Promise.resolve(1));
-    spyOn<any>(component, 'processDuration').and.returnValue(
-      Promise.resolve(1)
-    );
+    spyOn<any>(component, 'processDuration').and.returnValue(Promise.resolve(1));
     component.elementType.setValue(ElementsAlchemy.Air);
     component.qsBrewing.setValue(5);
 
     await component['elixirMaking']();
-    expect(component['processStep']).toHaveBeenCalledWith(
-      6,
-      'Anwendung',
-      jasmine.any(Array)
-    );
-    expect(component['processStep']).toHaveBeenCalledWith(
-      6,
-      'Wirkung',
-      jasmine.any(Array)
-    );
-    expect(component['processStep']).toHaveBeenCalledWith(
-      20,
-      'Genaue Wirkung',
-      jasmine.any(Array)
-    );
+    expect(component['processStep']).toHaveBeenCalledWith(6, 'Anwendung', jasmine.any(Array));
+    expect(component['processStep']).toHaveBeenCalledWith(6, 'Wirkung', jasmine.any(Array));
+    expect(component['processStep']).toHaveBeenCalledWith(20, 'Genaue Wirkung', jasmine.any(Array));
     expect(component['processDuration']).toHaveBeenCalledWith(6, 'Dauer');
   });
 
@@ -144,42 +121,16 @@ describe('AlchemyComponent', () => {
     component.qsBrewing.setValue(5);
 
     await component['poisonMaking']();
-    expect(component['processStep']).toHaveBeenCalledWith(
-      20,
-      'Anwendung',
-      jasmine.any(Array)
-    );
-    expect(component['processStep']).toHaveBeenCalledWith(
-      12,
-      'Widerstandsprobe',
-      jasmine.any(Array)
-    );
-    expect(component['processStep']).toHaveBeenCalledWith(
-      12,
-      'Wirkung',
-      jasmine.any(Array),
-      0
-    );
+    expect(component['processStep']).toHaveBeenCalledWith(20, 'Anwendung', jasmine.any(Array));
+    expect(component['processStep']).toHaveBeenCalledWith(12, 'Widerstandsprobe', jasmine.any(Array));
+    expect(component['processStep']).toHaveBeenCalledWith(12, 'Wirkung', jasmine.any(Array), 0);
   });
 
   it('should process stimulant making correctly', async () => {
     spyOn<any>(component, 'processStep').and.returnValue(Promise.resolve(1));
     await component['stimulantMaking']();
-    expect(component['processStep']).toHaveBeenCalledWith(
-      20,
-      'Anwendung',
-      jasmine.any(Array)
-    );
-    expect(component['processStep']).toHaveBeenCalledWith(
-      12,
-      'Widerstandsprobe',
-      jasmine.any(Array)
-    );
-    expect(component['processStep']).toHaveBeenCalledWith(
-      12,
-      'Sucht',
-      jasmine.any(Array),
-      0
-    );
+    expect(component['processStep']).toHaveBeenCalledWith(20, 'Anwendung', jasmine.any(Array));
+    expect(component['processStep']).toHaveBeenCalledWith(12, 'Widerstandsprobe', jasmine.any(Array));
+    expect(component['processStep']).toHaveBeenCalledWith(12, 'Sucht', jasmine.any(Array), 0);
   });
 });

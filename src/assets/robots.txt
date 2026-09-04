@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://dsa-tools.de/sitemap.xml

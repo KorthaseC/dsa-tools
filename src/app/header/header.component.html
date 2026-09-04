@@ -1,9 +1,15 @@
-<div class="width-100 c-header">
-  <div [routerLink]="['/overview']" pTooltip="Zurück zur Übersicht" tooltipPosition="bottom" class="cursor c-icon">
+<div class="w-full c-header">
+  <a [routerLink]="[routes.overview]" pTooltip="Zurück zur Übersicht" tooltipPosition="bottom" class="cursor-pointer c-icon">
     <img src="assets/dsa-tools-icon.ico" alt="Logo" class="c-logo" />
-  </div>
+  </a>
 
-  <h1 class="c-title">{{ pageTitles[pageTitle] }}</h1>
+  <!-- The home page brings its own, keyword-carrying <h1>. Rendering the generic header title as an
+       <h1> too would give that page two competing top-level headings. -->
+  @if (isHome) {
+    <p class="c-title">{{ pageTitles[pageTitle] }}</p>
+  } @else {
+    <h1 class="c-title">{{ pageTitles[pageTitle] }}</h1>
+  }
 
   <div class="c-dice-wrapper">
     <app-dice-rolls></app-dice-rolls>

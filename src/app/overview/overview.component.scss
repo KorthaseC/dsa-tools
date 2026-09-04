@@ -26,6 +26,16 @@
   container-type: inline-size;
   aspect-ratio: 1 / 1;
 
+  // Anchor wrapper around the card (real href for crawlers) — must pass the flex/height chain
+  // through so the card keeps filling its square cell.
+  .c-card-link {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
   ::ng-deep p-card {
     display: flex;
     height: 100%;

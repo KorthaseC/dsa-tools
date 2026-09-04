@@ -1,0 +1,201 @@
+.c-besitz {
+  display: grid;
+  // Items take the room; the purse is a compact right column (coins don't need much width).
+  grid-template-columns: minmax(0, 1fr) minmax(13rem, 16rem);
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+
+  @media (max-width: 56rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-besitz-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.c-besitz-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: #5a3a10; // dark warm brown — readable on the parchment card (matches the Vorteile heading)
+}
+
+.c-besitz-totals {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: var(--p-text-muted-color, #94a3b8);
+
+  .c-over b {
+    color: var(--p-red-400, #f87171);
+  }
+}
+
+// ── Catalog picker (type filter + searchable item dropdown) ──────────────────────
+.c-besitz-catalog {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+
+  @media (max-width: 34rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Item option: label left, price right (muted).
+.c-cat-opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.c-cat-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c-cat-price {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+// Number inputs fill their table cell / coin slot and read centered.
+.c-besitz ::ng-deep .p-inputnumber {
+  width: 100%;
+}
+.c-besitz ::ng-deep .p-inputnumber-input {
+  width: 100%;
+  text-align: center;
+  padding: 0.25rem 0.3rem;
+}
+
+.c-inv-table {
+  // The reorder handle cell + numeric cells stay tight; text cells (Gegenstand / Wo getragen) flex.
+  ::ng-deep td {
+    padding: 0.2rem 0.3rem;
+    vertical-align: middle;
+  }
+}
+
+.c-besitz-empty {
+  margin: 0.4rem 0;
+  font-size: 0.82rem;
+  color: var(--p-text-muted-color, #94a3b8);
+}
+
+.c-besitz-add {
+  margin-top: 0.4rem;
+}
+
+// ── Geldbeutel ─────────────────────────────────────────────────────────────────
+.c-besitz-purse {
+  align-content: start;
+}
+
+.c-purse-coins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.c-coin {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  label {
+    font-size: 0.72rem;
+    color: var(--p-text-muted-color, #94a3b8);
+  }
+}
+
+.c-purse-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+
+  label {
+    font-size: 0.78rem;
+    color: var(--p-text-muted-color, #94a3b8);
+  }
+
+  textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 2.4rem;
+  }
+}
+
+// ── Row reorder (drag handle on desktop, up/down buttons on touch) — mirrors combat-equipment ────
+.c-cell-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.c-drag-handle {
+  color: #2a2a2a;
+  font-size: 0.75rem;
+  cursor: grab;
+  flex-shrink: 0;
+
+  &:hover {
+    color: rgba(200, 169, 110, 0.7);
+  }
+  &:active {
+    cursor: grabbing;
+  }
+  @media (pointer: coarse) {
+    display: none;
+  }
+}
+
+.c-reorder-touch {
+  display: none;
+
+  @media (pointer: coarse) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    align-items: center;
+  }
+}
+
+.c-move-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.2rem;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #2a2a2a;
+  cursor: pointer;
+  font-size: 0.6rem;
+  padding: 0;
+  transition: color 0.15s, background 0.15s;
+
+  &:hover:not(:disabled) {
+    color: rgba(200, 169, 110, 1);
+    background: rgba(200, 169, 110, 0.1);
+  }
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+}

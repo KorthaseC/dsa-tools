@@ -1,0 +1,25 @@
+<div class="c-magic-tab">
+  <app-cs-magic />
+
+  <section class="c-magic-subsection">
+    <app-cs-name-list
+      title="Zaubertricks"
+      placeholder="Zaubertrick hinzufügen …"
+      [options]="cantripOptions"
+      [selected]="cantrips()"
+      (add)="addCantrip($event)"
+      (remove)="removeCantrip($event)"
+    />
+
+    <app-cs-tradition-fields [mode]="'magic'" />
+  </section>
+
+  <p-accordion [multiple]="true" [value]="saPanel()" (valueChange)="onSaPanel($event)">
+    <p-accordion-panel value="sa">
+      <p-accordion-header>Magische Sonderfertigkeiten</p-accordion-header>
+      <p-accordion-content>
+        <app-cs-special-abilities [buckets]="['magic']" />
+      </p-accordion-content>
+    </p-accordion-panel>
+  </p-accordion>
+</div>

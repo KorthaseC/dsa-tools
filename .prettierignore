@@ -1,0 +1,10 @@
+# Generated / very large DSA catalog data — don't let Prettier reformat these (they're machine-generated
+# by tools/extract-pdf-data.mjs; reformatting is slow on save and produces huge, noisy diffs).
+src/app/character-creator/constants/*.const.ts
+
+# Generator raw-output dumps (also git-ignored).
+tools/dsa-data/*.json
+
+# Build output
+/dist
+/.angular

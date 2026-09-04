@@ -1,0 +1,53 @@
+<p-tabs [value]="activeTab()" (valueChange)="activeTab.set($event)">
+  <p-tablist>
+    <p-tab value="overview">Allgemein</p-tab>
+    <p-tab value="traits">Vor- &amp; Nachteile</p-tab>
+    <p-tab value="talents">Talente</p-tab>
+    <p-tab value="combat">Kampf</p-tab>
+    @if (state.isZauberer()) {
+      <p-tab value="magic">Magie</p-tab>
+    }
+    @if (state.isGeweihter()) {
+      <p-tab value="liturgy">Liturgien</p-tab>
+    }
+    <p-tab value="homebrew">Homebrew</p-tab>
+    <p-tab value="besitz">Besitz</p-tab>
+  </p-tablist>
+  <p-tabpanels>
+    <p-tabpanel value="overview">
+      <app-cs-overview />
+    </p-tabpanel>
+
+    <p-tabpanel value="traits">
+      <app-cs-traits />
+    </p-tabpanel>
+
+    <p-tabpanel value="talents">
+      <app-cs-talents />
+    </p-tabpanel>
+
+    <p-tabpanel value="combat">
+      <app-cs-combat />
+    </p-tabpanel>
+
+    @if (state.isZauberer()) {
+      <p-tabpanel value="magic">
+        <app-cs-magic-tab />
+      </p-tabpanel>
+    }
+
+    @if (state.isGeweihter()) {
+      <p-tabpanel value="liturgy">
+        <app-cs-liturgy-tab />
+      </p-tabpanel>
+    }
+
+    <p-tabpanel value="homebrew">
+      <app-cs-homebrew />
+    </p-tabpanel>
+
+    <p-tabpanel value="besitz">
+      <app-cs-besitz />
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>
